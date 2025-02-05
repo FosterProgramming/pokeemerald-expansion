@@ -95,6 +95,8 @@ typedef s32 (*AiScoreFunc)(u32, u32, u32, s32);
     return score;                   \
 }
 
+#define AI_BATTLER_HAS_TRAIT(battlerId, abilityToCheck) ((AI_DATA->abilities[battlerId] == abilityToCheck || BattlerHasInnate(battlerId, abilityToCheck))) //Useful to make calculations faster, used only for AI stuff
+
 void BattleAI_SetupItems(void);
 void BattleAI_SetupFlags(void);
 void BattleAI_SetupAIData(u8 defaultScoreMoves, u32 battler);
@@ -106,5 +108,16 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData);
 void ResetDynamicAiFunc(void);
 
 extern u8 sBattler_AI;
+
+bool8 BattlerHasInnate(u8 battlerId, u16 ability);
+bool8 GetBattlerInnateNum(u8 battlerId, u16 ability); //Used for ability checks to itterate through Innates
+
+u8 GetBattlerInnate(u8 battlerId, u8 traitNum); //Used for ability checks to itterate through Innates
+u8 BattlerHasTrait(u8 battlerId, u16 ability); //Returns the trait slot number of the given ability. Starts at 1 for the primary Ability and returns 0 if the ability is not found. 
+u8 BattlerHasTraitPlain(u8 battlerId, u16 ability); //BattlerHasTrait for functions already under GetBattlerAbility to avoid infinite loops.
+void PushTraitStack(u8 battlerId, u16 ability); //Pushes an ability to the trait stack
+u8 PullTraitStackBattler(void); //Pulls a battler from the trait stack
+u16 PullTraitStackAbility(void); //Pulls a battler from the trait stack
+void PopTraitStack(void); //Pops an ability from the trait stack and clears the slot
 
 #endif // GUARD_BATTLE_AI_MAIN_H
