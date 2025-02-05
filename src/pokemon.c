@@ -2491,6 +2491,15 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_HELD_ITEM:
             retVal = substruct0->heldItem;
             break;
+        case MON_DATA_HELD_ITEM_2:
+            retVal = substruct2->heldItem2;
+            break;
+        case MON_DATA_HELD_ITEM_3:
+            retVal = substruct2->heldItem3;
+            break;
+        case MON_DATA_HELD_ITEM_4:
+            retVal = substruct2->heldItem4;
+            break;
         case MON_DATA_EXP:
             retVal = substruct0->experience;
             break;
@@ -2543,22 +2552,12 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = substruct2->spDefenseEV;
             break;
         case MON_DATA_COOL:
-            retVal = substruct2->cool;
-            break;
         case MON_DATA_BEAUTY:
-            retVal = substruct2->beauty;
-            break;
         case MON_DATA_CUTE:
-            retVal = substruct2->cute;
-            break;
         case MON_DATA_SMART:
-            retVal = substruct2->smart;
-            break;
         case MON_DATA_TOUGH:
-            retVal = substruct2->tough;
-            break;
         case MON_DATA_SHEEN:
-            retVal = substruct2->sheen;
+            retVal = 0;
             break;
         case MON_DATA_POKERUS:
             retVal = substruct3->pokerus;
@@ -2986,6 +2985,15 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_HELD_ITEM:
             SET16(substruct0->heldItem);
             break;
+        case MON_DATA_HELD_ITEM_2:
+            SET32(substruct2->heldItem2);
+            break;
+        case MON_DATA_HELD_ITEM_3:
+            SET32(substruct2->heldItem3);
+            break;
+        case MON_DATA_HELD_ITEM_4:
+            SET32(substruct2->heldItem4);
+            break;
         case MON_DATA_EXP:
             SET32(substruct0->experience);
             break;
@@ -3038,22 +3046,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(substruct2->spDefenseEV);
             break;
         case MON_DATA_COOL:
-            SET8(substruct2->cool);
-            break;
         case MON_DATA_BEAUTY:
-            SET8(substruct2->beauty);
-            break;
         case MON_DATA_CUTE:
-            SET8(substruct2->cute);
-            break;
         case MON_DATA_SMART:
-            SET8(substruct2->smart);
-            break;
         case MON_DATA_TOUGH:
-            SET8(substruct2->tough);
-            break;
         case MON_DATA_SHEEN:
-            SET8(substruct2->sheen);
+            //Nothing
             break;
         case MON_DATA_POKERUS:
             SET8(substruct3->pokerus);
