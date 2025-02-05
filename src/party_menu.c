@@ -3277,6 +3277,34 @@ static void CursorCb_Item(u8 taskId)
     gTasks[taskId].func = Task_HandleSelectionMenuInput;
 }
 
+#define MAX_NUM_HELD_ITEMS 4
+static u8 GetNumOfHeldItems(struct Pokemon *mon){
+    u8 i;
+
+    for(i = 0; i < MAX_NUM_HELD_ITEMS; i++){
+        if(GetMonData(mon, MON_DATA_HELD_ITEM + i) == ITEM_NONE)
+            return i;
+    }
+
+    return MAX_NUM_HELD_ITEMS; //No Empty Slot
+}
+
+static void GiveItemToMonInEmptySlot(struct Pokemon *mon, u16 item)
+{
+    u8 emptySlot = GetNumOfHeldItems(mon);
+    u8 itemBytes[2];
+
+    if (ItemIsMail(item) == TRUE)
+    {
+        if (GiveMailToMonByItemId(mon, item) == MAIL_NONE)
+            return;
+    }
+    itemBytes[0] = item;
+    itemBytes[1] = item >> 8;
+    SetMonData(mon, MON_DATA_HELD_ITEM + emptySlot, itemBytes);
+    TryItemHoldFormChange(&gPlayerParty[gPartyMenu.slotId]);
+}
+
 static void CursorCb_Give(u8 taskId)
 {
     PlaySE(SE_SELECT);
@@ -3300,10 +3328,12 @@ static void CB2_GiveHoldItem(void)
     }
     else
     {
+        u8 emptySlot = GetNumOfHeldItems(&gPlayerParty[gPartyMenu.slotId]);
+        
         sPartyMenuItemId = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM);
 
         // Already holding item
-        if (sPartyMenuItemId != ITEM_NONE)
+        if (emptySlot == MAX_NUM_HELD_ITEMS)
         {
             InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_NONE, Task_SwitchHoldItemsPrompt, gPartyMenu.exitCallback);
         }
@@ -3311,7 +3341,7 @@ static void CB2_GiveHoldItem(void)
         else if (ItemIsMail(gSpecialVar_ItemId))
         {
             RemoveBagItem(gSpecialVar_ItemId, 1);
-            GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId);
+            GiveItemToMonInEmptySlot(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId);
             CB2_WriteMailToGiveMon();
         }
         // Give item
@@ -3330,7 +3360,7 @@ static void Task_GiveHoldItem(u8 taskId)
     {
         item = gSpecialVar_ItemId;
         DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId], item, FALSE, 0);
-        GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], item);
+        GiveItemToMonInEmptySlot(&gPlayerParty[gPartyMenu.slotId], item);
         RemoveBagItem(item, 1);
         gTasks[taskId].func = Task_UpdateHeldItemSprite;
     }

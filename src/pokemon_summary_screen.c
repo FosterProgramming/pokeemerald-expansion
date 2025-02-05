@@ -164,6 +164,9 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u16 spdef; // 0x2A
         u16 speed; // 0x2C
         u16 item; // 0x2E
+        u16 item2;
+        u16 item3;
+        u16 item4;
         u16 friendship; // 0x30
         u8 OTGender; // 0x32
         u8 nature; // 0x33
@@ -269,6 +272,7 @@ static void PrintMonOTID(void);
 static void PrintMonAbilityName(void);
 static void PrintMonAbilityDescription(void);
 static void PrintMonTraits(u8);
+static void PrintMonItems(u8);
 static void BufferMonTrainerMemo(void);
 static void PrintMonTrainerMemo(void);
 static void BufferNatureString(void);
@@ -331,6 +335,8 @@ static void CB2_ReturnToSummaryScreenFromNamingScreen(void);
 static void CB2_PssChangePokemonNickname(void);
 static void PrintTraits(void);
 static void Task_PrintTraits(u8);
+static void PrintItems(void);
+static void Task_PrintItems(u8);
 static void PrintMemos(void);
 static void Task_PrintMemos(u8);
 
@@ -763,6 +769,7 @@ static void (*const sTextPrinterFunctions[])(void) =
 {
     [PSS_PAGE_INFO] = PrintInfoPageText,
     [PSS_PAGE_TRAITS] = PrintTraits,
+    [PSS_PAGE_ITEMS] = PrintItems,
     [PSS_PAGE_SKILLS] = PrintSkillsPageText,
     [PSS_PAGE_BATTLE_MOVES] = PrintBattleMoves,
     [PSS_PAGE_MEMOS] = PrintMemos,
@@ -773,6 +780,7 @@ static void (*const sTextPrinterTasks[])(u8 taskId) =
 {
     [PSS_PAGE_INFO] = Task_PrintInfoPage,
     [PSS_PAGE_TRAITS] = Task_PrintTraits,
+    [PSS_PAGE_ITEMS] = Task_PrintItems,
     [PSS_PAGE_SKILLS] = Task_PrintSkillsPage,
     [PSS_PAGE_BATTLE_MOVES] = Task_PrintBattleMoves,
     [PSS_PAGE_MEMOS] = Task_PrintMemos,
@@ -1466,6 +1474,7 @@ static bool8 DecompressGraphics(void)
         break;
     case 3:
         LZDecompressWram(gSummaryPage_Traits_Tilemap, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_TRAITS][1]);
+        LZDecompressWram(gSummaryPage_Items_Tilemap, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_ITEMS][1]);
         sMonSummaryScreen->switchCounter++;
         break;
     case 4:
@@ -1547,6 +1556,9 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->level = GetMonData(mon, MON_DATA_LEVEL);
         sum->abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM);
         sum->item = GetMonData(mon, MON_DATA_HELD_ITEM);
+        sum->item2 = GetMonData(mon, MON_DATA_HELD_ITEM_2);
+        sum->item3 = GetMonData(mon, MON_DATA_HELD_ITEM_3);
+        sum->item4 = GetMonData(mon, MON_DATA_HELD_ITEM_4);
         sum->pid = GetMonData(mon, MON_DATA_PERSONALITY);
         sum->sanity = GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG);
 
@@ -3138,6 +3150,7 @@ static void PutPageWindowTilemaps(u8 page)
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE);
         break;
     case PSS_PAGE_TRAITS:
+    case PSS_PAGE_ITEMS:
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
         break;
     case PSS_PAGE_SKILLS:
@@ -3198,6 +3211,7 @@ static void ClearPageWindowTilemaps(u8 page)
         ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE);
         break;
     case PSS_PAGE_TRAITS:
+    case PSS_PAGE_ITEMS:
       //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT);
       //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT);
         break;
@@ -3609,6 +3623,67 @@ static void PrintMonTraits(u8 innateIndex)
     PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS), gAbilitiesInfo[trait].description, 0, y, 0, 0);
 }
 
+static void PrintItems(void)
+{
+    PrintMonItems(0);
+    PrintMonItems(1);
+    PrintMonItems(2);
+    PrintMonItems(3);
+}
+
+static void Task_PrintItems(u8 taskId)
+{
+    s16* data = gTasks[taskId].data;
+
+    switch (data[0])
+    {
+    case 1:
+        PrintMonItems(0);
+        break;
+    case 2:
+        PrintMonItems(1);
+        break;
+    case 3:
+        PrintMonItems(2);
+        break;
+    case 4:
+        PrintMonItems(3);
+        break;
+    case 5:
+        DestroyTask(taskId);
+        return;
+    }
+    data[0]++;
+}
+
+static void PrintMonItems(u8 itemIndex)
+{
+    u16 heldItem = 0;
+    u8 font = FONT_SMALL_NARROW;
+    struct PokeSummary* sum = &sMonSummaryScreen->summary;
+
+    switch(itemIndex){
+        case 0:
+            heldItem = sum->item;
+        break;
+        case 1:
+            heldItem = sum->item2;
+        break;
+        case 2:
+            heldItem = sum->item3;
+        break;
+        case 3:
+            heldItem = sum->item4;
+        break;
+    }
+    int x = GetStringRightAlignXOffset(font, gItemsInfo[heldItem].name, 18 * 8);
+    int y = (itemIndex * 32);
+    PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS), gItemsInfo[heldItem].name, x, y + 8, 0, 1, font);
+    y += 16;
+
+    if (heldItem != 0)
+        PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS), gItemsInfo[heldItem].description, 0, y - 12, 0, 0, font);
+}
 
 static void PrintMemos(void)
 {
