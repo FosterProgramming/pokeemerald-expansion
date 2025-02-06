@@ -1,15 +1,15 @@
 #ifndef GUARD_REGIONMAPSEC_H
 #define GUARD_REGIONMAPSEC_H
 
-#define MAPSEC_LITTLEROOT_TOWN              0x00
-#define MAPSEC_OLDALE_TOWN                  0x01
-#define MAPSEC_DEWFORD_TOWN                 0x02
-#define MAPSEC_LAVARIDGE_TOWN               0x03
-#define MAPSEC_FALLARBOR_TOWN               0x04
-#define MAPSEC_VERDANTURF_TOWN              0x05
-#define MAPSEC_PACIFIDLOG_TOWN              0x06
-#define MAPSEC_PETALBURG_CITY               0x07
-#define MAPSEC_SLATEPORT_CITY               0x08
+#define MAPSEC_DOMINION_CITY              0x00
+#define MAPSEC_PYRODEN                  0x01
+#define MAPSEC_DUNEMIRE                 0x02
+#define MAPSEC_VERDANT_HOLLOW               0x03
+#define MAPSEC_STRATOSCAPE               0x04
+#define MAPSEC_VOLTBROOK_TOWN              0x05
+#define MAPSEC_ABYSSAL_REEF              0x06
+#define MAPSEC_MURKWELL_BOG               0x07
+#define MAPSEC_GLACIERRA               0x08
 #define MAPSEC_MAUVILLE_CITY                0x09
 #define MAPSEC_RUSTBORO_CITY                0x0A
 #define MAPSEC_FORTREE_CITY                 0x0B

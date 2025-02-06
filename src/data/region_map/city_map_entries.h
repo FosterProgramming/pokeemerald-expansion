@@ -1,52 +1,52 @@
 static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
 {
     {
-        .mapSecId = MAPSEC_LITTLEROOT_TOWN,
+        .mapSecId = MAPSEC_DOMINION_CITY,
         .index = 0,
         .tilemap = gPokenavCityMap_Littleroot_0,
     },
     {
-        .mapSecId = MAPSEC_OLDALE_TOWN,
+        .mapSecId = MAPSEC_PYRODEN,
         .index = 0,
         .tilemap = gPokenavCityMap_Oldale_0,
     },
     {
-        .mapSecId = MAPSEC_DEWFORD_TOWN,
+        .mapSecId = MAPSEC_DUNEMIRE,
         .index = 0,
         .tilemap = gPokenavCityMap_Dewford_0,
     },
     {
-        .mapSecId = MAPSEC_LAVARIDGE_TOWN,
+        .mapSecId = MAPSEC_VERDANT_HOLLOW,
         .index = 0,
         .tilemap = gPokenavCityMap_Lavaridge_0,
     },
     {
-        .mapSecId = MAPSEC_FALLARBOR_TOWN,
+        .mapSecId = MAPSEC_STRATOSCAPE,
         .index = 0,
         .tilemap = gPokenavCityMap_Fallarbor_0,
     },
     {
-        .mapSecId = MAPSEC_VERDANTURF_TOWN,
+        .mapSecId = MAPSEC_VOLTBROOK_TOWN,
         .index = 0,
         .tilemap = gPokenavCityMap_Verdanturf_0,
     },
     {
-        .mapSecId = MAPSEC_PACIFIDLOG_TOWN,
+        .mapSecId = MAPSEC_ABYSSAL_REEF,
         .index = 0,
         .tilemap = gPokenavCityMap_Pacifidlog_0,
     },
     {
-        .mapSecId = MAPSEC_PETALBURG_CITY,
+        .mapSecId = MAPSEC_MURKWELL_BOG,
         .index = 0,
         .tilemap = gPokenavCityMap_Petalburg_0,
     },
     {
-        .mapSecId = MAPSEC_SLATEPORT_CITY,
+        .mapSecId = MAPSEC_GLACIERRA,
         .index = 0,
         .tilemap = gPokenavCityMap_Slateport_0,
     },
     {
-        .mapSecId = MAPSEC_SLATEPORT_CITY,
+        .mapSecId = MAPSEC_GLACIERRA,
         .index = 1,
         .tilemap = gPokenavCityMap_Slateport_1,
     },
