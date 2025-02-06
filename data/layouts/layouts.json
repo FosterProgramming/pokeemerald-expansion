@@ -4410,6 +4410,96 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY",
+      "name": "DominionCity_Layout",
+      "width": 38,
+      "height": 34,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/DominionCity/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE1",
+      "name": "Route1_Layout",
+      "width": 20,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Route1/border.bin",
+      "blockdata_filepath": "data/layouts/Route1/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE",
+      "name": "Emberglide_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Emberglide/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2",
+      "name": "Route2_Layout",
+      "width": 50,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route2/border.bin",
+      "blockdata_filepath": "data/layouts/Route2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2A",
+      "name": "Route2A_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route2A/border.bin",
+      "blockdata_filepath": "data/layouts/Route2A/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE2B",
+      "name": "Route2B_Layout",
+      "width": 30,
+      "height": 36,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route2B/border.bin",
+      "blockdata_filepath": "data/layouts/Route2B/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN",
+      "name": "Pyroden_Layout",
+      "width": 40,
+      "height": 45,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Pyroden/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3",
+      "name": "Route3_Layout",
+      "width": 30,
+      "height": 76,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route3/border.bin",
+      "blockdata_filepath": "data/layouts/Route3/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE3A",
+      "name": "Route3A_Layout",
+      "width": 40,
+      "height": 45,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route3A/border.bin",
+      "blockdata_filepath": "data/layouts/Route3A/map.bin"
     }
   ]
 }
