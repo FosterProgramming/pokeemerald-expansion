@@ -213,3 +213,6 @@ const u16 gMetatileAttributes_DunemireDesertGeneral[] = INCBIN_U16("data/tileset
 
 const u16 gMetatiles_DunemireDesertSecondary[] = INCBIN_U16("data/tilesets/secondary/dunemire_desert_secondary/metatiles.bin");
 const u16 gMetatileAttributes_DunemireDesertSecondary[] = INCBIN_U16("data/tilesets/secondary/dunemire_desert_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatiles.bin");
+const u16 gMetatileAttributes_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatile_attributes.bin");

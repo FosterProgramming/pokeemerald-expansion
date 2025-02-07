@@ -847,3 +847,14 @@ const struct Tileset gTileset_DunemireDesertSecondary =
     .metatileAttributes = gMetatileAttributes_DunemireDesertSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GeneralSeelVersion =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GeneralSeelVersion,
+    .palettes = gTilesetPalettes_GeneralSeelVersion,
+    .metatiles = gMetatiles_GeneralSeelVersion,
+    .metatileAttributes = gMetatileAttributes_GeneralSeelVersion,
+    .callback = NULL,
+};

@@ -4506,7 +4506,7 @@
       "name": "Route4_Layout",
       "width": 88,
       "height": 22,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route4/border.bin",
       "blockdata_filepath": "data/layouts/Route4/map.bin"
@@ -4516,7 +4516,7 @@
       "name": "Route5_Layout",
       "width": 30,
       "height": 70,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route5/border.bin",
       "blockdata_filepath": "data/layouts/Route5/map.bin"
@@ -4546,7 +4546,7 @@
       "name": "MurkwellBog_Layout",
       "width": 54,
       "height": 50,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/MurkwellBog/border.bin",
       "blockdata_filepath": "data/layouts/MurkwellBog/map.bin"

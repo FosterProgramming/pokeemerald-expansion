@@ -1672,3 +1672,22 @@ const u16 gTilesetPalettes_DunemireDesertSecondary[][16] =
 };
 
 const u32 gTilesetTiles_DunemireDesertSecondary[] = INCBIN_U32("data/tilesets/secondary/dunemire_desert_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GeneralSeelVersion[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/general_seel_version/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GeneralSeelVersion[] = INCBIN_U32("data/tilesets/primary/general_seel_version/tiles.4bpp.lz");
