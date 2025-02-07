@@ -4796,8 +4796,8 @@
       "name": "DunemireDesertF_Layout",
       "width": 69,
       "height": 41,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_DunemireDesertGeneral",
+      "secondary_tileset": "gTileset_DunemireDesertSecondary",
       "border_filepath": "data/layouts/DunemireDesertF/border.bin",
       "blockdata_filepath": "data/layouts/DunemireDesertF/map.bin"
     }
