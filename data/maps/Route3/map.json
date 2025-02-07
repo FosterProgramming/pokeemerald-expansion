@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_EMBERGLIDE",
-      "offset": 56,
+      "offset": 76,
       "direction": "left"
     },
     {

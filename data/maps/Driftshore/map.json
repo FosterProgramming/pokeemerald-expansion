@@ -1,0 +1,39 @@
+{
+  "id": "MAP_DRIFTSHORE",
+  "name": "Driftshore",
+  "layout": "LAYOUT_DRIFTSHORE",
+  "music": "MUS_RUSTBORO",
+  "region_map_section": "MAPSEC_DRIFTSHORE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE8",
+      "offset": 4,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE9",
+      "offset": 14,
+      "direction": "left"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

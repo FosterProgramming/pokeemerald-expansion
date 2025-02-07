@@ -1,0 +1,49 @@
+{
+  "id": "MAP_ROUTE4",
+  "name": "Route4",
+  "layout": "LAYOUT_ROUTE4",
+  "music": "MUS_ROUTE104",
+  "region_map_section": "MAPSEC_ROUTE_4SV",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_DOMINION_CITY",
+      "offset": -8,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE5",
+      "offset": 46,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_MURKWELL_BOG",
+      "offset": -28,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE9A",
+      "offset": 22,
+      "direction": "left"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

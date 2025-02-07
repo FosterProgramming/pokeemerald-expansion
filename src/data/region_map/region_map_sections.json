@@ -81,8 +81,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
+      "map_section": "MAPSEC_DRIFTSHORE",
+      "name": "Driftshore",
       "x": 0,
       "y": 5,
       "width": 1,
@@ -153,104 +153,104 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_104",
-      "name": "ROUTE 104",
+      "map_section": "MAPSEC_ROUTE_4SV",
+      "name": "Route 4",
       "x": 0,
       "y": 7,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_105",
-      "name": "ROUTE 105",
+      "map_section": "MAPSEC_ROUTE_5SV",
+      "name": "Route 5",
       "x": 0,
       "y": 10,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_106",
-      "name": "ROUTE 106",
+      "map_section": "MAPSEC_ROUTE_6SV",
+      "name": "Route 6",
       "x": 0,
       "y": 13,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_107",
-      "name": "ROUTE 107",
+      "map_section": "MAPSEC_ROUTE_7SV",
+      "name": "Route 7",
       "x": 3,
       "y": 14,
       "width": 3,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_108",
-      "name": "ROUTE 108",
+      "map_section": "MAPSEC_ROUTE_8SV",
+      "name": "Route 8",
       "x": 6,
       "y": 14,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_109",
-      "name": "ROUTE 109",
+      "map_section": "MAPSEC_ROUTE_9SV",
+      "name": "Route 9",
       "x": 8,
       "y": 12,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_110",
-      "name": "ROUTE 110",
+      "map_section": "MAPSEC_ROUTE_10SV",
+      "name": "Route 10",
       "x": 8,
       "y": 7,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_111",
-      "name": "ROUTE 111",
+      "map_section": "MAPSEC_ROUTE_11SV",
+      "name": "Route 11",
       "x": 8,
       "y": 0,
       "width": 1,
       "height": 6
     },
     {
-      "map_section": "MAPSEC_ROUTE_112",
-      "name": "ROUTE 112",
+      "map_section": "MAPSEC_ROUTE_12SV",
+      "name": "Route 12",
       "x": 6,
       "y": 3,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_113",
-      "name": "ROUTE 113",
+      "map_section": "MAPSEC_ROUTE_13SV",
+      "name": "Route 13",
       "x": 4,
       "y": 0,
       "width": 4,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_114",
-      "name": "ROUTE 114",
+      "map_section": "MAPSEC_ROUTE_14SV",
+      "name": "ROUTE 14",
       "x": 1,
       "y": 0,
       "width": 2,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_115",
-      "name": "ROUTE 115",
+      "map_section": "MAPSEC_ROUTE_15SV",
+      "name": "Route 15",
       "x": 0,
       "y": 2,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_116",
-      "name": "ROUTE 116",
+      "map_section": "MAPSEC_ROUTE_16SV",
+      "name": "Route 16",
       "x": 1,
       "y": 5,
       "width": 4,
