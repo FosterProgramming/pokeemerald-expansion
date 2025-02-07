@@ -27,16 +27,6 @@
       "map": "MAP_DUNEMIRE_DESERT_C",
       "offset": 0,
       "direction": "right"
-    },
-    {
-      "map": "MAP_DUNEMIRE_DESERT_D",
-      "offset": 0,
-      "direction": "down"
-    },
-    {
-      "map": "MAP_DUNEMIRE_DESERT_E",
-      "offset": -69,
-      "direction": "down"
     }
   ],
   "object_events": [

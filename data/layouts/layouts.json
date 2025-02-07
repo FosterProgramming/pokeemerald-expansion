@@ -4624,7 +4624,7 @@
     {
       "id": "LAYOUT_ROUTE9",
       "name": "Route9_Layout",
-      "width": 110,
+      "width": 128,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -4635,7 +4635,7 @@
       "id": "LAYOUT_ROUTE9A",
       "name": "Route9A_Layout",
       "width": 20,
-      "height": 84,
+      "height": 102,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route9A/border.bin",
@@ -4675,7 +4675,7 @@
       "id": "LAYOUT_ROUTE12A",
       "name": "Route12A_Layout",
       "width": 80,
-      "height": 60,
+      "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route12A/border.bin",
@@ -4800,6 +4800,26 @@
       "secondary_tileset": "gTileset_DunemireDesertSecondary",
       "border_filepath": "data/layouts/DunemireDesertF/border.bin",
       "blockdata_filepath": "data/layouts/DunemireDesertF/map.bin"
+    },
+    {
+      "id": "LAYOUT_DELETE_THIS",
+      "name": "DeleteThis_Layout",
+      "width": 67,
+      "height": 75,
+      "primary_tileset": "gTileset_DunemireDesertGeneral",
+      "secondary_tileset": "gTileset_DunemireDesertSecondary",
+      "border_filepath": "data/layouts/DeleteThis/border.bin",
+      "blockdata_filepath": "data/layouts/DeleteThis/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE12B",
+      "name": "Route12B_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route12B/border.bin",
+      "blockdata_filepath": "data/layouts/Route12B/map.bin"
     }
   ]
 }

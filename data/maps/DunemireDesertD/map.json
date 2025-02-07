@@ -19,19 +19,24 @@
       "direction": "up"
     },
     {
-      "map": "MAP_DUNEMIRE_DESERT_A",
-      "offset": 0,
-      "direction": "up"
-    },
-    {
       "map": "MAP_DUNEMIRE_DESERT_E",
-      "offset": -20,
+      "offset": 0,
       "direction": "left"
     },
     {
       "map": "MAP_DUNEMIRE_DESERT_F",
-      "offset": 20,
+      "offset": 44,
       "direction": "left"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT",
+      "offset": -47,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT_B",
+      "offset": 0,
+      "direction": "up"
     }
   ],
   "object_events": [

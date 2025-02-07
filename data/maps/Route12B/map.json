@@ -1,7 +1,7 @@
 {
-  "id": "MAP_ROUTE12A",
-  "name": "Route12A",
-  "layout": "LAYOUT_ROUTE12A",
+  "id": "MAP_ROUTE12B",
+  "name": "Route12B",
+  "layout": "LAYOUT_ROUTE12B",
   "music": "MUS_SAILING",
   "region_map_section": "MAPSEC_ROUTE_12SV",
   "requires_flash": false,
@@ -10,18 +10,13 @@
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE12",
-      "offset": 20,
-      "direction": "left"
-    },
-    {
-      "map": "MAP_ROUTE12B",
+      "map": "MAP_ROUTE12A",
       "offset": 0,
-      "direction": "right"
+      "direction": "left"
     }
   ],
   "object_events": [

@@ -131,7 +131,9 @@
     "DunemireDesertC",
     "DunemireDesertD",
     "DunemireDesertE",
-    "DunemireDesertF"
+    "DunemireDesertF",
+    "DeleteThis",
+    "Route12B"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

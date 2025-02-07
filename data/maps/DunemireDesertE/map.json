@@ -19,18 +19,13 @@
       "direction": "up"
     },
     {
-      "map": "MAP_DUNEMIRE_DESERT_A",
-      "offset": 69,
-      "direction": "up"
-    },
-    {
       "map": "MAP_DUNEMIRE_DESERT_B",
-      "offset": 0,
+      "offset": -20,
       "direction": "right"
     },
     {
       "map": "MAP_DUNEMIRE_DESERT_D",
-      "offset": 20,
+      "offset": 0,
       "direction": "right"
     },
     {

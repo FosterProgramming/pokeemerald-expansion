@@ -1230,3 +1230,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DunemireDesertE/scripts.inc"
 
 	.include "data/maps/DunemireDesertF/scripts.inc"
+
+	.include "data/maps/DeleteThis/scripts.inc"
+
+	.include "data/maps/Route12B/scripts.inc"

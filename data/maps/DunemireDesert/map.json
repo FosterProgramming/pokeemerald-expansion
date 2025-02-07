@@ -14,11 +14,6 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_DUNEMIRE",
-      "offset": -48,
-      "direction": "up"
-    },
-    {
       "map": "MAP_DUNEMIRE_DESERT_A",
       "offset": 0,
       "direction": "right"
@@ -32,6 +27,16 @@
       "map": "MAP_DUNEMIRE_DESERT_E",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT_D",
+      "offset": 47,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_DUNEMIRE",
+      "offset": 8,
+      "direction": "left"
     }
   ],
   "object_events": [

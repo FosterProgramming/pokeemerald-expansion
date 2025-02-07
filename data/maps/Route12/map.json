@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_ROUTE12A",
-      "offset": 0,
+      "offset": -20,
       "direction": "right"
     }
   ],

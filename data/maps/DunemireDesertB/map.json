@@ -30,8 +30,13 @@
     },
     {
       "map": "MAP_DUNEMIRE_DESERT_E",
-      "offset": 0,
+      "offset": 20,
       "direction": "left"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT_D",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [
