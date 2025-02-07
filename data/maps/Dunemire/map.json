@@ -17,6 +17,11 @@
       "map": "MAP_ROUTE6A",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT",
+      "offset": 48,
+      "direction": "down"
     }
   ],
   "object_events": [

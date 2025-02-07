@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_DOMINION_CITY",
-      "offset": -6,
+      "offset": -24,
       "direction": "up"
     },
     {

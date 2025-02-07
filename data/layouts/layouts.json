@@ -4414,8 +4414,8 @@
     {
       "id": "LAYOUT_DOMINION_CITY",
       "name": "DominionCity_Layout",
-      "width": 38,
-      "height": 34,
+      "width": 68,
+      "height": 64,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/DominionCity/border.bin",
@@ -4444,7 +4444,7 @@
     {
       "id": "LAYOUT_ROUTE2",
       "name": "Route2_Layout",
-      "width": 50,
+      "width": 66,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -4454,8 +4454,8 @@
     {
       "id": "LAYOUT_ROUTE2A",
       "name": "Route2A_Layout",
-      "width": 20,
-      "height": 40,
+      "width": 30,
+      "height": 76,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route2A/border.bin",
@@ -4515,7 +4515,7 @@
       "id": "LAYOUT_ROUTE5",
       "name": "Route5_Layout",
       "width": 30,
-      "height": 58,
+      "height": 70,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route5/border.bin",
@@ -4534,8 +4534,8 @@
     {
       "id": "LAYOUT_VERDANT_HALLOW",
       "name": "VerdantHallow_Layout",
-      "width": 28,
-      "height": 28,
+      "width": 36,
+      "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/VerdantHallow/border.bin",
@@ -4730,6 +4730,76 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route16/border.bin",
       "blockdata_filepath": "data/layouts/Route16/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT",
+      "name": "DunemireDesert_Layout",
+      "width": 69,
+      "height": 47,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesert/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesert/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT_A",
+      "name": "DunemireDesertA_Layout",
+      "width": 40,
+      "height": 27,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesertA/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesertA/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT_B",
+      "name": "DunemireDesertB_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesertB/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesertB/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT_C",
+      "name": "DunemireDesertC_Layout",
+      "width": 50,
+      "height": 47,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesertC/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesertC/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT_D",
+      "name": "DunemireDesertD_Layout",
+      "width": 67,
+      "height": 99,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesertD/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesertD/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT_E",
+      "name": "DunemireDesertE_Layout",
+      "width": 69,
+      "height": 44,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesertE/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesertE/map.bin"
+    },
+    {
+      "id": "LAYOUT_DUNEMIRE_DESERT_F",
+      "name": "DunemireDesertF_Layout",
+      "width": 69,
+      "height": 41,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DunemireDesertF/border.bin",
+      "blockdata_filepath": "data/layouts/DunemireDesertF/map.bin"
     }
   ]
 }

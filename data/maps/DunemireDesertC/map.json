@@ -1,0 +1,44 @@
+{
+  "id": "MAP_DUNEMIRE_DESERT_C",
+  "name": "DunemireDesertC",
+  "layout": "LAYOUT_DUNEMIRE_DESERT_C",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_DUNEMIRE_DESERT",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_DUNEMIRE_DESERT_A",
+      "offset": 0,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT_B",
+      "offset": 27,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_DUNEMIRE_DESERT_D",
+      "offset": -24,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

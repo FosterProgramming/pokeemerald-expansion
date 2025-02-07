@@ -124,7 +124,14 @@
     "Route14",
     "Route15",
     "UnnamedTown",
-    "Route16"
+    "Route16",
+    "DunemireDesert",
+    "DunemireDesertA",
+    "DunemireDesertB",
+    "DunemireDesertC",
+    "DunemireDesertD",
+    "DunemireDesertE",
+    "DunemireDesertF"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

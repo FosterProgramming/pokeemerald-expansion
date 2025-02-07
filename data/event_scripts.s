@@ -1216,3 +1216,17 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/UnnamedTown/scripts.inc"
 
 	.include "data/maps/Route16/scripts.inc"
+
+	.include "data/maps/DunemireDesert/scripts.inc"
+
+	.include "data/maps/DunemireDesertA/scripts.inc"
+
+	.include "data/maps/DunemireDesertB/scripts.inc"
+
+	.include "data/maps/DunemireDesertC/scripts.inc"
+
+	.include "data/maps/DunemireDesertD/scripts.inc"
+
+	.include "data/maps/DunemireDesertE/scripts.inc"
+
+	.include "data/maps/DunemireDesertF/scripts.inc"

@@ -19,9 +19,9 @@
       "direction": "down"
     },
     {
-      "map": "MAP_ROUTE2B",
+      "map": "MAP_PYRODEN",
       "offset": 0,
-      "direction": "up"
+      "direction": "right"
     }
   ],
   "object_events": [
