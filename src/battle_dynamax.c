@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_ai_main.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
@@ -915,7 +916,7 @@ void BS_TrySetStatus2(void)
     switch (status2)
     {
         case STATUS2_CONFUSION:
-            if (CanBeConfused(gBattlerTarget))
+            if (CanBeConfused(gBattlerTarget, 0))
             {
                 gBattleMons[gBattlerTarget].status2 |= STATUS2_CONFUSION_TURN(((Random()) % 4) + 2);
                 gBattleCommunication[MULTISTRING_CHOOSER] = 0;
@@ -928,7 +929,7 @@ void BS_TrySetStatus2(void)
             u8 atkGender = GetGenderFromSpeciesAndPersonality(gBattleMons[gBattlerAttacker].species, gBattleMons[gBattlerAttacker].personality);
             u8 defGender = GetGenderFromSpeciesAndPersonality(gBattleMons[gBattlerTarget].species, gBattleMons[gBattlerTarget].personality);
             if (!(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
-                && gBattleMons[gBattlerTarget].ability != ABILITY_OBLIVIOUS
+                && !BattlerHasTrait(gBattlerTarget, ABILITY_OBLIVIOUS) 
                 && !IsAbilityOnSide(gBattlerTarget, ABILITY_AROMA_VEIL)
                 && atkGender != defGender
                 && atkGender != MON_GENDERLESS

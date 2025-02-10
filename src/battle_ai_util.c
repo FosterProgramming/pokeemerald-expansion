@@ -179,7 +179,7 @@ void SaveBattlerData(u32 battlerId)
     AI_THINKING_STRUCT->saved[battlerId].types[1] = gBattleMons[battlerId].types[1];
 }
 
-static bool32 ShouldFailForIllusion(u32 illusionSpecies, u32 battlerId)
+static bool32 ShouldFallForIllusion(u32 illusionSpecies, u32 battlerId)
 {
     u32 i, j;
     const struct LevelUpMove *learnset;
@@ -225,7 +225,7 @@ void SetBattlerData(u32 battlerId)
         // Simulate Illusion
         species = gBattleMons[battlerId].species;
         illusionSpecies = GetIllusionMonSpecies(battlerId);
-        if (illusionSpecies != SPECIES_NONE && ShouldFailForIllusion(illusionSpecies, battlerId))
+        if (illusionSpecies != SPECIES_NONE && ShouldFallForIllusion(illusionSpecies, battlerId))
         {
             // If the battler's type has not been changed, AI assumes the types of the illusion mon.
             if (gBattleMons[battlerId].types[0] == gSpeciesInfo[species].types[0]
@@ -412,22 +412,22 @@ static inline s32 DmgRoll(s32 dmg)
 bool32 IsDamageMoveUnusable(u32 battlerAtk, u32 battlerDef, u32 move, u32 moveType)
 {
     struct AiLogicData *aiData = AI_DATA;
-    u32 battlerDefAbility;
+    //u32 battlerDefAbility;
     u32 partnerBattlerDefAbility;
 
     if (DoesBattlerIgnoreAbilityChecks(aiData->abilities[battlerAtk], move))
     {
-        battlerDefAbility = ABILITY_NONE;
+        //battlerDefAbility = ABILITY_NONE;
         partnerBattlerDefAbility = ABILITY_NONE;
     }
     else
     {
-        battlerDefAbility = aiData->abilities[battlerDef];
+        //battlerDefAbility = aiData->abilities[battlerDef];
         partnerBattlerDefAbility = aiData->abilities[BATTLE_PARTNER(battlerDef)];
     }
 
     if (battlerDef == BATTLE_PARTNER(battlerAtk))
-        battlerDefAbility = aiData->abilities[battlerDef];
+        //battlerDefAbility = aiData->abilities[battlerDef];
 
     if (gBattleStruct->commandingDondozo & (1u << battlerDef))
         return TRUE;
@@ -547,17 +547,20 @@ static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCal
     u32 move = damageCalcData->move;
     s32 expected = *expectedDamage;
     s32 minimum = *minimumDamage;
+    u16 battlerTraits[MAX_MON_TRAITS];
+    STORE_BATTLER_TRAITS(damageCalcData->battlerAtk);
+
 
     switch (gMovesInfo[move].effect)
     {
     case EFFECT_LEVEL_DAMAGE:
-        expected = minimum = gBattleMons[damageCalcData->battlerAtk].level * (abilityAtk == ABILITY_PARENTAL_BOND ? 2 : 1);
+        expected = minimum = gBattleMons[damageCalcData->battlerAtk].level * (SearchTraits(battlerTraits, ABILITY_PARENTAL_BOND) ? 2 : 1);
         break;
     case EFFECT_PSYWAVE:
-        expected = minimum = gBattleMons[damageCalcData->battlerAtk].level * (abilityAtk == ABILITY_PARENTAL_BOND ? 2 : 1);
+        expected = minimum = gBattleMons[damageCalcData->battlerAtk].level * (SearchTraits(battlerTraits, ABILITY_PARENTAL_BOND) ? 2 : 1);
         break;
     case EFFECT_FIXED_DAMAGE_ARG:
-        expected = minimum = gMovesInfo[move].argument * (abilityAtk == ABILITY_PARENTAL_BOND ? 2 : 1);
+        expected = minimum = gMovesInfo[move].argument * (SearchTraits(battlerTraits, ABILITY_PARENTAL_BOND) ? 2 : 1);
         break;
     case EFFECT_MULTI_HIT:
         if (move == MOVE_WATER_SHURIKEN && gBattleMons[damageCalcData->battlerAtk].species == SPECIES_GRENINJA_ASH)
@@ -565,7 +568,7 @@ static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCal
             expected *= 3;
             minimum *= 3;
         }
-        else if (abilityAtk == ABILITY_SKILL_LINK)
+        else if (SearchTraits(battlerTraits, ABILITY_SKILL_LINK))
         {
             expected *= 5;
             minimum *= 5;
@@ -587,7 +590,7 @@ static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCal
         expected = minimum = max(0, gBattleMons[damageCalcData->battlerDef].hp - gBattleMons[damageCalcData->battlerAtk].hp);
         break;
     case EFFECT_SUPER_FANG:
-        expected = minimum = (abilityAtk == ABILITY_PARENTAL_BOND
+        expected = minimum = (SearchTraits(battlerTraits, ABILITY_PARENTAL_BOND)
             ? max(2, gBattleMons[damageCalcData->battlerDef].hp * 3 / 4)
             : max(1, gBattleMons[damageCalcData->battlerDef].hp / 2));
         break;
@@ -676,14 +679,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
         damageCalcData.randomFactor = FALSE;
         damageCalcData.updateFlags = FALSE;
 
-        // Check AI knowledge for Crit blocking abilities before Crit Check
-        u16 abilityDef = ABILITY_NONE;
-            if (AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_BATTLE_ARMOR))
-        abilityDef = ABILITY_BATTLE_ARMOR;
-            else if (AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_SHELL_ARMOR))
-        abilityDef = ABILITY_SHELL_ARMOR;
-
-        critChanceIndex = CalcCritChanceStageArgs(battlerAtk, battlerDef, move, FALSE, aiData->abilities[battlerAtk], abilityDef, aiData->holdEffects[battlerAtk]);
+        critChanceIndex = CalcCritChanceStageArgs(battlerAtk, battlerDef, move, FALSE, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], aiData->holdEffects[battlerAtk]);
         if (critChanceIndex > 1) // Consider crit damage only if a move has at least +2 crit chance
         {
             damageCalcData.isCrit = FALSE;
@@ -770,7 +766,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
 
 bool32 AI_IsDamagedByRecoil(u32 battler)
 {
-    u32 ability = AI_DATA->abilities[battler];
+    //u32 ability = AI_DATA->abilities[battler];
     if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_MAGIC_GUARD) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ROCK_HEAD))
         return FALSE;
     return TRUE;
@@ -901,7 +897,7 @@ static bool32 AI_IsMoveEffectInPlus(u32 battlerAtk, u32 battlerDef, u32 move, s3
 static bool32 AI_IsMoveEffectInMinus(u32 battlerAtk, u32 battlerDef, u32 move, s32 noOfHitsToKo)
 {
     u32 abilityAtk = AI_DATA->abilities[battlerAtk];
-    u32 abilityDef = AI_DATA->abilities[battlerDef];
+    //u32 abilityDef = AI_DATA->abilities[battlerDef];
     u8 i;
 
     // recoil
@@ -979,8 +975,8 @@ static bool32 AI_IsMoveEffectInMinus(u32 battlerAtk, u32 battlerDef, u32 move, s
 s32 AI_WhichMoveBetter(u32 move1, u32 move2, u32 battlerAtk, u32 battlerDef, s32 noOfHitsToKo)
 {
     bool32 effect1, effect2;
-    u32 defAbility = AI_DATA->abilities[battlerDef];
-    u32 atkAbility = AI_DATA->abilities[battlerAtk];
+    //u32 defAbility = AI_DATA->abilities[battlerDef];
+    //u32 atkAbility = AI_DATA->abilities[battlerAtk];
 
     // Check if physical moves hurt.
     if (AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_PROTECTIVE_PADS && !AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_LONG_REACH)
@@ -1150,7 +1146,7 @@ static bool32 CanEndureHit(u32 battler, u32 battlerTarget, u32 move)
 
     if (!DoesBattlerIgnoreAbilityChecks(AI_DATA->abilities[battler], move))
     {
-        if (B_STURDY >= GEN_5 && AI_DATA->abilities[battlerTarget] == ABILITY_STURDY)
+        if (B_STURDY >= GEN_5 && AI_BATTLER_HAS_TRAIT(battlerTarget, ABILITY_STURDY))
             return TRUE;
         if (gBattleMons[battlerTarget].species == SPECIES_MIMIKYU_DISGUISED)
             return TRUE;
@@ -1341,6 +1337,8 @@ s32 AI_DecideKnownAbilityForTurn(u32 battlerId)
     u32 validAbilities[NUM_ABILITY_SLOTS];
     u8 i, numValidAbilities = 0;
     u32 knownAbility = AI_GetBattlerAbility(battlerId);
+    u16 battlerTraits[MAX_MON_TRAITS];
+    STORE_BATTLER_TRAITS(battlerId);
 
     // We've had ability overwritten by e.g. Worry Seed. It is not part of AI_PARTY in case of switching
     if (gBattleStruct->overwrittenAbilities[battlerId])
@@ -1358,7 +1356,7 @@ s32 AI_DecideKnownAbilityForTurn(u32 battlerId)
         return AI_PARTY->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].ability;
 
     // Abilities that prevent fleeing - treat as always known
-    if (knownAbility == ABILITY_SHADOW_TAG || knownAbility == ABILITY_MAGNET_PULL || knownAbility == ABILITY_ARENA_TRAP)
+    if (SearchTraits(battlerTraits, ABILITY_SHADOW_TAG) || SearchTraits(battlerTraits, ABILITY_MAGNET_PULL) || SearchTraits(battlerTraits, ABILITY_ARENA_TRAP))
         return knownAbility;
 
     for (i = 0; i < NUM_ABILITY_SLOTS; i++)
@@ -1585,11 +1583,14 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect)
     if (weather & B_WEATHER_SANDSTORM)
         return FALSE;
 
-    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_SAND_VEIL)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_SAND_RUSH)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_SAND_FORCE)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_OVERCOAT)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_MAGIC_GUARD)
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battler);
+
+    if (AISearchTraits(AIBattlerTraits, ABILITY_SAND_VEIL)
+      || AISearchTraits(AIBattlerTraits, ABILITY_SAND_RUSH)
+      || AISearchTraits(AIBattlerTraits, ABILITY_SAND_FORCE)
+      || AISearchTraits(AIBattlerTraits, ABILITY_OVERCOAT)
+      || AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_GUARD)
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
       || IS_BATTLER_OF_TYPE(battler, TYPE_ROCK)
       || IS_BATTLER_OF_TYPE(battler, TYPE_STEEL)
@@ -1608,12 +1609,15 @@ bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect)
     if (weather & (B_WEATHER_HAIL | B_WEATHER_SNOW))
         return FALSE;
 
-    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_SNOW_CLOAK)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ICE_BODY)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_FORECAST)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_SLUSH_RUSH)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_MAGIC_GUARD)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_OVERCOAT)
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battler);
+
+    if (AISearchTraits(AIBattlerTraits, ABILITY_SNOW_CLOAK)
+      || AISearchTraits(AIBattlerTraits, ABILITY_ICE_BODY)
+      || AISearchTraits(AIBattlerTraits, ABILITY_FORECAST)
+      || AISearchTraits(AIBattlerTraits, ABILITY_SLUSH_RUSH)
+      || AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_GUARD)
+      || AISearchTraits(AIBattlerTraits, ABILITY_OVERCOAT)
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMoveEffect(battler, EFFECT_BLIZZARD)
@@ -1630,13 +1634,15 @@ bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
     u32 weather = AI_GetWeather(AI_DATA);
     if (weather & B_WEATHER_RAIN)
         return FALSE;
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerAtk);
 
     if (!BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE)
-     && (AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_SWIFT_SWIM)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_FORECAST)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_HYDRATION)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_RAIN_DISH)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_DRY_SKIN)
+     && (AISearchTraits(AIBattlerTraits, ABILITY_SWIFT_SWIM)
+      || AISearchTraits(AIBattlerTraits, ABILITY_FORECAST)
+      || AISearchTraits(AIBattlerTraits, ABILITY_HYDRATION)
+      || AISearchTraits(AIBattlerTraits, ABILITY_RAIN_DISH)
+      || AISearchTraits(AIBattlerTraits, ABILITY_DRY_SKIN)
       || HasMoveEffect(battlerAtk, EFFECT_THUNDER)
       || HasMoveEffect(battlerAtk, EFFECT_WEATHER_BALL)
       || HasMoveWithType(battlerAtk, TYPE_WATER)))
@@ -1652,13 +1658,16 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
     if (weather & B_WEATHER_SUN)
         return FALSE;
 
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerAtk);
+
     if (!BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE)
-     && (AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_CHLOROPHYLL)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_FLOWER_GIFT)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_FORECAST)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_LEAF_GUARD)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_SOLAR_POWER)
-      || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_HARVEST)
+     && (AISearchTraits(AIBattlerTraits, ABILITY_CHLOROPHYLL)
+      || AISearchTraits(AIBattlerTraits, ABILITY_FLOWER_GIFT)
+      || AISearchTraits(AIBattlerTraits, ABILITY_FORECAST)
+      || AISearchTraits(AIBattlerTraits, ABILITY_LEAF_GUARD)
+      || AISearchTraits(AIBattlerTraits, ABILITY_SOLAR_POWER)
+      || AISearchTraits(AIBattlerTraits, ABILITY_HARVEST)
       || HasMoveEffect(battlerAtk, EFFECT_SOLAR_BEAM)
       || HasMoveEffect(battlerAtk, EFFECT_MORNING_SUN)
       || HasMoveEffect(battlerAtk, EFFECT_SYNTHESIS)
@@ -1678,10 +1687,13 @@ bool32 ShouldSetSnow(u32 battler, u32 ability, u32 holdEffect)
     if (weather & (B_WEATHER_SNOW | B_WEATHER_HAIL))
         return FALSE;
 
-    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_SNOW_CLOAK)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ICE_BODY)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_FORECAST)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_SLUSH_RUSH)
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battler);
+
+    if (AISearchTraits(AIBattlerTraits, ABILITY_SNOW_CLOAK)
+      || AISearchTraits(AIBattlerTraits, ABILITY_ICE_BODY)
+      || AISearchTraits(AIBattlerTraits, ABILITY_FORECAST)
+      || AISearchTraits(AIBattlerTraits, ABILITY_SLUSH_RUSH)
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMoveEffect(battler, EFFECT_BLIZZARD)
       || HasMoveEffect(battler, EFFECT_AURORA_VEIL)
@@ -1734,27 +1746,30 @@ void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, 
 // stat stages
 bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
 {
-    if (gBattleMons[battler].statStages[stat] > MIN_STAT_STAGE && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_CONTRARY))
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battler);
+
+    if (gBattleMons[battler].statStages[stat] > MIN_STAT_STAGE && !AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY))
     {
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
-         || AI_BATTLER_HAS_TRAIT(battler, ABILITY_CLEAR_BODY)
-         || AI_BATTLER_HAS_TRAIT(battler, ABILITY_WHITE_SMOKE)
-         || AI_BATTLER_HAS_TRAIT(battler, ABILITY_FULL_METAL_BODY))
+         || AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+         || AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
+         || AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY))
             return FALSE;
 
         switch (stat)
         {
             case STAT_ATK:
-                return !(AI_BATTLER_HAS_TRAIT(battler, ABILITY_HYPER_CUTTER));
+                return !(AISearchTraits(AIBattlerTraits, ABILITY_HYPER_CUTTER));
             case STAT_DEF:
-                return !(AI_BATTLER_HAS_TRAIT(battler, ABILITY_BIG_PECKS));
+                return !(AISearchTraits(AIBattlerTraits, ABILITY_BIG_PECKS));
             case STAT_SPEED:
                 // If AI is faster and doesn't have any mons left, lowering speed doesn't give any
                 return !(AI_IsFaster(sBattler_AI, battler, AI_THINKING_STRUCT->moveConsidered)
                     && CountUsablePartyMons(sBattler_AI) == 0
                     && !HasMoveEffect(sBattler_AI, EFFECT_ELECTRO_BALL));
             case STAT_ACC:
-                return !(AI_BATTLER_HAS_TRAIT(battler, ABILITY_KEEN_EYE) || (B_ILLUMINATE_EFFECT >= GEN_9 && AI_BATTLER_HAS_TRAIT(battler, ABILITY_ILLUMINATE)));
+                return !(AISearchTraits(AIBattlerTraits, ABILITY_KEEN_EYE) || (B_ILLUMINATE_EFFECT >= GEN_9 && AISearchTraits(AIBattlerTraits, ABILITY_ILLUMINATE)));
         }
         return TRUE;
     }
@@ -1824,13 +1839,16 @@ bool32 ShouldLowerAttack(u32 battlerAtk, u32 battlerDef, u32 defAbility)
             && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return FALSE; // Don't bother lowering stats if can kill enemy.
 
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
+
     if (gBattleMons[battlerDef].statStages[STAT_ATK] > 4
       && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_HYPER_CUTTER)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_HYPER_CUTTER)
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1843,13 +1861,16 @@ bool32 ShouldLowerDefense(u32 battlerAtk, u32 battlerDef, u32 defAbility)
             && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return FALSE; // Don't bother lowering stats if can kill enemy.
 
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
+
     if (gBattleMons[battlerDef].statStages[STAT_DEF] > 4
       && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_BIG_PECKS)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_BIG_PECKS)
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1857,10 +1878,13 @@ bool32 ShouldLowerDefense(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 
 bool32 ShouldLowerSpeed(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 {
-    if (AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-     || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-     || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-     || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
+
+    if (AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+     || AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+     || AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+     || AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CLEAR_AMULET)
         return FALSE;
 
@@ -1874,12 +1898,15 @@ bool32 ShouldLowerSpAtk(u32 battlerAtk, u32 battlerDef, u32 defAbility)
             && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return FALSE; // Don't bother lowering stats if can kill enemy.
 
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
+
     if (gBattleMons[battlerDef].statStages[STAT_SPATK] > 4
       && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1892,12 +1919,15 @@ bool32 ShouldLowerSpDef(u32 battlerAtk, u32 battlerDef, u32 defAbility)
             && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return FALSE; // Don't bother lowering stats if can kill enemy.
 
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
+
     if (gBattleMons[battlerDef].statStages[STAT_SPDEF] > 4
       && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1909,14 +1939,17 @@ bool32 ShouldLowerAccuracy(u32 battlerAtk, u32 battlerDef, u32 defAbility)
             && (AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT)
             && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return FALSE; // Don't bother lowering stats if can kill enemy.
+    
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
 
-    if (!AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_KEEN_EYE)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_MINDS_EYE)
-      && (B_ILLUMINATE_EFFECT >= GEN_9 && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_ILLUMINATE))
+    if (!AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_KEEN_EYE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_MINDS_EYE)
+      && (B_ILLUMINATE_EFFECT >= GEN_9 && !AISearchTraits(AIBattlerTraits, ABILITY_ILLUMINATE))
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -1928,12 +1961,15 @@ bool32 ShouldLowerEvasion(u32 battlerAtk, u32 battlerDef, u32 defAbility)
             && (AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT)
             && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return FALSE; // Don't bother lowering stats if can kill enemy.
+    
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battlerDef);
 
     if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CONTRARY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_CLEAR_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_FULL_METAL_BODY)
-      && !AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_WHITE_SMOKE)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CONTRARY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_CLEAR_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_FULL_METAL_BODY)
+      && !AISearchTraits(AIBattlerTraits, ABILITY_WHITE_SMOKE)
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;
@@ -2661,7 +2697,7 @@ struct Pokemon *GetPartyBattlerPartyData(u32 battlerId, u32 switchBattler)
 static bool32 PartyBattlerShouldAvoidHazards(u32 currBattler, u32 switchBattler)
 {
     struct Pokemon *mon = GetPartyBattlerPartyData(currBattler, switchBattler);
-    u32 ability = GetMonAbility(mon);   // we know our own party data
+    //u32 ability = GetMonAbility(mon);   // we know our own party data
     u32 holdEffect;
     u32 species = GetMonData(mon, MON_DATA_SPECIES);
     u32 flags = gSideStatuses[GetBattlerSide(currBattler)] & (SIDE_STATUS_SPIKES | SIDE_STATUS_STEALTH_ROCK | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES);
@@ -2723,6 +2759,9 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 mov
         {
             if (!CanAIFaintTarget(battlerAtk, battlerDef, 0)) // Can't KO foe otherwise
             {
+                u16 AIBattlerTraits[MAX_MON_TRAITS];
+                AI_STORE_BATTLER_TRAITS(battlerDef);
+
                 if (CanAIFaintTarget(battlerAtk, battlerDef, 2))
                 {
                     // attacker can kill target in two hits (theoretically)
@@ -2731,17 +2770,17 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 mov
 
                     if (!IS_MOVE_STATUS(move) && ((AI_DATA->shouldSwitch & (1u << battlerAtk))
                         || (AtMaxHp(battlerDef) && (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH
-                        || (B_STURDY >= GEN_5 && AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_STURDY))
-                        || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_MULTISCALE)
-                        || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_SHADOW_SHIELD)))))
+                        || (B_STURDY >= GEN_5 && AISearchTraits(AIBattlerTraits, ABILITY_STURDY))
+                        || AISearchTraits(AIBattlerTraits, ABILITY_MULTISCALE)
+                        || AISearchTraits(AIBattlerTraits, ABILITY_SHADOW_SHIELD)))))
                         return SHOULD_PIVOT;   // pivot to break sash/sturdy/multiscale
                 }
                 else if (!hasStatBoost)
                 {
                     if (!IS_MOVE_STATUS(move) && (AtMaxHp(battlerDef) && (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH
-                        || (B_STURDY >= GEN_5 && AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_STURDY))
-                        || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_MULTISCALE)
-                        || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_SHADOW_SHIELD))))
+                        || (B_STURDY >= GEN_5 && AISearchTraits(AIBattlerTraits, ABILITY_STURDY))
+                        || AISearchTraits(AIBattlerTraits, ABILITY_MULTISCALE)
+                        || AISearchTraits(AIBattlerTraits, ABILITY_SHADOW_SHIELD))))
                         return SHOULD_PIVOT;   // pivot to break sash/sturdy/multiscale
 
                     if (AI_DATA->shouldSwitch & (1u << battlerAtk))
@@ -2919,13 +2958,16 @@ bool32 AI_CanPutToSleep(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move
 
 bool32 ShouldPoisonSelf(u32 battler, u32 ability)
 {
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battler);
+
     if (CanBePoisoned(battler, battler, GetBattlerAbility(battler)) && (
-     AI_BATTLER_HAS_TRAIT(battler, ABILITY_MARVEL_SCALE)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_POISON_HEAL)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_QUICK_FEET)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_MAGIC_GUARD)
-      || (AI_BATTLER_HAS_TRAIT(battler, ABILITY_TOXIC_BOOST) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
-      || (AI_BATTLER_HAS_TRAIT(battler, ABILITY_GUTS) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
+     AISearchTraits(AIBattlerTraits, ABILITY_MARVEL_SCALE)
+      || AISearchTraits(AIBattlerTraits, ABILITY_POISON_HEAL)
+      || AISearchTraits(AIBattlerTraits, ABILITY_QUICK_FEET)
+      || AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_GUARD)
+      || (AISearchTraits(AIBattlerTraits, ABILITY_TOXIC_BOOST) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
+      || (AISearchTraits(AIBattlerTraits, ABILITY_GUTS) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
       || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
         return TRUE;    // battler can be poisoned and has move/ability that synergizes with being poisoned
@@ -2997,12 +3039,15 @@ bool32 AI_CanGetFrostbite(u32 battler, u32 ability)
 
 bool32 ShouldBurnSelf(u32 battler, u32 ability)
 {
+    u16 AIBattlerTraits[MAX_MON_TRAITS];
+    AI_STORE_BATTLER_TRAITS(battler);
+
     if (CanBeBurned(battler, ability) && (
-     AI_BATTLER_HAS_TRAIT(battler, ABILITY_QUICK_FEET)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_HEATPROOF)
-      || AI_BATTLER_HAS_TRAIT(battler, ABILITY_MAGIC_GUARD)
-      || (AI_BATTLER_HAS_TRAIT(battler, ABILITY_FLARE_BOOST) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL))
-      || (AI_BATTLER_HAS_TRAIT(battler, ABILITY_GUTS) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
+     AISearchTraits(AIBattlerTraits, ABILITY_QUICK_FEET)
+      || AISearchTraits(AIBattlerTraits, ABILITY_HEATPROOF)
+      || AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_GUARD)
+      || (AISearchTraits(AIBattlerTraits, ABILITY_FLARE_BOOST) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL))
+      || (AISearchTraits(AIBattlerTraits, ABILITY_GUTS) && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
       || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
         return TRUE;
@@ -4059,8 +4104,8 @@ bool32 AI_ShouldSpicyExtract(u32 battlerAtk, u32 battlerAtkPartner, u32 move, st
         partnerAbility = aiData->abilities[battlerAtkPartner];
 
     if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] == MAX_STAT_STAGE
-     || (partnerAbility == ABILITY_CONTRARY || BattlerHasInnate(battlerAtkPartner, ABILITY_CONTRARY))
-     || (partnerAbility == ABILITY_GOOD_AS_GOLD || BattlerHasInnate(battlerAtkPartner, ABILITY_GOOD_AS_GOLD))
+     || (AI_BATTLER_HAS_TRAIT(partnerAbility,ABILITY_CONTRARY))
+     || (AI_BATTLER_HAS_TRAIT(partnerAbility,ABILITY_GOOD_AS_GOLD))
      || HasMoveEffect(BATTLE_OPPOSITE(battlerAtk), EFFECT_FOUL_PLAY)
      || HasMoveEffect(BATTLE_OPPOSITE(battlerAtkPartner), EFFECT_FOUL_PLAY))
         return FALSE;

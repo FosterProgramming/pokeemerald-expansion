@@ -825,3 +825,36 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_DunemireDesertGeneral =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_DunemireDesertGeneral,
+    .palettes = gTilesetPalettes_DunemireDesertGeneral,
+    .metatiles = gMetatiles_DunemireDesertGeneral,
+    .metatileAttributes = gMetatileAttributes_DunemireDesertGeneral,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DunemireDesertSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DunemireDesertSecondary,
+    .palettes = gTilesetPalettes_DunemireDesertSecondary,
+    .metatiles = gMetatiles_DunemireDesertSecondary,
+    .metatileAttributes = gMetatileAttributes_DunemireDesertSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GeneralSeelVersion =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GeneralSeelVersion,
+    .palettes = gTilesetPalettes_GeneralSeelVersion,
+    .metatiles = gMetatiles_GeneralSeelVersion,
+    .metatileAttributes = gMetatileAttributes_GeneralSeelVersion,
+    .callback = NULL,
+};

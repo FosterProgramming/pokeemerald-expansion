@@ -177,7 +177,7 @@ static const match_call_text_data_t sMrStoneTextScripts[] = {
 static const struct MatchCallStructNPC sMrStoneMatchCallHeader =
 {
     .type = MC_TYPE_NPC,
-    .mapSec = MAPSEC_RUSTBORO_CITY,
+    .mapSec = MAPSEC_DRIFTSHORE,
     .flag = 0xFFFF,
     .desc = COMPOUND_STRING("DEVON PRES"),
     .name = COMPOUND_STRING("MR. STONE"),
@@ -200,7 +200,7 @@ static const match_call_text_data_t sNormanTextScripts[] = {
 static const struct MatchCallStructTrainer sNormanMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_PETALBURG_CITY,
+    .mapSec = MAPSEC_MURKWELL_BOG,
     .flag = FLAG_ENABLE_NORMAN_MATCH_CALL,
     .rematchTableIdx = REMATCH_NORMAN,
     .desc = COMPOUND_STRING("RELIABLE ONE"),
@@ -227,7 +227,7 @@ static const match_call_text_data_t sMomTextScripts[] = {
 static const struct MatchCallStructNPC sMomMatchCallHeader =
 {
     .type = MC_TYPE_NPC,
-    .mapSec = MAPSEC_LITTLEROOT_TOWN,
+    .mapSec = MAPSEC_DOMINION_CITY,
     .flag = FLAG_ENABLE_MOM_MATCH_CALL,
     .desc = COMPOUND_STRING("CALM & KIND"),
     .name = COMPOUND_STRING("MOM"),
@@ -327,7 +327,7 @@ static const match_call_text_data_t sWallyTextScripts[] = {
 };
 
 static const struct MatchCallLocationOverride sWallyLocationData[] = {
-    { FLAG_HIDE_MAUVILLE_CITY_WALLY,          MAPSEC_VERDANTURF_TOWN },
+    { FLAG_HIDE_MAUVILLE_CITY_WALLY,          MAPSEC_VOLTBROOK_TOWN },
     { FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,    MAPSEC_NONE },
     { FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY,  MAPSEC_VICTORY_ROAD },
     { 0xFFFF,                                 MAPSEC_NONE }
@@ -377,7 +377,7 @@ static const match_call_text_data_t sRoxanneTextScripts[] = {
 static const struct MatchCallStructTrainer sRoxanneMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_RUSTBORO_CITY,
+    .mapSec = MAPSEC_DRIFTSHORE,
     .flag = FLAG_ENABLE_ROXANNE_MATCH_CALL,
     .rematchTableIdx = REMATCH_ROXANNE,
     .desc = COMPOUND_STRING("ROCKIN' WHIZ"),
@@ -396,7 +396,7 @@ static const match_call_text_data_t sBrawlyTextScripts[] = {
 static const struct MatchCallStructTrainer sBrawlyMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_DEWFORD_TOWN,
+    .mapSec = MAPSEC_DUNEMIRE,
     .flag = FLAG_ENABLE_BRAWLY_MATCH_CALL,
     .rematchTableIdx = REMATCH_BRAWLY,
     .desc = COMPOUND_STRING("THE BIG HIT"),
@@ -415,7 +415,7 @@ static const match_call_text_data_t sWattsonTextScripts[] = {
 static const struct MatchCallStructTrainer sWattsonMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_MAUVILLE_CITY,
+    .mapSec = MAPSEC_EMBERGLIDE,
     .flag = FLAG_ENABLE_WATTSON_MATCH_CALL,
     .rematchTableIdx = REMATCH_WATTSON,
     .desc = COMPOUND_STRING("SWELL SHOCK"),
@@ -434,7 +434,7 @@ static const match_call_text_data_t sFlanneryTextScripts[] = {
 static const struct MatchCallStructTrainer sFlanneryMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_LAVARIDGE_TOWN,
+    .mapSec = MAPSEC_VERDANT_HOLLOW,
     .flag = FLAG_ENABLE_FLANNERY_MATCH_CALL,
     .rematchTableIdx = REMATCH_FLANNERY,
     .desc = COMPOUND_STRING("PASSION BURN"),

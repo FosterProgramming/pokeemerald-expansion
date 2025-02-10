@@ -1,0 +1,44 @@
+{
+  "id": "MAP_VOLTBROOK_TOWN",
+  "name": "VoltbrookTown",
+  "layout": "LAYOUT_VOLTBROOK_TOWN",
+  "music": "MUS_VERDANTURF",
+  "region_map_section": "MAPSEC_VOLTBROOK_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE7",
+      "offset": -16,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE13",
+      "offset": 2,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE14",
+      "offset": 14,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

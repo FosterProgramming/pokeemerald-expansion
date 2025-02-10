@@ -5972,14 +5972,14 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
 
 static inline bool32 CanFirstMonBoostHeldItemRarity(void)
 {
-    u32 ability;
+    //u32 ability;
     if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
         return FALSE;
 
-    ability = GetMonAbility(&gPlayerParty[0]);
-    if (ability == ABILITY_COMPOUND_EYES)
+    //ability = GetMonAbility(&gPlayerParty[0]);
+    if (MonHasTrait(&gPlayerParty[0], ABILITY_COMPOUND_EYES, TRUE))
         return TRUE;
-    else if ((OW_SUPER_LUCK >= GEN_8) && ability == ABILITY_SUPER_LUCK)
+    else if ((OW_SUPER_LUCK >= GEN_8) && MonHasTrait(&gPlayerParty[0], ABILITY_SUPER_LUCK, TRUE))
         return TRUE;
     return FALSE;
 }
@@ -7060,7 +7060,8 @@ u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerand
     for (i = 0; i < MAX_MON_INNATES; i++)
     {
         if (gSpeciesInfo[species].innates[i] == ability)
-            innateNum = innateNum + 2 + i;
+            {innateNum = innateNum + 2 + i;
+            DebugPrintf("INNATE FOUND: %d", innateNum - 1);}
     }
     
     //if (!disablerandomizer) {

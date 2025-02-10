@@ -1152,3 +1152,85 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/DominionCity/scripts.inc"
+
+	.include "data/maps/Route1/scripts.inc"
+
+	.include "data/maps/Emberglide/scripts.inc"
+
+	.include "data/maps/Route2/scripts.inc"
+
+	.include "data/maps/Route2A/scripts.inc"
+
+	.include "data/maps/Route2B/scripts.inc"
+
+	.include "data/maps/Pyroden/scripts.inc"
+
+	.include "data/maps/Route3/scripts.inc"
+
+	.include "data/maps/Route3A/scripts.inc"
+
+	.include "data/maps/Route4/scripts.inc"
+
+	.include "data/maps/Route5/scripts.inc"
+
+	.include "data/maps/Route5A/scripts.inc"
+
+	.include "data/maps/VerdantHallow/scripts.inc"
+
+	.include "data/maps/MurkwellBog/scripts.inc"
+
+	.include "data/maps/Route6/scripts.inc"
+
+	.include "data/maps/Route6A/scripts.inc"
+
+	.include "data/maps/Dunemire/scripts.inc"
+
+	.include "data/maps/Route7/scripts.inc"
+
+	.include "data/maps/VoltbrookTown/scripts.inc"
+
+	.include "data/maps/Route8/scripts.inc"
+
+	.include "data/maps/Driftshore/scripts.inc"
+
+	.include "data/maps/Route9/scripts.inc"
+
+	.include "data/maps/Route9A/scripts.inc"
+
+	.include "data/maps/Route10/scripts.inc"
+
+	.include "data/maps/Route11/scripts.inc"
+
+	.include "data/maps/Route12/scripts.inc"
+
+	.include "data/maps/Route12A/scripts.inc"
+
+	.include "data/maps/Route13/scripts.inc"
+
+	.include "data/maps/Route14/scripts.inc"
+
+	.include "data/maps/Route15/scripts.inc"
+
+	.include "data/maps/UnnamedTown/scripts.inc"
+
+	.include "data/maps/Route16/scripts.inc"
+
+	.include "data/maps/DunemireDesert/scripts.inc"
+
+	.include "data/maps/DunemireDesertA/scripts.inc"
+
+	.include "data/maps/DunemireDesertB/scripts.inc"
+
+	.include "data/maps/DunemireDesertC/scripts.inc"
+
+	.include "data/maps/DunemireDesertD/scripts.inc"
+
+	.include "data/maps/DunemireDesertE/scripts.inc"
+
+	.include "data/maps/DunemireDesertF/scripts.inc"
+
+	.include "data/maps/DeleteThis/scripts.inc"
+
+	.include "data/maps/Route12B/scripts.inc"

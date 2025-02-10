@@ -1,0 +1,2 @@
+Route9A_MapScripts::
+	.byte 0

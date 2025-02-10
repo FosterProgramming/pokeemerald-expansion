@@ -3,7 +3,7 @@
   "name": "MauvilleCity",
   "layout": "LAYOUT_MAUVILLE_CITY",
   "music": "MUS_RUSTBORO",
-  "region_map_section": "MAPSEC_MAUVILLE_CITY",
+  "region_map_section": "MAPSEC_EMBERGLIDE",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_CITY",
@@ -230,7 +230,9 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",

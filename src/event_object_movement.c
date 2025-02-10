@@ -2477,22 +2477,22 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
     {
         switch (gMapHeader.regionMapSectionId)
         {
-        case MAPSEC_RUSTBORO_CITY:
+        case MAPSEC_DRIFTSHORE:
         case MAPSEC_PEWTER_CITY:
             multi = TYPE_ROCK;
             break;
-        case MAPSEC_DEWFORD_TOWN:
+        case MAPSEC_DUNEMIRE:
             multi = TYPE_FIGHTING;
             break;
-        case MAPSEC_MAUVILLE_CITY:
+        case MAPSEC_EMBERGLIDE:
         case MAPSEC_VERMILION_CITY:
             multi = TYPE_ELECTRIC;
             break;
-        case MAPSEC_LAVARIDGE_TOWN:
+        case MAPSEC_VERDANT_HOLLOW:
         case MAPSEC_CINNABAR_ISLAND:
             multi = TYPE_FIRE;
             break;
-        case MAPSEC_PETALBURG_CITY:
+        case MAPSEC_MURKWELL_BOG:
             multi = TYPE_NORMAL;
             break;
         case MAPSEC_FORTREE_CITY:
@@ -2529,7 +2529,7 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
     }
 
     emotion = RandomWeightedIndex(emotion_weight, FOLLOWER_EMOTION_LENGTH);
-    if ((mon->status & STATUS1_PSN_ANY) && GetMonAbility(mon) != ABILITY_POISON_HEAL)
+    if ((mon->status & STATUS1_PSN_ANY) && !MonHasTrait(mon, ABILITY_POISON_HEAL, TRUE))
         emotion = FOLLOWER_EMOTION_POISONED;
 
     // end special conditions

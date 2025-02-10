@@ -1,0 +1,2 @@
+Route12A_MapScripts::
+	.byte 0

@@ -1,0 +1,39 @@
+{
+  "id": "MAP_VERDANT_HALLOW",
+  "name": "VerdantHallow",
+  "layout": "LAYOUT_VERDANT_HALLOW",
+  "music": "MUS_OLDALE",
+  "region_map_section": "MAPSEC_VERDANT_HOLLOW",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE5A",
+      "offset": 6,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_MURKWELL_BOG",
+      "offset": -26,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

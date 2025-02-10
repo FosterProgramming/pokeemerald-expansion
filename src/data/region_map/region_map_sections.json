@@ -1,88 +1,88 @@
 {
   "map_sections": [
     {
-      "map_section": "MAPSEC_LITTLEROOT_TOWN",
-      "name": "LITTLEROOT TOWN",
+      "map_section": "MAPSEC_DOMINION_CITY",
+      "name": "Dominion City",
       "x": 4,
       "y": 11,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_OLDALE_TOWN",
-      "name": "OLDALE TOWN",
+      "map_section": "MAPSEC_PYRODEN",
+      "name": "Pyroden",
       "x": 4,
       "y": 9,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
+      "map_section": "MAPSEC_DUNEMIRE",
+      "name": "Dunemire",
       "x": 2,
       "y": 14,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_LAVARIDGE_TOWN",
-      "name": "LAVARIDGE TOWN",
+      "map_section": "MAPSEC_VERDANT_HOLLOW",
+      "name": "Verdant Hollow",
       "x": 5,
       "y": 3,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_FALLARBOR_TOWN",
-      "name": "FALLARBOR TOWN",
+      "map_section": "MAPSEC_STRATOSCAPE",
+      "name": "Stratoscape",
       "x": 3,
       "y": 0,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_VERDANTURF_TOWN",
-      "name": "VERDANTURF TOWN",
+      "map_section": "MAPSEC_VOLTBROOK_TOWN",
+      "name": "Voltbrook Town",
       "x": 4,
       "y": 6,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_PACIFIDLOG_TOWN",
-      "name": "PACIFIDLOG TOWN",
+      "map_section": "MAPSEC_ABYSSAL_REEF",
+      "name": "Abyssal Reef",
       "x": 17,
       "y": 10,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_PETALBURG_CITY",
-      "name": "PETALBURG CITY",
+      "map_section": "MAPSEC_MURKWELL_BOG",
+      "name": "Murkwell Bog",
       "x": 1,
       "y": 9,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_SLATEPORT_CITY",
-      "name": "SLATEPORT CITY",
+      "map_section": "MAPSEC_GLACIERRA",
+      "name": "Glacierra",
       "x": 8,
       "y": 10,
       "width": 1,
       "height": 2
     },
     {
-      "map_section": "MAPSEC_MAUVILLE_CITY",
-      "name": "MAUVILLE CITY",
+      "map_section": "MAPSEC_EMBERGLIDE",
+      "name": "Emberglide",
       "x": 8,
       "y": 6,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
+      "map_section": "MAPSEC_DRIFTSHORE",
+      "name": "Driftshore",
       "x": 0,
       "y": 5,
       "width": 1,
@@ -129,128 +129,128 @@
       "height": 2
     },
     {
-      "map_section": "MAPSEC_ROUTE_101",
-      "name": "ROUTE 101",
+      "map_section": "MAPSEC_ROUTE_1SV",
+      "name": "Route 1",
       "x": 4,
       "y": 10,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_102",
-      "name": "ROUTE 102",
+      "map_section": "MAPSEC_ROUTE_2SV",
+      "name": "Route 2",
       "x": 2,
       "y": 9,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_103",
-      "name": "ROUTE 103",
+      "map_section": "MAPSEC_ROUTE_3SV",
+      "name": "Route 3",
       "x": 4,
       "y": 8,
       "width": 4,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_104",
-      "name": "ROUTE 104",
+      "map_section": "MAPSEC_ROUTE_4SV",
+      "name": "Route 4",
       "x": 0,
       "y": 7,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_105",
-      "name": "ROUTE 105",
+      "map_section": "MAPSEC_ROUTE_5SV",
+      "name": "Route 5",
       "x": 0,
       "y": 10,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_106",
-      "name": "ROUTE 106",
+      "map_section": "MAPSEC_ROUTE_6SV",
+      "name": "Route 6",
       "x": 0,
       "y": 13,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_107",
-      "name": "ROUTE 107",
+      "map_section": "MAPSEC_ROUTE_7SV",
+      "name": "Route 7",
       "x": 3,
       "y": 14,
       "width": 3,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_108",
-      "name": "ROUTE 108",
+      "map_section": "MAPSEC_ROUTE_8SV",
+      "name": "Route 8",
       "x": 6,
       "y": 14,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_109",
-      "name": "ROUTE 109",
+      "map_section": "MAPSEC_ROUTE_9SV",
+      "name": "Route 9",
       "x": 8,
       "y": 12,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_110",
-      "name": "ROUTE 110",
+      "map_section": "MAPSEC_ROUTE_10SV",
+      "name": "Route 10",
       "x": 8,
       "y": 7,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_111",
-      "name": "ROUTE 111",
+      "map_section": "MAPSEC_ROUTE_11SV",
+      "name": "Route 11",
       "x": 8,
       "y": 0,
       "width": 1,
       "height": 6
     },
     {
-      "map_section": "MAPSEC_ROUTE_112",
-      "name": "ROUTE 112",
+      "map_section": "MAPSEC_ROUTE_12SV",
+      "name": "Route 12",
       "x": 6,
       "y": 3,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_113",
-      "name": "ROUTE 113",
+      "map_section": "MAPSEC_ROUTE_13SV",
+      "name": "Route 13",
       "x": 4,
       "y": 0,
       "width": 4,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_114",
-      "name": "ROUTE 114",
+      "map_section": "MAPSEC_ROUTE_14SV",
+      "name": "ROUTE 14",
       "x": 1,
       "y": 0,
       "width": 2,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_115",
-      "name": "ROUTE 115",
+      "map_section": "MAPSEC_ROUTE_15SV",
+      "name": "Route 15",
       "x": 0,
       "y": 2,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_116",
-      "name": "ROUTE 116",
+      "map_section": "MAPSEC_ROUTE_16SV",
+      "name": "Route 16",
       "x": 1,
       "y": 5,
       "width": 4,
@@ -441,8 +441,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_GRANITE_CAVE",
-      "name": "GRANITE CAVE",
+      "map_section": "MAPSEC_DUNEMIRE_DESERT",
+      "name": "Dunemire Desert",
       "x": 1,
       "y": 13,
       "width": 1,

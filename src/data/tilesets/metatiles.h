@@ -207,3 +207,12 @@ const u16 gMetatileAttributes_MysteryEventsHouse[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatiles.bin");
 const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatile_attributes.bin");
+
+const u16 gMetatiles_DunemireDesertGeneral[] = INCBIN_U16("data/tilesets/primary/dunemire_desert_general/metatiles.bin");
+const u16 gMetatileAttributes_DunemireDesertGeneral[] = INCBIN_U16("data/tilesets/primary/dunemire_desert_general/metatile_attributes.bin");
+
+const u16 gMetatiles_DunemireDesertSecondary[] = INCBIN_U16("data/tilesets/secondary/dunemire_desert_secondary/metatiles.bin");
+const u16 gMetatileAttributes_DunemireDesertSecondary[] = INCBIN_U16("data/tilesets/secondary/dunemire_desert_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatiles.bin");
+const u16 gMetatileAttributes_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatile_attributes.bin");

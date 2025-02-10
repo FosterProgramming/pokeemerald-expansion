@@ -1,0 +1,2 @@
+DunemireDesertE_MapScripts::
+	.byte 0
