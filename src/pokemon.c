@@ -7096,3 +7096,29 @@ u16 GetSpeciesInnate(u16 species, u8 traitNum, u32 personality, bool8 disableran
     else
         return 0;
 }
+
+//Extra Held Item Stuff
+u8 MonItemHasHoldEffect(struct Pokemon *mon, u16 holdEffect){
+    u8 i;
+    u16 item, itemHoldEffect;
+
+    for(i = 0; i < MAX_HELD_ITEMS; i++){
+        item = GetMonData(mon, MON_DATA_HELD_ITEM + i);
+        itemHoldEffect = ItemId_GetHoldEffect(item);
+        if(holdEffect == itemHoldEffect)
+            return i;
+    }
+
+    return MAX_HELD_ITEMS;
+}
+
+u8 GetNumOfHeldItems(struct Pokemon *mon){
+    u8 i;
+
+    for(i = 0; i < MAX_HELD_ITEMS; i++){
+        if(GetMonData(mon, MON_DATA_HELD_ITEM + i) == ITEM_NONE)
+            return i;
+    }
+
+    return MAX_HELD_ITEMS; //No Empty Slot
+}

@@ -336,6 +336,9 @@ struct BattlePokemon
     /*0x2C*/ u8 friendship;
     /*0x2D*/ u16 maxHP;
     /*0x2F*/ u16 item;
+             u16 item2;
+             u16 item3;
+             u16 item4;
     /*0x31*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
     /*0x3C*/ u8 ppBonuses;
     /*0x3D*/ u8 otName[PLAYER_NAME_LENGTH + 1];
@@ -921,6 +924,8 @@ u32 CheckDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler);
 uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier);
 u32 GetRegionalFormByRegion(u32 species, u32 region);
 bool32 IsSpeciesForeignRegionalForm(u32 species, u32 currentRegion);
+u8 MonItemHasHoldEffect(struct Pokemon *mon, u16 holdEffect);
+u8 GetNumOfHeldItems(struct Pokemon *mon);
 
 u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerandomizer);
 u16 GetSpeciesInnate(u16 species, u8 traitNum, u32 personality, bool8 disablerandomizer);

@@ -1575,7 +1575,10 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
     {
     case REQUEST_ALL_BATTLE:
         battleMon.species = GetMonData(&party[monId], MON_DATA_SPECIES);
-        battleMon.item = GetMonData(&party[monId], MON_DATA_HELD_ITEM);
+        battleMon.item  = GetMonData(&party[monId], MON_DATA_HELD_ITEM);
+        battleMon.item2 = GetMonData(&party[monId], MON_DATA_HELD_ITEM_2);
+        battleMon.item3 = GetMonData(&party[monId], MON_DATA_HELD_ITEM_3);
+        battleMon.item4 = GetMonData(&party[monId], MON_DATA_HELD_ITEM_4);
         for (size = 0; size < MAX_MON_MOVES; size++)
         {
             battleMon.moves[size] = GetMonData(&party[monId], MON_DATA_MOVE1 + size);

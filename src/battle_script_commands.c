@@ -6972,7 +6972,8 @@ static void Cmd_switchindataupdate(void)
 
     gBattleMons[battler].types[0] = gSpeciesInfo[gBattleMons[battler].species].types[0];
     gBattleMons[battler].types[1] = gSpeciesInfo[gBattleMons[battler].species].types[1];
-    gBattleMons[battler].types[2] = TYPE_MYSTERY;
+    gBattleMons[battler].types[2] = TYPE_MYSTERY;;
+
     gBattleMons[battler].ability = GetAbilityBySpecies(gBattleMons[battler].species, gBattleMons[battler].abilityNum);
     #if TESTING
     if (gTestRunnerEnabled)
@@ -6988,7 +6989,10 @@ static void Cmd_switchindataupdate(void)
     i = GetBattlerSide(battler);
     if (gWishFutureKnock.knockedOffMons[i] & (1u << gBattlerPartyIndexes[battler]))
     {
-        gBattleMons[battler].item = ITEM_NONE;
+        gBattleMons[battler].item  = ITEM_NONE;
+        gBattleMons[battler].item2 = ITEM_NONE;
+        gBattleMons[battler].item3 = ITEM_NONE;
+        gBattleMons[battler].item4 = ITEM_NONE;
     }
 
     if (gMovesInfo[gCurrentMove].effect == EFFECT_BATON_PASS)
@@ -10013,7 +10017,7 @@ static void Cmd_various(void)
         i = GetBattlerAbility(gBattlerAbility);
         if (IsBattlerAlive(gBattlerAbility)
             && (BattlerHasTrait(gBattlerAbility, ABILITY_RECEIVER) || BattlerHasTrait(gBattlerAbility, ABILITY_POWER_OF_ALCHEMY))
-            && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_ABILITY_SHIELD
+            && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE)
             && !gAbilitiesInfo[gBattleMons[battler].ability].cantBeCopied)
         {
             gBattleStruct->tracedAbility[gBattlerAbility] = gBattleMons[battler].ability; // re-using the variable for trace
@@ -10126,7 +10130,7 @@ static void Cmd_various(void)
             RecordAbilityBattle(gBattlerTarget, gBattleMons[gBattlerTarget].ability);
             gBattlescriptCurrInstr = cmd->failInstr;
         }
-        else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+        else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
         {
             RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
             gBattlescriptCurrInstr = cmd->failInstr;
@@ -10152,7 +10156,7 @@ static void Cmd_various(void)
             RecordAbilityBattle(gBattlerTarget, gBattleMons[gBattlerTarget].ability);
             gBattlescriptCurrInstr = cmd->failInstr;
         }
-        else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+        else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
         {
             RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
             gBattlescriptCurrInstr = cmd->failInstr;
@@ -14051,7 +14055,7 @@ static void Cmd_recoverbasedonsunlight(void)
         }
         else
         {
-            if (!(gBattleWeather & B_WEATHER_ANY) || !WEATHER_HAS_EFFECT || GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
+            if (!(gBattleWeather & B_WEATHER_ANY) || !WEATHER_HAS_EFFECT || BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE))
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
             else if (gBattleWeather & B_WEATHER_SUN)
                 gBattleMoveDamage = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
@@ -14751,7 +14755,7 @@ static void Cmd_tryswapabilities(void)
         RecordAbilityBattle(gBattlerTarget, gBattleMons[gBattlerTarget].ability);
         gBattlescriptCurrInstr = cmd->failInstr;
     }
-    else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+    else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
         gBattlescriptCurrInstr = cmd->failInstr;
@@ -16053,7 +16057,7 @@ static void Cmd_tryworryseed(void)
         gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
         gBattlescriptCurrInstr = cmd->failInstr;
     }
-    else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+    else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
         gBattlescriptCurrInstr = cmd->failInstr;

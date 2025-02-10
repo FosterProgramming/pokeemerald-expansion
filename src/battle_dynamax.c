@@ -74,7 +74,6 @@ static const struct GMaxMove sGMaxMoveTable[] =
 bool32 CanDynamax(u32 battler)
 {
     u16 species = gBattleMons[battler].species;
-    u16 holdEffect = GetBattlerHoldEffect(battler, FALSE);
 
     // Prevents Zigzagoon from dynamaxing in vanilla.
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE && GetBattlerSide(battler) == B_SIDE_OPPONENT)
@@ -109,7 +108,7 @@ bool32 CanDynamax(u32 battler)
         return FALSE;
 
     // Check if battler is holding a Z-Crystal or Mega Stone.
-    if (!TESTING && (holdEffect == HOLD_EFFECT_Z_CRYSTAL || holdEffect == HOLD_EFFECT_MEGA_STONE))  // tests make this check already
+    if (!TESTING && (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_Z_CRYSTAL, FALSE) || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MEGA_STONE, FALSE)))  // tests make this check already
         return FALSE;
 
     // TODO: Cannot Dynamax in a Max Raid if you don't have Dynamax Energy.
@@ -643,7 +642,7 @@ void BS_SetMaxMoveEffect(void)
             {
                 gFieldStatuses &= ~STATUS_FIELD_TERRAIN_ANY;
                 gFieldStatuses |= statusFlag;
-                if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERRAIN_EXTENDER)
+                if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_TERRAIN_EXTENDER, TRUE))
                     gFieldTimers.terrainTimer = 8;
                 else
                     gFieldTimers.terrainTimer = 5;
@@ -704,7 +703,7 @@ void BS_SetMaxMoveEffect(void)
             if (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_AURORA_VEIL))
             {
                 gSideStatuses[GetBattlerSide(gBattlerAttacker)] |= SIDE_STATUS_AURORA_VEIL;
-                if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+                if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LIGHT_CLAY, TRUE))
                     gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = 8;
                 else
                     gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = 5;
@@ -737,7 +736,7 @@ void BS_SetMaxMoveEffect(void)
                 if (!(gBattleMons[battler].status2 & STATUS2_WRAPPED))
                 {
                     gBattleMons[battler].status2 |= STATUS2_WRAPPED;
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_GRIP_CLAW)
+                    if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_GRIP_CLAW, TRUE))
                 #if B_BINDING_TURNS >= GEN_5
                         gDisableStructs[battler].wrapTurns = 7;
                     else

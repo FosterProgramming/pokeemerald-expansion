@@ -5911,7 +5911,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
          && gBattleMons[gBattlerAttacker].ability != ABILITY_LINGERING_AROMA
          && !gAbilitiesInfo[gBattleMons[gBattlerAttacker].ability].cantBeSuppressed)
         {
-            if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+            if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
             {
                 RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
                 break;
@@ -5937,7 +5937,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
          && gBattleMons[gBattlerAttacker].ability != ABILITY_LINGERING_AROMA
          && !gAbilitiesInfo[gBattleMons[gBattlerAttacker].ability].cantBeSuppressed)
         {
-            if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+            if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
             {
                 RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
                 break;
@@ -5961,7 +5961,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
          && !(GetActiveGimmick(gBattlerTarget) == GIMMICK_DYNAMAX)
          && !gAbilitiesInfo[gBattleMons[gBattlerAttacker].ability].cantBeSwapped)
         {
-            if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+            if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
             {
                 RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
                 break;
@@ -6919,7 +6919,7 @@ static inline bool32 CanBreakThroughAbility(u32 battlerAtk, u32 battlerDef)
 
 u32 GetBattlerAbility(u32 battler)
 {
-    bool32 noAbilityShield = GetBattlerHoldEffectIgnoreAbility(battler, TRUE) != HOLD_EFFECT_ABILITY_SHIELD;
+    bool32 noAbilityShield = !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE);
     bool32 abilityCantBeSuppressed = gAbilitiesInfo[gBattleMons[battler].ability].cantBeSuppressed;
 
     if (abilityCantBeSuppressed)
@@ -10318,16 +10318,16 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageCalculationDa
 }
 
 // Utility Umbrella holders take normal damage from what would be rain- and sun-weakened attacks.
-static uq4_12_t GetWeatherDamageModifier(struct DamageCalculationData *damageCalcData, u32 holdEffectAtk, u32 holdEffectDef, u32 weather)
+static uq4_12_t GetWeatherDamageModifier(struct DamageCalculationData *damageCalcData, u32 battlerAttacker, u32 battlerTarget, u32 weather)
 {
     u32 move = damageCalcData->move;
     u32 moveType = damageCalcData->moveType;
 
     if (weather == B_WEATHER_NONE)
         return UQ_4_12(1.0);
-    if (gMovesInfo[move].effect == EFFECT_HYDRO_STEAM && (weather & B_WEATHER_SUN) && holdEffectAtk != HOLD_EFFECT_UTILITY_UMBRELLA)
+    if (gMovesInfo[move].effect == EFFECT_HYDRO_STEAM && (weather & B_WEATHER_SUN) && !BattlerHeldItemHasEffect(battlerAttacker, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE))
         return UQ_4_12(1.5);
-    if (holdEffectDef == HOLD_EFFECT_UTILITY_UMBRELLA)
+    if (BattlerHeldItemHasEffect(battlerTarget, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE))
         return UQ_4_12(1.0);
 
     if (weather & B_WEATHER_RAIN)
@@ -10612,7 +10612,7 @@ static inline s32 DoMoveDamageCalcVars(struct DamageCalculationData *damageCalcD
     dmg = CalculateBaseDamage(gBattleMovePower, userFinalAttack, gBattleMons[battlerAtk].level, targetFinalDefense);
     DAMAGE_APPLY_MODIFIER(GetTargetDamageModifier(damageCalcData));
     DAMAGE_APPLY_MODIFIER(GetParentalBondModifier(battlerAtk));
-    DAMAGE_APPLY_MODIFIER(GetWeatherDamageModifier(damageCalcData, holdEffectAtk, holdEffectDef, weather));
+    DAMAGE_APPLY_MODIFIER(GetWeatherDamageModifier(damageCalcData, battlerAtk, battlerDef, weather));
     DAMAGE_APPLY_MODIFIER(GetCriticalModifier(damageCalcData->isCrit));
     DAMAGE_APPLY_MODIFIER(GetGlaiveRushModifier(battlerDef));
 
@@ -11751,13 +11751,15 @@ void TrySaveExchangedItem(u32 battler, u16 stolenItem)
 bool32 IsBattlerAffectedByHazards(u32 battler, bool32 toxicSpikes)
 {
     bool32 ret = TRUE;
-    u32 holdEffect = GetBattlerHoldEffect(battler, TRUE);
-    if (toxicSpikes && holdEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS && !IS_BATTLER_OF_TYPE(battler, TYPE_POISON))
+    u32 holdEffect = HOLD_EFFECT_HEAVY_DUTY_BOOTS;
+    bool8 heavyDutyBootsAffected = BattlerHeldItemHasEffect(battler, holdEffect, TRUE);
+
+    if (toxicSpikes && heavyDutyBootsAffected && !IS_BATTLER_OF_TYPE(battler, TYPE_POISON))
     {
         ret = FALSE;
         RecordItemEffectBattle(battler, holdEffect);
     }
-    else if (holdEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS)
+    else if (heavyDutyBootsAffected)
     {
         ret = FALSE;
         RecordItemEffectBattle(battler, holdEffect);
@@ -11912,7 +11914,7 @@ bool32 IsBattlerWeatherAffected(u32 battler, u32 weatherFlags)
     if (gBattleWeather & weatherFlags && WEATHER_HAS_EFFECT)
     {
         // given weather is active -> check if its sun, rain against utility umbrella ( since only 1 weather can be active at once)
-        if (gBattleWeather & (B_WEATHER_SUN | B_WEATHER_RAIN) && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
+        if (gBattleWeather & (B_WEATHER_SUN | B_WEATHER_RAIN) && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE))
             return FALSE; // utility umbrella blocks sun, rain effects
 
         return TRUE;
@@ -12323,4 +12325,33 @@ u32 GetMoveType(u32 move)
           || move == MOVE_DOOM_DESIRE))
           return TYPE_MYSTERY;
     return gMovesInfo[move].type;
+}
+
+//Multiple Hold Items
+bool8 BattlerHeldItemHasEffect(u32 battler, u32 holdEffect, bool32 checkNegating)
+{
+    u8 i;
+    u16 item, itemHoldEffect1, itemHoldEffect2, itemHoldEffect3, itemHoldEffect4;
+    bool8 checkAbility = TRUE;
+
+    if (checkNegating)
+    {
+        if (gStatuses3[battler] & STATUS3_EMBARGO)
+            return FALSE;
+        if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+            return FALSE;
+        if (checkAbility && BattlerHasTrait(battler, ABILITY_KLUTZ))
+            return FALSE;
+    }
+
+    if(gBattleMons[battler].item == holdEffect)
+        return TRUE;
+    else if(gBattleMons[battler].item2 == holdEffect)
+        return TRUE;
+    else if(gBattleMons[battler].item3 == holdEffect)
+        return TRUE;
+    else if(gBattleMons[battler].item4 == holdEffect)
+        return TRUE;
+
+    return FALSE;
 }

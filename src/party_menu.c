@@ -3277,18 +3277,6 @@ static void CursorCb_Item(u8 taskId)
     gTasks[taskId].func = Task_HandleSelectionMenuInput;
 }
 
-#define MAX_NUM_HELD_ITEMS 4
-static u8 GetNumOfHeldItems(struct Pokemon *mon){
-    u8 i;
-
-    for(i = 0; i < MAX_NUM_HELD_ITEMS; i++){
-        if(GetMonData(mon, MON_DATA_HELD_ITEM + i) == ITEM_NONE)
-            return i;
-    }
-
-    return MAX_NUM_HELD_ITEMS; //No Empty Slot
-}
-
 static void GiveItemToMonInEmptySlot(struct Pokemon *mon, u16 item)
 {
     u8 emptySlot = GetNumOfHeldItems(mon);
@@ -3333,7 +3321,7 @@ static void CB2_GiveHoldItem(void)
         sPartyMenuItemId = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM);
 
         // Already holding item
-        if (emptySlot == MAX_NUM_HELD_ITEMS)
+        if (emptySlot == MAX_HELD_ITEMS)
         {
             InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_NONE, Task_SwitchHoldItemsPrompt, gPartyMenu.exitCallback);
         }

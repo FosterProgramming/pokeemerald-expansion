@@ -1320,6 +1320,7 @@ bool32 AI_IsAbilityOnSide(u32 battlerId, u32 ability)
 
 u32 AI_GetBattlerAbility(u32 battler)
 {
+    bool8 AbilityShieldAffected = BattlerHeldItemHasEffect(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE);
     if (gAbilitiesInfo[gBattleMons[battler].ability].cantBeSuppressed)
         return gBattleMons[battler].ability;
 
@@ -1328,7 +1329,7 @@ u32 AI_GetBattlerAbility(u32 battler)
 
     if (IsNeutralizingGasOnField()
      && !BattlerHasTrait(battler, ABILITY_NEUTRALIZING_GAS)
-     && GetBattlerHoldEffectIgnoreAbility(battler, TRUE) != HOLD_EFFECT_ABILITY_SHIELD)
+     && AbilityShieldAffected) //GetBattlerHoldEffectIgnoreAbility
         return ABILITY_NONE;
 
     return gBattleMons[battler].ability;
@@ -1630,7 +1631,7 @@ bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
     if (weather & B_WEATHER_RAIN)
         return FALSE;
 
-    if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
+    if (!BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE)
      && (AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_SWIFT_SWIM)
       || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_FORECAST)
       || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_HYDRATION)
@@ -1651,7 +1652,7 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
     if (weather & B_WEATHER_SUN)
         return FALSE;
 
-    if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
+    if (!BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE)
      && (AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_CHLOROPHYLL)
       || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_FLOWER_GIFT)
       || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_FORECAST)
@@ -2678,7 +2679,7 @@ static bool32 PartyBattlerShouldAvoidHazards(u32 currBattler, u32 switchBattler)
         holdEffect = HOLD_EFFECT_NONE;
     else
         holdEffect = gItemsInfo[GetMonData(mon, MON_DATA_HELD_ITEM)].holdEffect;
-    if (holdEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS)
+    if (BattlerHeldItemHasEffect(currBattler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE))
         return FALSE;
 
     if (flags & SIDE_STATUS_STEALTH_ROCK)

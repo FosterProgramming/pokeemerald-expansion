@@ -1263,16 +1263,17 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
     u32 maxHP = battleMon->maxHP, ability = battleMon->ability, status = battleMon->status1, species = battleMon->species, personality = battleMon->personality;
     u32 spikesDamage = 0, tSpikesDamage = 0, hazardDamage = 0;
     u32 hazardFlags = gSideStatuses[GetBattlerSide(battler)] & (SIDE_STATUS_SPIKES | SIDE_STATUS_STEALTH_ROCK | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES | SIDE_STATUS_SAFEGUARD);
+    bool8 heavyDutyBootsAffected = BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE);
 
     // Check ways mon might avoid all hazards
-    if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) || (heldItemEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS &&
+    if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) || (heavyDutyBootsAffected &&
         !((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || (ability == ABILITY_LEVITATE || SpeciesHasInnate(species, ABILITY_LEVITATE, personality, TRUE)))))
     {
         // Stealth Rock
-        if ((hazardFlags & SIDE_STATUS_STEALTH_ROCK) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS)
+        if ((hazardFlags & SIDE_STATUS_STEALTH_ROCK) && !heavyDutyBootsAffected)
             hazardDamage += GetStealthHazardDamageByTypesAndHP(gMovesInfo[MOVE_STEALTH_ROCK].type, defType1, defType2, battleMon->maxHP);
         // G-Max Steelsurge
-        if ((hazardFlags & SIDE_STATUS_STEELSURGE) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS)
+        if ((hazardFlags & SIDE_STATUS_STEELSURGE) && !heavyDutyBootsAffected)
             hazardDamage += GetStealthHazardDamageByTypesAndHP(gMovesInfo[MOVE_G_MAX_STEELSURGE].type, defType1, defType2, battleMon->maxHP);
         // Spikes
         if ((hazardFlags & SIDE_STATUS_SPIKES) && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality))
@@ -1500,7 +1501,7 @@ static u32 GetSwitchinStatusDamage(u32 battler)
     if (tSpikesLayers != 0 && (defType1 != TYPE_POISON && defType2 != TYPE_POISON
         && (ability != ABILITY_IMMUNITY && !SpeciesHasInnate(species, ABILITY_IMMUNITY, personality, TRUE)) && (ability != ABILITY_POISON_HEAL && !SpeciesHasInnate(species, ABILITY_POISON_HEAL, personality, TRUE))
         && status == 0
-        && !(heldItemEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS
+        && !(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE)
             && (((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || (ability == ABILITY_KLUTZ || SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))))
         && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
         && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality)))
