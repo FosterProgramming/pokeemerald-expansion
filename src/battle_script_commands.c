@@ -1668,7 +1668,7 @@ static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u
     }
     else if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_2ND_HIT
         || (gSpecialStatuses[gBattlerAttacker].multiHitOn
-        && (BattlerHasTrait(gBattlerAttacker, ABILITY_SKILL_LINK) || holdEffectAtk == HOLD_EFFECT_LOADED_DICE
+        && (BattlerHasTrait(gBattlerAttacker, ABILITY_SKILL_LINK) || BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LOADED_DICE, TRUE)
         || !(gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].effect == EFFECT_POPULATION_BOMB))))
     {
         // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Population Bomb
@@ -1831,7 +1831,7 @@ static inline u32 GetCriticalHitOdds(u32 critChance)
 
 static inline u32 IsBattlerLeekAffected(u32 battler, u32 holdEffect)
 {
-    if (holdEffect == HOLD_EFFECT_LEEK)
+    if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LEEK, TRUE))
     {
         return GET_BASE_SPECIES_ID(gBattleMons[battler].species) == SPECIES_FARFETCHD
             || gBattleMons[battler].species == SPECIES_SIRFETCHD;
@@ -1839,27 +1839,24 @@ static inline u32 IsBattlerLeekAffected(u32 battler, u32 holdEffect)
     return FALSE;
 }
 
+#define MAX_CRIT_STAGE 2
 static inline u32 GetHoldEffectCritChanceIncrease(u32 battler, u32 holdEffect)
 {
     u32 critStageIncrease = 0;
 
-    switch (holdEffect)
-    {
-    case HOLD_EFFECT_SCOPE_LENS:
-        critStageIncrease = 1;
-        break;
-    case HOLD_EFFECT_LUCKY_PUNCH:
+    if (IsBattlerLeekAffected(battler, holdEffect))
+        critStageIncrease = critStageIncrease + 2;
+
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LUCKY_PUNCH, TRUE)){
         if (gBattleMons[battler].species == SPECIES_CHANSEY)
-            critStageIncrease = 2;
-        break;
-    case HOLD_EFFECT_LEEK:
-        if (IsBattlerLeekAffected(battler, holdEffect))
-            critStageIncrease = 2;
-        break;
-    default:
-        critStageIncrease = 0;
-        break;
+            critStageIncrease = critStageIncrease + 2;
     }
+
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SCOPE_LENS, TRUE))
+        critStageIncrease = critStageIncrease + 1;
+
+    if(critStageIncrease > MAX_CRIT_STAGE)
+        critStageIncrease = MAX_CRIT_STAGE;
 
     return critStageIncrease;
 }
@@ -1969,9 +1966,9 @@ s32 CalcCritChanceStageGen1(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
     if ((gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY_ANY) != 0)
         critChance = critChance * focusEnergyScaler;
 
-    if (holdEffectAtk == HOLD_EFFECT_SCOPE_LENS)
+    if (BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_SCOPE_LENS, TRUE))
         critChance = critChance * scopeLensScaler;
-    else if (holdEffectAtk == HOLD_EFFECT_LUCKY_PUNCH && gBattleMons[battlerAtk].species == SPECIES_CHANSEY)
+    else if (BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_LUCKY_PUNCH, TRUE) && gBattleMons[battlerAtk].species == SPECIES_CHANSEY)
         critChance = critChance * luckyPunchScaler;
     else if (IsBattlerLeekAffected(battlerAtk, holdEffectAtk))
         critChance = critChance * farfetchdLeekScaler;
@@ -4609,8 +4606,7 @@ static void Cmd_getexp(void)
                 if ((1u << i) & sentInBits)
                     viaSentIn++;
 
-                holdEffect = GetMonHoldEffect(&gPlayerParty[i]);
-                if (holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
+                if (MonItemHasHoldEffect(&gPlayerParty[i], HOLD_EFFECT_EXP_SHARE) || IsGen6ExpShareEnabled())
                 {
                     expShareBits |= 1u << i;
                     viaExpShare++;
@@ -4679,7 +4675,7 @@ static void Cmd_getexp(void)
             bool32 wasSentOut = (gBattleStruct->expSentInMons & (1u << *expMonId)) != 0;
             holdEffect = GetMonHoldEffect(&gPlayerParty[*expMonId]);
 
-            if ((holdEffect != HOLD_EFFECT_EXP_SHARE && !wasSentOut && !IsGen6ExpShareEnabled())
+            if ((MonItemHasHoldEffect(&gPlayerParty[*expMonId], HOLD_EFFECT_EXP_SHARE) && !wasSentOut && !IsGen6ExpShareEnabled())
              || GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
             {
                 gBattleScripting.getexpState = 5;
@@ -4714,7 +4710,7 @@ static void Cmd_getexp(void)
                     else
                         gBattleMoveDamage = 0;
 
-                    if ((holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
+                    if ((MonItemHasHoldEffect(&gPlayerParty[*expMonId], HOLD_EFFECT_EXP_SHARE) || IsGen6ExpShareEnabled())
                         && (B_SPLIT_EXP < GEN_6 || gBattleMoveDamage == 0)) // only give exp share bonus in later gens if the mon wasn't sent out
                     {
                         gBattleMoveDamage += GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expShareExpValue);;
@@ -4767,7 +4763,7 @@ static void Cmd_getexp(void)
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
-                    if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
+                    if (wasSentOut || MonItemHasHoldEffect(&gPlayerParty[*expMonId], HOLD_EFFECT_EXP_SHARE))
                     {
                         PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
                     }
@@ -16523,11 +16519,9 @@ u8 GetFirstFaintedPartyIndex(u8 battler)
 
 void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBattler)
 {
-    u32 holdEffect = GetMonHoldEffect(&gPlayerParty[expGetterMonId]);
-
     if (IsTradedMon(&gPlayerParty[expGetterMonId]))
         *expAmount = (*expAmount * 150) / 100;
-    if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
+    if (MonItemHasHoldEffect(&gPlayerParty[expGetterMonId], HOLD_EFFECT_LUCKY_EGG))
         *expAmount = (*expAmount * 150) / 100;
     if (B_UNEVOLVED_EXP_MULTIPLIER >= GEN_6 && IsMonPastEvolutionLevel(&gPlayerParty[expGetterMonId]))
         *expAmount = (*expAmount * 4915) / 4096;

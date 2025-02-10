@@ -3713,7 +3713,7 @@ bool8 ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, 
     {                                                                                                   \
         friendshipChange = itemEffect[itemEffectParam];                                                 \
         friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);                                        \
-        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                            \
+        if (friendshipChange > 0 && MonItemHasHoldEffect(mon, HOLD_EFFECT_FRIENDSHIP_UP))               \
             friendship += 150 * friendshipChange / 100;                                                 \
         else                                                                                            \
             friendship += friendshipChange;                                                             \
@@ -4468,7 +4468,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         holdEffect = ItemId_GetHoldEffect(heldItem);
 
     // Prevent evolution with Everstone, unless we're just viewing the party menu with an evolution item
-    if (holdEffect == HOLD_EFFECT_PREVENT_EVOLVE
+    if (MonItemHasHoldEffect(tradePartner, HOLD_EFFECT_PREVENT_EVOLVE)
         && mode != EVO_MODE_ITEM_CHECK
         && (P_KADABRA_EVERSTONE < GEN_4 || species != SPECIES_KADABRA))
         return SPECIES_NONE;
@@ -4764,7 +4764,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
                 }
                 break;
             case EVO_TRADE_SPECIFIC_MON:
-                if (evolutions[i].param == partnerSpecies && partnerHoldEffect != HOLD_EFFECT_PREVENT_EVOLVE)
+                if (evolutions[i].param == partnerSpecies && MonItemHasHoldEffect(tradePartner, HOLD_EFFECT_PREVENT_EVOLVE))
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
             }
@@ -5189,7 +5189,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
         }
 
         mod = sFriendshipEventModifiers[event][friendshipLevel];
-        if (mod > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
+        if (mod > 0 && MonItemHasHoldEffect(mon, HOLD_EFFECT_FRIENDSHIP_UP))
             // 50% increase, rounding down
             mod = (150 * mod) / 100;
 
@@ -5299,7 +5299,7 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
             break;
         }
 
-        if (holdEffect == HOLD_EFFECT_MACHO_BRACE)
+        if (MonItemHasHoldEffect(mon, HOLD_EFFECT_MACHO_BRACE))
             evIncrease *= 2;
 
         if (totalEVs + (s16)evIncrease > currentEVCap)
@@ -7105,6 +7105,20 @@ u8 MonItemHasHoldEffect(struct Pokemon *mon, u16 holdEffect){
 
     for(i = 0; i < MAX_HELD_ITEMS; i++){
         item = GetMonData(mon, MON_DATA_HELD_ITEM + i);
+        itemHoldEffect = ItemId_GetHoldEffect(item);
+        if(holdEffect == itemHoldEffect)
+            return i;
+    }
+
+    return MAX_HELD_ITEMS;
+}
+
+u8 BoxMonItemHasHoldEffect(struct BoxPokemon *mon, u16 holdEffect){
+    u8 i;
+    u16 item, itemHoldEffect;
+
+    for(i = 0; i < MAX_HELD_ITEMS; i++){
+        item = GetBoxMonData(mon, MON_DATA_HELD_ITEM + i);
         itemHoldEffect = ItemId_GetHoldEffect(item);
         if(holdEffect == itemHoldEffect)
             return i;

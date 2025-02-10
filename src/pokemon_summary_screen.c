@@ -55,18 +55,18 @@
 #include "constants/songs.h"
 
 // Screen titles (upper left)
-#define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE 0
+#define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE   0
 #define PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE 1
-#define PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE 2
-#define PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE 3
-#define PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE 4
-#define PSS_LABEL_WINDOW_POKEMON_MEMOS_TITLE 5
+#define PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE  2 //Unused
+#define PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE 3
+#define PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE   4
+#define PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE  5
+#define PSS_LABEL_WINDOW_POKEMON_MEMOS_TITLE  6
 
 // Button control text (upper right)
-#define PSS_LABEL_WINDOW_PROMPT_CANCEL 6 // Also handles the "rename" prompt if P_SUMMARY_SCREEN_RENAME is true
-#define PSS_LABEL_WINDOW_PROMPT_INFO 7
-#define PSS_LABEL_WINDOW_PROMPT_SWITCH 8
-#define PSS_LABEL_WINDOW_UNUSED1 9
+#define PSS_LABEL_WINDOW_PROMPT_CANCEL 7 // Also handles the "rename" prompt if P_SUMMARY_SCREEN_RENAME is true
+#define PSS_LABEL_WINDOW_PROMPT_INFO   8
+#define PSS_LABEL_WINDOW_PROMPT_SWITCH 9
 
 // Info screen
 #define PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL 10
@@ -492,15 +492,6 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .paletteNum = 7,
         .baseBlock = 165,
     },
-    [PSS_LABEL_WINDOW_UNUSED1] = {
-        .bg = 0,
-        .tilemapLeft = 11,
-        .tilemapTop = 4,
-        .width = 0,
-        .height = 2,
-        .paletteNum = 6,
-        .baseBlock = 181,
-    },
     [PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL] = {
         .bg = 0,
         .tilemapLeft = 11,
@@ -609,8 +600,18 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .paletteNum = 6,
         .baseBlock = 459,
     },
+    /*[PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE] = {
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 0,
+        .width = 11,
+        .height = 2,
+        .paletteNum = 6,
+        .baseBlock = 470,
+    },*/
     [PSS_LABEL_WINDOW_END] = DUMMY_WIN_TEMPLATE
 };
+
 static const int TempOffset = ((459) - 459); //offest to make template calculations easier
 
 static const struct WindowTemplate sPageInfoTemplate[] =
@@ -3082,12 +3083,13 @@ static void PrintPageNamesAndStats(void)
     int iconXPos;
     int statsXPos;
 
-    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_TITLE, gText_PkmnInfo, 2, 1, 0, 1);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE, gText_PkmnTraits, 2, 1, 0, 1);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE, gText_PkmnSkills, 2, 1, 0, 1);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE, gText_BattleMoves, 2, 1, 0, 1);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE, gText_ContestMoves, 2, 1, 0, 1);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_MEMOS_TITLE, gText_PkmnMemos, 2, 1, 0, 1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_TITLE,   gText_PkmnInfo,     2, 1, 0, 1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE, gText_PkmnTraits,   2, 1, 0, 1);
+    //PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE,  gText_PkmnItems,    2, 1, 0, 1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE, gText_PkmnSkills,   2, 1, 0, 1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE,   gText_BattleMoves,  2, 1, 0, 1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE,  gText_ContestMoves, 2, 1, 0, 1);
+    PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_MEMOS_TITLE,  gText_PkmnMemos,    2, 1, 0, 1);
 
     ShowCancelOrRenamePrompt();
 
@@ -3126,7 +3128,7 @@ static void PrintPageNamesAndStats(void)
     PrintTextOnWindow(PSS_LABEL_WINDOW_MOVES_POWER_ACC, gText_Accuracy2, 0, 17, 0, 1);
     PrintTextOnWindow(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM, gText_Appeal, 0, 1, 0, 1);
     PrintTextOnWindow(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM, gText_Jam, 0, 17, 0, 1);
-    PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_RELEARN, gText_Relearn, 0, 4, 0, 0, FONT_SMALL);
+    //PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_RELEARN, gText_Relearn, 0, 4, 0, 0, FONT_SMALL);
 }
 
 static void PutPageWindowTilemaps(u8 page)
@@ -3135,6 +3137,7 @@ static void PutPageWindowTilemaps(u8 page)
 
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
+    //ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE);
@@ -3150,8 +3153,11 @@ static void PutPageWindowTilemaps(u8 page)
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE);
         break;
     case PSS_PAGE_TRAITS:
+        PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
+        break;
     case PSS_PAGE_ITEMS:
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
+        //PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE);
         break;
     case PSS_PAGE_SKILLS:
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE);
@@ -3687,7 +3693,6 @@ static void PrintMonItems(u8 itemIndex)
 
 static void PrintMemos(void)
 {
-    PrintHeldItemName();
     PrintRibbonCount();
     BufferLeftColumnStats();
     PrintLeftColumnStats();
@@ -3711,7 +3716,6 @@ static void Task_PrintMemos(u8 taskId)
 
 static void PrintSkillsPageText(void)
 {
-    PrintHeldItemName();
     PrintRibbonCount();
     BufferLeftColumnStats();
     PrintLeftColumnStats();
@@ -3727,27 +3731,24 @@ static void Task_PrintSkillsPage(u8 taskId)
     switch (data[0])
     {
     case 1:
-        PrintHeldItemName();
-        break;
-    case 2:
         PrintRibbonCount();
         break;
-    case 3:
+    case 2:
         BufferLeftColumnStats();
         break;
-    case 4:
+    case 3:
         PrintLeftColumnStats();
         break;
-    case 5:
+    case 4:
         BufferRightColumnStats();
         break;
-    case 6:
+    case 5:
         PrintRightColumnStats();
         break;
-    case 7:
+    case 6:
         PrintExpPointsNextLevel();
         break;
-    case 8:
+    case 7:
         DestroyTask(taskId);
         return;
     }
@@ -3756,7 +3757,7 @@ static void Task_PrintSkillsPage(u8 taskId)
 
 static void PrintHeldItemName(void)
 {
-    const u8 *text;
+    /*const u8 *text;
     u32 fontId;
     int x;
 
@@ -3778,7 +3779,7 @@ static void PrintHeldItemName(void)
 
     fontId = GetFontIdToFit(text, FONT_NORMAL, 0, WindowTemplateWidthPx(&sPageSkillsTemplate[PSS_DATA_WINDOW_SKILLS_HELD_ITEM]) - 8);
     x = GetStringCenterAlignXOffset(fontId, text, 72) + 6;
-    PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 0, fontId);
+    PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 0, fontId);*/
 }
 
 static void PrintRibbonCount(void)
@@ -3798,7 +3799,7 @@ static void PrintRibbonCount(void)
     }
 
     x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 6;
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 1);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 1);
 }
 
 static void BufferStat(u8 *dst, u8 statIndex, u32 stat, u32 strId, u32 n)

@@ -1392,22 +1392,34 @@ static u32 GetSwitchinRecurringHealing(void)
 {
     u32 recurringHealing = 0, maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, ability = AI_DATA->switchinCandidate.battleMon.ability, species = AI_DATA->switchinCandidate.battleMon.species, personality = AI_DATA->switchinCandidate.battleMon.personality;
     u32 holdEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
+    u8 battler = 0; //To Change
 
     // Items
     if (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))
     {
-        if (holdEffect == HOLD_EFFECT_BLACK_SLUDGE && (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_POISON || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_POISON))
-        {
+        bool8 hasBlackSludge = (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_BLACK_SLUDGE, TRUE) && (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_POISON || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_POISON));
+        bool8 hasLeftovers   = BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LEFTOVERS, TRUE);
+
+        if(hasBlackSludge && hasLeftovers){
+            //Both items healing
+            recurringHealing = maxHP / 8;
+            if (recurringHealing == 0)
+                recurringHealing = 1;
+        }
+        else if(hasBlackSludge){
+            //Black Sludge effect only
             recurringHealing = maxHP / 16;
             if (recurringHealing == 0)
                 recurringHealing = 1;
         }
-        else if (holdEffect == HOLD_EFFECT_LEFTOVERS)
-        {
+        else if(hasLeftovers){
+            //Leftovers effect only
             recurringHealing = maxHP / 16;
             if (recurringHealing == 0)
                 recurringHealing = 1;
         }
+
+        //BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_LEFTOVERS, TRUE)
     } // Intentionally omitting Shell Bell for its inconsistency
 
     // Abilities

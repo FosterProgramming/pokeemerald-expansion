@@ -523,7 +523,7 @@ static s32 GetParentToInheritNature(struct DayCare *daycare)
 
     for (i = 0; i < DAYCARE_MON_COUNT; i++)
     {
-        if (ItemId_GetHoldEffect(GetBoxMonData(&daycare->mons[i].mon, MON_DATA_HELD_ITEM)) == HOLD_EFFECT_PREVENT_EVOLVE
+        if (BoxMonItemHasHoldEffect(&daycare->mons[i].mon, HOLD_EFFECT_PREVENT_EVOLVE)
             && (P_NATURE_INHERITANCE != GEN_3 || GetBoxMonGender(&daycare->mons[i].mon) == MON_FEMALE || IS_DITTO(GetBoxMonData(&daycare->mons[i].mon, MON_DATA_SPECIES))))
         {
             slot = i;
@@ -1004,8 +1004,8 @@ static u16 DetermineEggSpeciesAndParentSlots(struct DayCare *daycare, u8 *parent
 
     motherEggSpecies = GetEggSpecies(species[parentSlots[0]]);
     fatherEggSpecies = GetEggSpecies(species[parentSlots[1]]);
-    hasMotherEverstone = ItemId_GetHoldEffect(GetBoxMonData(&daycare->mons[parentSlots[0]].mon, MON_DATA_HELD_ITEM)) == HOLD_EFFECT_PREVENT_EVOLVE;
-    hasFatherEverstone = ItemId_GetHoldEffect(GetBoxMonData(&daycare->mons[parentSlots[1]].mon, MON_DATA_HELD_ITEM)) == HOLD_EFFECT_PREVENT_EVOLVE;
+    hasMotherEverstone = BoxMonItemHasHoldEffect(&daycare->mons[parentSlots[0]].mon, HOLD_EFFECT_PREVENT_EVOLVE);
+    hasFatherEverstone = BoxMonItemHasHoldEffect(&daycare->mons[parentSlots[1]].mon, HOLD_EFFECT_PREVENT_EVOLVE);
     motherIsForeign = IsSpeciesForeignRegionalForm(motherEggSpecies, currentRegion);
     fatherIsForeign = IsSpeciesForeignRegionalForm(fatherEggSpecies, currentRegion);
 

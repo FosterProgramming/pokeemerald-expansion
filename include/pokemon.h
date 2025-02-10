@@ -925,6 +925,7 @@ uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier)
 u32 GetRegionalFormByRegion(u32 species, u32 region);
 bool32 IsSpeciesForeignRegionalForm(u32 species, u32 currentRegion);
 u8 MonItemHasHoldEffect(struct Pokemon *mon, u16 holdEffect);
+u8 BoxMonItemHasHoldEffect(struct BoxPokemon *mon, u16 holdEffect);
 u8 GetNumOfHeldItems(struct Pokemon *mon);
 
 u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerandomizer);

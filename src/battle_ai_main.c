@@ -2685,7 +2685,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_DRAGON_CHEER:
         if (gBattleMons[battlerAtkPartner].status2 & STATUS2_FOCUS_ENERGY_ANY || !HasDamagingMove(battlerAtkPartner))
             ADJUST_SCORE(-5);
-        else if (atkPartnerHoldEffect == HOLD_EFFECT_SCOPE_LENS
+        else if (BattlerHeldItemHasEffect(battlerAtkPartner, HOLD_EFFECT_SCOPE_LENS, TRUE)
               || IS_BATTLER_OF_TYPE(battlerAtkPartner, TYPE_DRAGON)
               || gMovesInfo[aiData->partnerMove].criticalHitStage > 0
               || HasMoveWithCriticalHitChance(battlerAtkPartner))
@@ -3447,7 +3447,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_LASER_FOCUS:
         if (AISearchTraits(AIBattlerTraits, ABILITY_SUPER_LUCK)
           || AISearchTraits(AIBattlerTraits, ABILITY_SNIPER)
-          || aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SCOPE_LENS
+          || BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_SCOPE_LENS, TRUE)
           || HasHighCritRatioMove(battlerAtk))
             ADJUST_SCORE(GOOD_EFFECT);
         break;
@@ -4275,8 +4275,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_HEAL_BLOCK:
         if (AI_IsFaster(battlerAtk, battlerDef, move) && predictedMove != MOVE_NONE && IsHealingMove(predictedMove))
             ADJUST_SCORE(DECENT_EFFECT); // Try to cancel healing move
-        else if (HasHealingEffect(battlerDef) || aiData->holdEffects[battlerDef] == HOLD_EFFECT_LEFTOVERS
-          || (aiData->holdEffects[battlerDef] == HOLD_EFFECT_BLACK_SLUDGE && IS_BATTLER_OF_TYPE(battlerDef, TYPE_POISON)))
+        else if (HasHealingEffect(battlerDef) || BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_LEFTOVERS, TRUE)
+          || (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_BLACK_SLUDGE, TRUE) && IS_BATTLER_OF_TYPE(battlerDef, TYPE_POISON)))
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_SOAK:

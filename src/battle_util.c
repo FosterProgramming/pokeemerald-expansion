@@ -420,7 +420,7 @@ bool32 TryRunFromBattle(u32 battler)
 
     gPotentialItemEffectBattler = battler;
 
-    if (holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN)
+    if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CAN_ALWAYS_RUN, TRUE))
     {
         gLastUsedItem = gBattleMons[battler].item;
         gProtectStructs[battler].fleeType = FLEE_ITEM;
@@ -3751,7 +3751,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             }
             else if (gMovesInfo[gCurrentMove].strikeCount > 1)
             {
-                if (gMovesInfo[gCurrentMove].effect == EFFECT_POPULATION_BOMB && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
+                if (gMovesInfo[gCurrentMove].effect == EFFECT_POPULATION_BOMB && BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LOADED_DICE, TRUE))
                 {
                     gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 10);
                 }
@@ -8000,15 +8000,16 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
     case ITEMEFFECT_ON_SWITCH_IN_FIRST_TURN:
         if (!gSpecialStatuses[battler].switchInItemDone)
         {
-            switch (battlerHoldEffect)
-            {
-            case HOLD_EFFECT_DOUBLE_PRIZE:
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_DOUBLE_PRIZE, TRUE)){
                 if (GetBattlerSide(battler) == B_SIDE_PLAYER && !gBattleStruct->moneyMultiplierItem)
                 {
                     gBattleStruct->moneyMultiplier *= 2;
                     gBattleStruct->moneyMultiplierItem = 1;
                 }
-                break;
+            }
+
+            switch (battlerHoldEffect)
+            {
             case HOLD_EFFECT_RESTORE_STATS:
                 effect = RestoreWhiteHerbStats(battler);
                 if (effect != 0)
@@ -9857,6 +9858,13 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
     holdEffectModifier = UQ_4_12(1.0) + sPercentToModifier[holdEffectParamAtk];
 
     // attacker's hold effect
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_SOUL_DEW, TRUE)){
+        if ((gBattleMons[battlerAtk].species == SPECIES_LATIAS || gBattleMons[battlerAtk].species == SPECIES_LATIOS)
+            && ((B_SOUL_DEW_BOOST >= GEN_7 && (moveType == TYPE_PSYCHIC || moveType == TYPE_DRAGON))
+             || (B_SOUL_DEW_BOOST < GEN_7 && !(gBattleTypeFlags & BATTLE_TYPE_FRONTIER) && IS_MOVE_SPECIAL(move))))
+            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+    }
+
     switch (holdEffectAtk)
     {
     case HOLD_EFFECT_MUSCLE_BAND:
@@ -9877,12 +9885,6 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
         break;
     case HOLD_EFFECT_GRISEOUS_ORB:
         if (GET_BASE_SPECIES_ID(gBattleMons[battlerAtk].species) == SPECIES_GIRATINA && (moveType == TYPE_GHOST || moveType == TYPE_DRAGON))
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
-        break;
-    case HOLD_EFFECT_SOUL_DEW:
-        if ((gBattleMons[battlerAtk].species == SPECIES_LATIAS || gBattleMons[battlerAtk].species == SPECIES_LATIOS)
-            && ((B_SOUL_DEW_BOOST >= GEN_7 && (moveType == TYPE_PSYCHIC || moveType == TYPE_DRAGON))
-             || (B_SOUL_DEW_BOOST < GEN_7 && !(gBattleTypeFlags & BATTLE_TYPE_FRONTIER) && IS_MOVE_SPECIAL(move))))
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
         break;
     case HOLD_EFFECT_BUG_POWER:
@@ -10140,20 +10142,23 @@ static inline u32 CalcAttackStat(struct DamageCalculationData *damageCalcData, u
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
 
     // attacker's hold effect
-    switch (holdEffectAtk)
-    {
-    case HOLD_EFFECT_THICK_CLUB:
-        if ((atkBaseSpeciesId == SPECIES_CUBONE || atkBaseSpeciesId == SPECIES_MAROWAK) && IS_MOVE_PHYSICAL(move))
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
-    case HOLD_EFFECT_DEEP_SEA_TOOTH:
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_DEEP_SEA_TOOTH, TRUE)){
         if (gBattleMons[battlerAtk].species == SPECIES_CLAMPERL && IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
-    case HOLD_EFFECT_LIGHT_BALL:
+    }
+
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_LIGHT_BALL, TRUE)){
         if (atkBaseSpeciesId == SPECIES_PIKACHU && (B_LIGHT_BALL_ATTACK_BOOST >= GEN_4 || IS_MOVE_SPECIAL(move)))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
+    }
+
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_THICK_CLUB, TRUE)){
+        if ((atkBaseSpeciesId == SPECIES_CUBONE || atkBaseSpeciesId == SPECIES_MAROWAK) && IS_MOVE_PHYSICAL(move))
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+    }
+
+    switch (holdEffectAtk)
+    {
     case HOLD_EFFECT_CHOICE_BAND:
         if (IS_MOVE_PHYSICAL(move) && GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
@@ -10298,29 +10303,32 @@ static inline u32 CalcDefenseStat(struct DamageCalculationData *damageCalcData, 
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
 
     // target's hold effects
-    switch (holdEffectDef)
-    {
-    case HOLD_EFFECT_DEEP_SEA_SCALE:
+    if(BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_SOUL_DEW, TRUE)){
+        if (B_SOUL_DEW_BOOST < GEN_7
+         && (gBattleMons[battlerDef].species == SPECIES_LATIAS || gBattleMons[battlerDef].species == SPECIES_LATIOS)
+         && !(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+         && !usesDefStat)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+    }
+    
+    if(BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_DEEP_SEA_SCALE, TRUE)){
         if (gBattleMons[battlerDef].species == SPECIES_CLAMPERL && !usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
-    case HOLD_EFFECT_METAL_POWDER:
+    }
+    
+    if(BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_METAL_POWDER, TRUE)){
         if (gBattleMons[battlerDef].species == SPECIES_DITTO && usesDefStat && !(gBattleMons[battlerDef].status2 & STATUS2_TRANSFORMED))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
+    }
+
+    switch (holdEffectDef)
+    {
     case HOLD_EFFECT_EVIOLITE:
         if (CanEvolve(gBattleMons[battlerDef].species))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case HOLD_EFFECT_ASSAULT_VEST:
         if (!usesDefStat)
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
-        break;
-    case HOLD_EFFECT_SOUL_DEW:
-        if (B_SOUL_DEW_BOOST < GEN_7
-         && (gBattleMons[battlerDef].species == SPECIES_LATIAS || gBattleMons[battlerDef].species == SPECIES_LATIOS)
-         && !(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-         && !usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     }
@@ -12023,7 +12031,7 @@ bool32 CanTargetBattler(u32 battlerAtk, u32 battlerDef, u16 move)
 
 static void SetRandomMultiHitCounter()
 {
-    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
+    if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LOADED_DICE, TRUE))
         gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
     else if (B_MULTI_HIT_CHANCE >= GEN_5)
         gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3); // 35%: 2 hits, 35%: 3 hits, 15% 4 hits, 15% 5 hits.

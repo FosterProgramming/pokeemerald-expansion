@@ -1573,3 +1573,4 @@ const u8 gText_Rename[] = _("RENAME");
 //New Summary Screen Pages
 const u8 gText_PkmnTraits[] = _("TRAITS");
 const u8 gText_PkmnMemos[] = _("MEMOS");
+const u8 gText_PkmnItems[] = _("HELD ITEMS");

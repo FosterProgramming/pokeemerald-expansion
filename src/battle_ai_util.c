@@ -298,7 +298,7 @@ bool32 IsBattlerTrapped(u32 battler, bool32 checkSwitch)
         return FALSE;
     else if (!checkSwitch && AI_BATTLER_HAS_TRAIT(battler, ABILITY_RUN_AWAY))
         return FALSE;
-    else if (!checkSwitch && holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN)
+    else if (!checkSwitch && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CAN_ALWAYS_RUN, TRUE))
         return FALSE;
     else if (gBattleMons[battler].status2 & (STATUS2_ESCAPE_PREVENTION | STATUS2_WRAPPED))
         return TRUE;
@@ -542,7 +542,7 @@ static inline s32 SetFixedMoveBasePower(u32 battlerAtk, u32 move)
     return fixedBasePower;
 }
 
-static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCalcData, s32 *expectedDamage, s32 *minimumDamage, u32 holdEffectAtk, u32 abilityAtk)
+static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCalcData, s32 *expectedDamage, s32 *minimumDamage, u8 battlerAtk, u32 abilityAtk)
 {
     u32 move = damageCalcData->move;
     s32 expected = *expectedDamage;
@@ -573,7 +573,7 @@ static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCal
             expected *= 5;
             minimum *= 5;
         }
-        else if (holdEffectAtk == HOLD_EFFECT_LOADED_DICE)
+        else if (BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_LOADED_DICE, TRUE))
         {
             expected *= 9;
             expected /= 2;
@@ -741,7 +741,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             CalcDynamicMoveDamage(&damageCalcData,
                                   &simDamage.expected,
                                   &simDamage.minimum,
-                                  aiData->holdEffects[battlerAtk],
+                                  battlerAtk,
                                   aiData->abilities[battlerAtk]);
         }
     }
