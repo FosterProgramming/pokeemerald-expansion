@@ -4525,8 +4525,8 @@
       "id": "LAYOUT_ROUTE5A",
       "name": "Route5A_Layout",
       "width": 38,
-      "height": 22,
-      "primary_tileset": "gTileset_General",
+      "height": 34,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route5A/border.bin",
       "blockdata_filepath": "data/layouts/Route5A/map.bin"
