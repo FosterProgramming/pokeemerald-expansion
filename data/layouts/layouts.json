@@ -4504,7 +4504,7 @@
     {
       "id": "LAYOUT_ROUTE4",
       "name": "Route4_Layout",
-      "width": 88,
+      "width": 110,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Rustboro",
@@ -4517,7 +4517,7 @@
       "width": 30,
       "height": 70,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route5/border.bin",
       "blockdata_filepath": "data/layouts/Route5/map.bin"
     },
@@ -4525,7 +4525,7 @@
       "id": "LAYOUT_ROUTE5A",
       "name": "Route5A_Layout",
       "width": 38,
-      "height": 40,
+      "height": 42,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route5A/border.bin",
@@ -4534,8 +4534,8 @@
     {
       "id": "LAYOUT_VERDANT_HALLOW",
       "name": "VerdantHallow_Layout",
-      "width": 36,
-      "height": 40,
+      "width": 58,
+      "height": 44,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/VerdantHallow/border.bin",
