@@ -216,3 +216,6 @@ const u16 gMetatileAttributes_DunemireDesertSecondary[] = INCBIN_U16("data/tiles
 
 const u16 gMetatiles_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatiles.bin");
 const u16 gMetatileAttributes_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatile_attributes.bin");
+
+const u16 gMetatiles_VerdantHallow[] = INCBIN_U16("data/tilesets/secondary/verdant_hallow/metatiles.bin");
+const u16 gMetatileAttributes_VerdantHallow[] = INCBIN_U16("data/tilesets/secondary/verdant_hallow/metatile_attributes.bin");

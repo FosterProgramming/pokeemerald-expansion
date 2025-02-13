@@ -4525,9 +4525,9 @@
       "id": "LAYOUT_ROUTE5A",
       "name": "Route5A_Layout",
       "width": 38,
-      "height": 34,
+      "height": 40,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route5A/border.bin",
       "blockdata_filepath": "data/layouts/Route5A/map.bin"
     },
@@ -4536,8 +4536,8 @@
       "name": "VerdantHallow_Layout",
       "width": 36,
       "height": 40,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/VerdantHallow/border.bin",
       "blockdata_filepath": "data/layouts/VerdantHallow/map.bin"
     },

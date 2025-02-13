@@ -858,3 +858,14 @@ const struct Tileset gTileset_GeneralSeelVersion =
     .metatileAttributes = gMetatileAttributes_GeneralSeelVersion,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_VerdantHallow =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_VerdantHallow,
+    .palettes = gTilesetPalettes_VerdantHallow,
+    .metatiles = gMetatiles_VerdantHallow,
+    .metatileAttributes = gMetatileAttributes_VerdantHallow,
+    .callback = NULL,
+};

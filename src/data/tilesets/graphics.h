@@ -1691,3 +1691,22 @@ const u16 gTilesetPalettes_GeneralSeelVersion[][16] =
 };
 
 const u32 gTilesetTiles_GeneralSeelVersion[] = INCBIN_U32("data/tilesets/primary/general_seel_version/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_VerdantHallow[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/verdant_hallow/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_VerdantHallow[] = INCBIN_U32("data/tilesets/secondary/verdant_hallow/tiles.4bpp.lz");
