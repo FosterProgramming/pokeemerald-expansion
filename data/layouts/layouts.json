@@ -4504,7 +4504,7 @@
     {
       "id": "LAYOUT_ROUTE4",
       "name": "Route4_Layout",
-      "width": 110,
+      "width": 114,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Rustboro",
@@ -4515,7 +4515,7 @@
       "id": "LAYOUT_ROUTE5",
       "name": "Route5_Layout",
       "width": 30,
-      "height": 70,
+      "height": 72,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route5/border.bin",
