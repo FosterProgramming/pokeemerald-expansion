@@ -219,3 +219,6 @@ const u16 gMetatileAttributes_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/p
 
 const u16 gMetatiles_VerdantHallow[] = INCBIN_U16("data/tilesets/secondary/verdant_hallow/metatiles.bin");
 const u16 gMetatileAttributes_VerdantHallow[] = INCBIN_U16("data/tilesets/secondary/verdant_hallow/metatile_attributes.bin");
+
+const u16 gMetatiles_MurkwellBog[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/metatiles.bin");
+const u16 gMetatileAttributes_MurkwellBog[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/metatile_attributes.bin");

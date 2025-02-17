@@ -20,17 +20,12 @@
     },
     {
       "map": "MAP_ROUTE5",
-      "offset": 72,
+      "offset": 38,
       "direction": "up"
     },
     {
-      "map": "MAP_MURKWELL_BOG",
-      "offset": -28,
-      "direction": "left"
-    },
-    {
-      "map": "MAP_ROUTE9A",
-      "offset": 22,
+      "map": "MAP_ROUTE4A",
+      "offset": 0,
       "direction": "left"
     }
   ],

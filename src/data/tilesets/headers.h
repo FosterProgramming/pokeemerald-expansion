@@ -869,3 +869,14 @@ const struct Tileset gTileset_VerdantHallow =
     .metatileAttributes = gMetatileAttributes_VerdantHallow,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_MurkwellBog =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MurkwellBog,
+    .palettes = gTilesetPalettes_MurkwellBog,
+    .metatiles = gMetatiles_MurkwellBog,
+    .metatileAttributes = gMetatileAttributes_MurkwellBog,
+    .callback = NULL,
+};

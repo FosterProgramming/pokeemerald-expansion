@@ -1234,3 +1234,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DeleteThis/scripts.inc"
 
 	.include "data/maps/Route12B/scripts.inc"
+
+	.include "data/maps/Route4A/scripts.inc"

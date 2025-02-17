@@ -4504,7 +4504,7 @@
     {
       "id": "LAYOUT_ROUTE4",
       "name": "Route4_Layout",
-      "width": 114,
+      "width": 80,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Rustboro",
@@ -4544,10 +4544,10 @@
     {
       "id": "LAYOUT_MURKWELL_BOG",
       "name": "MurkwellBog_Layout",
-      "width": 54,
-      "height": 50,
+      "width": 84,
+      "height": 70,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_MurkwellBog",
       "border_filepath": "data/layouts/MurkwellBog/border.bin",
       "blockdata_filepath": "data/layouts/MurkwellBog/map.bin"
     },
@@ -4636,8 +4636,8 @@
       "name": "Route9A_Layout",
       "width": 20,
       "height": 102,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_MurkwellBog",
       "border_filepath": "data/layouts/Route9A/border.bin",
       "blockdata_filepath": "data/layouts/Route9A/map.bin"
     },
@@ -4820,6 +4820,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route12B/border.bin",
       "blockdata_filepath": "data/layouts/Route12B/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4A",
+      "name": "Route4A_Layout",
+      "width": 34,
+      "height": 22,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_MurkwellBog",
+      "border_filepath": "data/layouts/Route4A/border.bin",
+      "blockdata_filepath": "data/layouts/Route4A/map.bin"
     }
   ]
 }
