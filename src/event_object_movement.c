@@ -381,7 +381,7 @@ static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = TRUE,
 };
 
-const u8 gInitialMovementTypeFacingDirections[] = {
+const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_NONE] = DIR_SOUTH,
     [MOVEMENT_TYPE_LOOK_AROUND] = DIR_SOUTH,
     [MOVEMENT_TYPE_WANDER_AROUND] = DIR_SOUTH,
@@ -463,6 +463,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_UP] = DIR_NORTH,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_LEFT] = DIR_WEST,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = DIR_EAST,
+    [MOVEMENT_TYPE_FOLLOW_PLAYER] = DIR_SOUTH,
 };
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -1927,8 +1928,8 @@ struct Pokemon *GetFirstLiveMon(void)
     {
         struct Pokemon *mon = &gPlayerParty[i];
         if ((OW_MON_ALLOWED_SPECIES && GetMonData(mon, MON_DATA_SPECIES_OR_EGG) != VarGet(OW_MON_ALLOWED_SPECIES))
-            || (OW_MON_ALLOWED_MET_LVL && GetMonData(mon, MON_DATA_MET_LEVEL) != VarGet(OW_MON_ALLOWED_MET_LVL))
-            || (OW_MON_ALLOWED_MET_LOC && GetMonData(mon, MON_DATA_MET_LOCATION) != VarGet(OW_MON_ALLOWED_MET_LOC)))
+         || (OW_MON_ALLOWED_MET_LVL && GetMonData(mon, MON_DATA_MET_LEVEL) != VarGet(OW_MON_ALLOWED_MET_LVL))
+         || (OW_MON_ALLOWED_MET_LOC && GetMonData(mon, MON_DATA_MET_LOCATION) != VarGet(OW_MON_ALLOWED_MET_LOC)))
         {
             continue;
         }
@@ -5417,6 +5418,7 @@ bool8 MovementType_FollowPlayer_Moving(struct ObjectEvent *objectEvent, struct S
         objectEvent->movementActionId = MOVEMENT_ACTION_NONE;
         sprite->sActionFuncId = 0;
         objectEvent->singleMovementActive = FALSE;
+        objectEvent->facingDirectionLocked = FALSE;
         if (sprite->sTypeFuncId) // restore nonzero state
             sprite->sTypeFuncId = 1;
     }
@@ -6411,9 +6413,9 @@ bool8 ObjectEventSetHeldMovement(struct ObjectEvent *objectEvent, u8 movementAct
 
     // When player is moved via script, set copyable movement
     // for any followers via a lookup table
-    if (ArePlayerFieldControlsLocked() &&
-        objectEvent->isPlayer &&
-        FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT))
+    if (ArePlayerFieldControlsLocked()
+     && objectEvent->isPlayer
+     && FlagGet(FLAG_SAFE_FOLLOWER_MOVEMENT))
     {
         objectEvent->playerCopyableMovement = sActionIdToCopyableMovement[objectEvent->movementActionId];
     }

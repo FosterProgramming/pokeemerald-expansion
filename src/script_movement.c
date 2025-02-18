@@ -1,6 +1,7 @@
 #include "global.h"
 #include "script_movement.h"
 #include "event_object_movement.h"
+#include "event_scripts.h"
 #include "task.h"
 #include "util.h"
 #include "constants/event_objects.h"
@@ -251,5 +252,3 @@ static void ScriptMovement_TakeStep(u8 taskId, u8 moveScrId, u8 objEventId, cons
 
 #undef sTypeFuncId
 #undef sTimer
-
-
