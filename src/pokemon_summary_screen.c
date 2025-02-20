@@ -96,7 +96,10 @@
 #define PSS_DATA_WINDOW_INFO_MEMO 3
 
 //Dynamic fields for the Pokemon Traits page
-#define PSS_DATA_WINDOW_TRAITS 0
+#define PSS_DATA_WINDOW_TRAITS1 0
+#define PSS_DATA_WINDOW_TRAITS2 1
+#define PSS_DATA_WINDOW_TRAITS3 2
+#define PSS_DATA_WINDOW_TRAITS4 3
 
 // Dynamic fields for the Pokémon Skills page
 #define PSS_DATA_WINDOW_SKILLS_HELD_ITEM 0
@@ -574,7 +577,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .width = 8,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = 331,
+        .baseBlock = 431,
     },
     [PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER] = {
         .bg = 0,
@@ -583,7 +586,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .width = 5,
         .height = 2,
         .paletteNum = 7,
-        .baseBlock = 431,
+        .baseBlock = 447,
     },
     [PSS_LABEL_WINDOW_PORTRAIT_NICKNAME] = {
         .bg = 0,
@@ -592,7 +595,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .width = 9,
         .height = 2,
         .paletteNum = 6,
-        .baseBlock = 441,
+        .baseBlock = 457,
     },
     [PSS_LABEL_WINDOW_PORTRAIT_SPECIES] = {
         .bg = 0,
@@ -601,11 +604,11 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .width = 9,
         .height = 4,
         .paletteNum = 6,
-        .baseBlock = 459,
+        .baseBlock = 475,
     },
     [PSS_LABEL_WINDOW_END] = DUMMY_WIN_TEMPLATE
 };
-static const int TempOffset = ((459) - 459); //offest to make template calculations easier
+static const int TempOffset = ((511) - 459); //offest to make template calculations easier
 
 static const struct WindowTemplate sPageInfoTemplate[] =
 {
@@ -648,14 +651,41 @@ static const struct WindowTemplate sPageInfoTemplate[] =
 };
 static const struct WindowTemplate sPageTraitsTemplate[] =
 {
-	[PSS_DATA_WINDOW_TRAITS] = {
+	[PSS_DATA_WINDOW_TRAITS1] = {
 		.bg = 0,
 		.tilemapLeft = 11,
 		.tilemapTop = 4,
 		.width = 18,
-		.height = 16,
+		.height = 4,
 		.paletteNum = 6,
 		.baseBlock = 495 + TempOffset,
+	},
+    [PSS_DATA_WINDOW_TRAITS2] = {
+		.bg = 0,
+		.tilemapLeft = 11,
+		.tilemapTop = 8,
+		.width = 18,
+		.height = 4,
+		.paletteNum = 6,
+		.baseBlock = 495 + TempOffset + 72,
+	},
+    [PSS_DATA_WINDOW_TRAITS3] = {
+		.bg = 0,
+		.tilemapLeft = 11,
+		.tilemapTop = 12,
+		.width = 18,
+		.height = 4,
+		.paletteNum = 6,
+		.baseBlock = 495 + TempOffset + 72 + 72,
+	},
+    [PSS_DATA_WINDOW_TRAITS4] = {
+		.bg = 0,
+		.tilemapLeft = 11,
+		.tilemapTop = 16,
+		.width = 18,
+		.height = 4,
+		.paletteNum = 6,
+		.baseBlock = 495 + TempOffset + 72 + 72 + 72,
 	},
 };
 static const struct WindowTemplate sPageSkillsTemplate[] =
@@ -1212,6 +1242,7 @@ static void DestroyCategoryIcon(void)
 void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void))
 {
     sMonSummaryScreen = AllocZeroed(sizeof(*sMonSummaryScreen));
+    
     sMonSummaryScreen->mode = mode;
     sMonSummaryScreen->monList.mons = mons;
     sMonSummaryScreen->curMonIndex = monIndex;
@@ -1729,7 +1760,9 @@ static void Task_HandleInput(u8 taskId)
         }
         else if (JOY_NEW(A_BUTTON))
         {
-            if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS)
+            if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS
+                 && sMonSummaryScreen->currPageIndex != PSS_PAGE_TRAITS
+                 && sMonSummaryScreen->currPageIndex != PSS_PAGE_MEMOS)
             {
                 if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
                 {
@@ -3198,8 +3231,6 @@ static void ClearPageWindowTilemaps(u8 page)
         ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE);
         break;
     case PSS_PAGE_TRAITS:
-      //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT);
-      //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT);
         break;
     case PSS_PAGE_SKILLS:
         ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT);
@@ -3223,9 +3254,7 @@ static void ClearPageWindowTilemaps(u8 page)
         }
         break;
     case PSS_PAGE_MEMOS:
-        //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT);
-        //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT);
-    break;
+        break;
     case PSS_PAGE_CONTEST_MOVES:
         if (sMonSummaryScreen->mode == SUMMARY_MODE_SELECT_MOVE)
         {
@@ -3324,6 +3353,7 @@ static void Task_PrintInfoPage(u8 taskId)
         break;
     case 5:
         BufferMonTrainerMemo();
+        
         break;
     case 6:
         PrintMonTrainerMemo();
@@ -3600,13 +3630,20 @@ static void PrintMonTraits(u8 innateIndex)
         trait = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
     else if (innateIndex <= MAX_MON_INNATES)
         trait = gSpeciesInfo[sum->species].innates[innateIndex-1];
-    
+        
     int x = GetStringRightAlignXOffset(FONT_NORMAL, gAbilitiesInfo[trait].name, 18*8);
-    int y = innateIndex * 32;
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS), gAbilitiesInfo[trait].name, x, y, 0, 1);
-    y += 16;
-    if (trait != 0)
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS), gAbilitiesInfo[trait].description, 0, y, 0, 0);
+
+    if (trait == 0)
+    {
+        StringCopy(gStringVar1, gText_Blank);
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, innateIndex), gStringVar1, x, 1, 0, 1);
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, innateIndex), gStringVar1, 0, 17, 0, 0);
+    }
+    else
+    {
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, innateIndex), gAbilitiesInfo[trait].name, x, 1, 0, 1);
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageTraitsTemplate, innateIndex), gAbilitiesInfo[trait].description, 0, 17, 0, 0);
+    }
 }
 
 
