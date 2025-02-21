@@ -60,7 +60,6 @@ SINGLE_BATTLE_TEST("Embody Aspect activates when it's no longer effected by Neut
 
 SINGLE_BATTLE_TEST("Embody Aspect raises Speed only once per battle")
 {
-    KNOWN_FAILING;
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_OGERPON_TEAL_TERA) { Ability(ABILITY_EMBODY_ASPECT_TEAL_MASK); }
