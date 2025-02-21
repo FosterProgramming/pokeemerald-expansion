@@ -4606,7 +4606,7 @@
       "name": "Route8_Layout",
       "width": 24,
       "height": 66,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route8/border.bin",
       "blockdata_filepath": "data/layouts/Route8/map.bin"
