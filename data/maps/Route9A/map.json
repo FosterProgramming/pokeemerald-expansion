@@ -22,11 +22,6 @@
       "map": "MAP_MURKWELL_BOG",
       "offset": -34,
       "direction": "up"
-    },
-    {
-      "map": "MAP_ROUTE4A",
-      "offset": -22,
-      "direction": "right"
     }
   ],
   "object_events": [

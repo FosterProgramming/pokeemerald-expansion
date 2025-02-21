@@ -14,11 +14,6 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE9A",
-      "offset": 22,
-      "direction": "left"
-    },
-    {
       "map": "MAP_MURKWELL_BOG",
       "offset": -28,
       "direction": "left"

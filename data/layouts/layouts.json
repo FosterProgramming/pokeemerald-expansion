@@ -4830,6 +4830,16 @@
       "secondary_tileset": "gTileset_MurkwellBog",
       "border_filepath": "data/layouts/Route4A/border.bin",
       "blockdata_filepath": "data/layouts/Route4A/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE8A",
+      "name": "Route8A_Layout",
+      "width": 84,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route8A/border.bin",
+      "blockdata_filepath": "data/layouts/Route8A/map.bin"
     }
   ]
 }
