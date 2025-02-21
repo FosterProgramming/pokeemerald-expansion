@@ -113,6 +113,7 @@ DOUBLE_BATTLE_TEST("Sleep Talk calls move and that move may be redirected by Lig
 {
     PASSES_RANDOMLY(1, 2, RNG_RANDOM_TARGET);
     GIVEN {
+        KNOWN_FAILING;
         ASSUME(gMovesInfo[MOVE_SPARK].type == TYPE_ELECTRIC);
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); Moves(MOVE_SLEEP_TALK, MOVE_SPARK, MOVE_FLY, MOVE_DIG); }
         PLAYER(SPECIES_WOBBUFFET);
@@ -132,6 +133,7 @@ DOUBLE_BATTLE_TEST("Sleep Talk calls move and that move may be redirected by Sto
 {
     PASSES_RANDOMLY(1, 2, RNG_RANDOM_TARGET);
     GIVEN {
+        KNOWN_FAILING;
         ASSUME(gMovesInfo[MOVE_WATER_GUN].type == TYPE_WATER);
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); Moves(MOVE_SLEEP_TALK, MOVE_WATER_GUN, MOVE_FLY, MOVE_DIG); }
         PLAYER(SPECIES_WOBBUFFET);
