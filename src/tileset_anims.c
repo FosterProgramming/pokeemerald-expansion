@@ -1186,3 +1186,37 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
             sSecondaryTilesetAnimCallback = NULL;
     }
 }
+
+// ### src/tileset_anims.c ###
+// Our custom animation code:
+
+const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/00.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/01.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/02.4bpp");
+
+const u16 *const gTilesetAnims_GeneralSeelVersion_Flower[] = {
+    gTilesetAnims_GeneralSeelVersion_Flower_Frame0,
+    gTilesetAnims_GeneralSeelVersion_Flower_Frame1,
+    gTilesetAnims_GeneralSeelVersion_Flower_Frame0,
+    gTilesetAnims_GeneralSeelVersion_Flower_Frame2
+};
+
+static void QueueAnimTiles_GeneralSeelVersion_Flower(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_GeneralSeelVersion_Flower);
+    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(29)), 4 * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_GeneralSeelVersion(u16 timer)
+{
+    if (timer % 16 == 0) {
+        QueueAnimTiles_GeneralSeelVersion_Flower(timer / 16);
+    }
+}
+
+void InitTilesetAnim_GeneralSeelVersion(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_GeneralSeelVersion;
+}

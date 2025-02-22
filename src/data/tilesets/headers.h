@@ -856,7 +856,7 @@ const struct Tileset gTileset_GeneralSeelVersion =
     .palettes = gTilesetPalettes_GeneralSeelVersion,
     .metatiles = gMetatiles_GeneralSeelVersion,
     .metatileAttributes = gMetatileAttributes_GeneralSeelVersion,
-    .callback = NULL,
+    .callback = InitTilesetAnim_GeneralSeelVersion,
 };
 
 const struct Tileset gTileset_VerdantHallow =
