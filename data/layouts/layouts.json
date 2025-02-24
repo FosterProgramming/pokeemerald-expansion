@@ -4676,7 +4676,7 @@
       "name": "Route12A_Layout",
       "width": 80,
       "height": 80,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route12A/border.bin",
       "blockdata_filepath": "data/layouts/Route12A/map.bin"
