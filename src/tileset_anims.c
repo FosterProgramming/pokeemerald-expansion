@@ -1204,14 +1204,42 @@ const u16 *const gTilesetAnims_GeneralSeelVersion_Flower[] = {
 static void QueueAnimTiles_GeneralSeelVersion_Flower(u16 timer)
 {
     u16 i = timer % ARRAY_COUNT(gTilesetAnims_GeneralSeelVersion_Flower);
-    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(29)), 4 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(59)), 4 * TILE_SIZE_4BPP);
+}
+
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame0[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/0.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame1[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/1.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame2[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/2.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame3[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/3.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame4[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/4.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame5[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/5.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame6[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/6.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Water_Frame7[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/water/7.4bpp");
+
+const u16 *const gTilesetAnims_GeneralSeelVersion_Water[] = {
+    gTilesetAnims_GeneralSeelVersion_Water_Frame0,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame1,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame2,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame3,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame4,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame5,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame6,
+    gTilesetAnims_GeneralSeelVersion_Water_Frame7
+};
+
+
+static void QueueAnimTiles_GeneralSeelVersion_Water(u16 timer)
+{
+    u8 i = timer % ARRAY_COUNT(gTilesetAnims_General_Water);
+    AppendTilesetAnimToBuffer(gTilesetAnims_General_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(5)), 30 * TILE_SIZE_4BPP);
 }
 
 static void TilesetAnim_GeneralSeelVersion(u16 timer)
 {
-    if (timer % 16 == 0) {
+    if (timer % 16 == 0)
         QueueAnimTiles_GeneralSeelVersion_Flower(timer / 16);
-    }
+    if (timer % 16 == 1)
+        QueueAnimTiles_GeneralSeelVersion_Water(timer / 16);
 }
 
 void InitTilesetAnim_GeneralSeelVersion(void)
