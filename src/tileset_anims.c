@@ -1190,9 +1190,9 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
 // ### src/tileset_anims.c ###
 // Our custom animation code:
 
-const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/00.4bpp");
-const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/01.4bpp");
-const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/02.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/0.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/1.4bpp");
+const u16 gTilesetAnims_GeneralSeelVersion_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/general_seel_version/anim/flower_blue/2.4bpp");
 
 const u16 *const gTilesetAnims_GeneralSeelVersion_Flower[] = {
     gTilesetAnims_GeneralSeelVersion_Flower_Frame0,
@@ -1231,7 +1231,7 @@ const u16 *const gTilesetAnims_GeneralSeelVersion_Water[] = {
 static void QueueAnimTiles_GeneralSeelVersion_Water(u16 timer)
 {
     u8 i = timer % ARRAY_COUNT(gTilesetAnims_GeneralSeelVersion_Water);
-    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(5)), 42 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(5)), 108 * TILE_SIZE_4BPP);
 }
 
 static void TilesetAnim_GeneralSeelVersion(u16 timer)

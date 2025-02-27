@@ -4626,7 +4626,7 @@
       "name": "Route9_Layout",
       "width": 128,
       "height": 20,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route9/border.bin",
       "blockdata_filepath": "data/layouts/Route9/map.bin"
