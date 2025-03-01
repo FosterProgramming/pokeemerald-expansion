@@ -4674,7 +4674,7 @@
     {
       "id": "LAYOUT_ROUTE12A",
       "name": "Route12A_Layout",
-      "width": 80,
+      "width": 90,
       "height": 80,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
