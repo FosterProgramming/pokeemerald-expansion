@@ -880,3 +880,14 @@ const struct Tileset gTileset_MurkwellBog =
     .metatileAttributes = gMetatileAttributes_MurkwellBog,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Pyroden =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Pyroden,
+    .palettes = gTilesetPalettes_Pyroden,
+    .metatiles = gMetatiles_Pyroden,
+    .metatileAttributes = gMetatileAttributes_Pyroden,
+    .callback = NULL,
+};

@@ -1729,3 +1729,22 @@ const u16 gTilesetPalettes_MurkwellBog[][16] =
 };
 
 const u32 gTilesetTiles_MurkwellBog[] = INCBIN_U32("data/tilesets/secondary/murkwell_bog/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Pyroden[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pyroden/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Pyroden[] = INCBIN_U32("data/tilesets/secondary/pyroden/tiles.4bpp.lz");

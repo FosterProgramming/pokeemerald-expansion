@@ -222,3 +222,6 @@ const u16 gMetatileAttributes_VerdantHallow[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_MurkwellBog[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/metatiles.bin");
 const u16 gMetatileAttributes_MurkwellBog[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/metatile_attributes.bin");
+
+const u16 gMetatiles_Pyroden[] = INCBIN_U16("data/tilesets/secondary/pyroden/metatiles.bin");
+const u16 gMetatileAttributes_Pyroden[] = INCBIN_U16("data/tilesets/secondary/pyroden/metatile_attributes.bin");
