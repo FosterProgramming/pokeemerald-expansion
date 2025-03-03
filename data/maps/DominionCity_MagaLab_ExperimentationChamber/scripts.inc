@@ -1,0 +1,2 @@
+DominionCity_MagaLab_ExperimentationChamber_MapScripts::
+	.byte 0

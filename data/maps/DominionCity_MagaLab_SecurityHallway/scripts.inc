@@ -1,0 +1,2 @@
+DominionCity_MagaLab_SecurityHallway_MapScripts::
+	.byte 0

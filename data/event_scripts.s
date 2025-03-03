@@ -1238,3 +1238,15 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route4A/scripts.inc"
 
 	.include "data/maps/Route8A/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_HoldingCells/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_Vents/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_ResearchWing/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_Entrance/scripts.inc"

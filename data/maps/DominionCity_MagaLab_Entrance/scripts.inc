@@ -1,0 +1,2 @@
+DominionCity_MagaLab_Entrance_MapScripts::
+	.byte 0

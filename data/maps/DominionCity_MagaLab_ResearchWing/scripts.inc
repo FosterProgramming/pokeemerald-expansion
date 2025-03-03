@@ -1,0 +1,2 @@
+DominionCity_MagaLab_ResearchWing_MapScripts::
+	.byte 0

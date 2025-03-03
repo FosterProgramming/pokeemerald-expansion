@@ -1,0 +1,2 @@
+DominionCity_MagaLab_HoldingCells_MapScripts::
+	.byte 0
