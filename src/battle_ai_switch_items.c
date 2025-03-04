@@ -853,7 +853,8 @@ static bool32 ShouldSwitchIfBadChoiceLock(u32 battler)
 {
     u32 holdEffect = GetBattlerHoldEffect(battler, FALSE);
 
-    if (HOLD_EFFECT_CHOICE(holdEffect) && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_KLUTZ))
+
+    if (BATTLER_IS_HOLDING_CHOICE_ITEM(battler) && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_KLUTZ))
     {
         if (gMovesInfo[gLastUsedMove].category == DAMAGE_CATEGORY_STATUS)
             return SetSwitchinAndSwitch(battler, PARTY_SIZE);
@@ -1438,6 +1439,7 @@ static u32 GetSwitchinRecurringDamage(void)
 {
     u32 passiveDamage = 0, maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, ability = AI_DATA->switchinCandidate.battleMon.ability, species = AI_DATA->switchinCandidate.battleMon.species, personality = AI_DATA->switchinCandidate.battleMon.personality;
     u32 holdEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
+    u8 battler = 0; //Placeholder
 
     // Items
     if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))
@@ -1448,7 +1450,7 @@ static u32 GetSwitchinRecurringDamage(void)
             if (passiveDamage == 0)
                 passiveDamage = 1;
         }
-        else if (holdEffect == HOLD_EFFECT_LIFE_ORB && (ability != ABILITY_SHEER_FORCE && !SpeciesHasInnate(species, ABILITY_SHEER_FORCE, personality, TRUE)))
+        else if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LIFE_ORB, TRUE) && (ability != ABILITY_SHEER_FORCE && !SpeciesHasInnate(species, ABILITY_SHEER_FORCE, personality, TRUE)))
         {
             passiveDamage = maxHP / 10;
             if (passiveDamage == 0)

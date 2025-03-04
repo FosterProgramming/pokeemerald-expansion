@@ -82,6 +82,9 @@ enum {
     MENU_CANCEL1,
     MENU_ITEM,
     MENU_GIVE,
+    MENU_GIVE_2,
+    MENU_GIVE_3,
+    MENU_GIVE_4,
     MENU_TAKE_ITEM,
     MENU_MAIL,
     MENU_TAKE_MAIL,
@@ -1978,9 +1981,9 @@ static void GiveItemToMon(struct Pokemon *mon, u16 item)
     TryItemHoldFormChange(&gPlayerParty[gPartyMenu.slotId]);
 }
 
-static u8 TryTakeMonItem(struct Pokemon *mon)
+static u8 TryTakeMonItem(struct Pokemon *mon, u8 slot)
 {
-    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
+    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM + slot);
 
     if (item == ITEM_NONE)
         return 0;
@@ -1988,7 +1991,7 @@ static u8 TryTakeMonItem(struct Pokemon *mon)
         return 1;
 
     item = ITEM_NONE;
-    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+    SetMonData(mon, MON_DATA_HELD_ITEM + slot, &item);
     TryItemHoldFormChange(&gPlayerParty[gPartyMenu.slotId]);
     return 2;
 }
@@ -2694,12 +2697,15 @@ static bool8 ShouldUseChooseMonText(void)
     return FALSE;
 }
 
+const u8 sText_DisplaySelectionWindow_Take[] = _("Take {STR_VAR_1}");
+const u8 sText_DisplaySelectionWindow_Give[] = _("Give Item {STR_VAR_1}");
+
 static u8 DisplaySelectionWindow(u8 windowType)
 {
     struct WindowTemplate window;
     u8 cursorDimension;
     u8 letterSpacing;
-    u8 i;
+    u8 i, font;
 
     switch (windowType)
     {
@@ -2734,12 +2740,29 @@ static u8 DisplaySelectionWindow(u8 windowType)
     {
         const u8 *text;
         u8 fontColorsId = (sPartyMenuInternal->actions[i] >= MENU_FIELD_MOVES) ? 4 : 3;
+        font = FONT_NORMAL;
         if (sPartyMenuInternal->actions[i] >= MENU_FIELD_MOVES)
             text = gMovesInfo[sFieldMoves[sPartyMenuInternal->actions[i] - MENU_FIELD_MOVES]].name;
+        else if(sPartyMenuInternal->actions[i] == MENU_GIVE || sPartyMenuInternal->actions[i] == MENU_GIVE_2 || sPartyMenuInternal->actions[i] == MENU_GIVE_3 || sPartyMenuInternal->actions[i] == MENU_GIVE_4){
+            u8 slot = sPartyMenuInternal->actions[i] - MENU_GIVE;
+            u16 item = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM + slot);
+
+            font = FONT_SMALL_NARROW;
+            if(item == ITEM_NONE){
+	            ConvertIntToDecimalStringN(gStringVar1, slot + 1, STR_CONV_MODE_RIGHT_ALIGN, 1);
+	            StringExpandPlaceholders(gStringVar4, sText_DisplaySelectionWindow_Give);
+	            text = gStringVar4;
+            }
+            else{
+	            StringCopy(gStringVar1, gItemsInfo[item].name);
+	            StringExpandPlaceholders(gStringVar4, sText_DisplaySelectionWindow_Take);
+	            text = gStringVar4;
+            }
+        }
         else
             text = sCursorOptions[sPartyMenuInternal->actions[i]].text;
 
-        AddTextPrinterParameterized4(sPartyMenuInternal->windowId[0], FONT_NORMAL, cursorDimension, (i * 16) + 1, letterSpacing, 0, sFontColorTable[fontColorsId], 0, text);
+        AddTextPrinterParameterized4(sPartyMenuInternal->windowId[0], font, cursorDimension, (i * 16) + 1, letterSpacing, 0, sFontColorTable[fontColorsId], 0, text);
     }
 
     InitMenuInUpperLeftCorner(sPartyMenuInternal->windowId[0], sPartyMenuInternal->numActions, 0, TRUE);
@@ -3270,6 +3293,8 @@ static void CursorCb_Item(u8 taskId)
     PlaySE(SE_SELECT);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    //MGBA
+    //DebugPrintf("gPartyMenu.slotId: %d", sPartyMenuActionCounts[ACTIONS_ITEM]);
     SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, ACTIONS_ITEM);
     DisplaySelectionWindow(SELECTWINDOW_ITEM);
     DisplayPartyMenuStdMessage(PARTY_MSG_DO_WHAT_WITH_ITEM);
@@ -3277,9 +3302,8 @@ static void CursorCb_Item(u8 taskId)
     gTasks[taskId].func = Task_HandleSelectionMenuInput;
 }
 
-static void GiveItemToMonInEmptySlot(struct Pokemon *mon, u16 item)
+static void GiveItemToMonInEmptySlot(struct Pokemon *mon, u16 item, u8 slot)
 {
-    u8 emptySlot = GetNumOfHeldItems(mon);
     u8 itemBytes[2];
 
     if (ItemIsMail(item) == TRUE)
@@ -3289,15 +3313,58 @@ static void GiveItemToMonInEmptySlot(struct Pokemon *mon, u16 item)
     }
     itemBytes[0] = item;
     itemBytes[1] = item >> 8;
-    SetMonData(mon, MON_DATA_HELD_ITEM + emptySlot, itemBytes);
+    SetMonData(mon, MON_DATA_HELD_ITEM + slot, itemBytes);
     TryItemHoldFormChange(&gPlayerParty[gPartyMenu.slotId]);
+}
+
+static bool8 CheckIfHasItem(u16 item){
+    u8 i;
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+
+    for(i = 0; i < MAX_HELD_ITEMS; i++){
+        u16 slotItem = GetMonData(mon, MON_DATA_HELD_ITEM + i);
+
+        if(slotItem == item)
+            return TRUE;
+    }
+
+    return FALSE;
 }
 
 static void CursorCb_Give(u8 taskId)
 {
-    PlaySE(SE_SELECT);
-    sPartyMenuInternal->exitCallback = CB2_SelectBagItemToGive;
-    Task_ClosePartyMenu(taskId);
+    u8 slot = Menu_GetCursorPos();
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM + slot);
+    //DebugPrintf("CursorCb_Give item: %d", item);
+
+    if(item == ITEM_NONE){
+        PlaySE(SE_SELECT);
+        sPartyMenuInternal->exitCallback = CB2_SelectBagItemToGive;
+        Task_ClosePartyMenu(taskId);
+    }
+    else{
+        PlaySE(SE_SELECT);
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+        switch (TryTakeMonItem(mon, slot))
+        {
+        case 0: // Not holding item
+            GetMonNickname(mon, gStringVar1);
+            StringExpandPlaceholders(gStringVar4, gText_PkmnNotHolding);
+            DisplayPartyMenuMessage(gStringVar4, TRUE);
+            break;
+        case 1: // No room to take item
+            BufferBagFullCantTakeItemMessage(item);
+            DisplayPartyMenuMessage(gStringVar4, TRUE);
+            break;
+        default: // Took item
+            DisplayTookHeldItemMessage(mon, item, TRUE);
+            break;
+        }
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = Task_UpdateHeldItemSprite;
+    }
 }
 
 static void CB2_SelectBagItemToGive(void)
@@ -3316,12 +3383,13 @@ static void CB2_GiveHoldItem(void)
     }
     else
     {
-        u8 emptySlot = GetNumOfHeldItems(&gPlayerParty[gPartyMenu.slotId]);
+        u8 slot = Menu_GetCursorPos();
         
-        sPartyMenuItemId = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM);
-
-        // Already holding item
-        if (emptySlot == MAX_HELD_ITEMS)
+        if(CheckIfHasItem(gSpecialVar_ItemId))//To avoid having the same item twice - Placeholder
+        {
+            InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_NONE, Task_TryCreateSelectionWindow, gPartyMenu.exitCallback);
+        }
+        else if (slot == MAX_HELD_ITEMS) // Already holding item
         {
             InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_NONE, Task_SwitchHoldItemsPrompt, gPartyMenu.exitCallback);
         }
@@ -3329,7 +3397,7 @@ static void CB2_GiveHoldItem(void)
         else if (ItemIsMail(gSpecialVar_ItemId))
         {
             RemoveBagItem(gSpecialVar_ItemId, 1);
-            GiveItemToMonInEmptySlot(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId);
+            GiveItemToMonInEmptySlot(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, slot);
             CB2_WriteMailToGiveMon();
         }
         // Give item
@@ -3343,12 +3411,15 @@ static void CB2_GiveHoldItem(void)
 static void Task_GiveHoldItem(u8 taskId)
 {
     u16 item;
+    u8 slot = Menu_GetCursorPos();
+
+    //DebugPrintf("Task_GiveHoldItem slotId: %d", slot);
 
     if (!gPaletteFade.active)
     {
         item = gSpecialVar_ItemId;
         DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId], item, FALSE, 0);
-        GiveItemToMonInEmptySlot(&gPlayerParty[gPartyMenu.slotId], item);
+        GiveItemToMonInEmptySlot(&gPlayerParty[gPartyMenu.slotId], item, slot);
         RemoveBagItem(item, 1);
         gTasks[taskId].func = Task_UpdateHeldItemSprite;
     }
@@ -3486,11 +3557,12 @@ static void CursorCb_TakeItem(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
+    u8 slot = Menu_GetCursorPos();
 
     PlaySE(SE_SELECT);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    switch (TryTakeMonItem(mon))
+    switch (TryTakeMonItem(mon, slot))
     {
     case 0: // Not holding item
         GetMonNickname(mon, gStringVar1);

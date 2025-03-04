@@ -32,7 +32,7 @@ enum ItemHoldEffect
     HOLD_EFFECT_QUICK_CLAW,     //Working
     HOLD_EFFECT_FRIENDSHIP_UP,  //Working
     HOLD_EFFECT_MENTAL_HERB,
-    HOLD_EFFECT_CHOICE_BAND,
+    HOLD_EFFECT_CHOICE_BAND,    //Working
     HOLD_EFFECT_FLINCH,
     HOLD_EFFECT_BUG_POWER,
     HOLD_EFFECT_DOUBLE_PRIZE,   //Working
@@ -71,8 +71,8 @@ enum ItemHoldEffect
     HOLD_EFFECT_THICK_CLUB,    //Working
     HOLD_EFFECT_LEEK,          //Working
     // Gen4 hold effects.
-    HOLD_EFFECT_CHOICE_SCARF,
-    HOLD_EFFECT_CHOICE_SPECS,
+    HOLD_EFFECT_CHOICE_SCARF,  //Working
+    HOLD_EFFECT_CHOICE_SPECS,  //Working
     HOLD_EFFECT_DAMP_ROCK,
     HOLD_EFFECT_GRIP_CLAW,
     HOLD_EFFECT_HEAT_ROCK,
@@ -82,7 +82,7 @@ enum ItemHoldEffect
     HOLD_EFFECT_POWER_HERB,
     HOLD_EFFECT_BIG_ROOT,
     HOLD_EFFECT_EXPERT_BELT,
-    HOLD_EFFECT_LIFE_ORB,
+    HOLD_EFFECT_LIFE_ORB,      //Working
     HOLD_EFFECT_METRONOME,
     HOLD_EFFECT_MUSCLE_BAND,
     HOLD_EFFECT_WIDE_LENS,
@@ -162,6 +162,8 @@ enum ItemHoldEffect
 };
 
 #define HOLD_EFFECT_CHOICE(holdEffect) ((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_CHOICE_SPECS))
+
+#define BATTLER_IS_HOLDING_CHOICE_ITEM(battler) (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CHOICE_BAND, TRUE) || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CHOICE_SCARF, TRUE) || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CHOICE_SPECS, TRUE))
 
 // Terrain seed params
 #define HOLD_EFFECT_PARAM_ELECTRIC_TERRAIN  0

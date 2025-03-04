@@ -2552,7 +2552,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     } // move effect checks
 
     // Choice items
-    if (HOLD_EFFECT_CHOICE(aiData->holdEffects[battlerAtk]) && !BattlerHasTrait(battlerAtk, ABILITY_KLUTZ))
+    if (BATTLER_IS_HOLDING_CHOICE_ITEM(battlerAtk) && !BattlerHasTrait(battlerAtk, ABILITY_KLUTZ))
     {
         // Don't use user-target moves ie. Swords Dance, with exceptions
         if ((moveTarget & MOVE_TARGET_USER)
@@ -3865,7 +3865,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_TRICK:
-    case EFFECT_BESTOW:
+    case EFFECT_BESTOW: //ToDo
         switch (aiData->holdEffects[battlerAtk])
         {
         case HOLD_EFFECT_CHOICE_SCARF:

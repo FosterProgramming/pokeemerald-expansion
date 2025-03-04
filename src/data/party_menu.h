@@ -443,7 +443,7 @@ static const struct WindowTemplate sDoWhatWithItemMsgWindowTemplate =
     .bg = 2,
     .tilemapLeft = 1,
     .tilemapTop = 17,
-    .width = 20,
+    .width = 14,
     .height = 2,
     .paletteNum = 15,
     .baseBlock = 0x299,
@@ -496,12 +496,12 @@ static const struct WindowTemplate sOrderWhichApplianceMsgWindowTemplate =
 static const struct WindowTemplate sItemGiveTakeWindowTemplate =
 {
     .bg = 2,
-    .tilemapLeft = 23,
-    .tilemapTop = 13,
-    .width = 6,
-    .height = 6,
+    .tilemapLeft = 17,
+    .tilemapTop = 9,
+    .width = 12,
+    .height = 10,
     .paletteNum = 14,
-    .baseBlock = 0x39D,
+    .baseBlock = 0x340,
 };
 
 static const struct WindowTemplate sMailReadTakeWindowTemplate =
@@ -692,52 +692,53 @@ struct
     TaskFunc func;
 } static const sCursorOptions[MENU_FIELD_MOVES] =
 {
-    [MENU_SUMMARY] = {gText_Summary5, CursorCb_Summary},
-    [MENU_SWITCH] = {gText_Switch2, CursorCb_Switch},
-    [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},
-    [MENU_ITEM] = {gText_Item, CursorCb_Item},
-    [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
-    [MENU_TAKE_ITEM] = {gText_Take, CursorCb_TakeItem},
-    [MENU_MAIL] = {gText_Mail, CursorCb_Mail},
-    [MENU_TAKE_MAIL] = {gText_Take2, CursorCb_TakeMail},
-    [MENU_READ] = {gText_Read2, CursorCb_Read},
-    [MENU_CANCEL2] = {gText_Cancel2, CursorCb_Cancel2},
-    [MENU_SHIFT] = {gText_Shift, CursorCb_SendMon},
-    [MENU_SEND_OUT] = {gText_SendOut, CursorCb_SendMon},
-    [MENU_ENTER] = {gText_Enter, CursorCb_Enter},
-    [MENU_NO_ENTRY] = {gText_NoEntry, CursorCb_NoEntry},
-    [MENU_STORE] = {gText_Store, CursorCb_Store},
-    [MENU_REGISTER] = {gText_Register, CursorCb_Register},
-    [MENU_TRADE1] = {gText_Trade4, CursorCb_Trade1},
-    [MENU_TRADE2] = {gText_Trade4, CursorCb_Trade2},
-    [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
-    [MENU_CATALOG_BULB] = {gText_LightBulb, CursorCb_CatalogBulb},
-    [MENU_CATALOG_OVEN] = {gText_MicrowaveOven, CursorCb_CatalogOven},
+    [MENU_SUMMARY]         = {gText_Summary5, CursorCb_Summary},
+    [MENU_SWITCH]          = {gText_Switch2, CursorCb_Switch},
+    [MENU_CANCEL1]         = {gText_Cancel2, CursorCb_Cancel1},
+    [MENU_ITEM]            = {gText_Item, CursorCb_Item},
+    [MENU_GIVE]            = {gMenuText_Give, CursorCb_Give},
+    [MENU_GIVE_2]          = {gMenuText_Give, CursorCb_Give},
+    [MENU_GIVE_3]          = {gMenuText_Give, CursorCb_Give},
+    [MENU_GIVE_4]          = {gMenuText_Give, CursorCb_Give},
+    [MENU_TAKE_ITEM]       = {gText_Take, CursorCb_TakeItem},
+    [MENU_MAIL]            = {gText_Mail, CursorCb_Mail},
+    [MENU_TAKE_MAIL]       = {gText_Take2, CursorCb_TakeMail},
+    [MENU_READ]            = {gText_Read2, CursorCb_Read},
+    [MENU_CANCEL2]         = {gText_Cancel2, CursorCb_Cancel2},
+    [MENU_SHIFT]           = {gText_Shift, CursorCb_SendMon},
+    [MENU_SEND_OUT]        = {gText_SendOut, CursorCb_SendMon},
+    [MENU_ENTER]           = {gText_Enter, CursorCb_Enter},
+    [MENU_NO_ENTRY]        = {gText_NoEntry, CursorCb_NoEntry},
+    [MENU_STORE]           = {gText_Store, CursorCb_Store},
+    [MENU_REGISTER]        = {gText_Register, CursorCb_Register},
+    [MENU_TRADE1]          = {gText_Trade4, CursorCb_Trade1},
+    [MENU_TRADE2]          = {gText_Trade4, CursorCb_Trade2},
+    [MENU_TOSS]            = {gMenuText_Toss, CursorCb_Toss},
+    [MENU_CATALOG_BULB]    = {gText_LightBulb, CursorCb_CatalogBulb},
+    [MENU_CATALOG_OVEN]    = {gText_MicrowaveOven, CursorCb_CatalogOven},
     [MENU_CATALOG_WASHING] = {gText_WashingMachine, CursorCb_CatalogWashing},
-    [MENU_CATALOG_FRIDGE] = {gText_Refrigerator, CursorCb_CatalogFridge},
-    [MENU_CATALOG_FAN] = {gText_ElectricFan, CursorCb_CatalogFan},
-    [MENU_CATALOG_MOWER] = {gText_LawnMower, CursorCb_CatalogMower},
-    [MENU_CHANGE_FORM] = {gText_ChangeForm, CursorCb_ChangeForm},
-    [MENU_CHANGE_ABILITY] = {gText_ChangeAbility, CursorCb_ChangeAbility},
+    [MENU_CATALOG_FRIDGE]  = {gText_Refrigerator, CursorCb_CatalogFridge},
+    [MENU_CATALOG_FAN]     = {gText_ElectricFan, CursorCb_CatalogFan},
+    [MENU_CATALOG_MOWER]   = {gText_LawnMower, CursorCb_CatalogMower},
+    [MENU_CHANGE_FORM]     = {gText_ChangeForm, CursorCb_ChangeForm},
+    [MENU_CHANGE_ABILITY]  = {gText_ChangeAbility, CursorCb_ChangeAbility},
 };
 
-static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
-static const u8 sPartyMenuAction_ShiftSummaryCancel[] = {MENU_SHIFT, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_SendOutSummaryCancel[] = {MENU_SEND_OUT, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_SummaryCancel[] = {MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_EnterSummaryCancel[] = {MENU_ENTER, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_NoEntrySummaryCancel[] = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_StoreSummaryCancel[] = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_GiveTakeItemCancel[] = {MENU_GIVE, MENU_TAKE_ITEM, MENU_CANCEL2};
-static const u8 sPartyMenuAction_ReadTakeMailCancel[] = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL2};
+static const u8 sPartyMenuAction_SummarySwitchCancel[]   = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
+static const u8 sPartyMenuAction_ShiftSummaryCancel[]    = {MENU_SHIFT, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_SendOutSummaryCancel[]  = {MENU_SEND_OUT, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_SummaryCancel[]         = {MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_EnterSummaryCancel[]    = {MENU_ENTER, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_NoEntrySummaryCancel[]  = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_StoreSummaryCancel[]    = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_GiveTakeItemCancel[]    = {MENU_GIVE, MENU_GIVE_2, MENU_GIVE_3, MENU_GIVE_4, MENU_CANCEL2};
+static const u8 sPartyMenuAction_ReadTakeMailCancel[]    = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL2};
 static const u8 sPartyMenuAction_RegisterSummaryCancel[] = {MENU_REGISTER, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TradeSummaryCancel1[] = {MENU_TRADE1, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
-static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
-static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
-
-
+static const u8 sPartyMenuAction_TradeSummaryCancel1[]   = {MENU_TRADE1, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_TradeSummaryCancel2[]   = {MENU_TRADE2, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_TakeItemTossCancel[]    = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
+static const u8 sPartyMenuAction_RotomCatalog[]          = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
+static const u8 sPartyMenuAction_ZygardeCube[]           = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
 
 static const u8 *const sPartyMenuActions[] =
 {

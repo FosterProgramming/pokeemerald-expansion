@@ -6003,7 +6003,7 @@ static void Cmd_moveend(void)
             {
                 u16 *choicedMoveAtk = &gBattleStruct->choicedMove[gBattlerAttacker];
                 if (gHitMarker & HITMARKER_OBEYS
-                 && (HOLD_EFFECT_CHOICE(holdEffectAtk) || BattlerHasTrait(gBattlerAttacker, ABILITY_GORILLA_TACTICS))
+                 && (BATTLER_IS_HOLDING_CHOICE_ITEM(gBattlerAttacker) || BattlerHasTrait(gBattlerAttacker, ABILITY_GORILLA_TACTICS))
                  && gChosenMove != MOVE_STRUGGLE
                  && (*choicedMoveAtk == MOVE_NONE || *choicedMoveAtk == MOVE_UNAVAILABLE))
                 {
