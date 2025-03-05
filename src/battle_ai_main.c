@@ -2474,7 +2474,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_SYNCHRONOISE:
             //Check holding ring target or is of same type
-            if (aiData->holdEffects[battlerDef] == HOLD_EFFECT_RING_TARGET
+            if (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_RING_TARGET, TRUE)
               || DoBattlersShareType(battlerAtk, battlerDef))
                 break;
             else

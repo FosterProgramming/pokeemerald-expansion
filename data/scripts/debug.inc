@@ -8,6 +8,81 @@ Debug_ShowFieldMessageStringVar4::
 	special ShowFieldMessageStringVar4
 	goto Debug_MessageEnd
 
+	
+Debug_CheatGiveHeldItems::
+	giveitem ITEM_CHOICE_BAND, 5
+	giveitem ITEM_CHOICE_SPECS, 5
+	giveitem ITEM_LIFE_ORB, 5
+	giveitem ITEM_EXPERT_BELT, 5
+	giveitem ITEM_MUSCLE_BAND, 5
+	giveitem ITEM_WISE_GLASSES, 5
+	giveitem ITEM_METRONOME, 5
+	giveitem ITEM_LOADED_DICE, 5
+	giveitem ITEM_SCOPE_LENS, 5
+	giveitem ITEM_RAZOR_CLAW, 5
+	giveitem ITEM_KINGS_ROCK, 5
+	giveitem ITEM_ROCKY_HELMET, 5
+	giveitem ITEM_FOCUS_SASH, 5
+	giveitem ITEM_ASSAULT_VEST, 5
+	giveitem ITEM_EVIOLITE, 5
+	giveitem ITEM_WEAKNESS_POLICY 5
+	giveitem ITEM_AIR_BALLOON, 5
+	giveitem ITEM_LIGHT_CLAY, 5
+	giveitem ITEM_SAFETY_GOGGLES, 5
+	giveitem ITEM_COVERT_CLOAK, 5
+	giveitem ITEM_MIRROR_HERB, 5
+	giveitem ITEM_LEFTOVERS, 5
+	giveitem ITEM_BLACK_SLUDGE, 5
+	giveitem ITEM_SHELL_BELL, 5
+	giveitem ITEM_SITRUS_BERRY, 5
+	giveitem ITEM_FIGY_BERRY, 5
+	giveitem ITEM_AGUAV_BERRY, 5
+	giveitem ITEM_IAPAPA_BERRY, 5
+	giveitem ITEM_QUICK_CLAW, 5
+	giveitem ITEM_BRIGHT_POWDER, 5
+	giveitem ITEM_LUMINOUS_MOSS, 5
+	giveitem ITEM_SNOWBALL, 5
+	giveitem ITEM_RED_CARD, 5
+	giveitem ITEM_EJECT_BUTTON, 5
+	giveitem ITEM_EJECT_PACK, 5
+	giveitem ITEM_IRON_BALL, 5
+	giveitem ITEM_LAGGING_TAIL, 5
+	giveitem ITEM_DESTINY_KNOT, 5
+	giveitem ITEM_CHARCOAL, 5
+	giveitem ITEM_MYSTIC_WATER, 5
+	giveitem ITEM_MAGNET, 5
+	giveitem ITEM_MIRACLE_SEED, 5
+	giveitem ITEM_SOFT_SAND, 5
+	giveitem ITEM_NEVER_MELT_ICE, 5
+	giveitem ITEM_BLACK_BELT, 5
+	giveitem ITEM_TWISTED_SPOON, 5
+	giveitem ITEM_DRAGON_FANG, 5
+	giveitem ITEM_SPELL_TAG, 5
+	giveitem ITEM_POISON_BARB, 5
+	giveitem ITEM_SILVER_POWDER, 5
+	giveitem ITEM_HARD_STONE, 5
+	giveitem ITEM_SHARP_BEAK, 5
+	giveitem ITEM_METAL_COAT, 5
+	giveitem ITEM_BLACK_GLASSES, 5
+	giveitem ITEM_SILK_SCARF, 5
+	giveitem ITEM_FAIRY_FEATHER, 5
+	giveitem ITEM_LUM_BERRY, 5
+	giveitem ITEM_CHESTO_BERRY, 5
+	giveitem ITEM_PECHA_BERRY, 5
+	giveitem ITEM_RAWST_BERRY, 5
+	giveitem ITEM_ASPEAR_BERRY, 5
+	giveitem ITEM_PERSIM_BERRY, 5
+	giveitem ITEM_PERSIM_BERRY, 5
+	giveitem ITEM_CHERI_BERRY, 5
+	giveitem ITEM_MENTAL_HERB, 5
+	giveitem ITEM_WHITE_HERB, 5
+	giveitem ITEM_UTILITY_UMBRELLA, 5
+	giveitem ITEM_RING_TARGET, 5
+	giveitem ITEM_WIDE_LENS, 5
+	giveitem ITEM_ZOOM_LENS, 5
+	release
+	end
+
 Debug_CheatStart::
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH

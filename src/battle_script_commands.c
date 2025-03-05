@@ -1601,15 +1601,13 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
             calc = (calc * 110) / 100; // 1.1 ally's victory star boost
 
     // Attacker's hold effect
-    switch (atkHoldEffect)
-    {
-    case HOLD_EFFECT_WIDE_LENS:
-        calc = (calc * (100 + atkParam)) / 100;
-        break;
-    case HOLD_EFFECT_ZOOM_LENS:
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_ZOOM_LENS, TRUE)){
         if (GetBattlerTurnOrderNum(battlerAtk) > GetBattlerTurnOrderNum(battlerDef))
             calc = (calc * (100 + atkParam)) / 100;
-        break;
+    }
+
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_WIDE_LENS, TRUE)){
+        calc = (calc * (100 + atkParam)) / 100;
     }
 
     // Target's hold effect
