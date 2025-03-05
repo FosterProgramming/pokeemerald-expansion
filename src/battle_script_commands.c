@@ -1613,12 +1613,8 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     }
 
     // Target's hold effect
-    switch (defHoldEffect)
-    {
-    case HOLD_EFFECT_EVASION_UP:
+    if(BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_EVASION_UP, TRUE))
         calc = (calc * (100 - defParam)) / 100;
-        break;
-    }
 
     if (gBattleStruct->usedMicleBerry & 1u << battlerAtk)
     {
@@ -2126,7 +2122,7 @@ static void Cmd_adjustdamage(void)
         RecordAbilityBattle(gBattlerTarget, ABILITY_STURDY);
         gSpecialStatuses[gBattlerTarget].sturdied = TRUE;
     }
-    else if (holdEffect == HOLD_EFFECT_FOCUS_SASH && BATTLER_MAX_HP(gBattlerTarget))
+    else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE) && BATTLER_MAX_HP(gBattlerTarget))
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
@@ -2963,7 +2959,8 @@ void SetMoveEffect(bool32 primary, bool32 certain)
 
     if (!primary && affectsUser != MOVE_EFFECT_AFFECTS_USER
       && !(gHitMarker & HITMARKER_STATUS_ABILITY_EFFECT)
-      && (BattlerHasTrait(gEffectBattler, ABILITY_SHIELD_DUST) || GetBattlerHoldEffect(gEffectBattler, TRUE) == HOLD_EFFECT_COVERT_CLOAK))
+      && (BattlerHasTrait(gEffectBattler, ABILITY_SHIELD_DUST) || 
+          BattlerHeldItemHasEffect(gEffectBattler, HOLD_EFFECT_COVERT_CLOAK, TRUE)))
     {
         if (BattlerHasTrait(gEffectBattler, ABILITY_SHIELD_DUST))
             RecordAbilityBattle(gEffectBattler, ABILITY_SHIELD_DUST);
@@ -4051,7 +4048,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 if (!(gSideStatuses[side] & SIDE_STATUS_REFLECT))
                 {
                     gSideStatuses[side] |= SIDE_STATUS_REFLECT;
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+                    if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LIGHT_CLAY, TRUE))
                         gSideTimers[side].reflectTimer = 8;
                     else
                         gSideTimers[side].reflectTimer = 5;
@@ -4071,7 +4068,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 if (!(gSideStatuses[side] & SIDE_STATUS_LIGHTSCREEN))
                 {
                     gSideStatuses[side] |= SIDE_STATUS_LIGHTSCREEN;
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+                    if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LIGHT_CLAY, TRUE))
                         gSideTimers[side].lightscreenTimer = 8;
                     else
                         gSideTimers[side].lightscreenTimer = 5;
@@ -4547,7 +4544,7 @@ static bool32 BattleTypeAllowsExp(void)
         return TRUE;
 }
 
-static u32 GetMonHoldEffect(struct Pokemon *mon)
+static UNUSED u32 GetMonHoldEffect(struct Pokemon *mon)
 {
     u32 holdEffect;
     u32 item = GetMonData(mon, MON_DATA_HELD_ITEM);
@@ -4568,7 +4565,6 @@ static void Cmd_getexp(void)
 {
     CMD_ARGS(u8 battler);
 
-    u32 holdEffect;
     s32 i; // also used as stringId
     u8 *expMonId = &gBattleStruct->expGetterMonId;
 
@@ -4673,7 +4669,6 @@ static void Cmd_getexp(void)
         if (gBattleControllerExecFlags == 0)
         {
             bool32 wasSentOut = (gBattleStruct->expSentInMons & (1u << *expMonId)) != 0;
-            holdEffect = GetMonHoldEffect(&gPlayerParty[*expMonId]);
 
             if ((MonItemHasHoldEffect(&gPlayerParty[*expMonId], HOLD_EFFECT_EXP_SHARE) && !wasSentOut && !IsGen6ExpShareEnabled())
              || GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
@@ -5724,7 +5719,6 @@ static void Cmd_moveend(void)
     s32 i;
     bool32 effect = FALSE;
     u32 moveType = 0;
-    u32 holdEffectAtk = 0;
     u32 endMode, endState;
     u32 originallyUsedMove;
 
@@ -5736,7 +5730,6 @@ static void Cmd_moveend(void)
     endMode = cmd->endMode;
     endState = cmd->endState;
 
-    holdEffectAtk = GetBattlerHoldEffect(gBattlerAttacker, TRUE);
     moveType = GetMoveType(gCurrentMove);
 
     do
@@ -10579,7 +10572,7 @@ static void Cmd_various(void)
         else
         {
             gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_AURORA_VEIL;
-            if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+            if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LIGHT_CLAY, TRUE))
                 gSideTimers[GetBattlerSide(battler)].auroraVeilTimer = 8;
             else
                 gSideTimers[GetBattlerSide(battler)].auroraVeilTimer = 5;
@@ -11491,7 +11484,7 @@ static void Cmd_setreflect(void)
     else
     {
         gSideStatuses[GetBattlerSide(gBattlerAttacker)] |= SIDE_STATUS_REFLECT;
-        if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+        if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LIGHT_CLAY, TRUE))
             gSideTimers[GetBattlerSide(gBattlerAttacker)].reflectTimer = 8;
         else
             gSideTimers[GetBattlerSide(gBattlerAttacker)].reflectTimer = 5;
@@ -12565,7 +12558,7 @@ static void Cmd_setlightscreen(void)
     else
     {
         gSideStatuses[GetBattlerSide(gBattlerAttacker)] |= SIDE_STATUS_LIGHTSCREEN;
-        if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+        if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LIGHT_CLAY, TRUE))
             gSideTimers[GetBattlerSide(gBattlerAttacker)].lightscreenTimer = 8;
         else
             gSideTimers[GetBattlerSide(gBattlerAttacker)].lightscreenTimer = 5;
@@ -12604,7 +12597,7 @@ static void Cmd_tryKO(void)
         gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
     }
-    else if (holdEffect == HOLD_EFFECT_FOCUS_SASH && BATTLER_MAX_HP(gBattlerTarget))
+    else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE) && BATTLER_MAX_HP(gBattlerTarget))
     {
         gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
         RecordItemEffectBattle(gBattlerTarget, holdEffect);

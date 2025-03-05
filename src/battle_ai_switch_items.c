@@ -1247,12 +1247,13 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
 
 bool32 IsMonGrounded(u16 heldItemEffect, u32 ability, u8 type1, u8 type2, u16 species, u32 personality)
 {
+    u8 battler = 0;//Placeholder
     // List that makes mon not grounded
     if (type1 == TYPE_FLYING || type2 == TYPE_FLYING || (ability == ABILITY_LEVITATE || SpeciesHasInnate(species, ABILITY_LEVITATE, personality, TRUE))
          || (heldItemEffect == HOLD_EFFECT_AIR_BALLOON && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))))
     {
         // List that overrides being off the ground
-        if ((heldItemEffect == HOLD_EFFECT_IRON_BALL && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))) || (gFieldStatuses & STATUS_FIELD_GRAVITY) || (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM))
+        if ((BattlerHeldItemHasEffect(battler, HOLD_EFFECT_IRON_BALL, TRUE) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))) || (gFieldStatuses & STATUS_FIELD_GRAVITY) || (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM))
             return TRUE;
         else
             return FALSE;
@@ -1325,11 +1326,12 @@ static s32 GetSwitchinWeatherImpact(void)
 {
     s32 weatherImpact = 0, maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, ability = AI_DATA->switchinCandidate.battleMon.ability, species = AI_DATA->switchinCandidate.battleMon.species, personality = AI_DATA->switchinCandidate.battleMon.personality;
     u32 holdEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
+    u8 battler = 0; //ToDo
 
     if (WEATHER_HAS_EFFECT)
     {
         // Damage
-        if (holdEffect != HOLD_EFFECT_SAFETY_GOGGLES && (ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_OVERCOAT && !SpeciesHasInnate(species, ABILITY_OVERCOAT, personality, TRUE)))
+        if (!BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SAFETY_GOGGLES, TRUE) && (ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_OVERCOAT && !SpeciesHasInnate(species, ABILITY_OVERCOAT, personality, TRUE)))
         {
             if ((gBattleWeather & B_WEATHER_HAIL)
              && (AI_DATA->switchinCandidate.battleMon.types[0] != TYPE_ICE || AI_DATA->switchinCandidate.battleMon.types[1] != TYPE_ICE)
@@ -1444,7 +1446,7 @@ static u32 GetSwitchinRecurringDamage(void)
     // Items
     if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))
     {
-        if (holdEffect == HOLD_EFFECT_BLACK_SLUDGE && AI_DATA->switchinCandidate.battleMon.types[0] != TYPE_POISON && AI_DATA->switchinCandidate.battleMon.types[1] != TYPE_POISON)
+        if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_BLACK_SLUDGE, TRUE) && AI_DATA->switchinCandidate.battleMon.types[0] != TYPE_POISON && AI_DATA->switchinCandidate.battleMon.types[1] != TYPE_POISON)
         {
             passiveDamage = maxHP / 8;
             if (passiveDamage == 0)

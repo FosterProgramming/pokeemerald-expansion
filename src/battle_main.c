@@ -4828,7 +4828,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
     // item effects
     if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MACHO_BRACE, TRUE) || holdEffect == HOLD_EFFECT_POWER_ITEM)
         speed /= 2;
-    else if (holdEffect == HOLD_EFFECT_IRON_BALL)
+    else if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_IRON_BALL, TRUE))
         speed /= 2;
     else if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CHOICE_SCARF, TRUE) && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
         speed = (speed * 150) / 100;
@@ -4931,9 +4931,9 @@ s32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
             strikesFirst = 1;
         else if (battler2HasQuickEffect && !battler1HasQuickEffect)
             strikesFirst = -1;
-        else if (holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler2 != HOLD_EFFECT_LAGGING_TAIL)
+        else if (BattlerHeldItemHasEffect(battler1, HOLD_EFFECT_IRON_BALL, TRUE) && !BattlerHeldItemHasEffect(battler2, HOLD_EFFECT_IRON_BALL, TRUE))
             strikesFirst = -1;
-        else if (holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler1 != HOLD_EFFECT_LAGGING_TAIL)
+        else if (BattlerHeldItemHasEffect(battler2, HOLD_EFFECT_IRON_BALL, TRUE) && !BattlerHeldItemHasEffect(battler1, HOLD_EFFECT_IRON_BALL, TRUE))
             strikesFirst = 1;
         else if (battler1HasStallingAbility && !battler2HasStallingAbility)
             strikesFirst = -1;

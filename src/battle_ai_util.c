@@ -342,7 +342,7 @@ bool32 IsAffectedByPowder(u32 battler, u32 ability, u32 holdEffect)
 {
     if (BattlerHasTrait(battler, ABILITY_OVERCOAT)
         || (B_POWDER_GRASS >= GEN_6 && IS_BATTLER_OF_TYPE(battler, TYPE_GRASS))
-        || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES)
+        || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SAFETY_GOGGLES, TRUE))
         return FALSE;
     return TRUE;
 }
@@ -980,7 +980,7 @@ s32 AI_WhichMoveBetter(u32 move1, u32 move2, u32 battlerAtk, u32 battlerDef, s32
 
     // Check if physical moves hurt.
     if (AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_PROTECTIVE_PADS && !AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_LONG_REACH)
-        && (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_ROCKY_HELMET
+        && (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_ROCKY_HELMET, TRUE)
         || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_IRON_BARBS) || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_ROUGH_SKIN)))
     {
         if (gMovesInfo[move1].makesContact && !gMovesInfo[move2].makesContact)
@@ -1103,9 +1103,9 @@ s32 AI_WhoStrikesFirst(u32 battlerAI, u32 battler, u32 moveConsidered)
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAI, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battler, abilityPlayer, holdEffectPlayer);
 
-    if (holdEffectAI == HOLD_EFFECT_LAGGING_TAIL && holdEffectPlayer != HOLD_EFFECT_LAGGING_TAIL)
+    if (BattlerHeldItemHasEffect(battlerAI, HOLD_EFFECT_LAGGING_TAIL, TRUE) && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LAGGING_TAIL, TRUE))
         return AI_IS_SLOWER;
-    else if (holdEffectAI != HOLD_EFFECT_LAGGING_TAIL && holdEffectPlayer == HOLD_EFFECT_LAGGING_TAIL)
+    else if (!BattlerHeldItemHasEffect(battlerAI, HOLD_EFFECT_LAGGING_TAIL, TRUE) && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LAGGING_TAIL, TRUE))
         return AI_IS_FASTER;
 
     if (AI_BATTLER_HAS_TRAIT(battlerAI, ABILITY_STALL) && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_STALL))
@@ -1141,7 +1141,7 @@ static bool32 CanEndureHit(u32 battler, u32 battlerTarget, u32 move)
         return FALSE;
     if (gMovesInfo[move].strikeCount > 1 && !(gMovesInfo[move].effect == EFFECT_DRAGON_DARTS && IsValidDoubleBattle(battlerTarget)))
         return FALSE;
-    if (AI_DATA->holdEffects[battlerTarget] == HOLD_EFFECT_FOCUS_SASH)
+    if (BattlerHeldItemHasEffect(battlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE))
         return TRUE;
 
     if (!DoesBattlerIgnoreAbilityChecks(AI_DATA->abilities[battler], move))
@@ -1553,7 +1553,7 @@ bool32 ShouldTryOHKO(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbil
     gPotentialItemEffectBattler = battlerDef;
     if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < AI_DATA->holdEffectParams[battlerDef])
         return FALSE;   //probabilistically speaking, focus band should activate so dont OHKO
-    else if (holdEffect == HOLD_EFFECT_FOCUS_SASH && AtMaxHp(battlerDef))
+    else if (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_FOCUS_SASH, TRUE) && AtMaxHp(battlerDef))
         return FALSE;
 
     if (!DoesBattlerIgnoreAbilityChecks(atkAbility, move) && AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_STURDY))
@@ -1591,7 +1591,7 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect)
       || AISearchTraits(AIBattlerTraits, ABILITY_SAND_FORCE)
       || AISearchTraits(AIBattlerTraits, ABILITY_OVERCOAT)
       || AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_GUARD)
-      || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
+      || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SAFETY_GOGGLES, TRUE)
       || IS_BATTLER_OF_TYPE(battler, TYPE_ROCK)
       || IS_BATTLER_OF_TYPE(battler, TYPE_STEEL)
       || IS_BATTLER_OF_TYPE(battler, TYPE_GROUND)
@@ -1618,7 +1618,7 @@ bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect)
       || AISearchTraits(AIBattlerTraits, ABILITY_SLUSH_RUSH)
       || AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_GUARD)
       || AISearchTraits(AIBattlerTraits, ABILITY_OVERCOAT)
-      || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
+      || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SAFETY_GOGGLES, TRUE)
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMoveEffect(battler, EFFECT_BLIZZARD)
       || HasMoveEffect(battler, EFFECT_AURORA_VEIL)
@@ -2602,7 +2602,7 @@ static u32 GetWeatherDamage(u32 battlerId)
     {
         if (BattlerAffectedBySandstorm(battlerId, ability)
           && !(gStatuses3[battlerId] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
-          && holdEffect != HOLD_EFFECT_SAFETY_GOGGLES)
+          && BattlerHeldItemHasEffect(battlerId, HOLD_EFFECT_SAFETY_GOGGLES, TRUE))
         {
             damage = GetNonDynamaxMaxHP(battlerId) / 16;
             if (damage == 0)
@@ -2613,7 +2613,7 @@ static u32 GetWeatherDamage(u32 battlerId)
     {
         if (BattlerAffectedByHail(battlerId, ability)
           && !(gStatuses3[battlerId] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
-          && holdEffect != HOLD_EFFECT_SAFETY_GOGGLES)
+          && BattlerHeldItemHasEffect(battlerId, HOLD_EFFECT_SAFETY_GOGGLES, TRUE))
         {
             damage = GetNonDynamaxMaxHP(battlerId) / 16;
             if (damage == 0)
@@ -2723,7 +2723,7 @@ static bool32 PartyBattlerShouldAvoidHazards(u32 currBattler, u32 switchBattler)
 
     if (flags & SIDE_STATUS_SPIKES && ((type1 != TYPE_FLYING && type2 != TYPE_FLYING
         && !(BattlerHasTrait(currBattler, ABILITY_LEVITATE) || BattlerHasTrait(switchBattler, ABILITY_LEVITATE)) && holdEffect != HOLD_EFFECT_AIR_BALLOON)
-        || holdEffect == HOLD_EFFECT_IRON_BALL || gFieldStatuses & STATUS_FIELD_GRAVITY))
+        || BattlerHeldItemHasEffect(currBattler, HOLD_EFFECT_IRON_BALL, TRUE) || gFieldStatuses & STATUS_FIELD_GRAVITY))
     {
         s32 spikesDmg = maxHp / ((5 - gSideTimers[GetBattlerSide(currBattler)].spikesAmount) * 2);
         if (spikesDmg == 0)
@@ -2769,7 +2769,7 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 mov
                         return SHOULD_PIVOT;   // Won't get the two turns, pivot
 
                     if (!IS_MOVE_STATUS(move) && ((AI_DATA->shouldSwitch & (1u << battlerAtk))
-                        || (AtMaxHp(battlerDef) && (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH
+                        || (AtMaxHp(battlerDef) && (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_FOCUS_SASH, TRUE)
                         || (B_STURDY >= GEN_5 && AISearchTraits(AIBattlerTraits, ABILITY_STURDY))
                         || AISearchTraits(AIBattlerTraits, ABILITY_MULTISCALE)
                         || AISearchTraits(AIBattlerTraits, ABILITY_SHADOW_SHIELD)))))
@@ -2777,7 +2777,7 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 mov
                 }
                 else if (!hasStatBoost)
                 {
-                    if (!IS_MOVE_STATUS(move) && (AtMaxHp(battlerDef) && (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH
+                    if (!IS_MOVE_STATUS(move) && (AtMaxHp(battlerDef) && (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_FOCUS_SASH, TRUE)
                         || (B_STURDY >= GEN_5 && AISearchTraits(AIBattlerTraits, ABILITY_STURDY))
                         || AISearchTraits(AIBattlerTraits, ABILITY_MULTISCALE)
                         || AISearchTraits(AIBattlerTraits, ABILITY_SHADOW_SHIELD))))
@@ -2856,7 +2856,7 @@ enum AIPivot ShouldPivot(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 mov
                     // can knock out foe in 2 hits
                     if (IS_MOVE_STATUS(move) && ((AI_DATA->shouldSwitch & (1u << battlerAtk)) //Damaging move
                       //&& (switchScore >= SWITCHING_INCREASE_RESIST_ALL_MOVES + SWITCHING_INCREASE_KO_FOE //remove hazards
-                     || (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_FOCUS_SASH && AtMaxHp(battlerDef))))
+                     || (BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_FOCUS_SASH, TRUE) && AtMaxHp(battlerDef))))
                         return DONT_PIVOT; // Pivot to break the sash
                     else
                         return CAN_TRY_PIVOT;
@@ -3092,7 +3092,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbility, u32 move)
 {
     if (((!HasMoldBreakerTypeAbility(battlerAtk) && (AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_SHIELD_DUST) || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_INNER_FOCUS)))
-      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
+      || BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_COVERT_CLOAK, TRUE)
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_IsSlower(battlerAtk, battlerDef, move))) // Opponent goes first
     {
@@ -3132,7 +3132,7 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     if ((!gDisableStructs[battlerAtk].isFirstTurn && MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))
     || AI_BATTLER_HAS_TRAIT(battlerAtk, ABILITY_GORILLA_TACTICS)
     || BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_CHOICE_BAND, TRUE)
-    || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
+    || BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_COVERT_CLOAK, TRUE)
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (!HasMoldBreakerTypeAbility(battlerAtk)
     && (AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_SHIELD_DUST) || AI_BATTLER_HAS_TRAIT(battlerDef, ABILITY_INNER_FOCUS))))
