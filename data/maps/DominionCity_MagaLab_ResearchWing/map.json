@@ -17,7 +17,48 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 0,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 0,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 27,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_EXPERIMENTATION_CHAMBER",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 27,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_EXPERIMENTATION_CHAMBER",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 6,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

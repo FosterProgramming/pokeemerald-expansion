@@ -17,7 +17,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 0,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_RESEARCH_WING",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 0,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_RESEARCH_WING",
+      "dest_warp_id": "3"
+    }
   ],
   "coord_events": [
 
