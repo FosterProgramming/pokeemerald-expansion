@@ -26,34 +26,38 @@ DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell::
 # 17 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	msgbox DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_0
 # 18 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	msgbox DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_1
+	speakername DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_1
 # 19 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	givemon SPECIES_DEWGONG, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_HEADBUTT, MOVE_GROWL, MOVE_NONE, MOVE_NONE
+	msgbox DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_2
 # 20 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	setflag FLAG_SYS_POKEMON_GET
+	msgbox DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_3
 # 21 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 1
+	givemon SPECIES_DEWGONG, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_HEADBUTT, MOVE_GROWL, MOVE_NONE, MOVE_NONE
 # 22 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	setflag FLAG_SYS_POKEMON_GET
+# 23 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 1
+# 24 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked::
-# 27 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	lockall
-# 28 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	checkitem ITEM_CARD_KEY
 # 29 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	lockall
+# 30 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	checkitem ITEM_CARD_KEY
+# 31 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked_2
-# 35 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	msgbox DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked_Text_0
-# 36 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 # 37 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	msgbox DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked_Text_0
+# 38 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+# 39 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
 DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked_1:
-# 39 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 41 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	releaseall
 	end
 
@@ -62,71 +66,71 @@ DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked_2:
 
 
 DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript::
-# 44 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	lockall
-# 45 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	msgbox DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_0, MSGBOX_NPC
 # 46 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
+	lockall
 # 47 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	removeobject LOCALID_EEVEE
+	msgbox DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_0, MSGBOX_NPC
 # 48 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	setflag FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE
+	playfanfare MUS_OBTAIN_ITEM
 # 49 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	msgbox DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_1
+	removeobject LOCALID_EEVEE
 # 50 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	givemon SPECIES_EEVEE, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_TACKLE, MOVE_SAND_ATTACK, MOVE_GROWL, MOVE_TAIL_WHIP
+	setflag FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE
 # 51 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	msgbox DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_1
+# 52 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	givemon SPECIES_EEVEE, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_TACKLE, MOVE_SAND_ATTACK, MOVE_GROWL, MOVE_TAIL_WHIP
+# 53 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey::
-# 56 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 58 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	lockall
-# 57 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 59 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	goto_if_set FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE, DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_1
-# 65 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 67 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	msgbox DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_Text_0
-# 66 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 68 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_1:
-# 59 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 61 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	finditem ITEM_CARD_KEY, 1
-# 60 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 62 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript::
-# 72 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 74 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	lockall
-# 73 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 75 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	goto_if_set FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB, DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_2
-# 79 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	msgbox DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_Text_1
-# 80 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	giveitem ITEM_MIRROR_HERB, 1
 # 81 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	msgbox DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_Text_1
+# 82 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	giveitem ITEM_MIRROR_HERB, 1
+# 83 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	setflag FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB
 DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_1:
-# 83 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 85 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_2:
-# 75 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 77 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	msgbox DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_Text_0
 	goto DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_1
 
 
-# 87 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-DominionCity_MagaLab_HoldingCells_Movement_EeveeFacesPlayer:
-# 88 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	face_left
 # 89 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+DominionCity_MagaLab_HoldingCells_Movement_EeveeFacesPlayer:
+# 90 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	face_left
+# 91 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
@@ -147,18 +151,25 @@ DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_0:
 	.string "They do that. Send us out, see what we\l"
 	.string "can do, then throw us back in here when\l"
 	.string "we're not good enough.\p"
-	.string "Who am I? Oh, I'm Vee! Oh, and, um… don't\n"
-	.string "expect much from that one. Porygon\l"
-	.string "over there? Used to talk all the time.\l"
-	.string "All numbers and beeps and stuff I\l"
-	.string "didn't get. But ever since its last\l"
-	.string "'experiment' … nothing. Just sits there,\l"
-	.string "flickering. Kinda creepy, right? I tried\l"
-	.string "talking to it, but it won't even beep at\l"
-	.string "me anymore.$"
+	.string "Who am I? Oh, I'm Vee!$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_1:
 # 18 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	.string "Vee$"
+
+DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_2:
+# 19 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+	.string "Oh, and, um… don't expect much from\n"
+	.string "that one. Porygon over there? Used to\l"
+	.string "talk all the time. All numbers and beeps\l"
+	.string "and stuff I didn't get. But ever since\l"
+	.string "its last 'experiment' … nothing. Just\l"
+	.string "sits there, flickering. Kinda creepy,\l"
+	.string "right? I tried talking to it, but it won't\l"
+	.string "even beep at me anymore.$"
+
+DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_3:
+# 20 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "Wait, hold on. Did you just say you used\n"
 	.string "to be human? That's… whoa. That's\l"
 	.string "crazy! No wonder they're keeping you\l"
@@ -174,12 +185,12 @@ DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_1:
 	.string "quietly here. C'mon, I'll wait for you!$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked_Text_0:
-# 35 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 37 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "The door appears need a key card with a\n"
 	.string "code to unlock.$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_0:
-# 45 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 47 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "Phew! You made it! See? Told ya the\n"
 	.string "vents were the best way around here.\p"
 	.string "Alright, so here's the deal-I know how\n"
@@ -195,17 +206,17 @@ DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_0:
 	.string "Alright, it's settled then, let's go.$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_1:
-# 49 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 51 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "Vee joined your party!$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_Text_0:
-# 65 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 67 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "…it's not right to leave Vee behind.$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_Text_0:
-# 75 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 77 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "…$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript_Text_1:
-# 79 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
+# 81 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	.string "Porygon is holding something…$"
