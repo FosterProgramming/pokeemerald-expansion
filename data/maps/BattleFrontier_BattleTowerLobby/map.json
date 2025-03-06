@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_BattleTowerLobby_EventScript_Apprentice",
-      "flag": "FLAG_HIDE_APPRENTICE"
+      "flag": "FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TEALA",

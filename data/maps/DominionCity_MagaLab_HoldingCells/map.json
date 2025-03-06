@@ -24,8 +24,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript",
+      "flag": "FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PORYGON)",
@@ -37,8 +37,21 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 19,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "FLAG_ITEM_DOMINION_CITY_HOLDING_CELLS_CARD_KEY",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey",
+      "flag": "FLAG_ITEM_DOMINION_CITY_HOLDING_CELLS_CARD_KEY"
     }
   ],
   "warp_events": [
@@ -86,7 +99,24 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked"
+    }
   ],
   "bg_events": [
     {
