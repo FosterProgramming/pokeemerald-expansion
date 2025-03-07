@@ -109,3 +109,13 @@ Common_Movement_WalkUp2::
 Common_Movement_WalkLeft::
 	walk_left
 	step_end
+
+Common_Movement_PartyMember1TalksToPlayer::
+	walk_up
+	face_down
+	emote_exclamation_mark
+	step_end
+
+Common_Movement_PartyMember1ReturnsToPlayer::
+	walk_down
+	step_end

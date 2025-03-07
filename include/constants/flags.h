@@ -743,7 +743,7 @@
 #define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
 #define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
 #define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
-#define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
+#define FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER  0x2BB // Unused Flag
 
 // Event Flags
 #define FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE             0x2BC

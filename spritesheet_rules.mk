@@ -1038,6 +1038,9 @@ $(POKEMONGFXDIR)/seel/overworld.4bpp: %.4bpp: %.png
 $(POKEMONGFXDIR)/dewgong/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(POKEMONGFXDIR)/dewgong/overworld_protag.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(POKEMONGFXDIR)/grimer/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 

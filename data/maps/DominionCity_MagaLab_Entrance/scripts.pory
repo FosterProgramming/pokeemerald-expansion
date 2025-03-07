@@ -1,4 +1,29 @@
-raw `
-DominionCity_MagaLab_Entrance_MapScripts::
-	.byte 0
-`
+
+mapscripts DominionCity_MagaLab_Entrance_MapScripts
+	{
+		MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DOMINION_CITY_LAB_INTRO_STATE, 4 
+		{
+            lockall
+			applymovement(1, moves(emote_exclamation_mark))
+			waitmovement(1)
+			playse(SE_PIN)
+			waitse
+			playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+			applymovement(1, moves(walk_up * 4))
+			waitmovement(1)
+            msgbox(format("ANALYSIS COMPLETE. CONCLUSION: YOU ARE INFERIOR."),MSGBOX_AUTOCLOSE)
+    		msgbox(format("I AM THE PERFECTED MODEL. YOU ARE FAILED EXPERIMENTS."),MSGBOX_AUTOCLOSE)
+    		msgbox(format("ATTEMPTING ESCAPE IS FUTILE. YOU WILL BE RECAPTURED."),MSGBOX_AUTOCLOSE)
+    		msgbox(format("INITIATING COMBAT PROTOCOLS. PREPARE FOR TERMINATION."),MSGBOX_AUTOCLOSE)
+			trainerbattle_no_intro(TRAINER_MARCEL,format("SYSTEM ERROR... IMPOSSIBLE..."))
+			msgbox(format("SYSTEM DAMAGE EXCEEDS PARAMETERS. UNACCEPTABLE OUTCOME."),MSGBOX_AUTOCLOSE)
+			msgbox(format("YOU... YOU ARE NOT SUPERIOR... THIS IS A GLITCH."),MSGBOX_AUTOCLOSE)
+			msgbox(format("I WILL BE REBUILT. YOU WILL BE ERASED."),MSGBOX_AUTOCLOSE)
+			setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 5)
+    		releaseall
+    		end
+		}
+    ]
+	}
+

@@ -44,6 +44,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DoorIsLocked {
 
 script DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript {
     lockall
+	speakername("Vee")
     msgbox(format("Phew! You made it! See? Told ya the vents were the best way around here.\p Alright, so here's the deal-I know how we can get out.\pThe guard? He always leaves his keycard in his desk when he's on break.\pBuuut, there's just one little problem… I can't read. I know the code's written on the card, but it just looks like weird symbols to me. But you were human! Maybe you can read it and help us open the doors!\p Alright, it's settled then, let's go."),MSGBOX_NPC)
 	playfanfare(MUS_OBTAIN_ITEM)
 	removeobject(LOCALID_EEVEE)

@@ -42,7 +42,239 @@
       "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_DoorRequiresFourDigitCode"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ClassifiedExperiments"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank"
     }
   ]
 }
