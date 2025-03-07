@@ -1335,9 +1335,10 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro unused ptr:req
+	.macro removeitemwitheffect battler:req effect:req
 	.byte 0xfd
-	.4byte \ptr
+	.byte \battler
+	.byte \effect
 	.endm
 
 	.macro tryworryseed failInstr:req

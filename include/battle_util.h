@@ -341,5 +341,7 @@ void RemoveBattlerType(u32 battler, u8 type);
 u32 GetMoveType(u32 move);
 //Multiple Held Items Stuff
 bool8 BattlerHeldItemHasEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
+u16 GetBattlerHeldItemWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
+u8 GetHeldItemSlotWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
 
 #endif // GUARD_BATTLE_UTIL_H

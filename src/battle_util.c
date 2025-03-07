@@ -1096,10 +1096,10 @@ void PrepareStringBattle(u16 stringId, u32 battler)
         stringId = STRINGID_STATSWONTDECREASE2;
 
     // Check Defiant and Competitive stat raise whenever a stat is lowered.
-    else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH)
-              && ((SearchTraits(battlerTraits, ABILITY_DEFIANT) && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
-                 || (SearchTraits(battlerTraits, ABILITY_COMPETITIVE) && CompareStat(gBattlerTarget, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN)))
-              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != BATTLE_PARTNER(gBattlerTarget)
+    else if ((stringId == STRINGID_DEFENDERSSTATFELL                      || stringId == STRINGID_PKMNCUTSATTACKWITH)
+              && ((SearchTraits(battlerTraits, ABILITY_DEFIANT)           && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
+                 || (SearchTraits(battlerTraits, ABILITY_COMPETITIVE)     && CompareStat(gBattlerTarget, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN)))
+              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId   != BATTLE_PARTNER(gBattlerTarget)
               && ((gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget) || gBattleScripting.stickyWebStatDrop == 1)
               && !(gBattleScripting.stickyWebStatDrop == 1 && gSideTimers[targetSide].stickyWebBattlerSide == targetSide)) // Sticky Web must have been set by the foe
     {
@@ -1392,7 +1392,13 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
     if (DYNAMAX_BYPASS_CHECK && BATTLER_IS_HOLDING_CHOICE_ITEM(battler) && *choicedMove != MOVE_NONE && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
     {
         gCurrentMove = *choicedMove;
-        gLastUsedItem = gBattleMons[battler].item;
+        //Check for the choice item
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CHOICE_BAND, TRUE);
+        if(gLastUsedItem == ITEM_NONE)
+            gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CHOICE_SCARF, TRUE);
+        if(gLastUsedItem == ITEM_NONE)
+            gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CHOICE_SPECS, TRUE);
+        
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         {
             gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMoveChoiceItemInPalace;
@@ -1410,7 +1416,7 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
             gCurrentMove = MOVE_MAX_GUARD;
         else
             gCurrentMove = move;
-        gLastUsedItem = gBattleMons[battler].item;
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_ASSAULT_VEST, TRUE);
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         {
             gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMoveAssaultVestInPalace;
@@ -1426,7 +1432,7 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
               && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
     {
         gCurrentMove = *choicedMove;
-        gLastUsedItem = gBattleMons[battler].item;
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_ASSAULT_VEST, TRUE);
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         {
             gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMoveGorillaTacticsInPalace;
@@ -6969,11 +6975,14 @@ u32 GetBattlerAbility(u32 battler)
 //Returns the Ability or Innate of the battler at the given trait number
 u32 GetBattlerTrait(u8 battlerId, u8 traitNum){
     bool8 isEnemyMon = GetBattlerSide(battlerId) == B_SIDE_OPPONENT; //needed for Randomizer
+    u32 ability = ABILITY_NONE;
 
     if (traitNum == 0)
-        return GetBattlerAbility(battlerId);
+        ability = GetBattlerAbility(battlerId);
     else
-        return GetSpeciesInnate(gBattleMons[battlerId].species, traitNum, gBattleMons[battlerId].personality, isEnemyMon); 
+        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum, gBattleMons[battlerId].personality, isEnemyMon); 
+
+    return ability;
 }
 u32 IsAbilityOnSide(u32 battler, u32 ability)
 {
@@ -8214,6 +8223,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_LEFTOVERS, TRUE);
                     BattleScriptExecute(BattleScript_ItemHealHP_End2);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
@@ -8558,7 +8568,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 effect = ITEM_HP_CHANGE;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemHurtRet;
-                gLastUsedItem = gBattleMons[gBattlerAttacker].item;
+                gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerAttacker, HOLD_EFFECT_LIFE_ORB, TRUE);
             }
         }
         break;
@@ -8567,7 +8577,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
         {
             moveType = GetMoveType(gCurrentMove);
 
-            if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_ROCKY_HELMET, TRUE)) {
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_ROCKY_HELMET, TRUE)) {
                 if (TARGET_TURN_DAMAGED
                     && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_PROTECTIVE_PADS
                     && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
@@ -8580,6 +8590,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = ITEM_HP_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_RockyHelmetActivates;
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_ROCKY_HELMET, TRUE);
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                     RecordItemEffectBattle(battler, HOLD_EFFECT_ROCKY_HELMET);
                 }
@@ -12501,7 +12512,8 @@ u32 GetMoveType(u32 move)
 //Multiple Hold Items
 bool8 BattlerHeldItemHasEffect(u32 battler, u32 holdEffect, bool32 checkNegating)
 {
-    bool8 checkAbility = TRUE;
+    bool8 checkAbility = FALSE;
+    u32 item = ITEM_NONE;
 
     if (checkNegating)
     {
@@ -12513,14 +12525,75 @@ bool8 BattlerHeldItemHasEffect(u32 battler, u32 holdEffect, bool32 checkNegating
             return FALSE;
     }
 
-    if(gBattleMons[battler].item == holdEffect)
-        return TRUE;
-    else if(gBattleMons[battler].item2 == holdEffect)
-        return TRUE;
-    else if(gBattleMons[battler].item3 == holdEffect)
-        return TRUE;
-    else if(gBattleMons[battler].item4 == holdEffect)
-        return TRUE;
+    if(gItemsInfo[gBattleMons[battler].item].holdEffect == holdEffect)
+        item = gBattleMons[battler].item;
+    else if(gItemsInfo[gBattleMons[battler].item2].holdEffect == holdEffect)
+        item = gBattleMons[battler].item2;
+    else if(gItemsInfo[gBattleMons[battler].item3].holdEffect == holdEffect)
+        item = gBattleMons[battler].item3;
+    else if(gItemsInfo[gBattleMons[battler].item4].holdEffect == holdEffect)
+        item = gBattleMons[battler].item4;
 
-    return FALSE;
+    if(item == ITEM_NONE)
+        return FALSE;
+    else{
+        DebugPrintf("BattlerHeldItemHasEffect Battler[%d] - %S", battler, gItemsInfo[item].name);
+        return TRUE;
+    }
+}
+
+//Multiple Hold Items
+u16 GetBattlerHeldItemWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating)
+{
+    bool8 checkAbility = FALSE;
+    u32 item = ITEM_NONE;
+
+    if (checkNegating)
+    {
+        if (gStatuses3[battler] & STATUS3_EMBARGO)
+            return item;
+        if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+            return item;
+        if (checkAbility && BattlerHasTrait(battler, ABILITY_KLUTZ))
+            return item;
+    }
+
+    if(gItemsInfo[gBattleMons[battler].item].holdEffect == holdEffect)
+        item = gBattleMons[battler].item;
+    else if(gItemsInfo[gBattleMons[battler].item2].holdEffect == holdEffect)
+        item = gBattleMons[battler].item2;
+    else if(gItemsInfo[gBattleMons[battler].item3].holdEffect == holdEffect)
+        item = gBattleMons[battler].item3;
+    else if(gItemsInfo[gBattleMons[battler].item4].holdEffect == holdEffect)
+        item = gBattleMons[battler].item4;
+
+    return item;
+}
+
+//Multiple Hold Items
+u8 GetHeldItemSlotWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating)
+{
+    bool8 checkAbility = FALSE;
+    u32 slot = 4;
+
+    if (checkNegating)
+    {
+        if (gStatuses3[battler] & STATUS3_EMBARGO)
+            return slot;
+        if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+            return slot;
+        if (checkAbility && BattlerHasTrait(battler, ABILITY_KLUTZ))
+            return slot;
+    }
+
+    if(gItemsInfo[gBattleMons[battler].item].holdEffect == holdEffect)
+        slot = 0;
+    else if(gItemsInfo[gBattleMons[battler].item2].holdEffect == holdEffect)
+        slot = 1;
+    else if(gItemsInfo[gBattleMons[battler].item3].holdEffect == holdEffect)
+        slot = 2;
+    else if(gItemsInfo[gBattleMons[battler].item4].holdEffect == holdEffect)
+        slot = 3;
+
+    return slot;
 }

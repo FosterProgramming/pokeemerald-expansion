@@ -446,6 +446,7 @@ static void Cmd_yesnobox(void);
 static void Cmd_cancelallactions(void);
 static void Cmd_setgravity(void);
 static void Cmd_removeitem(void);
+static void Cmd_removeitemwitheffect(void);
 static void Cmd_atknameinbuff1(void);
 static void Cmd_drawlvlupbox(void);
 static void Cmd_resetsentmonsvalue(void);
@@ -851,7 +852,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_swapstatstages,                          //0xFA
     Cmd_averagestats,                            //0xFB
     Cmd_jumpifoppositegenders,                   //0xFC
-    Cmd_unused,                                  //0xFD
+    Cmd_removeitemwitheffect,                    //0xFD
     Cmd_tryworryseed,                            //0xFE
     Cmd_callnative,                              //0xFF
 };
@@ -2231,7 +2232,10 @@ static void Cmd_multihitresultmessage(void)
         }
         else if (gMoveResultFlags & MOVE_RESULT_FOE_HUNG_ON)
         {
-            gLastUsedItem = gBattleMons[gBattlerTarget].item;
+            if(gSpecialStatuses[gBattlerTarget].focusSashed)
+                gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE);
+            else
+                gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND, TRUE);
             gPotentialItemEffectBattler = gBattlerTarget;
             gMoveResultFlags &= ~(MOVE_RESULT_STURDIED | MOVE_RESULT_FOE_HUNG_ON);
             gSpecialStatuses[gBattlerTarget].focusBanded = FALSE; // Delete this line to make Focus Band last for the duration of the whole move turn.
@@ -2670,7 +2674,9 @@ static void Cmd_resultmessage(void)
             stringId = STRINGID_ITDOESNTAFFECT;
             break;
         case MOVE_RESULT_FOE_HUNG_ON:
-            gLastUsedItem = gBattleMons[gBattlerTarget].item;
+            gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE);
+            if(gLastUsedItem == ITEM_NONE)
+                gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND, TRUE);
             gPotentialItemEffectBattler = gBattlerTarget;
             gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
             BattleScriptPushCursor();
@@ -2707,7 +2713,10 @@ static void Cmd_resultmessage(void)
             }
             else if (gMoveResultFlags & MOVE_RESULT_FOE_HUNG_ON)
             {
-                gLastUsedItem = gBattleMons[gBattlerTarget].item;
+                if(gSpecialStatuses[gBattlerTarget].focusSashed)
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE);
+                else
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND, TRUE);
                 gPotentialItemEffectBattler = gBattlerTarget;
                 gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
                 BattleScriptPushCursor();
@@ -8482,6 +8491,76 @@ static void Cmd_removeitem(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+static void Cmd_removeitemwitheffect(void)
+{
+    CMD_ARGS(u8 battler, u8 holdEffect);
+
+    u32 battler;
+    u32 holdEffect;
+    u16 itemId = ITEM_NONE;
+    u8 slot;
+
+    if (gBattleScripting.overrideBerryRequirements)
+    {
+        // bug bite / pluck - don't remove current item
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+
+    battler    = GetBattlerForBattleScript(cmd->battler);
+    holdEffect = cmd->holdEffect;
+    itemId     = GetBattlerHeldItemWithEffect(battler, holdEffect, TRUE);
+    //DebugPrintf("Cmd_removeitemwitheffect battler %d holdEffect %d itemId %d", battler, holdEffect, itemId);
+
+    // Popped Air Balloon cannot be restored by any means.
+    // Corroded items cannot be restored either.
+    if (holdEffect != HOLD_EFFECT_AIR_BALLOON
+        && gMovesInfo[gCurrentMove].effect != EFFECT_CORROSIVE_GAS)
+        gBattleStruct->usedHeldItems[gBattlerPartyIndexes[battler]][GetBattlerSide(battler)] = itemId; // Remember if switched out
+
+    slot = GetHeldItemSlotWithEffect(battler, holdEffect, TRUE);
+    switch(slot){
+        case 0:
+            gBattleMons[battler].item = ITEM_NONE;
+
+            gBattleStruct->canPickupItem |= (1u << battler);
+            CheckSetUnburden(battler);
+
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item), &gBattleMons[battler].item);
+        break;
+        case 1:
+            gBattleMons[battler].item2 = ITEM_NONE;
+            
+            gBattleStruct->canPickupItem |= (1u << battler);
+            CheckSetUnburden(battler);
+
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item2), &gBattleMons[battler].item2);
+        break;
+        case 2:
+            gBattleMons[battler].item3 = ITEM_NONE;
+            
+            gBattleStruct->canPickupItem |= (1u << battler);
+            CheckSetUnburden(battler);
+
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item3), &gBattleMons[battler].item3);
+        break;
+        case 3:
+            gBattleMons[battler].item4 = ITEM_NONE;
+            
+            gBattleStruct->canPickupItem |= (1u << battler);
+            CheckSetUnburden(battler);
+
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item4), &gBattleMons[battler].item4);
+        break;
+    }
+    DebugPrintf("Removed %S from %S in slot %d", gItemsInfo[itemId].name, GetSpeciesName(gBattleMons[battler].species), slot + 1);
+    MarkBattlerForControllerExec(battler);
+
+    ClearBattlerItemEffectHistory(battler);
+    if (!TryCheekPouch(battler, itemId) && !TrySymbiosis(battler, itemId))
+        gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
 static void Cmd_atknameinbuff1(void)
 {
     CMD_ARGS();
@@ -9413,16 +9492,16 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_HOLD_EFFECT:
     {
         VARIOUS_ARGS(u8 holdEffect, const u8 *jumpInstr, u8 equal);
-        if ((GetBattlerHoldEffect(battler, TRUE) == cmd->holdEffect) == cmd->equal)
+        if (BattlerHeldItemHasEffect(battler, cmd->holdEffect, TRUE) == cmd->equal)
         {
             if (cmd->equal)
-                gLastUsedItem = gBattleMons[battler].item; // For B_LAST_USED_ITEM
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, cmd->holdEffect, TRUE); // For B_LAST_USED_ITEM
             gBattlescriptCurrInstr = cmd->jumpInstr;
         }
         else
         {
             if (!cmd->equal)
-                gLastUsedItem = gBattleMons[battler].item; // For B_LAST_USED_ITEM
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, cmd->holdEffect, TRUE); // For B_LAST_USED_ITEM
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;
@@ -12639,7 +12718,10 @@ static void Cmd_tryKO(void)
             {
                 gBattleMoveDamage = gBattleMons[gBattlerTarget].hp - 1;
                 gMoveResultFlags |= MOVE_RESULT_FOE_HUNG_ON;
-                gLastUsedItem = gBattleMons[gBattlerTarget].item;
+                if(gSpecialStatuses[gBattlerTarget].focusSashed)
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_SASH, TRUE);
+                else
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_FOCUS_BAND, TRUE);
             }
             else if (B_AFFECTION_MECHANICS == TRUE && gSpecialStatuses[gBattlerTarget].affectionEndured)
             {
