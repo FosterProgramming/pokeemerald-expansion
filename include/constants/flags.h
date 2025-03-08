@@ -748,7 +748,7 @@
 // Event Flags
 #define FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE             0x2BC
 #define FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB   0x2BD
-#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
+#define FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON                         0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
 #define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1

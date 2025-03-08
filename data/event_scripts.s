@@ -1250,3 +1250,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.inc"
 
 	.include "data/maps/DominionCity_MagaLab_Entrance/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.inc"

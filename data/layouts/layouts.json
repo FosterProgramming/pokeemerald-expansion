@@ -4900,6 +4900,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/DominionCity_MagaLab_Entrance/border.bin",
       "blockdata_filepath": "data/layouts/DominionCity_MagaLab_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY",
+      "name": "DominionCity_MagaLab_EntranceHallway_Layout",
+      "width": 30,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_EntranceHallway/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_EntranceHallway/map.bin"
     }
   ]
 }

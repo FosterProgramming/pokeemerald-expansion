@@ -25,7 +25,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
+      "x": 10,
+      "y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
     }
   ],
   "warp_events": [
@@ -35,10 +48,41 @@
       "elevation": 0,
       "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 9,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 10,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
+      "var_value": "5",
+      "script": "DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
+      "var_value": "5",
+      "script": "DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene"
+    }
   ],
   "bg_events": [
     {
