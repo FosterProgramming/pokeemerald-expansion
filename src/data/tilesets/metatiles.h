@@ -225,3 +225,6 @@ const u16 gMetatileAttributes_MurkwellBog[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_Pyroden[] = INCBIN_U16("data/tilesets/secondary/pyroden/metatiles.bin");
 const u16 gMetatileAttributes_Pyroden[] = INCBIN_U16("data/tilesets/secondary/pyroden/metatile_attributes.bin");
+
+const u16 gMetatiles_DominionCity[] = INCBIN_U16("data/tilesets/secondary/dominion_city/metatiles.bin");
+const u16 gMetatileAttributes_DominionCity[] = INCBIN_U16("data/tilesets/secondary/dominion_city/metatile_attributes.bin");

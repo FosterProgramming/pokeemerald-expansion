@@ -891,3 +891,14 @@ const struct Tileset gTileset_Pyroden =
     .metatileAttributes = gMetatileAttributes_Pyroden,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_DominionCity =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DominionCity,
+    .palettes = gTilesetPalettes_DominionCity,
+    .metatiles = gMetatiles_DominionCity,
+    .metatileAttributes = gMetatileAttributes_DominionCity,
+    .callback = NULL,
+};

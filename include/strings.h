@@ -2715,4 +2715,16 @@ extern const u8 gText_Rename[]; // change nickname from summary screen
 extern const u8 gText_PkmnTraits[];
 extern const u8 gText_PkmnMemos[];
 
+//New Multichoice Strings
+extern const u8 gText_Zero[];
+extern const u8 gText_One[];
+extern const u8 gText_Two[];
+extern const u8 gText_Three[];
+extern const u8 gText_Four[];
+extern const u8 gText_Five[];
+extern const u8 gText_Six[];
+extern const u8 gText_Seven[];
+extern const u8 gText_Eight[];
+extern const u8 gText_Nine[];
+
 #endif // GUARD_STRINGS_H

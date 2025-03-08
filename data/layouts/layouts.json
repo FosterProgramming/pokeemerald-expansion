@@ -4416,8 +4416,8 @@
       "name": "DominionCity_Layout",
       "width": 68,
       "height": 64,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_DominionCity",
       "border_filepath": "data/layouts/DominionCity/border.bin",
       "blockdata_filepath": "data/layouts/DominionCity/map.bin"
     },

@@ -1573,3 +1573,15 @@ const u8 gText_Rename[] = _("RENAME");
 //New Summary Screen Pages
 const u8 gText_PkmnTraits[] = _("TRAITS");
 const u8 gText_PkmnMemos[] = _("MEMOS");
+
+//New Multichoice Strings
+const u8 gText_Zero[] = _("0");
+const u8 gText_One[] = _("1");
+const u8 gText_Two[] = _("2");
+const u8 gText_Three[] = _("3");
+const u8 gText_Four[] = _("4");
+const u8 gText_Five[] = _("5");
+const u8 gText_Six[] = _("6");
+const u8 gText_Seven[] = _("7");
+const u8 gText_Eight[] = _("8");
+const u8 gText_Nine[] = _("9");
