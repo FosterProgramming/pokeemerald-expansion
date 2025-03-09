@@ -1,0 +1,112 @@
+raw `
+.set LOCALID_LATTKA, 1
+.set LOCALID_ZENDANO, 2
+.set LOCALID_FRO, 3
+
+IntroCutsceneMap_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, IntroCutsceneMap_OnFrame
+	.byte 0
+
+
+IntroCutsceneMap::
+	lockall
+	givemon SPECIES_DEWGONG, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_HEADBUTT, MOVE_GROWL, MOVE_NONE, MOVE_NONE
+	setflag FLAG_SYS_POKEMON_GET
+	setrespawn HEAL_LOCATION_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS
+	playbgm MUS_FV_TEAM_MAGA, 0
+	applymovement LOCALID_FRO, Common_Movement_WalkUp
+	waitmovement LOCALID_FRO
+	applymovement LOCALID_LATTKA, Common_Movement_FaceRight
+	applymovement LOCALID_ZENDANO, Common_Movement_FaceLeft
+	waitmovement LOCALID_ZENDANO
+	msgbox SummitCaverns_Text_TestSubjectResults, MSGBOX_DEFAULT
+	playse SE_PIN
+	applymovement LOCALID_ZENDANO, Common_Movement_QuestionMark
+	msgbox SummitCaverns_Text_WhatWasThat, MSGBOX_DEFAULT
+	applymovement LOCALID_ZENDANO, Common_Movement_FaceDown
+	applymovement LOCALID_LATTKA, Common_Movement_FaceDown
+	waitmovement LOCALID_LATTKA
+	msgbox SummitCaverns_Text_YouAgain, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ZENDANO, SummitCavenrs_Movement_ZendanoLeaves1
+	waitmovement LOCALID_ZENDANO
+	playse SE_WALL_HIT
+	applymovement LOCALID_FRO, SummitCaverns_Movement_FroGetsPushed
+	waitmovement LOCALID_FRO
+	applymovement LOCALID_ZENDANO, SummitCavenrs_Movement_ZendanoLeaves2
+	waitmovement LOCALID_ZENDANO
+	removeobject LOCALID_ZENDANO
+	applymovement LOCALID_FRO, Common_Movement_FaceUp_LockportTrail
+	waitmovement LOCALID_FRO
+	setflag FLAG_HIDE_SUMMIT_CAVERNS_TEAM_MAGA_ZENDANO
+	msgbox SummitCaverns_Text_LattkaChallengesFro, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_INTRO_CUTSCENE_FRO, SummitCaverns_Text_LattkaBattle, SummitCaverns_Text_LattkaDefeat1, IntroCutsceneMap
+	releaseall
+	end
+
+SummitCavenrs_Movement_ZendanoLeaves2:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SummitCaverns_Movement_FroGetsPushed:
+	lock_facing_direction
+	walk_fastest_left
+	unlock_facing_direction
+	face_right
+	step_end
+
+SummitCavenrs_Movement_ZendanoLeaves1:
+	walk_down
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+	SummitCaverns_Text_TestSubjectResults:	
+
+	.string "Lattka: Ah yes, the prototype is\n"
+	.string "progressing very well.\p"
+	.string "Although you weren't able to\n"
+	.string "secure the Meteroite, this may prove\l"
+	.string "to be an even larger development.\p"
+	.string "Who knew that the fusion of Pokémon DNA\n"
+	.string "into humans could produce such\l"
+	.string "incredible results.\p"
+	.string "Zendano: Is it ready for field testing\n"
+	.string "yet?\p"
+	.string "Lattka: Not quite. Our test subject is\n"
+	.string "a proud member of the airforce, and his\l"
+	.string "participation wasn't exactly voluentary.\p"
+	.string "For the most part, he obeys commands like\n"
+	.string "a normal Pokémon should, but sometimes I\l"
+	.string "can tell there is still a little bit of\l"
+	.string "his human side in there, fighting back.\p"
+	.string "I still need to train that out of him.\p"
+	.string "Zendano: I'll report this to the boss.\n"
+	.string "Have the subject ready for a field\l"
+	.string "test as soon as you can.$"
+
+	SummitCaverns_Text_WhatWasThat:
+	.string "What was that?$"
+
+	SummitCaverns_Text_YouAgain:
+	.string "You again?!\p"
+	.string "Lattka: Is this the thug that stole \n"
+	.string "the Meteorite from you Z?\p"
+	.string "Zendano: Yea, and it looks like he\n"
+	.string "wants a rematch!\p"
+	.string "Lattka: Why don't you let me handle him,\n"
+	.string "you get out of here and warn the boss\l"
+	.string "this punk is still interfering with\l"
+	.string "Team MAGA.$"
+
+SummitCaverns_Text_LattkaChallengesFro:
+	.string "Well com on then, punk.\n"
+	.string "Challenge me if you dare.$"
+`

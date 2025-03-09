@@ -902,3 +902,14 @@ const struct Tileset gTileset_DominionCity =
     .metatileAttributes = gMetatileAttributes_DominionCity,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_IntroCave =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IntroCave,
+    .palettes = gTilesetPalettes_IntroCave,
+    .metatiles = gMetatiles_IntroCave,
+    .metatileAttributes = gMetatileAttributes_IntroCave,
+    .callback = NULL,
+};

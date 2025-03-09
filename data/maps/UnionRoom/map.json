@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player1",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_1"
+      "flag": "FLAG_HIDE_SUMMIT_CAVERNS_TEAM_MAGA_ZENDANO"
     }
   ],
   "warp_events": [

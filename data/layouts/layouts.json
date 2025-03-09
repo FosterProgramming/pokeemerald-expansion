@@ -4910,6 +4910,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/DominionCity_MagaLab_EntranceHallway/border.bin",
       "blockdata_filepath": "data/layouts/DominionCity_MagaLab_EntranceHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTRO_CUTSCENE_MAP",
+      "name": "IntroCutsceneMap_Layout",
+      "width": 22,
+      "height": 17,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_IntroCave",
+      "border_filepath": "data/layouts/IntroCutsceneMap/border.bin",
+      "blockdata_filepath": "data/layouts/IntroCutsceneMap/map.bin"
     }
   ]
 }

@@ -245,7 +245,7 @@ Route123_EventScript_Frederick::
 # 123 "data/maps/Route123/scripts.pory"
 Route123_EventScript_Alberto::
 # 124 "data/maps/Route123/scripts.pory"
-	trainerbattle_single TRAINER_ALBERTO, Route123_Text_AlbertoIntro, Route123_Text_AlbertoDefeat
+	trainerbattle_single TRAINER_INTRO_CUTSCENE_FRO, Route123_Text_AlbertoIntro, Route123_Text_AlbertoDefeat
 # 125 "data/maps/Route123/scripts.pory"
 	msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
 # 126 "data/maps/Route123/scripts.pory"

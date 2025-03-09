@@ -253,10 +253,10 @@ Shiftry
 Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_ALBERTO ===
-Name: ALBERTO
-Class: Bird Keeper
-Pic: Bird Keeper
+=== TRAINER_INTRO_CUTSCENE_FRO ===
+Name: Fro
+Class: 
+Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Double Battle: No

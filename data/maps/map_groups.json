@@ -149,7 +149,8 @@
     "DominionCity_MagaLab_ExperimentationChamber",
     "DominionCity_MagaLab_SecurityHallway",
     "DominionCity_MagaLab_Entrance",
-    "DominionCity_MagaLab_EntranceHallway"
+    "DominionCity_MagaLab_EntranceHallway",
+    "IntroCutsceneMap"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",

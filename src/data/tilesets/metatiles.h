@@ -228,3 +228,6 @@ const u16 gMetatileAttributes_Pyroden[] = INCBIN_U16("data/tilesets/secondary/py
 
 const u16 gMetatiles_DominionCity[] = INCBIN_U16("data/tilesets/secondary/dominion_city/metatiles.bin");
 const u16 gMetatileAttributes_DominionCity[] = INCBIN_U16("data/tilesets/secondary/dominion_city/metatile_attributes.bin");
+
+const u16 gMetatiles_IntroCave[] = INCBIN_U16("data/tilesets/secondary/intro_cave/metatiles.bin");
+const u16 gMetatileAttributes_IntroCave[] = INCBIN_U16("data/tilesets/secondary/intro_cave/metatile_attributes.bin");

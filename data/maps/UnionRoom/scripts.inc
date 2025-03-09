@@ -17,7 +17,7 @@ UnionRoom_MapScripts::
 # 9 "data/maps/UnionRoom/scripts.pory"
 UnionRoom_OnResume:
 # 10 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_1
+	setflag FLAG_HIDE_SUMMIT_CAVERNS_TEAM_MAGA_ZENDANO
 # 11 "data/maps/UnionRoom/scripts.pory"
 	setflag FLAG_HIDE_UNION_ROOM_PLAYER_2
 # 12 "data/maps/UnionRoom/scripts.pory"

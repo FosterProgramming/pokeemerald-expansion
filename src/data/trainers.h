@@ -459,7 +459,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 256
-    [TRAINER_ALBERTO] =
+    [TRAINER_INTRO_CUTSCENE_FRO] =
     {
 #line 257
         .trainerName = _("ALBERTO"),
