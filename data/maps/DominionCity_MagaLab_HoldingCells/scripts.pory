@@ -14,6 +14,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
 	playse(SE_PIN)
     applymovement(LOCALID_EEVEE, DominionCity_MagaLab_HoldingCells_Movement_EeveeFacesPlayer)
     waitmovement(LOCALID_EEVEE)
+	speakername("???")
     msgbox(format("Oh! You're awake! I was starting to think they overdid it this time.\p You were out for sooo long! I saw them bring you back after your fight. It didn't go so well, huh?\p Whoa, take it easy! You look like you just got hit by a truck! …Or maybe a Rhydon. They like to mess with us while we're knocked out. Weird injections, weird machines… All super weird. You probably feel kinda fuzzy, huh? I did too, after my last 'check-up.' Not fun. They do that. Send us out, see what we can do, then throw us back in here when we're not good enough.\pWho am I? Oh, I'm Vee!"))
 	speakername("Vee")
 	msgbox(format("Oh, and, um… don't expect much from that one. Porygon over there? Used to talk all the time. All numbers and beeps and stuff I didn't get. But ever since its last 'experiment' … nothing. Just sits there, flickering. Kinda creepy, right?  I tried talking to it, but it won't even beep at me anymore."))

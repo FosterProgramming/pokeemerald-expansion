@@ -462,11 +462,9 @@ F_TRAINER_FEMALE |
     [TRAINER_INTRO_CUTSCENE_FRO] =
     {
 #line 257
-        .trainerName = _("ALBERTO"),
-#line 258
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
+        .trainerName = _("Fro"),
 #line 259
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
 #line 261
             TRAINER_ENCOUNTER_MUSIC_COOL,
@@ -479,23 +477,23 @@ F_TRAINER_FEMALE |
         {
             {
 #line 265
-            .species = SPECIES_PELIPPER,
+            .species = SPECIES_ELECTABUZZ,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 267
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 266
-            .lvl = 30,
+            .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 269
-            .species = SPECIES_XATU,
+            .species = SPECIES_ELECTRODE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 271
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 270
-            .lvl = 30,
+            .lvl = 35,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
