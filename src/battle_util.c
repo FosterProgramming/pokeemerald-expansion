@@ -3354,6 +3354,8 @@ static inline bool32 TryFormChangeBeforeMove(void)
     if (!result)
         result = TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_BEFORE_MOVE_CATEGORY);
     if (!result)
+        result = TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_BEFORE_MOVE_TYPE);
+    if (!result)
         return FALSE;
 
     BattleScriptPushCursor();
@@ -11242,6 +11244,9 @@ u16 GetBattleFormChangeTargetSpecies(u32 battler, u16 method)
                     if (formChanges[i].param1 == GetBattleMoveCategory(gCurrentMove)
                      && (formChanges[i].param2 == ABILITY_NONE || formChanges[i].param2 == GetBattlerAbility(battler)))
                         targetSpecies = formChanges[i].targetSpecies;
+                case FORM_CHANGE_BATTLE_BEFORE_MOVE_TYPE:
+                        if (formChanges[i].param1 == GetMoveType(gCurrentMove))
+                            targetSpecies = formChanges[i].targetSpecies;
                     break;
                 }
             }
