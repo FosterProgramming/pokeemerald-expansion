@@ -157,7 +157,7 @@ SummitCavenrs_Movement_ZendanoLeaves1:
 # 79 "data/maps/IntroCutsceneMap/scripts.pory"
 	walk_down
 # 80 "data/maps/IntroCutsceneMap/scripts.pory"
-	face_left
+	walk_left
 # 81 "data/maps/IntroCutsceneMap/scripts.pory"
 	step_end
 # 82 "data/maps/IntroCutsceneMap/scripts.pory"

@@ -227,12 +227,66 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2:
 	end
 
 
-DominionCity_MagaLab_ResearchWing_EventScript_DeadTerminal::
+DominionCity_MagaLab_ResearchWing_EventScript_Terminal1::
 # 136 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
 # 137 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	msgbox DominionCity_MagaLab_ResearchWing_EventScript_DeadTerminal_Text_0
-# 138 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal1_Text_0
+# 142 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	releaseall
+	end
+
+
+DominionCity_MagaLab_ResearchWing_EventScript_Terminal2::
+# 147 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	lockall
+# 148 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal2_Text_0
+# 155 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	release
+	end
+
+
+DominionCity_MagaLab_ResearchWing_EventScript_Terminal3::
+# 160 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	lockall
+# 161 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0
+# 167 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	release
+	end
+
+
+DominionCity_MagaLab_ResearchWing_EventScript_Book1::
+# 172 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	lockall
+# 173 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0
+# 176 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	releaseall
+	end
+
+
+DominionCity_MagaLab_ResearchWing_EventScript_Book2::
+# 182 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	lockall
+# 183 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0
+# 186 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	release
+# 187 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	end
+# 188 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	releaseall
+	end
+
+
+DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks::
+# 194 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	lockall
+# 195 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks_Text_0
+# 196 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
@@ -422,6 +476,108 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2:
 	.string "thinking about how much trouble we'll be\l"
 	.string "in if we get caught!$"
 
-DominionCity_MagaLab_ResearchWing_EventScript_DeadTerminal_Text_0:
+DominionCity_MagaLab_ResearchWing_EventScript_Terminal1_Text_0:
 # 137 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	.string "This computer appears to have no power$"
+	.string "EVOFLUX INITIATIVE:\p"
+	.string "OBJECTIVE: Induce elemental-based\n"
+	.string "adaptive evolution without requiring\l"
+	.string "external catalysts (e.g., evolutionary\l"
+	.string "stones).\p"
+	.string "OBSERVED BEHAVIOUR: Subject 0042\n"
+	.string "failed to display form alterations\l"
+	.string "under battle conditions\p"
+	.string "CONCLUSION: Results deemed\n"
+	.string "inconsistent and unstable. Subject\l"
+	.string "scheduled for termination and research\l"
+	.string "discontinued.\p"
+	.string "NOTE: Further research into adaptive\n"
+	.string "evolution has been redirected to\l"
+	.string "synthetic methods (see: Porygon\l"
+	.string "Initiative).$"
+
+DominionCity_MagaLab_ResearchWing_EventScript_Terminal2_Text_0:
+# 148 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	.string "PORYGON ADAPTIVE EVOLUTION TRIALS:\p"
+	.string "OBJECTIVE: Develop an artificial\n"
+	.string "Pokémon capable of rewriting its\l"
+	.string "evolutionary structure dynamically\l"
+	.string "without environmental dependency.\p"
+	.string "LATEST FINDINGS:\p"
+	.string "- Version 1.8: Stable under controlled\n"
+	.string "conditions.\p"
+	.string "- Version 2.1: Unexpected\n"
+	.string "self-modification of combat protocols.\l"
+	.string "Subject disregarded preset combat\l"
+	.string "parameters.\p"
+	.string "- Version 2.5: Subject exhibited signs\n"
+	.string "of autonomous decision-making beyond\l"
+	.string "intended programming.\p"
+	.string "STATUS: Experiment under review.\n"
+	.string "Further modifications pending to\l"
+	.string "ensure subject compliance and prevent\l"
+	.string "unsanctioned adaptability.$"
+
+DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0:
+# 161 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	.string "PROJECT METAMORPHOSIS:\p"
+	.string "SUBJECT SELECTION: Volunteers sourced\n"
+	.string "from internal Team MAGA operatives.\p"
+	.string "PHASE 1 RESULTS: Initial\n"
+	.string "transformations deemed successful;\l"
+	.string "subjects retained cognitive function\l"
+	.string "and mobility.\p"
+	.string "PHASE 2 ISSUES: Irreversibility of\n"
+	.string "transformation process confirmed.\l"
+	.string "Reversion not possible without\l"
+	.string "external stimuli (see: artifacts).\p"
+	.string "STATUS: Additional testing required.\n"
+	.string "Potential candidates flagged for\l"
+	.string "further trials.\p"
+	.string "NOTE: Continue sourcing from interal\n"
+	.string "Team MAGA operatives. If no\l"
+	.string "voluenteers step forward, utilize draft\l"
+	.string "protocol and pull from military\l"
+	.string "branches, starting with airforce$"
+
+DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0:
+# 173 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	.string "A handwritten note is placed as a\n"
+	.string "bookmark in this book. It reads\l"
+	.string "“Project Evo Flux aimed to induce\l"
+	.string "evolution at will, removing the need for\l"
+	.string "elemental catalysts. However, test\l"
+	.string "subjects lacked stability, resulting in\l"
+	.string "inconsistent transformations. The\l"
+	.string "project has been deemed a failure.\p"
+	.string "The Synthetic Evolution program,\n"
+	.string "however, presents an alternative:\l"
+	.string "rather than forcing natural evolution,\l"
+	.string "we will construct an entity capable of\l"
+	.string "rewriting its own code as needed. A true\l"
+	.string "artificial organism, one that can modify\l"
+	.string "itself without external stimuli.\p"
+	.string "The prototype, designated Porygon, is\n"
+	.string "proving promising. Unlike Subject 0042,\l"
+	.string "which lacks control over its\l"
+	.string "fluctuating forms, Porygon will be\l"
+	.string "programmed to adapt dynamically.”$"
+
+DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0:
+# 183 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	.string "A handwritten note is placed as a\n"
+	.string "bookmark in this book. It reads\l"
+	.string "“Ordered to terminate Subject 0042\l"
+	.string "soon. 'Unstable, not viable.' Ridiculous.\l"
+	.string "I checked the logs, 0042 was showing\l"
+	.string "higher elemental synchronization than\l"
+	.string "any other test subject.\p"
+	.string "But it's not what they wanted. They\n"
+	.string "wanted control, not adaptation.\p"
+	.string "I'm going to delay the process as long\n"
+	.string "as I can. Maybe someone will see what I\l"
+	.string "see before it's too late…$"
+
+DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks_Text_0:
+# 195 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	.string "Piles of scientific books lay scattered\n"
+	.string "about.$"

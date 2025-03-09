@@ -131,10 +131,68 @@ script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
 				}
 }
 
-script DominionCity_MagaLab_ResearchWing_EventScript_DeadTerminal
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal1
 {
 	lockall
-	msgbox(format("This computer appears to have no power"))
+	msgbox(format("EVOFLUX INITIATIVE:\p
+	OBJECTIVE: Induce elemental-based adaptive evolution without requiring external catalysts (e.g., evolutionary stones).\p
+	OBSERVED BEHAVIOUR: Subject 0042 failed to display form alterations under battle conditions\p
+	CONCLUSION: Results deemed inconsistent and unstable. Subject scheduled for termination and research discontinued.\p
+	NOTE: Further research into adaptive evolution has been redirected to synthetic methods (see: Porygon Initiative)."))
+	releaseall
+	end
+}
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal2
+{
+	lockall
+	msgbox(format("PORYGON ADAPTIVE EVOLUTION TRIALS:\p
+	OBJECTIVE: Develop an artificial Pokémon capable of rewriting its evolutionary structure dynamically without environmental dependency.\p
+	LATEST FINDINGS:\p
+	- Version 1.8: Stable under controlled conditions.\p
+	- Version 2.1: Unexpected self-modification of combat protocols. Subject disregarded preset combat parameters.\p
+	- Version 2.5: Subject exhibited signs of autonomous decision-making beyond intended programming.\p
+	STATUS: Experiment under review. Further modifications pending to ensure subject compliance and prevent unsanctioned adaptability."))
+	release
+	end
+}
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal3
+{
+	lockall
+	msgbox(format("PROJECT METAMORPHOSIS:\p
+	SUBJECT SELECTION: Volunteers sourced from internal Team MAGA operatives.\p
+	PHASE 1 RESULTS: Initial transformations deemed successful; subjects retained cognitive function and mobility.\p
+	PHASE 2 ISSUES: Irreversibility of transformation process confirmed. Reversion not possible without external stimuli (see: artifacts).\p
+	STATUS: Additional testing required. Potential candidates flagged for further trials.\p
+	NOTE: Continue sourcing from interal Team MAGA operatives. If no voluenteers step forward, utilize draft protocol and pull from military branches, starting with airforce"))
+	release
+	end
+}
+script DominionCity_MagaLab_ResearchWing_EventScript_Book1
+{	
+	lockall
+	msgbox(format("A handwritten note is placed as a bookmark in this book. It reads “Project Evo Flux aimed to induce evolution at will, removing the need for elemental catalysts. However, test subjects lacked stability, resulting in inconsistent transformations. The project has been deemed a failure.\p
+	The Synthetic Evolution program, however, presents an alternative: rather than forcing natural evolution, we will construct an entity capable of rewriting its own code as needed. A true artificial organism, one that can modify itself without external stimuli.\p
+	The prototype, designated Porygon, is proving promising. Unlike Subject 0042, which lacks control over its fluctuating forms, Porygon will be programmed to adapt dynamically.”"))
+	releaseall
+	end
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_Book2
+{	
+	lockall
+	msgbox(format("A handwritten note is placed as a bookmark in this book. It reads “Ordered to terminate Subject 0042 soon. 'Unstable, not viable.' Ridiculous. I checked the logs, 0042 was showing higher elemental synchronization than any other test subject.\p
+	But it's not what they wanted. They wanted control, not adaptation.\p
+	I'm going to delay the process as long as I can. Maybe someone will see what I see before it's too late…"))
+	release
+	end
+	releaseall
+	end
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks
+{	
+	lockall
+	msgbox(format("Piles of scientific books lay scattered about."))
 	releaseall
 	end
 }
