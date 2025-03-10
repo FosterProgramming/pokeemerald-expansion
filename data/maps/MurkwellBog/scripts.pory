@@ -2,3 +2,104 @@ raw `
 MurkwellBog_MapScripts::
 	.byte 0
 `
+script MurkwellBog_EventScripts_SlowpokeNPC
+{
+	lockall
+	msgbox(format("Huh… I don't remember the swamp bein' this… cloudy. These things weren't always floatin' around, right? Huh… Was it always like this?"))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_ParasectNPC
+{
+	lockall
+	msgbox(format("The air is… heavy. My spores mix with it, but something else lingers here. Something that wasn't here before."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_DrowzeeNPC
+{
+	lockall
+	msgbox(format("I tried to enter the temple the other night. Ever since, the air feels… thick. My dreams feel like I'm breathing it in."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_HaunterNPC
+{
+	lockall
+	msgbox(format("Oh, the temple? Heh… It's just an old ruin! Nothin' special… Nope, nothin' at all! And, uh, you definitely don't wanna go there. Definitely."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_LanturnNPC
+{
+	lockall
+	msgbox(format("My light doesn't reach as far anymore… It's like the air itself is swallowing it. I've guided Pokémon through here for years, but lately, I can barely see the way myself."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_HoothootNPC
+{
+	lockall
+	msgbox(format("The temple's always been there. But lately… the air around it shimmers. I don't like looking at it. It feels like it's moving."))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(XATU)
+script MurkwellBog_EventScripts_PsychicNPC
+{
+	lockall
+	msgbox(format("The air hums with echoes of thoughts long lost. You hear them too, don't you? The voices that aren't yours…?"))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(GLOOM)
+script MurkwellBog_EventScripts_InnkeeperNPC
+{
+	lockall
+	msgbox(format("Rest easy, traveler. But if you hear whispers in your sleep, best not to listen too closely…"))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(AIPOM)
+script MurkwellBog_EventScripts_ShopkeeperNPC
+{
+	lockall
+	msgbox(format("Welcome! Got all sorts of goods! Just… don't ask where I got 'em. The bog provides… heh."))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(SMEARGLE)
+script MurkwellBog_EventScripts_HomebodyNPC1
+{
+	lockall
+	msgbox(format("I tried painting the swamp once. But the colors… they changed when I wasn't looking. Like they were alive…"))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(SUDOWOODO)
+script MurkwellBog_EventScripts_HomebodyNPC2
+{
+	lockall
+	msgbox(format("You ever notice how the trees move? Not just in the wind… they shift when you ain't lookin'. Always facin' the temple…"))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(MAROWAK)
+script MurkwellBog_EventScripts_HomebodyNPC3
+{
+	lockall
+	msgbox(format("My kin are buried here… but lately, I don't feel alone when I visit. Someone else watches the graves…"))
+	releaseall
+	end
+}
