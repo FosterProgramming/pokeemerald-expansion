@@ -74,7 +74,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
 # 89 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addobject LOCALID_EEVEE
 # 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
 # 91 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	playse SE_PIN
 # 92 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -82,7 +82,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
 # 93 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitse
 # 94 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1
 # 95 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
 # 96 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -166,7 +166,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 # 69 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addobject LOCALID_EEVEE
 # 70 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
 # 71 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 72 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -196,6 +196,12 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_0:
 # 11 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	face_up
+	step_end
+
+# 94 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1:
+# 94 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	walk_in_place_up
 	step_end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_0:

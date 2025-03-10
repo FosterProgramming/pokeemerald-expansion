@@ -137,8 +137,33 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	applymovement OBJ_EVENT_ID_PLAYER, TestMovement
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
+
+TestMovement:
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_up
+	walk_in_place_left
+	walk_in_place_left
+	walk_in_place_left
+	walk_in_place_left
+	walk_in_place_left
+	walk_in_place_down
+	walk_in_place_down
+	walk_in_place_down
+	walk_in_place_down
+	walk_in_place_down
+	walk_in_place_right
+	walk_in_place_right
+	walk_in_place_right
+	walk_in_place_right
+	walk_in_place_right
+	step_end
 
 Debug_EventScript_Script_2::
 	release
