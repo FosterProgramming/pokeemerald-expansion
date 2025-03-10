@@ -128,8 +128,12 @@ script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
 					waitmovement(OBJ_EVENT_ID_PLAYER)
 					speakername("Vee")
 					msgbox(format("Alright! You got the numbers, so let's try 'em out, no way they used a super hard code or anything, bet it's something dumb like '1234', c'mon, c'mon, type it in before someone walks in, please work, please work, please work, uh, I mean, of course it's gonna work, why wouldn't it?"))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+					waitmovement(OBJ_EVENT_ID_PLAYER)
 					playse(SE_DOOR)
-					waitse
+					waitse					
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+					waitmovement(OBJ_EVENT_ID_PLAYER)
 					speakername("Vee")
 					msgbox(format("Ha! See? Easy! Like it was made for us, alright, let's move before I start thinking about how much trouble we'll be in if we get caught!"))
 					applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer)

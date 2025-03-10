@@ -2041,7 +2041,7 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     u8 level2 = ScriptReadByte(ctx);
     u16 item2 = ScriptReadHalfword(ctx);
 
-    if(species2 == SPECIES_NONE)
+    if(species2 == SPECIES_NONE && !FlagGet(FLAG_SYS_WILD_2V1))
     {
         CreateScriptedWildMon(species, level, item);
         sIsScriptedWildDouble = FALSE;

@@ -3350,6 +3350,7 @@ void SetAtkCancellerForCalledMove(void)
 
 static inline bool32 TryFormChangeBeforeMove(void)
 {
+    s32 EvoFluxTransformCount; 
     bool32 result = TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_BEFORE_MOVE);
     if (!result)
         result = TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_BEFORE_MOVE_CATEGORY);
@@ -3358,9 +3359,38 @@ static inline bool32 TryFormChangeBeforeMove(void)
     if (!result)
         return FALSE;
 
-    BattleScriptPushCursor();
-    gBattlescriptCurrInstr = BattleScript_AttackerFormChange;
-    return TRUE;
+    if(gBattleMons[gBattlerAttacker].species == SPECIES_EEVEE
+    || gBattleMons[gBattlerAttacker].species == SPECIES_VAPOREON 
+    || gBattleMons[gBattlerAttacker].species == SPECIES_FLAREON 
+    || gBattleMons[gBattlerAttacker].species == SPECIES_JOLTEON)
+        {
+            DebugPrintf("VarGet(VAR_EVOFLUX_TRANSFORM_COUNT) = %d", VarGet(VAR_EVOFLUX_TRANSFORM_COUNT));
+            if(VarGet(VAR_EVOFLUX_TRANSFORM_COUNT) > 0)
+                {
+                    EvoFluxTransformCount = VarGet(VAR_EVOFLUX_TRANSFORM_COUNT);
+                    DebugPrintf("VarGet(VAR_EVOFLUX_TRANSFORM_COUNT) = %d", VarGet(VAR_EVOFLUX_TRANSFORM_COUNT));
+                    DebugPrintf("Goodbye World");
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_EvoFluxAttackerFormChange;
+                    VarSet(VAR_EVOFLUX_TRANSFORM_COUNT, (EvoFluxTransformCount + 1));
+                    return TRUE;
+                }
+                else
+                {
+                    EvoFluxTransformCount = 0;
+                    DebugPrintf("Hello World");
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_EvoFluxAttackerFirstFormChange;
+                    VarSet(VAR_EVOFLUX_TRANSFORM_COUNT, (EvoFluxTransformCount + 1));
+                    return TRUE;
+                }
+        }
+    else
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_AttackerFormChange;
+        return TRUE;
+    }
 }
 
 u8 AtkCanceller_UnableToUseMove(u32 moveType)
@@ -8799,22 +8829,22 @@ u8 GetAttackerObedienceForAction()
     if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
         return OBEYS;
 
-    obedienceLevel = 10;
+    obedienceLevel = 255; //original is 10
 
-    if (FlagGet(FLAG_BADGE01_GET)) // Stone Badge
-        obedienceLevel = 20;
-    if (FlagGet(FLAG_BADGE02_GET)) // Knuckle Badge
-        obedienceLevel = 30;
-    if (FlagGet(FLAG_BADGE03_GET)) // Dynamo Badge
-        obedienceLevel = 40;
-    if (FlagGet(FLAG_BADGE04_GET)) // Heat Badge
-        obedienceLevel = 50;
-    if (FlagGet(FLAG_BADGE05_GET)) // Balance Badge
-        obedienceLevel = 60;
-    if (FlagGet(FLAG_BADGE06_GET)) // Feather Badge
-        obedienceLevel = 70;
-    if (FlagGet(FLAG_BADGE07_GET)) // Mind Badge
-        obedienceLevel = 80;
+    // if (FlagGet(FLAG_BADGE01_GET)) // Stone Badge
+    //     obedienceLevel = 20;
+    // if (FlagGet(FLAG_BADGE02_GET)) // Knuckle Badge
+    //     obedienceLevel = 30;
+    // if (FlagGet(FLAG_BADGE03_GET)) // Dynamo Badge
+    //     obedienceLevel = 40;
+    // if (FlagGet(FLAG_BADGE04_GET)) // Heat Badge
+    //     obedienceLevel = 50;
+    // if (FlagGet(FLAG_BADGE05_GET)) // Balance Badge
+    //     obedienceLevel = 60;
+    // if (FlagGet(FLAG_BADGE06_GET)) // Feather Badge
+    //     obedienceLevel = 70;
+    // if (FlagGet(FLAG_BADGE07_GET)) // Mind Badge
+    //     obedienceLevel = 80;
 
     if (B_OBEDIENCE_MECHANICS >= GEN_8
      && !IsOtherTrainer(gBattleMons[gBattlerAttacker].otId, gBattleMons[gBattlerAttacker].otName))
@@ -11245,7 +11275,8 @@ u16 GetBattleFormChangeTargetSpecies(u32 battler, u16 method)
                      && (formChanges[i].param2 == ABILITY_NONE || formChanges[i].param2 == GetBattlerAbility(battler)))
                         targetSpecies = formChanges[i].targetSpecies;
                 case FORM_CHANGE_BATTLE_BEFORE_MOVE_TYPE:
-                        if (formChanges[i].param1 == GetMoveType(gCurrentMove))
+                        if (formChanges[i].param1 == GetMoveType(gCurrentMove)
+                     && VarGet(VAR_DOMINION_CITY_LAB_INTRO_STATE) >= 5)
                             targetSpecies = formChanges[i].targetSpecies;
                     break;
                 }

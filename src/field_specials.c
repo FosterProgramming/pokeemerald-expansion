@@ -3872,7 +3872,7 @@ bool8 InPokemonCenter(void)
     If the player has only 1 fan left it cannot be lost
 
     ## Variables
-    VAR_FANCLUB_FAN_COUNTER, a bitfield for tracking the fans
+    VAR_EVOFLUX_TRANSFORM_COUNT, a bitfield for tracking the fans
       Bits  1-7: Counter for when to add new fans
       Bit     8: Flag set after receiving the initial 3 fans
       Bits 9-16: Flags for each of the 8 club members, set to 1 when theyre a fan of the player and 0 when theyre not
@@ -3887,7 +3887,7 @@ bool8 InPokemonCenter(void)
       2: Player has met their initial fans
 */
 
-#define FANCLUB_BITFIELD (gSaveBlock1Ptr->vars[VAR_FANCLUB_FAN_COUNTER - VARS_START])
+#define FANCLUB_BITFIELD (gSaveBlock1Ptr->vars[VAR_EVOFLUX_TRANSFORM_COUNT - VARS_START])
 #define FANCLUB_COUNTER    0x007F
 
 #define GET_TRAINER_FAN_CLUB_FLAG(flag)  (FANCLUB_BITFIELD >> (flag) & 1)
@@ -3901,7 +3901,7 @@ bool8 InPokemonCenter(void)
 
 void ResetFanClub(void)
 {
-    gSaveBlock1Ptr->vars[VAR_FANCLUB_FAN_COUNTER - VARS_START] = 0;
+    gSaveBlock1Ptr->vars[VAR_EVOFLUX_TRANSFORM_COUNT - VARS_START] = 0;
     gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = 0;
 }
 

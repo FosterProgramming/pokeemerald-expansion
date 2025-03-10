@@ -116,6 +116,16 @@ Common_Movement_PartyMember1TalksToPlayerNorth::
 	emote_exclamation_mark
 	step_end
 
+Common_Movement_PartyMember1TalksToPlayerWest::
+	walk_left
+	face_right
+	emote_exclamation_mark
+	step_end
+
 Common_Movement_PartyMember1ReturnsToPlayer::
 	walk_down
+	step_end
+
+Common_Movement_PartyMember1ReturnsToPlayerWest::
+	walk_right
 	step_end

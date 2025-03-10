@@ -7022,6 +7022,31 @@ BattleScript_AttackerFormChangeNoPopup::
 	handleformchange BS_ATTACKER, 2
 	return
 
+BattleScript_EvoFluxAttackerFormChange::
+	pause 5
+	pushtraitstack BS_ABILITY_BATTLER ABILITY_RUN_AWAY
+	call BattleScript_AbilityPopUp
+	flushtextbox
+	handleformchange BS_ATTACKER, 0
+	handleformchange BS_ATTACKER, 1
+	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+	waitanimation
+	handleformchange BS_ATTACKER, 2
+	return
+
+BattleScript_EvoFluxAttackerFirstFormChange::
+	pause 5
+	pushtraitstack BS_ATTACKER ABILITY_RUN_AWAY
+	flushtextbox
+	handleformchange BS_ATTACKER, 0
+	handleformchange BS_ATTACKER, 1
+	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+	waitanimation
+	handleformchange BS_ATTACKER, 2
+	printstring STRINGID_VEEFIRSTTRANSFORMDIALOGUE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_AttackerFormChangeEnd3::
 	call BattleScript_AttackerFormChange
 	end3

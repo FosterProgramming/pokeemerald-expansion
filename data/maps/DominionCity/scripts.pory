@@ -1,4 +1,43 @@
 raw `
-DominionCity_MapScripts::
-	.byte 0
+.set LOCALID_EEVEE, 1
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 `
+
+mapscripts DominionCity_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE 
+	[
+	VAR_DOMINION_CITY_LAB_INTRO_STATE, 7 
+		{
+				lockall
+				getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+                setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
+                addobject(LOCALID_EEVEE)
+				playse(SE_PIN)
+                applymovement(LOCALID_EEVEE, moves(walk_left emote_exclamation_mark))
+				applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left walk_in_place_left))
+                waitmovement(LOCALID_EEVEE)
+                waitse
+				applymovement(LOCALID_EEVEE, moves(walk_left walk_down))
+                waitmovement(LOCALID_EEVEE)
+				applymovement(LOCALID_EEVEE, moves(face_up))
+                waitmovement(LOCALID_EEVEE)
+				delay(40)
+				applymovement(LOCALID_EEVEE, moves(face_right emote_exclamation_mark))
+                waitmovement(LOCALID_EEVEE)
+				delay(40)
+				applymovement(LOCALID_EEVEE, moves(walk_up walk_right))
+                waitmovement(LOCALID_EEVEE)
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left walk_in_place_left))
+                speakername("Vee")
+                msgbox(format("Whoa-- This is... THIS IS OUTSIDE?! The sky--it's HUGE! And the air--it's all... fresh and stuff! I thought fresh air was just a myth!\pOkaaay, okay, focus! We're not safe yet! Still fences... still gotta find a way out before--\pWait, do you hear that? No alarms. No buzzing doors. No heavy boots stomping around... Just... wind. And... birds? Huh.\pOkay, no time to get distracted--gotta keep moving before Team MAGA figures out we're gone! C'mon, let's find a way outta here--fast!"))
+				applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayerWest)
+                waitmovement(LOCALID_EEVEE)
+                removeobject(LOCALID_EEVEE)
+                setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 9)
+                releaseall
+                end
+		}
+	]
+}

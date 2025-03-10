@@ -19,8 +19,6 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
 	speakername("Vee")
 	msgbox(format("Oh, and, um… don't expect much from that one. Porygon over there? Used to talk all the time. All numbers and beeps and stuff I didn't get. But ever since its last 'experiment' … nothing. Just sits there, flickering. Kinda creepy, right?  I tried talking to it, but it won't even beep at me anymore."))
 	msgbox(format("Wait, hold on. Did you just say you used to be human? That's… whoa. That's crazy! No wonder they're keeping you here! But… that's perfect! If you were human before, maybe you can help me escape!\p See, the guards don't know this, but the vent covers? You can open 'em. I've snuck around before when they weren't here. They're a little scary for me, though. You should sneak through the 'em and come to my cell! We can talk more quietly here. C'mon, I'll wait for you!"))
-    givemon(SPECIES_DEWGONG, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_HEADBUTT, MOVE_GROWL, MOVE_NONE, MOVE_NONE)
-	setflag(FLAG_SYS_POKEMON_GET)
 	setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 1)
 	releaseall
     end
@@ -51,7 +49,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript {
 	removeobject(LOCALID_EEVEE)
 	setflag(FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE)
 	msgbox(format("Vee joined your party!"))
-	givemon(SPECIES_EEVEE, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_TACKLE, MOVE_SAND_ATTACK, MOVE_GROWL, MOVE_TAIL_WHIP)
+	givemon(SPECIES_EEVEE, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_SAND_ATTACK, MOVE_BUBBLEBEAM, MOVE_EMBER, MOVE_THUNDERSHOCK)
 	releaseall
     end
 }

@@ -885,6 +885,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ELECTRICCURRENTISRUNNING]             = COMPOUND_STRING("An electric current is running across the battlefield!"),
     [STRINGID_SEEMSWEIRD]                           = COMPOUND_STRING("The battlefield seems weird!"),
     [STRINGID_WAGGLINGAFINGER]                      = COMPOUND_STRING("Waggling a finger let it use {B_CURRENT_MOVE}!"),
+    [STRINGID_VEEFIRSTTRANSFORMDIALOGUE]            = COMPOUND_STRING("Vee: Huh?! W-wait--what just happened?!\pI feel--different! My fur--it's all\nweird and--OH! I'm changing?!?!\pDid YOU do this? Did I do this?!\nWait--does this mean I can do\lanything?!\pWhat if it happens again?\pThe scientists said I was a failure...\pbut look at me now!\pThey were WRONG!\pOkaaay, I have no idea how this\nworks, but I'm gonna roll with it!\pLet's go!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -696,6 +696,31 @@ void StartRegiBattle(void)
     TryUpdateGymLeaderRematchFromWild();
 }
 
+void BattleSetup_StartPorygonBattle(void)
+{
+    s32 newHp, move1, move2, move3, move4;
+
+    newHp = 400;
+    move1 = MOVE_TRI_ATTACK;
+    move2 = MOVE_PSYBEAM;
+    move3 = MOVE_DISABLE;
+    move4 = MOVE_RECOVER;
+
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndScriptedWildBattle;
+    gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
+    CreateBattleStartTask(GetWildBattleTransition(), 0);
+    SetMonData(&gEnemyParty[0], MON_DATA_HP, &newHp);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &move1);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE2, &move2);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE3, &move3);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE4, &move4);
+    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+    IncrementDailyWildBattles();
+    TryUpdateGymLeaderRematchFromWild();
+}
+
 static void DowngradeBadPoison(void)
 {
     u8 i;

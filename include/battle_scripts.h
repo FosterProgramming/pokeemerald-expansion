@@ -378,6 +378,8 @@ extern const u8 BattleScript_AttackerFormChange[];
 extern const u8 BattleScript_AttackerFormChangeEnd3[];
 extern const u8 BattleScript_AttackerFormChangeWithString[];
 extern const u8 BattleScript_AttackerFormChangeWithStringEnd3[];
+extern const u8 BattleScript_EvoFluxAttackerFormChange[];
+extern const u8 BattleScript_EvoFluxAttackerFirstFormChange[];
 extern const u8 BattleScript_TargetFormChange[];
 extern const u8 BattleScript_AnticipationActivates[];
 extern const u8 BattleScript_SlowStartEnds[];

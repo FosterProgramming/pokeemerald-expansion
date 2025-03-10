@@ -14,6 +14,8 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
         dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
         if(var(VAR_RESULT) == MULTI_B_PRESSED)
             {
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+                waitmovement(OBJ_EVENT_ID_PLAYER)
                 setvar(VAR_TEMP_0,0)
                 releaseall
                 end
@@ -30,6 +32,8 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
         dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
         if(var(VAR_RESULT) == MULTI_B_PRESSED)
             {
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+                waitmovement(OBJ_EVENT_ID_PLAYER)
                 setvar(VAR_TEMP_0,0)
                 releaseall
                 end
@@ -42,6 +46,8 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
         dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
         if(var(VAR_RESULT) == MULTI_B_PRESSED)
             {
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+                waitmovement(OBJ_EVENT_ID_PLAYER)
                 setvar(VAR_TEMP_0,0)
                 releaseall
                 end
@@ -54,6 +60,8 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
         dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
         if(var(VAR_RESULT) == MULTI_B_PRESSED)
             {
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+                waitmovement(OBJ_EVENT_ID_PLAYER)
                 setvar(VAR_TEMP_0,0)
                 releaseall
                 end
@@ -71,7 +79,7 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 waitmovement(LOCALID_EEVEE)
                 playse(SE_PIN)
                 waitse
-                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up walk_in_place_up))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 speakername("Vee")
                 msgbox(format("Come on, you need to input the right code before we get caught! Hurry, hurry!"))
@@ -79,7 +87,7 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 waitmovement(LOCALID_EEVEE)
                 removeobject(LOCALID_EEVEE)
                 closemessage
-                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down walk_in_place_down))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 setvar(VAR_TEMP_0,0)
                 goto(DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor)
@@ -95,14 +103,16 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 playse(SE_PIN)
                 waitmovement(LOCALID_EEVEE)
                 waitse
-                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up walk_in_place_up))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 speakername("Vee")
                 msgbox(format("Oh, oh that's a good sound! The door's unlocked.\p Welp! No point standing around. We got, like, eight whole artifacts to find!\p And hey, you're lucky I'm coming with you! You're gonna need someone to keep things fun!\pAnd, like, general survival stuff. Y'know, in case you get scared or whatever.\pAaaaanyway, let's get outta here before I start rethinking this!"))
                 applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer)
                 waitmovement(LOCALID_EEVEE)
                 removeobject(LOCALID_EEVEE)
-                setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 7)
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down walk_in_place_down))
+                waitmovement(OBJ_EVENT_ID_PLAYER)
+                setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 8)
                 releaseall
                 end
             }

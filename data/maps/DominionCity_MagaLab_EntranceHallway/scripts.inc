@@ -23,171 +23,199 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor::
 # 15 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, MULTI_B_PRESSED
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_2
-# 21 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 23 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_3
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_1:
-# 29 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_11
-# 30 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_1, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_2, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_3, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_4, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_5, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_6, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_7, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_8, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_9, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_10
 # 31 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_11
+# 32 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_1, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_2, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_3, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_4, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_5, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_6, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_7, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_8, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_9, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_10
+# 33 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, MULTI_B_PRESSED
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_7
-# 37 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 41 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_8
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_6:
-# 41 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 45 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_12
-# 42 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 46 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_1, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_2, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_3, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_4, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_5, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_6, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_7, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_8, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_9, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_10
-# 43 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 47 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, MULTI_B_PRESSED
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_15
-# 49 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 55 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_16
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_14:
-# 53 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 59 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_13
-# 54 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 60 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_1, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_2, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_3, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_4, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_5, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_6, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_7, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_8, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_9, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_10
-# 55 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 61 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, MULTI_B_PRESSED
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_20
-# 61 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 69 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_21
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
-# 65 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 73 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_TEMP_0, 4
 	goto_if_lt DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24
-# 85 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	playse SE_DOOR
-# 86 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitse
-# 87 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 88 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
-# 89 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	addobject LOCALID_EEVEE
-# 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
-# 91 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	playse SE_PIN
-# 92 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
-# 93 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitse
-# 94 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1
-# 95 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 96 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	speakername DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_14
 # 97 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_16
+	playse SE_DOOR
 # 98 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	waitse
 # 99 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 100 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	removeobject LOCALID_EEVEE
+	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
 # 101 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 7
+	addobject LOCALID_EEVEE
 # 102 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
+# 103 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	playse SE_PIN
+# 104 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement LOCALID_EEVEE
+# 105 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitse
+# 106 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_2
+# 107 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 108 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	speakername DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_14
+# 109 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_16
+# 110 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+# 111 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement LOCALID_EEVEE
+# 112 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	removeobject LOCALID_EEVEE
+# 113 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_3
+# 114 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 115 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 8
+# 116 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_2:
 # 17 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setvar VAR_TEMP_0, 0
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1
 # 18 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 19 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	setvar VAR_TEMP_0, 0
+# 20 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_3:
-# 23 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 25 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	compare VAR_RESULT, MULTI_B_PRESSED
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_12
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_11:
-# 27 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 29 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addvar VAR_TEMP_0, 1
 	goto DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_1
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_7:
-# 33 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 35 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1
+# 36 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 37 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	setvar VAR_TEMP_0, 0
-# 34 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 38 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_8:
-# 39 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 43 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addvar VAR_TEMP_0, 1
 	goto DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_6
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_12:
-# 25 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 27 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	releaseall
 	goto DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_11
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_15:
-# 45 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 49 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1
+# 50 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 51 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	setvar VAR_TEMP_0, 0
-# 46 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 52 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_16:
-# 51 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 57 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addvar VAR_TEMP_0, 1
 	goto DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_14
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_20:
-# 57 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 63 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1
+# 64 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 65 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	setvar VAR_TEMP_0, 0
-# 58 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 66 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_21:
-# 63 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 71 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addvar VAR_TEMP_0, 1
 	goto DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
-# 67 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 68 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
-# 69 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	addobject LOCALID_EEVEE
-# 70 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
-# 71 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
-# 72 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	playse SE_PIN
-# 73 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitse
-# 74 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	speakername DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_14
 # 75 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_15
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 76 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
 # 77 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	addobject LOCALID_EEVEE
 # 78 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	removeobject LOCALID_EEVEE
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
 # 79 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	closemessage
+	waitmovement LOCALID_EEVEE
 # 80 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setvar VAR_TEMP_0, 0
+	playse SE_PIN
 # 81 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitse
+# 82 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_2
+# 83 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 84 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	speakername DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_14
+# 85 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_15
+# 86 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+# 87 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement LOCALID_EEVEE
+# 88 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	removeobject LOCALID_EEVEE
+# 89 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	closemessage
+# 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_3
+# 91 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 92 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	setvar VAR_TEMP_0, 0
+# 93 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	goto DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
 	return
 
@@ -195,13 +223,29 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 # 11 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_0:
 # 11 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	face_up
+	walk_in_place_down
 	step_end
 
-# 94 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 17 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_1:
-# 94 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 17 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	walk_up
+	step_end
+
+# 82 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_2:
+# 82 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	walk_in_place_up
+# 82 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	walk_in_place_up
+	step_end
+
+# 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_3:
+# 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	walk_in_place_down
+# 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+	walk_in_place_down
 	step_end
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_0:
@@ -250,29 +294,29 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_10:
 	.string "9$"
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_11:
-# 29 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 31 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	.string "Enter the second digit now$"
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_12:
-# 41 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 45 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	.string "Enter the third digit now$"
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_13:
-# 53 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 59 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	.string "Enter the fourth digit now$"
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_14:
-# 74 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 84 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	.string "Vee$"
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_15:
-# 75 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 85 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	.string "Come on, you need to input the right\n"
 	.string "code before we get caught! Hurry,\l"
 	.string "hurry!$"
 
 DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_16:
-# 97 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
+# 109 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	.string "Oh, oh that's a good sound! The door's\n"
 	.string "unlocked.\p"
 	.string "Welp! No point standing around. We got,\n"
