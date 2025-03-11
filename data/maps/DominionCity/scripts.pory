@@ -8,7 +8,7 @@ mapscripts DominionCity_MapScripts
 {
 	MAP_SCRIPT_ON_FRAME_TABLE 
 	[
-	VAR_DOMINION_CITY_LAB_INTRO_STATE, 7 
+	VAR_DOMINION_CITY_LAB_INTRO_STATE, 8 
 		{
 				lockall
 				getplayerxy(PlayerXCoordinates, PlayerYCoordinates)

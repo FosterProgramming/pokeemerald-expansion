@@ -7024,7 +7024,7 @@ BattleScript_AttackerFormChangeNoPopup::
 
 BattleScript_EvoFluxAttackerFormChange::
 	pause 5
-	pushtraitstack BS_ABILITY_BATTLER ABILITY_RUN_AWAY
+	pushtraitstack BS_ATTACKER ABILITY_IMPOSTER
 	call BattleScript_AbilityPopUp
 	flushtextbox
 	handleformchange BS_ATTACKER, 0
@@ -7036,7 +7036,7 @@ BattleScript_EvoFluxAttackerFormChange::
 
 BattleScript_EvoFluxAttackerFirstFormChange::
 	pause 5
-	pushtraitstack BS_ATTACKER ABILITY_RUN_AWAY
+	pushtraitstack BS_ATTACKER ABILITY_IMPOSTER
 	flushtextbox
 	handleformchange BS_ATTACKER, 0
 	handleformchange BS_ATTACKER, 1

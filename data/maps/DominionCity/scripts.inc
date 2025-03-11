@@ -14,7 +14,7 @@ DominionCity_MapScripts::
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 11 "data/maps/DominionCity/scripts.pory"
-	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 7, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
+	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 8, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
 	.2byte 0
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
