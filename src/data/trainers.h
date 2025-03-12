@@ -505,7 +505,7 @@ F_TRAINER_FEMALE |
 #line 274
         .trainerName = _("ED"),
 #line 275
-        .trainerClass = TRAINER_CLASS_COLLECTOR,
+        .trainerClass = TRAINER_CLASS_ELITE_FOUR,
 #line 276
         .trainerPic = TRAINER_PIC_COLLECTOR,
         .encounterMusic_gender =
@@ -525,17 +525,17 @@ F_TRAINER_FEMALE |
 #line 285
             .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 0, 0),
 #line 284
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(31, 22, 23, 26, 24, 25),
 #line 283
             .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 286
-                MOVE_TRI_ATTACK,
-                MOVE_DISABLE,
+                MOVE_CONVERSION_2,
+                MOVE_SWIFT,
                 MOVE_PSYBEAM,
-                MOVE_RECOVER,
+                MOVE_BARRIER,
             },
             },
         },

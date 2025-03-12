@@ -1979,7 +1979,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             CreateMon(&party[i], partyData[i].species, partyData[i].lvl, 0, TRUE, personalityValue, otIdType, fixedOtId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
 
-            CustomTrainerPartyAssignMoves(&party[i], &partyData[i]);
+        CustomTrainerPartyAssignMoves(&party[i], &partyData[i]);
             SetMonData(&party[i], MON_DATA_IVS, &(partyData[i].iv));
             if (partyData[i].ev != NULL)
             {
@@ -2042,7 +2042,10 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 u32 data = partyData[i].teraType;
                 SetMonData(&party[i], MON_DATA_TERA_TYPE, &data);
             }
-            CalculateMonStats(&party[i]);
+            if(GetTrainerClassFromId(gTrainerBattleOpponent_A) == TRAINER_CLASS_ELITE_FOUR)
+                CalculateBossMonStats(&party[i]);
+            else
+                CalculateMonStats(&party[i]);
 
             if (B_TRAINER_CLASS_POKE_BALLS >= GEN_7 && ball == -1)
             {
