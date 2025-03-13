@@ -1,16 +1,46 @@
 raw `
 .set LOCALID_EEVEE, 1
+.set LOCALID_PORYGON, 2
 `
 mapscripts DominionCity_MagaLab_HoldingCells_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DOMINION_CITY_LAB_INTRO_STATE, 0: DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell
+		VAR_DOMINION_CITY_LAB_INTRO_STATE, 5: DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems
     ]
 }
 
-
+script DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems
+{
+	if(flag(FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB))
+	{
+    lockall
+	playse(SE_PIN)
+    applymovement(LOCALID_PORYGON, moves(face_right, emote_exclamation_mark))
+    waitmovement(LOCALID_PORYGON)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	speakername("Porygon")
+	msgbox(format("Beep… Boop…\pITEM REPLENISHMENT COMPLETE"))
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
+	addobject(LOCALID_EEVEE)
+	applymovement(LOCALID_EEVEE, moves(walk_left emote_exclamation_mark))
+	playse(SE_PIN)
+	waitmovement(LOCALID_EEVEE)
+    speakername("Vee")
+	msgbox(format("Heeeey! You CAN still talk? And did you say item's replenished? That Porygon at the entrance sure was tough, maybe we should see what kinda items Porygon has to see if they can help us escape!"))
+	applymovement(LOCALID_EEVEE, moves(walk_right))
+	waitmovement(LOCALID_EEVEE)
+	removeobject(LOCALID_EEVEE)
+	clearflag(FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB)
+	setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 4)
+	releaseall
+    end
+	}
+}
 
 script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
     lockall
+	setrespawn(HEAL_LOCATION_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS)
 	playse(SE_PIN)
     applymovement(LOCALID_EEVEE, DominionCity_MagaLab_HoldingCells_Movement_EeveeFacesPlayer)
     waitmovement(LOCALID_EEVEE)
@@ -49,7 +79,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript {
 	removeobject(LOCALID_EEVEE)
 	setflag(FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE)
 	msgbox(format("Vee joined your party!"))
-	givemon(SPECIES_EEVEE, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_SAND_ATTACK, MOVE_BUBBLEBEAM, MOVE_EMBER, MOVE_THUNDERSHOCK)
+	givemon(SPECIES_EEVEE, 25, ITEM_LEFTOVERS, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_SAND_ATTACK, MOVE_BUBBLEBEAM, MOVE_FLAME_CHARGE, MOVE_THUNDERBOLT)
 	releaseall
     end
 }
@@ -58,7 +88,15 @@ script DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey {
    	lockall
 	if(flag(FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE))
 	{
+		msgbox(format("The guard left his bag on the desk."))
 		finditem(ITEM_CARD_KEY, 1)
+		msgbox(format("There were also some berries inside one of the pockets."))
+		finditem(ITEM_SITRUS_BERRY, 1)
+		finditem(ITEM_AGUAV_BERRY, 1)
+		finditem(ITEM_ENIGMA_BERRY, 1)
+		finditem(ITEM_ASPEAR_BERRY, 1)
+		finditem(ITEM_PECHA_BERRY, 1)
+		finditem(ITEM_LUM_BERRY, 1)
 		releaseall
 		end
 	}
@@ -79,8 +117,16 @@ script DominionCity_MagaLab_HoldingCells_EventScript_PorygonNPCScript {
     else
 	{
 		msgbox(format("Porygon is holding something…"))
-		giveitem(ITEM_MIRROR_HERB, 1)
-		setflag(FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB)
+		if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) >= 4)
+			{
+				giveitem(ITEM_SITRUS_BERRY, 5)
+				setflag(FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB)
+			}
+		else
+		{
+			giveitem(ITEM_MIRROR_HERB, 1)
+			setflag(FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB)
+		}
 	}
 	releaseall
     end

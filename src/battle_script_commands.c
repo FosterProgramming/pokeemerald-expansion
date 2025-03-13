@@ -11309,7 +11309,10 @@ static void Cmd_tryhealhalfhealth(void)
     if (cmd->battler == BS_ATTACKER)
         gBattlerTarget = gBattlerAttacker;
 
-    gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 2;
+    if(gBattleMons[gBattlerTarget].species == SPECIES_PORYGON)
+        gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 8;
+    else
+        gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 2;
     if (gBattleMoveDamage == 0)
         gBattleMoveDamage = 1;
     gBattleMoveDamage *= -1;

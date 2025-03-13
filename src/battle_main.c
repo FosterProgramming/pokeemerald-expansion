@@ -125,6 +125,7 @@ static void SpriteCB_UnusedBattleInit_Main(struct Sprite *sprite);
 static u32 Crc32B (const u8 *data, u32 size);
 static u32 GeneratePartyHash(const struct Trainer *trainer, u32 i);
 static s32 Factorial(s32);
+static void SetOpponentMovesPorygonBoss(void);
 
 EWRAM_DATA u16 gBattle_BG0_X = 0;
 EWRAM_DATA u16 gBattle_BG0_Y = 0;
@@ -1904,6 +1905,7 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
 {
     bool32 noMoveSet = TRUE;
     u32 j;
+    s32 maxPP = 255;
 
     for (j = 0; j < MAX_MON_MOVES; ++j)
     {
@@ -1919,7 +1921,10 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     for (j = 0; j < MAX_MON_MOVES; ++j)
     {
         SetMonData(mon, MON_DATA_MOVE1 + j, &partyEntry->moves[j]);
-        SetMonData(mon, MON_DATA_PP1 + j, &gMovesInfo[partyEntry->moves[j]].pp);
+        if(GetTrainerClassFromId(gTrainerBattleOpponent_A) == TRAINER_CLASS_ELITE_FOUR)
+            SetMonData(mon, MON_DATA_PP1 + j, &maxPP);
+        else
+            SetMonData(mon, MON_DATA_PP1 + j, &gMovesInfo[partyEntry->moves[j]].pp);
     }
 }
 
@@ -4098,6 +4103,14 @@ void BattleTurnPassed(void)
         BattleScriptExecute(i == 1 ? BattleScript_TrainerASlideMsgEnd2 : BattleScript_TrainerBSlideMsgEnd2);
     else if ((i = ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRAINER_SLIDE_PLAYER_MON_UNAFFECTED)))
         BattleScriptExecute(i == 1 ? BattleScript_TrainerASlideMsgEnd2 : BattleScript_TrainerBSlideMsgEnd2);
+
+    //Custom Boss Fight Movesets
+    switch(gTrainerBattleOpponent_A)
+        {
+        case TRAINER_ED:
+        SetOpponentMovesPorygonBoss();
+        break;
+        }
 }
 
 u8 IsRunningFromBattleImpossible(u32 battler)
@@ -6141,4 +6154,64 @@ static s32 Factorial(s32 n)
     for (i = 2; i <= n; i++)
         f *= i;
     return f;
+}
+
+//Custom Boss Movesets
+static void SetOpponentMovesPorygonBoss(void)
+{
+
+    bool32 porygonLastMove = gBattleResults.lastUsedMoveOpponent;
+    
+    DebugPrintf("gBattleResults.battleTurnCounter = %d",gBattleResults.battleTurnCounter);
+
+    if(gBattleMons[B_POSITION_OPPONENT_LEFT].hp <= (gBattleMons[B_POSITION_OPPONENT_LEFT].maxHP / 2)
+    && gBattleResults.battleTurnCounter % 5 == 2
+    && porygonLastMove != MOVE_LOCK_ON)
+    {
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[0] = MOVE_RECOVER;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[1] = MOVE_RECOVER;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[2] = MOVE_RECOVER;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[3] = MOVE_RECOVER;
+        return;
+    }
+    else if (gBattleMons[B_POSITION_OPPONENT_LEFT].hp <= (gBattleMons[B_POSITION_OPPONENT_LEFT].maxHP / 3))
+    {
+        if(porygonLastMove == MOVE_LOCK_ON)
+        {    
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[0] = MOVE_ZAP_CANNON;
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[1] = MOVE_ZAP_CANNON;
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[2] = MOVE_STONE_EDGE;
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[3] = MOVE_STONE_EDGE;
+        }
+        else
+        {    
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[0] = MOVE_LOCK_ON;
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[1] = MOVE_LOCK_ON;
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[2] = MOVE_LOCK_ON;
+            gBattleMons[B_POSITION_OPPONENT_LEFT].moves[3] = MOVE_LOCK_ON;
+        }
+    }  
+    else if(gBattleResults.battleTurnCounter % 5 == 0)
+    {
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[0] = MOVE_CONVERSION_2;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[1] = MOVE_CONVERSION_2;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[2] = MOVE_CONVERSION_2;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[3] = MOVE_CONVERSION_2; 
+    }
+    else if(gBattleMons[B_POSITION_OPPONENT_LEFT].statStages[STAT_ATK] >= (DEFAULT_STAT_STAGE + 2))
+    {
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[0] = MOVE_SWIFT;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[1] = MOVE_SWIFT;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[2] = MOVE_PSYBEAM;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[3] = MOVE_TRI_ATTACK;
+        return; 
+    }
+    else  
+    {
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[0] = MOVE_GROWTH;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[1] = MOVE_SWIFT;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[2] = MOVE_PSYBEAM;
+        gBattleMons[B_POSITION_OPPONENT_LEFT].moves[3] = MOVE_TRI_ATTACK;
+        return; 
+    }  
 }
