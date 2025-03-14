@@ -107,26 +107,28 @@ DominionCity_EventScripts_WhatIsThisPlace::
 # 61 "data/maps/DominionCity/scripts.pory"
 	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_4
 # 62 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
-# 63 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_0
-# 64 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 65 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 66 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
-# 67 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_1
-# 68 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
-# 69 "data/maps/DominionCity/scripts.pory"
 	waitmovement LOCALID_EEVEE
+# 63 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 64 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_0
+# 65 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 66 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 67 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 68 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_1
+# 69 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
 # 70 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_EEVEE
+	waitmovement LOCALID_EEVEE
 # 71 "data/maps/DominionCity/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+	removeobject LOCALID_EEVEE
 # 72 "data/maps/DominionCity/scripts.pory"
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+# 73 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
@@ -249,15 +251,15 @@ DominionCity_EventScripts_WhatIsThisPlace_Movement_4:
 	walk_down
 	step_end
 
-# 64 "data/maps/DominionCity/scripts.pory"
+# 65 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_5:
-# 64 "data/maps/DominionCity/scripts.pory"
+# 65 "data/maps/DominionCity/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 68 "data/maps/DominionCity/scripts.pory"
+# 69 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_6:
-# 68 "data/maps/DominionCity/scripts.pory"
+# 69 "data/maps/DominionCity/scripts.pory"
 	walk_down
 	step_end
 
@@ -283,7 +285,7 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1:
 	.string "outta here--fast!$"
 
 DominionCity_EventScripts_WhatIsThisPlace_Text_0:
-# 63 "data/maps/DominionCity/scripts.pory"
+# 64 "data/maps/DominionCity/scripts.pory"
 	.string "Huh? What is this place?\p"
 	.string "It's like a town, but… where is\n"
 	.string "everyone?\p"
@@ -295,7 +297,7 @@ DominionCity_EventScripts_WhatIsThisPlace_Text_0:
 	.string "sense.$"
 
 DominionCity_EventScripts_WhatIsThisPlace_Text_1:
-# 67 "data/maps/DominionCity/scripts.pory"
+# 68 "data/maps/DominionCity/scripts.pory"
 	.string "…Oh. Yeah. I guess if you were gonna do\n"
 	.string "a bunch of creepy experiments, you'd\l"
 	.string "wanna do it somewhere private.\p"

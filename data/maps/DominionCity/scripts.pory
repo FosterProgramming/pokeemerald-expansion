@@ -59,6 +59,7 @@ script DominionCity_EventScripts_WhatIsThisPlace
         waitmovement(LOCALID_EEVEE)
         delay(40)
         applymovement(LOCALID_EEVEE, moves(walk_left * 2 walk_down))
+        waitmovement(LOCALID_EEVEE)
         speakername("Vee")
         msgbox(format("Huh? What is this place?\pIt's like a town, but… where is everyone?\pEvery building looks empty…\pThis is really weird, {PLAYER}.\pWait a second… why would Team MAGA have a whole lab here?\pIn a town with no people? That makes no sense."))
         applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))

@@ -1,7 +1,14 @@
 raw `
-MurkwellBog_MapScripts::
-	.byte 0
+.set LOCALID_NYX, 7
+.set LOCALID_EEVEE, 9
+.set LOCALID_DRAKE, 10
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 `
+
+mapscripts MurkwellBog_MapScripts
+{
+}
 script MurkwellBog_EventScripts_SlowpokeNPC
 {
 	lockall
@@ -48,6 +55,168 @@ script MurkwellBog_EventScripts_HoothootNPC
 	msgbox(format("The temple's always been there. But lately… the air around it shimmers. I don't like looking at it. It feels like it's moving."))
 	releaseall
 	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(VENOMOTH)
+script MurkwellBog_EventScripts_NyxNPC
+{
+	lockall
+	speakername("???")
+	faceplayer
+	msgbox(format("Have you retreived the lost items?\pA Hard Stone\pA Spell Tag\pA Charcoal Fragment"),MSGBOX_YESNO)
+	if(var(VAR_RESULT) != 1)
+		{
+			speakername("???")
+			faceplayer
+			msgbox(format("Go, then.\pSeek what is lost.\pAnd if the temple answers… perhaps I shall walk this path with you."))
+			releaseall
+			end
+		}
+	else
+		{
+			if(checkitem(ITEM_CHARCOAL) == TRUE)
+			{
+				if(checkitem(ITEM_SPELL_TAG) == TRUE)
+					{
+						if(checkitem(ITEM_HARD_STONE) == TRUE)
+							{
+								speakername("???")
+								faceplayer
+								msgbox(format("The offerings have been gathered.\pStep aside. I will perform the ritual."))
+								getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+									if(var(PlayerXCoordinates) == 14) // @ 14/14
+										{
+										}
+									elif(var(PlayerXCoordinates) == 13) // @ 13/13
+										{
+										}
+									else // @ 15/13 -> 15/14
+										{
+											applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down walk_in_place_up))
+											waitmovement(OBJ_EVENT_ID_PLAYER)
+										}
+								applymovement(LOCALID_NYX, moves(walk_right walk_up * 3 emote_exclamation_mark))
+								waitmovement(LOCALID_NYX)
+								call(CommonEventScript_ScreenShake)
+								playse(SE_EFFECTIVE)
+								delay(40)
+								waitse
+								applymovement(LOCALID_NYX, moves(walk_down * 3))
+								waitmovement(LOCALID_NYX)
+								getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+								if(var(PlayerXCoordinates) == 14) // @ 14/14
+										{
+											applymovement(LOCALID_NYX, moves(walk_left face_down))
+											waitmovement(LOCALID_NYX)
+										}
+									elif(var(PlayerXCoordinates) == 13) // @ 13/13
+										{
+											applymovement(LOCALID_NYX, moves(walk_left))
+											waitmovement(LOCALID_NYX)
+										}
+									else // @15/14
+										{
+										}
+								msgbox(format("…It is done.\pThe seal has lifted.\pThe temple awaits."))
+								faceplayer
+								getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+                				setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
+                				setobjectxyperm(LOCALID_DRAKE, PlayerXCoordinates, PlayerYCoordinates)
+                				addobject(LOCALID_EEVEE)
+									if(var(PlayerXCoordinates) == 14) // @ 14/14
+										{
+											applymovement(LOCALID_EEVEE, moves(walk_right walk_up face_left emote_exclamation_mark))
+											waitmovement(LOCALID_EEVEE)
+											playse(SE_PIN)
+											waitse
+										}
+									elif(var(PlayerXCoordinates) == 13) // @ 13/13
+										{
+											applymovement(LOCALID_EEVEE, moves(walk_down walk_right face_up))
+											waitmovement(LOCALID_EEVEE)
+											playse(SE_PIN)
+											waitse
+										}
+									else // @15/14
+										{
+											applymovement(LOCALID_EEVEE, moves(walk_left walk_up face_right))
+											waitmovement(LOCALID_EEVEE)
+											playse(SE_PIN)
+											waitse
+										}
+								speakername("Vee")
+								msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+								speakername("???")
+								msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+								speakername("Nyx")
+								msgbox(format("I will accompany you inside.\pThere is more yet to uncover."))
+									if(var(PlayerXCoordinates) == 14) // @ 14/14
+										{
+											applymovement(LOCALID_NYX, moves(walk_down))
+											waitmovement(LOCALID_NYX)
+											removeobject(LOCALID_NYX)
+											removeobject(8)
+											playfanfare(MUS_OBTAIN_ITEM)
+											msgbox(format("Nyx joined your party."))
+											waitfanfare
+											givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+											speakername("Vee")
+											msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+											applymovement(LOCALID_EEVEE, moves(walk_down walk_left))
+											waitmovement(LOCALID_EEVEE)
+											removeobject(LOCALID_EEVEE)
+										}
+									elif(var(PlayerXCoordinates) == 13) // @ 13/13
+										{
+											applymovement(LOCALID_NYX, moves(walk_left))
+											waitmovement(LOCALID_NYX)
+											removeobject(LOCALID_NYX)
+											removeobject(8)
+											playfanfare(MUS_OBTAIN_ITEM)
+											msgbox(format("Nyx joined your party."))
+											speakername("Vee")
+											msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+											waitfanfare
+											givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+											applymovement(LOCALID_EEVEE, moves(walk_left walk_up))
+											waitmovement(LOCALID_EEVEE)
+											removeobject(LOCALID_EEVEE)
+										}
+									else // @15/14
+										{
+											applymovement(LOCALID_NYX, moves(walk_down))
+											waitmovement(LOCALID_NYX)
+											removeobject(LOCALID_NYX)
+											removeobject(8)
+											playfanfare(MUS_OBTAIN_ITEM)
+											msgbox(format("Nyx joined your party."))
+											speakername("Vee")
+											msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+											waitfanfare
+											givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+											applymovement(LOCALID_EEVEE, moves(walk_right walk_down))
+											waitmovement(LOCALID_EEVEE)
+											removeobject(LOCALID_EEVEE)
+										}
+								call(MurkwellBog_EventScript_NyxNPC_AdditionalPartyMemberDrakeDialogue)
+								removeitem(ITEM_CHARCOAL)
+								removeitem(ITEM_SPELL_TAG)
+								removeitem(ITEM_HARD_STONE)
+								release
+								end
+
+							}
+					}
+			}
+			else
+			{
+				speakername("???")
+				faceplayer
+				msgbox(format("A liars tounge will heed you no entry.\pGo, then.\pSeek what is lost.\pAnd if the temple answers… perhaps I shall walk this path with you."))
+				releaseall
+				end
+			}
+		}
 }
 
 //OBJ_EVENT_GFX_SPECIES(XATU)
@@ -102,4 +271,80 @@ script MurkwellBog_EventScripts_HomebodyNPC3
 	msgbox(format("My kin are buried here… but lately, I don't feel alone when I visit. Someone else watches the graves…"))
 	releaseall
 	end
+}
+
+script MurkwellBog_EventScripts_TempleNeedsRitual
+{
+	lock
+	applymovement(LOCALID_NYX, moves(emote_question_mark))
+	waitmovement(LOCALID_NYX)
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+		if(var(PlayerXCoordinates) < 16)
+			{
+				applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up *2 walk_in_place_left))
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+			}
+		else
+			{
+				applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up *2 walk_left))
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+			}
+	speakername("???")
+	msgbox(format("…\pYou do not belong here.\pAnd yet, the voices stir.\pHow curious."))
+	msgbox(format("This place does not open its secrets to just anyone.\pThe lost whisper of those who have come before.\pBut only one with the right presence may listen."))
+	msgbox(format("You… are different.\pThe echoes follow you, bending around your path.\pThat inscription--it reacts to you, not the others."))
+	msgbox(format("This door was not always shut.\pSomething lingers, unseen.\pNot a lock. Not a barrier.\pSomething… watching."))
+	msgbox(format("I have spent long years studying what remains of the old ways.\pThis seal is unnatural.\pIts origin unknown.\pAnd yet, there is always a way through."))
+	msgbox(format("The temple rejects the living, but it does not ignore the past.\pAn offering--proof of those who walked before--may force its hand."))
+	msgbox(format("Three remnants must be gathered:\pA Hard Stone\pA Spell Tag\pA Charcoal Fragment"))
+	msgbox(format("Only these may wake the ruin.\pOnly then will might path open."))
+	msgbox(format("Go, then.\pSeek what is lost.\pAnd if the temple answers… perhaps I shall walk this path with you."))
+	setvar(VAR_MURKWELL_BOG_STATE, 1)
+	release
+	end
+}
+
+script MurkwellBog_EventScript_NyxNPC_AdditionalPartyMemberDrakeDialogue
+{
+	if(flag(FLAG_HIDE_STRATOSCAPE_DRAKE))
+		{
+			addobject(LOCALID_DRAKE)
+			if(var(PlayerXCoordinates) == 14) // @ 14/14
+				{
+					applymovement(LOCALID_DRAKE, moves(walk_right walk_up face_left emote_exclamation_mark))
+					waitmovement(LOCALID_DRAKE)
+					playse(SE_PIN)
+					waitse
+					speakername("Drake")
+					msgbox(format("Ancient rites, lost echoes…\pIt is good to remember the past.\pBut be wary. Some things are buried for a reason."))
+					applymovement(LOCALID_DRAKE, moves(walk_down walk_left))
+					waitmovement(LOCALID_DRAKE)
+					removeobject(LOCALID_DRAKE)
+				}
+			elif(var(PlayerXCoordinates) == 13) // @ 13/13
+				{
+					applymovement(LOCALID_DRAKE, moves(walk_down walk_right face_up))
+					waitmovement(LOCALID_DRAKE)
+					playse(SE_PIN)
+					waitse
+					speakername("Drake")
+					msgbox(format("Ancient rites, lost echoes…\pIt is good to remember the past.\pBut be wary. Some things are buried for a reason."))
+					applymovement(LOCALID_DRAKE, moves(walk_left walk_up))
+					waitmovement(LOCALID_DRAKE)
+					removeobject(LOCALID_DRAKE)
+				}
+			else // @15/14
+				{
+					applymovement(LOCALID_DRAKE, moves(walk_left walk_up face_right))
+					waitmovement(LOCALID_DRAKE)
+					playse(SE_PIN)
+					waitse
+					speakername("Drake")
+					msgbox(format("Ancient rites, lost echoes…\pIt is good to remember the past.\pBut be wary. Some things are buried for a reason."))
+					applymovement(LOCALID_DRAKE, moves(walk_right walk_down))
+					waitmovement(LOCALID_DRAKE)
+					removeobject(LOCALID_DRAKE)
+				}
+		}
+	return
 }

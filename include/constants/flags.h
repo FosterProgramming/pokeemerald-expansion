@@ -742,7 +742,7 @@
 #define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
 #define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
 #define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
-#define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
+#define FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER  0x2BA // Unused Flag
 #define FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER  0x2BB // Unused Flag
 
 // Event Flags
@@ -753,8 +753,8 @@
 #define FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_SITRUS_BERRY                               0x2C0
 #define FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_PERSIM_BERRY                               0x2C1
 #define FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY                               0x2C2
-#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3
-#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4
+#define FLAG_HIDE_MURKWELL_BOG_NYX                                  0x2C3
+#define FLAG_HIDE_STRATOSCAPE_DRAKE                                 0x2C4
 #define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5
 #define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x2C6
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x2C7

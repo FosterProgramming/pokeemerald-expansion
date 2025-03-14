@@ -65,6 +65,15 @@ JaggedPass_EventScript_OpenMagmaHideout::
 	releaseall
 	end
 
+CommonEventScript_ScreenShake:
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	return
+
 JaggedPass_EventScript_MagmaHideoutGuard::
 	lockall
 	goto_if_set FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS, JaggedPass_EventScript_GuardDefeated

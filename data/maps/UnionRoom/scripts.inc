@@ -25,9 +25,9 @@ UnionRoom_OnResume:
 # 13 "data/maps/UnionRoom/scripts.pory"
 	setflag FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY
 # 14 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_5
+	setflag FLAG_HIDE_MURKWELL_BOG_NYX
 # 15 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_6
+	setflag FLAG_HIDE_STRATOSCAPE_DRAKE
 # 16 "data/maps/UnionRoom/scripts.pory"
 	setflag FLAG_HIDE_UNION_ROOM_PLAYER_7
 # 17 "data/maps/UnionRoom/scripts.pory"

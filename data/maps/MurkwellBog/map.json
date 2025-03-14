@@ -102,13 +102,82 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENOMOTH)",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_HIDE_MURKWELL_BOG_NYX"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 15,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FLAG_HIDE_MURKWELL_BOG_NYX",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
+      "x": 17,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRAGONITE)",
+      "x": 18,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER"
     }
   ],
   "warp_events": [
 
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_MURKWELL_BOG_STATE",
+      "var_value": "0",
+      "script": "MurkwellBog_EventScripts_TempleNeedsRitual"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_MURKWELL_BOG_STATE",
+      "var_value": "0",
+      "script": "MurkwellBog_EventScripts_TempleNeedsRitual"
+    }
   ],
   "bg_events": [
     {

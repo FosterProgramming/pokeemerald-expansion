@@ -113,7 +113,7 @@ LittlerootTown_MaysHouse_1F_OnFrame:
 # 57 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor
 # 58 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
+	map_script_2 VAR_MURKWELL_BOG_STATE, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 # 59 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	.2byte 0
 # 60 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
