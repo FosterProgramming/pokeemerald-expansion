@@ -37,8 +37,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
-      "x": 38,
-      "y": 34,
+      "x": 33,
+      "y": 30,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -59,7 +59,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
+      "var_value": "9",
+      "script": "DominionCity_EventScripts_WhatIsThisPlace"
+    }
   ],
   "bg_events": [
 

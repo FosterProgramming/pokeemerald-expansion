@@ -4507,7 +4507,7 @@
       "width": 80,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Rustboro",
+      "secondary_tileset": "gTileset_DominionCity",
       "border_filepath": "data/layouts/Route4/border.bin",
       "blockdata_filepath": "data/layouts/Route4/map.bin"
     },

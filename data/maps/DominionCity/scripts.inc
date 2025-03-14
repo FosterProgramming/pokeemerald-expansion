@@ -75,6 +75,62 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 	end
 
 
+DominionCity_EventScripts_WhatIsThisPlace::
+# 47 "data/maps/DominionCity/scripts.pory"
+	lockall
+# 48 "data/maps/DominionCity/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 49 "data/maps/DominionCity/scripts.pory"
+	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+# 50 "data/maps/DominionCity/scripts.pory"
+	addobject LOCALID_EEVEE
+# 51 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_0
+# 52 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_1
+# 53 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 54 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 55 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_2
+# 56 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_EEVEE
+# 57 "data/maps/DominionCity/scripts.pory"
+	delay 40
+# 58 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_3
+# 59 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_EEVEE
+# 60 "data/maps/DominionCity/scripts.pory"
+	delay 40
+# 61 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_4
+# 62 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 63 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_0
+# 64 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 65 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 66 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 67 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_1
+# 68 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
+# 69 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_EEVEE
+# 70 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_EEVEE
+# 71 "data/maps/DominionCity/scripts.pory"
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+# 72 "data/maps/DominionCity/scripts.pory"
+	releaseall
+	end
+
+
 # 18 "data/maps/DominionCity/scripts.pory"
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_0:
 # 18 "data/maps/DominionCity/scripts.pory"
@@ -121,23 +177,127 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5:
 	walk_right
 	step_end
 
+# 51 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_0:
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_fast_up
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_fast_up
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_fast_up
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_faster_up
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_faster_up
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_faster_up
+# 51 "data/maps/DominionCity/scripts.pory"
+	walk_faster_up
+	step_end
+
+# 52 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_1:
+# 52 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 52 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 52 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 52 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 52 "data/maps/DominionCity/scripts.pory"
+	walk_up
+	step_end
+
+# 55 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_2:
+# 55 "data/maps/DominionCity/scripts.pory"
+	emote_question_mark
+# 55 "data/maps/DominionCity/scripts.pory"
+	walk_left
+# 55 "data/maps/DominionCity/scripts.pory"
+	walk_left
+# 55 "data/maps/DominionCity/scripts.pory"
+	walk_left
+# 55 "data/maps/DominionCity/scripts.pory"
+	face_up
+	step_end
+
+# 58 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_3:
+# 58 "data/maps/DominionCity/scripts.pory"
+	walk_right
+# 58 "data/maps/DominionCity/scripts.pory"
+	walk_right
+# 58 "data/maps/DominionCity/scripts.pory"
+	walk_right
+# 58 "data/maps/DominionCity/scripts.pory"
+	walk_right
+# 58 "data/maps/DominionCity/scripts.pory"
+	walk_right
+# 58 "data/maps/DominionCity/scripts.pory"
+	face_up
+	step_end
+
+# 61 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_4:
+# 61 "data/maps/DominionCity/scripts.pory"
+	walk_left
+# 61 "data/maps/DominionCity/scripts.pory"
+	walk_left
+# 61 "data/maps/DominionCity/scripts.pory"
+	walk_down
+	step_end
+
+# 64 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_5:
+# 64 "data/maps/DominionCity/scripts.pory"
+	emote_exclamation_mark
+	step_end
+
+# 68 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_WhatIsThisPlace_Movement_6:
+# 68 "data/maps/DominionCity/scripts.pory"
+	walk_down
+	step_end
+
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0:
 # 33 "data/maps/DominionCity/scripts.pory"
 	.string "Vee$"
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1:
 # 34 "data/maps/DominionCity/scripts.pory"
-	.string "Whoa-- This is... THIS IS OUTSIDE?! The\n"
-	.string "sky--it's HUGE! And the air--it's all...\l"
+	.string "Whoa-- This is… THIS IS OUTSIDE?! The\n"
+	.string "sky--it's HUGE! And the air--it's all…\l"
 	.string "fresh and stuff! I thought fresh air\l"
 	.string "was just a myth!\p"
 	.string "Okaaay, okay, focus! We're not safe yet!\n"
-	.string "Still fences... still gotta find a way out\l"
+	.string "Still fences… still gotta find a way out\l"
 	.string "before--\p"
 	.string "Wait, do you hear that? No alarms. No\n"
 	.string "buzzing doors. No heavy boots stomping\l"
-	.string "around... Just... wind. And... birds? Huh.\p"
+	.string "around… Just… wind. And… birds? Huh.\p"
 	.string "Okay, no time to get distracted--gotta\n"
 	.string "keep moving before Team MAGA figures\l"
 	.string "out we're gone! C'mon, let's find a way\l"
 	.string "outta here--fast!$"
+
+DominionCity_EventScripts_WhatIsThisPlace_Text_0:
+# 63 "data/maps/DominionCity/scripts.pory"
+	.string "Huh? What is this place?\p"
+	.string "It's like a town, but… where is\n"
+	.string "everyone?\p"
+	.string "Every building looks empty…\p"
+	.string "This is really weird, {PLAYER}.\p"
+	.string "Wait a second… why would Team MAGA\n"
+	.string "have a whole lab here?\p"
+	.string "In a town with no people? That makes no\n"
+	.string "sense.$"
+
+DominionCity_EventScripts_WhatIsThisPlace_Text_1:
+# 67 "data/maps/DominionCity/scripts.pory"
+	.string "…Oh. Yeah. I guess if you were gonna do\n"
+	.string "a bunch of creepy experiments, you'd\l"
+	.string "wanna do it somewhere private.\p"
+	.string "Still, this place gives me the creeps.\n"
+	.string "Let's get out of here.$"
