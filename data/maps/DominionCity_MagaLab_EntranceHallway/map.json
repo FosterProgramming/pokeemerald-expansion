@@ -58,7 +58,7 @@
       "y": 9,
       "elevation": 0,
       "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
-      "var_value": "6",
+      "var_value": "7",
       "script": "DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor"
     },
     {
@@ -67,7 +67,7 @@
       "y": 9,
       "elevation": 0,
       "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
-      "var_value": "6",
+      "var_value": "7",
       "script": "DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor"
     }
   ],

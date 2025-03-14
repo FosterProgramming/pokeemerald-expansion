@@ -1848,8 +1848,9 @@ void CalculateBossMonStats(struct Pokemon *mon)
     }
     else
     {
-        s32 n = 4 * gSpeciesInfo[species].baseHP + hpIV; // 4x baseHP scaling
-        newMaxHP = ((((n + hpEV / 4) * level) / 50) + level + 50) * 2;
+        s32 n = 4 * gSpeciesInfo[species].baseHP + hpIV;  // Moderate early-game scaling
+        s32 scalingFactor = 2 + (level / 25);  // Faster growth at higher levels
+        newMaxHP = ((((n + hpEV / 4) * level) / 50) + level + 50) * scalingFactor * (1 + level / 100);
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
