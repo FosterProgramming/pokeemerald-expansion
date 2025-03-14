@@ -11059,3 +11059,8 @@ static u16 GetUnownSpecies(struct Pokemon *mon)
         return SPECIES_UNOWN;
     return SPECIES_UNOWN_B + form - 1;
 }
+
+u16 GetObjectEventTrainerSightFlagByObjectEventId(u8 objEventId)
+{
+    return GetObjectEventTemplateByLocalIdAndMap(gObjectEvents[objEventId].localId, gObjectEvents[objEventId].mapNum, gObjectEvents[objEventId].mapGroup)->trainerType;
+}

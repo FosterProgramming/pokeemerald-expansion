@@ -113,3 +113,9 @@ script DominionCity_MagaLab_SecurityHallway_MagaGrunt10
 	releaseall
 	end
 }
+
+script DominionCity_MagaLab_SecurityHallway_IntruderCaught
+{
+    msgbox(format("What the-- how did you get out?! The cells were locked!\pCome with me, back to your cell!"))
+	warpsilent(MAP_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS, 6, 3)
+}
