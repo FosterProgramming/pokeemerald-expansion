@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player4",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_4"
+      "flag": "FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_7",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player3",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_3"
+      "flag": "FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_PERSIM_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_1",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player2",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_2"
+      "flag": "FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_SITRUS_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",

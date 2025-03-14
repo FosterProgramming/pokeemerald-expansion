@@ -19,11 +19,11 @@ UnionRoom_OnResume:
 # 10 "data/maps/UnionRoom/scripts.pory"
 	setflag FLAG_HIDE_SUMMIT_CAVERNS_TEAM_MAGA_ZENDANO
 # 11 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_2
+	setflag FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_SITRUS_BERRY
 # 12 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_3
+	setflag FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_PERSIM_BERRY
 # 13 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_4
+	setflag FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY
 # 14 "data/maps/UnionRoom/scripts.pory"
 	setflag FLAG_HIDE_UNION_ROOM_PLAYER_5
 # 15 "data/maps/UnionRoom/scripts.pory"

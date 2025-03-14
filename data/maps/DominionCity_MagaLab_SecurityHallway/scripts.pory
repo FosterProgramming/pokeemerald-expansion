@@ -2,116 +2,28 @@ raw `
 DominionCity_MagaLab_SecurityHallway_MapScripts::
 	.byte 0
 `
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt1
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_1,
-    format("What the-- how did you get out?! The cells were locked!"),
-    format("Tch, you're tougher than I thought…")
-	)
-    msgbox(format("Stay right there! Security will take care of you!"))
-	releaseall
-	end
+//FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_SITRUS_BERRY
+script DominionCity_MagaLab_SecurityHallway_EventScript_FindSitrusBerry {
+    lockall
+    finditem(ITEM_SITRUS_BERRY, 1)
+    releaseall
+    end
 }
 
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt2
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_2,
-    format("Escaping, huh? Guess we'll see how far you get!"),
-    format("Ugh! You weren't supposed to win!")
-	)
-    msgbox(format("Doesn't matter. You won't make it past the last line of defense…"))
-	releaseall
-	end
+//FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_PERSIM_BERRY
+script DominionCity_MagaLab_SecurityHallway_EventScript_FindPersimBerry {
+    lockall
+    finditem(ITEM_PERSIM_BERRY, 1)
+    releaseall
+    end
 }
 
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt3
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_3,
-    format("What kind of experiment are you, anyway?!"),
-    format("No way… how is a test subject this strong?!")
-	)
-    msgbox(format("They'll just send you back to the lab when you lose!"))
-	releaseall
-	end
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt4
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_4,
-    format("Hah! You think you can escape this place?"),
-    format("No way! I should've been stronger…")
-	)
-    msgbox(format("Keep running, experiment. You'll hit a dead end soon enough."))
-	releaseall
-	end
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt5
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_5,
-		format("Hah! You're just a failed experiment. You won't last!"),
-		format("What?! How did you beat me?!")
-		)
-		msgbox(format("Tch. Doesn't matter. The real experiment is waiting for you ahead…"))
-		releaseall
-		end
-
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt6
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_6,
-		format("There's no point fighting! You'll never get past security!"),
-		format("Grr… just a fluke!")
-		)
-		msgbox(format("Go ahead. Keep running. See what happens when you reach it…"))
-		releaseall
-		end
-	
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt7
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_7,
-		format("An experiment like you shouldn't even be THINKING about escaping!"),
-		format("Ugh! What kind of mutation are you?!")
-		)
-		msgbox(format("You're heading straight into a nightmare. The higher-ups made sure of that."))
-		releaseall
-		end
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt8
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_8,
-		format("You're just a test subject! We OWN you!"),
-		format("No… I was supposed to stop you!")
-		)
-		msgbox(format("It's already waiting for you. I almost feel bad… Almost."))
-		releaseall
-		end
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt9
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_9,
-		format("Hah! You'll never get past our final security measure!"),
-		format("How… how did you win?!")
-		)
-		msgbox(format("Doesn't matter. You're heading right into Porygon's domain."))
-		releaseall
-		end
-}
-
-script DominionCity_MagaLab_SecurityHallway_MagaGrunt10
-{
-	trainerbattle_single(TRAINER_GRUNT_SECURITY_HALLWAY_10,
-    format("You really don't get it, do you? This isn't just some lab…"),
-    format("Tch. No way… I lost?!")
-	)
-    msgbox(format("Heh. Hope you're ready, experiment. The real fight starts now…"))
-	releaseall
-	end
+//FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY
+script DominionCity_MagaLab_SecurityHallway_EventScript_FindAspearBerry {
+    lockall
+    finditem(ITEM_ASPEAR_BERRY, 1)
+    releaseall
+    end
 }
 
 script DominionCity_MagaLab_SecurityHallway_IntruderCaught

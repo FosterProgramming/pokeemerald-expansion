@@ -750,9 +750,9 @@
 #define FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB   0x2BD
 #define FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON                         0x2BE
 #define FLAG_HIDE_SUMMIT_CAVERNS_TEAM_MAGA_ZENDANO                  0x2BF
-#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1
-#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x2C2
+#define FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_SITRUS_BERRY                               0x2C0
+#define FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_PERSIM_BERRY                               0x2C1
+#define FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY                               0x2C2
 #define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3
 #define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4
 #define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5
