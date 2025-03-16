@@ -74,7 +74,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
 # 101 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addobject LOCALID_EEVEE
 # 102 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 103 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	playse SE_PIN
 # 104 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -90,7 +90,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
 # 109 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_16
 # 110 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 111 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 112 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -186,7 +186,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 # 77 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	addobject LOCALID_EEVEE
 # 78 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 79 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 80 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -202,7 +202,7 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 # 85 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_15
 # 86 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 87 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 88 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"

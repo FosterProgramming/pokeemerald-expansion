@@ -137,51 +137,72 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	applymovement OBJ_EVENT_ID_PLAYER, TestMovement
-	waitmovement OBJ_EVENT_ID_PLAYER
+	setflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_NYX_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_ACE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_TALON_PARTY_MEMBER
 	release
 	end
 
-TestMovement:
-	walk_in_place_up
-	walk_in_place_up
-	walk_in_place_up
-	walk_in_place_up
-	walk_in_place_up
-	walk_in_place_left
-	walk_in_place_left
-	walk_in_place_left
-	walk_in_place_left
-	walk_in_place_left
-	walk_in_place_down
-	walk_in_place_down
-	walk_in_place_down
-	walk_in_place_down
-	walk_in_place_down
-	walk_in_place_right
-	walk_in_place_right
-	walk_in_place_right
-	walk_in_place_right
-	walk_in_place_right
-	step_end
-
 Debug_EventScript_Script_2::
+	goto_if_set FLAG_HIDE_STRATOSCAPE_DRAKE, Debug_EventScript_Script_2_ClearFlag
+	goto_if_unset FLAG_HIDE_STRATOSCAPE_DRAKE, Debug_EventScript_Script_2_SetFlag
+
+	Debug_EventScript_Script_2_SetFlag:
+	setflag FLAG_HIDE_STRATOSCAPE_DRAKE
+	release
+	end
+
+	Debug_EventScript_Script_2_ClearFlag:
+	clearflag FLAG_HIDE_STRATOSCAPE_DRAKE
 	release
 	end
 
 Debug_EventScript_Script_3::
+	goto_if_set FLAG_HIDE_VOLTBROOK_TOWN_ACE, Debug_EventScript_Script_3_ClearFlag
+	goto_if_unset FLAG_HIDE_VOLTBROOK_TOWN_ACE, Debug_EventScript_Script_3_SetFlag
+	
+	Debug_EventScript_Script_3_SetFlag:
+	setflag FLAG_HIDE_VOLTBROOK_TOWN_ACE
+	release
+	end
+
+	Debug_EventScript_Script_3_ClearFlag:
+	clearflag FLAG_HIDE_VOLTBROOK_TOWN_ACE
 	release
 	end
 
 Debug_EventScript_Script_4::
+	goto_if_set FLAG_HIDE_VERDANT_HALLOW_TALON, Debug_EventScript_Script_4_ClearFlag
+	goto_if_unset FLAG_HIDE_VERDANT_HALLOW_TALON, Debug_EventScript_Script_4_SetFlag
+
+	Debug_EventScript_Script_4_SetFlag:
+	setflag FLAG_HIDE_VERDANT_HALLOW_TALON
+	release
+	end
+
+	Debug_EventScript_Script_4_ClearFlag:
+	clearflag FLAG_HIDE_VERDANT_HALLOW_TALON
 	release
 	end
 
 Debug_EventScript_Script_5::
+	goto_if_set FLAG_HIDE_MURKWELL_BOG_NYX, Debug_EventScript_Script_5_ClearFlag
+	goto_if_unset FLAG_HIDE_MURKWELL_BOG_NYX, Debug_EventScript_Script_5_SetFlag
+
+	Debug_EventScript_Script_5_SetFlag:
+	setflag FLAG_HIDE_MURKWELL_BOG_NYX
+	release
+	end
+
+	Debug_EventScript_Script_5_ClearFlag:
+	clearflag FLAG_HIDE_MURKWELL_BOG_NYX
 	release
 	end
 
 Debug_EventScript_Script_6::
+	removeobject 8
 	release
 	end
 

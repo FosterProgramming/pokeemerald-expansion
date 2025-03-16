@@ -91,7 +91,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_8:
 # 68 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	addobject LOCALID_EEVEE
 # 69 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 70 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 71 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -113,7 +113,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_8:
 # 79 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 3
 # 80 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 81 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 82 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -132,7 +132,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_9:
 # 42 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	addobject LOCALID_EEVEE
 # 43 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 44 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 45 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -148,7 +148,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_9:
 # 50 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_4
 # 51 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 52 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 53 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -211,7 +211,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2:
 # 122 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	addobject LOCALID_EEVEE
 # 123 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 124 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	playse SE_PIN
 # 125 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -243,7 +243,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2:
 # 138 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2
 # 139 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 140 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 141 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"

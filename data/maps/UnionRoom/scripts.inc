@@ -29,9 +29,9 @@ UnionRoom_OnResume:
 # 15 "data/maps/UnionRoom/scripts.pory"
 	setflag FLAG_HIDE_STRATOSCAPE_DRAKE
 # 16 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_7
+	setflag FLAG_HIDE_VOLTBROOK_TOWN_ACE
 # 17 "data/maps/UnionRoom/scripts.pory"
-	setflag FLAG_HIDE_UNION_ROOM_PLAYER_8
+	setflag FLAG_HIDE_VERDANT_HALLOW_TALON
 # 18 "data/maps/UnionRoom/scripts.pory"
 	removeobject LOCALID_UNION_ROOM_PLAYER_1
 # 19 "data/maps/UnionRoom/scripts.pory"

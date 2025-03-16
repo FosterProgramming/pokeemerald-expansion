@@ -63,7 +63,7 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 34 "data/maps/DominionCity/scripts.pory"
 	msgbox DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1
 # 35 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayerWest
+	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 36 "data/maps/DominionCity/scripts.pory"
 	waitmovement LOCALID_EEVEE
 # 37 "data/maps/DominionCity/scripts.pory"

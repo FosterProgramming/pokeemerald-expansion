@@ -110,22 +110,90 @@ Common_Movement_WalkLeft::
 	walk_left
 	step_end
 
-Common_Movement_PartyMember1TalksToPlayerNorth::
+Common_Movement_PartyMemberTalksToPlayerNorth::
 	walk_up
 	face_down
 	emote_exclamation_mark
 	step_end
 
-Common_Movement_PartyMember1TalksToPlayerWest::
+Common_Movement_PartyMemberTalksToPlayerWest::
 	walk_left
 	face_right
 	emote_exclamation_mark
 	step_end
 
-Common_Movement_PartyMember1ReturnsToPlayer::
+Common_Movement_PartyMemberTalksToPlayerSouth::
+	walk_down
+	face_up
+	emote_exclamation_mark
+	step_end
+
+Common_Movement_PartyMemberTalksToPlayerEast::
+	walk_right
+	face_left
+	emote_exclamation_mark
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerNorth::
 	walk_down
 	step_end
 
-Common_Movement_PartyMember1ReturnsToPlayerWest::
+Common_Movement_PartyMemberReturnsToPlayerWest::
+	walk_right
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerSouth::
+	walk_up
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerEast::
+	walk_left
+	step_end
+
+Common_Movement_PartyMemberTalksToPlayerNorthEast::
+	walk_right
+	walk_up
+	emote_exclamation_mark
+	face_down
+	step_end
+
+Common_Movement_PartyMemberTalksToPlayerNorthWest::
+	walk_left
+	walk_up
+	emote_exclamation_mark
+	face_down
+	step_end
+
+Common_Movement_PartyMemberTalksToPlayerSouthEast::
+	walk_right
+	walk_down
+	emote_exclamation_mark
+	face_up
+	step_end
+
+Common_Movement_PartyMemberTalksToPlayerSouthWest::
+	walk_left
+	walk_down
+	emote_exclamation_mark
+	face_up
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerNorthEast::
+	walk_down
+	walk_left
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerNorthwest::
+	walk_down
+	walk_right
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerSouthEast::
+	walk_up
+	walk_left
+	step_end
+
+Common_Movement_PartyMemberReturnsToPlayerSouthWest::
+	walk_up
 	walk_right
 	step_end

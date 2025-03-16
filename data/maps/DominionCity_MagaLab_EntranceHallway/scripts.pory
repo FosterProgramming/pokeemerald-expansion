@@ -75,7 +75,7 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
                 setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
                 addobject(LOCALID_EEVEE)
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth)
+                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
                 waitmovement(LOCALID_EEVEE)
                 playse(SE_PIN)
                 waitse
@@ -83,7 +83,7 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 speakername("Vee")
                 msgbox(format("Come on, you need to input the right code before we get caught! Hurry, hurry!"))
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer)
+                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
                 waitmovement(LOCALID_EEVEE)
                 removeobject(LOCALID_EEVEE)
                 closemessage
@@ -99,7 +99,7 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
                 setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
                 addobject(LOCALID_EEVEE)
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1TalksToPlayerNorth)
+                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
                 playse(SE_PIN)
                 waitmovement(LOCALID_EEVEE)
                 waitse
@@ -107,7 +107,7 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 speakername("Vee")
                 msgbox(format("Oh, oh that's a good sound! The door's unlocked.\p Welp! No point standing around. We got, like, eight whole artifacts to find!\p And hey, you're lucky I'm coming with you! You're gonna need someone to keep things fun!\pAnd, like, general survival stuff. Y'know, in case you get scared or whatever.\pAaaaanyway, let's get outta here before I start rethinking this!"))
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMember1ReturnsToPlayer)
+                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
                 waitmovement(LOCALID_EEVEE)
                 removeobject(LOCALID_EEVEE)
                 applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down walk_in_place_down))
