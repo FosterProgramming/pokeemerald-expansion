@@ -54,6 +54,7 @@ script MurkwellBog_EventScripts_LanturnNPC
 script MurkwellBog_EventScripts_HoothootNPC
 {
 	lockall
+	applymovement(6,moves(face_down))
 	msgbox(format("The temple's always been there. But lately… the air around it shimmers. I don't like looking at it. It feels like it's moving."))
 	releaseall
 	end
@@ -153,17 +154,34 @@ script MurkwellBog_EventScripts_InnkeeperNPC
 //OBJ_EVENT_GFX_SPECIES(AIPOM)
 script MurkwellBog_EventScripts_ShopkeeperNPC
 {
-	lockall
+	lock
 	msgbox(format("Welcome! Got all sorts of goods! Just… don't ask where I got 'em. The bog provides… heh."))
-	releaseall
+	waitmessage
+	pokemart(MurkwellBog_MartItems)
+	msgbox(format("Come again soon…"))
+	release
 	end
 }
+
+mart MurkwellBog_MartItems
+	{
+		ITEM_CLEANSE_TAG    // Wards off evil spirits, used by cautious Pokémon.
+        ITEM_TWISTED_SPOON  // Boosts Psychic-type moves, carried by mystics in the bog.
+        ITEM_BIG_ROOT       // Enhances draining moves, fits the swampy, life-absorbing theme.
+        ITEM_HEAL_POWDER    // Herbal remedy for status conditions, commonly used by swamp dwellers.
+        ITEM_ENERGY_ROOT    // Strong but bitter healing item, known for its powerful effects.
+        ITEM_REVIVAL_HERB   // Fully revives fainted Pokémon but is bitter--rare in standard marts.
+        ITEM_TINYMUSHROOM   // Small fungi commonly found in damp environments.
+        ITEM_BIG_MUSHROOM   // Larger version, often sold by Pokémon for currency.
+        ITEM_SITRUS_BERRY   // Restores HP, useful for adventurers exploring Murkwell.
+        ITEM_LUM_BERRY      // Cures any status condition, highly valued in such a hazardous area.
+	}
 
 //OBJ_EVENT_GFX_SPECIES(SMEARGLE)
 script MurkwellBog_EventScripts_HomebodyNPC1
 {
 	lockall
-	msgbox(format("I tried painting the swamp once. But the colors… they changed when I wasn't looking. Like they were alive…"))
+	msgbox(format("I tried painting the swamp once. But the colors… they changed when I wasn't looking. Like they were alive…"),MSGBOX_NPC)
 	releaseall
 	end
 }
@@ -172,7 +190,7 @@ script MurkwellBog_EventScripts_HomebodyNPC1
 script MurkwellBog_EventScripts_HomebodyNPC2
 {
 	lockall
-	msgbox(format("You ever notice how the trees move? Not just in the wind… they shift when you ain't lookin'. Always facin' the temple…"))
+	msgbox(format("You ever notice how the trees move? Not just in the wind… they shift when you ain't lookin'. Always facin' the temple…"),MSGBOX_NPC)
 	releaseall
 	end
 }
@@ -181,10 +199,72 @@ script MurkwellBog_EventScripts_HomebodyNPC2
 script MurkwellBog_EventScripts_HomebodyNPC3
 {
 	lockall
-	msgbox(format("My kin are buried here… but lately, I don't feel alone when I visit. Someone else watches the graves…"))
+	msgbox(format("My kin are buried here… but lately, I don't feel alone when I visit. Someone else watches the graves…"),MSGBOX_NPC)
 	releaseall
 	end
 }
+
+//OBJ_EVENT_GFX_SPECIES(GLOOM)
+script MurkwellBog_ShopNPC_Gloom {
+    lockall
+    msgbox(format("Mmm... need more supplies.\pNever know when the swamp might turn against you.\pBeen hearing things--whispers on the wind.\pStocking up is just common sense."))
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(DUNSPARCE)
+script MurkwellBog_ShopNPC_Dunsparce {
+    lockall
+    msgbox(format("Pfft. These prices are criminal!\pI could find better deals in Voltbrook Town!\p...But, uh, gettin' back there? Kinda tricky.\pUgh. Fine, take my money."))
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(HAUNTER)
+script MurkwellBog_ShopNPC_Haunter {
+    lockall
+    msgbox(format("Heheheh... so many interesting items here.\pOoooh, Cleanse Tags? I love Cleanse Tags.\pNot for cursing or anything! Just, uh… for a friend."))
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(BRELOOM)
+script MurkwellBog_InnNPC_Breloom {
+    lockall
+    msgbox(format("Been traveling a long way.\pBut somethin' about this place...\pThe air feels off.\pLike something's watching."))
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(QUAGSIRE)
+script MurkwellBog_InnNPC_Quagsire {
+    lockall
+    msgbox(format("Ahhh... comfy bed, warm meal.\pNothin’ weird about this place at all.\pNope. Not a thing."))
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(SABLEYE)
+script MurkwellBog_InnNPC_Sableye {
+    lockall
+    msgbox(format("Eheheh... spooky stories?\pI ain’t scared. Nope, not at all.\pB-but you totally saw that shadow move, right?"))
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(BELLOSSOM)
+script MurkwellBog_InnNPC_Bellossom {
+    lockall
+    msgbox(format("Long journeys can wear a Pokémon down.\pHere, take this!\pIt always helps me keep going."))
+	if(!flag(FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG))
+		{
+			giveitem(ITEM_LUM_BERRY, 1)
+			setflag(FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG)
+		}
+    releaseall
+    end
+}
+
 
 script MurkwellBog_EventScripts_TempleNeedsRitual
 {

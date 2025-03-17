@@ -212,11 +212,11 @@ gStdScripts_End::
 	.include "data/maps/PacifidlogTown_House5/scripts.inc"
 	.include "data/maps/PetalburgCity_WallysHouse/scripts.inc"
 	.include "data/maps/PetalburgCity_Gym/scripts.inc"
-	.include "data/maps/PetalburgCity_House1/scripts.inc"
-	.include "data/maps/PetalburgCity_House2/scripts.inc"
-	.include "data/maps/PetalburgCity_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/MurkwellBog_House1/scripts.inc"
+	.include "data/maps/MurkwellBog_House2/scripts.inc"
+	.include "data/maps/MurkwellBog_Inn/scripts.inc"
 	.include "data/maps/PetalburgCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/PetalburgCity_Mart/scripts.inc"
+	.include "data/maps/MurkwellBog_Mart/scripts.inc"
 	.include "data/maps/SlateportCity_SternsShipyard_1F/scripts.inc"
 	.include "data/maps/SlateportCity_SternsShipyard_2F/scripts.inc"
 	.include "data/maps/SlateportCity_BattleTentLobby/scripts.inc"
@@ -1254,3 +1254,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.inc"
 
 	.include "data/maps/IntroCutsceneMap/scripts.inc"
+
+	.include "data/maps/MurkwellBog_House3/scripts.inc"

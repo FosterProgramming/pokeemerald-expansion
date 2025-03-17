@@ -25,7 +25,7 @@ OldaleTown_OnTransition:
 # 13 "data/maps/OldaleTown/scripts.pory"
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
 # 14 "data/maps/OldaleTown/scripts.pory"
-	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
+	call_if_unset FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG, OldaleTown_EventScript_MoveMartEmployee
 # 15 "data/maps/OldaleTown/scripts.pory"
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 # 16 "data/maps/OldaleTown/scripts.pory"
@@ -85,7 +85,7 @@ OldaleTown_EventScript_MartEmployee::
 # 43 "data/maps/OldaleTown/scripts.pory"
 	faceplayer
 # 44 "data/maps/OldaleTown/scripts.pory"
-	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
+	goto_if_set FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG, OldaleTown_EventScript_ExplainPotion
 # 45 "data/maps/OldaleTown/scripts.pory"
 	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
 # 46 "data/maps/OldaleTown/scripts.pory"
@@ -161,7 +161,7 @@ OldaleTown_EventScript_ExplainPokemonMart::
 # 81 "data/maps/OldaleTown/scripts.pory"
 	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
 # 82 "data/maps/OldaleTown/scripts.pory"
-	setflag FLAG_RECEIVED_POTION_OLDALE
+	setflag FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG
 # 83 "data/maps/OldaleTown/scripts.pory"
 	fadedefaultbgm
 # 84 "data/maps/OldaleTown/scripts.pory"

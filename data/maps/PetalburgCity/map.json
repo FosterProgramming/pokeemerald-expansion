@@ -148,7 +148,7 @@
       "x": 10,
       "y": 19,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_CITY_HOUSE1",
+      "dest_map": "MAP_DYNAMIC",
       "dest_warp_id": "0"
     },
     {
@@ -169,21 +169,21 @@
       "x": 20,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
+      "dest_map": "MAP_MURKWELL_BOG_INN",
       "dest_warp_id": "0"
     },
     {
       "x": 20,
       "y": 24,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_CITY_HOUSE2",
+      "dest_map": "MAP_MURKWELL_BOG_HOUSE2",
       "dest_warp_id": "0"
     },
     {
       "x": 25,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_CITY_MART",
+      "dest_map": "MAP_MURKWELL_BOG_MART",
       "dest_warp_id": "0"
     }
   ],
