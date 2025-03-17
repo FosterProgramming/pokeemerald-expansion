@@ -176,7 +176,7 @@
       "x": 20,
       "y": 24,
       "elevation": 0,
-      "dest_map": "MAP_MURKWELL_BOG_HOUSE2",
+      "dest_map": "MAP_DYNAMIC",
       "dest_warp_id": "0"
     },
     {

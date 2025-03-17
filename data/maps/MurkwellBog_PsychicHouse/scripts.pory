@@ -1,0 +1,449 @@
+raw`
+.set VAR_FULL_PARTY, 15
+.set VAR_ACE_TALON_NYX_PARTY, 14
+.set VAR_DRAKE_TALON_NYX_PARTY, 13
+.set VAR_DRAKE_ACE_NYX_PARTY, 12
+.set VAR_DRAKE_ACE_TALON_PARTY, 11
+.set VAR_TALON_NYX_PARTY, 10
+.set VAR_ACE_NYX_PARTY, 9
+.set VAR_ACE_TALON_PARTY, 8
+.set VAR_DRAKE_NYX_PARTY, 7
+.set VAR_DRAKE_TALON_PARTY, 6
+.set VAR_DRAKE_ACE_PARTY, 5
+.set VAR_DRAKE_PARTY, 4
+.set VAR_ACE_PARTY, 3
+.set VAR_TALON_PARTY, 2
+.set VAR_NYX_PARTY, 1
+.set VAR_NO_PARTY, 0
+`
+
+mapscripts MurkwellBog_PsychicHouse_MapScripts
+{
+    
+}
+
+//OBJ_EVENT_GFX_SPECIES(XATU)
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC
+{
+    call(CommonEventScript_DetermineParty)
+	switch(var(VAR_TEMP_F))
+        {
+            case VAR_FULL_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_FullParty)
+            case VAR_ACE_TALON_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceTalonNyxParty)
+            case VAR_DRAKE_TALON_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeTalonNyxParty)
+            case VAR_DRAKE_ACE_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeAceNyxParty)
+            case VAR_DRAKE_ACE_TALON_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeAceTalonParty)
+            case VAR_TALON_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_TalonNyxParty)
+            case VAR_ACE_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceNyxParty)
+            case VAR_ACE_TALON_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceTalonParty)
+            case VAR_DRAKE_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeNyxParty)
+            case VAR_DRAKE_TALON_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeTalonParty)
+            case VAR_DRAKE_ACE_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeAceParty)
+            case VAR_DRAKE_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeParty)
+            case VAR_ACE_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceParty)
+            case VAR_TALON_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_TalonParty)
+            case VAR_NYX_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_NyxParty)
+            case VAR_NO_PARTY:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_NoParty)
+            default:
+                goto(MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_NoParty)
+        }
+}
+
+script CommonEventScript_DetermineParty
+    {
+	if(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_FULL_PARTY)
+		}
+	elif(flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_ACE_TALON_NYX_PARTY)
+		}
+	elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_TALON_NYX_PARTY)
+		}
+    elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_ACE_NYX_PARTY)
+		}
+    elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_ACE_TALON_PARTY)
+		}
+    elif(flag(FLAG_HIDE_VERDANT_HALLOW_TALON) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_TALON_NYX_PARTY)
+		}
+    elif(flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_ACE_NYX_PARTY)
+		}
+    elif(flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			setvar(VAR_TEMP_F, VAR_ACE_TALON_PARTY)
+		}
+    elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_NYX_PARTY)
+		}
+    elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_TALON_PARTY)
+		}
+    elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_ACE_PARTY)
+		}
+    elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE))
+		{
+			setvar(VAR_TEMP_F, VAR_DRAKE_PARTY)
+		}
+    elif(flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE))
+		{
+			setvar(VAR_TEMP_F, VAR_ACE_PARTY)
+		}
+    elif(flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			setvar(VAR_TEMP_F, VAR_TALON_PARTY)
+		}
+    elif(flag(FLAG_HIDE_MURKWELL_BOG_NYX))
+		{
+			setvar(VAR_TEMP_F, VAR_NYX_PARTY)
+		}
+	else
+		{
+			setvar(VAR_TEMP_F, VAR_NO_PARTY)
+		}
+}
+
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_FullParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,6,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Nyx","Talon","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                    case 4:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                    case 5:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceTalonNyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,5,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Nyx","Talon","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                    case 3:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                    case 4:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeTalonNyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,5,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Nyx","Talon")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                    case 4:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeAceNyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,5,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Nyx","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                    case 4:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeAceTalonParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,5,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Talon","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                    case 4:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_TalonNyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Nyx","Talon")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                    case 3:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                    }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceNyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Nyx","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                    case 3:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceTalonParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Talon","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                    case 3:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeNyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Nyx")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                }
+        release
+        end
+    }
+    
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeTalonParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Talon")
+        switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeAceParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,4,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                    case 3:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_DrakeParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Drake")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A dragon unbowed, wings weighed by duty…\pI see the storm’s fury, a kingdom lost to the sky.\pOnly through fire and thunder shall the true ruler ascend once more."))
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_AceParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Ace")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A rogue’s heart beats beneath golden chains… I see a trickster’s grin, a hand reaching for fortune yet bound by fate. Wealth and power lie within your grasp--but only those who give without taking shall claim the ultimate prize."))    
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_TalonParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Talon")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A hunter with three eyes, yet only one vision…\pI see a piercing force, striking faster than the mind can comprehend.\pTo shatter the sky, you must abandon hesitation--your greatest weapon is not speed, but intent."))
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_NyxParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee","Nyx")
+            switch(var(VAR_RESULT))
+                {
+                    case 0:
+                        msgbox(format("A frozen tide, bound by the will of the past…\pI see a veil of frost, an eternal barrier between pain and peace.\pThe guardian of the deep must embrace the stillness of time to reclaim what was lost."))
+                    case 1:
+                        msgbox(format("A soul untethered, a fate unwritten…\pI see shifting forms, flickering like candlelight in the wind.\pTo awaken the slumbering heart, you must embrace the many paths before you. Only then will you find your true self."))
+                    case 2:
+                        msgbox(format("A whisper in the dark, unseen but ever present… I see a web of fate, woven in moonlight and deceit. The path forward is veiled in illusions--only those who embrace the unknown shall emerge reborn."))
+                }
+        release
+        end
+    }
+
+script MurkwellBog_PsychicHouse_EventScripts_PsychicNPC_NoParty
+    {
+        lock
+        msgbox(format("The winds shift, the stars murmur…\pShadows of fate coil around you.\pI see many paths, many truths… and yet only one destiny.\pTell me, traveler… whose soul do you wish for me to peer into?"))
+        dynmultichoice(0,0,FALSE,2,0,DYN_MULTICHOICE_CB_NONE,"Seel","Vee")
+        
+        release
+        end
+    }

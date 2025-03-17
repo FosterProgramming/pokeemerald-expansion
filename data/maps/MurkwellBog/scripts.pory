@@ -114,6 +114,7 @@ script MurkwellBog_EventScripts_NyxNPC
 								applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
 								applymovement(LOCALID_NYX, moves(walk_down * 3))
 								waitmovement(LOCALID_NYX)
+								special(RemoveCameraObject)
 								getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
 								msgbox(format("…It is done.\pThe seal has lifted.\pThe temple awaits."))
 								faceplayer
@@ -133,14 +134,6 @@ script MurkwellBog_EventScripts_NyxNPC
 		}
 }
 
-//OBJ_EVENT_GFX_SPECIES(XATU)
-script MurkwellBog_EventScripts_PsychicNPC
-{
-	lockall
-	msgbox(format("The air hums with echoes of thoughts long lost. You hear them too, don't you? The voices that aren't yours…?"))
-	releaseall
-	end
-}
 
 //OBJ_EVENT_GFX_SPECIES(GLOOM)
 script MurkwellBog_EventScripts_InnkeeperNPC
@@ -207,7 +200,7 @@ script MurkwellBog_EventScripts_HomebodyNPC3
 //OBJ_EVENT_GFX_SPECIES(GLOOM)
 script MurkwellBog_ShopNPC_Gloom {
     lockall
-    msgbox(format("Mmm... need more supplies.\pNever know when the swamp might turn against you.\pBeen hearing things--whispers on the wind.\pStocking up is just common sense."))
+    msgbox(format("Mmm... need more supplies.\pNever know when the swamp might turn against you.\pBeen hearing things--whispers on the wind.\pStocking up is just common sense."),MSGBOX_NPC)
     releaseall
     end
 }
@@ -215,7 +208,7 @@ script MurkwellBog_ShopNPC_Gloom {
 //OBJ_EVENT_GFX_SPECIES(DUNSPARCE)
 script MurkwellBog_ShopNPC_Dunsparce {
     lockall
-    msgbox(format("Pfft. These prices are criminal!\pI could find better deals in Voltbrook Town!\p...But, uh, gettin' back there? Kinda tricky.\pUgh. Fine, take my money."))
+    msgbox(format("Pfft. These prices are criminal!\pI could find better deals in Voltbrook Town!\p...But, uh, gettin' back there? Kinda tricky.\pUgh. Fine, take my money."),MSGBOX_NPC)
     releaseall
     end
 }
@@ -223,7 +216,7 @@ script MurkwellBog_ShopNPC_Dunsparce {
 //OBJ_EVENT_GFX_SPECIES(HAUNTER)
 script MurkwellBog_ShopNPC_Haunter {
     lockall
-    msgbox(format("Heheheh... so many interesting items here.\pOoooh, Cleanse Tags? I love Cleanse Tags.\pNot for cursing or anything! Just, uh… for a friend."))
+    msgbox(format("Heheheh... so many interesting items here.\pOoooh, Cleanse Tags? I love Cleanse Tags.\pNot for cursing or anything! Just, uh… for a friend."),MSGBOX_NPC)
     releaseall
     end
 }
@@ -231,7 +224,7 @@ script MurkwellBog_ShopNPC_Haunter {
 //OBJ_EVENT_GFX_SPECIES(BRELOOM)
 script MurkwellBog_InnNPC_Breloom {
     lockall
-    msgbox(format("Been traveling a long way.\pBut somethin' about this place...\pThe air feels off.\pLike something's watching."))
+    msgbox(format("Been traveling a long way.\pBut somethin' about this place...\pThe air feels off.\pLike something's watching."),MSGBOX_NPC)
     releaseall
     end
 }
@@ -239,7 +232,7 @@ script MurkwellBog_InnNPC_Breloom {
 //OBJ_EVENT_GFX_SPECIES(QUAGSIRE)
 script MurkwellBog_InnNPC_Quagsire {
     lockall
-    msgbox(format("Ahhh... comfy bed, warm meal.\pNothin’ weird about this place at all.\pNope. Not a thing."))
+    msgbox(format("Ahhh... comfy bed, warm meal.\pNothin’ weird about this place at all.\pNope. Not a thing."),MSGBOX_NPC)
     releaseall
     end
 }
@@ -247,7 +240,7 @@ script MurkwellBog_InnNPC_Quagsire {
 //OBJ_EVENT_GFX_SPECIES(SABLEYE)
 script MurkwellBog_InnNPC_Sableye {
     lockall
-    msgbox(format("Eheheh... spooky stories?\pI ain’t scared. Nope, not at all.\pB-but you totally saw that shadow move, right?"))
+    msgbox(format("Eheheh... spooky stories?\pI ain’t scared. Nope, not at all.\pB-but you totally saw that shadow move, right?"),MSGBOX_NPC)
     releaseall
     end
 }
@@ -255,11 +248,15 @@ script MurkwellBog_InnNPC_Sableye {
 //OBJ_EVENT_GFX_SPECIES(BELLOSSOM)
 script MurkwellBog_InnNPC_Bellossom {
     lockall
-    msgbox(format("Long journeys can wear a Pokémon down.\pHere, take this!\pIt always helps me keep going."))
 	if(!flag(FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG))
 		{
+			msgbox(format("Long journeys can wear a Pokémon down.\pHere, take this!\pIt always helps me keep going."),MSGBOX_NPC)
 			giveitem(ITEM_LUM_BERRY, 1)
 			setflag(FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG)
+		}
+	else
+		{
+			msgbox(format("Long journeys can wear a Pokémon down.\p I always make sure to rest at the local inn every time I arrive at a new area!"),MSGBOX_NPC)
 		}
     releaseall
     end
@@ -731,3 +728,4 @@ script Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember
 	release
 	end
 }
+
