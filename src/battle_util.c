@@ -8009,6 +8009,13 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_AIR_BALLOON, TRUE)){
+                effect = ITEM_EFFECT_OTHER;
+                gBattleScripting.battler = battler;
+                BattleScriptPushCursorAndCallback(BattleScript_AirBaloonMsgIn);
+                RecordItemEffectBattle(battler, HOLD_EFFECT_AIR_BALLOON);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_STATS:
@@ -8144,12 +8151,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RESTORE_PCT_HP:
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
-                break;
-            case HOLD_EFFECT_AIR_BALLOON:
-                effect = ITEM_EFFECT_OTHER;
-                gBattleScripting.battler = battler;
-                BattleScriptPushCursorAndCallback(BattleScript_AirBaloonMsgIn);
-                RecordItemEffectBattle(battler, HOLD_EFFECT_AIR_BALLOON);
                 break;
             case HOLD_EFFECT_ROOM_SERVICE:
                 if (TryRoomService(battler))
@@ -8596,16 +8597,17 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            switch (battlerHoldEffect)
-            {
-            case HOLD_EFFECT_AIR_BALLOON:
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_AIR_BALLOON, TRUE)) {
                 if (TARGET_TURN_DAMAGED)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_AirBaloonMsgPop;
                 }
-                break;
+            }
+
+            switch (battlerHoldEffect)
+            {
             case HOLD_EFFECT_WEAKNESS_POLICY:
                 if (IsBattlerAlive(battler)
                     && TARGET_TURN_DAMAGED
@@ -9174,7 +9176,7 @@ static bool32 IsBattlerGroundedInverseCheck(u32 battler, bool32 considerInverse)
         return FALSE;
     if (gStatuses3[battler] & STATUS3_MAGNET_RISE)
         return FALSE;
-    if (holdEffect == HOLD_EFFECT_AIR_BALLOON)
+    if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_AIR_BALLOON, TRUE))
         return FALSE;
     if (AI_DATA->aiCalcInProgress ? AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) : BattlerHasTrait(battler, ABILITY_LEVITATE))
         return FALSE;

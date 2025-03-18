@@ -1245,12 +1245,11 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
     return bestMonId;
 }
 
-bool32 IsMonGrounded(u16 heldItemEffect, u32 ability, u8 type1, u8 type2, u16 species, u32 personality)
+bool32 IsMonGrounded(u8 battler, u32 ability, u8 type1, u8 type2, u16 species, u32 personality)
 {
-    u8 battler = 0;//Placeholder
     // List that makes mon not grounded
     if (type1 == TYPE_FLYING || type2 == TYPE_FLYING || (ability == ABILITY_LEVITATE || SpeciesHasInnate(species, ABILITY_LEVITATE, personality, TRUE))
-         || (heldItemEffect == HOLD_EFFECT_AIR_BALLOON && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))))
+         || (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_AIR_BALLOON, TRUE) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))))
     {
         // List that overrides being off the ground
         if ((BattlerHeldItemHasEffect(battler, HOLD_EFFECT_IRON_BALL, TRUE) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))) || (gFieldStatuses & STATUS_FIELD_GRAVITY) || (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM))
@@ -1283,7 +1282,7 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
         if ((hazardFlags & SIDE_STATUS_STEELSURGE) && !heavyDutyBootsAffected)
             hazardDamage += GetStealthHazardDamageByTypesAndHP(gMovesInfo[MOVE_G_MAX_STEELSURGE].type, defType1, defType2, battleMon->maxHP);
         // Spikes
-        if ((hazardFlags & SIDE_STATUS_SPIKES) && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality))
+        if ((hazardFlags & SIDE_STATUS_SPIKES) && IsMonGrounded(battler, ability, defType1, defType2, species, personality))
         {
             spikesDamage = maxHP / ((5 - gSideTimers[GetBattlerSide(battler)].spikesAmount) * 2);
             if (spikesDamage == 0)
@@ -1300,7 +1299,7 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
             && !(IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN))
             && !(IsAbilityStatusProtected(battler))
             && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
-            && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality)))
+            && IsMonGrounded(battler, ability, defType1, defType2, species, personality)))
         {
             tSpikesLayers = gSideTimers[GetBattlerSide(battler)].toxicSpikesAmount;
             if (tSpikesLayers == 1)
@@ -1525,7 +1524,7 @@ static u32 GetSwitchinStatusDamage(u32 battler)
         && !(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE)
             && (((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || (ability == ABILITY_KLUTZ || SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))))
         && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
-        && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality)))
+        && IsMonGrounded(battler, ability, defType1, defType2, species, personality)))
     {
         if (tSpikesLayers == 1)
         {

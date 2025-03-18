@@ -8989,7 +8989,7 @@ BattleScript_AirBaloonMsgIn::
 BattleScript_AirBaloonMsgPop::
 	printstring STRINGID_AIRBALLOONPOP
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_TARGET
+	removeitemwitheffect BS_TARGET, HOLD_EFFECT_AIR_BALLOON
 	return
 
 BattleScript_ItemHurtRet::
