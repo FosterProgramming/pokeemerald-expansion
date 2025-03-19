@@ -8790,6 +8790,11 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
     }
         break;
     case ITEMEFFECT_STATS_CHANGED:
+
+        if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_EJECT_PACK, TRUE)) {
+            effect = TryEjectPack(battler, ITEMEFFECT_ON_SWITCH_IN);
+        }
+
         switch (battlerHoldEffect)
         {
         case HOLD_EFFECT_RESTORE_STATS:
@@ -8799,9 +8804,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_WhiteHerbRet;
             }
-            break;
-        case HOLD_EFFECT_EJECT_PACK:
-            effect = TryEjectPack(battler, ITEMEFFECT_ON_SWITCH_IN);
             break;
         }
         break;

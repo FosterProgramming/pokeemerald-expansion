@@ -6515,9 +6515,9 @@ static void Cmd_moveend(void)
                 {
                     u32 holdEffect;
                     holdEffect = GetBattlerHoldEffect(i, TRUE);
-                    if (holdEffect == HOLD_EFFECT_EJECT_BUTTON)
+                    if (BattlerHeldItemHasEffect(i, HOLD_EFFECT_EJECT_BUTTON, TRUE))
                         ejectButtonBattlers |= 1u << i;
-                    else if (holdEffect == HOLD_EFFECT_EJECT_PACK)
+                    else if (BattlerHeldItemHasEffect(i, HOLD_EFFECT_EJECT_PACK, TRUE))//To make both work together
                         ejectPackBattlers |= 1u << i;
                 }
                 if (ejectButtonBattlers || ejectPackBattlers)
@@ -9534,6 +9534,8 @@ static void Cmd_various(void)
             itemId = GetBattlerHeldItemWithEffect(battler, holdEffect, TRUE);
         else
             itemId = gBattleMons[battler].item;
+
+        //DebugPrintf("VARIOUS_SET_LAST_USED_ITEM Battler[%d] - %S", battler, gItemsInfo[itemId].name);
 
         gLastUsedItem = itemId;
         break;
