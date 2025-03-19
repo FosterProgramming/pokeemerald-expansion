@@ -6607,7 +6607,7 @@ static void Cmd_moveend(void)
                 {
                     if (i == gBattlerAttacker)
                         continue;
-                    if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_RED_CARD)
+                    if (BattlerHeldItemHasEffect(i, HOLD_EFFECT_RED_CARD, TRUE))
                         redCardBattlers |= (1u << i);
                 }
                 if (redCardBattlers
@@ -6631,7 +6631,6 @@ static void Cmd_moveend(void)
                           && BATTLER_TURN_DAMAGED(battler)
                           && CanBattlerSwitch(gBattlerAttacker))
                         {
-                            gLastUsedItem = gBattleMons[battler].item;
                             SaveBattlerTarget(battler); // save battler with red card
                             gBattleScripting.battler = battler;
                             gEffectBattler = gBattlerAttacker;

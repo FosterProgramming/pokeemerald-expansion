@@ -9583,14 +9583,16 @@ BattleScript_StickyBarbTransfer::
 	return
 
 BattleScript_RedCardActivationNoSwitch::
+	setlastuseditem BS_SCRIPTING, HOLD_EFFECT_RED_CARD
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_REDCARDACTIVATE
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING, HOLD_EFFECT_RED_CARD
 	restoretarget
 	return
 
 BattleScript_RedCardActivates::
+	setlastuseditem BS_SCRIPTING, HOLD_EFFECT_RED_CARD
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_REDCARDACTIVATE
 	waitmessage B_WAIT_TIME_LONG
@@ -9607,7 +9609,7 @@ BattleScript_RedCardEnd:
 BattleScript_RedCardIngrain:
 	printstring STRINGID_PKMNANCHOREDITSELF
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING, HOLD_EFFECT_RED_CARD
 	restoretarget
 	return
 BattleScript_RedCardSuctionCups:
