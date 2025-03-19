@@ -426,7 +426,7 @@ BattleScript_EffectCorrosiveGas::
 	attackanimation
 	waitanimation
 	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_StickyHoldActivates
-	setlastuseditem BS_TARGET
+	setlastuseditem BS_TARGET, HOLD_EFFECT_NONE
 	removeitem BS_TARGET
 	printstring STRINGID_PKMNITEMMELTED
 	waitmessage B_WAIT_TIME_LONG
@@ -737,7 +737,7 @@ BattleScript_SkyDropFlyingAlreadyConfused:
 BattleScript_EffectFling::
 	attackcanceler
 	jumpifcantfling BS_ATTACKER, BattleScript_FailedFromAtkString
-	setlastuseditem BS_ATTACKER
+	setlastuseditem BS_ATTACKER, HOLD_EFFECT_NONE
 	accuracycheck BattleScript_FlingMissed, ACC_CURR_MOVE
 	attackstring
 	pause B_WAIT_TIME_SHORT
@@ -6113,6 +6113,7 @@ BattleScript_RoarSuccessRet_Ret:
 
 BattleScript_WeaknessPolicy::
 	copybyte sBATTLER, gBattlerTarget
+	setlastuseditem BS_TARGET, HOLD_EFFECT_WEAKNESS_POLICY
 	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_WeaknessPolicyAtk
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_WeaknessPolicyEnd
 BattleScript_WeaknessPolicyAtk:
@@ -6132,7 +6133,7 @@ BattleScript_WeaknessPolicySpAtk:
 	printstring STRINGID_USINGITEMSTATOFPKMNROSE
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_WeaknessPolicyRemoveItem:
-	removeitem BS_TARGET
+	removeitemwitheffect BS_TARGET, HOLD_EFFECT_WEAKNESS_POLICY
 BattleScript_WeaknessPolicyEnd:
 	return
 
@@ -7792,7 +7793,7 @@ BattleScript_TryIntimidateHoldEffects:
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	copybyte sBATTLER, gBattlerTarget
-	setlastuseditem BS_TARGET
+	setlastuseditem BS_TARGET, HOLD_EFFECT_NONE
 	printstring STRINGID_USINGITEMSTATOFPKMNROSE
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
@@ -8863,7 +8864,7 @@ BattleScript_BerryCureSlpRet::
 BattleScript_GemActivates::
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	setlastuseditem BS_ATTACKER
+	setlastuseditem BS_ATTACKER, HOLD_EFFECT_NONE
 	printstring STRINGID_GEMACTIVATES
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_ATTACKER
@@ -8872,7 +8873,7 @@ BattleScript_GemActivates::
 BattleScript_BerryReduceDmg::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	setlastuseditem BS_TARGET
+	setlastuseditem BS_TARGET, HOLD_EFFECT_NONE
 	printstring STRINGID_TARGETATEITEM
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET

@@ -2153,8 +2153,9 @@
 	.byte \infatuateWith
 	.endm
 
-	.macro setlastuseditem battler:req
+	.macro setlastuseditem battler:req, holdEffect:req
 	various \battler, VARIOUS_SET_LAST_USED_ITEM
+	.byte \holdEffect
 	.endm
 
 	.macro jumpifabsent battler:req, jumpInstr:req

@@ -8606,18 +8606,19 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            switch (battlerHoldEffect)
-            {
-            case HOLD_EFFECT_WEAKNESS_POLICY:
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_WEAKNESS_POLICY, TRUE)) {
                 if (IsBattlerAlive(battler)
                     && TARGET_TURN_DAMAGED
                     && gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
                 {
-                    effect = ITEM_STATS_CHANGE;
+                    effect = ITEM_STATS_CHANGE; //Need to check
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_WeaknessPolicy;
                 }
-                break;
+            }
+
+            switch (battlerHoldEffect)
+            {
             case HOLD_EFFECT_SNOWBALL:
                 if (IsBattlerAlive(battler)
                     && TARGET_TURN_DAMAGED

@@ -9525,8 +9525,17 @@ static void Cmd_various(void)
     }
     case VARIOUS_SET_LAST_USED_ITEM:
     {
-        VARIOUS_ARGS();
-        gLastUsedItem = gBattleMons[battler].item;
+        VARIOUS_ARGS(u8 holdEffect); 
+        u16 itemId;
+        u8 holdEffect;
+
+        holdEffect = cmd->holdEffect;
+        if(holdEffect != HOLD_EFFECT_NONE)
+            itemId = GetBattlerHeldItemWithEffect(battler, holdEffect, TRUE);
+        else
+            itemId = gBattleMons[battler].item;
+
+        gLastUsedItem = itemId;
         break;
     }
     case VARIOUS_TRY_FAIRY_LOCK:
