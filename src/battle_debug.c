@@ -1530,7 +1530,7 @@ static void CreateSecondaryListMenu(struct BattleDebugMenu *data)
         itemsCount = 1;
         break;
     case LIST_ITEM_HELD_ITEM:
-        itemsCount = 1;
+        itemsCount = 4;
         break;
     case LIST_ITEM_TYPES:
         itemsCount = 3;
@@ -1663,9 +1663,29 @@ static void PrintSecondaryEntries(struct BattleDebugMenu *data)
         AddTextPrinter(&printer, 0, NULL);
         break;
     case LIST_ITEM_HELD_ITEM:
-        PadString(ItemId_GetName(gBattleMons[data->battlerId].item), text);
-        printer.currentY = printer.y = sSecondaryListTemplate.upText_Y;
-        AddTextPrinter(&printer, 0, NULL);
+        for (i = 0; i < 4; i++)
+        {
+            u16 item = ITEM_NONE;
+
+            switch(i){
+                case 0:
+                    item = gBattleMons[data->battlerId].item;
+                break;
+                case 1:
+                    item = gBattleMons[data->battlerId].item2;
+                break;
+                case 2:
+                    item = gBattleMons[data->battlerId].item3;
+                break;
+                case 3:
+                    item = gBattleMons[data->battlerId].item4;
+                break;
+            }
+
+            PadString(ItemId_GetName(item), text);
+            printer.currentY = printer.y = (i * yMultiplier) + sSecondaryListTemplate.upText_Y;
+            AddTextPrinter(&printer, 0, NULL);
+        }
         break;
     case LIST_ITEM_TYPES:
         for (i = 0; i < 3; i++)
