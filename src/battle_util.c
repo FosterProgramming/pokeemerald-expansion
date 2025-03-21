@@ -8617,52 +8617,56 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            switch (battlerHoldEffect)
-            {
-            case HOLD_EFFECT_SNOWBALL:
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_LUMINOUS_MOSS, TRUE)) {
+                if (IsBattlerAlive(battler)
+                    && TARGET_TURN_DAMAGED
+                    && moveType == TYPE_WATER)
+                {
+                    effect = ITEM_STATS_CHANGE;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Luminous_Moss;
+                    SET_STATCHANGER(STAT_SPDEF, 1, FALSE);
+                }
+            }
+
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_SNOWBALL, TRUE)) {
                 if (IsBattlerAlive(battler)
                     && TARGET_TURN_DAMAGED
                     && moveType == TYPE_ICE)
                 {
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise;
+                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Snowball;
                     SET_STATCHANGER(STAT_ATK, 1, FALSE);
                 }
-                break;
-            case HOLD_EFFECT_LUMINOUS_MOSS:
-                if (IsBattlerAlive(battler)
-                    && TARGET_TURN_DAMAGED
-                    && moveType == TYPE_WATER)
-                {
-                    effect = ITEM_STATS_CHANGE;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise;
-                    SET_STATCHANGER(STAT_SPDEF, 1, FALSE);
-                }
-                break;
-            case HOLD_EFFECT_CELL_BATTERY:
+            }
+
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_CELL_BATTERY, TRUE)) {
                 if (IsBattlerAlive(battler)
                     && TARGET_TURN_DAMAGED
                     && moveType == TYPE_ELECTRIC)
                 {
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise;
+                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Cell_Battery;
                     SET_STATCHANGER(STAT_ATK, 1, FALSE);
                 }
-                break;
-            case HOLD_EFFECT_ABSORB_BULB:
+            }
+
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_ABSORB_BULB, TRUE)) {
                 if (IsBattlerAlive(battler)
                     && TARGET_TURN_DAMAGED
                     && moveType == TYPE_WATER)
                 {
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise;
+                    gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Absorb_Bulb;
                     SET_STATCHANGER(STAT_SPATK, 1, FALSE);
                 }
-                break;
+            }
+
+            switch (battlerHoldEffect)
+            {
             case HOLD_EFFECT_ENIGMA_BERRY: // consume and heal if hit by super effective move
                 effect = TrySetEnigmaBerry(battler);
                 break;

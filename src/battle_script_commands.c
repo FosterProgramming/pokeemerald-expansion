@@ -9525,18 +9525,13 @@ static void Cmd_various(void)
     case VARIOUS_SET_LAST_USED_ITEM:
     {
         VARIOUS_ARGS(u8 holdEffect); 
-        u16 itemId;
-        u8 holdEffect;
 
-        holdEffect = cmd->holdEffect;
-        if(holdEffect != HOLD_EFFECT_NONE)
-            itemId = GetBattlerHeldItemWithEffect(battler, holdEffect, TRUE);
+        if (BattlerHeldItemHasEffect(battler, cmd->holdEffect, TRUE))
+            gLastUsedItem = GetBattlerHeldItemWithEffect(battler, cmd->holdEffect, TRUE); // For B_LAST_USED_ITEM
         else
-            itemId = gBattleMons[battler].item;
+            gLastUsedItem = gBattleMons[battler].item;
 
-        //DebugPrintf("VARIOUS_SET_LAST_USED_ITEM Battler[%d] - %S", battler, gItemsInfo[itemId].name);
-
-        gLastUsedItem = itemId;
+        DebugPrintf("VARIOUS_SET_LAST_USED_ITEM Battler[%d] - %S", battler, gItemsInfo[gLastUsedItem].name);
         break;
     }
     case VARIOUS_TRY_FAIRY_LOCK:
