@@ -151,7 +151,7 @@ enum ItemHoldEffect
     // Gen9 hold effects
     HOLD_EFFECT_ABILITY_SHIELD, //Working
     HOLD_EFFECT_CLEAR_AMULET,
-    HOLD_EFFECT_MIRROR_HERB,
+    HOLD_EFFECT_MIRROR_HERB,    //Working
     HOLD_EFFECT_PUNCHING_GLOVE,
     HOLD_EFFECT_COVERT_CLOAK,   //Working
     HOLD_EFFECT_LOADED_DICE,    //Working

@@ -7702,6 +7702,10 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
 {
     u8 effect = 0;
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MIRROR_HERB, TRUE)){
+        effect = TryConsumeMirrorHerb(battler, ITEMEFFECT_NONE);
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7908,9 +7912,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
         effect = ITEM_STATS_CHANGE;
         break;
-    case HOLD_EFFECT_MIRROR_HERB:
-        effect = TryConsumeMirrorHerb(battler, ITEMEFFECT_NONE);
-        break;
     }
 
     return effect;
@@ -8014,6 +8015,10 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 gBattleScripting.battler = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AirBaloonMsgIn);
                 RecordItemEffectBattle(battler, HOLD_EFFECT_AIR_BALLOON);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MIRROR_HERB, TRUE)){
+                effect = TryConsumeMirrorHerb(battler, caseID);
             }
 
             switch (battlerHoldEffect)
@@ -8194,9 +8199,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
                 effect = ITEM_STATS_CHANGE;
                 break;
-            case HOLD_EFFECT_MIRROR_HERB:
-                effect = TryConsumeMirrorHerb(battler, caseID);
-                break;
             case HOLD_EFFECT_BOOSTER_ENERGY:
                 effect = TryBoosterEnergy(battler, caseID);
                 break;
@@ -8256,6 +8258,10 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     RecordItemEffectBattle(battler, battlerHoldEffect);
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                 }
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MIRROR_HERB, TRUE)){
+                effect = TryConsumeMirrorHerb(battler, caseID);
             }
 
             switch (battlerHoldEffect)
@@ -8419,9 +8425,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
 
                 BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
                 effect = ITEM_STATS_CHANGE;
-                break;
-            case HOLD_EFFECT_MIRROR_HERB:
-                effect = TryConsumeMirrorHerb(battler, caseID);
                 break;
             case HOLD_EFFECT_BOOSTER_ENERGY:
                 effect = TryBoosterEnergy(battler, caseID);

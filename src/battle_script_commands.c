@@ -12211,7 +12211,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                     PushTraitStack(index, ABILITY_OPPORTUNIST);
                     gProtectStructs[index].activateOpportunist = 2;      // set stats to copy
                 }
-                if (GetBattlerHoldEffect(index, TRUE) == HOLD_EFFECT_MIRROR_HERB)
+                if (BattlerHeldItemHasEffect(index, HOLD_EFFECT_MIRROR_HERB, TRUE))
                 {
                     gProtectStructs[index].eatMirrorHerb = 1;
                 }
