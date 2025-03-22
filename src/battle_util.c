@@ -7706,6 +7706,12 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         effect = TryConsumeMirrorHerb(battler, ITEMEFFECT_NONE);
     }
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
+        if (B_BERRIES_INSTANT >= GEN_4)
+            effect = ItemHealHp(battler, gLastUsedItem, ITEMEFFECT_NONE, TRUE);
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7715,10 +7721,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RESTORE_HP:
         if (B_HP_BERRIES >= GEN_4)
             effect = ItemHealHp(battler, gLastUsedItem, ITEMEFFECT_NONE, FALSE);
-        break;
-    case HOLD_EFFECT_RESTORE_PCT_HP:
-        if (B_BERRIES_INSTANT >= GEN_4)
-            effect = ItemHealHp(battler, gLastUsedItem, ITEMEFFECT_NONE, TRUE);
         break;
     case HOLD_EFFECT_RESTORE_PP:
         if (B_BERRIES_INSTANT >= GEN_4)
@@ -8021,6 +8023,12 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 effect = TryConsumeMirrorHerb(battler, caseID);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_STATS:
@@ -8153,10 +8161,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = ItemHealHp(battler, gLastUsedItem, caseID, FALSE);
                 break;
-            case HOLD_EFFECT_RESTORE_PCT_HP:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
-                break;
             case HOLD_EFFECT_ROOM_SERVICE:
                 if (TryRoomService(battler))
                 {
@@ -8264,15 +8268,17 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 effect = TryConsumeMirrorHerb(battler, caseID);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
+                if (!moveTurn)
+                    effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_HP:
                 if (!moveTurn)
                     effect = ItemHealHp(battler, gLastUsedItem, caseID, FALSE);
-                break;
-            case HOLD_EFFECT_RESTORE_PCT_HP:
-                if (!moveTurn)
-                    effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
                 break;
             case HOLD_EFFECT_RESTORE_PP:
                 if (!moveTurn)
@@ -12605,6 +12611,34 @@ u8 GetHeldItemSlotWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating)
     else if(gItemsInfo[gBattleMons[battler].item3].holdEffect == holdEffect)
         slot = 2;
     else if(gItemsInfo[gBattleMons[battler].item4].holdEffect == holdEffect)
+        slot = 3;
+
+    return slot;
+}
+
+//Multiple Hold Items
+u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating)
+{
+    bool8 checkAbility = FALSE;
+    u32 slot = 4;
+
+    if (checkNegating)
+    {
+        if (gStatuses3[battler] & STATUS3_EMBARGO)
+            return slot;
+        if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+            return slot;
+        if (checkAbility && BattlerHasTrait(battler, ABILITY_KLUTZ))
+            return slot;
+    }
+
+    if(gBattleMons[battler].item == itemId)
+        slot = 0;
+    else if(gBattleMons[battler].item2 == itemId)
+        slot = 1;
+    else if(gBattleMons[battler].item3 == itemId)
+        slot = 2;
+    else if(gBattleMons[battler].item4 == itemId)
         slot = 3;
 
     return slot;

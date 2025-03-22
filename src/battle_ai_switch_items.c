@@ -1594,7 +1594,7 @@ static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler)
                 if (currentHP < maxHP / 2)
                     singleUseItemHeal = holdEffectParam;
                 break;
-            case HOLD_EFFECT_RESTORE_PCT_HP:
+            case HOLD_EFFECT_RESTORE_PCT_HP: // To Check
                 if (currentHP < maxHP / 2)
                 {
                     singleUseItemHeal = maxHP / holdEffectParam;

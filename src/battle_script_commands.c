@@ -8508,16 +8508,32 @@ static void Cmd_removeitemwitheffect(void)
 
     battler    = GetBattlerForBattleScript(cmd->battler);
     holdEffect = cmd->holdEffect;
-    itemId     = GetBattlerHeldItemWithEffect(battler, holdEffect, TRUE);
+
+    if(holdEffect == HOLD_EFFECT_NONE){
+        itemId = gLastUsedItem;
+
+        // Popped Air Balloon cannot be restored by any means.
+        // Corroded items cannot be restored either.
+        if (itemId != ITEM_AIR_BALLOON
+            && gMovesInfo[gCurrentMove].effect != EFFECT_CORROSIVE_GAS)
+            gBattleStruct->usedHeldItems[gBattlerPartyIndexes[battler]][GetBattlerSide(battler)] = itemId; // Remember if switched out
+
+        slot = GetHeldItemSlot(battler, itemId, TRUE);
+    }
+    else{
+        itemId     = GetBattlerHeldItemWithEffect(battler, holdEffect, TRUE);
+
+        // Popped Air Balloon cannot be restored by any means.
+        // Corroded items cannot be restored either.
+        if (holdEffect != HOLD_EFFECT_AIR_BALLOON
+            && gMovesInfo[gCurrentMove].effect != EFFECT_CORROSIVE_GAS)
+            gBattleStruct->usedHeldItems[gBattlerPartyIndexes[battler]][GetBattlerSide(battler)] = itemId; // Remember if switched out
+
+        slot = GetHeldItemSlotWithEffect(battler, holdEffect, TRUE);
+    }
+
     //DebugPrintf("Cmd_removeitemwitheffect battler %d holdEffect %d itemId %d", battler, holdEffect, itemId);
 
-    // Popped Air Balloon cannot be restored by any means.
-    // Corroded items cannot be restored either.
-    if (holdEffect != HOLD_EFFECT_AIR_BALLOON
-        && gMovesInfo[gCurrentMove].effect != EFFECT_CORROSIVE_GAS)
-        gBattleStruct->usedHeldItems[gBattlerPartyIndexes[battler]][GetBattlerSide(battler)] = itemId; // Remember if switched out
-
-    slot = GetHeldItemSlotWithEffect(battler, holdEffect, TRUE);
     switch(slot){
         case 0:
             gBattleMons[battler].item = ITEM_NONE;
