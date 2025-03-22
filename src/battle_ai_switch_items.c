@@ -515,7 +515,7 @@ static bool32 ShouldSwitchIfBadlyStatused(u32 battler)
             if ((AISearchTraits(AIBattlerTraits, ABILITY_NATURAL_CURE)
                 || AISearchTraits(AIBattlerTraits, ABILITY_SHED_SKIN)
                 || AISearchTraits(AIBattlerTraits, ABILITY_EARLY_BIRD))
-                || holdEffect == (HOLD_EFFECT_CURE_SLP | HOLD_EFFECT_CURE_STATUS)
+                || (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE) || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE))
                 || HasMove(battler, MOVE_SLEEP_TALK)
                 || (HasMoveEffect(battler, MOVE_SNORE) && AI_GetMoveEffectiveness(MOVE_SNORE, battler, opposingBattler) >= AI_EFFECTIVENESS_x2)
                 || (IsBattlerGrounded(battler)
@@ -1298,7 +1298,8 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
             && !(IsAbilityOnSide(battler, ABILITY_PASTEL_VEIL))
             && !(IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN))
             && !(IsAbilityStatusProtected(battler))
-            && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
+            && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)
+            && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)
             && IsMonGrounded(battler, ability, defType1, defType2, species, personality)))
         {
             tSpikesLayers = gSideTimers[GetBattlerSide(battler)].toxicSpikesAmount;
@@ -1523,7 +1524,8 @@ static u32 GetSwitchinStatusDamage(u32 battler)
         && status == 0
         && !(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE)
             && (((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || (ability == ABILITY_KLUTZ || SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))))
-        && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
+        && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)
+        && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)
         && IsMonGrounded(battler, ability, defType1, defType2, species, personality)))
     {
         if (tSpikesLayers == 1)

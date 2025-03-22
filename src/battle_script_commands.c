@@ -8511,6 +8511,7 @@ static void Cmd_removeitemwitheffect(void)
 
     if(holdEffect == HOLD_EFFECT_NONE){
         itemId = gLastUsedItem;
+        holdEffect = gItemsInfo[gLastUsedItem].holdEffect;
 
         // Popped Air Balloon cannot be restored by any means.
         // Corroded items cannot be restored either.
@@ -8532,7 +8533,7 @@ static void Cmd_removeitemwitheffect(void)
         slot = GetHeldItemSlotWithEffect(battler, holdEffect, TRUE);
     }
 
-    //DebugPrintf("Cmd_removeitemwitheffect battler %d holdEffect %d itemId %d", battler, holdEffect, itemId);
+    //DebugPrintf("Cmd_removeitemwitheffect battler %d holdEffect %d itemId %d slot %d", battler, holdEffect, itemId, slot);
 
     switch(slot){
         case 0:

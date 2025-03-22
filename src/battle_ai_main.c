@@ -2848,8 +2848,8 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 if (gBattleMons[battlerAtkPartner].statStages[STAT_ATK] < MAX_STAT_STAGE
                  && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL)
                  && (!AI_CanBeConfused(battlerAtk, battlerAtkPartner, move, atkPartnerAbility)
-                  || atkPartnerHoldEffect == HOLD_EFFECT_CURE_CONFUSION
-                  || atkPartnerHoldEffect == HOLD_EFFECT_CURE_STATUS))
+                  || BattlerHeldItemHasEffect(battlerAtkPartner, HOLD_EFFECT_CURE_CONFUSION, TRUE)
+                  || BattlerHeldItemHasEffect(battlerAtkPartner, HOLD_EFFECT_CURE_STATUS, TRUE)))
                 {
                     RETURN_SCORE_PLUS(WEAK_EFFECT);
                 }
@@ -2858,8 +2858,8 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 if (gBattleMons[battlerAtkPartner].statStages[STAT_SPATK] < MAX_STAT_STAGE
                  && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_SPECIAL)
                  && (!AI_CanBeConfused(battlerAtk, battlerAtkPartner, move, atkPartnerAbility)
-                  || atkPartnerHoldEffect == HOLD_EFFECT_CURE_CONFUSION
-                  || atkPartnerHoldEffect == HOLD_EFFECT_CURE_STATUS))
+                  || BattlerHeldItemHasEffect(battlerAtkPartner, HOLD_EFFECT_CURE_CONFUSION, TRUE)
+                  || BattlerHeldItemHasEffect(battlerAtkPartner, HOLD_EFFECT_CURE_STATUS, TRUE)))
                 {
                     RETURN_SCORE_PLUS(WEAK_EFFECT);
                 }
@@ -3423,8 +3423,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         else if (ShouldRecover(battlerAtk, battlerDef, move, 100))
         {
-            if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CURE_SLP
-              || aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CURE_STATUS
+            if (BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_CURE_SLP, TRUE)
+              || BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_CURE_STATUS, TRUE)
               || HasMoveEffect(EFFECT_SLEEP_TALK, battlerAtk)
               || HasMoveEffect(EFFECT_SNORE, battlerAtk)
               || AISearchTraits(AIBattlerTraits, ABILITY_SHED_SKIN)

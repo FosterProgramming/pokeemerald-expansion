@@ -7712,6 +7712,40 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             effect = ItemHealHp(battler, gLastUsedItem, ITEMEFFECT_NONE, TRUE);
     }
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
+        if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
+        {
+            if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
+                StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
+
+            if (gBattleMons[battler].status1 & STATUS1_SLEEP)
+            {
+                gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+                StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
+            }
+
+            if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
+                StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
+
+            if (gBattleMons[battler].status1 & STATUS1_BURN)
+                StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
+
+            if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
+                StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
+
+            if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
+                StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
+
+            gBattleMons[battler].status1 = 0;
+            RemoveConfusionStatus(battler);
+            BattleScriptPushCursor();
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
+            gBattlescriptCurrInstr = BattleScript_BerryCureChosenStatusRet;
+            effect = ITEM_STATUS_CHANGE;
+        }
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7852,38 +7886,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_MentalHerbCureRet;
             effect = ITEM_EFFECT_OTHER;
-        }
-        break;
-    case HOLD_EFFECT_CURE_STATUS:
-        if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
-        {
-            if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_SLEEP)
-            {
-                gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
-            }
-
-            if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ParalysisJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_BURN)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_BurnJpn);
-
-            if (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_IceJpn);
-
-            if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-                StringCopy(gBattleTextBuff1, gStatusConditionString_ConfusionJpn);
-
-            gBattleMons[battler].status1 = 0;
-            RemoveConfusionStatus(battler);
-            BattleScriptPushCursor();
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
-            gBattlescriptCurrInstr = BattleScript_BerryCureChosenStatusRet;
-            effect = ITEM_STATUS_CHANGE;
         }
         break;
     case HOLD_EFFECT_CRITICAL_UP: // lansat berry
@@ -8029,6 +8031,12 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = TryCureStatus(battler, caseID);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_STATS:
@@ -8153,10 +8161,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = ITEM_STATUS_CHANGE;
                 }
                 break;
-            case HOLD_EFFECT_CURE_STATUS:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = TryCureStatus(battler, caseID);
-                break;
             case HOLD_EFFECT_RESTORE_HP:
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = ItemHealHp(battler, gLastUsedItem, caseID, FALSE);
@@ -8272,6 +8276,11 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
                 if (!moveTurn)
                     effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
+                effect = TryCureStatus(battler, caseID);
             }
 
             switch (battlerHoldEffect)
@@ -8400,9 +8409,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     BattleScriptExecute(BattleScript_BerryCureConfusionEnd2);
                     effect = ITEM_EFFECT_OTHER;
                 }
-                break;
-            case HOLD_EFFECT_CURE_STATUS:
-                effect = TryCureStatus(battler, caseID);
                 break;
             case HOLD_EFFECT_MENTAL_HERB:
                 if (GetMentalHerbEffect(battler))
@@ -8674,6 +8680,20 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            // only Toxic Chain's interaction with Knock Off
+            if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_CURE_STATUS, TRUE)) {
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
+                if (gBattleMons[battler].status1 & STATUS1_PSN_ANY && !UnnerveOn(battler, gLastUsedItem) && BattlerHasTrait(gBattlerAttacker, ABILITY_TOXIC_CHAIN) && gMovesInfo[gCurrentMove].effect == EFFECT_KNOCK_OFF)
+                {
+                    gBattleScripting.battler = battler;
+                    gBattleMons[battler].status1 &= ~(STATUS1_PSN_ANY | STATUS1_TOXIC_COUNTER);
+                    BattleScriptExecute(BattleScript_BerryCurePsnEnd2);
+                    BtlController_EmitSetMonData(battler, 0, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
+                    MarkBattlerForControllerExec(battler);
+                    effect = ITEM_STATUS_CHANGE;
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_ENIGMA_BERRY: // consume and heal if hit by super effective move
@@ -8725,8 +8745,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_MARANGA_BERRY:  // consume and boost sp. defense if used special move
                 effect = DamagedStatBoostBerryEffect(battler, STAT_SPDEF, DAMAGE_CATEGORY_SPECIAL);
                 break;
-            case HOLD_EFFECT_CURE_STATUS: // only Toxic Chain's interaction with Knock Off
-            case HOLD_EFFECT_CURE_PSN:
+            case HOLD_EFFECT_CURE_PSN: // only Toxic Chain's interaction with Knock Off
                 if (gBattleMons[battler].status1 & STATUS1_PSN_ANY && !UnnerveOn(battler, gLastUsedItem) && BattlerHasTrait(gBattlerAttacker, ABILITY_TOXIC_CHAIN) && gMovesInfo[gCurrentMove].effect == EFFECT_KNOCK_OFF)
                 {
                     gBattleScripting.battler = battler;
@@ -12631,6 +12650,7 @@ u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating)
         if (checkAbility && BattlerHasTrait(battler, ABILITY_KLUTZ))
             return slot;
     }
+    DebugPrintf("GetHeldItemSlot battler %d itemId %d checkNegating %d", battler, itemId, checkNegating);
 
     if(gBattleMons[battler].item == itemId)
         slot = 0;
@@ -12640,6 +12660,8 @@ u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating)
         slot = 2;
     else if(gBattleMons[battler].item4 == itemId)
         slot = 3;
+    //else
+    //DebugPrintf("GetHeldItemSlot Held Item not Found - battler %d itemId %d item1 %ditem2 %ditem3 %ditem4 %d", battler, itemId, gBattleMons[battler].item, gBattleMons[battler].item2, gBattleMons[battler].item3, gBattleMons[battler].item4);
 
     return slot;
 }
