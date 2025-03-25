@@ -7776,6 +7776,18 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, ITEMEFFECT_NONE);
     }
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE);
+        if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, gLastUsedItem))
+        {
+            gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
+            gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_BerryCureSlpRet;
+            effect = ITEM_STATUS_CHANGE;
+        }
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7866,16 +7878,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             gBattleMons[battler].status1 &= ~STATUS1_FROSTBITE;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureFrbRet;
-            effect = ITEM_STATUS_CHANGE;
-        }
-        break;
-    case HOLD_EFFECT_CURE_SLP:
-        if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, gLastUsedItem))
-        {
-            gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
-            gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_BerryCureSlpRet;
             effect = ITEM_STATUS_CHANGE;
         }
         break;
@@ -8077,6 +8079,19 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4
+                    && (gBattleMons[battler].status1 & STATUS1_SLEEP)
+                    && !UnnerveOn(battler, gLastUsedItem))
+                {
+                    gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
+                    gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+                    BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
+                    effect = ITEM_STATUS_CHANGE;
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_STATS:
@@ -8167,17 +8182,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 {
                     gBattleMons[battler].status1 &= ~STATUS1_FROSTBITE;
                     BattleScriptExecute(BattleScript_BerryCureFrbEnd2);
-                    effect = ITEM_STATUS_CHANGE;
-                }
-                break;
-            case HOLD_EFFECT_CURE_SLP:
-                if (B_BERRIES_INSTANT >= GEN_4
-                    && (gBattleMons[battler].status1 & STATUS1_SLEEP)
-                    && !UnnerveOn(battler, gLastUsedItem))
-                {
-                    gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
-                    gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                    BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
                 break;
@@ -8333,6 +8337,17 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE);
+                if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, gLastUsedItem))
+                {
+                    gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
+                    gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+                    BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
+                    effect = ITEM_STATUS_CHANGE;
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_HP:
@@ -8420,15 +8435,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 {
                     gBattleMons[battler].status1 &= ~STATUS1_FROSTBITE;
                     BattleScriptExecute(BattleScript_BerryCureFrbEnd2);
-                    effect = ITEM_STATUS_CHANGE;
-                }
-                break;
-            case HOLD_EFFECT_CURE_SLP:
-                if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, gLastUsedItem))
-                {
-                    gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
-                    gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                    BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
                 break;
