@@ -9143,7 +9143,7 @@ BattleScript_BerryConfuseHealEnd2_Anim:
 	healthbarupdate BS_SCRIPTING
 	datahpupdate BS_SCRIPTING
 	seteffectprimary MOVE_EFFECT_CONFUSION | MOVE_EFFECT_AFFECTS_USER
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING, HOLD_EFFECT_NONE //gLastUsedItem
 	end2
 
 BattleScript_BerryConfuseHealRet::
@@ -9159,7 +9159,7 @@ BattleScript_BerryConfuseHealRet_Anim:
 	healthbarupdate BS_SCRIPTING
 	datahpupdate BS_SCRIPTING
 	seteffectprimary MOVE_EFFECT_CONFUSION | MOVE_EFFECT_CERTAIN
-	removeitem BS_TARGET
+	removeitemwitheffect BS_TARGET, HOLD_EFFECT_NONE //gLastUsedItem
 	return
 
 BattleScript_BerryStatRaiseEnd2::

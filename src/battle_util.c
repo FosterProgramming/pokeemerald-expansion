@@ -7746,6 +7746,36 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         }
     }
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE);
+        if (B_BERRIES_INSTANT >= GEN_4)
+            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, ITEMEFFECT_NONE);
+    }
+
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE);
+        if (B_BERRIES_INSTANT >= GEN_4)
+            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, ITEMEFFECT_NONE);
+    }
+
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE);
+        if (B_BERRIES_INSTANT >= GEN_4)
+            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, ITEMEFFECT_NONE);
+    }
+
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE);
+        if (B_BERRIES_INSTANT >= GEN_4)
+            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, ITEMEFFECT_NONE);
+    }
+
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE);
+        if (B_BERRIES_INSTANT >= GEN_4)
+            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, ITEMEFFECT_NONE);
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7759,26 +7789,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RESTORE_PP:
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = ItemRestorePp(battler, gLastUsedItem, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CONFUSE_SPICY:
-        if (B_BERRIES_INSTANT >= GEN_4)
-            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CONFUSE_DRY:
-        if (B_BERRIES_INSTANT >= GEN_4)
-            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CONFUSE_SWEET:
-        if (B_BERRIES_INSTANT >= GEN_4)
-            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CONFUSE_BITTER:
-        if (B_BERRIES_INSTANT >= GEN_4)
-            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CONFUSE_SOUR:
-        if (B_BERRIES_INSTANT >= GEN_4)
-            effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, ITEMEFFECT_NONE);
         break;
     case HOLD_EFFECT_ATTACK_UP:
         if (B_BERRIES_INSTANT >= GEN_4)
@@ -8037,6 +8047,36 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = TryCureStatus(battler, caseID);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_STATS:
@@ -8046,26 +8086,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     gBattlerAttacker = battler;
                     BattleScriptExecute(BattleScript_WhiteHerbEnd2);
                 }
-                break;
-            case HOLD_EFFECT_CONFUSE_SPICY:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_DRY:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_SWEET:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_BITTER:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_SOUR:
-                if (B_BERRIES_INSTANT >= GEN_4)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
                 break;
             case HOLD_EFFECT_ATTACK_UP:
                 if (B_BERRIES_INSTANT >= GEN_4)
@@ -8283,6 +8303,36 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 effect = TryCureStatus(battler, caseID);
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE);
+                if (!moveTurn)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE);
+                if (!moveTurn)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE);
+                if (!moveTurn)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE);
+                if (!moveTurn)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, caseID);
+            }
+
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE);
+                if (!moveTurn)
+                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_HP:
@@ -8300,26 +8350,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     gBattlerAttacker = battler;
                     BattleScriptExecute(BattleScript_WhiteHerbEnd2);
                 }
-                break;
-            case HOLD_EFFECT_CONFUSE_SPICY:
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_DRY:
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_SWEET:
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_BITTER:
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, caseID);
-                break;
-            case HOLD_EFFECT_CONFUSE_SOUR:
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
                 break;
             case HOLD_EFFECT_ATTACK_UP:
                 if (!moveTurn)
