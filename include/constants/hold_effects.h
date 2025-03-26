@@ -11,7 +11,7 @@ enum ItemHoldEffect
     HOLD_EFFECT_CURE_BRN,      //Working
     HOLD_EFFECT_CURE_FRZ,      //Working
     HOLD_EFFECT_RESTORE_PP,
-    HOLD_EFFECT_CURE_CONFUSION,
+    HOLD_EFFECT_CURE_CONFUSION,//Working
     HOLD_EFFECT_CURE_STATUS,   //Working
     HOLD_EFFECT_CONFUSE_SPICY, //Working
     HOLD_EFFECT_CONFUSE_DRY,   //Working

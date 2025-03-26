@@ -7839,6 +7839,17 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         }
     }
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE);
+        if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
+        {
+            RemoveConfusionStatus(battler);
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_BerryCureConfusionRet;
+            effect = ITEM_EFFECT_OTHER;
+        }
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7888,15 +7899,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RANDOM_STAT_UP:
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = RandomStatRaiseBerry(battler, gLastUsedItem, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CURE_CONFUSION:
-        if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
-        {
-            RemoveConfusionStatus(battler);
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_BerryCureConfusionRet;
-            effect = ITEM_EFFECT_OTHER;
-        }
         break;
     case HOLD_EFFECT_MENTAL_HERB:
         if (GetMentalHerbEffect(battler))
@@ -8410,6 +8412,16 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE);
+                if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
+                {
+                    RemoveConfusionStatus(battler);
+                    BattleScriptExecute(BattleScript_BerryCureConfusionEnd2);
+                    effect = ITEM_EFFECT_OTHER;
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_HP:
@@ -8461,14 +8473,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RANDOM_STAT_UP:
                 if (!moveTurn)
                     effect = RandomStatRaiseBerry(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_CURE_CONFUSION:
-                if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
-                {
-                    RemoveConfusionStatus(battler);
-                    BattleScriptExecute(BattleScript_BerryCureConfusionEnd2);
-                    effect = ITEM_EFFECT_OTHER;
-                }
                 break;
             case HOLD_EFFECT_MENTAL_HERB:
                 if (GetMentalHerbEffect(battler))

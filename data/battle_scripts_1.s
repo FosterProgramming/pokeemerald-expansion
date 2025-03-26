@@ -8965,7 +8965,7 @@ BattleScript_BerryCureConfusionRet::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_PKMNSITEMSNAPPEDOUT
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING HOLD_EFFECT_NONE //gLastUsedItem
 	return
 
 BattleScript_BerryCureChosenStatusEnd2::
