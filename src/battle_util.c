@@ -8160,16 +8160,17 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            switch (battlerHoldEffect)
-            {
-            case HOLD_EFFECT_RESTORE_STATS:
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_STATS, TRUE)){
                 effect = RestoreWhiteHerbStats(battler);
                 if (effect != 0)
                 {
                     gBattlerAttacker = battler;
                     BattleScriptExecute(BattleScript_WhiteHerbEnd2);
                 }
-                break;
+            }
+
+            switch (battlerHoldEffect)
+            {
             case HOLD_EFFECT_ATTACK_UP:
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = StatRaiseBerry(battler, gLastUsedItem, STAT_ATK, caseID);
@@ -8435,6 +8436,15 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_STATS, TRUE)){
+                effect = RestoreWhiteHerbStats(battler);
+                if (effect != 0)
+                {
+                    gBattlerAttacker = battler;
+                    BattleScriptExecute(BattleScript_WhiteHerbEnd2);
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_HP:
@@ -8444,14 +8454,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RESTORE_PP:
                 if (!moveTurn)
                     effect = ItemRestorePp(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_RESTORE_STATS:
-                effect = RestoreWhiteHerbStats(battler);
-                if (effect != 0)
-                {
-                    gBattlerAttacker = battler;
-                    BattleScriptExecute(BattleScript_WhiteHerbEnd2);
-                }
                 break;
             case HOLD_EFFECT_ATTACK_UP:
                 if (!moveTurn)
@@ -8898,17 +8900,15 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             effect = TryEjectPack(battler, ITEMEFFECT_ON_SWITCH_IN);
         }
 
-        switch (battlerHoldEffect)
-        {
-        case HOLD_EFFECT_RESTORE_STATS:
+        if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_STATS, TRUE)) {
             effect = RestoreWhiteHerbStats(battler);
             if (effect != 0)
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_WhiteHerbRet;
             }
-            break;
         }
+
         break;
     }
 
