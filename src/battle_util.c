@@ -8169,6 +8169,10 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_EJECT_PACK, TRUE)){
+                effect = TryEjectPack(battler, caseID);
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_ATTACK_UP:
@@ -8233,9 +8237,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     effect = TryHandleSeed(battler, STATUS_FIELD_PSYCHIC_TERRAIN, STAT_SPDEF, gLastUsedItem, caseID);
                     break;
                 }
-                break;
-            case HOLD_EFFECT_EJECT_PACK:
-                effect = TryEjectPack(battler, caseID);
                 break;
             case HOLD_EFFECT_BERSERK_GENE:
                 BufferStatChange(battler, STAT_ATK, STRINGID_STATROSE);

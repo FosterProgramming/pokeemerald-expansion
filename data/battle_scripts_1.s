@@ -9702,9 +9702,10 @@ BattleScript_RedCardDynamaxed:
 	return
 
 BattleScript_EjectButtonActivates::
-	setlastuseditem BS_SCRIPTING, HOLD_EFFECT_EJECT_BUTTON
 	makevisible BS_ATTACKER
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
+	jumpifholdeffect BS_SCRIPTING, HOLD_EFFECT_EJECT_BUTTON, BattleScript_EjectButtonActivates_Last
+	BattleScript_EjectButtonActivates_Last:
 	printstring STRINGID_EJECTBUTTONACTIVATE
 	waitmessage B_WAIT_TIME_LONG
 	removeitemwitheffect BS_SCRIPTING, HOLD_EFFECT_EJECT_BUTTON
@@ -9729,9 +9730,10 @@ BattleScript_EjectButtonEnd:
 	return
 
 BattleScript_EjectPackActivate_Ret::
-	setlastuseditem BS_SCRIPTING, HOLD_EFFECT_EJECT_PACK
 	makevisible BS_ATTACKER
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
+	jumpifholdeffect BS_SCRIPTING, HOLD_EFFECT_EJECT_PACK, BattleScript_EjectPackActivate_Last
+	BattleScript_EjectPackActivate_Last:
 	printstring STRINGID_EJECTBUTTONACTIVATE
 	waitmessage B_WAIT_TIME_LONG
 	removeitemwitheffect BS_SCRIPTING, HOLD_EFFECT_EJECT_PACK

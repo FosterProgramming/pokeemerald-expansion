@@ -6517,9 +6517,10 @@ static void Cmd_moveend(void)
                     holdEffect = GetBattlerHoldEffect(i, TRUE);
                     if (BattlerHeldItemHasEffect(i, HOLD_EFFECT_EJECT_BUTTON, TRUE))
                         ejectButtonBattlers |= 1u << i;
-                    else if (BattlerHeldItemHasEffect(i, HOLD_EFFECT_EJECT_PACK, TRUE))//To make both work together
+                    else if (BattlerHeldItemHasEffect(i, HOLD_EFFECT_EJECT_PACK, TRUE)) //To make both work together
                         ejectPackBattlers |= 1u << i;
                 }
+
                 if (ejectButtonBattlers || ejectPackBattlers)
                 {
                     u8 battlers[4] = {0, 1, 2, 3};
