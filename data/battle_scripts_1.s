@@ -8870,7 +8870,7 @@ BattleScript_BerryCureParRet::
 	printstring STRINGID_PKMNSITEMCUREDPARALYSIS
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_SCRIPTING
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING HOLD_EFFECT_NONE //gLastUsedItem
 	return
 
 BattleScript_BerryCurePsnEnd2::

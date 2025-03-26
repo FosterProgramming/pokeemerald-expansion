@@ -5,11 +5,11 @@ enum ItemHoldEffect
 {
     HOLD_EFFECT_NONE,
     HOLD_EFFECT_RESTORE_HP,
-    HOLD_EFFECT_CURE_PAR,
+    HOLD_EFFECT_CURE_PAR,      //Working
     HOLD_EFFECT_CURE_SLP,      //Working
     HOLD_EFFECT_CURE_PSN,      //Working
     HOLD_EFFECT_CURE_BRN,      //Working
-    HOLD_EFFECT_CURE_FRZ,
+    HOLD_EFFECT_CURE_FRZ,      //Working
     HOLD_EFFECT_RESTORE_PP,
     HOLD_EFFECT_CURE_CONFUSION,
     HOLD_EFFECT_CURE_STATUS,   //Working

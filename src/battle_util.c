@@ -7828,6 +7828,17 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         }
     }
 
+    if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE)){
+        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE);
+        if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && !UnnerveOn(battler, gLastUsedItem))
+        {
+            gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_BerryCureParRet;
+            effect = ITEM_STATUS_CHANGE;
+        }
+    }
+
     switch (holdEffect)
     {
     case HOLD_EFFECT_MICLE_BERRY:
@@ -7877,15 +7888,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RANDOM_STAT_UP:
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = RandomStatRaiseBerry(battler, gLastUsedItem, ITEMEFFECT_NONE);
-        break;
-    case HOLD_EFFECT_CURE_PAR:
-        if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && !UnnerveOn(battler, gLastUsedItem))
-        {
-            gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_BerryCureParRet;
-            effect = ITEM_STATUS_CHANGE;
-        }
         break;
     case HOLD_EFFECT_CURE_CONFUSION:
         if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
@@ -8142,6 +8144,18 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE);
+                if (B_BERRIES_INSTANT >= GEN_4
+                    && gBattleMons[battler].status1 & STATUS1_PARALYSIS
+                    && !UnnerveOn(battler, gLastUsedItem))
+                {
+                    gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
+                    BattleScriptExecute(BattleScript_BerryCurePrlzEnd2);
+                    effect = ITEM_STATUS_CHANGE;
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_STATS:
@@ -8186,16 +8200,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RANDOM_STAT_UP:
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = RandomStatRaiseBerry(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_CURE_PAR:
-                if (B_BERRIES_INSTANT >= GEN_4
-                    && gBattleMons[battler].status1 & STATUS1_PARALYSIS
-                    && !UnnerveOn(battler, gLastUsedItem))
-                {
-                    gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
-                    BattleScriptExecute(BattleScript_BerryCurePrlzEnd2);
-                    effect = ITEM_STATUS_CHANGE;
-                }
                 break;
             case HOLD_EFFECT_RESTORE_HP:
                 if (B_BERRIES_INSTANT >= GEN_4)
@@ -8396,6 +8400,16 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
+            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE);
+                if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && !UnnerveOn(battler, gLastUsedItem))
+                {
+                    gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
+                    BattleScriptExecute(BattleScript_BerryCurePrlzEnd2);
+                    effect = ITEM_STATUS_CHANGE;
+                }
+            }
+
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_RESTORE_HP:
@@ -8447,14 +8461,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RANDOM_STAT_UP:
                 if (!moveTurn)
                     effect = RandomStatRaiseBerry(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_CURE_PAR:
-                if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && !UnnerveOn(battler, gLastUsedItem))
-                {
-                    gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
-                    BattleScriptExecute(BattleScript_BerryCurePrlzEnd2);
-                    effect = ITEM_STATUS_CHANGE;
-                }
                 break;
             case HOLD_EFFECT_CURE_CONFUSION:
                 if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
