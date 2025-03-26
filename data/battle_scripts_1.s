@@ -8906,7 +8906,7 @@ BattleScript_BerryCureFrzRet::
 	printstring STRINGID_PKMNSITEMDEFROSTEDIT
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_SCRIPTING
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING HOLD_EFFECT_NONE //gLastUsedItem
 	return
 
 BattleScript_BerryCureFrbEnd2::
@@ -8918,7 +8918,7 @@ BattleScript_BerryCureFrbRet::
 	printstring STRINGID_PKMNSITEMHEALEDFROSTBITE
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_SCRIPTING
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING HOLD_EFFECT_NONE //gLastUsedItem
 	return
 
 BattleScript_BerryCureSlpEnd2::
