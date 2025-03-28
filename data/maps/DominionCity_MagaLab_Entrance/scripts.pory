@@ -1,5 +1,5 @@
 raw `
-.set LOCALID_EEVEE, 2
+.set LOCALID_VEE, 2
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
 `
@@ -34,19 +34,19 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 			removeobject(1)
 			setflag(FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON)
 			getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-			setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-			addobject(LOCALID_EEVEE)
-			applymovement(LOCALID_EEVEE, moves(walk_down emote_exclamation_mark))
+			setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+			addobject(LOCALID_VEE)
+			applymovement(LOCALID_VEE, moves(walk_down emote_exclamation_mark))
 			playse(SE_PIN)
-			waitmovement(LOCALID_EEVEE)
+			waitmovement(LOCALID_VEE)
 			waitse
 			speakername("Vee")
 			msgbox(format("HAH! That’s what you get for calling us failures!"))
-			applymovement(LOCALID_EEVEE, moves(face_up))
+			applymovement(LOCALID_VEE, moves(face_up))
 			msgbox(format("Come on, Porygon ran through that door down there! I bet that's the way out! Let's hurry!"))
-			applymovement(LOCALID_EEVEE, moves(walk_up))
-			waitmovement(LOCALID_EEVEE)
-			removeobject(LOCALID_EEVEE)
+			applymovement(LOCALID_VEE, moves(walk_up))
+			waitmovement(LOCALID_VEE)
+			removeobject(LOCALID_VEE)
 			closemessage
 			releaseall
     		end
@@ -77,19 +77,19 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 			removeobject(1)
 			setflag(FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON)
 			getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-			setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-			addobject(LOCALID_EEVEE)
-			applymovement(LOCALID_EEVEE, moves(walk_down emote_exclamation_mark))
+			setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+			addobject(LOCALID_VEE)
+			applymovement(LOCALID_VEE, moves(walk_down emote_exclamation_mark))
 			playse(SE_PIN)
-			waitmovement(LOCALID_EEVEE)
+			waitmovement(LOCALID_VEE)
 			waitse
 			speakername("Vee")
 			msgbox(format("HAH! That’s what you get for calling us failures!"))
-			applymovement(LOCALID_EEVEE, moves(face_up))
+			applymovement(LOCALID_VEE, moves(face_up))
 			msgbox(format("Come on, Porygon ran through that door down there! I bet that's the way out! Let's hurry!"))
-			applymovement(LOCALID_EEVEE, moves(walk_up))
-			waitmovement(LOCALID_EEVEE)
-			removeobject(LOCALID_EEVEE)
+			applymovement(LOCALID_VEE, moves(walk_up))
+			waitmovement(LOCALID_VEE)
+			removeobject(LOCALID_VEE)
 			closemessage
 			releaseall
     		end

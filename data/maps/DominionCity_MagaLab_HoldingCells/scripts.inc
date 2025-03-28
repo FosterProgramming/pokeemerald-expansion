@@ -1,7 +1,7 @@
 # 1 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 
 # 2 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-.set LOCALID_EEVEE, 1
+.set LOCALID_VEE, 1
 # 3 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 .set LOCALID_PORYGON, 2
 
@@ -36,25 +36,25 @@ DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems::
 # 21 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 22 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 23 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 24 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems_Movement_2
+	applymovement LOCALID_VEE, DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems_Movement_2
 # 25 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	playse SE_PIN
 # 26 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 27 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	speakername DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems_Text_2
 # 28 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	msgbox DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems_Text_3
 # 29 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems_Movement_3
+	applymovement LOCALID_VEE, DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems_Movement_3
 # 30 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 31 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 32 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	clearflag FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB
 # 33 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
@@ -72,9 +72,9 @@ DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell::
 # 41 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	playse SE_PIN
 # 42 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MagaLab_HoldingCells_Movement_EeveeFacesPlayer
+	applymovement LOCALID_VEE, DominionCity_MagaLab_HoldingCells_Movement_EeveeFacesPlayer
 # 43 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 44 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	speakername DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_0
 # 45 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
@@ -133,7 +133,7 @@ DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript::
 # 79 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
 # 80 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 81 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	setflag FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE
 # 82 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"

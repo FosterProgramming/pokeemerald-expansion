@@ -1,5 +1,5 @@
 raw `
-.set LOCALID_EEVEE, 1
+.set LOCALID_VEE, 1
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
 DominionCity_MagaLab_ResearchWing_MapScripts::
@@ -38,19 +38,19 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal
 				while (var(VAR_RESULT) != 1) 
 				{
 					getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-					setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-					addobject(LOCALID_EEVEE)
-					applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
-					waitmovement(LOCALID_EEVEE)
+					setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+					addobject(LOCALID_VEE)
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+					waitmovement(LOCALID_VEE)
 					playse(SE_PIN)
 					waitse
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
                 	waitmovement(OBJ_EVENT_ID_PLAYER)
 					speakername("Vee")
 					msgbox(format("Whaaat? You're just gonna ignore all this super-secret science-y stuff? C'mon, aren't you curious? What if it says something important?"))
-					applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
-					waitmovement(LOCALID_EEVEE)
-					removeobject(LOCALID_EEVEE)
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+					waitmovement(LOCALID_VEE)
+					removeobject(LOCALID_VEE)
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
                 	waitmovement(OBJ_EVENT_ID_PLAYER)
 					closemessage
@@ -64,10 +64,10 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal
 			msgbox(format("Access to artifacts is restricted to authorized personnel only.\pUnauthorized retrieval is impossible without proper clearance.\pDO NOT ALLOW SUBJECTS TO LEARN OF THIS INFORMATION.\pEND LOG"))
 			msgbox(format("One final message appears on the screen. It is a four digit code labeled “Door Code”"))
 			getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-			setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-			addobject(LOCALID_EEVEE)
-			applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
-			waitmovement(LOCALID_EEVEE)
+			setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+			addobject(LOCALID_VEE)
+			applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+			waitmovement(LOCALID_VEE)
 			playse(SE_PIN)
 			waitse
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
@@ -77,9 +77,9 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal
 			speakername("Vee")
 			msgbox(format("Bet they're, like, huge scary Pokémon who love to battle. Good thing we love to battle too, huh? Haha. Ha…\pThis is totally normal. Definitely not a huge, impossible task or anything.\p Sooo, you ready to get outta here, or what?"))
 			setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 3)
-			applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
-			waitmovement(LOCALID_EEVEE)
-			removeobject(LOCALID_EEVEE)
+			applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+			waitmovement(LOCALID_VEE)
+			removeobject(LOCALID_VEE)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 		}
@@ -118,11 +118,11 @@ script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
 	elif(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) == 3)
 				{
 					getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-					setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-					addobject(LOCALID_EEVEE)
-					applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+					setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+					addobject(LOCALID_VEE)
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
 					playse(SE_PIN)
-					waitmovement(LOCALID_EEVEE)
+					waitmovement(LOCALID_VEE)
 					waitse
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
 					waitmovement(OBJ_EVENT_ID_PLAYER)
@@ -136,9 +136,9 @@ script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
 					waitmovement(OBJ_EVENT_ID_PLAYER)
 					speakername("Vee")
 					msgbox(format("Ha! See? Easy! Like it was made for us, alright, let's move before I start thinking about how much trouble we'll be in if we get caught!"))
-					applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
-					waitmovement(LOCALID_EEVEE)
-					removeobject(LOCALID_EEVEE)
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+					waitmovement(LOCALID_VEE)
+					removeobject(LOCALID_VEE)
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
 					waitmovement(OBJ_EVENT_ID_PLAYER)
 					setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 4)

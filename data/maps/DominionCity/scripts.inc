@@ -1,7 +1,7 @@
 # 1 "data/maps/DominionCity/scripts.pory"
 
 # 2 "data/maps/DominionCity/scripts.pory"
-.set LOCALID_EEVEE, 1
+.set LOCALID_VEE, 1
 # 3 "data/maps/DominionCity/scripts.pory"
 .set PlayerXCoordinates, VAR_TEMP_3
 # 4 "data/maps/DominionCity/scripts.pory"
@@ -23,39 +23,39 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 14 "data/maps/DominionCity/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 15 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 16 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 17 "data/maps/DominionCity/scripts.pory"
 	playse SE_PIN
 # 18 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_0
+	applymovement LOCALID_VEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_0
 # 19 "data/maps/DominionCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_1
 # 20 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 21 "data/maps/DominionCity/scripts.pory"
 	waitse
 # 22 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2
+	applymovement LOCALID_VEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2
 # 23 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 24 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3
+	applymovement LOCALID_VEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3
 # 25 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 26 "data/maps/DominionCity/scripts.pory"
 	delay 40
 # 27 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4
+	applymovement LOCALID_VEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4
 # 28 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 29 "data/maps/DominionCity/scripts.pory"
 	delay 40
 # 30 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5
+	applymovement LOCALID_VEE, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5
 # 31 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 32 "data/maps/DominionCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_1
 # 33 "data/maps/DominionCity/scripts.pory"
@@ -63,11 +63,11 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 34 "data/maps/DominionCity/scripts.pory"
 	msgbox DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1
 # 35 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 36 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 37 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 38 "data/maps/DominionCity/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 9
 # 39 "data/maps/DominionCity/scripts.pory"
@@ -81,11 +81,11 @@ DominionCity_EventScripts_WhatIsThisPlace::
 # 48 "data/maps/DominionCity/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 49 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 50 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 51 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_0
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_0
 # 52 "data/maps/DominionCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_1
 # 53 "data/maps/DominionCity/scripts.pory"
@@ -93,21 +93,21 @@ DominionCity_EventScripts_WhatIsThisPlace::
 # 54 "data/maps/DominionCity/scripts.pory"
 	playse SE_PIN
 # 55 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_2
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_2
 # 56 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 57 "data/maps/DominionCity/scripts.pory"
 	delay 40
 # 58 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_3
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_3
 # 59 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 60 "data/maps/DominionCity/scripts.pory"
 	delay 40
 # 61 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_4
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_4
 # 62 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 63 "data/maps/DominionCity/scripts.pory"
 	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
 # 64 "data/maps/DominionCity/scripts.pory"
@@ -121,11 +121,11 @@ DominionCity_EventScripts_WhatIsThisPlace::
 # 68 "data/maps/DominionCity/scripts.pory"
 	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_1
 # 69 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_EEVEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
 # 70 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 71 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 72 "data/maps/DominionCity/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
 # 73 "data/maps/DominionCity/scripts.pory"

@@ -1,6 +1,6 @@
 raw `
 .set LOCALID_NYX, 7
-.set LOCALID_EEVEE, 9
+.set LOCALID_VEE, 9
 .set LOCALID_DRAKE, 10
 .set LOCALID_ACE, 11
 .set LOCALID_TALON, 12
@@ -297,7 +297,7 @@ script MurkwellBog_EventScripts_TempleNeedsRitual
 script Murkwellbog_CommonEventScript_SetLocalIdsToPlayerXY
 {
 	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-	setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
 	setobjectxyperm(LOCALID_DRAKE, PlayerXCoordinates, PlayerYCoordinates)
 	setobjectxyperm(LOCALID_TALON, PlayerXCoordinates, PlayerYCoordinates)
 	setobjectxyperm(LOCALID_ACE, PlayerXCoordinates, PlayerYCoordinates)
@@ -342,11 +342,11 @@ script Murkwellbog_CommonEventScript_DetermineParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_FullParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_ACE)
 	addobject(LOCALID_TALON)
 	addobject(LOCALID_DRAKE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerSouth)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerNorthWest)
@@ -384,12 +384,12 @@ script Murkwellbog_EventScript_NyxOpenedTemple_FullParty
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
 	waitfanfare
 	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerSouth)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerNorthwest)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_ACE)
 	removeobject(LOCALID_TALON)
 	removeobject(LOCALID_DRAKE)
@@ -402,10 +402,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_FullParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_ACE)
 	addobject(LOCALID_DRAKE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerSouth)
 	speakername("Vee")
@@ -438,11 +438,11 @@ script Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	speakername("Vee")
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerSouth)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_ACE)
 	removeobject(LOCALID_DRAKE)
 	removeitem(ITEM_CHARCOAL)
@@ -455,10 +455,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_TALON)
 	addobject(LOCALID_DRAKE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerEast)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerSouth)
 	speakername("Vee")
@@ -491,11 +491,11 @@ script Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	speakername("Vee")
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerEast)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerSouth)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_TALON)
 	removeobject(LOCALID_DRAKE)
 	removeitem(ITEM_CHARCOAL)
@@ -507,10 +507,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_ACE)
 	addobject(LOCALID_TALON)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerSouth)
 	speakername("Vee")
@@ -545,11 +545,11 @@ script Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
 	waitfanfare
 	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerSouth)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_ACE)
 	removeobject(LOCALID_TALON)
 	removeitem(ITEM_CHARCOAL)
@@ -561,9 +561,9 @@ script Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_DRAKE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerEast)
 	speakername("Vee")
 	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
@@ -589,10 +589,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
 	waitfanfare
 	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerEast)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_DRAKE)
 	removeitem(ITEM_CHARCOAL)
 	removeitem(ITEM_SPELL_TAG)
@@ -603,9 +603,9 @@ script Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_AceParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_ACE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
 	speakername("Vee")
 	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
@@ -635,10 +635,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_AceParty
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
 	waitfanfare
 	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_ACE)
 	removeitem(ITEM_CHARCOAL)
 	removeitem(ITEM_SPELL_TAG)
@@ -649,9 +649,9 @@ script Murkwellbog_EventScript_NyxOpenedTemple_AceParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_TalonParty
 {
-	addobject(LOCALID_EEVEE)
+	addobject(LOCALID_VEE)
 	addobject(LOCALID_TALON)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerEast)
 	speakername("Vee")
 	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
@@ -681,10 +681,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_TalonParty
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
 	waitfanfare
 	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
-	applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
 	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerEast)
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeobject(LOCALID_TALON)
 	removeitem(ITEM_CHARCOAL)
 	removeitem(ITEM_SPELL_TAG)
@@ -695,10 +695,10 @@ script Murkwellbog_EventScript_NyxOpenedTemple_TalonParty
 
 script Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember
 {
-	addobject(LOCALID_EEVEE)
-	applymovement(LOCALID_EEVEE, moves(walk_left walk_up face_right))
+	addobject(LOCALID_VEE)
+	applymovement(LOCALID_VEE, moves(walk_left walk_up face_right))
 	applymovement(LOCALID_NYX, moves(face_left))
-	waitmovement(LOCALID_EEVEE)
+	waitmovement(LOCALID_VEE)
 	playse(SE_PIN)
 	waitse
 	speakername("Vee")
@@ -719,9 +719,9 @@ script Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember
 	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
 	waitfanfare
 	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
-	applymovement(LOCALID_EEVEE, moves(walk_right walk_down))
-	waitmovement(LOCALID_EEVEE)
-	removeobject(LOCALID_EEVEE)
+	applymovement(LOCALID_VEE, moves(walk_right walk_down))
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
 	removeitem(ITEM_CHARCOAL)
 	removeitem(ITEM_SPELL_TAG)
 	removeitem(ITEM_HARD_STONE)

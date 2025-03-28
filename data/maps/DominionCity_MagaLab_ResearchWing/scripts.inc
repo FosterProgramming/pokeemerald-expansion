@@ -1,7 +1,7 @@
 # 1 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 
 # 2 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-.set LOCALID_EEVEE, 1
+.set LOCALID_VEE, 1
 # 3 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 .set PlayerXCoordinates, VAR_TEMP_3
 # 4 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -87,13 +87,13 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_8:
 # 66 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 67 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 68 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 69 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 70 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 71 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	playse SE_PIN
 # 72 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -113,11 +113,11 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_8:
 # 79 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 3
 # 80 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 81 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 82 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 83 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_1
 # 84 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -128,13 +128,13 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_9:
 # 40 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 41 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 42 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 43 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 44 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 45 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	playse SE_PIN
 # 46 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -148,11 +148,11 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_9:
 # 50 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_4
 # 51 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 52 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 53 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 54 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_1
 # 55 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -207,15 +207,15 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2:
 # 120 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 121 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 122 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 123 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 124 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	playse SE_PIN
 # 125 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 126 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitse
 # 127 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
@@ -243,11 +243,11 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2:
 # 138 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2
 # 139 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 140 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 141 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 142 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Movement_0
 # 143 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"

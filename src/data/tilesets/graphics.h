@@ -1786,3 +1786,22 @@ const u16 gTilesetPalettes_IntroCave[][16] =
 };
 
 const u32 gTilesetTiles_IntroCave[] = INCBIN_U32("data/tilesets/secondary/intro_cave/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Driftshore[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/driftshore/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Driftshore[] = INCBIN_U32("data/tilesets/secondary/driftshore/tiles.4bpp.lz");

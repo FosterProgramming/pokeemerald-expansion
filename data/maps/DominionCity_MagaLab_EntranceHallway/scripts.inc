@@ -1,7 +1,7 @@
 # 1 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 
 # 2 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-.set LOCALID_EEVEE, 1
+.set LOCALID_VEE, 1
 # 3 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 .set PlayerXCoordinates, VAR_TEMP_3
 # 4 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -70,15 +70,15 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
 # 99 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 100 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 101 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 102 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 103 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	playse SE_PIN
 # 104 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 105 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	waitse
 # 106 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -90,11 +90,11 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_19:
 # 109 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_16
 # 110 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 111 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 112 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 113 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Movement_3
 # 114 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -182,13 +182,13 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 # 75 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 76 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 77 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 78 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 79 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 80 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	playse SE_PIN
 # 81 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
@@ -202,11 +202,11 @@ DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_24:
 # 85 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor_Text_15
 # 86 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 87 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 88 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 89 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
 	closemessage
 # 90 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"

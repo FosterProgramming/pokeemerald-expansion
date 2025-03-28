@@ -913,3 +913,14 @@ const struct Tileset gTileset_IntroCave =
     .metatileAttributes = gMetatileAttributes_IntroCave,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Driftshore =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Driftshore,
+    .palettes = gTilesetPalettes_Driftshore,
+    .metatiles = gMetatiles_Driftshore,
+    .metatileAttributes = gMetatileAttributes_Driftshore,
+    .callback = NULL,
+};

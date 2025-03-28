@@ -4566,7 +4566,7 @@
       "name": "Route6A_Layout",
       "width": 28,
       "height": 58,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route6A/border.bin",
       "blockdata_filepath": "data/layouts/Route6A/map.bin"
@@ -4576,8 +4576,8 @@
       "name": "Dunemire_Layout",
       "width": 68,
       "height": 34,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_DunemireDesertSecondary",
       "border_filepath": "data/layouts/Dunemire/border.bin",
       "blockdata_filepath": "data/layouts/Dunemire/map.bin"
     },
@@ -4586,7 +4586,7 @@
       "name": "Route7_Layout",
       "width": 20,
       "height": 36,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route7/border.bin",
       "blockdata_filepath": "data/layouts/Route7/map.bin"
@@ -4617,7 +4617,7 @@
       "width": 28,
       "height": 34,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Driftshore/border.bin",
       "blockdata_filepath": "data/layouts/Driftshore/map.bin"
     },
@@ -4627,7 +4627,7 @@
       "width": 128,
       "height": 20,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Route9/border.bin",
       "blockdata_filepath": "data/layouts/Route9/map.bin"
     },

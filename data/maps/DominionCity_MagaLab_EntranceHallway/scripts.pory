@@ -1,5 +1,5 @@
 raw `
-.set LOCALID_EEVEE, 1
+.set LOCALID_VEE, 1
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
 `
@@ -73,19 +73,19 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
         if(var(VAR_TEMP_0) < 4)
             {
                 getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-                setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-                addobject(LOCALID_EEVEE)
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
-                waitmovement(LOCALID_EEVEE)
+                setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+                addobject(LOCALID_VEE)
+                applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+                waitmovement(LOCALID_VEE)
                 playse(SE_PIN)
                 waitse
                 applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up walk_in_place_up))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 speakername("Vee")
                 msgbox(format("Come on, you need to input the right code before we get caught! Hurry, hurry!"))
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
-                waitmovement(LOCALID_EEVEE)
-                removeobject(LOCALID_EEVEE)
+                applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+                waitmovement(LOCALID_VEE)
+                removeobject(LOCALID_VEE)
                 closemessage
                 applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down walk_in_place_down))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
@@ -97,19 +97,19 @@ script DominionCity_MagaLab_EntranceHallway_EventScripts_CodeToUnlockDoor
                 playse(SE_DOOR)
                 waitse
                 getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
-                setobjectxyperm(LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates)
-                addobject(LOCALID_EEVEE)
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+                setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+                addobject(LOCALID_VEE)
+                applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
                 playse(SE_PIN)
-                waitmovement(LOCALID_EEVEE)
+                waitmovement(LOCALID_VEE)
                 waitse
                 applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up walk_in_place_up))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 speakername("Vee")
                 msgbox(format("Oh, oh that's a good sound! The door's unlocked.\p Welp! No point standing around. We got, like, eight whole artifacts to find!\p And hey, you're lucky I'm coming with you! You're gonna need someone to keep things fun!\pAnd, like, general survival stuff. Y'know, in case you get scared or whatever.\pAaaaanyway, let's get outta here before I start rethinking this!"))
-                applymovement(LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
-                waitmovement(LOCALID_EEVEE)
-                removeobject(LOCALID_EEVEE)
+                applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+                waitmovement(LOCALID_VEE)
+                removeobject(LOCALID_VEE)
                 applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down walk_in_place_down))
                 waitmovement(OBJ_EVENT_ID_PLAYER)
                 setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 8)

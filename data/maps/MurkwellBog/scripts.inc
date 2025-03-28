@@ -3,7 +3,7 @@
 # 2 "data/maps/MurkwellBog/scripts.pory"
 .set LOCALID_NYX, 7
 # 3 "data/maps/MurkwellBog/scripts.pory"
-.set LOCALID_EEVEE, 9
+.set LOCALID_VEE, 9
 # 4 "data/maps/MurkwellBog/scripts.pory"
 .set LOCALID_DRAKE, 10
 # 5 "data/maps/MurkwellBog/scripts.pory"
@@ -423,7 +423,7 @@ Murkwellbog_CommonEventScript_SetLocalIdsToPlayerXY::
 # 299 "data/maps/MurkwellBog/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 300 "data/maps/MurkwellBog/scripts.pory"
-	setobjectxyperm LOCALID_EEVEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 301 "data/maps/MurkwellBog/scripts.pory"
 	setobjectxyperm LOCALID_DRAKE, PlayerXCoordinates, PlayerYCoordinates
 # 302 "data/maps/MurkwellBog/scripts.pory"
@@ -519,7 +519,7 @@ Murkwellbog_CommonEventScript_DetermineParty_22:
 
 Murkwellbog_EventScript_NyxOpenedTemple_FullParty::
 # 345 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 346 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_ACE
 # 347 "data/maps/MurkwellBog/scripts.pory"
@@ -527,7 +527,7 @@ Murkwellbog_EventScript_NyxOpenedTemple_FullParty::
 # 348 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_DRAKE
 # 349 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 350 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast
 # 351 "data/maps/MurkwellBog/scripts.pory"
@@ -603,7 +603,7 @@ Murkwellbog_EventScript_NyxOpenedTemple_FullParty::
 # 386 "data/maps/MurkwellBog/scripts.pory"
 	givemon SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE
 # 387 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 388 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast
 # 389 "data/maps/MurkwellBog/scripts.pory"
@@ -611,9 +611,9 @@ Murkwellbog_EventScript_NyxOpenedTemple_FullParty::
 # 390 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerNorthwest
 # 391 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 392 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 393 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_ACE
 # 394 "data/maps/MurkwellBog/scripts.pory"
@@ -633,13 +633,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_FullParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty::
 # 405 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 406 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_ACE
 # 407 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_DRAKE
 # 408 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 409 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast
 # 410 "data/maps/MurkwellBog/scripts.pory"
@@ -705,15 +705,15 @@ Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty::
 # 440 "data/maps/MurkwellBog/scripts.pory"
 	msgbox Murkwellbog_EventScript_NyxOpenedTemple_FullParty_Text_13
 # 441 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 442 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast
 # 443 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerSouth
 # 444 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 445 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 446 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_ACE
 # 447 "data/maps/MurkwellBog/scripts.pory"
@@ -731,13 +731,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty::
 # 458 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 459 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_TALON
 # 460 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_DRAKE
 # 461 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 462 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerEast
 # 463 "data/maps/MurkwellBog/scripts.pory"
@@ -803,15 +803,15 @@ Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty::
 # 493 "data/maps/MurkwellBog/scripts.pory"
 	msgbox Murkwellbog_EventScript_NyxOpenedTemple_FullParty_Text_13
 # 494 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 495 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerEast
 # 496 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerSouth
 # 497 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 498 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 499 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_TALON
 # 500 "data/maps/MurkwellBog/scripts.pory"
@@ -829,13 +829,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty::
 # 510 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 511 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_ACE
 # 512 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_TALON
 # 513 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 514 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast
 # 515 "data/maps/MurkwellBog/scripts.pory"
@@ -905,15 +905,15 @@ Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty::
 # 547 "data/maps/MurkwellBog/scripts.pory"
 	givemon SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE
 # 548 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 549 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast
 # 550 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerSouth
 # 551 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 552 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 553 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_ACE
 # 554 "data/maps/MurkwellBog/scripts.pory"
@@ -931,11 +931,11 @@ Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty::
 # 564 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 565 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_DRAKE
 # 566 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 567 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerEast
 # 568 "data/maps/MurkwellBog/scripts.pory"
@@ -987,13 +987,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty::
 # 591 "data/maps/MurkwellBog/scripts.pory"
 	givemon SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE
 # 592 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 593 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerEast
 # 594 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 595 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 596 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_DRAKE
 # 597 "data/maps/MurkwellBog/scripts.pory"
@@ -1009,11 +1009,11 @@ Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_AceParty::
 # 606 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 607 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_ACE
 # 608 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 609 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast
 # 610 "data/maps/MurkwellBog/scripts.pory"
@@ -1073,13 +1073,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_AceParty::
 # 637 "data/maps/MurkwellBog/scripts.pory"
 	givemon SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE
 # 638 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 639 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast
 # 640 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 641 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 642 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_ACE
 # 643 "data/maps/MurkwellBog/scripts.pory"
@@ -1095,11 +1095,11 @@ Murkwellbog_EventScript_NyxOpenedTemple_AceParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_TalonParty::
 # 652 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 653 "data/maps/MurkwellBog/scripts.pory"
 	addobject LOCALID_TALON
 # 654 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberTalksToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest
 # 655 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerEast
 # 656 "data/maps/MurkwellBog/scripts.pory"
@@ -1159,13 +1159,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_TalonParty::
 # 683 "data/maps/MurkwellBog/scripts.pory"
 	givemon SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE
 # 684 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Common_Movement_PartyMemberReturnsToPlayerWest
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 685 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerEast
 # 686 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 687 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 688 "data/maps/MurkwellBog/scripts.pory"
 	removeobject LOCALID_TALON
 # 689 "data/maps/MurkwellBog/scripts.pory"
@@ -1181,13 +1181,13 @@ Murkwellbog_EventScript_NyxOpenedTemple_TalonParty::
 
 Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember::
 # 698 "data/maps/MurkwellBog/scripts.pory"
-	addobject LOCALID_EEVEE
+	addobject LOCALID_VEE
 # 699 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember_Movement_0
+	applymovement LOCALID_VEE, Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember_Movement_0
 # 700 "data/maps/MurkwellBog/scripts.pory"
 	applymovement LOCALID_NYX, Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember_Movement_1
 # 701 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 702 "data/maps/MurkwellBog/scripts.pory"
 	playse SE_PIN
 # 703 "data/maps/MurkwellBog/scripts.pory"
@@ -1229,11 +1229,11 @@ Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember::
 # 721 "data/maps/MurkwellBog/scripts.pory"
 	givemon SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE
 # 722 "data/maps/MurkwellBog/scripts.pory"
-	applymovement LOCALID_EEVEE, Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember_Movement_2
+	applymovement LOCALID_VEE, Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember_Movement_2
 # 723 "data/maps/MurkwellBog/scripts.pory"
-	waitmovement LOCALID_EEVEE
+	waitmovement LOCALID_VEE
 # 724 "data/maps/MurkwellBog/scripts.pory"
-	removeobject LOCALID_EEVEE
+	removeobject LOCALID_VEE
 # 725 "data/maps/MurkwellBog/scripts.pory"
 	removeitem ITEM_CHARCOAL
 # 726 "data/maps/MurkwellBog/scripts.pory"
