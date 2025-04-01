@@ -8551,7 +8551,7 @@ static void Cmd_removeitemwitheffect(void)
             gBattleStruct->canPickupItem |= (1u << battler);
             CheckSetUnburden(battler);
 
-            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item2), &gBattleMons[battler].item2);
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE_2, 0, sizeof(gBattleMons[battler].item2), &gBattleMons[battler].item2);
         break;
         case 2:
             gBattleMons[battler].item3 = ITEM_NONE;
@@ -8559,7 +8559,7 @@ static void Cmd_removeitemwitheffect(void)
             gBattleStruct->canPickupItem |= (1u << battler);
             CheckSetUnburden(battler);
 
-            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item3), &gBattleMons[battler].item3);
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE_3, 0, sizeof(gBattleMons[battler].item3), &gBattleMons[battler].item3);
         break;
         case 3:
             gBattleMons[battler].item4 = ITEM_NONE;
@@ -8567,7 +8567,7 @@ static void Cmd_removeitemwitheffect(void)
             gBattleStruct->canPickupItem |= (1u << battler);
             CheckSetUnburden(battler);
 
-            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item4), &gBattleMons[battler].item4);
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE_4, 0, sizeof(gBattleMons[battler].item4), &gBattleMons[battler].item4);
         break;
     }
     DebugPrintf("Removed %S from %S in slot %d", gItemsInfo[itemId].name, GetSpeciesName(gBattleMons[battler].species), slot + 1);
