@@ -234,3 +234,6 @@ const u16 gMetatileAttributes_IntroCave[] = INCBIN_U16("data/tilesets/secondary/
 
 const u16 gMetatiles_Driftshore[] = INCBIN_U16("data/tilesets/secondary/driftshore/metatiles.bin");
 const u16 gMetatileAttributes_Driftshore[] = INCBIN_U16("data/tilesets/secondary/driftshore/metatile_attributes.bin");
+
+const u16 gMetatiles_VoltbrookTown[] = INCBIN_U16("data/tilesets/secondary/voltbrook_town/metatiles.bin");
+const u16 gMetatileAttributes_VoltbrookTown[] = INCBIN_U16("data/tilesets/secondary/voltbrook_town/metatile_attributes.bin");

@@ -924,3 +924,14 @@ const struct Tileset gTileset_Driftshore =
     .metatileAttributes = gMetatileAttributes_Driftshore,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_VoltbrookTown =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_VoltbrookTown,
+    .palettes = gTilesetPalettes_VoltbrookTown,
+    .metatiles = gMetatiles_VoltbrookTown,
+    .metatileAttributes = gMetatileAttributes_VoltbrookTown,
+    .callback = NULL,
+};
