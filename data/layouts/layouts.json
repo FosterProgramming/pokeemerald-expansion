@@ -4587,7 +4587,7 @@
       "width": 20,
       "height": 36,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route7/border.bin",
       "blockdata_filepath": "data/layouts/Route7/map.bin"
     },
@@ -4686,8 +4686,8 @@
       "name": "Route13_Layout",
       "width": 50,
       "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route13/border.bin",
       "blockdata_filepath": "data/layouts/Route13/map.bin"
     },
@@ -4696,8 +4696,8 @@
       "name": "Route14_Layout",
       "width": 20,
       "height": 50,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route14/border.bin",
       "blockdata_filepath": "data/layouts/Route14/map.bin"
     },
