@@ -935,3 +935,14 @@ const struct Tileset gTileset_VoltbrookTown =
     .metatileAttributes = gMetatileAttributes_VoltbrookTown,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_MagaLabExitRoom =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MagaLabExitRoom,
+    .palettes = gTilesetPalettes_MagaLabExitRoom,
+    .metatiles = gMetatiles_MagaLabExitRoom,
+    .metatileAttributes = gMetatileAttributes_MagaLabExitRoom,
+    .callback = NULL,
+};

@@ -67,8 +67,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 9,
-      "y": 11,
+      "x": 15,
+      "y": -1,
       "elevation": 0,
       "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
       "var_value": "6",
@@ -76,8 +76,8 @@
     },
     {
       "type": "trigger",
-      "x": 10,
-      "y": 11,
+      "x": 14,
+      "y": -1,
       "elevation": 0,
       "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
       "var_value": "6",

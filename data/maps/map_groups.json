@@ -150,7 +150,8 @@
     "DominionCity_MagaLab_SecurityHallway",
     "DominionCity_MagaLab_Entrance",
     "DominionCity_MagaLab_EntranceHallway",
-    "IntroCutsceneMap"
+    "IntroCutsceneMap",
+    "DominionCity_MagaLab_ExitCode"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",

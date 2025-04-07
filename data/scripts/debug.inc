@@ -28,7 +28,7 @@ Debug_CheatStart::
 	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
+	setvar VAR_VOLTBROOK_TOWN_STATE, 4 @ 4: Received Running Shoes
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 7 @ 7: Told to go meet rival
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_MURKWELL_BOG_STATE, 2 @ 2: Met Rival's Mom (and is corresponding gender)

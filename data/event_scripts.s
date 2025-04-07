@@ -1258,3 +1258,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MurkwellBog_House3/scripts.inc"
 
 	.include "data/maps/MurkwellBog_PsychicHouse/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_ExitCode/scripts.inc"

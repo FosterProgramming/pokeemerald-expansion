@@ -36,6 +36,7 @@ mapscripts DominionCity_MapScripts
                 waitmovement(LOCALID_VEE)
                 removeobject(LOCALID_VEE)
                 setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 9)
+                setrespawn(HEAL_LOCATION_DOMINION_CITY)
                 releaseall
                 end
 		}
@@ -150,7 +151,7 @@ script DominionCity_EventScripts_GruntsNorthStillLooking
             setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
             addobject(LOCALID_VEE)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth)
-            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
@@ -203,6 +204,73 @@ script DominionCity_EventScripts_GruntsNorthStillLooking
             applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
             waitmovement(OBJ_EVENT_ID_PLAYER)
             setflag(FLAG_TEMP_2)
+            releaseall
+            end
+        }
+    }
+
+script DominionCity_EventScripts_GruntsSouthStillLooking
+    {
+        if(flag(FLAG_TEMP_3))
+        {
+            lockall
+            getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+            setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+            addobject(LOCALID_VEE)
+            applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+            waitmovement(OBJ_EVENT_ID_PLAYER)
+            playse(SE_PIN)
+            speakername("Vee")
+            msgbox(format("There has to be another way around."), MSGBOX_NPC)
+            applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+            waitmovement(LOCALID_VEE)
+            removeobject(LOCALID_VEE)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+            waitmovement(OBJ_EVENT_ID_PLAYER)
+            setflag(FLAG_TEMP_3)
+            releaseall
+            end 
+        }
+        else
+        {
+            lockall
+            special(SpawnCameraObject)
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+            waitmovement(OBJ_EVENT_ID_CAMERA)
+            playse(SE_PIN)
+            applymovement(6, moves(emote_exclamation_mark))
+            waitmovement(6)
+            speakername("Grunt 1")
+            msgbox(format("Can’t believe we’re cleaning up after another lab failure."))
+            playse(SE_PIN)
+            applymovement(7,moves(emote_exclamation_mark))
+            waitmovement(7)
+            speakername("Grunt 2")
+            msgbox(format("They said Sector 7 was secure.\nThey always say that…"))
+            playse(SE_PIN)
+            applymovement(6,moves(emote_exclamation_mark))
+            waitmovement(6)
+            speakername("Grunt 1")
+            msgbox(format("I didn’t sign up to chase mutated test subjects…"))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+            waitmovement(OBJ_EVENT_ID_CAMERA)
+            special(RemoveCameraObject)
+            getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+            setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+            addobject(LOCALID_VEE)
+            applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+            waitmovement(OBJ_EVENT_ID_PLAYER)
+            playse(SE_PIN)
+            speakername("Vee")
+            msgbox(format("Those grunts are everywhere…\nWe can’t let them see us. If they catch us again…\pI-I’m not going back to that lab. No way. No matter what. There has to be another way around."), MSGBOX_NPC)
+            applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+            waitmovement(LOCALID_VEE)
+            removeobject(LOCALID_VEE)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+            waitmovement(OBJ_EVENT_ID_PLAYER)
+            setflag(FLAG_TEMP_3)
             releaseall
             end
         }

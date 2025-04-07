@@ -1,4 +1,123 @@
 raw `
-Route7_MapScripts::
-	.byte 0
+.set LOCALID_VEE, 1
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 `
+
+mapscripts Route7_MapScripts
+{
+	MAP_SCRIPT_ON_FRAME_TABLE 
+	[
+	VAR_VOLTBROOK_TOWN_STATE, 0 
+		{
+				lockall
+				getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+                setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+                addobject(LOCALID_VEE)
+				if(var(PlayerXCoordinates) == 2)
+					{
+						addobject(LOCALID_VEE)
+						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth)
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						speakername("Vee")
+						msgbox(format("Wait! Over there!\nI think I saw something! C’mon, let’s check it out."))
+						applymovement(LOCALID_VEE, moves(walk_down*4 walk_right*3 walk_down*3 walk_right*2 face_up))
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down*5 walk_right*3 walk_down*3 walk_right walk_in_place_up))
+						applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						playse(SE_PIN)
+						waitmovement(LOCALID_VEE)
+						speakername("Vee")
+						msgbox(format("Oh! It’s a sign… \p…I can’t read it.\nWhat’s it say?"))
+						closemessage
+						applymovement(LOCALID_VEE,moves(face_up))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						msgbox(format("{UP_ARROW} Dominion City\n{DOWN_ARROW}Voltbrook Town"))
+						closemessage
+						applymovement(LOCALID_VEE, moves(emote_question_mark face_left))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						speakername("Vee")
+						msgbox(format("Wait… you said Voltbrook Town was listed on the terminal back at the lab, right? Like a place where they are hiding an artifact?\pThen we should head there.\p If the artifact’s nearby, we need to find it.\pWe might be able to hide from Team MAGA in Voltbrook, and maybe we can figure out who the guardian is…\pAnd how to get the artifact without getting caught."))
+						closemessage
+						applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
+						waitmovement(LOCALID_VEE)
+						removeobject(LOCALID_VEE)
+						setvar(VAR_VOLTBROOK_TOWN_STATE, 1)
+					}
+				elif(var(PlayerXCoordinates) == 3)
+					{
+						addobject(LOCALID_VEE)
+						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth)
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						speakername("Vee")
+						msgbox(format("Wait! Over there!\nI think I saw something! C’mon, let’s check it out."))
+						applymovement(LOCALID_VEE, moves(walk_down*4 walk_right*2 walk_down*3 walk_right*2 face_up))
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down*5 walk_right*2 walk_down*3 walk_right walk_in_place_up))
+						applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						playse(SE_PIN)
+						waitmovement(LOCALID_VEE)
+						speakername("Vee")
+						msgbox(format("Oh! It’s a sign… \p…I can’t read it.\nWhat’s it say?"))
+						closemessage
+						applymovement(LOCALID_VEE,moves(face_up))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						msgbox(format("{UP_ARROW} Dominion City\n{DOWN_ARROW}Voltbrook Town"))
+						closemessage
+						applymovement(LOCALID_VEE, moves(emote_question_mark face_left))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						speakername("Vee")
+						msgbox(format("Wait… you said Voltbrook Town was listed on the terminal back at the lab, right? Like a place where they are hiding an artifact?\pThen we should head there.\p If the artifact’s nearby, we need to find it.\pWe might be able to hide from Team MAGA in Voltbrook, and maybe we can figure out who the guardian is…\pAnd how to get the artifact without getting caught."))
+						closemessage
+						applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
+						waitmovement(LOCALID_VEE)
+						removeobject(LOCALID_VEE)
+						setvar(VAR_VOLTBROOK_TOWN_STATE, 1)
+					}
+				elif(var(PlayerXCoordinates) == 4)
+					{
+						addobject(LOCALID_VEE)
+						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth)
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						speakername("Vee")
+						msgbox(format("Wait! Over there!\nI think I saw something! C’mon, let’s check it out."))
+						applymovement(LOCALID_VEE, moves(walk_down*4 walk_right walk_down*3 walk_right*2 face_up))
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down*5 walk_right walk_down*3 walk_right walk_in_place_up))
+						applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						playse(SE_PIN)
+						waitmovement(LOCALID_VEE)
+						speakername("Vee")
+						msgbox(format("Oh! It’s a sign… \p…I can’t read it.\nWhat’s it say?"))
+						closemessage
+						applymovement(LOCALID_VEE,moves(face_up))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						msgbox(format("{UP_ARROW} Dominion City\n{DOWN_ARROW}Voltbrook Town"))
+						closemessage
+						applymovement(LOCALID_VEE, moves(emote_question_mark face_left))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						speakername("Vee")
+						msgbox(format("Wait… you said Voltbrook Town was listed on the terminal back at the lab, right? Like a place where they are hiding an artifact?\pThen we should head there.\p If the artifact’s nearby, we need to find it.\pWe might be able to hide from Team MAGA in Voltbrook, and maybe we can figure out who the guardian is…\pAnd how to get the artifact without getting caught."))
+						closemessage
+						applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
+						waitmovement(LOCALID_VEE)
+						removeobject(LOCALID_VEE)
+						setvar(VAR_VOLTBROOK_TOWN_STATE, 1)
+					}
+                releaseall
+                end
+		}
+	]
+}

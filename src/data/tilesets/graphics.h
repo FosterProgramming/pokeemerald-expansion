@@ -1824,3 +1824,22 @@ const u16 gTilesetPalettes_VoltbrookTown[][16] =
 };
 
 const u32 gTilesetTiles_VoltbrookTown[] = INCBIN_U32("data/tilesets/secondary/voltbrook_town/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_MagaLabExitRoom[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_MagaLabExitRoom[] = INCBIN_U32("data/tilesets/secondary/maga_lab_exit_room/tiles.4bpp.lz");
