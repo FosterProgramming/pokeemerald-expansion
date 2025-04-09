@@ -277,5 +277,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_SYS_HIDE_NYX_PARTY_MEMBER
 	setflag FLAG_SYS_HIDE_ACE_PARTY_MEMBER
 	setflag FLAG_SYS_HIDE_TALON_PARTY_MEMBER
+	setflag FLAG_SYS_DOUBLE_WILD_BATTLES
 	call EventScript_ResetAllBerries
 	end

@@ -31,11 +31,11 @@ BattleFrontier_BattleTowerMultiPartnerRoom_OnTransition:
 # 16 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
 	goto_if_set FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER, BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_ChosePartner
 # 17 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
-	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1
+	clearflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_1
 # 18 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
-	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2
+	clearflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_2_3
 # 19 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
-	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3
+	clearflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_3_4
 # 20 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
 	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4
 # 21 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"

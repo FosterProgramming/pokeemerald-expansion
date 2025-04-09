@@ -738,7 +738,7 @@
 #define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
 #define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
 #define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
+#define FLAG_SYS_DOUBLE_WILD_BATTLES        0x2B6 // Unused Flag
 #define FLAG_SYS_HIDE_NYX_PARTY_MEMBER      0x2B7 // Unused Flag
 #define FLAG_SYS_HIDE_TALON_PARTY_MEMBER    0x2B8 // Unused Flag
 #define FLAG_SYS_HIDE_ACE_PARTY_MEMBER      0x2B9 // Unused Flag
@@ -757,9 +757,9 @@
 #define FLAG_HIDE_STRATOSCAPE_DRAKE                                 0x2C4
 #define FLAG_HIDE_VOLTBROOK_TOWN_ACE                                0x2C5
 #define FLAG_HIDE_VERDANT_HALLOW_TALON                              0x2C6
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x2C7
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2               0x2C8
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3               0x2C9
+#define FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_1                            0x2C7
+#define FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_2_3                          0x2C8
+#define FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_3_4               0x2C9
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4               0x2CA
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5               0x2CB
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6               0x2CC

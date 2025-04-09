@@ -4706,8 +4706,8 @@
       "name": "Route15_Layout",
       "width": 20,
       "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Route15/border.bin",
       "blockdata_filepath": "data/layouts/Route15/map.bin"
     },
@@ -4716,8 +4716,8 @@
       "name": "UnnamedTown_Layout",
       "width": 40,
       "height": 32,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/UnnamedTown/border.bin",
       "blockdata_filepath": "data/layouts/UnnamedTown/map.bin"
     },
@@ -4726,8 +4726,8 @@
       "name": "Route16_Layout",
       "width": 20,
       "height": 38,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Route16/border.bin",
       "blockdata_filepath": "data/layouts/Route16/map.bin"
     },
