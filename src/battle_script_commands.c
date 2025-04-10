@@ -1546,11 +1546,11 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     accStage = gBattleMons[battlerAtk].statStages[STAT_ACC];
     evasionStage = gBattleMons[battlerDef].statStages[STAT_EVASION];
     if (SearchTraits(battlerTraits, ABILITY_UNAWARE) || SearchTraits(battlerTraits, ABILITY_KEEN_EYE) || SearchTraits(battlerTraits, ABILITY_MINDS_EYE)
-            || (B_ILLUMINATE_EFFECT >= GEN_9 && SearchTraits(battlerTraits, ABILITY_ILLUMINATE)))
+            || (B_ILLUMINATE_EFFECT >= GEN_9 && SearchTraits(battlerTraits, ABILITY_ILLUMINATE)) || hasSkyPiercerEffect(battlerAtk))
         evasionStage = DEFAULT_STAT_STAGE;
     if (gMovesInfo[move].ignoresTargetDefenseEvasionStages)
         evasionStage = DEFAULT_STAT_STAGE;
-    if (SearchTraits(battlerTraits, ABILITY_UNAWARE))
+    if (SearchTraits(battlerTraits, ABILITY_UNAWARE) || hasSkyPiercerEffect(battlerAtk))
         accStage = DEFAULT_STAT_STAGE;
 
     if (gBattleMons[battlerDef].status2 & STATUS2_FORESIGHT || gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED)
@@ -1839,7 +1839,7 @@ static inline u32 GetHoldEffectCritChanceIncrease(u32 battler, u32 holdEffect)
 {
     u32 critStageIncrease = 0;
 
-    if (IsBattlerLeekAffected(battler, holdEffect))
+    if (IsBattlerLeekAffected(battler, holdEffect) || hasSkyPiercerEffect(battler))
         critStageIncrease = critStageIncrease + 2;
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LUCKY_PUNCH, TRUE)){

@@ -10594,6 +10594,12 @@ bool8 hasSkyEmperorCrownEffect(u32 battler){
     return hasEffect;
 }
 
+bool8 hasSkyPiercerEffect(u32 battler){
+    u16 species = gBattleMons[battler].species;
+    bool32 hasEffect = (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SKY_PIERCER, TRUE) && species == SPECIES_DODRIO);
+    return hasEffect;
+}
+
 static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageCalculationData *damageCalcData, u32 abilityAtk)
 {
     u32 battlerAtk = damageCalcData->battlerAtk;
