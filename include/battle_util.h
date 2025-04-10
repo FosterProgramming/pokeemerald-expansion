@@ -344,5 +344,7 @@ bool8 BattlerHeldItemHasEffect(u32 battler, u32 holdEffect, bool32 checkNegating
 u16 GetBattlerHeldItemWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
 u8 GetHeldItemSlotWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
 u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating);
+bool8 hasHeartOfEvolutionEffect(u32 battler);
+bool8 hasSkyEmperorCrownEffect(u32 battler);
 
 #endif // GUARD_BATTLE_UTIL_H

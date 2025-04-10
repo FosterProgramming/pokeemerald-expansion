@@ -14093,4 +14093,113 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    //Custom Items
+    [ITEM_ETERNAL_CREST] =
+    {
+        .name = _("Eternal Crest"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_ETERNAL_CREST,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Doubles HP regen\n"
+            "and grants permanent\n"
+            "Aurora Veil."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_HEART_OF_EVOLUTION] =
+    {
+        .name = _("Heart of Evolution"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_HEART_OF_EVOLUTION,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "All Baton Pass buffs\n"
+            "are doubled, and\n"
+            "grants Adaptability."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_SKY_EMPEROR_CROWN] =
+    {
+        .name = _("Sky Emperor Crown"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_SKY_EMPEROR_CROWN,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Boosts Dragon STAB\n"
+            "by 50%, immune to\n"
+            "flinching."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_SKY_PIERCER] =
+    {
+        .name = _("Sky Piercer"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_SKY_PIERCER,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Every attack has\n"
+            "increased critical\n"
+            "hit chance."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_GLIDED_EMBLEM] =
+    {
+        .name = _("Glided Emblem"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_GLIDED_EMBLEM,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Moves that steal items\n"
+            "or disrupt opponents deal\n"
+            "20% more damage."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_SPECTRAL_COCOON] =
+    {
+        .name = _("Spectral Cocoon"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_SPECTRAL_COCOON,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Status moves bypass immunity,\n"
+            "and Quiver Dance grants\n"
+            "+1 to all stats.."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
 };

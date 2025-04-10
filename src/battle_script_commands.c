@@ -3335,11 +3335,11 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 }
                 break;
             case MOVE_EFFECT_FLINCH:
-                if (SearchTraits(battlerTraits, ABILITY_INNER_FOCUS))
+                if (SearchTraits(battlerTraits, ABILITY_INNER_FOCUS) || hasSkyEmperorCrownEffect(gEffectBattler))
                 {
                     // Inner Focus ALWAYS prevents flinching but only activates
                     // on a move that's supposed to flinch, like Fake Out
-                    if (primary == TRUE || certain == TRUE)
+                    if ((primary == TRUE || certain == TRUE) && !hasSkyEmperorCrownEffect(gEffectBattler))
                     {
                         gLastUsedAbility = ABILITY_INNER_FOCUS;
                         PushTraitStack(gEffectBattler, ABILITY_INNER_FOCUS);
@@ -6942,6 +6942,7 @@ static void Cmd_switchindataupdate(void)
     CMD_ARGS(u8 battler);
 
     struct BattlePokemon oldData;
+    bool8 heartOfEvolutionData;
     u32 battler, i;
     u8 *monData;
 
@@ -6951,6 +6952,7 @@ static void Cmd_switchindataupdate(void)
     battler = GetBattlerForBattleScript(cmd->battler);
     oldData = gBattleMons[battler];
     monData = (u8 *)(&gBattleMons[battler]);
+    heartOfEvolutionData = hasHeartOfEvolutionEffect(battler);
 
     for (i = 0; i < sizeof(struct BattlePokemon); i++)
         monData[i] = gBattleResources->bufferB[battler][4 + i];
@@ -7013,7 +7015,15 @@ static void Cmd_switchindataupdate(void)
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
-            gBattleMons[battler].statStages[i] = oldData.statStages[i];
+            u8 newStat = oldData.statStages[i];
+            if(heartOfEvolutionData && newStat > DEFAULT_STAT_STAGE){
+                u8 difference = newStat - DEFAULT_STAT_STAGE;
+                newStat = newStat + difference;
+                if(newStat > MAX_STAT_STAGE)
+                    newStat = MAX_STAT_STAGE;
+            }
+            
+            gBattleMons[battler].statStages[i] = newStat;
         }
         gBattleMons[battler].status2 = oldData.status2;
     }

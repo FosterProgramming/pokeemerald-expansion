@@ -10290,15 +10290,19 @@ static inline u32 CalcAttackStat(struct DamageCalculationData *damageCalcData, u
             else
                 modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         }
-    if (SearchTraits(battlerTraits, ABILITY_DRAGONS_MAW)
-     && moveType == TYPE_DRAGON)
+    
+    if (SearchTraits(battlerTraits, ABILITY_DRAGONS_MAW) && moveType == TYPE_DRAGON)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-    if (SearchTraits(battlerTraits, ABILITY_GORILLA_TACTICS)
-     && IS_MOVE_PHYSICAL(move))
+    
+    if(hasSkyEmperorCrownEffect(battlerAtk) && moveType == TYPE_DRAGON)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-    if (SearchTraits(battlerTraits, ABILITY_ROCKY_PAYLOAD)
-     && moveType == TYPE_ROCK)
+
+    if (SearchTraits(battlerTraits, ABILITY_GORILLA_TACTICS) && IS_MOVE_PHYSICAL(move))
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+    
+    if (SearchTraits(battlerTraits, ABILITY_ROCKY_PAYLOAD) && moveType == TYPE_ROCK)
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+    
     if (SearchTraits(battlerTraits, ABILITY_PROTOSYNTHESIS)
      && !(gBattleMons[battlerAtk].status2 & STATUS2_TRANSFORMED))
     {
@@ -10578,6 +10582,18 @@ static inline uq4_12_t GetParentalBondModifier(u32 battlerAtk)
     return B_PARENTAL_BOND_DMG >= GEN_7 ? UQ_4_12(0.25) : UQ_4_12(0.5);
 }
 
+bool8 hasHeartOfEvolutionEffect(u32 battler){
+    u16 species = gBattleMons[battler].species;
+    bool32 hasHeartOfEvolutionEffect = (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEART_OF_EVOLUTION, TRUE) && (species == SPECIES_EEVEE || species == SPECIES_JOLTEON || species == SPECIES_VAPOREON || species == SPECIES_FLAREON));
+    return hasHeartOfEvolutionEffect;
+}
+
+bool8 hasSkyEmperorCrownEffect(u32 battler){
+    u16 species = gBattleMons[battler].species;
+    bool32 hasEffect = (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SKY_EMPEROR_CROWN, TRUE) && species == SPECIES_DRAGONITE);
+    return hasEffect;
+}
+
 static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageCalculationData *damageCalcData, u32 abilityAtk)
 {
     u32 battlerAtk = damageCalcData->battlerAtk;
@@ -10587,10 +10603,10 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageCalculationDa
     if (moveType == TYPE_MYSTERY)
         return UQ_4_12(1.0);
     else if (gBattleStruct->pledgeMove && IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), moveType))
-        return (BattlerHasTrait(battlerAtk, ABILITY_ADAPTABILITY)) ? UQ_4_12(2.0) : UQ_4_12(1.5);
+        return (BattlerHasTrait(battlerAtk, ABILITY_ADAPTABILITY) || hasHeartOfEvolutionEffect(battlerAtk)) ? UQ_4_12(2.0) : UQ_4_12(1.5);
     else if (!IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move == MOVE_STRUGGLE || move == MOVE_NONE)
         return UQ_4_12(1.0);
-    return (BattlerHasTrait(battlerAtk, ABILITY_ADAPTABILITY)) ? UQ_4_12(2.0) : UQ_4_12(1.5);
+    return (BattlerHasTrait(battlerAtk, ABILITY_ADAPTABILITY) || hasHeartOfEvolutionEffect(battlerAtk)) ? UQ_4_12(2.0) : UQ_4_12(1.5);
 }
 
 // Utility Umbrella holders take normal damage from what would be rain- and sun-weakened attacks.
