@@ -19,7 +19,7 @@ SeafloorCavern_Room4_EventScript_Grunt3::
 # 10 "data/maps/SeafloorCavern_Room4/scripts.pory"
 SeafloorCavern_Room4_EventScript_Grunt4::
 # 11 "data/maps/SeafloorCavern_Room4/scripts.pory"
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_4, SeafloorCavern_Room4_Text_Grunt4Intro, SeafloorCavern_Room4_Text_Grunt4Defeat
+	trainerbattle_single TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, SeafloorCavern_Room4_Text_Grunt4Intro, SeafloorCavern_Room4_Text_Grunt4Defeat
 # 12 "data/maps/SeafloorCavern_Room4/scripts.pory"
 	msgbox SeafloorCavern_Room4_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 # 13 "data/maps/SeafloorCavern_Room4/scripts.pory"

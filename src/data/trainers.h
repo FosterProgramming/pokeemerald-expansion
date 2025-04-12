@@ -486,7 +486,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 272
-    [TRAINER_GRUNT_SEAFLOOR_CAVERN_4] =
+    [TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN] =
     {
 #line 273
         .trainerName = _("Grunt 1"),
@@ -500,7 +500,7 @@ F_TRAINER_FEMALE |
 #line 277
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 278
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
 #line 279
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 2,

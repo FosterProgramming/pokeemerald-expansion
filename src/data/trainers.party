@@ -269,13 +269,13 @@ EVs: 252 HP / 0 Spe / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Conversion 2
 - Conversion 2
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_4 ===
+=== TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN ===
 Name: Grunt 1
 Class: Team Aqua
 Pic: Aqua Grunt M
 Gender: Female
 Music: Aqua
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
 
 Muk

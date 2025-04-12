@@ -118,7 +118,7 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
-						trainerbattle_single(TRAINER_GRUNT_SEAFLOOR_CAVERN_4, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),AfterBattle_Test)
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
 					case 23:
 						setobjectxyperm(1, 23, 21)
 						addobject(1)
@@ -143,7 +143,7 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
-						trainerbattle_single(TRAINER_GRUNT_SEAFLOOR_CAVERN_4, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),AfterBattle_Test)
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
 					case 24:
 						setobjectxyperm(1, 24, 21)
 						addobject(1)
@@ -168,7 +168,7 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
-						trainerbattle_single(TRAINER_GRUNT_SEAFLOOR_CAVERN_4, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),AfterBattle_Test)
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
 					case 25:
 						setobjectxyperm(1, 24, 21)
 						addobject(1)
@@ -193,7 +193,7 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
-						trainerbattle_single(TRAINER_GRUNT_SEAFLOOR_CAVERN_4, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),AfterBattle_Test)
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
 				}
 }
 
@@ -438,7 +438,7 @@ script AfterBattle_Test
 							speakername("Vee")
 							msgbox(format("He’s… not very friendly."))
 							msgbox(format("But I think he just saved our lives. Let's stay away from Voltbrook for now, Maybe we should see where this route leads. There has to be someplace safe for us around here."))
-							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerEast)
+							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
 							waitmovement(LOCALID_VEE)
 							removeobject(LOCALID_VEE)
 							release
@@ -519,7 +519,7 @@ script AfterBattle_Test
 							speakername("Vee")
 							msgbox(format("He’s… not very friendly."))
 							msgbox(format("But I think he just saved our lives. Let's stay away from Voltbrook for now, Maybe we should see where this route leads. There has to be someplace safe for us around here."))
-							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerEast)
+							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
 							waitmovement(LOCALID_VEE)
 							removeobject(LOCALID_VEE)
 							release

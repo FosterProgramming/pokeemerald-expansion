@@ -946,3 +946,14 @@ const struct Tileset gTileset_MagaLabExitRoom =
     .metatileAttributes = gMetatileAttributes_MagaLabExitRoom,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NaturalInterior =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NaturalInterior,
+    .palettes = gTilesetPalettes_NaturalInterior,
+    .metatiles = gMetatiles_NaturalInterior,
+    .metatileAttributes = gMetatileAttributes_NaturalInterior,
+    .callback = NULL,
+};

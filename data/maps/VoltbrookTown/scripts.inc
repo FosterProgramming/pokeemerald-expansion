@@ -238,7 +238,7 @@ Voltbrook_EventScripts_GruntCatchesPlayerLeaving_2:
 # 120 "data/maps/VoltbrookTown/scripts.pory"
 	delay 40
 # 121 "data/maps/VoltbrookTown/scripts.pory"
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, AfterBattle_Test
+	trainerbattle_double TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_6, AfterBattle_Test
 	return
 
 Voltbrook_EventScripts_GruntCatchesPlayerLeaving_3:
@@ -289,7 +289,7 @@ Voltbrook_EventScripts_GruntCatchesPlayerLeaving_3:
 # 145 "data/maps/VoltbrookTown/scripts.pory"
 	delay 40
 # 146 "data/maps/VoltbrookTown/scripts.pory"
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, AfterBattle_Test
+	trainerbattle_double TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_6, AfterBattle_Test
 	return
 
 Voltbrook_EventScripts_GruntCatchesPlayerLeaving_4:
@@ -340,7 +340,7 @@ Voltbrook_EventScripts_GruntCatchesPlayerLeaving_4:
 # 170 "data/maps/VoltbrookTown/scripts.pory"
 	delay 40
 # 171 "data/maps/VoltbrookTown/scripts.pory"
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, AfterBattle_Test
+	trainerbattle_double TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_6, AfterBattle_Test
 	return
 
 Voltbrook_EventScripts_GruntCatchesPlayerLeaving_5:
@@ -391,7 +391,7 @@ Voltbrook_EventScripts_GruntCatchesPlayerLeaving_5:
 # 195 "data/maps/VoltbrookTown/scripts.pory"
 	delay 40
 # 196 "data/maps/VoltbrookTown/scripts.pory"
-	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, AfterBattle_Test
+	trainerbattle_double TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_4, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5, Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_6, AfterBattle_Test
 	return
 
 
@@ -878,7 +878,7 @@ AfterBattle_Test_4:
 # 440 "data/maps/VoltbrookTown/scripts.pory"
 	msgbox AfterBattle_Test_Text_16
 # 441 "data/maps/VoltbrookTown/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 442 "data/maps/VoltbrookTown/scripts.pory"
 	waitmovement LOCALID_VEE
 # 443 "data/maps/VoltbrookTown/scripts.pory"
@@ -1039,7 +1039,7 @@ AfterBattle_Test_5:
 # 521 "data/maps/VoltbrookTown/scripts.pory"
 	msgbox AfterBattle_Test_Text_16
 # 522 "data/maps/VoltbrookTown/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 523 "data/maps/VoltbrookTown/scripts.pory"
 	waitmovement LOCALID_VEE
 # 524 "data/maps/VoltbrookTown/scripts.pory"
@@ -1743,6 +1743,10 @@ Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_5:
 # 121 "data/maps/VoltbrookTown/scripts.pory"
 	.string "How could a couple of failed\n"
 	.string "experiments best me?$"
+
+Voltbrook_EventScripts_GruntCatchesPlayerLeaving_Text_6:
+# 121 "data/maps/VoltbrookTown/scripts.pory"
+	.string "NULL$"
 
 AfterBattle_Test_Text_0:
 # 224 "data/maps/VoltbrookTown/scripts.pory"

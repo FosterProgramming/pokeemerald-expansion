@@ -240,3 +240,6 @@ const u16 gMetatileAttributes_VoltbrookTown[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_MagaLabExitRoom[] = INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/metatiles.bin");
 const u16 gMetatileAttributes_MagaLabExitRoom[] = INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/metatile_attributes.bin");
+
+const u16 gMetatiles_NaturalInterior[] = INCBIN_U16("data/tilesets/secondary/natural_interior/metatiles.bin");
+const u16 gMetatileAttributes_NaturalInterior[] = INCBIN_U16("data/tilesets/secondary/natural_interior/metatile_attributes.bin");
