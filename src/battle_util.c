@@ -6545,7 +6545,23 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
             effect++;
-        }        
+        }    
+
+        if(hasGlidedEmblemEffect(gBattlerAttacker)){
+            if (gBattleMons[gBattlerAttacker].hp < gBattleMons[gBattlerAttacker].maxHP && gIsCriticalHit
+              && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)))
+            {
+                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 10;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleMoveDamage *= -1;
+                gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerAttacker, HOLD_EFFECT_GLIDED_EMBLEM, TRUE);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_ItemHealHP_End2;
+                effect++;
+            }
+        }
+
     break;
     case ABILITYEFFECT_MOVE_END_OTHER: // Abilities that activate on *another* battler's moveend: Dancer, Soul-Heart, Receiver, Symbiosis
         if (SearchTraits(battlerTraits, ABILITY_DANCER)
@@ -9781,6 +9797,16 @@ static inline u32 CalcMoveBasePower(struct DamageCalculationData *damageCalcData
     return basePower;
 }
 
+bool8 hasGlidedEmblemEffect(u32 battler){
+    u32 species = gBattleMons[battler].species;
+
+    //Items
+    if(species == SPECIES_PERSIAN && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_GLIDED_EMBLEM, TRUE))
+        return TRUE;
+
+    return FALSE;
+}
+
 static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *damageCalcData, u32 atkAbility, u32 defAbility, u32 holdEffectAtk, u32 weather)
 {
     u32 i;
@@ -10003,6 +10029,17 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_WISE_GLASSES, TRUE)){
         if (IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
+    }
+
+    //Glided Emblem
+    if (hasGlidedEmblemEffect(battlerAtk)){
+        switch(moveEffect){
+            case EFFECT_KNOCK_OFF:
+            case MOVE_EFFECT_STEAL_ITEM:
+            case MOVE_EFFECT_FLINCH:
+                modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+            break;
+        }
     }
 
     //Charcoal
