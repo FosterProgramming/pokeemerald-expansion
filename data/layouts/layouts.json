@@ -597,7 +597,7 @@
       "width": 11,
       "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/House2/border.bin",
       "blockdata_filepath": "data/layouts/House2/map.bin"
     },
@@ -987,7 +987,7 @@
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/FortreeCity_House1/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCity_House1/map.bin"
     },
@@ -1007,7 +1007,7 @@
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/FortreeCity_House2/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCity_House2/map.bin"
     },
@@ -2547,7 +2547,7 @@
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/FortreeCity_DecorationShop/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCity_DecorationShop/map.bin"
     },
