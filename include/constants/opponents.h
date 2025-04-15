@@ -15,9 +15,9 @@
 #define TRAINER_GRUNT_SECURITY_HALLWAY_9      9
 #define TRAINER_GRUNT_SECURITY_HALLWAY_10    10
 #define TRAINER_MARCEL                       11
-#define TRAINER_INTRO_CUTSCENE_FRO                      12
+#define TRAINER_INTRO_CUTSCENE_FRO           12
 #define TRAINER_ED                           13
-#define TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN      14
+#define TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN    14
 #define TRAINER_DECLAN                       15
 #define TRAINER_GRUNT_RUSTURF_TUNNEL         16
 #define TRAINER_GRUNT_WEATHER_INST_1         17

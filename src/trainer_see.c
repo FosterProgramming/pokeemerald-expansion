@@ -492,28 +492,10 @@ static u8 CheckTrainer(u8 objectEventId)
             || temp->params.mode == TRAINER_BATTLE_REMATCH_DOUBLE
             || temp->params.mode == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE)
         {
-            if (!FlagGet(scriptFlag) && scriptPtr != NULL)
-            {
-                // TRAINER_TYPE_RUN_SCRIPT
-                FlagSet(scriptFlag);
-                ret = 0xFF;
-            }
-            else
-            {
+            if (GetMonsStateToDoubles_2() != PLAYER_HAS_TWO_USABLE_MONS)
                 return 0;
-            }
-        }
-        else
-        {
-            if (scriptPtr[1] == TRAINER_BATTLE_DOUBLE
-                || scriptPtr[1] == TRAINER_BATTLE_REMATCH_DOUBLE
-                || scriptPtr[1] == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE)
-            {
-                if (GetMonsStateToDoubles_2() != 0)
-                    return 0;
 
-                ret = 2;
-            }
+            numTrainers = 2;
         }
     }
 
