@@ -167,7 +167,7 @@ Route104_MrBrineysHouse_EventScript_SailToDewford::
 # 84 "data/maps/Route104_MrBrineysHouse/scripts.pory"
 	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 # 85 "data/maps/Route104_MrBrineysHouse/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_104_RIVAL
+	setflag FLAG_HIDE_ROUTE_13_SATCHEL
 # 86 "data/maps/Route104_MrBrineysHouse/scripts.pory"
 	warp MAP_ROUTE104, 13, 51
 # 87 "data/maps/Route104_MrBrineysHouse/scripts.pory"

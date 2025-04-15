@@ -256,16 +256,16 @@ gStdScripts_End::
 	.include "data/maps/RustboroCity_Flat2_2F/scripts.inc"
 	.include "data/maps/RustboroCity_Flat2_3F/scripts.inc"
 	.include "data/maps/RustboroCity_House3/scripts.inc"
-	.include "data/maps/FortreeCity_House1/scripts.inc"
+	.include "data/maps/Moonthistle_House1/scripts.inc"
 	.include "data/maps/FortreeCity_Gym/scripts.inc"
 	.include "data/maps/FortreeCity_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/FortreeCity_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/FortreeCity_Mart/scripts.inc"
-	.include "data/maps/FortreeCity_House2/scripts.inc"
-	.include "data/maps/FortreeCity_House3/scripts.inc"
+	.include "data/maps/Moonthistle_House2/scripts.inc"
+	.include "data/maps/Moonthistle_House3/scripts.inc"
 	.include "data/maps/FortreeCity_House4/scripts.inc"
 	.include "data/maps/FortreeCity_House5/scripts.inc"
-	.include "data/maps/FortreeCity_DecorationShop/scripts.inc"
+	.include "data/maps/Moonthistle_Shop/scripts.inc"
 	.include "data/maps/LilycoveCity_CoveLilyMotel_1F/scripts.inc"
 	.include "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.inc"
 	.include "data/maps/LilycoveCity_LilycoveMuseum_1F/scripts.inc"
@@ -1213,7 +1213,7 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/Route15/scripts.inc"
 
-	.include "data/maps/UnnamedTown/scripts.inc"
+	.include "data/maps/Moonthistle/scripts.inc"
 
 	.include "data/maps/Route16/scripts.inc"
 

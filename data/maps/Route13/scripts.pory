@@ -1,4 +1,47 @@
 raw `
+.set LOCALID_VEE, 3
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 Route13_MapScripts::
 	.byte 0
 `
+script Route13_EventScripts_StayAwayFromGruntEast
+	{
+		lock
+		getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+		setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+		addobject(LOCALID_VEE)
+		applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerEast)
+		applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+		waitmovement(LOCALID_VEE)
+		speakername("Vee")
+		msgbox(format("Look out! A Team MAGA Grunt."))
+		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
+		waitmovement(LOCALID_VEE)
+		removeobject(LOCALID_VEE)
+		applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_right))
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		release
+		end
+	}
+
+script Route13_EventScripts_StayAwayFromGruntSouth
+	{
+		lock
+		getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+		setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+		addobject(LOCALID_VEE)
+		applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth)
+		applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
+		waitmovement(LOCALID_VEE)
+		speakername("Vee")
+		msgbox(format("Look out! A Team MAGA Grunt."))
+		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth)
+		waitmovement(LOCALID_VEE)
+		removeobject(LOCALID_VEE)
+		applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_down))
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		release
+		end
+	}
+

@@ -982,14 +982,14 @@
       "blockdata_filepath": "data/layouts/RustboroCity_CuttersHouse/map.bin"
     },
     {
-      "id": "LAYOUT_FORTREE_CITY_HOUSE1",
-      "name": "FortreeCity_House1_Layout",
+      "id": "LAYOUT_MOONTHISTLE_HOUSE1",
+      "name": "Moonthistle_House1_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_NaturalInterior",
-      "border_filepath": "data/layouts/FortreeCity_House1/border.bin",
-      "blockdata_filepath": "data/layouts/FortreeCity_House1/map.bin"
+      "border_filepath": "data/layouts/Moonthistle_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle_House1/map.bin"
     },
     {
       "id": "LAYOUT_FORTREE_CITY_GYM",
@@ -1002,14 +1002,14 @@
       "blockdata_filepath": "data/layouts/FortreeCity_Gym/map.bin"
     },
     {
-      "id": "LAYOUT_FORTREE_CITY_HOUSE2",
-      "name": "FortreeCity_House2_Layout",
+      "id": "LAYOUT_MOONTHISTLE_HOUSE2",
+      "name": "Moonthistle_House2_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_NaturalInterior",
-      "border_filepath": "data/layouts/FortreeCity_House2/border.bin",
-      "blockdata_filepath": "data/layouts/FortreeCity_House2/map.bin"
+      "border_filepath": "data/layouts/Moonthistle_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle_House2/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE104_MR_BRINEYS_HOUSE",
@@ -2542,14 +2542,14 @@
       "blockdata_filepath": "data/layouts/Route110_TrickHousePuzzle8/map.bin"
     },
     {
-      "id": "LAYOUT_FORTREE_CITY_DECORATION_SHOP",
-      "name": "FortreeCity_DecorationShop_Layout",
+      "id": "LAYOUT_MOONTHISTLE_SHOP",
+      "name": "Moonthistle_Shop_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_NaturalInterior",
-      "border_filepath": "data/layouts/FortreeCity_DecorationShop/border.bin",
-      "blockdata_filepath": "data/layouts/FortreeCity_DecorationShop/map.bin"
+      "border_filepath": "data/layouts/Moonthistle_Shop/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle_Shop/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE110_SEASIDE_CYCLING_ROAD_ENTRANCE",
@@ -4712,14 +4712,14 @@
       "blockdata_filepath": "data/layouts/Route15/map.bin"
     },
     {
-      "id": "LAYOUT_UNNAMED_TOWN",
-      "name": "UnnamedTown_Layout",
+      "id": "LAYOUT_MOONTHISTLE",
+      "name": "Moonthistle_Layout",
       "width": 40,
       "height": 32,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Driftshore",
-      "border_filepath": "data/layouts/UnnamedTown/border.bin",
-      "blockdata_filepath": "data/layouts/UnnamedTown/map.bin"
+      "border_filepath": "data/layouts/Moonthistle/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE16",

@@ -128,7 +128,7 @@ MoveTutor_EventScript_MetronomeTaught::
 	release
 	end
 
-FortreeCity_House2_EventScript_SleepTalkTutor::
+Moonthistle_House2_EventScript_SleepTalkTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK, MoveTutor_EventScript_SleepTalkTaught

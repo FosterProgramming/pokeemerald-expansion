@@ -5452,7 +5452,6 @@ static void RunTurnActionsFunctions(void)
 
 static void HandleEndTurn_BattleWon(void)
 {
-    u32 i;
     gCurrentActionFuncId = 0;
 
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
@@ -5506,13 +5505,6 @@ static void HandleEndTurn_BattleWon(void)
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
     }
 
-    for (i = 0; i < PARTY_SIZE; i++)
-        {
-            bool32 minHp = 1;
-            if (GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) == 0)
-                SetMonData(&gPlayerParty[i], MON_DATA_HP, &minHp);
-        }
-
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
@@ -5548,8 +5540,6 @@ static void HandleEndTurn_BattleLost(void)
     {
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
     }
-
-    
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
@@ -5661,6 +5651,7 @@ static void HandleEndTurn_FinishBattle(void)
 
         for (i = 0; i < PARTY_SIZE; i++)
         {
+            bool32 minHp = 1;
             bool8 changedForm = FALSE;
 
             // Appeared in battle and didn't faint
@@ -5677,6 +5668,10 @@ static void HandleEndTurn_FinishBattle(void)
             // Recalculate the stats of every party member before the end
             if (!changedForm && B_RECALCULATE_STATS >= GEN_5)
                 CalculateMonStats(&gPlayerParty[i]);
+
+            //any mons fainted in battle have 1 hp upon returning to the overworld
+            if (GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) == 0)
+                SetMonData(&gPlayerParty[i], MON_DATA_HP, &minHp);
         }
         // Clear battle mon species to avoid a bug on the next battle that causes
         // healthboxes loading incorrectly due to it trying to create a Mega Indicator

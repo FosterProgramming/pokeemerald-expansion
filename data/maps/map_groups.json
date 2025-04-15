@@ -123,7 +123,7 @@
     "Route13",
     "Route14",
     "Route15",
-    "UnnamedTown",
+    "Moonthistle",
     "Route16",
     "DunemireDesert",
     "DunemireDesertA",
@@ -264,16 +264,16 @@
     "RustboroCity_House3"
   ],
   "gMapGroup_IndoorFortree": [
-    "FortreeCity_House1",
+    "Moonthistle_House1",
     "FortreeCity_Gym",
     "FortreeCity_PokemonCenter_1F",
     "FortreeCity_PokemonCenter_2F",
     "FortreeCity_Mart",
-    "FortreeCity_House2",
-    "FortreeCity_House3",
+    "Moonthistle_House2",
+    "Moonthistle_House3",
     "FortreeCity_House4",
     "FortreeCity_House5",
-    "FortreeCity_DecorationShop"
+    "Moonthistle_Shop"
   ],
   "gMapGroup_IndoorLilycove": [
     "LilycoveCity_CoveLilyMotel_1F",

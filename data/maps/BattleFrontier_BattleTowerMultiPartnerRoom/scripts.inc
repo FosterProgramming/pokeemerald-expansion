@@ -37,11 +37,11 @@ BattleFrontier_BattleTowerMultiPartnerRoom_OnTransition:
 # 19 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
 	clearflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_3_4
 # 20 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
-	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4
+	clearflag FLAG_MOONTHISTLE_TRUST_QUEST_STARTED
 # 21 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
-	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5
+	clearflag FLAG_MOONTHISTLE_TRUSTED
 # 22 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
-	clearflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6
+	clearflag FLAG_MOONTHISTLE_WHISMUR_GIFT
 # 23 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"
 	setflag FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1
 # 24 "data/maps/BattleFrontier_BattleTowerMultiPartnerRoom/scripts.pory"

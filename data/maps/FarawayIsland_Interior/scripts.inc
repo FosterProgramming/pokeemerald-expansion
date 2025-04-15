@@ -89,7 +89,7 @@ FarawayIsland_Interior_EventScript_TryShowMew::
 # 45 "data/maps/FarawayIsland_Interior/scripts.pory"
 	goto_if_set FLAG_DEFEATED_MEW, Common_EventScript_NopReturn
 # 46 "data/maps/FarawayIsland_Interior/scripts.pory"
-	clearflag FLAG_HIDE_MEW
+	clearflag FLAG_MOONTHISTLE_SATCHEL_RECOVERED
 # 47 "data/maps/FarawayIsland_Interior/scripts.pory"
 	setvar VAR_TEMP_1, 0
 # 48 "data/maps/FarawayIsland_Interior/scripts.pory"
@@ -359,7 +359,7 @@ FarawayIsland_Interior_EventScript_HideMewWhenGrassCut::
 # 180 "data/maps/FarawayIsland_Interior/scripts.pory"
 	fadescreenswapbuffers FADE_TO_BLACK
 # 181 "data/maps/FarawayIsland_Interior/scripts.pory"
-	setflag FLAG_HIDE_MEW
+	setflag FLAG_MOONTHISTLE_SATCHEL_RECOVERED
 # 182 "data/maps/FarawayIsland_Interior/scripts.pory"
 	removeobject LOCALID_FARAWAY_ISLAND_MEW
 # 183 "data/maps/FarawayIsland_Interior/scripts.pory"

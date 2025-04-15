@@ -1,7 +1,7 @@
 {
-  "id": "MAP_FORTREE_CITY_HOUSE1",
-  "name": "FortreeCity_House1",
-  "layout": "LAYOUT_FORTREE_CITY_HOUSE1",
+  "id": "MAP_MOONTHISTLE_HOUSE1",
+  "name": "Moonthistle_House1",
+  "layout": "LAYOUT_MOONTHISTLE_HOUSE1",
   "music": "MUS_FORTREE",
   "region_map_section": "MAPSEC_FORTREE_CITY",
   "requires_flash": false,
@@ -15,8 +15,8 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX)",
-      "x": 1,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MIGHTYENA)",
+      "x": 0,
       "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -24,34 +24,21 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_House1_EventScript_Trader",
+      "script": "Moonthistle_EventScripts_Shade",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)",
-      "x": 2,
-      "y": 3,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
+      "x": 3,
+      "y": 1,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_House1_EventScript_Zigzagoon",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX)",
-      "x": 7,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_House1_EventScript_ExpertF",
-      "flag": "0"
+      "script": "NULL",
+      "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
     }
   ],
   "warp_events": [
@@ -59,14 +46,14 @@
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_UNNAMED_TOWN",
+      "dest_map": "MAP_MOONTHISTLE",
       "dest_warp_id": "0"
     },
     {
       "x": 4,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_UNNAMED_TOWN",
+      "dest_map": "MAP_MOONTHISTLE",
       "dest_warp_id": "0"
     }
   ],

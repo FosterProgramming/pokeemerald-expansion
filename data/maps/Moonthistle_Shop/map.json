@@ -1,7 +1,7 @@
 {
-  "id": "MAP_FORTREE_CITY_DECORATION_SHOP",
-  "name": "FortreeCity_DecorationShop",
-  "layout": "LAYOUT_FORTREE_CITY_DECORATION_SHOP",
+  "id": "MAP_MOONTHISTLE_SHOP",
+  "name": "Moonthistle_Shop",
+  "layout": "LAYOUT_MOONTHISTLE_SHOP",
   "music": "MUS_FORTREE",
   "region_map_section": "MAPSEC_FORTREE_CITY",
   "requires_flash": false,
@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOUDRED)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO)",
       "x": 6,
       "y": 5,
       "elevation": 3,
@@ -24,20 +24,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_DecorationShop_EventScript_PokefanM",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WHISMUR)",
-      "x": 0,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_DecorationShop_EventScript_Girl",
+      "script": "Moonthistle_EventScripts_Pineco",
       "flag": "0"
     },
     {
@@ -50,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_DecorationShop_EventScript_ClerkDesks",
+      "script": "Moonthistle_EventScripts_KecleonShopkeeper",
       "flag": "0"
     },
     {
@@ -63,38 +50,12 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "FortreeCity_DecorationShop_EventScript_ClerkChairs",
+      "script": "Moonthistle_EventScripts_SlowbroInn",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 2,
-      "y": 2,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 5,
-      "y": 2,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 7,
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -124,14 +85,14 @@
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_UNNAMED_TOWN",
+      "dest_map": "MAP_MOONTHISTLE",
       "dest_warp_id": "3"
     },
     {
       "x": 4,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_UNNAMED_TOWN",
+      "dest_map": "MAP_MOONTHISTLE",
       "dest_warp_id": "3"
     }
   ],
