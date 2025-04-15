@@ -878,7 +878,7 @@ const struct Tileset gTileset_MurkwellBog =
     .palettes = gTilesetPalettes_MurkwellBog,
     .metatiles = gMetatiles_MurkwellBog,
     .metatileAttributes = gMetatileAttributes_MurkwellBog,
-    .callback = NULL,
+    .callback = InitTilesetAnim_MurkwellBog,
 };
 
 const struct Tileset gTileset_Pyroden =

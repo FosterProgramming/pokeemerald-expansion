@@ -1248,3 +1248,45 @@ void InitTilesetAnim_GeneralSeelVersion(void)
     sPrimaryTilesetAnimCounterMax = 256;
     sPrimaryTilesetAnimCallback = TilesetAnim_GeneralSeelVersion;
 }
+
+//Murkwell Bog
+
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame0[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/0.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame1[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/1.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame2[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/2.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame3[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/3.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame4[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/4.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame5[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/5.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame6[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/6.4bpp");
+const u16 gTilesetAnims_MurkwellBog_SwampWater_Frame7[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/swamp_water/7.4bpp");
+
+const u16 *const gTilesetAnims_MurkwellBog_SwampWater[] = {
+    gTilesetAnims_MurkwellBog_SwampWater_Frame0,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame1,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame2,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame3,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame4,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame5,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame6,
+    gTilesetAnims_MurkwellBog_SwampWater_Frame7
+};
+
+
+static void QueueAnimTiles_MurkwellBog_SwampWater(u16 timer)
+{
+    u8 i = timer % ARRAY_COUNT(gTilesetAnims_MurkwellBog_SwampWater);
+    AppendTilesetAnimToBuffer(gTilesetAnims_MurkwellBog_SwampWater[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY)), 4 * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_MurkwellBog(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_MurkwellBog_SwampWater(timer / 16);
+}
+
+void InitTilesetAnim_MurkwellBog(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_MurkwellBog;
+}
