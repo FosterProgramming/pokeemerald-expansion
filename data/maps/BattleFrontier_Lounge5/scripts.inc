@@ -106,9 +106,7 @@ BattleFrontier_Lounge5_Text_NatureGirlNoneShown::
 	.string "Cheapie!$"
 # 54 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 55 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlHardy::
-# 56 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlAttackHighAttackLow::
 	.string "Hmhm…\p"
 # 57 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "This one says it likes to battle!\n"
@@ -118,21 +116,7 @@ BattleFrontier_Lounge5_Text_NatureGirlHardy::
 	.string "of ouchies!$"
 # 60 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 61 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlLonely::
-# 62 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 63 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to be sneaky!\n"
-# 64 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 65 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will hit back!$"
-# 66 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 67 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlBrave::
-# 68 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlAttackHighDefenseLow::
 	.string "Hmhm…\p"
 # 69 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "This one says it likes to battle!\n"
@@ -142,93 +126,7 @@ BattleFrontier_Lounge5_Text_NatureGirlBrave::
 	.string "it will worry about itself!$"
 # 72 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 73 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlAdamant::
-# 74 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 75 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to battle!\n"
-# 76 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It will battle even if it has a lot\l"
-# 77 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "of ouchies!$"
-# 78 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 79 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlNaughty::
-# 80 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 81 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it looks after itself!\n"
-# 82 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 83 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will hit back!$"
-# 84 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 85 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlBold::
-# 86 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 87 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to be sneaky!\n"
-# 88 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 89 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will worry about itself!$"
-# 90 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 91 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky::
-# 92 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 93 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to battle!\n"
-# 94 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It will battle even if it has a lot\l"
-# 95 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "of ouchies!$"
-# 96 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 97 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlRelaxed::
-# 98 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 99 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to be sneaky!\n"
-# 100 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 101 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will hit back!$"
-# 102 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 103 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlImpish::
-# 104 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 105 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to battle!\n"
-# 106 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 107 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will worry about itself!$"
-# 108 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 109 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlLax::
-# 110 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 111 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to be sneaky!\n"
-# 112 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It says it likes to be sneaky even\l"
-# 113 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "if it has a lot of ouchies!$"
-# 114 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 115 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlTimid::
-# 116 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlAttackHighSupportLow::
 	.string "Hmhm…\p"
 # 117 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "This one says it likes to battle!\n"
@@ -238,45 +136,13 @@ BattleFrontier_Lounge5_Text_NatureGirlTimid::
 	.string "it will turn sneaky!$"
 # 120 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 121 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlHasty::
-# 122 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlDefenseHighAttackLow::
 	.string "Hmhm…\p"
-# 123 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to battle!\n"
-# 124 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It will battle even if it has a lot\l"
-# 125 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "of ouchies!$"
-# 126 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 127 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlSerious::
-# 128 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 129 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to be sneaky!\n"
-# 130 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It says it likes to be sneaky even\l"
-# 131 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "if it has a lot of ouchies!$"
-# 132 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 133 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlJolly::
-# 134 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 135 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to be sneaky!\n"
-# 136 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+	.string "This one says it looks after itself!\n"
 	.string "But if it gets enough ouchies,\l"
-# 137 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will worry about itself!$"
-# 138 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+	.string "it will hit back!$"
 
-# 139 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlModest::
-# 140 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlDefenseHighDefenseLow::
 	.string "Hmhm…\p"
 # 141 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "This one says it looks after itself!\n"
@@ -286,9 +152,7 @@ BattleFrontier_Lounge5_Text_NatureGirlModest::
 	.string "or not it has a lot of ouchies!$"
 # 144 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 145 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlMild::
-# 146 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlDefenseHighSupportLow::
 	.string "Hmhm…\p"
 # 147 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "This one says it looks after itself!\n"
@@ -298,21 +162,19 @@ BattleFrontier_Lounge5_Text_NatureGirlMild::
 	.string "it will turn sneaky!$"
 # 150 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 151 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlBashful::
-# 152 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlSupportHighAttackLow::
 	.string "Hmhm…\p"
-# 153 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it looks after itself!\n"
-# 154 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It says it worries about itself even\l"
-# 155 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "if it has a lot of ouchies!$"
-# 156 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+	.string "This one says it likes to be sneaky!\n"
+	.string "But if it gets enough ouchies,\l"
+	.string "it will hit back!$"
 
-# 157 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlRash::
-# 158 "data/maps/BattleFrontier_Lounge5/scripts.pory"
+BattleFrontier_Lounge5_Text_NatureGirlSupportHighDefenseLow::
+	.string "Hmhm…\p"
+	.string "This one says it likes to be sneaky!\n"
+	.string "But if it gets enough ouchies,\l"
+	.string "it will worry about itself!$"
+
+BattleFrontier_Lounge5_Text_NatureGirlSupportHighSupportLow::
 	.string "Hmhm…\p"
 # 159 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "This one says it likes to be sneaky!\n"
@@ -322,55 +184,6 @@ BattleFrontier_Lounge5_Text_NatureGirlRash::
 	.string "if it has a lot of ouchies!$"
 # 162 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 
-# 163 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlCalm::
-# 164 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 165 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it looks after itself!\n"
-# 166 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "It says it worries about itself even\l"
-# 167 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "if it has a lot of ouchies!$"
-# 168 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 169 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlGentle::
-# 170 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 171 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it looks after itself!\n"
-# 172 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 173 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will hit back!$"
-# 174 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 175 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlSassy::
-# 176 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 177 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it likes to battle!\n"
-# 178 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 179 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will turn sneaky!$"
-# 180 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 181 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-BattleFrontier_Lounge5_Text_NatureGirlCareful::
-# 182 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "Hmhm…\p"
-# 183 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "This one says it looks after itself!\n"
-# 184 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "But if it gets enough ouchies,\l"
-# 185 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-	.string "it will turn sneaky!$"
-# 186 "data/maps/BattleFrontier_Lounge5/scripts.pory"
-
-# 187 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 BattleFrontier_Lounge5_Text_NatureGirlEgg::
 # 188 "data/maps/BattleFrontier_Lounge5/scripts.pory"
 	.string "That's silly! An EGG is asleep!\n"
