@@ -3,10 +3,28 @@ raw `
 .set LOCALID_ACE, 5
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
-
-VoltbrookTown_MapScripts::
-	.byte 0
 `
+mapscripts VoltbrookTown_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD
+	{
+		setrespawn(HEAL_LOCATION_VOLTBROOK_TOWN)
+        if(flag(FLAG_HINTED_AT_POWERPLANT))
+			{
+				setmetatile(17, 3, 0x3D2, FALSE)
+			}
+		// if(flag(FLAG_DEFEATED_MAGA_ELECTAVIRE))
+		// {
+		// 	setmetatile(7, 17, DOOR, TRUE)
+		// 	setmetatile(5, 23, CENTER_DOOR, TRUE)
+		// 	setmetatile(19, 25, DOOR, TRUE)
+		// 	setmetatile(27, 13, DOOR, TRUE)
+		// 	setmetatile(31, 17, MART_DOOR, TRUE)
+		// }
+		release
+		end
+    }
+}
 
 
 script Voltbrook_EventScripts_GruntPatrolChat
@@ -568,4 +586,14 @@ script Voltbrook_EventScripts_GruntsBlockingNorthExit
 		waitmovement(OBJ_EVENT_ID_PLAYER)
 		releaseall
 		end
+	}
+
+script Voltbrook_EventScripts_DoorsLocked
+	{
+		//if(!flag(FLAG_DEFEATED_MAGA_ELECTAVIRE))
+		//{
+		lock
+		msgbox(format("The door is locked"), MSGBOX_SIGN)
+		release
+		//}
 	}

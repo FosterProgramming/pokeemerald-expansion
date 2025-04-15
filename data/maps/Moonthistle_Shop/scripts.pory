@@ -130,11 +130,12 @@ script Moonthistle_EventScripts_KecleonShopkeeper
 
 mart MoonthistleShopItems 
 {
-	ITEM_LAVA_COOKIE
-	ITEM_MOOMOO_MILK
-	ITEM_RARE_CANDY
+	ITEM_SITRUS_BERRY
+	ITEM_ESCAPE_ROPE
+	ITEM_CHERI_BERRY
 	ITEM_LEMONADE
-	ITEM_BERRY_JUICE
+	ITEM_WISE_GLASSES
+	ITEM_CHARCOAL
 }
 
 //OBJ_EVENT_GFX_SPECIES(PINECO)
@@ -158,3 +159,23 @@ script Moonthistle_EventScripts_Pineco
 	}
 }
 
+//OBJ_EVENT_GFX_SPECIES(GULPIN)
+script Moonthistle_EventScripts_Gulpin
+{
+    lock
+	if (!flag(FLAG_MOONTHISTLE_TRUSTED))
+		{
+		speakername("Gulpin")
+		msgbox(format("Stay away from my berries, outsider."), MSGBOX_NPC)
+		release
+		end
+	}
+	else
+	{
+		lock
+		speakername("Gulpin")
+		msgbox(format("I came for healing herbs… But if you find any sweet berries, let me know…"), MSGBOX_NPC)
+		release
+		end
+	}
+}

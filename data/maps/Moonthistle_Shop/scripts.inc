@@ -224,38 +224,65 @@ Moonthistle_EventScripts_KecleonShopkeeper_1:
 # 131 "data/maps/Moonthistle_Shop/scripts.pory"
 MoonthistleShopItems:
 # 133 "data/maps/Moonthistle_Shop/scripts.pory"
-	.2byte ITEM_LAVA_COOKIE
+	.2byte ITEM_SITRUS_BERRY
 # 134 "data/maps/Moonthistle_Shop/scripts.pory"
-	.2byte ITEM_MOOMOO_MILK
+	.2byte ITEM_ESCAPE_ROPE
 # 135 "data/maps/Moonthistle_Shop/scripts.pory"
-	.2byte ITEM_RARE_CANDY
+	.2byte ITEM_CHERI_BERRY
 # 136 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_LEMONADE
 # 137 "data/maps/Moonthistle_Shop/scripts.pory"
-	.2byte ITEM_BERRY_JUICE
+	.2byte ITEM_WISE_GLASSES
+# 138 "data/maps/Moonthistle_Shop/scripts.pory"
+	.2byte ITEM_CHARCOAL
 	.2byte ITEM_NONE
 
 Moonthistle_EventScripts_Pineco::
-# 143 "data/maps/Moonthistle_Shop/scripts.pory"
-	lock
 # 144 "data/maps/Moonthistle_Shop/scripts.pory"
-	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Pineco_1
-# 153 "data/maps/Moonthistle_Shop/scripts.pory"
 	lock
+# 145 "data/maps/Moonthistle_Shop/scripts.pory"
+	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Pineco_1
 # 154 "data/maps/Moonthistle_Shop/scripts.pory"
-	speakername Moonthistle_EventScripts_Pineco_Text_0
+	lock
 # 155 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_Pineco_Text_2, MSGBOX_NPC
+	speakername Moonthistle_EventScripts_Pineco_Text_0
 # 156 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_Pineco_Text_2, MSGBOX_NPC
+# 157 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
 Moonthistle_EventScripts_Pineco_1:
-# 146 "data/maps/Moonthistle_Shop/scripts.pory"
-	speakername Moonthistle_EventScripts_Pineco_Text_0
 # 147 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_Pineco_Text_1, MSGBOX_NPC
+	speakername Moonthistle_EventScripts_Pineco_Text_0
 # 148 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_Pineco_Text_1, MSGBOX_NPC
+# 149 "data/maps/Moonthistle_Shop/scripts.pory"
+	release
+	end
+
+
+Moonthistle_EventScripts_Gulpin::
+# 165 "data/maps/Moonthistle_Shop/scripts.pory"
+	lock
+# 166 "data/maps/Moonthistle_Shop/scripts.pory"
+	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Gulpin_1
+# 175 "data/maps/Moonthistle_Shop/scripts.pory"
+	lock
+# 176 "data/maps/Moonthistle_Shop/scripts.pory"
+	speakername Moonthistle_EventScripts_Gulpin_Text_0
+# 177 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_Gulpin_Text_2, MSGBOX_NPC
+# 178 "data/maps/Moonthistle_Shop/scripts.pory"
+	release
+	end
+
+Moonthistle_EventScripts_Gulpin_1:
+# 168 "data/maps/Moonthistle_Shop/scripts.pory"
+	speakername Moonthistle_EventScripts_Gulpin_Text_0
+# 169 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_Gulpin_Text_1, MSGBOX_NPC
+# 170 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
@@ -301,18 +328,31 @@ Moonthistle_EventScripts_KecleonShopkeeper_Text_2:
 	.string "You can browse.$"
 
 Moonthistle_EventScripts_Pineco_Text_0:
-# 146 "data/maps/Moonthistle_Shop/scripts.pory"
+# 147 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Pineco$"
 
 Moonthistle_EventScripts_Pineco_Text_1:
-# 147 "data/maps/Moonthistle_Shop/scripts.pory"
+# 148 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "You're not from here… Please don't\n"
 	.string "cause trouble.\p"
 	.string "I-I just want to be left alone.$"
 
 Moonthistle_EventScripts_Pineco_Text_2:
-# 155 "data/maps/Moonthistle_Shop/scripts.pory"
+# 156 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Sorry I was so nervous earlier… You’re\n"
 	.string "not like the others.\p"
 	.string "If you ever need a place to breathe,\n"
 	.string "this corner’s quiet.$"
+
+Moonthistle_EventScripts_Gulpin_Text_0:
+# 168 "data/maps/Moonthistle_Shop/scripts.pory"
+	.string "Gulpin$"
+
+Moonthistle_EventScripts_Gulpin_Text_1:
+# 169 "data/maps/Moonthistle_Shop/scripts.pory"
+	.string "Stay away from my berries, outsider.$"
+
+Moonthistle_EventScripts_Gulpin_Text_2:
+# 177 "data/maps/Moonthistle_Shop/scripts.pory"
+	.string "I came for healing herbs… But if you\n"
+	.string "find any sweet berries, let me know…$"

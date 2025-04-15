@@ -112,7 +112,7 @@ script Moonthistle_EventScripts_Shade
 		release
 		end
 	}
-elif(!flag(FLAG_HINTED_AT_POWERPLANT))
+	elif(!flag(FLAG_HINTED_AT_POWERPLANT))
 	{
 		getplayerxy(PlayerXCoordinates,PlayerYCoordinates)
 		setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
@@ -157,7 +157,7 @@ elif(!flag(FLAG_HINTED_AT_POWERPLANT))
 	else
 	{
 		speakername("Shade")
-		msgbox(format("If the tunnel behind the powerplant is still open… it might be your way in."))
+		msgbox(format("If the tunnel behind the powerplant is still open… it might be your way in."), MSGBOX_NPC)
 		release
 		end
 	}

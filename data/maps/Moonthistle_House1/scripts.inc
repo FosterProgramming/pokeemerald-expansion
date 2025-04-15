@@ -211,7 +211,7 @@ Moonthistle_EventScripts_Shade::
 # 159 "data/maps/Moonthistle_House1/scripts.pory"
 	speakername Moonthistle_EventScripts_Shade_Text_4
 # 160 "data/maps/Moonthistle_House1/scripts.pory"
-	msgbox Moonthistle_EventScripts_Shade_Text_7
+	msgbox Moonthistle_EventScripts_Shade_Text_7, MSGBOX_NPC
 # 161 "data/maps/Moonthistle_House1/scripts.pory"
 	release
 	end
