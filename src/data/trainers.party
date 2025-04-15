@@ -286,17 +286,21 @@ Electrode
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DECLAN ===
-Name: DECLAN
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_ROUTE_13_MAGA_GRUNT ===
+Name: Grunt
+Class: Team Aqua
+Pic: Aqua Grunt M
 Gender: Male
-Music: Swimmer
-Double Battle: No
+Music: Aqua
+Double Battle: Yes
 AI: Check Bad Move
 
-Gyarados
-Level: 34
+Golbat
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Raticate
+Level: 27
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===

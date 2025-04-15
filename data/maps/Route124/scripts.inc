@@ -185,7 +185,7 @@ Route124_EventScript_RematchRoy::
 # 93 "data/maps/Route124/scripts.pory"
 Route124_EventScript_Declan::
 # 94 "data/maps/Route124/scripts.pory"
-	trainerbattle_single TRAINER_DECLAN, Route124_Text_DeclanIntro, Route124_Text_DeclanDefeat
+	trainerbattle_single TRAINER_ROUTE_13_MAGA_GRUNT, Route124_Text_DeclanIntro, Route124_Text_DeclanDefeat
 # 95 "data/maps/Route124/scripts.pory"
 	msgbox Route124_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
 # 96 "data/maps/Route124/scripts.pory"

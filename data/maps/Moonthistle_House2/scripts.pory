@@ -107,8 +107,9 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 				applymovement(LOCALID_VEE, moves(face_up))
 				applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 				waitmovement(LOCALID_VEE)
+				applymovement(1,moves(face_down*10))
 				speakername("Vee")
-				msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"),MSGBOX_NPC)
+				msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"))
 				applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
 				waitmovement(OBJ_EVENT_ID_PLAYER)
 				speakername("Linoone")
@@ -172,6 +173,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			waitmovement(LOCALID_VEE)
 			removeobject(LOCALID_VEE)
 			setflag(FLAG_MOONTHISTLE_TRUST_QUEST_STARTED)
+			clearflag(FLAG_HIDE_ROUTE_13_SATCHEL)
 		}
 	
 	release
@@ -186,7 +188,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestComplete
     if (flag(FLAG_MOONTHISTLE_SATCHEL_RECOVERED)) 
 	{
         speakername("Vee")
-		msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"))
+		msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"),MSGBOX_NPC)
 		speakername("Linoone")
 		msgbox(format("Hmph. So they know you're out there. That won’t help our nerves.\pBut you brought it back. Even with danger breathing down your necks.\pMaybe you two aren’t a liability after all.\pYou’ve earned a place here. Rest when you need. No one will chase you off.\pFeel free to meet the others. Some might be more helpful than I was."))
 		closemessage

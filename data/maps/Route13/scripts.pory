@@ -45,3 +45,55 @@ script Route13_EventScripts_StayAwayFromGruntSouth
 		end
 	}
 
+//OBJ_EVENT_GFX_ITEM
+script Route7_EventScripts_SatchelRetrieval
+{
+    lock
+    playfanfare(MUS_OBTAIN_ITEM)
+	waitfanfare
+	removeobject(1)
+	removeobject(2)
+	setobjectxyperm(2, 42, 9)
+    msgbox(format("Seel picked up the Satchel!"), MSGBOX_DEFAULT)
+	setflag(FLAG_HIDE_ROUTE_13_SATCHEL)
+	getplayerxy(PlayerXCoordinates,PlayerYCoordinates)
+	setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+	addobject(LOCALID_VEE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+	applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
+	addobject(2)
+	waitmovement(LOCALID_VEE)
+    speakername("Vee")
+	msgbox(format("That’s it! That’s the satchel Linoone was talking about!\pIt’s still sealed shut. Good thing we got here before anyone stole it."))
+	applymovement(2, moves(walk_up emote_exclamation_mark walk_up*5 face_right))
+	playse(SE_PIN)
+	waitmovement(2)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	applymovement(LOCALID_VEE,moves(face_left*100))
+	trainerbattle_double(TRAINER_ROUTE_13_MAGA_GRUNT, format("Well, well. Look what we have here.\pTwo little lab rats. And what might be in that bag?\pOh well, it doesn't matter. I'm taking you in.\pDidn’t think I’d get promoted today-but hey, catching you two’ll make me a hero."),format("Ugh, no! This was my chance!"),"NULL",Route13_EventScripts_PostGruntBattle)
+}
+
+script Route13_EventScripts_PostGruntBattle
+{				
+    speakername("Grunt")
+    msgbox(format("Forget this… I'm calling it in. You won’t stay hidden for long!"))
+    applymovement(2,moves(walk_faster_down*7))
+    waitmovement(2)
+    removeobject(2)
+	applymovement(LOCALID_VEE,moves(face_down))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+    speakername("Vee")
+    msgbox(format("That’s… not good. We should return the satchel to Linoone. Hopefully he let's us stay hidden there after this."), MSGBOX_NPC)
+	applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerNorth)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	setvar(VAR_VOLTBROOK_TOWN_STATE,3)
+	setflag(FLAG_MOONTHISTLE_SATCHEL_RECOVERED)
+	setflag(FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_3_4)
+	setflag(FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_1)
+	setflag(FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_2_3)
+    release
+    end
+}
