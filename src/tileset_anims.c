@@ -1275,7 +1275,7 @@ const u16 *const gTilesetAnims_MurkwellBog_SwampWater[] = {
 static void QueueAnimTiles_MurkwellBog_SwampWater(u16 timer)
 {
     u8 i = timer % ARRAY_COUNT(gTilesetAnims_MurkwellBog_SwampWater);
-    AppendTilesetAnimToBuffer(gTilesetAnims_MurkwellBog_SwampWater[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY)), 4 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gTilesetAnims_MurkwellBog_SwampWater[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY)), 52 * TILE_SIZE_4BPP);
 }
 
 static void TilesetAnim_MurkwellBog(u16 timer)
