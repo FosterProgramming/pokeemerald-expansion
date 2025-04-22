@@ -6557,7 +6557,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gBattleMoveDamage *= -1;
                 gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerAttacker, HOLD_EFFECT_GLIDED_EMBLEM, TRUE);
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ItemHealHP_End2;
+                gBattlescriptCurrInstr = BattleScript_GlidedEmblemHealHP;
                 effect++;
             }
         }
