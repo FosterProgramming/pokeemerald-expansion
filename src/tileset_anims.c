@@ -1231,7 +1231,7 @@ const u16 *const gTilesetAnims_GeneralSeelVersion_Water[] = {
 static void QueueAnimTiles_GeneralSeelVersion_Water(u16 timer)
 {
     u8 i = timer % ARRAY_COUNT(gTilesetAnims_GeneralSeelVersion_Water);
-    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(5)), 108 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gTilesetAnims_GeneralSeelVersion_Water[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(5)), 112 * TILE_SIZE_4BPP);
 }
 
 static void TilesetAnim_GeneralSeelVersion(u16 timer)
@@ -1239,7 +1239,7 @@ static void TilesetAnim_GeneralSeelVersion(u16 timer)
     if (timer % 16 == 0)
         QueueAnimTiles_GeneralSeelVersion_Flower(timer / 16);
     if (timer % 16 == 1)
-        QueueAnimTiles_GeneralSeelVersion_Water(timer / 16);
+        QueueAnimTiles_GeneralSeelVersion_Water(timer / 12);
 }
 
 void InitTilesetAnim_GeneralSeelVersion(void)
