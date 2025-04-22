@@ -1550,6 +1550,8 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         evasionStage = DEFAULT_STAT_STAGE;
     if (gMovesInfo[move].ignoresTargetDefenseEvasionStages)
         evasionStage = DEFAULT_STAT_STAGE;
+    if (BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_BLINDING_GEM, TRUE) && evasionStage != MIN_STAT_STAGE)
+        evasionStage--;
     if (SearchTraits(battlerTraits, ABILITY_UNAWARE) || hasSkyPiercerEffect(battlerAtk))
         accStage = DEFAULT_STAT_STAGE;
 
@@ -1609,6 +1611,10 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
 
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_WIDE_LENS, TRUE)){
         calc = (calc * (100 + atkParam)) / 100;
+    }
+
+    if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_COMPOUND_SCOPE, TRUE) && moveAcc < 90){
+        calc = (calc * 115) / 100; // 1.15 accuracy boost
     }
 
     // Target's hold effect

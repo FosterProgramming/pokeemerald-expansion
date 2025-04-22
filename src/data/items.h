@@ -14194,7 +14194,43 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Status moves bypass immunity,\n"
             "and Quiver Dance grants\n"
-            "+1 to all stats.."),
+            "+1 to all stats."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_COMPOUND_SCOPE] =
+    {
+        .name = _("Compound Scope"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_COMPOUND_SCOPE,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Increases accuracy of moves\n"
+            "with less than 90% accuracy\n"
+            "by 15%."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AssaultVest,
+        .iconPalette = gItemIconPalette_AssaultVest,
+    },
+
+    [ITEM_BLINDING_GEM] =
+    {
+        .name = _("Binding Gem"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_BLINDING_GEM,
+        .holdEffectParam = 50,
+        .description = COMPOUND_STRING(
+            "Reduces opponent’s\n"
+            "evasiveness slightly\n"
+            "while held."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
