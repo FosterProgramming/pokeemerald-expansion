@@ -2102,6 +2102,7 @@ BattleScript_CoilEnd:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectQuiverDance::
+	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_SPECTRAL_COCOON, BattleScript_EffectQuiverDance_SpectralCocoon
 	attackcanceler
 	attackstring
 	ppreduce
@@ -2131,6 +2132,38 @@ BattleScript_QuiverDanceTrySpeed::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_QuiverDanceEnd::
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectQuiverDance_SpectralCocoon::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_QuiverDanceDoMoveAnim_SpectralCocoon
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_QuiverDanceDoMoveAnim_SpectralCocoon
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
+BattleScript_QuiverDanceDoMoveAnim_SpectralCocoon::
+	attackanimation
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_ATTACKER, BIT_SPATK | BIT_SPDEF | BIT_SPEED, 0
+	setstatchanger STAT_SPATK, 2, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_QuiverDanceTrySpDef_SpectralCocoon
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_QuiverDanceTrySpDef_SpectralCocoon
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_QuiverDanceTrySpDef_SpectralCocoon::
+	setstatchanger STAT_SPDEF, 2, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_QuiverDanceTrySpeed_SpectralCocoon
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_QuiverDanceTrySpeed_SpectralCocoon
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_QuiverDanceTrySpeed_SpectralCocoon::
+	setstatchanger STAT_SPEED, 2, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_QuiverDanceEnd_SpectralCocoon
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_QuiverDanceEnd_SpectralCocoon
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_QuiverDanceEnd_SpectralCocoon::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectVictoryDance::

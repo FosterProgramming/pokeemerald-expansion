@@ -9019,15 +9019,19 @@ static bool32 HasAttackerFaintedTarget(void)
         return FALSE;
 }
 
+bool32 TriggeredSpectralCooconEffect(u8 battler){
+    return hasSpectralCocoonEffect(battler) && IS_MOVE_STATUS(gCurrentMove);
+}
+
 bool32 CanPoisonType(u8 battlerAttacker, u8 battlerTarget)
 {
-    return BattlerHasTrait(battlerAttacker, ABILITY_CORROSION)
+    return BattlerHasTrait(battlerAttacker, ABILITY_CORROSION) || TriggeredSpectralCooconEffect(battlerAttacker)
         || (!IS_BATTLER_OF_TYPE(battlerTarget, TYPE_STEEL) && !IS_BATTLER_OF_TYPE(battlerTarget, TYPE_POISON));
 }
 
 bool32 CanParalyzeType(u8 battlerAttacker, u8 battlerTarget)
 {
-    return !(B_PARALYZE_ELECTRIC >= GEN_6 && IS_BATTLER_OF_TYPE(battlerTarget, TYPE_ELECTRIC));
+    return (!(B_PARALYZE_ELECTRIC >= GEN_6 && IS_BATTLER_OF_TYPE(battlerTarget, TYPE_ELECTRIC))) || TriggeredSpectralCooconEffect(battlerAttacker);
 }
 
 bool32 CanUseLastResort(u8 battler)
@@ -9525,7 +9529,17 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_HOLD_EFFECT:
     {
         VARIOUS_ARGS(u8 holdEffect, const u8 *jumpInstr, u8 equal);
-        if (BattlerHeldItemHasEffect(battler, cmd->holdEffect, TRUE) == cmd->equal)
+        bool8 hasEffect = FALSE;
+        switch(cmd->holdEffect){
+            case HOLD_EFFECT_SPECTRAL_COCOON:
+                hasEffect = hasSpectralCocoonEffect(battler);
+            break;
+            default:
+                hasEffect = BattlerHeldItemHasEffect(battler, cmd->holdEffect, TRUE);
+            break;
+        }
+            
+        if (hasEffect == cmd->equal)
         {
             if (cmd->equal)
                 gLastUsedItem = GetBattlerHeldItemWithEffect(battler, cmd->holdEffect, TRUE); // For B_LAST_USED_ITEM
@@ -9537,6 +9551,7 @@ static void Cmd_various(void)
                 gLastUsedItem = GetBattlerHeldItemWithEffect(battler, cmd->holdEffect, TRUE); // For B_LAST_USED_ITEM
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
+
         return;
     }
     case VARIOUS_JUMP_IF_NO_ALLY:

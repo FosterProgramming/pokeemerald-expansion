@@ -6942,7 +6942,8 @@ bool32 HasMoldBreakerTypeAbility(u32 battler)
         return FALSE;
 
     return (BattlerHasTraitPlain(battler, ABILITY_MOLD_BREAKER) || BattlerHasTraitPlain(battler, ABILITY_TERAVOLT) 
-    || BattlerHasTraitPlain(battler, ABILITY_TURBOBLAZE) || (BattlerHasTraitPlain(battler, ABILITY_MYCELIUM_MIGHT) && IS_MOVE_STATUS(gCurrentMove)));
+    || BattlerHasTraitPlain(battler, ABILITY_TURBOBLAZE) || (BattlerHasTraitPlain(battler, ABILITY_MYCELIUM_MIGHT) && IS_MOVE_STATUS(gCurrentMove))
+    || (hasSpectralCocoonEffect(battler) && IS_MOVE_STATUS(gCurrentMove)));
 }
 
 static inline bool32 CanBreakThroughAbility(u32 battlerAtk, u32 battlerDef)
@@ -9807,6 +9808,26 @@ bool8 hasGlidedEmblemEffect(u32 battler){
     return FALSE;
 }
 
+bool8 hasSpectralCocoonEffect(u32 battler){
+    u32 species = gBattleMons[battler].species;
+
+    //Items
+    if(species == SPECIES_VENOMOTH && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SPECTRAL_COCOON, TRUE))
+        return TRUE;
+
+    return FALSE;
+}
+
+bool8 hasEternalCrestEffect(u32 battler){
+    u32 species = gBattleMons[battler].species;
+
+    //Items
+    if(species == SPECIES_DEWGONG && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_ETERNAL_CREST, TRUE))
+        return TRUE;
+
+    return FALSE;
+}
+
 static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *damageCalcData, u32 atkAbility, u32 defAbility, u32 holdEffectAtk, u32 weather)
 {
     u32 i;
@@ -10751,7 +10772,7 @@ static inline uq4_12_t GetScreensModifier(u32 move, u32 battlerAtk, u32 battlerD
     u32 sideStatus = gSideStatuses[GetBattlerSide(battlerDef)];
     bool32 lightScreen = (sideStatus & SIDE_STATUS_LIGHTSCREEN) && IS_MOVE_SPECIAL(move);
     bool32 reflect = (sideStatus & SIDE_STATUS_REFLECT) && IS_MOVE_PHYSICAL(move);
-    bool32 auroraVeil = sideStatus & SIDE_STATUS_AURORA_VEIL;
+    bool32 auroraVeil = (sideStatus & SIDE_STATUS_AURORA_VEIL) || hasEternalCrestEffect(battlerAtk);
 
     if (isCrit || BattlerHasTrait(battlerAtk, ABILITY_INFILTRATOR) || gProtectStructs[battlerAtk].confusionSelfDmg)
         return UQ_4_12(1.0);
@@ -11250,6 +11271,10 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
             RecordAbilityBattle(battlerDef, gBattleMons[battlerDef].ability);
         }
     }
+
+    
+    if(gMovesInfo[move].category == DAMAGE_CATEGORY_STATUS && hasSpectralCocoonEffect(battlerAtk) && modifier == UQ_4_12(0.0))
+        modifier = UQ_4_12(1.0);
 
     // Signal for the trainer slide-in system.
     if (GetBattlerSide(battlerDef) != B_SIDE_PLAYER && modifier && gBattleStruct->trainerSlideFirstSTABMoveMsgState != 2)
