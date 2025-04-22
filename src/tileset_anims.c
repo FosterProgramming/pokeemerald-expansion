@@ -1271,17 +1271,45 @@ const u16 *const gTilesetAnims_MurkwellBog_SwampWater[] = {
     gTilesetAnims_MurkwellBog_SwampWater_Frame7
 };
 
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame0[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/0.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame1[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/1.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame2[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/2.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame3[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/3.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame4[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/4.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame5[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/5.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame6[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/6.4bpp");
+const u16 gTilesetAnims_MurkwellBog_Lilypads_Frame7[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/anim/lilypads/7.4bpp");
+
+const u16 *const gTilesetAnims_MurkwellBog_Lilypads[] = {
+    gTilesetAnims_MurkwellBog_Lilypads_Frame0,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame1,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame2,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame3,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame4,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame5,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame6,
+    gTilesetAnims_MurkwellBog_Lilypads_Frame7
+};
+
 
 static void QueueAnimTiles_MurkwellBog_SwampWater(u16 timer)
 {
     u8 i = timer % ARRAY_COUNT(gTilesetAnims_MurkwellBog_SwampWater);
-    AppendTilesetAnimToBuffer(gTilesetAnims_MurkwellBog_SwampWater[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY)), 52 * TILE_SIZE_4BPP);
+    AppendTilesetAnimToBuffer(gTilesetAnims_MurkwellBog_SwampWater[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 12)), 52 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_MurkwellBog_Lilypads(u16 timer)
+{
+    u8 i = timer % ARRAY_COUNT(gTilesetAnims_MurkwellBog_Lilypads);
+    AppendTilesetAnimToBuffer(gTilesetAnims_MurkwellBog_Lilypads[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY)), 12 * TILE_SIZE_4BPP);
 }
 
 static void TilesetAnim_MurkwellBog(u16 timer)
 {
     if (timer % 16 == 0)
         QueueAnimTiles_MurkwellBog_SwampWater(timer / 16);
+    if (timer % 16 == 1)
+        QueueAnimTiles_MurkwellBog_Lilypads(timer / 16);
 }
 
 void InitTilesetAnim_MurkwellBog(void)
