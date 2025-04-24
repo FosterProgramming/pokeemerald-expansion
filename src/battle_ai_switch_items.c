@@ -641,7 +641,7 @@ static bool32 ShouldSwitchIfBadlyStatused(u32 battler)
             if ((AISearchTraits(AIBattlerTraits, ABILITY_NATURAL_CURE)
                 || AISearchTraits(AIBattlerTraits, ABILITY_SHED_SKIN)
                 || AISearchTraits(AIBattlerTraits, ABILITY_EARLY_BIRD))
-                || holdEffect == (HOLD_EFFECT_CURE_SLP | HOLD_EFFECT_CURE_STATUS)
+                || (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE) || BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE))
                 || HasMove(battler, MOVE_SLEEP_TALK)
                 || (HasMoveEffect(battler, MOVE_SNORE) && AI_GetMoveEffectiveness(MOVE_SNORE, battler, opposingBattler) >= UQ_4_12(2.0))
                 || (IsBattlerGrounded(battler)
@@ -966,7 +966,8 @@ static bool32 ShouldSwitchIfBadChoiceLock(u32 battler)
 {
     u32 holdEffect = GetBattlerHoldEffect(battler, FALSE);
 
-    if (HOLD_EFFECT_CHOICE(holdEffect) && IsBattlerItemEnabled(battler))
+
+    if (BATTLER_IS_HOLDING_CHOICE_ITEM(battler) && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_KLUTZ))
     {
         if (GetMoveCategory(AI_DATA->lastUsedMove[battler]) == DAMAGE_CATEGORY_STATUS && RandomPercentage(RNG_AI_SWITCH_CHOICE_LOCKED, GetSwitchChance(SHOULD_SWITCH_CHOICE_LOCKED)))
                 return SetSwitchinAndSwitch(battler, PARTY_SIZE);
@@ -1375,14 +1376,14 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
     return bestMonId;
 }
 
-bool32 IsMonGrounded(u16 heldItemEffect, u32 ability, u8 type1, u8 type2, u16 species, u32 personality)
+bool32 IsMonGrounded(u8 battler, u32 ability, u8 type1, u8 type2, u16 species, u32 personality)
 {
     // List that makes mon not grounded
     if (type1 == TYPE_FLYING || type2 == TYPE_FLYING || (ability == ABILITY_LEVITATE || SpeciesHasInnate(species, ABILITY_LEVITATE, personality, TRUE))
-         || (heldItemEffect == HOLD_EFFECT_AIR_BALLOON && !(ability == ABILITY_KLUTZ || SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE) || (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM))))
+         || (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_AIR_BALLOON, TRUE) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))))
     {
         // List that overrides being off the ground
-        if ((heldItemEffect == HOLD_EFFECT_IRON_BALL && !(ability == ABILITY_KLUTZ || SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE) || (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM))) || (gFieldStatuses & STATUS_FIELD_GRAVITY))
+        if ((BattlerHeldItemHasEffect(battler, HOLD_EFFECT_IRON_BALL, TRUE) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))) || (gFieldStatuses & STATUS_FIELD_GRAVITY) || (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM))
             return TRUE;
         else
             return FALSE;
@@ -1399,19 +1400,20 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
     u32 maxHP = battleMon->maxHP, ability = battleMon->ability, status = battleMon->status1, species = battleMon->species, personality = battleMon->personality;
     u32 spikesDamage = 0, tSpikesDamage = 0, hazardDamage = 0;
     u32 hazardFlags = gSideStatuses[GetBattlerSide(battler)] & (SIDE_STATUS_SPIKES | SIDE_STATUS_STEALTH_ROCK | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES | SIDE_STATUS_SAFEGUARD);
+    bool8 heavyDutyBootsAffected = BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE);
 
     // Check ways mon might avoid all hazards
-    if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) || (heldItemEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS &&
+    if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) || (heavyDutyBootsAffected &&
         !((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || (ability == ABILITY_LEVITATE || SpeciesHasInnate(species, ABILITY_LEVITATE, personality, TRUE)))))
     {
         // Stealth Rock
-        if ((hazardFlags & SIDE_STATUS_STEALTH_ROCK) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS)
-            hazardDamage += GetStealthHazardDamageByTypesAndHP(TYPE_SIDE_HAZARD_POINTED_STONES, defType1, defType2, battleMon->maxHP);
+        if ((hazardFlags & SIDE_STATUS_STEALTH_ROCK) && !heavyDutyBootsAffected)
+            hazardDamage += GetStealthHazardDamageByTypesAndHP(gMovesInfo[MOVE_STEALTH_ROCK].type, defType1, defType2, battleMon->maxHP);
         // G-Max Steelsurge
-        if ((hazardFlags & SIDE_STATUS_STEELSURGE) && heldItemEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS)
-            hazardDamage += GetStealthHazardDamageByTypesAndHP(TYPE_SIDE_HAZARD_SHARP_STEEL, defType1, defType2, battleMon->maxHP);
+        if ((hazardFlags & SIDE_STATUS_STEELSURGE) && !heavyDutyBootsAffected)
+            hazardDamage += GetStealthHazardDamageByTypesAndHP(gMovesInfo[MOVE_G_MAX_STEELSURGE].type, defType1, defType2, battleMon->maxHP);
         // Spikes
-        if ((hazardFlags & SIDE_STATUS_SPIKES) && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality))
+        if ((hazardFlags & SIDE_STATUS_SPIKES) && IsMonGrounded(battler, ability, defType1, defType2, species, personality))
         {
             spikesDamage = maxHP / ((5 - gSideTimers[GetBattlerSide(battler)].spikesAmount) * 2);
             if (spikesDamage == 0)
@@ -1424,11 +1426,12 @@ static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon
             && (ability != ABILITY_IMMUNITY && !SpeciesHasInnate(species, ABILITY_IMMUNITY, personality, TRUE)) && (ability != ABILITY_POISON_HEAL && !SpeciesHasInnate(species, ABILITY_POISON_HEAL, personality, TRUE)) && (ability != ABILITY_COMATOSE && !SpeciesHasInnate(species, ABILITY_COMATOSE, personality, TRUE))
             && status == 0
             && !(hazardFlags & SIDE_STATUS_SAFEGUARD)
-            && !IsAbilityOnSide(battler, ABILITY_PASTEL_VEIL)
-            && !IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN)
-            && !IsAbilityStatusProtected(battler, ability)
-            && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
-            && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality)))
+            && !(IsAbilityOnSide(battler, ABILITY_PASTEL_VEIL))
+            && !(IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN))
+            && !(IsAbilityStatusProtected(battler, ability))
+            && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)
+            && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)
+            && IsMonGrounded(battler, ability, defType1, defType2, species, personality)))
         {
             tSpikesLayers = gSideTimers[GetBattlerSide(battler)].toxicSpikesAmount;
             if (tSpikesLayers == 1)
@@ -1454,11 +1457,12 @@ static s32 GetSwitchinWeatherImpact(void)
 {
     s32 weatherImpact = 0, maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, ability = AI_DATA->switchinCandidate.battleMon.ability, species = AI_DATA->switchinCandidate.battleMon.species, personality = AI_DATA->switchinCandidate.battleMon.personality;
     u32 holdEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
+    u8 battler = 0; //ToDo
 
     if (HasWeatherEffect())
     {
         // Damage
-        if (holdEffect != HOLD_EFFECT_SAFETY_GOGGLES && (ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_OVERCOAT && !SpeciesHasInnate(species, ABILITY_OVERCOAT, personality, TRUE)))
+        if (!BattlerHeldItemHasEffect(battler, HOLD_EFFECT_SAFETY_GOGGLES, TRUE) && (ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_OVERCOAT && !SpeciesHasInnate(species, ABILITY_OVERCOAT, personality, TRUE)))
         {
             if ((gBattleWeather & B_WEATHER_HAIL)
              && (AI_DATA->switchinCandidate.battleMon.types[0] != TYPE_ICE || AI_DATA->switchinCandidate.battleMon.types[1] != TYPE_ICE)
@@ -1522,22 +1526,34 @@ static u32 GetSwitchinRecurringHealing(void)
 {
     u32 recurringHealing = 0, maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, ability = AI_DATA->switchinCandidate.battleMon.ability, species = AI_DATA->switchinCandidate.battleMon.species, personality = AI_DATA->switchinCandidate.battleMon.personality;
     u32 holdEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
+    u8 battler = 0; //To Change
 
     // Items
     if (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE))
     {
-        if (holdEffect == HOLD_EFFECT_BLACK_SLUDGE && (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_POISON || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_POISON))
-        {
+        bool8 hasBlackSludge = (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_BLACK_SLUDGE, TRUE) && (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_POISON || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_POISON));
+        bool8 hasLeftovers   = BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LEFTOVERS, TRUE);
+
+        if(hasBlackSludge && hasLeftovers){
+            //Both items healing
+            recurringHealing = maxHP / 8;
+            if (recurringHealing == 0)
+                recurringHealing = 1;
+        }
+        else if(hasBlackSludge){
+            //Black Sludge effect only
             recurringHealing = maxHP / 16;
             if (recurringHealing == 0)
                 recurringHealing = 1;
         }
-        else if (holdEffect == HOLD_EFFECT_LEFTOVERS)
-        {
+        else if(hasLeftovers){
+            //Leftovers effect only
             recurringHealing = maxHP / 16;
             if (recurringHealing == 0)
                 recurringHealing = 1;
         }
+
+        //BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_LEFTOVERS, TRUE)
     } // Intentionally omitting Shell Bell for its inconsistency
 
     // Abilities
@@ -1556,17 +1572,18 @@ static u32 GetSwitchinRecurringDamage(void)
 {
     u32 passiveDamage = 0, maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, ability = AI_DATA->switchinCandidate.battleMon.ability, species = AI_DATA->switchinCandidate.battleMon.species, personality = AI_DATA->switchinCandidate.battleMon.personality;
     u32 holdEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
+    u8 battler = 0; //Placeholder
 
     // Items
     if ((ability != ABILITY_MAGIC_GUARD && !SpeciesHasInnate(species, ABILITY_MAGIC_GUARD, personality, TRUE)) && (ability != ABILITY_KLUTZ && !SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))
     {
-        if (holdEffect == HOLD_EFFECT_BLACK_SLUDGE && AI_DATA->switchinCandidate.battleMon.types[0] != TYPE_POISON && AI_DATA->switchinCandidate.battleMon.types[1] != TYPE_POISON)
+        if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_BLACK_SLUDGE, TRUE) && AI_DATA->switchinCandidate.battleMon.types[0] != TYPE_POISON && AI_DATA->switchinCandidate.battleMon.types[1] != TYPE_POISON)
         {
             passiveDamage = maxHP / 8;
             if (passiveDamage == 0)
                 passiveDamage = 1;
         }
-        else if (holdEffect == HOLD_EFFECT_LIFE_ORB && (ability != ABILITY_SHEER_FORCE && !SpeciesHasInnate(species, ABILITY_SHEER_FORCE, personality, TRUE)))
+        else if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LIFE_ORB, TRUE) && (ability != ABILITY_SHEER_FORCE && !SpeciesHasInnate(species, ABILITY_SHEER_FORCE, personality, TRUE)))
         {
             passiveDamage = maxHP / 10;
             if (passiveDamage == 0)
@@ -1636,10 +1653,11 @@ static u32 GetSwitchinStatusDamage(u32 battler)
     if (tSpikesLayers != 0 && (defType1 != TYPE_POISON && defType2 != TYPE_POISON
         && (ability != ABILITY_IMMUNITY && !SpeciesHasInnate(species, ABILITY_IMMUNITY, personality, TRUE)) && (ability != ABILITY_POISON_HEAL && !SpeciesHasInnate(species, ABILITY_POISON_HEAL, personality, TRUE))
         && status == 0
-        && !(heldItemEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS
+        && !(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_HEAVY_DUTY_BOOTS, TRUE)
             && (((gFieldStatuses & STATUS_FIELD_MAGIC_ROOM) || (ability == ABILITY_KLUTZ || SpeciesHasInnate(species, ABILITY_KLUTZ, personality, TRUE)))))
-        && heldItemEffect != HOLD_EFFECT_CURE_PSN && heldItemEffect != HOLD_EFFECT_CURE_STATUS
-        && IsMonGrounded(heldItemEffect, ability, defType1, defType2, species, personality)))
+        && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)
+        && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)
+        && IsMonGrounded(battler, ability, defType1, defType2, species, personality)))
     {
         if (tSpikesLayers == 1)
         {
@@ -1709,7 +1727,7 @@ static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler)
                 if (currentHP < maxHP / 2)
                     singleUseItemHeal = holdEffectParam;
                 break;
-            case HOLD_EFFECT_RESTORE_PCT_HP:
+            case HOLD_EFFECT_RESTORE_PCT_HP: // To Check
                 if (currentHP < maxHP / 2)
                 {
                     singleUseItemHeal = maxHP / holdEffectParam;

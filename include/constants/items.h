@@ -992,12 +992,21 @@
 #define ITEM_TWICE_SPICED_RADISH 826
 #define ITEM_POKESHI_DOLL 827
 
-#define ITEM_STRANGE_BALL 828
+#define ITEM_STRANGE_BALL       828
+//Custom Items
+#define ITEM_ETERNAL_CREST      829
+#define ITEM_HEART_OF_EVOLUTION 830
+#define ITEM_SKY_EMPEROR_CROWN  831
+#define ITEM_SKY_PIERCER        832
+#define ITEM_GLIDED_EMBLEM      833
+#define ITEM_SPECTRAL_COCOON    834
+#define ITEM_COMPOUND_SCOPE     835
+#define ITEM_BLINDING_GEM       836
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 829
+#define ITEMS_COUNT ITEM_BLINDING_GEM + 1
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

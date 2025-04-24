@@ -1336,9 +1336,10 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro unused ptr:req
+	.macro removeitemwitheffect battler:req effect:req
 	.byte 0xfd
-	.4byte \ptr
+	.byte \battler
+	.byte \effect
 	.endm
 
 	.macro tryworryseed failInstr:req
@@ -2220,8 +2221,9 @@
 	.byte \infatuateWith
 	.endm
 
-	.macro setlastuseditem battler:req
+	.macro setlastuseditem battler:req, holdEffect:req
 	various \battler, VARIOUS_SET_LAST_USED_ITEM
+	.byte \holdEffect
 	.endm
 
 	.macro jumpifabsent battler:req, jumpInstr:req

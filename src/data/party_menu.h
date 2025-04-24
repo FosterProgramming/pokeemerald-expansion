@@ -443,7 +443,7 @@ static const struct WindowTemplate sDoWhatWithItemMsgWindowTemplate =
     .bg = 2,
     .tilemapLeft = 1,
     .tilemapTop = 17,
-    .width = 20,
+    .width = 14,
     .height = 2,
     .paletteNum = 15,
     .baseBlock = 0x299,
@@ -496,12 +496,12 @@ static const struct WindowTemplate sOrderWhichApplianceMsgWindowTemplate =
 static const struct WindowTemplate sItemGiveTakeWindowTemplate =
 {
     .bg = 2,
-    .tilemapLeft = 23,
-    .tilemapTop = 13,
-    .width = 6,
-    .height = 6,
+    .tilemapLeft = 17,
+    .tilemapTop = 9,
+    .width = 12,
+    .height = 10,
     .paletteNum = 14,
-    .baseBlock = 0x39D,
+    .baseBlock = 0x340,
 };
 
 static const struct WindowTemplate sMailReadTakeWindowTemplate =
@@ -701,6 +701,9 @@ struct
     [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},
     [MENU_ITEM] = {COMPOUND_STRING("ITEM"), CursorCb_Item},
     [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
+    [MENU_GIVE_2] = {gMenuText_Give, CursorCb_Give},
+    [MENU_GIVE_3] = {gMenuText_Give, CursorCb_Give},
+    [MENU_GIVE_4] = {gMenuText_Give, CursorCb_Give},
     [MENU_TAKE_ITEM] = {COMPOUND_STRING("TAKE"), CursorCb_TakeItem},
     [MENU_MAIL] = {COMPOUND_STRING("MAIL"), CursorCb_Mail},
     [MENU_TAKE_MAIL] = {COMPOUND_STRING("TAKE"), CursorCb_TakeMail},
@@ -725,23 +728,21 @@ struct
     [MENU_CHANGE_ABILITY] = {COMPOUND_STRING("Change Ability"), CursorCb_ChangeAbility},
 };
 
-static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
-static const u8 sPartyMenuAction_ShiftSummaryCancel[] = {MENU_SHIFT, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_SendOutSummaryCancel[] = {MENU_SEND_OUT, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_SummaryCancel[] = {MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_EnterSummaryCancel[] = {MENU_ENTER, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_NoEntrySummaryCancel[] = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_StoreSummaryCancel[] = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_GiveTakeItemCancel[] = {MENU_GIVE, MENU_TAKE_ITEM, MENU_CANCEL2};
-static const u8 sPartyMenuAction_ReadTakeMailCancel[] = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL2};
+static const u8 sPartyMenuAction_SummarySwitchCancel[]   = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
+static const u8 sPartyMenuAction_ShiftSummaryCancel[]    = {MENU_SHIFT, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_SendOutSummaryCancel[]  = {MENU_SEND_OUT, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_SummaryCancel[]         = {MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_EnterSummaryCancel[]    = {MENU_ENTER, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_NoEntrySummaryCancel[]  = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_StoreSummaryCancel[]    = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_GiveTakeItemCancel[]    = {MENU_GIVE, MENU_GIVE_2, MENU_GIVE_3, MENU_GIVE_4, MENU_CANCEL2};
+static const u8 sPartyMenuAction_ReadTakeMailCancel[]    = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL2};
 static const u8 sPartyMenuAction_RegisterSummaryCancel[] = {MENU_REGISTER, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TradeSummaryCancel1[] = {MENU_TRADE1, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
-static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
-static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
-
-
+static const u8 sPartyMenuAction_TradeSummaryCancel1[]   = {MENU_TRADE1, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_TradeSummaryCancel2[]   = {MENU_TRADE2, MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_TakeItemTossCancel[]    = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
+static const u8 sPartyMenuAction_RotomCatalog[]          = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
+static const u8 sPartyMenuAction_ZygardeCube[]           = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
 
 static const u8 *const sPartyMenuActions[] =
 {
