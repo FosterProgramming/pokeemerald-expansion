@@ -359,5 +359,16 @@ bool32 HasWeatherEffect(void);
 bool32 IsMovePowderBlocked(u32 battlerAtk, u32 battlerDef, u32 move);
 bool32 EmergencyExitCanBeTriggered(u32 battler);
 u32 RestoreWhiteHerbStats(u32 battler);
+//Multiple Held Items Stuff
+bool8 BattlerHeldItemHasEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
+u16 GetBattlerHeldItemWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
+u8 GetHeldItemSlotWithEffect(u32 battler, u32 holdEffect, bool32 checkNegating);
+u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating);
+bool8 hasHeartOfEvolutionEffect(u32 battler);
+bool8 hasSkyEmperorCrownEffect(u32 battler);
+bool8 hasSkyPiercerEffect(u32 battler);
+bool8 hasGlidedEmblemEffect(u32 battler);
+bool8 hasSpectralCocoonEffect(u32 battler);
+bool8 hasEternalCrestEffect(u32 battler);
 
 #endif // GUARD_BATTLE_UTIL_H

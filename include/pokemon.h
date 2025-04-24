@@ -33,6 +33,9 @@ enum {
     MON_DATA_NICKNAME10,
     MON_DATA_SPECIES,
     MON_DATA_HELD_ITEM,
+    MON_DATA_HELD_ITEM_2,
+    MON_DATA_HELD_ITEM_3,
+    MON_DATA_HELD_ITEM_4,
     MON_DATA_MOVE1,
     MON_DATA_MOVE2,
     MON_DATA_MOVE3,
@@ -127,15 +130,15 @@ struct PokemonSubstruct0
     u16 species:11; // 2047 species.
     u16 teraType:5; // 30 types.
     u16 heldItem:10; // 1023 items.
-    u16 unused_02:6;
+    u16 unused_01:6;
     u32 experience:21;
     u32 nickname11:8; // 11th character of nickname.
-    u32 unused_04:3;
+    u32 unused_02:3;
     u8 ppBonuses;
     u8 friendship;
     u16 pokeball:6; // 63 balls.
     u16 nickname12:8; // 12th character of nickname.
-    u16 unused_0A:2;
+    u16 unused_03:2;
 };
 
 struct PokemonSubstruct1
@@ -147,7 +150,7 @@ struct PokemonSubstruct1
     u16 move3:11; // 2047 moves.
     u16 unused_04:5;
     u16 move4:11; // 2047 moves.
-    u16 unused_06:3;
+    u16 unused_05:3;
     u16 hyperTrainedHP:1;
     u16 hyperTrainedAttack:1;
     u8 pp1:7; // 127 PP.
@@ -168,12 +171,11 @@ struct PokemonSubstruct2
     u8 speedEV;
     u8 spAttackEV;
     u8 spDefenseEV;
-    u8 cool;
-    u8 beauty;
-    u8 cute;
-    u8 smart;
-    u8 tough;
-    u8 sheen;
+    u32 heldItem2:10;
+    u32 heldItem3:10;
+    u32 heldItem4:10;
+    u32 unused_06:2;
+    u8 unused_07;
 };
 
 struct PokemonSubstruct3
@@ -334,6 +336,9 @@ struct BattlePokemon
     /*0x2C*/ u8 friendship;
     /*0x2D*/ u16 maxHP;
     /*0x2F*/ u16 item;
+             u16 item2;
+             u16 item3;
+             u16 item4;
     /*0x31*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
     /*0x3C*/ u8 ppBonuses;
     /*0x3D*/ u8 otName[PLAYER_NAME_LENGTH + 1];
@@ -814,6 +819,9 @@ u32 CheckDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler);
 uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier);
 u32 GetRegionalFormByRegion(u32 species, u32 region);
 bool32 IsSpeciesForeignRegionalForm(u32 species, u32 currentRegion);
+u8 MonItemHasHoldEffect(struct Pokemon *mon, u16 holdEffect);
+u8 BoxMonItemHasHoldEffect(struct BoxPokemon *mon, u16 holdEffect);
+u8 GetNumOfHeldItems(struct Pokemon *mon);
 
 u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerandomizer);
 u16 GetSpeciesInnate(u16 species, u8 traitNum, u32 personality, bool8 disablerandomizer);

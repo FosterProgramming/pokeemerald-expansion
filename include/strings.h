@@ -2423,6 +2423,8 @@ extern const u8 gText_CannotSendMonToBoxHM[];
 
 //New Summary Pages
 extern const u8 gText_PkmnTraits[];
+extern const u8 gText_PkmnMemos[];
+extern const u8 gText_PkmnItems[];
 
 //New Multichoice Strings
 extern const u8 gText_Zero[];

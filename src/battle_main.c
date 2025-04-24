@@ -4077,7 +4077,7 @@ u8 IsRunningFromBattleImpossible(u32 battler)
         return BATTLE_RUN_FORBIDDEN;
     }
 
-    if (holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN)
+    if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CAN_ALWAYS_RUN, TRUE))
         return BATTLE_RUN_SUCCESS;
     if (B_GHOSTS_ESCAPE >= GEN_6 && IS_BATTLER_OF_TYPE(battler, TYPE_GHOST))
         return BATTLE_RUN_SUCCESS;
@@ -4763,14 +4763,14 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
     // weather abilities
     if (HasWeatherEffect())
     {
-        if (SearchTraits(battlerTraits, ABILITY_SWIFT_SWIM)  && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_RAIN)
-            speed += baseSpeed;
-        if (SearchTraits(battlerTraits, ABILITY_CHLOROPHYLL) && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_SUN)
-            speed += baseSpeed;
-        if (SearchTraits(battlerTraits, ABILITY_SAND_RUSH)   && gBattleWeather & B_WEATHER_SANDSTORM)
-            speed += baseSpeed;
-        if (SearchTraits(battlerTraits, ABILITY_SLUSH_RUSH)  && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
-            speed += baseSpeed;
+        if (SearchTraits(battlerTraits, ABILITY_SWIFT_SWIM)       && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE) && gBattleWeather & B_WEATHER_RAIN)
+            speed *= 2;
+        else if (SearchTraits(battlerTraits, ABILITY_CHLOROPHYLL) && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE) && gBattleWeather & B_WEATHER_SUN)
+            speed *= 2;
+        else if (SearchTraits(battlerTraits, ABILITY_SAND_RUSH)   && gBattleWeather & B_WEATHER_SANDSTORM)
+            speed *= 2;
+        else if (SearchTraits(battlerTraits, ABILITY_SLUSH_RUSH)  && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
+            speed *= 2;
     }
 
     // other abilities
@@ -4798,11 +4798,11 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
     }
 
     // item effects
-    if (holdEffect == HOLD_EFFECT_MACHO_BRACE || holdEffect == HOLD_EFFECT_POWER_ITEM)
+    if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MACHO_BRACE, TRUE) || holdEffect == HOLD_EFFECT_POWER_ITEM)
         speed /= 2;
-    if (holdEffect == HOLD_EFFECT_IRON_BALL)
+    else if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_IRON_BALL, TRUE))
         speed /= 2;
-    if (holdEffect == HOLD_EFFECT_CHOICE_SCARF && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
+    else if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CHOICE_SCARF, TRUE) && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
         speed = (speed * 150) / 100;
     if (holdEffect == HOLD_EFFECT_QUICK_POWDER && gBattleMons[battler].species == SPECIES_DITTO && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED))
         speed *= 2;
@@ -4903,9 +4903,9 @@ s32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
             strikesFirst = 1;
         else if (battler2HasQuickEffect && !battler1HasQuickEffect)
             strikesFirst = -1;
-        else if (holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler2 != HOLD_EFFECT_LAGGING_TAIL)
+        else if (BattlerHeldItemHasEffect(battler1, HOLD_EFFECT_IRON_BALL, TRUE) && !BattlerHeldItemHasEffect(battler2, HOLD_EFFECT_IRON_BALL, TRUE))
             strikesFirst = -1;
-        else if (holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler1 != HOLD_EFFECT_LAGGING_TAIL)
+        else if (BattlerHeldItemHasEffect(battler2, HOLD_EFFECT_IRON_BALL, TRUE) && !BattlerHeldItemHasEffect(battler1, HOLD_EFFECT_IRON_BALL, TRUE))
             strikesFirst = 1;
         else if (battler1HasStallingAbility && !battler2HasStallingAbility)
             strikesFirst = -1;
@@ -5304,8 +5304,8 @@ static void TryChangingTurnOrderEffects(u32 battler1, u32 battler2, u32 *quickCl
         gProtectStructs[battler1].quickDraw = TRUE;
     // Quick Claw and Custap Berry
     if (!gProtectStructs[battler1].quickDraw
-     && ((holdEffectBattler1 == HOLD_EFFECT_QUICK_CLAW && quickClawRandom[battler1])
-     || (holdEffectBattler1 == HOLD_EFFECT_CUSTAP_BERRY && HasEnoughHpToEatBerry(battler1, 4, gBattleMons[battler1].item))))
+     && ((BattlerHeldItemHasEffect(battler1, HOLD_EFFECT_QUICK_CLAW, TRUE)  && quickClawRandom[battler1])
+     || (BattlerHeldItemHasEffect(battler1, HOLD_EFFECT_CUSTAP_BERRY, TRUE) && HasEnoughHpToEatBerry(battler1, 4, gBattleMons[battler1].item))))
         gProtectStructs[battler1].usedCustapBerry = TRUE;
 
     // Battler 2
@@ -5314,8 +5314,8 @@ static void TryChangingTurnOrderEffects(u32 battler1, u32 battler2, u32 *quickCl
         gProtectStructs[battler2].quickDraw = TRUE;
     // Quick Claw and Custap Berry
     if (!gProtectStructs[battler2].quickDraw
-     && ((holdEffectBattler2 == HOLD_EFFECT_QUICK_CLAW && quickClawRandom[battler2])
-     || (holdEffectBattler2 == HOLD_EFFECT_CUSTAP_BERRY && HasEnoughHpToEatBerry(battler2, 4, gBattleMons[battler2].item))))
+     && ((BattlerHeldItemHasEffect(battler2, HOLD_EFFECT_QUICK_CLAW,   TRUE) && quickClawRandom[battler2])
+      || (BattlerHeldItemHasEffect(battler2, HOLD_EFFECT_CUSTAP_BERRY, TRUE) && HasEnoughHpToEatBerry(battler2, 4, gBattleMons[battler2].item))))
         gProtectStructs[battler2].usedCustapBerry = TRUE;
 }
 
@@ -5864,6 +5864,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
     u32 moveType = GetMoveType(move);
     u32 moveEffect = GetMoveEffect(move);
     u32 species, heldItem, holdEffect, ability, type1, type2, type3;
+    bool8 utilityUmbrellaAffected = FALSE;
     bool32 monInBattle = gMain.inBattle && gPartyMenu.menuType != PARTY_MENU_TYPE_IN_BATTLE;
 
     if (move == MOVE_STRUGGLE)
@@ -5878,6 +5879,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
         type1 = gBattleMons[battler].types[0];
         type2 = gBattleMons[battler].types[1];
         type3 = gBattleMons[battler].types[2];
+        utilityUmbrellaAffected = BattlerHeldItemHasEffect(battler, HOLD_EFFECT_UTILITY_UMBRELLA, TRUE);
     }
     else
     {
@@ -5888,6 +5890,7 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
         type1 = gSpeciesInfo[species].types[0];
         type2 = gSpeciesInfo[species].types[1];
         type3 = TYPE_MYSTERY;
+        utilityUmbrellaAffected = MonItemHasHoldEffect(mon, HOLD_EFFECT_UTILITY_UMBRELLA);
     }
 
     switch (moveEffect)
@@ -5897,11 +5900,11 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
         {
             if (HasWeatherEffect())
             {
-                if (gBattleWeather & B_WEATHER_RAIN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
+                if (gBattleWeather & B_WEATHER_RAIN && !utilityUmbrellaAffected)
                     return TYPE_WATER;
                 else if (gBattleWeather & B_WEATHER_SANDSTORM)
                     return TYPE_ROCK;
-                else if (gBattleWeather & B_WEATHER_SUN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
+                else if (gBattleWeather & B_WEATHER_SUN && !utilityUmbrellaAffected)
                     return TYPE_FIRE;
                 else if (gBattleWeather & (B_WEATHER_SNOW | B_WEATHER_HAIL))
                     return TYPE_ICE;
@@ -5914,13 +5917,12 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
             switch (gWeatherPtr->currWeather)
             {
             case WEATHER_DROUGHT:
-                if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
+                if (!utilityUmbrellaAffected)
                     return TYPE_FIRE;
                 break;
             case WEATHER_RAIN:
             case WEATHER_RAIN_THUNDERSTORM:
-            case WEATHER_DOWNPOUR:
-                if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
+                if (!utilityUmbrellaAffected)
                     return TYPE_WATER;
                 break;
             case WEATHER_SNOW:

@@ -55,7 +55,7 @@
 #include "constants/songs.h"
 
 // Screen titles (upper left)
-#define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE 0
+#define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE   0
 #define PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE 1
 #define PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE 2
 #define PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE 3
@@ -166,6 +166,9 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u16 spdef; // 0x2A
         u16 speed; // 0x2C
         u16 item; // 0x2E
+        u16 item2;
+        u16 item3;
+        u16 item4;
         u16 friendship; // 0x30
         u8 OTGender; // 0x32
         u8 nature; // 0x33
@@ -272,6 +275,7 @@ static void PrintMonOTID(void);
 static void PrintMonAbilityName(void);
 static void PrintMonAbilityDescription(void);
 static void PrintMonTraits(u8);
+static void PrintMonItems(u8);
 static void BufferMonTrainerMemo(void);
 static void PrintMonTrainerMemo(void);
 static void BufferNatureString(void);
@@ -347,7 +351,8 @@ static u8 IncrementSkillsStatsMode(u8 mode);
 static void ClearStatLabel(u32 length, u32 statsCoordX, u32 statsCoordY);
 static void PrintTraits(void);
 static void Task_PrintTraits(u8);
-
+static void PrintItems(void);
+static void Task_PrintItems(u8);
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -491,15 +496,6 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .paletteNum = 7,
         .baseBlock = 165,
     },
-    [PSS_LABEL_WINDOW_UNUSED1] = {
-        .bg = 0,
-        .tilemapLeft = 11,
-        .tilemapTop = 4,
-        .width = 0,
-        .height = 2,
-        .paletteNum = 6,
-        .baseBlock = 181,
-    },
     [PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL] = {
         .bg = 0,
         .tilemapLeft = 11,
@@ -608,9 +604,19 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .paletteNum = 6,
         .baseBlock = 475,
     },
+    /*[PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE] = {
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 0,
+        .width = 11,
+        .height = 2,
+        .paletteNum = 6,
+        .baseBlock = 470,
+    },*/
     [PSS_LABEL_WINDOW_END] = DUMMY_WIN_TEMPLATE
 };
-static const int TempOffset = ((511) - 459); //offest to make template calculations easier
+
+static const int TempOffset = ((459) - 459); //offest to make template calculations easier
 
 static const struct WindowTemplate sPageInfoTemplate[] =
 {
@@ -795,6 +801,7 @@ static void (*const sTextPrinterFunctions[])(void) =
 {
     [PSS_PAGE_INFO] = PrintInfoPageText,
     [PSS_PAGE_TRAITS] = PrintTraits,
+    [PSS_PAGE_ITEMS] = PrintItems,
     [PSS_PAGE_SKILLS] = PrintSkillsPageText,
     [PSS_PAGE_BATTLE_MOVES] = PrintBattleMoves,
     [PSS_PAGE_CONTEST_MOVES] = PrintContestMoves
@@ -804,6 +811,7 @@ static void (*const sTextPrinterTasks[])(u8 taskId) =
 {
     [PSS_PAGE_INFO] = Task_PrintInfoPage,
     [PSS_PAGE_TRAITS] = Task_PrintTraits,
+    [PSS_PAGE_ITEMS] = Task_PrintItems,
     [PSS_PAGE_SKILLS] = Task_PrintSkillsPage,
     [PSS_PAGE_BATTLE_MOVES] = Task_PrintBattleMoves,
     [PSS_PAGE_CONTEST_MOVES] = Task_PrintContestMoves
@@ -1496,6 +1504,7 @@ static bool8 DecompressGraphics(void)
         break;
     case 3:
         LZDecompressWram(gSummaryPage_Traits_Tilemap, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_TRAITS][1]);
+        LZDecompressWram(gSummaryPage_Items_Tilemap, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_ITEMS][1]);
         sMonSummaryScreen->switchCounter++;
         break;
     case 4:
@@ -1573,6 +1582,9 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->level = GetMonData(mon, MON_DATA_LEVEL);
         sum->abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM);
         sum->item = GetMonData(mon, MON_DATA_HELD_ITEM);
+        sum->item2 = GetMonData(mon, MON_DATA_HELD_ITEM_2);
+        sum->item3 = GetMonData(mon, MON_DATA_HELD_ITEM_3);
+        sum->item4 = GetMonData(mon, MON_DATA_HELD_ITEM_4);
         sum->pid = GetMonData(mon, MON_DATA_PERSONALITY);
         sum->sanity = GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG);
 
@@ -3311,7 +3323,7 @@ static void PrintPageNamesAndStats(void)
     PrintTextOnWindow(PSS_LABEL_WINDOW_MOVES_POWER_ACC, gText_Accuracy2, 0, 17, 0, 1);
     PrintTextOnWindow(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM, gText_Appeal, 0, 1, 0, 1);
     PrintTextOnWindow(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM, gText_Jam, 0, 17, 0, 1);
-    PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_RELEARN, gText_Relearn, 0, 4, 0, 0, FONT_SMALL);
+    //PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_RELEARN, gText_Relearn, 0, 4, 0, 0, FONT_SMALL);
 }
 
 static void PutPageWindowTilemaps(u8 page)
@@ -3320,6 +3332,7 @@ static void PutPageWindowTilemaps(u8 page)
 
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
+    //ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE);
@@ -3335,6 +3348,10 @@ static void PutPageWindowTilemaps(u8 page)
         break;
     case PSS_PAGE_TRAITS:
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
+        break;
+    case PSS_PAGE_ITEMS:
+        PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_TRAITS_TITLE);
+        //PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_ITEMS_TITLE);
         break;
     case PSS_PAGE_SKILLS:
         PutWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE);
@@ -3393,6 +3410,9 @@ static void ClearPageWindowTilemaps(u8 page)
         ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_INFO_TYPE);
         break;
     case PSS_PAGE_TRAITS:
+    case PSS_PAGE_ITEMS:
+      //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT);
+      //  ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT);
         break;
     case PSS_PAGE_SKILLS:
         ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT);
@@ -3806,9 +3826,70 @@ static void PrintMonTraits(u8 innateIndex)
     }
 }
 
+static void PrintItems(void)
+{
+    PrintMonItems(0);
+    PrintMonItems(1);
+    PrintMonItems(2);
+    PrintMonItems(3);
+}
+
+static void Task_PrintItems(u8 taskId)
+{
+    s16* data = gTasks[taskId].data;
+
+    switch (data[0])
+    {
+    case 1:
+        PrintMonItems(0);
+        break;
+    case 2:
+        PrintMonItems(1);
+        break;
+    case 3:
+        PrintMonItems(2);
+        break;
+    case 4:
+        PrintMonItems(3);
+        break;
+    case 5:
+        DestroyTask(taskId);
+        return;
+    }
+    data[0]++;
+}
+
+static void PrintMonItems(u8 itemIndex)
+{
+    u16 heldItem = 0;
+    u8 font = FONT_SMALL_NARROW;
+    struct PokeSummary* sum = &sMonSummaryScreen->summary;
+
+    switch(itemIndex){
+        case 0:
+            heldItem = sum->item;
+        break;
+        case 1:
+            heldItem = sum->item2;
+        break;
+        case 2:
+            heldItem = sum->item3;
+        break;
+        case 3:
+            heldItem = sum->item4;
+        break;
+    }
+    int x = GetStringRightAlignXOffset(font, gItemsInfo[heldItem].name, 18 * 8);
+    int y = (itemIndex * 32);
+    PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS1), gItemsInfo[heldItem].name, x, y + 8, 0, 1, font);
+    y += 16;
+
+    if (heldItem != 0)
+        PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageTraitsTemplate, PSS_DATA_WINDOW_TRAITS1), gItemsInfo[heldItem].description, 0, y - 12, 0, 0, font);
+}
+
 static void PrintSkillsPageText(void)
 {
-    PrintHeldItemName();
     PrintRibbonCount();
     if(ShouldShowIvEvPrompt())
         ShowUtilityPrompt(SUMMARY_SKILLS_MODE_STATS);
@@ -3826,9 +3907,6 @@ static void Task_PrintSkillsPage(u8 taskId)
     switch (data[0])
     {
     case 1:
-        PrintHeldItemName();
-        break;
-    case 2:
         PrintRibbonCount();
         break;
     case 3:
@@ -3858,7 +3936,7 @@ static void Task_PrintSkillsPage(u8 taskId)
 
 static void PrintHeldItemName(void)
 {
-    const u8 *text;
+    /*const u8 *text;
     u32 fontId;
     int x;
 
@@ -3880,7 +3958,7 @@ static void PrintHeldItemName(void)
 
     fontId = GetFontIdToFit(text, FONT_NORMAL, 0, WindowTemplateWidthPx(&sPageSkillsTemplate[PSS_DATA_WINDOW_SKILLS_HELD_ITEM]) - 8);
     x = GetStringCenterAlignXOffset(fontId, text, 72) + 6;
-    PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 0, fontId);
+    PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 0, fontId);*/
 }
 
 static void PrintRibbonCount(void)
@@ -3900,7 +3978,7 @@ static void PrintRibbonCount(void)
     }
 
     x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 6;
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 1);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 1);
 }
 
 static void BufferStat(u8 *dst, u8 statIndex, u32 stat, u32 strId, u32 n)

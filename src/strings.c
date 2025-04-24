@@ -1299,6 +1299,7 @@ const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbec
 //New Summary Screen Pages
 const u8 gText_PkmnTraits[] = _("TRAITS");
 const u8 gText_PkmnMemos[] = _("MEMOS");
+const u8 gText_PkmnItems[] = _("HELD ITEMS");
 
 //New Multichoice Strings
 const u8 gText_Zero[] = _("0");
