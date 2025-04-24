@@ -2399,6 +2399,8 @@ u8 DoBattlerEndTurnEffects(void)
              && IsBattlerAlive(battler))
             {
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, GetNonDynamaxMaxHP(battler) / 16);
+                if(hasEternalCrestEffect(battler))
+                    gBattleMoveDamage *= 2;
                 BattleScriptExecute(BattleScript_IngrainTurnHeal);
                 effect++;
             }
@@ -2411,6 +2413,8 @@ u8 DoBattlerEndTurnEffects(void)
              && IsBattlerAlive(battler))
             {
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, GetNonDynamaxMaxHP(battler) / 16);
+                if(hasEternalCrestEffect(battler))
+                    gBattleMoveDamage *= 2;
                 BattleScriptExecute(BattleScript_AquaRingHeal);
                 effect++;
             }
@@ -2457,6 +2461,10 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleScripting.animArg2 = gBattlerAttacker;
                 gBattleMoveDamage = max(1, GetNonDynamaxMaxHP(battler) / 8);
                 gHitMarker |= HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE;
+
+                if(hasEternalCrestEffect(battler))
+                    gBattleMoveDamage *= 2;
+                
                 if (BattlerHasTrait(battler, ABILITY_LIQUID_OOZE))
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_OOZE;
@@ -2485,6 +2493,10 @@ u8 DoBattlerEndTurnEffects(void)
                     if (!BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                     {
                         gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 8;
+
+                        if(hasEternalCrestEffect(battler))
+                            gBattleMoveDamage *= 2;
+                        
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -5275,6 +5287,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInTraitDone[traitCheck] = TRUE;
                 gBattlerAttacker = battler;
                 gBattleMoveDamage = (GetNonDynamaxMaxHP(partner) / 4) * -1;
+                if(hasEternalCrestEffect(partner))
+                    gBattleMoveDamage *= 2;
                 PushTraitStack(battler, ABILITY_HOSPITALITY);
                 BattleScriptPushCursorAndCallback(BattleScript_HospitalityActivates);
                 effect++;
@@ -5433,6 +5447,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     PushTraitStack(battler, ABILITY_DRY_SKIN);
                     BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
                     gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 8;
+                    if(hasEternalCrestEffect(battler))
+                        gBattleMoveDamage *= 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -5447,6 +5463,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PushTraitStack(battler, ABILITY_RAIN_DISH);
                 BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
                 gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+                if(hasEternalCrestEffect(battler))
+                    gBattleMoveDamage *= 2;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
@@ -5550,6 +5568,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 SOLAR_POWER_HP_DROP:
                     BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivates);
                     gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 8;
+                    if(hasEternalCrestEffect(battler))
+                        gBattleMoveDamage *= 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     effect++;
@@ -5724,6 +5744,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         gBattlescriptCurrInstr = BattleScript_MoveHPDrain_PPLoss;
 
                     gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 4;
+                    if(hasEternalCrestEffect(battler))
+                        gBattleMoveDamage *= 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -6552,6 +6574,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
               && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)))
             {
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 10;
+                if(hasEternalCrestEffect(gBattlerAttacker))
+                    gBattleMoveDamage *= 2;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
@@ -7268,6 +7292,10 @@ static enum ItemEffect HealConfuseBerry(u32 battler, u32 itemId, u32 flavorId, e
         PREPARE_FLAVOR_BUFFER(gBattleTextBuff1, flavorId);
 
         gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / GetBattlerItemHoldEffectParam(battler, itemId);
+
+        if(hasEternalCrestEffect(battler))
+            gBattleMoveDamage *= 2;
+
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
         gBattleMoveDamage *= -1;
@@ -7550,6 +7578,9 @@ static u32 ItemHealHp(u32 battler, u32 itemId, enum ItemCaseId caseID, bool32 pe
             gBattleMoveDamage = (GetNonDynamaxMaxHP(battler) * GetBattlerItemHoldEffectParam(battler, itemId) / 100) * -1;
         else
             gBattleMoveDamage = GetBattlerItemHoldEffectParam(battler, itemId) * -1;
+
+        if(hasEternalCrestEffect(battler))
+            gBattleMoveDamage *= 2;
 
         // check ripen
         if (ItemId_GetPocket(itemId) == POCKET_BERRIES && BattlerHasTrait(battler, ABILITY_RIPEN))
@@ -8294,6 +8325,8 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                   && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                 {
                     gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+                    if(hasEternalCrestEffect(battler))
+                        gBattleMoveDamage *= 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -8311,6 +8344,10 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                     {
                         gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+
+                        if(hasEternalCrestEffect(battler))
+                            gBattleMoveDamage *= 2;
+                        
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -8648,6 +8685,8 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 gPotentialItemEffectBattler = gBattlerAttacker;
                 gBattleScripting.battler = gBattlerAttacker;
                 gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].shellBellDmg / atkHoldEffectParam) * -1;
+                if(hasEternalCrestEffect(gBattlerTarget))
+                    gBattleMoveDamage *= 2;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = -1;
                 gSpecialStatuses[gBattlerTarget].shellBellDmg = 0;
@@ -8812,6 +8851,8 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (BattlerHasTrait(battler, ABILITY_RIPEN))
+                        gBattleMoveDamage *= 2;
+                    if(hasEternalCrestEffect(battler))
                         gBattleMoveDamage *= 2;
 
                     effect = ITEM_HP_CHANGE;

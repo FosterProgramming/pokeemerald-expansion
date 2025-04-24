@@ -8421,6 +8421,8 @@ static bool32 TryCheekPouch(u32 battler, u32 itemId)
         && !BATTLER_MAX_HP(battler))
     {
         gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 3;
+        if(hasEternalCrestEffect(battler))
+            gBattleMoveDamage *= 2;
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
         gBattleMoveDamage *= -1;
@@ -9534,6 +9536,9 @@ static void Cmd_various(void)
             case HOLD_EFFECT_SPECTRAL_COCOON:
                 hasEffect = hasSpectralCocoonEffect(battler);
             break;
+            case HOLD_EFFECT_ETERNAL_CREST:
+                hasEffect = hasEternalCrestEffect(battler);
+            break;
             default:
                 hasEffect = BattlerHeldItemHasEffect(battler, cmd->holdEffect, TRUE);
             break;
@@ -9723,6 +9728,8 @@ static void Cmd_various(void)
         else
         {
             gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+            if(hasEternalCrestEffect(battler))
+                gBattleMoveDamage *= 2;
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             gBattleMoveDamage *= -1;
@@ -10860,6 +10867,8 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *failInstr);
         gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 4;
+        if(hasEternalCrestEffect(battler))
+            gBattleMoveDamage *= 2;
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
         gBattleMoveDamage *= -1;
@@ -11502,6 +11511,10 @@ static void Cmd_tryhealhalfhealth(void)
         gBattlerTarget = gBattlerAttacker;
 
     gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 2;
+
+    if(hasEternalCrestEffect(gBattlerTarget))
+        gBattleMoveDamage = gBattleMoveDamage * 2;
+    
     if (gBattleMoveDamage == 0)
         gBattleMoveDamage = 1;
     gBattleMoveDamage *= -1;
@@ -11892,6 +11905,8 @@ static void Cmd_stockpiletohpheal(void)
                 gBattleScripting.animTurn = 1;
             }
 
+            if(hasEternalCrestEffect(gBattlerAttacker))
+                gBattleMoveDamage *= 2;
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             gBattleMoveDamage *= -1;
@@ -13937,6 +13952,8 @@ static void Cmd_presentdamagecalculation(void)
         else
         {
             gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 4;
+            if(hasEternalCrestEffect(gBattlerTarget))
+                gBattleMoveDamage *= 2;
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             gBattleMoveDamage *= -1;
@@ -14217,6 +14234,9 @@ static void Cmd_recoverbasedonsunlight(void)
             else // not sunny weather
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
         }
+
+        if(hasEternalCrestEffect(gBattlerAttacker))
+            gBattleMoveDamage = gBattleMoveDamage * 2;
 
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
@@ -14773,6 +14793,9 @@ static void Cmd_trywish(void)
             gBattleMoveDamage = max(1, GetNonDynamaxMaxHP(gBattlerAttacker) / 2);
         }
 
+        if(hasEternalCrestEffect(gBattlerTarget))
+            gBattleMoveDamage *= 2;
+
         gBattleMoveDamage *= -1;
         if (gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
             gBattlescriptCurrInstr = cmd->failInstr;
@@ -15129,6 +15152,8 @@ static void Cmd_switchoutabilities(void)
         if (BattlerHasTrait(battler, ABILITY_REGENERATOR))
         {
             gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 3;
+            if(hasEternalCrestEffect(battler))
+                gBattleMoveDamage *= 2;
             gBattleMoveDamage += gBattleMons[battler].hp;
             if (gBattleMoveDamage > gBattleMons[battler].maxHP)
                 gBattleMoveDamage = gBattleMons[battler].maxHP;
@@ -17284,6 +17309,9 @@ void BS_TryHealPulse(void)
             gBattleMoveDamage = -(GetNonDynamaxMaxHP(gBattlerTarget) * 2 / 3);
         else
             gBattleMoveDamage = -(GetNonDynamaxMaxHP(gBattlerTarget) / 2);
+
+        if(hasEternalCrestEffect(gBattlerTarget))
+            gBattleMoveDamage = gBattleMoveDamage * 2;
 
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = -1;
