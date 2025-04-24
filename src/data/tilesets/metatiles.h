@@ -216,3 +216,30 @@ const u16 gMetatileAttributes_DunemireDesertSecondary[] = INCBIN_U16("data/tiles
 
 const u16 gMetatiles_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatiles.bin");
 const u16 gMetatileAttributes_GeneralSeelVersion[] = INCBIN_U16("data/tilesets/primary/general_seel_version/metatile_attributes.bin");
+
+const u16 gMetatiles_VerdantHallow[] = INCBIN_U16("data/tilesets/secondary/verdant_hallow/metatiles.bin");
+const u16 gMetatileAttributes_VerdantHallow[] = INCBIN_U16("data/tilesets/secondary/verdant_hallow/metatile_attributes.bin");
+
+const u16 gMetatiles_MurkwellBog[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/metatiles.bin");
+const u16 gMetatileAttributes_MurkwellBog[] = INCBIN_U16("data/tilesets/secondary/murkwell_bog/metatile_attributes.bin");
+
+const u16 gMetatiles_Pyroden[] = INCBIN_U16("data/tilesets/secondary/pyroden/metatiles.bin");
+const u16 gMetatileAttributes_Pyroden[] = INCBIN_U16("data/tilesets/secondary/pyroden/metatile_attributes.bin");
+
+const u16 gMetatiles_DominionCity[] = INCBIN_U16("data/tilesets/secondary/dominion_city/metatiles.bin");
+const u16 gMetatileAttributes_DominionCity[] = INCBIN_U16("data/tilesets/secondary/dominion_city/metatile_attributes.bin");
+
+const u16 gMetatiles_IntroCave[] = INCBIN_U16("data/tilesets/secondary/intro_cave/metatiles.bin");
+const u16 gMetatileAttributes_IntroCave[] = INCBIN_U16("data/tilesets/secondary/intro_cave/metatile_attributes.bin");
+
+const u16 gMetatiles_Driftshore[] = INCBIN_U16("data/tilesets/secondary/driftshore/metatiles.bin");
+const u16 gMetatileAttributes_Driftshore[] = INCBIN_U16("data/tilesets/secondary/driftshore/metatile_attributes.bin");
+
+const u16 gMetatiles_VoltbrookTown[] = INCBIN_U16("data/tilesets/secondary/voltbrook_town/metatiles.bin");
+const u16 gMetatileAttributes_VoltbrookTown[] = INCBIN_U16("data/tilesets/secondary/voltbrook_town/metatile_attributes.bin");
+
+const u16 gMetatiles_MagaLabExitRoom[] = INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/metatiles.bin");
+const u16 gMetatileAttributes_MagaLabExitRoom[] = INCBIN_U16("data/tilesets/secondary/maga_lab_exit_room/metatile_attributes.bin");
+
+const u16 gMetatiles_NaturalInterior[] = INCBIN_U16("data/tilesets/secondary/natural_interior/metatiles.bin");
+const u16 gMetatileAttributes_NaturalInterior[] = INCBIN_U16("data/tilesets/secondary/natural_interior/metatile_attributes.bin");

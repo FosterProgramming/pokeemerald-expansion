@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CableClub_EventScript_MysteryGiftMan",
-      "flag": "FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN"
+      "flag": "FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON"
     }
   ],
   "warp_events": [
@@ -72,7 +72,7 @@
       "x": 1,
       "y": 6,
       "elevation": 4,
-      "dest_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
+      "dest_map": "MAP_MURKWELL_BOG_INN",
       "dest_warp_id": "2"
     },
     {

@@ -86,10 +86,10 @@ Debug_CheatGiveHeldItems::
 Debug_CheatStart::
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	setflag FLAG_HIDE_ROUTE_13_MAGA_GRUNT
 	setflag FLAG_ADVENTURE_STARTED
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setflag FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE
 	setvar VAR_BIRCH_LAB_STATE, 2
 	setvar VAR_ROUTE101_STATE, 3
 	givemon SPECIES_TREECKO, 20, ITEM_NONE
@@ -103,10 +103,10 @@ Debug_CheatStart::
 	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
-	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
+	setvar VAR_VOLTBROOK_TOWN_STATE, 4 @ 4: Received Running Shoes
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 7 @ 7: Told to go meet rival
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
+	setvar VAR_MURKWELL_BOG_STATE, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4 @ 4: Received Pokedex
 	setflag FLAG_RECEIVED_BIKE
 	additem ITEM_ACRO_BIKE
@@ -212,26 +212,72 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	setflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_NYX_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_ACE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_TALON_PARTY_MEMBER
 	release
 	end
 
 Debug_EventScript_Script_2::
+	goto_if_set FLAG_HIDE_STRATOSCAPE_DRAKE, Debug_EventScript_Script_2_ClearFlag
+	goto_if_unset FLAG_HIDE_STRATOSCAPE_DRAKE, Debug_EventScript_Script_2_SetFlag
+
+	Debug_EventScript_Script_2_SetFlag:
+	setflag FLAG_HIDE_STRATOSCAPE_DRAKE
+	release
+	end
+
+	Debug_EventScript_Script_2_ClearFlag:
+	clearflag FLAG_HIDE_STRATOSCAPE_DRAKE
 	release
 	end
 
 Debug_EventScript_Script_3::
+	goto_if_set FLAG_HIDE_VOLTBROOK_TOWN_ACE, Debug_EventScript_Script_3_ClearFlag
+	goto_if_unset FLAG_HIDE_VOLTBROOK_TOWN_ACE, Debug_EventScript_Script_3_SetFlag
+	
+	Debug_EventScript_Script_3_SetFlag:
+	setflag FLAG_HIDE_VOLTBROOK_TOWN_ACE
+	release
+	end
+
+	Debug_EventScript_Script_3_ClearFlag:
+	clearflag FLAG_HIDE_VOLTBROOK_TOWN_ACE
 	release
 	end
 
 Debug_EventScript_Script_4::
+	goto_if_set FLAG_HIDE_VERDANT_HALLOW_TALON, Debug_EventScript_Script_4_ClearFlag
+	goto_if_unset FLAG_HIDE_VERDANT_HALLOW_TALON, Debug_EventScript_Script_4_SetFlag
+
+	Debug_EventScript_Script_4_SetFlag:
+	setflag FLAG_HIDE_VERDANT_HALLOW_TALON
+	release
+	end
+
+	Debug_EventScript_Script_4_ClearFlag:
+	clearflag FLAG_HIDE_VERDANT_HALLOW_TALON
 	release
 	end
 
 Debug_EventScript_Script_5::
+	goto_if_set FLAG_HIDE_MURKWELL_BOG_NYX, Debug_EventScript_Script_5_ClearFlag
+	goto_if_unset FLAG_HIDE_MURKWELL_BOG_NYX, Debug_EventScript_Script_5_SetFlag
+
+	Debug_EventScript_Script_5_SetFlag:
+	setflag FLAG_HIDE_MURKWELL_BOG_NYX
+	release
+	end
+
+	Debug_EventScript_Script_5_ClearFlag:
+	clearflag FLAG_HIDE_MURKWELL_BOG_NYX
 	release
 	end
 
 Debug_EventScript_Script_6::
+	removeobject 8
 	release
 	end
 
@@ -344,6 +390,11 @@ Debug_ShowExpansionVersion::
 
 Debug_ExpansionVersion:
 	.string "pokeemerald-expansion {STR_VAR_1}$"
+
+Debug_EventScript_Steven_Multi::
+	call MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle
+	release
+	end
 
 Debug_BerryPestsDisabled::
 	msgbox DebugText_BerryPestsDisabled, MSGBOX_DEFAULT

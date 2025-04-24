@@ -1,0 +1,731 @@
+raw `
+.set LOCALID_NYX, 7
+.set LOCALID_VEE, 9
+.set LOCALID_DRAKE, 10
+.set LOCALID_ACE, 11
+.set LOCALID_TALON, 12
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
+`
+
+mapscripts MurkwellBog_MapScripts
+{
+}
+script MurkwellBog_EventScripts_SlowpokeNPC
+{
+	lockall
+	msgbox(format("Huh… I don't remember the swamp bein' this… cloudy. These things weren't always floatin' around, right? Huh… Was it always like this?"))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_ParasectNPC
+{
+	lockall
+	msgbox(format("The air is… heavy. My spores mix with it, but something else lingers here. Something that wasn't here before."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_DrowzeeNPC
+{
+	lockall
+	msgbox(format("I tried to enter the temple the other night. Ever since, the air feels… thick. My dreams feel like I'm breathing it in."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_HaunterNPC
+{
+	lockall
+	msgbox(format("Oh, the temple? Heh… It's just an old ruin! Nothin' special… Nope, nothin' at all! And, uh, you definitely don't wanna go there. Definitely."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_LanturnNPC
+{
+	lockall
+	msgbox(format("My light doesn't reach as far anymore… It's like the air itself is swallowing it. I've guided Pokémon through here for years, but lately, I can barely see the way myself."))
+	releaseall
+	end
+}
+
+script MurkwellBog_EventScripts_HoothootNPC
+{
+	lockall
+	applymovement(6,moves(face_down))
+	msgbox(format("The temple's always been there. But lately… the air around it shimmers. I don't like looking at it. It feels like it's moving."))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(VENOMOTH)
+script MurkwellBog_EventScripts_NyxNPC
+{
+	lockall
+	speakername("???")
+	faceplayer
+	msgbox(format("Have you retreived the lost items?\pA Hard Stone\pA Spell Tag\pA Charcoal Fragment"),MSGBOX_YESNO)
+	if(var(VAR_RESULT) != 1)
+		{
+			speakername("???")
+			faceplayer
+			msgbox(format("Go, then.\pSeek what is lost.\pAnd if the temple answers… perhaps I shall walk this path with you."))
+			releaseall
+			end
+		}
+	else
+		{
+			if(checkitem(ITEM_CHARCOAL) == TRUE)
+			{
+				if(checkitem(ITEM_SPELL_TAG) == TRUE)
+					{
+						if(checkitem(ITEM_HARD_STONE) == TRUE)
+							{
+								speakername("???")
+								faceplayer
+								msgbox(format("The offerings have been gathered.\pStand back, I will perform the ritual."))
+								getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+									if(var(PlayerXCoordinates) == 14) // @ 14/14
+										{
+											applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right walk_in_place_up))
+											waitmovement(OBJ_EVENT_ID_PLAYER)
+										}
+									elif(var(PlayerXCoordinates) == 13) // @ 13/13
+										{
+											applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down walk_right * 2 walk_in_place_up))
+											waitmovement(OBJ_EVENT_ID_PLAYER)
+										}
+									else // @ 15/13 -> 15/14
+										{
+											applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down walk_in_place_up))
+											waitmovement(OBJ_EVENT_ID_PLAYER)
+										}
+								special(SpawnCameraObject)
+								applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+								applymovement(LOCALID_NYX, moves(walk_right walk_up * 3 emote_exclamation_mark))
+								waitmovement(LOCALID_NYX)
+								call(CommonEventScript_ScreenShake)
+								playse(SE_EFFECTIVE)
+								delay(40)
+								removeobject(8)
+								waitse
+								applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+								applymovement(LOCALID_NYX, moves(walk_down * 3))
+								waitmovement(LOCALID_NYX)
+								special(RemoveCameraObject)
+								getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+								msgbox(format("…It is done.\pThe seal has lifted.\pThe temple awaits."))
+								faceplayer
+								call(Murkwellbog_CommonEventScript_SetLocalIdsToPlayerXY)
+								goto(Murkwellbog_CommonEventScript_DetermineParty)
+							}
+					}
+			}
+			else
+			{
+				speakername("???")
+				faceplayer
+				msgbox(format("A liars tounge will heed you no entry.\pGo, then.\pSeek what is lost.\pAnd if the temple answers… perhaps I shall walk this path with you."))
+				releaseall
+				end
+			}
+		}
+}
+
+
+//OBJ_EVENT_GFX_SPECIES(GLOOM)
+script MurkwellBog_EventScripts_InnkeeperNPC
+{
+	lockall
+	msgbox(format("Rest easy, traveler. But if you hear whispers in your sleep, best not to listen too closely…"))
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(AIPOM)
+script MurkwellBog_EventScripts_ShopkeeperNPC
+{
+	lock
+	msgbox(format("Welcome! Got all sorts of goods! Just… don't ask where I got 'em. The bog provides… heh."))
+	waitmessage
+	pokemart(MurkwellBog_MartItems)
+	msgbox(format("Come again soon…"))
+	release
+	end
+}
+
+mart MurkwellBog_MartItems
+	{
+		ITEM_CLEANSE_TAG    // Wards off evil spirits, used by cautious Pokémon.
+        ITEM_TWISTED_SPOON  // Boosts Psychic-type moves, carried by mystics in the bog.
+        ITEM_BIG_ROOT       // Enhances draining moves, fits the swampy, life-absorbing theme.
+        ITEM_HEAL_POWDER    // Herbal remedy for status conditions, commonly used by swamp dwellers.
+        ITEM_ENERGY_ROOT    // Strong but bitter healing item, known for its powerful effects.
+        ITEM_REVIVAL_HERB   // Fully revives fainted Pokémon but is bitter--rare in standard marts.
+        ITEM_TINYMUSHROOM   // Small fungi commonly found in damp environments.
+        ITEM_BIG_MUSHROOM   // Larger version, often sold by Pokémon for currency.
+        ITEM_SITRUS_BERRY   // Restores HP, useful for adventurers exploring Murkwell.
+        ITEM_LUM_BERRY      // Cures any status condition, highly valued in such a hazardous area.
+	}
+
+//OBJ_EVENT_GFX_SPECIES(SMEARGLE)
+script MurkwellBog_EventScripts_HomebodyNPC1
+{
+	lockall
+	msgbox(format("I tried painting the swamp once. But the colors… they changed when I wasn't looking. Like they were alive…"),MSGBOX_NPC)
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(SUDOWOODO)
+script MurkwellBog_EventScripts_HomebodyNPC2
+{
+	lockall
+	msgbox(format("You ever notice how the trees move? Not just in the wind… they shift when you ain't lookin'. Always facin' the temple…"),MSGBOX_NPC)
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(MAROWAK)
+script MurkwellBog_EventScripts_HomebodyNPC3
+{
+	lockall
+	msgbox(format("My kin are buried here… but lately, I don't feel alone when I visit. Someone else watches the graves…"),MSGBOX_NPC)
+	releaseall
+	end
+}
+
+//OBJ_EVENT_GFX_SPECIES(GLOOM)
+script MurkwellBog_ShopNPC_Gloom {
+    lockall
+    msgbox(format("Mmm... need more supplies.\pNever know when the swamp might turn against you.\pBeen hearing things--whispers on the wind.\pStocking up is just common sense."),MSGBOX_NPC)
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(DUNSPARCE)
+script MurkwellBog_ShopNPC_Dunsparce {
+    lockall
+    msgbox(format("Pfft. These prices are criminal!\pI could find better deals in Voltbrook Town!\p...But, uh, gettin' back there? Kinda tricky.\pUgh. Fine, take my money."),MSGBOX_NPC)
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(HAUNTER)
+script MurkwellBog_ShopNPC_Haunter {
+    lockall
+    msgbox(format("Heheheh... so many interesting items here.\pOoooh, Cleanse Tags? I love Cleanse Tags.\pNot for cursing or anything! Just, uh… for a friend."),MSGBOX_NPC)
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(BRELOOM)
+script MurkwellBog_InnNPC_Breloom {
+    lockall
+    msgbox(format("Been traveling a long way.\pBut somethin' about this place...\pThe air feels off.\pLike something's watching."),MSGBOX_NPC)
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(QUAGSIRE)
+script MurkwellBog_InnNPC_Quagsire {
+    lockall
+    msgbox(format("Ahhh... comfy bed, warm meal.\pNothin’ weird about this place at all.\pNope. Not a thing."),MSGBOX_NPC)
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(SABLEYE)
+script MurkwellBog_InnNPC_Sableye {
+    lockall
+    msgbox(format("Eheheh... spooky stories?\pI ain’t scared. Nope, not at all.\pB-but you totally saw that shadow move, right?"),MSGBOX_NPC)
+    releaseall
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(BELLOSSOM)
+script MurkwellBog_InnNPC_Bellossom {
+    lockall
+	if(!flag(FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG))
+		{
+			msgbox(format("Long journeys can wear a Pokémon down.\pHere, take this!\pIt always helps me keep going."),MSGBOX_NPC)
+			giveitem(ITEM_LUM_BERRY, 1)
+			setflag(FLAG_RECEIVED_LUM_BERRY_MURKWELL_BOG)
+		}
+	else
+		{
+			msgbox(format("Long journeys can wear a Pokémon down.\p I always make sure to rest at the local inn every time I arrive at a new area!"),MSGBOX_NPC)
+		}
+    releaseall
+    end
+}
+
+
+script MurkwellBog_EventScripts_TempleNeedsRitual
+{
+	lock
+	applymovement(LOCALID_NYX, moves(emote_question_mark))
+	waitmovement(LOCALID_NYX)
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+		if(var(PlayerXCoordinates) < 16)
+			{
+				applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up *2 walk_in_place_left))
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+			}
+		else
+			{
+				applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up *2 walk_left))
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+			}
+	speakername("???")
+	msgbox(format("…\pYou do not belong here.\pAnd yet, the voices stir.\pHow curious."))
+	msgbox(format("This place does not open its secrets to just anyone.\pThe lost whisper of those who have come before.\pBut only one with the right presence may listen."))
+	msgbox(format("You… are different.\pThe echoes follow you, bending around your path.\pThat inscription--it reacts to you, not the others."))
+	msgbox(format("This door was not always shut.\pSomething lingers, unseen.\pNot a lock. Not a barrier.\pSomething… watching."))
+	msgbox(format("I have spent long years studying what remains of the old ways.\pThis seal is unnatural.\pIts origin unknown.\pAnd yet, there is always a way through."))
+	msgbox(format("The temple rejects the living, but it does not ignore the past.\pAn offering--proof of those who walked before--may force its hand."))
+	msgbox(format("Three remnants must be gathered:\pA Hard Stone\pA Spell Tag\pA Charcoal Fragment"))
+	msgbox(format("Only these may wake the ruin.\pOnly then will might path open."))
+	msgbox(format("Go, then.\pSeek what is lost.\pAnd if the temple answers… perhaps I shall walk this path with you."))
+	setvar(VAR_MURKWELL_BOG_STATE, 1)
+	release
+	end
+}
+
+script Murkwellbog_CommonEventScript_SetLocalIdsToPlayerXY
+{
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_DRAKE, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_TALON, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_ACE, PlayerXCoordinates, PlayerYCoordinates)
+	return
+}
+
+script Murkwellbog_CommonEventScript_DetermineParty
+{
+	if(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_FullParty)
+		}
+	elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty)
+		}
+	elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty)
+		}
+	elif(flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE) && flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty)
+		}
+	elif(flag(FLAG_HIDE_STRATOSCAPE_DRAKE))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty)
+		}
+	elif(flag(FLAG_HIDE_VOLTBROOK_TOWN_ACE))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_AceParty)
+		}
+	elif(flag(FLAG_HIDE_VERDANT_HALLOW_TALON))
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_TalonParty)
+		}
+	else
+		{
+			goto(Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember)
+		}
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_FullParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_ACE)
+	addobject(LOCALID_TALON)
+	addobject(LOCALID_DRAKE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerSouth)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerNorthWest)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Sooo… who wants to go first?"))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Talon")
+	msgbox(format("Not it."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Ace")
+	msgbox(format("Y’know what? I second that."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Drake")
+	msgbox(format("We all move forward together.\pThe ruin waits for none."))
+	speakername("Nyx")
+	msgbox(format("Then let us not keep it waiting…\pI will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerSouth)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerNorthwest)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_ACE)
+	removeobject(LOCALID_TALON)
+	removeobject(LOCALID_DRAKE)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_DrakeAceParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_ACE)
+	addobject(LOCALID_DRAKE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerSouth)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	speakername("Nyx")
+	msgbox(format("I will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)	
+	speakername("Vee")
+	msgbox(format("You both look way too calm for what just happened."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Drake")
+	msgbox(format("Composure is key.\pThe unknown does not frighten me."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Ace")
+	msgbox(format("Yeah, yeah, tough guy routine.\pLet’s just hope ‘the unknown’ doesn’t fight back."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerSouth)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_ACE)
+	removeobject(LOCALID_DRAKE)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+
+script Murkwellbog_EventScript_NyxOpenedTemple_DrakeTalonParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_TALON)
+	addobject(LOCALID_DRAKE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerEast)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerSouth)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	speakername("Nyx")
+	msgbox(format("I will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)	
+	speakername("Vee")
+	msgbox(format("Sooo, Talon, you're the lookout guy. Did you expect THIS to happen?"))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Talon")
+	msgbox(format("Didn’t see this coming.\pAnd I don’t like surprises."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Drake")
+	msgbox(format("Then let us tread carefully.\pThe ruin may yet have more secrets to unveil."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerEast)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerSouth)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_TALON)
+	removeobject(LOCALID_DRAKE)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_AceTalonParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_ACE)
+	addobject(LOCALID_TALON)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerSouth)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Ace")
+	msgbox(format("So, we’re actually going in there, huh?"))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Yeah, ‘cause running away sounds soooo smart right now."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Talon")
+	msgbox(format("If something goes wrong, we fight our way out. Simple."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Nyx")
+	msgbox(format("Not everything can be fought. Some things must be understood.\pI will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerSouth)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_ACE)
+	removeobject(LOCALID_TALON)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_DrakeParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_DRAKE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberTalksToPlayerEast)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Drake")
+	msgbox(format("Ancient places hold ancient dangers. We should tread carefully."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Nyx")
+	msgbox(format("Caution is wise. But curiosity will serve us better.\pI will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	speakername("Vee")
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_DRAKE, Common_Movement_PartyMemberReturnsToPlayerEast)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_DRAKE)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_AceParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_ACE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberTalksToPlayerEast)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("You’re awfully quiet, Ace.\pThat’s not normal."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Ace")
+	msgbox(format("Yeah, yeah, I know.\pJust… thinking.\pPlaces like this don’t open for no reason."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Nyx")
+	msgbox(format("Then let us see why it stirs.\pI will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_ACE, Common_Movement_PartyMemberReturnsToPlayerEast)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_ACE)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_TalonParty
+{
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_TALON)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberTalksToPlayerEast)
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("C’mon, Talon.\pSay something so I don’t start freaking out."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Talon")
+	msgbox(format("Just feels like we woke something up."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Nyx")
+	msgbox(format("We did.\pAnd now, it watches.\pI will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
+	applymovement(LOCALID_TALON, Common_Movement_PartyMemberReturnsToPlayerEast)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_TALON)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+
+script Murkwellbog_EventScript_NyxOpenedTemple_VeeOnlyPartyMember
+{
+	addobject(LOCALID_VEE)
+	applymovement(LOCALID_VEE, moves(walk_left walk_up face_right))
+	applymovement(LOCALID_NYX, moves(face_left))
+	waitmovement(LOCALID_VEE)
+	playse(SE_PIN)
+	waitse
+	speakername("Vee")
+	msgbox(format("Whoa, that was kinda cool.\pSo, uh… what do we call you, anyway?"))
+	speakername("???")
+	msgbox(format("Names are… fleeting.\pBut if you must, you may call me Nyx."))
+	applymovement(LOCALID_NYX, moves(face_down))
+	waitmovement(LOCALID_NYX)
+	speakername("Nyx")
+	msgbox(format("I will accompany you inside.\pThere is more yet to uncover."))
+	applymovement(LOCALID_NYX, moves(walk_down))
+	waitmovement(LOCALID_NYX)
+	removeobject(LOCALID_NYX)
+	removeobject(8)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Nyx joined your party."))
+	speakername("Vee")
+	msgbox(format("Alright, alright, enough of the spooky talk.\pWe've got a temple to explore!"))
+	waitfanfare
+	givemon(SPECIES_VENOMOTH, 25, ITEM_QUICK_CLAW, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_CONFUSION, MOVE_LEECH_LIFE, MOVE_POISON_POWDER, MOVE_STUN_SPORE)
+	applymovement(LOCALID_VEE, moves(walk_right walk_down))
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+	removeitem(ITEM_CHARCOAL)
+	removeitem(ITEM_SPELL_TAG)
+	removeitem(ITEM_HARD_STONE)
+	release
+	end
+}
+

@@ -1,0 +1,79 @@
+raw `
+Moonthistle_House3_MapScripts::
+	.byte 0
+
+Moonthistle_House3_EventScript_Maniac::
+	msgbox Moonthistle_House3_Text_MetStevenHadAmazingPokemon, MSGBOX_NPC
+	end
+
+Moonthistle_House3_EventScript_SchoolKidM::
+	msgbox Moonthistle_House3_Text_OhYouHavePokedex, MSGBOX_NPC
+	end
+
+Moonthistle_House3_Text_MetStevenHadAmazingPokemon:
+	.string "While speaking about POKéDEXES,\n"
+	.string "I remembered something.\p"
+	.string "I met this TRAINER, STEVEN, when\n"
+	.string "I was searching for rare stones.\p"
+	.string "Hoo, boy, he had some amazing POKéMON\n"
+	.string "with him.\p"
+	.string "They weren't just rare, they were\n"
+	.string "trained to terrifying extremes!\p"
+	.string "He might even be stronger than the\n"
+	.string "GYM LEADER in this town…$"
+
+Moonthistle_House3_Text_OhYouHavePokedex:
+	.string "What's that thing you have there?\p"
+	.string "… … … … … …\p"
+	.string "Oh, it's called a POKéDEX?\n"
+	.string "It's really awesome!$"
+
+`
+//OBJ_EVENT_GFX_SPECIES(WHISMUR)
+script Moonthistle_EventScripts_Whismur
+{
+    lock
+    if (!flag(FLAG_MOONTHISTLE_TRUSTED)) 
+	{
+        speakername("Whismur")
+        msgbox(format("…h-hi…"), MSGBOX_NPC)
+        release
+        end
+    }
+    if (flag(FLAG_MOONTHISTLE_WHISMUR_GIFT)) 
+	{
+        speakername("Whismur")
+        msgbox(format("…stay safe out there, o-okay…?"), MSGBOX_NPC)
+        release
+        end
+    }
+	else
+	{
+    speakername("Whismur")
+    msgbox(format("U-um… you helped Linoone, right?\nThat was really brave…\pI-I found this near the roots.\nMaybe it’ll help…?"), MSGBOX_NPC)
+	giveitem(ITEM_SITRUS_BERRY, 1)
+    setflag(FLAG_MOONTHISTLE_WHISMUR_GIFT)
+    speakername("Whismur")
+    msgbox(format("…please don’t let Team MAGA find this place."))
+    release
+    end
+	}
+}
+
+script Moonthistle_EventScripts_Absol
+{
+	if(!flag(FLAG_MOONTHISTLE_TRUSTED))
+	{
+		speakername("Absol")
+		msgbox(format("You shouldn't have come here."), MSGBOX_NPC)
+		release
+		end
+	}
+	else
+	{
+		speakername("Absol")
+		msgbox(format("Stay sharp.\nTeam MAGA won’t stop until everything burns."), MSGBOX_NPC)
+		release
+		end
+	}
+}

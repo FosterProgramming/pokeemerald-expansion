@@ -1,0 +1,164 @@
+raw `
+.set LOCALID_VEE, 2
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
+Moonthistle_House1_MapScripts::
+	.byte 0
+
+Moonthistle_House1_EventScript_Trader::
+	lock
+	faceplayer
+	goto_if_set FLAG_FORTREE_NPC_TRADE_COMPLETED, Moonthistle_House1_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_PLUSLE
+	copyvar VAR_0x8004, VAR_0x8008
+	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
+	copyvar VAR_0x8009, VAR_RESULT
+	msgbox Moonthistle_House1_Text_YouWillTradeWontYou, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Moonthistle_House1_EventScript_DeclineTrade
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x800A, VAR_0x8004
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, Moonthistle_House1_EventScript_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x800A
+	specialvar VAR_RESULT, GetTradeSpecies
+	copyvar VAR_0x800B, VAR_RESULT
+	goto_if_ne VAR_RESULT, VAR_0x8009, Moonthistle_House1_EventScript_NotRequestedMon
+	copyvar VAR_0x8004, VAR_0x8008
+	copyvar VAR_0x8005, VAR_0x800A
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	bufferspeciesname STR_VAR_1, VAR_0x8009
+	msgbox Moonthistle_House1_Text_MonYouTakeCare, MSGBOX_DEFAULT
+	setflag FLAG_FORTREE_NPC_TRADE_COMPLETED
+	release
+	end
+
+Moonthistle_House1_EventScript_DeclineTrade::
+	msgbox Moonthistle_House1_Text_YouWontTradeMe, MSGBOX_DEFAULT
+	release
+	end
+
+Moonthistle_House1_EventScript_NotRequestedMon::
+	bufferspeciesname STR_VAR_1, VAR_0x8009
+	msgbox Moonthistle_House1_Text_ThisIsntAMon, MSGBOX_DEFAULT
+	release
+	end
+
+Moonthistle_House1_EventScript_TradeCompleted::
+	msgbox Moonthistle_House1_Text_GoingToMakeVolbeatStrong, MSGBOX_DEFAULT
+	release
+	end
+
+Moonthistle_House1_EventScript_ExpertF::
+	msgbox Moonthistle_House1_Text_TradingMemoriesWithOthers, MSGBOX_NPC
+	end
+
+Moonthistle_House1_EventScript_Zigzagoon::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
+	msgbox Moonthistle_House1_Text_Zigzagoon, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+Moonthistle_House1_Text_YouWillTradeWontYou:
+	.string "Wrooooaaar! I need it!\n"
+	.string "I have to get me a {STR_VAR_1}!\l"
+	.string "I'll do anything for it!\p"
+	.string "…Uh… Did you hear that?\n"
+	.string "My shout from the bottom of my heart?\p"
+	.string "Having heard that, you will trade\n"
+	.string "your {STR_VAR_1} for my {STR_VAR_2},\l"
+	.string "won't you?$"
+
+Moonthistle_House1_Text_MonYouTakeCare:
+	.string "Oh, yeah, right on!\p"
+	.string "{STR_VAR_1}, welcome!\n"
+	.string "{STR_VAR_2}, you take care!$"
+
+Moonthistle_House1_Text_ThisIsntAMon:
+	.string "Uh, no, I don't think so.\n"
+	.string "That isn't a {STR_VAR_1}.$"
+
+Moonthistle_House1_Text_YouWontTradeMe:
+	.string "No? You won't trade me?\n"
+	.string "Even after I bared my heart to you?$"
+
+Moonthistle_House1_Text_GoingToMakeVolbeatStrong:
+	.string "I'm going to make VOLBEAT super\n"
+	.string "strong from this moment on!\p"
+	.string "I hope you do the same with PLUSLE!$"
+
+Moonthistle_House1_Text_TradingMemoriesWithOthers:
+	.string "Trading POKéMON with others…\p"
+	.string "It's as if you're trading your own\n"
+	.string "memories with other people.$"
+
+Moonthistle_House1_Text_Zigzagoon:
+	.string "ZIGZAGOON: Gumomoh?$"
+
+`
+//OBJ_EVENT_GFX_SPECIES(MIGHTYENA)
+script Moonthistle_EventScripts_Shade
+{
+	lock
+	if(!flag(FLAG_MOONTHISTLE_TRUSTED))
+	{
+		speakername("Mightyena")
+		msgbox(format("…You’re not from here.\pBest not to ask questions until you’re sure who’s listening."), MSGBOX_NPC)
+		release
+		end
+	}
+	elif(!flag(FLAG_HINTED_AT_POWERPLANT))
+	{
+		getplayerxy(PlayerXCoordinates,PlayerYCoordinates)
+		setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+			if(var(PlayerXCoordinates) == 1)
+			{
+				addobject(LOCALID_VEE)
+				applymovement(LOCALID_VEE,moves(walk_down walk_left face_up emote_exclamation_mark))
+				waitmovement(LOCALID_VEE)
+				applymovement(1,moves(face_down))
+				waitmovement(1)
+			}
+			if(var(PlayerXCoordinates) == 0)
+			{
+				addobject(LOCALID_VEE)
+				applymovement(LOCALID_VEE,moves(walk_right walk_up face_left emote_exclamation_mark))
+				waitmovement(LOCALID_VEE)
+				applymovement(1,moves(face_right))
+				waitmovement(1)
+			}
+		speakername("Vee")
+		msgbox(format("Shade, right? Linoone said you used to live in Voltbrook.\pWe’re, uh… we’re looking for something. Something important.\pA-Artifacts. Eight of them.\pWe know one of them is in Voltbrook, but we don't know where.\pThey’re connected to the experiments… the ones that turned him-my friend-into what he is now.\pIf we can find them all… we might be able to fix it."))
+		speakername("Shade")
+		msgbox(format("Artifacts tied to human experiments…\p…If Team MAGA’s hoarding something like that, it’ll be in the power plant.\pLocked tight. High voltage gates, full security grid. You’re not strolling in through the front door.\pBut there was a maintenance tunnel. Back when I lived there.\pIt ran behind the powerplant. Workers used it when the plant was being built.\pIf it’s still open… that tunnel might be your way in."))
+		speakername("Vee")
+		msgbox(format("Really? That’s… that’s actually really helpful!\pThank you, Shade. We’ll be careful. I promise!"))
+			if(var(PlayerXCoordinates) == 1)
+			{
+				applymovement(LOCALID_VEE,moves(walk_right walk_up))
+				waitmovement(LOCALID_VEE)
+				removeobject(LOCALID_VEE)
+			}
+			if(var(PlayerXCoordinates) == 0)
+			{
+				applymovement(LOCALID_VEE,moves(walk_down walk_left face_left))
+				waitmovement(LOCALID_VEE)
+				removeobject(LOCALID_VEE)
+			}
+		setflag(FLAG_HINTED_AT_POWERPLANT)
+		release
+		end			
+	}
+	else
+	{
+		speakername("Shade")
+		msgbox(format("If the tunnel behind the powerplant is still open… it might be your way in."), MSGBOX_NPC)
+		release
+		end
+	}
+}

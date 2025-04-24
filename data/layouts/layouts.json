@@ -587,7 +587,7 @@
       "width": 10,
       "height": 9,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/House1/border.bin",
       "blockdata_filepath": "data/layouts/House1/map.bin"
     },
@@ -597,7 +597,7 @@
       "width": 11,
       "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/House2/border.bin",
       "blockdata_filepath": "data/layouts/House2/map.bin"
     },
@@ -982,14 +982,14 @@
       "blockdata_filepath": "data/layouts/RustboroCity_CuttersHouse/map.bin"
     },
     {
-      "id": "LAYOUT_FORTREE_CITY_HOUSE1",
-      "name": "FortreeCity_House1_Layout",
+      "id": "LAYOUT_MOONTHISTLE_HOUSE1",
+      "name": "Moonthistle_House1_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/FortreeCity_House1/border.bin",
-      "blockdata_filepath": "data/layouts/FortreeCity_House1/map.bin"
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Moonthistle_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle_House1/map.bin"
     },
     {
       "id": "LAYOUT_FORTREE_CITY_GYM",
@@ -1002,14 +1002,14 @@
       "blockdata_filepath": "data/layouts/FortreeCity_Gym/map.bin"
     },
     {
-      "id": "LAYOUT_FORTREE_CITY_HOUSE2",
-      "name": "FortreeCity_House2_Layout",
+      "id": "LAYOUT_MOONTHISTLE_HOUSE2",
+      "name": "Moonthistle_House2_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/FortreeCity_House2/border.bin",
-      "blockdata_filepath": "data/layouts/FortreeCity_House2/map.bin"
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Moonthistle_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle_House2/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE104_MR_BRINEYS_HOUSE",
@@ -2542,14 +2542,14 @@
       "blockdata_filepath": "data/layouts/Route110_TrickHousePuzzle8/map.bin"
     },
     {
-      "id": "LAYOUT_FORTREE_CITY_DECORATION_SHOP",
-      "name": "FortreeCity_DecorationShop_Layout",
+      "id": "LAYOUT_MOONTHISTLE_SHOP",
+      "name": "Moonthistle_Shop_Layout",
       "width": 8,
       "height": 6,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/FortreeCity_DecorationShop/border.bin",
-      "blockdata_filepath": "data/layouts/FortreeCity_DecorationShop/map.bin"
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Moonthistle_Shop/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle_Shop/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE110_SEASIDE_CYCLING_ROAD_ENTRANCE",
@@ -4416,8 +4416,8 @@
       "name": "DominionCity_Layout",
       "width": 68,
       "height": 64,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_DominionCity",
       "border_filepath": "data/layouts/DominionCity/border.bin",
       "blockdata_filepath": "data/layouts/DominionCity/map.bin"
     },
@@ -4477,7 +4477,7 @@
       "width": 40,
       "height": 45,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Pyroden/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden/map.bin"
     },
@@ -4504,10 +4504,10 @@
     {
       "id": "LAYOUT_ROUTE4",
       "name": "Route4_Layout",
-      "width": 88,
+      "width": 80,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Rustboro",
+      "secondary_tileset": "gTileset_DominionCity",
       "border_filepath": "data/layouts/Route4/border.bin",
       "blockdata_filepath": "data/layouts/Route4/map.bin"
     },
@@ -4515,9 +4515,9 @@
       "id": "LAYOUT_ROUTE5",
       "name": "Route5_Layout",
       "width": 30,
-      "height": 70,
+      "height": 72,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route5/border.bin",
       "blockdata_filepath": "data/layouts/Route5/map.bin"
     },
@@ -4525,29 +4525,29 @@
       "id": "LAYOUT_ROUTE5A",
       "name": "Route5A_Layout",
       "width": 38,
-      "height": 22,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "height": 44,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route5A/border.bin",
       "blockdata_filepath": "data/layouts/Route5A/map.bin"
     },
     {
       "id": "LAYOUT_VERDANT_HALLOW",
       "name": "VerdantHallow_Layout",
-      "width": 36,
-      "height": 40,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "width": 62,
+      "height": 46,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/VerdantHallow/border.bin",
       "blockdata_filepath": "data/layouts/VerdantHallow/map.bin"
     },
     {
       "id": "LAYOUT_MURKWELL_BOG",
       "name": "MurkwellBog_Layout",
-      "width": 54,
-      "height": 50,
+      "width": 84,
+      "height": 70,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_MurkwellBog",
       "border_filepath": "data/layouts/MurkwellBog/border.bin",
       "blockdata_filepath": "data/layouts/MurkwellBog/map.bin"
     },
@@ -4556,8 +4556,8 @@
       "name": "Route6_Layout",
       "width": 60,
       "height": 22,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route6/border.bin",
       "blockdata_filepath": "data/layouts/Route6/map.bin"
     },
@@ -4566,7 +4566,7 @@
       "name": "Route6A_Layout",
       "width": 28,
       "height": 58,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route6A/border.bin",
       "blockdata_filepath": "data/layouts/Route6A/map.bin"
@@ -4576,8 +4576,8 @@
       "name": "Dunemire_Layout",
       "width": 68,
       "height": 34,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_DunemireDesertSecondary",
       "border_filepath": "data/layouts/Dunemire/border.bin",
       "blockdata_filepath": "data/layouts/Dunemire/map.bin"
     },
@@ -4586,8 +4586,8 @@
       "name": "Route7_Layout",
       "width": 20,
       "height": 36,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route7/border.bin",
       "blockdata_filepath": "data/layouts/Route7/map.bin"
     },
@@ -4595,9 +4595,9 @@
       "id": "LAYOUT_VOLTBROOK_TOWN",
       "name": "VoltbrookTown_Layout",
       "width": 36,
-      "height": 36,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "height": 38,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/VoltbrookTown/border.bin",
       "blockdata_filepath": "data/layouts/VoltbrookTown/map.bin"
     },
@@ -4606,7 +4606,7 @@
       "name": "Route8_Layout",
       "width": 24,
       "height": 66,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route8/border.bin",
       "blockdata_filepath": "data/layouts/Route8/map.bin"
@@ -4616,8 +4616,8 @@
       "name": "Driftshore_Layout",
       "width": 28,
       "height": 34,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Driftshore/border.bin",
       "blockdata_filepath": "data/layouts/Driftshore/map.bin"
     },
@@ -4626,27 +4626,27 @@
       "name": "Route9_Layout",
       "width": 128,
       "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Route9/border.bin",
       "blockdata_filepath": "data/layouts/Route9/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE9A",
       "name": "Route9A_Layout",
-      "width": 20,
+      "width": 40,
       "height": 102,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_MurkwellBog",
       "border_filepath": "data/layouts/Route9A/border.bin",
       "blockdata_filepath": "data/layouts/Route9A/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE10",
       "name": "Route10_Layout",
-      "width": 20,
+      "width": 41,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route10/border.bin",
       "blockdata_filepath": "data/layouts/Route10/map.bin"
@@ -4654,9 +4654,9 @@
     {
       "id": "LAYOUT_ROUTE11",
       "name": "Route11_Layout",
-      "width": 20,
+      "width": 30,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route11/border.bin",
       "blockdata_filepath": "data/layouts/Route11/map.bin"
@@ -4666,7 +4666,7 @@
       "name": "Route12_Layout",
       "width": 120,
       "height": 60,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route12/border.bin",
       "blockdata_filepath": "data/layouts/Route12/map.bin"
@@ -4674,9 +4674,9 @@
     {
       "id": "LAYOUT_ROUTE12A",
       "name": "Route12A_Layout",
-      "width": 80,
+      "width": 90,
       "height": 80,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route12A/border.bin",
       "blockdata_filepath": "data/layouts/Route12A/map.bin"
@@ -4686,8 +4686,8 @@
       "name": "Route13_Layout",
       "width": 50,
       "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route13/border.bin",
       "blockdata_filepath": "data/layouts/Route13/map.bin"
     },
@@ -4696,8 +4696,8 @@
       "name": "Route14_Layout",
       "width": 20,
       "height": 50,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VoltbrookTown",
       "border_filepath": "data/layouts/Route14/border.bin",
       "blockdata_filepath": "data/layouts/Route14/map.bin"
     },
@@ -4706,28 +4706,28 @@
       "name": "Route15_Layout",
       "width": 20,
       "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Route15/border.bin",
       "blockdata_filepath": "data/layouts/Route15/map.bin"
     },
     {
-      "id": "LAYOUT_UNNAMED_TOWN",
-      "name": "UnnamedTown_Layout",
+      "id": "LAYOUT_MOONTHISTLE",
+      "name": "Moonthistle_Layout",
       "width": 40,
       "height": 32,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/UnnamedTown/border.bin",
-      "blockdata_filepath": "data/layouts/UnnamedTown/map.bin"
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
+      "border_filepath": "data/layouts/Moonthistle/border.bin",
+      "blockdata_filepath": "data/layouts/Moonthistle/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE16",
       "name": "Route16_Layout",
       "width": 20,
       "height": 38,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Driftshore",
       "border_filepath": "data/layouts/Route16/border.bin",
       "blockdata_filepath": "data/layouts/Route16/map.bin"
     },
@@ -4820,6 +4820,116 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route12B/border.bin",
       "blockdata_filepath": "data/layouts/Route12B/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE4A",
+      "name": "Route4A_Layout",
+      "width": 34,
+      "height": 22,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_MurkwellBog",
+      "border_filepath": "data/layouts/Route4A/border.bin",
+      "blockdata_filepath": "data/layouts/Route4A/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE8A",
+      "name": "Route8A_Layout",
+      "width": 84,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route8A/border.bin",
+      "blockdata_filepath": "data/layouts/Route8A/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS",
+      "name": "DominionCity_MagaLab_HoldingCells_Layout",
+      "width": 21,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_HoldingCells/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_HoldingCells/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_VENTS",
+      "name": "DominionCity_MagaLab_Vents_Layout",
+      "width": 21,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_Vents/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_Vents/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_RESEARCH_WING",
+      "name": "DominionCity_MagaLab_ResearchWing_Layout",
+      "width": 28,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_ResearchWing/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_ResearchWing/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_EXPERIMENTATION_CHAMBER",
+      "name": "DominionCity_MagaLab_ExperimentationChamber_Layout",
+      "width": 21,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_ExperimentationChamber/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_ExperimentationChamber/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY",
+      "name": "DominionCity_MagaLab_SecurityHallway_Layout",
+      "width": 18,
+      "height": 34,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_SecurityHallway/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_SecurityHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_ENTRANCE",
+      "name": "DominionCity_MagaLab_Entrance_Layout",
+      "width": 17,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY",
+      "name": "DominionCity_MagaLab_EntranceHallway_Layout",
+      "width": 30,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_EntranceHallway/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_EntranceHallway/map.bin"
+    },
+    {
+      "id": "LAYOUT_INTRO_CUTSCENE_MAP",
+      "name": "IntroCutsceneMap_Layout",
+      "width": 22,
+      "height": 17,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_IntroCave",
+      "border_filepath": "data/layouts/IntroCutsceneMap/border.bin",
+      "blockdata_filepath": "data/layouts/IntroCutsceneMap/map.bin"
+    },
+    {
+      "id": "LAYOUT_DOMINION_CITY_MAGA_LAB_EXIT_CODE",
+      "name": "DominionCity_MagaLab_ExitCode_Layout",
+      "width": 15,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MagaLabExitRoom",
+      "border_filepath": "data/layouts/DominionCity_MagaLab_ExitCode/border.bin",
+      "blockdata_filepath": "data/layouts/DominionCity_MagaLab_ExitCode/map.bin"
     }
   ]
 }

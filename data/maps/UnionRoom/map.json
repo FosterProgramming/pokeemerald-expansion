@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player4",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_4"
+      "flag": "FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_ASPEAR_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_7",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player8",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_8"
+      "flag": "FLAG_HIDE_VERDANT_HALLOW_TALON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_6",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player7",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_7"
+      "flag": "FLAG_HIDE_VOLTBROOK_TOWN_ACE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_5",
@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player6",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_6"
+      "flag": "FLAG_HIDE_STRATOSCAPE_DRAKE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_4",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player5",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_5"
+      "flag": "FLAG_HIDE_MURKWELL_BOG_NYX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_2",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player3",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_3"
+      "flag": "FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_PERSIM_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_1",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player2",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_2"
+      "flag": "FLAG_FIND_DOMINION_CITY_MAGA_LAB_SECURITY_HALLWAY_SITRUS_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnionRoom_EventScript_Player1",
-      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_1"
+      "flag": "FLAG_HIDE_SUMMIT_CAVERNS_TEAM_MAGA_ZENDANO"
     }
   ],
   "warp_events": [

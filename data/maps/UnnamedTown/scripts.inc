@@ -1,2 +1,0 @@
-UnnamedTown_MapScripts::
-	.byte 0

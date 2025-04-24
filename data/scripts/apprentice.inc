@@ -202,7 +202,7 @@ Apprentice_EventScript_PickWinSpeech:
 	end
 
 Apprentice_EventScript_SetHideFlags:
-	setflag FLAG_HIDE_APPRENTICE
+	setflag FLAG_RECEIVED_DOMINION_CITY_LAB_HOLDING_CELLS_MIRROR_HERB
 	setflag FLAG_DAILY_APPRENTICE_LEAVES
 	return
 

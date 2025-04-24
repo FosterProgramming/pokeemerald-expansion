@@ -1,0 +1,181 @@
+raw `
+Moonthistle_Shop_MapScripts::
+	.byte 0
+
+Moonthistle_Shop_EventScript_PokefanM::
+	msgbox Moonthistle_Shop_Text_MerchandiseSentToPC, MSGBOX_NPC
+	end
+
+Moonthistle_Shop_EventScript_Girl::
+	msgbox Moonthistle_Shop_Text_BuyingDeskForDolls, MSGBOX_NPC
+	end
+
+Moonthistle_Shop_EventScript_ClerkDesks::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemartdecoration Moonthistle_Shop_PokemartDecor_Desks
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+Moonthistle_Shop_PokemartDecor_Desks:
+	.2byte DECOR_SMALL_DESK
+	.2byte DECOR_POKEMON_DESK
+	.2byte DECOR_HEAVY_DESK
+	.2byte DECOR_RAGGED_DESK
+	.2byte DECOR_COMFORT_DESK
+	.2byte DECOR_BRICK_DESK
+	.2byte DECOR_CAMP_DESK
+	.2byte DECOR_HARD_DESK
+	pokemartlistend
+
+Moonthistle_Shop_EventScript_ClerkChairs::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemartdecoration Moonthistle_Shop_PokemartDecor_Chairs
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+Moonthistle_Shop_PokemartDecor_Chairs:
+	.2byte DECOR_SMALL_CHAIR
+	.2byte DECOR_POKEMON_CHAIR
+	.2byte DECOR_HEAVY_CHAIR
+	.2byte DECOR_RAGGED_CHAIR
+	.2byte DECOR_COMFORT_CHAIR
+	.2byte DECOR_BRICK_CHAIR
+	.2byte DECOR_CAMP_CHAIR
+	.2byte DECOR_HARD_CHAIR
+	pokemartlistend
+
+Moonthistle_Shop_Text_MerchandiseSentToPC:
+	.string "Merchandise you buy here is sent to "
+	.string "your own PC.\p"
+	.string "That's fantastic! I wish they could "
+	.string "also deliver me home like that.$"
+
+Moonthistle_Shop_Text_BuyingDeskForDolls:
+	.string "I'm buying a pretty desk and I'm "
+	.string "putting my cute DOLLS on it.\p"
+	.string "If I don't, when I decorate my "
+	.string "SECRET BASE, my DOLLS will get\l"
+	.string "dirty or poked with splinters.$"
+
+`
+//OBJ_EVENT_GFX_SPECIES(SLOWBRO)
+script Moonthistle_EventScripts_SlowbroInn
+{
+    lock
+    if (!flag(FLAG_MOONTHISTLE_TRUSTED)) 
+	{
+        speakername("Slowbro")
+        msgbox(format("…this place’s for locals only…"), MSGBOX_NPC)
+        release
+        end
+    }
+	else
+	{
+		speakername("Slowbro")
+		msgbox(format("…yawn… bed’s free upstairs if you need it…"), MSGBOX_NPC)
+		msgbox(format("…no loud stomping or weird energy moves…"), MSGBOX_NPC)
+		closemessage
+		msgbox(format("Would you like to take a rest?"),MSGBOX_YESNO)
+		switch(var(VAR_RESULT))
+			{
+				case NO:
+					msgbox("…yawn… okay…")
+					releaseall
+					end
+				case YES:
+    				call(Common_EventScript_OutOfCenterPartyHeal)			
+					release
+					end
+				case MULTI_B_PRESSED:
+					msgbox("…yawn… okay…")
+					releaseall
+					end
+				default:
+					msgbox("…yawn… okay…")
+					releaseall
+					end
+			}
+	}
+}
+
+//OBJ_EVENT_GFX_SPECIES(KECLEON)
+script Moonthistle_EventScripts_KecleonShopkeeper
+{
+    lock
+    if (!flag(FLAG_MOONTHISTLE_TRUSTED)) {
+        speakername("Kecleon")
+        msgbox(format("Shop’s closed to outsiders. No badge, no bargain."), MSGBOX_NPC)
+        release
+        end
+    }
+	else
+	{
+		speakername("Kecleon")
+		msgbox(format("Linoone says you’re alright. So, fine. You can browse."), MSGBOX_NPC)
+		pokemart(MoonthistleShopItems)
+		release
+		end
+	}
+}
+
+mart MoonthistleShopItems 
+{
+	ITEM_SITRUS_BERRY
+	ITEM_ESCAPE_ROPE
+	ITEM_CHERI_BERRY
+	ITEM_LEMONADE
+	ITEM_WISE_GLASSES
+	ITEM_CHARCOAL
+}
+
+//OBJ_EVENT_GFX_SPECIES(PINECO)
+script Moonthistle_EventScripts_Pineco
+{
+    lock
+	if (!flag(FLAG_MOONTHISTLE_TRUSTED))
+		{
+		speakername("Pineco")
+		msgbox(format("You're not from here… Please don't cause trouble.\pI-I just want to be left alone."), MSGBOX_NPC)
+		release
+		end
+	}
+	else
+	{
+		lock
+		speakername("Pineco")
+		msgbox(format("Sorry I was so nervous earlier… You’re not like the others.\pIf you ever need a place to breathe, this corner’s quiet."), MSGBOX_NPC)
+		release
+		end
+	}
+}
+
+//OBJ_EVENT_GFX_SPECIES(GULPIN)
+script Moonthistle_EventScripts_Gulpin
+{
+    lock
+	if (!flag(FLAG_MOONTHISTLE_TRUSTED))
+		{
+		speakername("Gulpin")
+		msgbox(format("Stay away from my berries, outsider."), MSGBOX_NPC)
+		release
+		end
+	}
+	else
+	{
+		lock
+		speakername("Gulpin")
+		msgbox(format("I came for healing herbs… But if you find any sweet berries, let me know…"), MSGBOX_NPC)
+		release
+		end
+	}
+}

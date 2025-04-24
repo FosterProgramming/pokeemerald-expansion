@@ -11,11 +11,11 @@ CableClub_EventScript_HideOrShowMysteryGiftMan::
 	end
 
 CableClub_EventScript_ShowMysteryGiftMan::
-	clearflag FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN
+	clearflag FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON
 	return
 
 CableClub_EventScript_HideMysteryGiftMan::
-	setflag FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN
+	setflag FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON
 	return
 
 CableClub_EventScript_MysteryGiftMan::

@@ -20,6 +20,7 @@
 #include "constants/contest.h"
 #include "constants/daycare.h"
 #include "constants/decorations.h"
+#include "constants/difficulty.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
@@ -88,7 +89,7 @@ gSpecialVars::
 	.4byte gSpecialVar_MonBoxId
 	.4byte gSpecialVar_MonBoxPos
 	.4byte gSpecialVar_Unused_0x8014
-	.4byte gTrainerBattleOpponent_A
+	.4byte gTrainerBattleParameter + 2 // gTrainerBattleParameter.params.opponentA
 
 	.include "data/specials.inc"
 
@@ -212,11 +213,11 @@ gStdScripts_End::
 	.include "data/maps/PacifidlogTown_House5/scripts.inc"
 	.include "data/maps/PetalburgCity_WallysHouse/scripts.inc"
 	.include "data/maps/PetalburgCity_Gym/scripts.inc"
-	.include "data/maps/PetalburgCity_House1/scripts.inc"
-	.include "data/maps/PetalburgCity_House2/scripts.inc"
-	.include "data/maps/PetalburgCity_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/MurkwellBog_House1/scripts.inc"
+	.include "data/maps/MurkwellBog_House2/scripts.inc"
+	.include "data/maps/MurkwellBog_Inn/scripts.inc"
 	.include "data/maps/PetalburgCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/PetalburgCity_Mart/scripts.inc"
+	.include "data/maps/MurkwellBog_Mart/scripts.inc"
 	.include "data/maps/SlateportCity_SternsShipyard_1F/scripts.inc"
 	.include "data/maps/SlateportCity_SternsShipyard_2F/scripts.inc"
 	.include "data/maps/SlateportCity_BattleTentLobby/scripts.inc"
@@ -256,16 +257,16 @@ gStdScripts_End::
 	.include "data/maps/RustboroCity_Flat2_2F/scripts.inc"
 	.include "data/maps/RustboroCity_Flat2_3F/scripts.inc"
 	.include "data/maps/RustboroCity_House3/scripts.inc"
-	.include "data/maps/FortreeCity_House1/scripts.inc"
+	.include "data/maps/Moonthistle_House1/scripts.inc"
 	.include "data/maps/FortreeCity_Gym/scripts.inc"
 	.include "data/maps/FortreeCity_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/FortreeCity_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/FortreeCity_Mart/scripts.inc"
-	.include "data/maps/FortreeCity_House2/scripts.inc"
-	.include "data/maps/FortreeCity_House3/scripts.inc"
+	.include "data/maps/Moonthistle_House2/scripts.inc"
+	.include "data/maps/Moonthistle_House3/scripts.inc"
 	.include "data/maps/FortreeCity_House4/scripts.inc"
 	.include "data/maps/FortreeCity_House5/scripts.inc"
-	.include "data/maps/FortreeCity_DecorationShop/scripts.inc"
+	.include "data/maps/Moonthistle_Shop/scripts.inc"
 	.include "data/maps/LilycoveCity_CoveLilyMotel_1F/scripts.inc"
 	.include "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.inc"
 	.include "data/maps/LilycoveCity_LilycoveMuseum_1F/scripts.inc"
@@ -1213,7 +1214,7 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/Route15/scripts.inc"
 
-	.include "data/maps/UnnamedTown/scripts.inc"
+	.include "data/maps/Moonthistle/scripts.inc"
 
 	.include "data/maps/Route16/scripts.inc"
 
@@ -1234,3 +1235,30 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DeleteThis/scripts.inc"
 
 	.include "data/maps/Route12B/scripts.inc"
+
+	.include "data/maps/Route4A/scripts.inc"
+
+	.include "data/maps/Route8A/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_HoldingCells/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_Vents/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_ResearchWing/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_Entrance/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.inc"
+
+	.include "data/maps/IntroCutsceneMap/scripts.inc"
+
+	.include "data/maps/MurkwellBog_House3/scripts.inc"
+
+	.include "data/maps/MurkwellBog_PsychicHouse/scripts.inc"
+
+	.include "data/maps/DominionCity_MagaLab_ExitCode/scripts.inc"
+	.include "data/scripts/dexnav.inc"

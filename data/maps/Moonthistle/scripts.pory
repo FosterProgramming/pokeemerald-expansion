@@ -1,0 +1,45 @@
+raw `
+Moonthistle_MapScripts::
+	.byte 0
+`
+//OBJ_EVENT_GFX_SPECIES(BELLOSSOM)
+script Moonthistle_EventScripts_Bellossom
+{
+    lock
+    if (!flag(FLAG_MOONTHISTLE_TRUSTED))
+	{
+        speakername("Bellossom")
+        msgbox(format("Oh! Hello, stranger.\nSorry-I’ve got a lot of planting to do…"), MSGBOX_NPC)
+        release
+        end
+    }
+	else
+	{
+    speakername("Bellossom")
+    msgbox(format("You’re one of the new faces, right?\nGlad to see Linoone’s warming up.\pDon’t let the gloom get to you. We’ve got flowers, and that’s a start!"), MSGBOX_NPC)
+	}
+    release
+    end
+}
+
+//OBJ_EVENT_GFX_SPECIES(LOUDRED)
+script Moonthistle_EventScripts_Loudred
+{
+    lock
+    if (flag(FLAG_MOONTHISTLE_TRUSTED)) 
+	{
+        speakername("Loudred")
+        msgbox(format("Keep your head down, and your voice lower."), MSGBOX_NPC)
+        release
+        end
+    }
+	else
+    {
+		speakername("Loudred")
+    	msgbox(format("I’ve got my ears on the whole town.\nDon’t think I won’t notice trouble."), MSGBOX_NPC)
+	}
+    release
+    end
+}
+
+

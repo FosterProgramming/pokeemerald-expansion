@@ -1,0 +1,214 @@
+raw `
+.set LOCALID_VEE, 1
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
+DominionCity_MagaLab_ResearchWing_MapScripts::
+	.byte 0
+`
+script DominionCity_MagaLab_ResearchWing_EventScript_PlayerFindsBookmark
+{
+	if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) < 2)
+		{
+			msgbox(format("A book with lots and lots of hard to read research notes. The bookmark contains a password. Maybe it unlocks something important."),MSGBOX_SIGN)
+			setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 2)
+			releaseall
+			end
+		}
+	else
+		{
+			msgbox(format("A book with lots and lots of hard to read research notes."))
+			releaseall
+			end
+		}
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal
+{
+	lockall
+	if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) < 2)
+		{
+			msgbox(format("The terminal appears locked. There is a stick note that says “Bill, stop forgetting your password! Write it on your bookmark or something -- Sara”"),MSGBOX_SIGN)
+			releaseall
+			end
+		}
+	elif(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) == 2)
+		{
+			msgbox(format("{PLAYER} tries the password written on the bookmark"))
+			msgbox(format("The computer terminal turns on. The screen is littered with research notes. Would you like to read them?"),MSGBOX_YESNO)
+				while (var(VAR_RESULT) != 1) 
+				{
+					getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+					setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+					addobject(LOCALID_VEE)
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+					waitmovement(LOCALID_VEE)
+					playse(SE_PIN)
+					waitse
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+                	waitmovement(OBJ_EVENT_ID_PLAYER)
+					speakername("Vee")
+					msgbox(format("Whaaat? You're just gonna ignore all this super-secret science-y stuff? C'mon, aren't you curious? What if it says something important?"))
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+					waitmovement(LOCALID_VEE)
+					removeobject(LOCALID_VEE)
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+                	waitmovement(OBJ_EVENT_ID_PLAYER)
+					closemessage
+					msgbox(format("Would you like to read the research notes now?"),MSGBOX_YESNO)
+   				}
+			closemessage
+			msgbox(format("PROJECT METAMORPHOSIS: STATUS REPORT\pSubject Adaptation Success Rate: 87%\pVoluntary Conversions: 43%\pReversal Feasibility: REQUIRES ADDITIONAL RESOURCES\p"))
+			msgbox(format("We have achieved consistent success in the Pokémon conversion process. Many of our own have volunteered to undergo transformation, embracing a stronger, more adaptable existence.\pHowever, preliminary data confirms that reversal remains possible, though resource-intensive. Further testing is needed to ensure stability upon reversion.\pFor now, priority remains on refinement of the transformation process and continued testing on non-voluntary subjects."))
+			msgbox(format("PROJECT METAMORPHOSIS: REVERSION PROTOCOL\pRESOURCE REQUIREMENTS: Reversal of transformation requires activation of eight core artifacts, each infused with high-level anomalous energy.\pThese artifacts have been secured across the region, entrusted to designated guardian subjects for safekeeping."))  
+			msgbox(format("CURRENT ARTIFACT LOCATIONS & ASSIGNED GUARDIANS:\p1:Murkwell Bog\nGuardian:Redacted\p2:Voltbrook Town\nGuardian:Redacted\p3:Pyroden\nGuardian:Redacted\p4:Dunemire\nGuardian:Redacted\p5:Glacierra\nGuardian:Redacted\p6:Stratoscape\nGuardian:Redacted\p7:Abyssal Reef\nGuardian:Redacted\p8:Verdant Hallow\nGuardian:Redacted"))
+			msgbox(format("Access to artifacts is restricted to authorized personnel only.\pUnauthorized retrieval is impossible without proper clearance.\pDO NOT ALLOW SUBJECTS TO LEARN OF THIS INFORMATION.\pEND LOG"))
+			msgbox(format("One final message appears on the screen. It is a four digit code labeled “Door Code”"))
+			getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+			setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+			addobject(LOCALID_VEE)
+			applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+			waitmovement(LOCALID_VEE)
+			playse(SE_PIN)
+			waitse
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+			waitmovement(OBJ_EVENT_ID_PLAYER)
+			speakername("Vee")
+			msgbox(format("Whoa, wait, people actually volunteered for this?! Seriously? That's… huh. That's kinda weird, right?\p I mean, I totally get why someone would wanna be a Pokémon, running fast, super cool moves, no taxes!\p Buuut, like, giving up being human forever? That's, uh… bold.\p But you said here they can reverse it. Boom, problem solved! Now we just gotta… y'know… find these guardians and get the artifacts…"))
+			speakername("Vee")
+			msgbox(format("Bet they're, like, huge scary Pokémon who love to battle. Good thing we love to battle too, huh? Haha. Ha…\pThis is totally normal. Definitely not a huge, impossible task or anything.\p Sooo, you ready to get outta here, or what?"))
+			setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 3)
+			applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+			waitmovement(LOCALID_VEE)
+			removeobject(LOCALID_VEE)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+			waitmovement(OBJ_EVENT_ID_PLAYER)
+		}
+	else
+	{
+		msgbox(format("Would you like to read the research notes again"),MSGBOX_YESNO)
+			if(var(VAR_RESULT) == 1)
+				{
+					msgbox(format("PROJECT METAMORPHOSIS: STATUS REPORT\pSubject Adaptation Success Rate: 87%\pVoluntary Conversions: 43%\pReversal Feasibility: REQUIRES ADDITIONAL RESOURCES\p"))
+					msgbox(format("We have achieved consistent success in the Pokémon conversion process. Many of our own have volunteered to undergo transformation, embracing a stronger, more adaptable existence.\pHowever, preliminary data confirms that reversal remains possible, though resource-intensive. Further testing is needed to ensure stability upon reversion.\pFor now, priority remains on refinement of the transformation process and continued testing on non-voluntary subjects."))
+					msgbox(format("PROJECT METAMORPHOSIS: REVERSION PROTOCOL\pRESOURCE REQUIREMENTS: Reversal of transformation requires activation of eight core artifacts, each infused with high-level anomalous energy.\pThese artifacts have been secured across the region, entrusted to designated guardian subjects for safekeeping."))  
+					msgbox(format("CURRENT ARTIFACT LOCATIONS & ASSIGNED GUARDIANS:\p1:Murkwell Bog\nGuardian:Redacted\p2:Voltbrook Town\nGuardian:Redacted\p3:Pyroden\nGuardian:Redacted\p4:Dunemire\nGuardian:Redacted\p5:Glacierra\nGuardian:Redacted\p6:Stratoscape\nGuardian:Redacted\p7:Abyssal Reef\nGuardian:Redacted\p8:Verdant Hallow\nGuardian:Redacted"))
+					msgbox(format("Access to artifacts is restricted to authorized personnel only. Unauthorized retrieval is impossible without proper clearance.\pDO NOT ALLOW SUBJECTS TO LEARN OF THIS INFORMATION.\pEND LOG"))
+					msgbox(format("One final message appears on the screen. It is a four digit code labeled “Door Code”"))
+					releaseall
+					end
+				}
+		releaseall
+		end
+	}
+	releaseall
+    end
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
+{
+    lockall
+	if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) < 3)
+		{
+			msgbox(format("The door appears to require a 4 digit code to unlock"))
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
+			waitmovement(OBJ_EVENT_ID_PLAYER)
+			releaseall
+			end
+		}
+	elif(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) == 3)
+				{
+					getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+					setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+					addobject(LOCALID_VEE)
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+					playse(SE_PIN)
+					waitmovement(LOCALID_VEE)
+					waitse
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+					waitmovement(OBJ_EVENT_ID_PLAYER)
+					speakername("Vee")
+					msgbox(format("Alright! You got the numbers, so let's try 'em out, no way they used a super hard code or anything, bet it's something dumb like '1234', c'mon, c'mon, type it in before someone walks in, please work, please work, please work, uh, I mean, of course it's gonna work, why wouldn't it?"))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+					waitmovement(OBJ_EVENT_ID_PLAYER)
+					playse(SE_DOOR)
+					waitse					
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+					waitmovement(OBJ_EVENT_ID_PLAYER)
+					speakername("Vee")
+					msgbox(format("Ha! See? Easy! Like it was made for us, alright, let's move before I start thinking about how much trouble we'll be in if we get caught!"))
+					applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
+					waitmovement(LOCALID_VEE)
+					removeobject(LOCALID_VEE)
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+					waitmovement(OBJ_EVENT_ID_PLAYER)
+					setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 4)
+					releaseall
+					end
+				}
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal1
+{
+	lockall
+	msgbox(format("EVOFLUX INITIATIVE:\p
+	OBJECTIVE: Induce elemental-based adaptive evolution without requiring external catalysts (e.g., evolutionary stones).\p
+	OBSERVED BEHAVIOUR: Subject 0042 failed to display form alterations under battle conditions\p
+	CONCLUSION: Results deemed inconsistent and unstable. Subject scheduled for termination and research discontinued.\p
+	NOTE: Further research into adaptive evolution has been redirected to synthetic methods (see: Porygon Initiative)."))
+	releaseall
+	end
+}
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal2
+{
+	lockall
+	msgbox(format("PORYGON ADAPTIVE EVOLUTION TRIALS:\p
+	OBJECTIVE: Develop an artificial Pokémon capable of rewriting its evolutionary structure dynamically without environmental dependency.\p
+	LATEST FINDINGS:\p
+	- Version 1.8: Stable under controlled conditions.\p
+	- Version 2.1: Unexpected self-modification of combat protocols. Subject disregarded preset combat parameters.\p
+	- Version 2.5: Subject exhibited signs of autonomous decision-making beyond intended programming.\p
+	STATUS: Experiment under review. Further modifications pending to ensure subject compliance and prevent unsanctioned adaptability."))
+	release
+	end
+}
+script DominionCity_MagaLab_ResearchWing_EventScript_Terminal3
+{
+	lockall
+	msgbox(format("PROJECT METAMORPHOSIS:\p
+	SUBJECT SELECTION: Volunteers sourced from internal Team MAGA operatives.\p
+	PHASE 1 RESULTS: Initial transformations deemed successful; subjects retained cognitive function and mobility.\p
+	PHASE 2 ISSUES: Irreversibility of transformation process confirmed. Reversion not possible without external stimuli (see: artifacts).\p
+	STATUS: Additional testing required. Potential candidates flagged for further trials.\p
+	NOTE: Continue sourcing from interal Team MAGA operatives. If no voluenteers step forward, utilize draft protocol and pull from military branches, starting with airforce"))
+	release
+	end
+}
+script DominionCity_MagaLab_ResearchWing_EventScript_Book1
+{	
+	lockall
+	msgbox(format("A handwritten note is placed as a bookmark in this book. It reads “Project Evo Flux aimed to induce evolution at will, removing the need for elemental catalysts. However, test subjects lacked stability, resulting in inconsistent transformations. The project has been deemed a failure.\p
+	The Synthetic Evolution program, however, presents an alternative: rather than forcing natural evolution, we will construct an entity capable of rewriting its own code as needed. A true artificial organism, one that can modify itself without external stimuli.\p
+	The prototype, designated Porygon, is proving promising. Unlike Subject 0042, which lacks control over its fluctuating forms, Porygon will be programmed to adapt dynamically.”"))
+	releaseall
+	end
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_Book2
+{	
+	lockall
+	msgbox(format("A handwritten note is placed as a bookmark in this book. It reads “Ordered to terminate Subject 0042 soon. 'Unstable, not viable.' Ridiculous. I checked the logs, 0042 was showing higher elemental synchronization than any other test subject.\p
+	But it's not what they wanted. They wanted control, not adaptation.\p
+	I'm going to delay the process as long as I can. Maybe someone will see what I see before it's too late…"))
+	release
+	end
+	releaseall
+	end
+}
+
+script DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks
+{	
+	lockall
+	msgbox(format("Piles of scientific books lay scattered about."))
+	releaseall
+	end
+}

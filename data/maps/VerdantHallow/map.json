@@ -15,13 +15,8 @@
   "connections": [
     {
       "map": "MAP_ROUTE5A",
-      "offset": 6,
+      "offset": 8,
       "direction": "right"
-    },
-    {
-      "map": "MAP_MURKWELL_BOG",
-      "offset": -26,
-      "direction": "down"
     }
   ],
   "object_events": [

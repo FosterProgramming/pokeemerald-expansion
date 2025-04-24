@@ -14,36 +14,246 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE4",
-      "offset": 28,
-      "direction": "right"
-    },
-    {
-      "map": "MAP_VERDANT_HALLOW",
-      "offset": 34,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_VERDANT_HALLOW",
-      "offset": 26,
-      "direction": "up"
-    },
-    {
       "map": "MAP_ROUTE9A",
       "offset": 34,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE4A",
+      "offset": 28,
+      "direction": "right"
     }
   ],
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLOWPOKE)",
+      "x": 70,
+      "y": 31,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_SlowpokeNPC",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT)",
+      "x": 61,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_ParasectNPC",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DROWZEE)",
+      "x": 51,
+      "y": 59,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_DrowzeeNPC",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HAUNTER)",
+      "x": 52,
+      "y": 34,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_HaunterNPC",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LANTURN)",
+      "x": 50,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_LanturnNPC",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOOTHOOT)",
+      "x": 49,
+      "y": 39,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENOMOTH)",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_HIDE_MURKWELL_BOG_NYX"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 15,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_MURKWELL_BOG_NYX"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
+      "x": 17,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRAGONITE)",
+      "x": 18,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PERSIAN)",
+      "x": 17,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_SYS_HIDE_ACE_PARTY_MEMBER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
+      "x": 18,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MurkwellBog_EventScripts_NyxNPC",
+      "flag": "FLAG_SYS_HIDE_TALON_PARTY_MEMBER"
+    }
   ],
   "warp_events": [
-
+    {
+      "x": 68,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_MURKWELL_BOG_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 67,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_MURKWELL_BOG_HOUSE2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 72,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_MURKWELL_BOG_HOUSE3",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 71,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_MURKWELL_BOG_MART",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 48,
+      "y": 41,
+      "elevation": 0,
+      "dest_map": "MAP_MURKWELL_BOG_INN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 53,
+      "y": 59,
+      "elevation": 0,
+      "dest_map": "MAP_MURKWELL_BOG_PSYCHIC_HOUSE",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_MURKWELL_BOG_STATE",
+      "var_value": "0",
+      "script": "MurkwellBog_EventScripts_TempleNeedsRitual"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_MURKWELL_BOG_STATE",
+      "var_value": "0",
+      "script": "MurkwellBog_EventScripts_TempleNeedsRitual"
+    }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 49,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MurkwellBog_EventScripts_HoothootNPC"
+    }
   ]
 }

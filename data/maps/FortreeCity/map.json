@@ -129,7 +129,7 @@
       "x": 10,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_FORTREE_CITY_HOUSE1",
+      "dest_map": "MAP_MOONTHISTLE_HOUSE1",
       "dest_warp_id": "0"
     },
     {
@@ -150,14 +150,14 @@
       "x": 17,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_FORTREE_CITY_HOUSE2",
+      "dest_map": "MAP_MOONTHISTLE_HOUSE2",
       "dest_warp_id": "0"
     },
     {
       "x": 25,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_FORTREE_CITY_HOUSE3",
+      "dest_map": "MAP_MOONTHISTLE_HOUSE3",
       "dest_warp_id": "0"
     },
     {
@@ -178,7 +178,7 @@
       "x": 37,
       "y": 13,
       "elevation": 0,
-      "dest_map": "MAP_FORTREE_CITY_DECORATION_SHOP",
+      "dest_map": "MAP_MOONTHISTLE_SHOP",
       "dest_warp_id": "0"
     }
   ],
