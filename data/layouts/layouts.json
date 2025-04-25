@@ -4446,7 +4446,7 @@
       "name": "Route2_Layout",
       "width": 66,
       "height": 20,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route2/border.bin",
       "blockdata_filepath": "data/layouts/Route2/map.bin"
@@ -4456,8 +4456,8 @@
       "name": "Route2A_Layout",
       "width": 30,
       "height": 76,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Route2A/border.bin",
       "blockdata_filepath": "data/layouts/Route2A/map.bin"
     },
