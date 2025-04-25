@@ -197,3 +197,8 @@ Common_Movement_PartyMemberReturnsToPlayerSouthWest::
 	walk_up
 	walk_right
 	step_end
+
+Common_Movement_PlayerFacesPartyMemberEast::
+	walk_in_place_right
+	step_end
+	

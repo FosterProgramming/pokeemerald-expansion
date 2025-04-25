@@ -1,6 +1,8 @@
 raw `
 .set LOCALID_VEE, 1
 .set LOCALID_PORYGON, 2
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 `
 mapscripts DominionCity_MagaLab_HoldingCells_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -98,6 +100,18 @@ script DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey {
 		finditem(ITEM_ASPEAR_BERRY, 1)
 		finditem(ITEM_PECHA_BERRY, 1)
 		finditem(ITEM_LUM_BERRY, 1)
+		getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+		setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+		addobject(LOCALID_VEE)
+		applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerEast)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_PlayerFacesPartyMemberEast)
+		playse(SE_PIN)
+		waitmovement(LOCALID_VEE)
+		speakername("Vee")
+		msgbox(format("Ooooh there were berries in the bag?\pI LOVE berries. Did you know I can hold up to four at a time? How many do can you hold?\pI think we should have a contest to see who can hold the most!\pNo you're right, that is silly and we need to focus on escaping. Sorry."))
+		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
+		waitmovement(LOCALID_VEE)
+		removeobject(LOCALID_VEE)
 		releaseall
 		end
 	}
