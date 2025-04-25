@@ -5,7 +5,7 @@ DominionCity_MagaLab_ExitCode_MapScripts::
 
 DominionCity_MagaLab_ExitCode_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 4 "data/maps/DominionCity_MagaLab_ExitCode/scripts.pory"
-	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 7, DominionCity_MagaLab_ExitCode_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
+	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 6, DominionCity_MagaLab_ExitCode_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
 	.2byte 0
 
 DominionCity_MagaLab_ExitCode_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
@@ -73,7 +73,7 @@ DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor_19:
 # 79 "data/maps/DominionCity_MagaLab_ExitCode/scripts.pory"
 	msgbox DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor_Text_16
 # 80 "data/maps/DominionCity_MagaLab_ExitCode/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 8
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 7
 # 81 "data/maps/DominionCity_MagaLab_ExitCode/scripts.pory"
 	releaseall
 # 82 "data/maps/DominionCity_MagaLab_ExitCode/scripts.pory"

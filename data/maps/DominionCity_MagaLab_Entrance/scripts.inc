@@ -180,35 +180,6 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1:
 	end
 
 
-DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene::
-# 102 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	lockall
-# 103 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 7
-# 104 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	special SaveGame
-# 105 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitstate
-DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene_2:
-# 106 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	compare VAR_RESULT, 1
-	goto_if_ne DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene_3
-# 111 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	fadeoutbgm 0
-# 112 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	delay 40
-# 113 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	fadescreenspeed FADE_TO_WHITE, 4
-	return
-
-DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene_3:
-# 108 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	special SaveGame
-# 109 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitstate
-	goto DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene_2
-
-
 # 12 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_0:
 # 12 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"

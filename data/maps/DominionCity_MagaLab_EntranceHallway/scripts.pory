@@ -9,13 +9,13 @@ mapscripts DominionCity_MagaLab_EntranceHallway_MapScripts{
     [
         VAR_TEMP_0, 0
         {
-        if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) == 7) 
+        if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) == 6) 
            {
                 setmetatile(25, 9, 0x2BC, FALSE)
                 setmetatile(26, 9, 0x2BD, FALSE)
                 setvar(VAR_TEMP_0, 1)
            }
-        elif(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) > 7)
+        elif(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) > 6)
             {
                 setvar(VAR_TEMP_0, 1)
             }

@@ -8,7 +8,7 @@ mapscripts DominionCity_MapScripts
 {
 	MAP_SCRIPT_ON_FRAME_TABLE 
 	[
-	VAR_DOMINION_CITY_LAB_INTRO_STATE, 8 
+	VAR_DOMINION_CITY_LAB_INTRO_STATE, 7 
 		{
 				lockall
 				getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
@@ -35,7 +35,7 @@ mapscripts DominionCity_MapScripts
 				applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
                 waitmovement(LOCALID_VEE)
                 removeobject(LOCALID_VEE)
-                setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 9)
+                setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 8)
                 setrespawn(HEAL_LOCATION_DOMINION_CITY)
                 releaseall
                 end
@@ -70,7 +70,7 @@ script DominionCity_EventScripts_WhatIsThisPlace
         applymovement(LOCALID_VEE, moves(walk_down))
         waitmovement(LOCALID_VEE)
         removeobject( LOCALID_VEE)
-        setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 10)
+        setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 9)
         releaseall
         end
     }

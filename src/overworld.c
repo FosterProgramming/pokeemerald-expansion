@@ -422,7 +422,7 @@ void Overworld_ResetBattleFlagsAndVars(void)
     #endif
 
     FlagClear(B_FLAG_INVERSE_BATTLE);
-    FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
+    //FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
     FlagClear(B_SMART_WILD_AI_FLAG);
     FlagClear(B_FLAG_NO_BAG_USE);
     FlagClear(B_FLAG_NO_CATCHING);

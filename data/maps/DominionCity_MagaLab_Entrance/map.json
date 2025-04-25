@@ -65,24 +65,7 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 15,
-      "y": -1,
-      "elevation": 0,
-      "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
-      "var_value": "6",
-      "script": "DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": -1,
-      "elevation": 0,
-      "var": "VAR_DOMINION_CITY_LAB_INTRO_STATE",
-      "var_value": "6",
-      "script": "DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene"
-    }
+
   ],
   "bg_events": [
     {

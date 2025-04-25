@@ -96,19 +96,3 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 		}
     ]
 	}
-
-script DominionCity_MagaLab_Entrance_EventScripts_TriggerTitleScreenCutscene
-{
-	lockall
-	setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 7)
-	special(SaveGame)
-	waitstate
-	while (var(VAR_RESULT) != 1) 
-				{
-					special(SaveGame)
-					waitstate
-   				}
-	fadeoutbgm(0)
-	delay(40)
-	fadescreenspeed(FADE_TO_WHITE, 4)
-}

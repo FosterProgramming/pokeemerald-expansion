@@ -14,7 +14,7 @@ DominionCity_MapScripts::
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 11 "data/maps/DominionCity/scripts.pory"
-	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 8, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
+	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 7, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
 	.2byte 0
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
@@ -69,7 +69,7 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 37 "data/maps/DominionCity/scripts.pory"
 	removeobject LOCALID_VEE
 # 38 "data/maps/DominionCity/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 9
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 8
 # 39 "data/maps/DominionCity/scripts.pory"
 	setrespawn HEAL_LOCATION_DOMINION_CITY
 # 40 "data/maps/DominionCity/scripts.pory"
@@ -129,7 +129,7 @@ DominionCity_EventScripts_WhatIsThisPlace::
 # 72 "data/maps/DominionCity/scripts.pory"
 	removeobject LOCALID_VEE
 # 73 "data/maps/DominionCity/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 9
 # 74 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end

@@ -1080,6 +1080,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
                 //gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+                NewGameBirchSpeech_SetDefaultPlayerName(0);
                 gTasks[taskId].func = Task_NewGameBirchSpeech_Cleanup;
                 break;
             case ACTION_CONTINUE:

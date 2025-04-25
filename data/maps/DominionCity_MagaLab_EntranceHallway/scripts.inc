@@ -19,10 +19,10 @@ DominionCity_MagaLab_EntranceHallway_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 DominionCity_MagaLab_EntranceHallway_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 12 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	compare VAR_DOMINION_CITY_LAB_INTRO_STATE, 7
+	compare VAR_DOMINION_CITY_LAB_INTRO_STATE, 6
 	goto_if_eq DominionCity_MagaLab_EntranceHallway_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_1
 # 18 "data/maps/DominionCity_MagaLab_EntranceHallway/scripts.pory"
-	compare VAR_DOMINION_CITY_LAB_INTRO_STATE, 7
+	compare VAR_DOMINION_CITY_LAB_INTRO_STATE, 6
 	goto_if_gt DominionCity_MagaLab_EntranceHallway_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_2
 	return
 
