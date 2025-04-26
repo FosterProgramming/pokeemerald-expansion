@@ -4930,6 +4930,16 @@
       "secondary_tileset": "gTileset_MagaLabExitRoom",
       "border_filepath": "data/layouts/DominionCity_MagaLab_ExitCode/border.bin",
       "blockdata_filepath": "data/layouts/DominionCity_MagaLab_ExitCode/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRATOSCAPE",
+      "name": "Stratoscape_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_StratoscapePrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Stratoscape/border.bin",
+      "blockdata_filepath": "data/layouts/Stratoscape/map.bin"
     }
   ]
 }

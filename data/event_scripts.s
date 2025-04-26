@@ -1262,3 +1262,5 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/DominionCity_MagaLab_ExitCode/scripts.inc"
 	.include "data/scripts/dexnav.inc"
+
+	.include "data/maps/Stratoscape/scripts.inc"

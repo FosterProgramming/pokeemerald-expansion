@@ -957,3 +957,14 @@ const struct Tileset gTileset_NaturalInterior =
     .metatileAttributes = gMetatileAttributes_NaturalInterior,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_StratoscapePrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_StratoscapePrimary,
+    .palettes = gTilesetPalettes_StratoscapePrimary,
+    .metatiles = gMetatiles_StratoscapePrimary,
+    .metatileAttributes = gMetatileAttributes_StratoscapePrimary,
+    .callback = NULL,
+};
