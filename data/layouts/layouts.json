@@ -4935,7 +4935,7 @@
       "id": "LAYOUT_STRATOSCAPE",
       "name": "Stratoscape_Layout",
       "width": 60,
-      "height": 60,
+      "height": 70,
       "primary_tileset": "gTileset_StratoscapePrimary",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Stratoscape/border.bin",
