@@ -246,3 +246,6 @@ const u16 gMetatileAttributes_NaturalInterior[] = INCBIN_U16("data/tilesets/seco
 
 const u16 gMetatiles_StratoscapePrimary[] = INCBIN_U16("data/tilesets/primary/stratoscape_primary/metatiles.bin");
 const u16 gMetatileAttributes_StratoscapePrimary[] = INCBIN_U16("data/tilesets/primary/stratoscape_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_AbyssalReefPrimary[] = INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/metatiles.bin");
+const u16 gMetatileAttributes_AbyssalReefPrimary[] = INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/metatile_attributes.bin");

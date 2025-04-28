@@ -1881,3 +1881,22 @@ const u16 gTilesetPalettes_StratoscapePrimary[][16] =
 };
 
 const u32 gTilesetTiles_StratoscapePrimary[] = INCBIN_U32("data/tilesets/primary/stratoscape_primary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_AbyssalReefPrimary[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/abyssal_reef_primary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_AbyssalReefPrimary[] = INCBIN_U32("data/tilesets/primary/abyssal_reef_primary/tiles.4bpp.lz");

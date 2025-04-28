@@ -1264,3 +1264,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/dexnav.inc"
 
 	.include "data/maps/Stratoscape/scripts.inc"
+
+	.include "data/maps/AbyssalReef/scripts.inc"

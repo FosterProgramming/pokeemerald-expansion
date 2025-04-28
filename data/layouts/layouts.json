@@ -4940,6 +4940,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Stratoscape/border.bin",
       "blockdata_filepath": "data/layouts/Stratoscape/map.bin"
+    },
+    {
+      "id": "LAYOUT_ABYSSAL_REEF",
+      "name": "AbyssalReef_Layout",
+      "width": 52,
+      "height": 49,
+      "primary_tileset": "gTileset_AbyssalReefPrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/AbyssalReef/border.bin",
+      "blockdata_filepath": "data/layouts/AbyssalReef/map.bin"
     }
   ]
 }

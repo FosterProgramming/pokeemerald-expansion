@@ -968,3 +968,14 @@ const struct Tileset gTileset_StratoscapePrimary =
     .metatileAttributes = gMetatileAttributes_StratoscapePrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_AbyssalReefPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_AbyssalReefPrimary,
+    .palettes = gTilesetPalettes_AbyssalReefPrimary,
+    .metatiles = gMetatiles_AbyssalReefPrimary,
+    .metatileAttributes = gMetatileAttributes_AbyssalReefPrimary,
+    .callback = NULL,
+};
