@@ -1266,3 +1266,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Stratoscape/scripts.inc"
 
 	.include "data/maps/AbyssalReef/scripts.inc"
+
+	.include "data/maps/AbyssalReefShipyard/scripts.inc"

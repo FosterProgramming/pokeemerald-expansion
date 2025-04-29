@@ -4950,6 +4950,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/AbyssalReef/border.bin",
       "blockdata_filepath": "data/layouts/AbyssalReef/map.bin"
+    },
+    {
+      "id": "LAYOUT_ABYSSAL_REEF_SHIPYARD",
+      "name": "AbyssalReefShipyard_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_AbyssalReefPrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/AbyssalReefShipyard/border.bin",
+      "blockdata_filepath": "data/layouts/AbyssalReefShipyard/map.bin"
     }
   ]
 }
