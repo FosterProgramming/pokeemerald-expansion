@@ -75,6 +75,8 @@
 #include "constants/weather.h"
 #include "cable_club.h"
 
+#include "brave_battle.h"
+
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
 
@@ -3750,6 +3752,7 @@ static void DoBattleIntro(void)
 
 static void TryDoEventsBeforeFirstTurn(void)
 {
+    Brave_TestActions();
     s32 i, j;
 
     if (gBattleControllerExecFlags)
