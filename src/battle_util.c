@@ -12821,7 +12821,7 @@ bool32 IsMoveEffectBlockedByTarget(u32 ability)
         RecordAbilityBattle(gBattlerTarget, ability);
         return TRUE;
     }
-    else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_COVERT_CLOAK)
+    else if (BattlerHeldItemHasEffect(gBattlerTarget, HOLD_EFFECT_COVERT_CLOAK, TRUE))
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_COVERT_CLOAK);
         return TRUE;
