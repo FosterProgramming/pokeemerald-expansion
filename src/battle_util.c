@@ -10618,7 +10618,7 @@ static inline u32 CalcDefenseStat(struct DamageCalculationData *damageCalcData, 
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
     }
 
-    if(BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_ASSAULT_VEST, TRUE)){
+    if(BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_EVIOLITE, TRUE)){
         if (CanEvolve(gBattleMons[battlerDef].species))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
     }
