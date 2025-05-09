@@ -4476,7 +4476,7 @@
       "name": "Pyroden_Layout",
       "width": 40,
       "height": 45,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Pyroden/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden/map.bin"
