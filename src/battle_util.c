@@ -10066,7 +10066,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
     }
 
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_WISE_GLASSES, TRUE)){
-        if (IsBattleMoveStatus(move))
+        if (IsBattleMoveSpecial(move))
             modifier = uq4_12_multiply(modifier, holdEffectModifier);
     }
 
