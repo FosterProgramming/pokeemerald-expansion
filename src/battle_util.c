@@ -8331,6 +8331,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
             }
 
             if(BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_BLACK_SLUDGE, TRUE)){
+                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_BLACK_SLUDGE, TRUE);
                 if (IS_BATTLER_OF_TYPE(battler, TYPE_POISON))
                 {
                     if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !moveTurn
@@ -8342,7 +8343,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                         if (gBattleStruct->moveDamage[battler] == 0)
                             gBattleStruct->moveDamage[battler] = 1;
                         gBattleStruct->moveDamage[battler] *= -1;
-                        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_BLACK_SLUDGE, TRUE);
                         BattleScriptExecute(BattleScript_ItemHealHP_End2);
                         effect = ITEM_HP_CHANGE;
                         RecordItemEffectBattle(battler, battlerHoldEffect);

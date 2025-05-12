@@ -277,7 +277,16 @@ Debug_EventScript_Script_5::
 	end
 
 Debug_EventScript_Script_6::
-	removeobject 8
+	giveitem ITEM_QUICK_CLAW, 2
+	giveitem ITEM_BRIGHT_POWDER, 2
+	giveitem ITEM_LUMINOUS_MOSS, 2
+	giveitem ITEM_SNOWBALL, 2
+	giveitem ITEM_RED_CARD, 2
+	giveitem ITEM_EJECT_BUTTON, 2
+	giveitem ITEM_EJECT_PACK, 2
+	giveitem ITEM_IRON_BALL, 2
+	giveitem ITEM_LAGGING_TAIL, 2
+	giveitem ITEM_DESTINY_KNOT, 2
 	release
 	end
 
