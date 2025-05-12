@@ -5338,15 +5338,17 @@ static void CheckChangingTurnOrderEffects(void)
             {
                 if (gProtectStructs[battler].usedCustapBerry)
                 {
-                    gLastUsedItem = gBattleMons[battler].item;
-                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                     if (GetBattlerHoldEffect(battler, FALSE) == HOLD_EFFECT_CUSTAP_BERRY)
                     {
                         // don't record berry since its gone now
+                        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CUSTAP_BERRY, TRUE);
+                        PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                         BattleScriptExecute(BattleScript_CustapBerryActivation);
                     }
                     else
                     {
+                        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_QUICK_CLAW, TRUE);
+                        PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                         RecordItemEffectBattle(battler, GetBattlerHoldEffect(battler, FALSE));
                         BattleScriptExecute(BattleScript_QuickClawActivation);
                     }
