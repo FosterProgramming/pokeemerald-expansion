@@ -8323,7 +8323,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     if (gBattleStruct->moveDamage[battler] == 0)
                         gBattleStruct->moveDamage[battler] = 1;
                     gBattleStruct->moveDamage[battler] *= -1;
-                    gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_LEFTOVERS, TRUE);
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_LEFTOVERS, TRUE);
                     BattleScriptExecute(BattleScript_ItemHealHP_End2);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
@@ -8342,7 +8342,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                         if (gBattleStruct->moveDamage[battler] == 0)
                             gBattleStruct->moveDamage[battler] = 1;
                         gBattleStruct->moveDamage[battler] *= -1;
-                        gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerTarget, HOLD_EFFECT_BLACK_SLUDGE, TRUE);
+                        gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_BLACK_SLUDGE, TRUE);
                         BattleScriptExecute(BattleScript_ItemHealHP_End2);
                         effect = ITEM_HP_CHANGE;
                         RecordItemEffectBattle(battler, battlerHoldEffect);
@@ -8670,7 +8670,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 && IsBattlerAlive(gBattlerAttacker)
                 && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
             {
-                gLastUsedItem = atkItem;
+                gLastUsedItem = GetBattlerHeldItemWithEffect(gBattlerAttacker, HOLD_EFFECT_SHELL_BELL, TRUE);
                 gPotentialItemEffectBattler = gBattlerAttacker;
                 gBattleScripting.battler = gBattlerAttacker;
                 gBattleStruct->moveDamage[gBattlerAttacker] = (gBattleScripting.savedDmg / atkHoldEffectParam) * -1;
