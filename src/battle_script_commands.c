@@ -6271,7 +6271,7 @@ static inline bool32 CanEjectButtonTrigger(u32 battlerAtk, u32 battlerDef, u32 m
 static inline bool32 CanEjectPackTrigger(u32 battlerAtk, u32 battlerDef, u32 moveEffect)
 {
     if (gProtectStructs[battlerDef].statFell
-     && GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_EJECT_PACK
+     && BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_EJECT_PACK, TRUE)
      && IsBattlerAlive(battlerDef)
      && CountUsablePartyMons(battlerDef) > 0
      && !gProtectStructs[battlerDef].disableEjectPack
@@ -9151,8 +9151,8 @@ static bool32 TrySymbiosis(u32 battler, u32 itemId)
 {
     if (!gBattleStruct->itemLost[B_SIDE_PLAYER][gBattlerPartyIndexes[battler]].stolen
         && gBattleStruct->changedItems[battler] == ITEM_NONE
-        && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_EJECT_BUTTON
-        && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_EJECT_PACK
+        && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_EJECT_PACK, TRUE)
+        && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_EJECT_PACK, TRUE)
         && (B_SYMBIOSIS_GEMS < GEN_7 || !(gSpecialStatuses[battler].gemBoost))
         && gCurrentMove != MOVE_FLING //Fling and damage-reducing berries are handled separately.
         && !gSpecialStatuses[battler].berryReduced
