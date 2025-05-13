@@ -465,8 +465,9 @@ F_TRAINER_FEMALE |
         {
             {
 #line 263
-            .species = SPECIES_PORYGON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
+            .species = SPECIES_BEAUTIFLY,
+#line 263
+            .gender = TRAINER_MON_FEMALE,
 #line 266
             .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 0, 0),
 #line 265
@@ -485,8 +486,9 @@ F_TRAINER_FEMALE |
             },
             {
 #line 272
-            .species = SPECIES_PORYGON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
+            .species = SPECIES_BEAUTIFLY,
+#line 272
+            .gender = TRAINER_MON_FEMALE,
 #line 275
             .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 0, 0),
 #line 274
@@ -505,8 +507,9 @@ F_TRAINER_FEMALE |
             },
             {
 #line 281
-            .species = SPECIES_PORYGON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
+            .species = SPECIES_BEAUTIFLY,
+#line 281
+            .gender = TRAINER_MON_FEMALE,
 #line 284
             .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 0, 0),
 #line 283
@@ -525,8 +528,9 @@ F_TRAINER_FEMALE |
             },
             {
 #line 290
-            .species = SPECIES_PORYGON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
+            .species = SPECIES_BEAUTIFLY,
+#line 290
+            .gender = TRAINER_MON_FEMALE,
 #line 293
             .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 0, 0),
 #line 292
