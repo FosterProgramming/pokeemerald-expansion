@@ -6122,7 +6122,6 @@ BattleScript_TargetItemStatRaiseRemoveItemRet:
 	return
 
 BattleScript_TargetItemStatRaise_Luminous_Moss::
-	setlastuseditem BS_TARGET, HOLD_EFFECT_LUMINOUS_MOSS
 	copybyte sBATTLER, gBattlerTarget
 	statbuffchange 0, BattleScript_TargetItemStatRaiseRemoveItemRet_Luminous_Moss
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TargetItemStatRaiseRemoveItemRet_Luminous_Moss
@@ -6157,7 +6156,6 @@ BattleScript_TargetItemStatRaiseRemoveItemRet_Snowball:
 	return
 
 BattleScript_TargetItemStatRaise_Cell_Battery::
-	setlastuseditem BS_TARGET, HOLD_EFFECT_CELL_BATTERY
 	copybyte sBATTLER, gBattlerTarget
 	statbuffchange 0, BattleScript_TargetItemStatRaiseRemoveItemRet_Cell_Battery
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TargetItemStatRaiseRemoveItemRet_Cell_Battery
@@ -6175,7 +6173,6 @@ BattleScript_TargetItemStatRaiseRemoveItemRet_Cell_Battery:
 	return
 
 BattleScript_TargetItemStatRaise_Absorb_Bulb::
-	setlastuseditem BS_TARGET, HOLD_EFFECT_ABSORB_BULB
 	copybyte sBATTLER, gBattlerTarget
 	statbuffchange 0, BattleScript_TargetItemStatRaiseRemoveItemRet_Absorb_Bulb
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TargetItemStatRaiseRemoveItemRet_Absorb_Bulb

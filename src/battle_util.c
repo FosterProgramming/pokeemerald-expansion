@@ -3302,7 +3302,7 @@ static inline bool32 TryFormChangeBeforeMove(void)
             if(VarGet(VAR_EVOFLUX_TRANSFORM_COUNT) > 0)
                 {
                     EvoFluxTransformCount = VarGet(VAR_EVOFLUX_TRANSFORM_COUNT);
-                    DebugPrintf("VarGet(VAR_EVOFLUX_TRANSFORM_COUNT) = %d", VarGet(VAR_EVOFLUX_TRANSFORM_COUNT));
+                    MgbaPrintf(MGBA_LOG_WARN, "VarGet(VAR_EVOFLUX_TRANSFORM_COUNT) = %d", VarGet(VAR_EVOFLUX_TRANSFORM_COUNT));
                     DebugPrintf("Goodbye World");
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_EvoFluxAttackerFormChange;
@@ -8752,10 +8752,12 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     && IsBattlerTurnDamaged(gBattlerTarget)
                     && moveType == TYPE_WATER)
                 {
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_LUMINOUS_MOSS, TRUE);
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Luminous_Moss;
                     SET_STATCHANGER(STAT_SPDEF, 1, FALSE);
+                    MgbaPrintf(MGBA_LOG_WARN,"Test");
                 }
             }
 
@@ -8764,6 +8766,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     && IsBattlerTurnDamaged(gBattlerTarget)
                     && moveType == TYPE_ICE)
                 {
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_SNOWBALL, TRUE);
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Snowball;
@@ -8776,6 +8779,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     && IsBattlerTurnDamaged(gBattlerTarget)
                     && moveType == TYPE_ELECTRIC)
                 {
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CELL_BATTERY, TRUE);
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Cell_Battery;
@@ -8788,6 +8792,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     && IsBattlerTurnDamaged(gBattlerTarget)
                     && moveType == TYPE_WATER)
                 {
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_ABSORB_BULB, TRUE);
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Absorb_Bulb;
