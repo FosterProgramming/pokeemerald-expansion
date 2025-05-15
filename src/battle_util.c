@@ -10089,109 +10089,109 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
     //Charcoal
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_FIRE_POWER, TRUE)){
         if (moveType == TYPE_FIRE)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Mystic Water
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_WATER_POWER, TRUE)){
         if (moveType == TYPE_WATER)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Magnet
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_ELECTRIC_POWER, TRUE)){
         if (moveType == TYPE_ELECTRIC)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Miracle Seed
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_GRASS_POWER, TRUE)){
         if (moveType == TYPE_GRASS)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Soft Sand
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_GROUND_POWER, TRUE)){
         if (moveType == TYPE_GROUND)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Never-Melt Ice
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_ICE_POWER, TRUE)){
         if (moveType == TYPE_ICE)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Black Belt
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_FIGHTING_POWER, TRUE)){
         if (moveType == TYPE_FIGHTING)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Twisted Spoon
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_PSYCHIC_POWER, TRUE)){
         if (moveType == TYPE_PSYCHIC)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Dragon Fang
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_DRAGON_POWER, TRUE)){
         if (moveType == TYPE_DRAGON)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Spell Tag
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_GHOST_POWER, TRUE)){
         if (moveType == TYPE_GHOST)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Poison Barb
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_POISON_POWER, TRUE)){
         if (moveType == TYPE_POISON)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Silver Powder
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_BUG_POWER, TRUE)){
         if (moveType == TYPE_BUG)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Hard Stone
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_ROCK_POWER, TRUE)){
         if (moveType == TYPE_ROCK)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Sharp Beak
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_FLYING_POWER, TRUE)){
         if (moveType == TYPE_FLYING)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Metal Coat
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_STEEL_POWER, TRUE)){
         if (moveType == TYPE_STEEL)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Black Glasses
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_DARK_POWER, TRUE)){
         if (moveType == TYPE_DARK)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Silk Scarf
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_NORMAL_POWER, TRUE)){
         if (moveType == TYPE_NORMAL)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     //Fairy Feather
     if(BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_FAIRY_POWER, TRUE)){
         if (moveType == TYPE_FAIRY)
-            modifier = uq4_12_multiply(modifier, holdEffectModifier);
+            modifier = uq4_12_multiply(modifier, UQ_4_12(100));
     }
 
     switch (holdEffectAtk)
