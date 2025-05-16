@@ -269,6 +269,15 @@ EVs: 252 HP / 0 Spe / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Conversion 2
 - Conversion 2
 
+Porygon
+Level: 25
+IVs: 31 HP / 22 Atk / 23 Def / 24 SpA / 25 SpD / 26 Spe
+EVs: 252 HP / 0 Spe / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Conversion 2
+- Conversion 2
+- Conversion 2
+- Conversion 2
+
 === TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN ===
 Name: Grunt 1
 Class: Team Aqua
