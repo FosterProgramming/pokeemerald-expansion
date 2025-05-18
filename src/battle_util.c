@@ -456,7 +456,9 @@ void HandleAction_UseMove(void)
         }
         else
         {
-            gBattlerTarget = *(gBattleStruct->moveTarget + gBattlerAttacker);
+            //  BRAVE CHANGE
+            //gBattlerTarget = *(gBattleStruct->moveTarget + gBattlerAttacker);
+            gBattlerTarget = BraveGetCurrentTarget();
             if (!IsBattlerAlive(gBattlerTarget)
             && moveTarget != MOVE_TARGET_OPPONENTS_FIELD
             && (GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gBattlerTarget)))
@@ -11105,10 +11107,14 @@ static inline s32 DoFutureSightAttackDamageCalcVars(struct DamageCalculationData
         DAMAGE_APPLY_MODIFIER(UQ_4_12(1.0));
     DAMAGE_APPLY_MODIFIER(typeEffectivenessModifier);
 
+    if (IsBattlerDefaulting(battlerDef))
+        dmg = dmg >> 1;
+
     if (dmg == 0)
         dmg = 1;
 
     gSpecialStatuses[battlerAtk].preventLifeOrbDamage = TRUE;
+
 
     return dmg;
 }

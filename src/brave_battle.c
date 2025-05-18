@@ -1,36 +1,38 @@
 #include "brave_battle.h"
 #include "battle.h"
 
-EWRAM_DATA struct BraveBattleAction gBraveBattleAction[NUM_BRAVE_PRIORITIES][MAX_BRAVE_ACTIONS][MAX_BRAVE_BATTLERS];
+EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
+EWRAM_DATA u16 gBraveStoredSpeeds[4];
 
 void Brave_TestActions(void)
 {
-    for (u32 i = 0; i < 4; i++)
+    for (u32 battler = 0; battler < 4; battler++)
     {
-        gBraveBattleAction[0][i][0].action = B_ACTION_USE_MOVE;
-        gBraveBattleAction[0][i][0].battler = 0;
-        gBraveBattleAction[0][i][0].target = 1;
-        gBraveBattleAction[0][i][0].moveSlot = i%2;
-        gBraveBattleAction[0][i][0].isSlotUsed = TRUE;
-
-        gBraveBattleAction[0][i][1].action = B_ACTION_USE_MOVE;
-        gBraveBattleAction[0][i][1].battler = 1;
-        gBraveBattleAction[0][i][1].target = 0;
-        gBraveBattleAction[0][i][1].moveSlot = i%2;
-        gBraveBattleAction[0][i][1].isSlotUsed = TRUE;
-
-        gBraveBattleAction[0][i][2].action = B_ACTION_USE_MOVE;
-        gBraveBattleAction[0][i][2].battler = 2;
-        gBraveBattleAction[0][i][2].target = 3;
-        gBraveBattleAction[0][i][2].moveSlot = i%2;
-        gBraveBattleAction[0][i][2].isSlotUsed = TRUE;
-
-        gBraveBattleAction[0][i][3].action = B_ACTION_USE_MOVE;
-        gBraveBattleAction[0][i][3].battler = 3;
-        gBraveBattleAction[0][i][3].target = 2;
-        gBraveBattleAction[0][i][3].moveSlot = i%2;
-        gBraveBattleAction[0][i][3].isSlotUsed = TRUE;
+        for (u32 action = 0; action < 4; action++)
+        {
+            u32 target = 0;
+            switch (battler)
+            {
+            case 0:
+                target = 1;
+                break;
+            case 1:
+                target = 0;
+                break;
+            case 2:
+                target = 3;
+                break;
+            case 3:
+                target = 2;
+                break;
+            }
+            gBraveBattleAction[battler][action].action = B_ACTION_USE_MOVE;
+            gBraveBattleAction[battler][action].battler = battler;
+            gBraveBattleAction[battler][action].target = target;
+            gBraveBattleAction[battler][action].moveSlot = 0;
+            gBraveBattleAction[battler][action].isSlotUsed = TRUE;
+        }
     }
 }
 
@@ -54,24 +56,139 @@ u32 BraveGetCurrentMoveSlot(void)
     return gBraveCurrentAction.moveSlot;
 }
 
+static const u8 sBattlerOrders[24][4] =
+{
+    { 0, 1, 2, 3 },
+    { 0, 1, 3, 2 },
+    { 0, 2, 1, 3 },
+    { 0, 2, 3, 1 },
+    { 0, 3, 1, 2 },
+    { 0, 3, 2, 1 },
+    { 1, 0, 2, 3 },
+    { 1, 0, 3, 2 },
+    { 1, 2, 0, 3 },
+    { 1, 2, 3, 0 },
+    { 1, 3, 0, 2 },
+    { 1, 3, 2, 0 },
+    { 2, 0, 1, 3 },
+    { 2, 0, 3, 1 },
+    { 2, 1, 0, 3 },
+    { 2, 1, 3, 0 },
+    { 2, 3, 0, 1 },
+    { 2, 3, 1, 0 },
+    { 3, 0, 1, 2 },
+    { 3, 0, 2, 1 },
+    { 3, 1, 0, 2 },
+    { 3, 1, 2, 0 },
+    { 3, 2, 0, 1 },
+    { 3, 2, 1, 0 },
+};
+
+static const uq4_12_t sPriorityMultipliers[13] =
+{
+    UQ_4_12(6.0),   //  +5
+    UQ_4_12(5.0),   //  +4
+    UQ_4_12(4.0),   //  +3
+    UQ_4_12(3.0),   //  +2
+    UQ_4_12(2.0),   //  +1
+    UQ_4_12(1.0),   //   0
+    UQ_4_12(0.5),   //  -1
+    UQ_4_12(0.33),  //  -2
+    UQ_4_12(0.25),  //  -3
+    UQ_4_12(0.2),   //  -4
+    UQ_4_12(0.16),  //  -5
+    UQ_4_12(0.14),  //  -6
+    UQ_4_12(0.12),  //  -7
+};
+
+u16 GetBravePrioMod(u32 move, u32 battler)
+{
+    s8 movePrio = GetBattleMovePriority(battler, move);
+    return sPriorityMultipliers[movePrio + 5];
+}
+
 void BraveSetCurrentAction(void)
 {
-    for (u32 priority = 0; priority < NUM_BRAVE_PRIORITIES; priority++)
+    bool8 battlerWantsToMove[4];
+    u32 battlerSpeeds[4];
+    u32 speedThreshold = 0;
+    u32 numBattlers = IsDoubleBattle() ? 4 : 2;
+    for (u32 battler = 0; battler < numBattlers; battler++)
+    {
+        battlerSpeeds[battler] = GetBattlerTotalSpeedStat(battler);
+        for (u32 actionIndex = 0; actionIndex < MAX_BRAVE_ACTIONS; actionIndex++)
+        {
+            if (gBraveBattleAction[battler][actionIndex].isSlotUsed)
+            {
+                u32 move = gBattleMons[battler].moves[gBraveBattleAction[battler][actionIndex].moveSlot];
+                battlerSpeeds[battler] = uq4_12_multiply_by_int_half_down(GetBravePrioMod(move, battler), battlerSpeeds[battler]);
+                speedThreshold += battlerSpeeds[battler];
+                battlerWantsToMove[battler] = TRUE;
+                break;
+            }
+        }
+    }
+
+    speedThreshold *= 3;
+
+    bool32 thresholdMet = FALSE;
+    u32 battlerToMove = 0;
+    u32 highestStoredSpeed = 0;
+    while (!thresholdMet)
+    {
+        for (u32 battler = 0; battler < numBattlers; battler++)
+        {
+            if (!battlerWantsToMove[battler])
+                continue;
+            if (gBraveStoredSpeeds[battler] >= speedThreshold)
+            {
+                thresholdMet = TRUE;
+                if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
+                {
+                    battlerToMove = battler;
+                }
+                else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
+                {
+                    //  Deal with the speed tiebreaks here
+                    s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
+                    s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
+                    if (order2 > order1)
+                        battlerToMove = battler;
+                }
+            }
+            if (!thresholdMet)
+                gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
+        }
+    }
+
+    gBraveStoredSpeeds[battlerToMove] -= speedThreshold;
+
+    for (u32 i = 0; i < MAX_BRAVE_ACTIONS; i++)
+    {
+        if (gBraveBattleAction[battlerToMove][i].isSlotUsed)
+        {
+            gBraveCurrentAction = gBraveBattleAction[battlerToMove][i];
+            gBraveBattleAction[battlerToMove][i].isSlotUsed = FALSE;
+            break;
+        }
+    }
+    MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
+
+    for (u32 battler = 0; battler < numBattlers; battler++)
     {
         for (u32 action = 0; action < MAX_BRAVE_ACTIONS; action++)
         {
-            for (u32 battler = 0; battler < MAX_BRAVE_BATTLERS; battler++)
-            {
-                if (gBraveBattleAction[priority][action][battler].isSlotUsed)
-                {
-                    MgbaPrintf(MGBA_LOG_WARN, "%u %u %u", priority, action, battler);
-                    gBraveCurrentAction = gBraveBattleAction[priority][action][battler];
-                    gBraveBattleAction[priority][action][battler].isSlotUsed = FALSE;
-                    return;
-                }
-            }
+            if (gBraveBattleAction[battler][action].isSlotUsed)
+                return;
         }
     }
     //  If this point is reached, turn is done
     gCurrentTurnActionNumber = 4;
+}
+
+bool32 IsBattlerDefaulting(u32 battler)
+{
+    if (gProtectStructs[battler].usedDefault)
+        return TRUE;
+    return FALSE;
 }

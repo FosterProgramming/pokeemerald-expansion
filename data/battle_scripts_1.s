@@ -1324,6 +1324,13 @@ BattleScript_EffectSpectralThiefFromDamage:
 	moveendall
 	end
 
+BattleScript_EffectDefault::
+	attackstring
+	attackanimation
+	waitanimation
+	printstring STRINGID_DEFAULTING
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectPartingShot::
 	attackcanceler
 	attackstring

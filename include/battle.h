@@ -168,7 +168,7 @@ struct ProtectStruct
     u32 statRaised:1;
     u32 usedCustapBerry:1;    // also quick claw
     u32 touchedProtectLike:1;
-    u32 unused:1;
+    u32 usedDefault:1;
     // End of 32-bit bitfield
     u16 disableEjectPack:1;
     u16 statFell:1;

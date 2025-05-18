@@ -1,7 +1,6 @@
 #include "gba/types.h"
 #include "global.h"
 
-#define NUM_BRAVE_PRIORITIES    13
 #define MAX_BRAVE_ACTIONS       4
 #define MAX_BRAVE_BATTLERS      4
 
@@ -14,8 +13,9 @@ struct BraveBattleAction
     u32 isSlotUsed:1;
 };
 
-extern struct BraveBattleAction gBraveBattleAction[NUM_BRAVE_PRIORITIES][MAX_BRAVE_ACTIONS][MAX_BRAVE_BATTLERS];
+extern struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 extern struct BraveBattleAction gBraveCurrentAction;
+extern u16 gBraveStoredSpeeds[4];
 
 void Brave_TestActions(void);
 
@@ -23,5 +23,7 @@ u32 BraveGetCurrentAction(void);
 u32 BraveGetCurrentBattler(void);
 u32 BraveGetCurrentTarget(void);
 u32 BraveGetCurrentMoveSlot(void);
+u16 GetBravePrioMod(u32 move, u32 battler);
+bool32 IsBattlerDefaulting(u32 battler);
 
 void BraveSetCurrentAction(void);
