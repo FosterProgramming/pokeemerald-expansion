@@ -364,7 +364,15 @@ void HandleAction_UseMove(void)
     }
     else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE)
     {
-        gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
+        if (gBraveCurrentAction.isDefaulting)
+        {
+            gCurrentMove = MOVE_DEFAULT;
+            gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerAttacker;
+        }
+        else
+        {
+            gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
+        }
     }
     // encore forces you to use the same move
     else if (GetActiveGimmick(gBattlerAttacker) != GIMMICK_Z_MOVE && gDisableStructs[gBattlerAttacker].encoredMove != MOVE_NONE
@@ -391,14 +399,30 @@ void HandleAction_UseMove(void)
     }
     else if (gBattleMons[gBattlerAttacker].moves[gCurrMovePos] != gChosenMoveByBattler[gBattlerAttacker])
     {
-        gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
         //  BRAVE CHANGE
         //gBattleStruct->moveTarget[gBattlerAttacker] = GetBattleMoveTarget(gCurrentMove, NO_TARGET_OVERRIDE);
-        gBattleStruct->moveTarget[gBattlerAttacker] = BraveGetCurrentTarget();
+        if (gBraveCurrentAction.isDefaulting)
+        {
+            gCurrentMove = MOVE_DEFAULT;
+            gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerAttacker;
+        }
+        else
+        {
+            gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+            gBattleStruct->moveTarget[gBattlerAttacker] = BraveGetCurrentTarget();
+        }
     }
     else
     {
-        gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+        if (gBraveCurrentAction.isDefaulting)
+        {
+            gCurrentMove = MOVE_DEFAULT;
+            gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerAttacker;
+        }
+        else
+        {
+            gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+        }
     }
 
     if (IsBattlerAlive(gBattlerAttacker))

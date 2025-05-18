@@ -9,7 +9,7 @@ void Brave_TestActions(void)
 {
     for (u32 battler = 0; battler < 4; battler++)
     {
-        for (u32 action = 0; action < 4; action++)
+        for (u32 action = 0; action < 1; action++)
         {
             u32 target = 0;
             switch (battler)
@@ -32,6 +32,7 @@ void Brave_TestActions(void)
             gBraveBattleAction[battler][action].target = target;
             gBraveBattleAction[battler][action].moveSlot = 0;
             gBraveBattleAction[battler][action].isSlotUsed = TRUE;
+            gBraveBattleAction[battler][action].isDefaulting = TRUE;
         }
     }
 }
@@ -129,51 +130,89 @@ void BraveSetCurrentAction(void)
         }
     }
 
-    speedThreshold *= 3;
-
-    bool32 thresholdMet = FALSE;
-    u32 battlerToMove = 0;
-    u32 highestStoredSpeed = 0;
-    while (!thresholdMet)
+    //  Check if any battler should Default before executing moves
+    bool32 battlerIsDefaulting = FALSE;
+    u32 battlerToDefault = 0;
+    for (u32 battler = 0; battler < numBattlers; battler++)
     {
-        for (u32 battler = 0; battler < numBattlers; battler++)
+        if (gBraveBattleAction[battler][0].isDefaulting)
         {
-            if (!battlerWantsToMove[battler])
-                continue;
-            if (gBraveStoredSpeeds[battler] >= speedThreshold)
+            if (battlerIsDefaulting)
             {
-                thresholdMet = TRUE;
-                if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
+                if (battlerSpeeds[battler] > battlerSpeeds[battlerToDefault])
                 {
-                    battlerToMove = battler;
+                    battlerToDefault = battler;
                 }
-                else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
+                else if (battlerSpeeds[battler] == battlerSpeeds[battlerToDefault]
+                      && sBattlerOrders[gBattleStruct->speedTieBreaks][battler] > sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToDefault])
                 {
-                    //  Deal with the speed tiebreaks here
-                    s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
-                    s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
-                    if (order2 > order1)
-                        battlerToMove = battler;
+                    battlerToDefault = battler;
                 }
             }
-            if (!thresholdMet)
-                gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
+            else
+            {
+                battlerToDefault = battler;
+                battlerIsDefaulting = TRUE;
+            }
         }
     }
 
-    gBraveStoredSpeeds[battlerToMove] -= speedThreshold;
-
-    for (u32 i = 0; i < MAX_BRAVE_ACTIONS; i++)
+    if (battlerIsDefaulting)
     {
-        if (gBraveBattleAction[battlerToMove][i].isSlotUsed)
-        {
-            gBraveCurrentAction = gBraveBattleAction[battlerToMove][i];
-            gBraveBattleAction[battlerToMove][i].isSlotUsed = FALSE;
-            break;
-        }
+        gBraveCurrentAction = gBraveBattleAction[battlerToDefault][0];
+        BraveClearBattlerAction(battlerToDefault, 0);
     }
-    MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
+    else
+    {
 
+        speedThreshold *= 3;
+
+        bool32 thresholdMet = FALSE;
+        u32 battlerToMove = 0;
+        u32 highestStoredSpeed = 0;
+
+        while (!thresholdMet)
+        {
+            for (u32 battler = 0; battler < numBattlers; battler++)
+            {
+                if (!battlerWantsToMove[battler])
+                    continue;
+                if (gBraveStoredSpeeds[battler] >= speedThreshold)
+                {
+                    thresholdMet = TRUE;
+                    if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
+                    {
+                        battlerToMove = battler;
+                    }
+                    else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
+                    {
+                        //  Deal with the speed tiebreaks here
+                        s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
+                        s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
+                        if (order2 > order1)
+                            battlerToMove = battler;
+                    }
+                }
+                if (!thresholdMet)
+                    gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
+            }
+        }
+
+        gBraveStoredSpeeds[battlerToMove] -= speedThreshold;
+
+        for (u32 i = 0; i < MAX_BRAVE_ACTIONS; i++)
+        {
+            if (gBraveBattleAction[battlerToMove][i].isSlotUsed)
+            {
+                gBraveCurrentAction = gBraveBattleAction[battlerToMove][i];
+                BraveClearBattlerAction(battlerToMove, i);
+                break;
+            }
+        }
+        MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
+    }
+
+    //  Check if any other mons can move
     for (u32 battler = 0; battler < numBattlers; battler++)
     {
         for (u32 action = 0; action < MAX_BRAVE_ACTIONS; action++)
@@ -191,4 +230,10 @@ bool32 IsBattlerDefaulting(u32 battler)
     if (gProtectStructs[battler].usedDefault)
         return TRUE;
     return FALSE;
+}
+
+void BraveClearBattlerAction(u32 battler, u32 action)
+{
+    u32 value = 0;
+    memcpy(&gBraveBattleAction[battler][action], &value, sizeof(struct BraveBattleAction));
 }

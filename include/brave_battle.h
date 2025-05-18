@@ -11,6 +11,8 @@ struct BraveBattleAction
     u32 target:3;
     u32 moveSlot:2;
     u32 isSlotUsed:1;
+    u32 isDefaulting:1;
+    u32 padding:15;
 };
 
 extern struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
@@ -27,3 +29,4 @@ u16 GetBravePrioMod(u32 move, u32 battler);
 bool32 IsBattlerDefaulting(u32 battler);
 
 void BraveSetCurrentAction(void);
+void BraveClearBattlerAction(u32 battler, u32 action);
