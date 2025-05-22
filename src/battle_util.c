@@ -7589,6 +7589,7 @@ static u32 ItemHealHp(u32 battler, u32 itemId, enum ItemCaseId caseID, bool32 pe
         else
         {
             BattleScriptPushCursor();
+            //DebugPrintf("ItemHealHp gLastUsedItem Battler[%d] - %S", battler, gItemsInfo[itemId].name);
             gBattlescriptCurrInstr = BattleScript_ItemHealHP_RemoveItemRet;
         }
 
@@ -7738,19 +7739,24 @@ u32 RestoreWhiteHerbStats(u32 battler)
     return effect;
 }
 
+#define RETURN_IF_ITEM_EFFECT    if(effect != 0) return effect
+
 static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
 {
     u8 effect = 0;
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MIRROR_HERB, TRUE)){
         effect = TryConsumeMirrorHerb(battler, ITEMEFFECT_NONE);
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE)){
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = ItemHealHp(battler, gLastUsedItem, ITEMEFFECT_NONE, TRUE);
+        RETURN_IF_ITEM_EFFECT;
     }
+
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)){
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
@@ -7783,6 +7789,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
             gBattlescriptCurrInstr = BattleScript_BerryCureChosenStatusRet;
             effect = ITEM_STATUS_CHANGE;
+            RETURN_IF_ITEM_EFFECT;
         }
     }
 
@@ -7790,30 +7797,35 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE);
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, ITEMEFFECT_NONE);
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE)){
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE);
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, ITEMEFFECT_NONE);
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE)){
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE);
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, ITEMEFFECT_NONE);
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE)){
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE);
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, ITEMEFFECT_NONE);
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE)){
         gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE);
         if (B_BERRIES_INSTANT >= GEN_4)
             effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, ITEMEFFECT_NONE);
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE)){
@@ -7826,6 +7838,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             gBattlescriptCurrInstr = BattleScript_BerryCureSlpRet;
             effect = ITEM_STATUS_CHANGE;
         }
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)){
@@ -7837,6 +7850,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             gBattlescriptCurrInstr = BattleScript_BerryCurePsnRet;
             effect = ITEM_STATUS_CHANGE;
         }
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_BRN, TRUE)){
@@ -7848,6 +7862,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             gBattlescriptCurrInstr = BattleScript_BerryCureBrnRet;
             effect = ITEM_STATUS_CHANGE;
         }
+        RETURN_IF_ITEM_EFFECT;
     }
 
     if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_FRZ, TRUE)){
@@ -7858,6 +7873,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureFrzRet;
             effect = ITEM_STATUS_CHANGE;
+            RETURN_IF_ITEM_EFFECT;
         }
         if (gBattleMons[battler].status1 & STATUS1_FROSTBITE && !UnnerveOn(battler, gLastUsedItem))
         {
@@ -7865,6 +7881,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureFrbRet;
             effect = ITEM_STATUS_CHANGE;
+            RETURN_IF_ITEM_EFFECT;
         }
     }
 
@@ -7876,6 +7893,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureParRet;
             effect = ITEM_STATUS_CHANGE;
+            RETURN_IF_ITEM_EFFECT;
         }
     }
 
@@ -7887,6 +7905,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureConfusionRet;
             effect = ITEM_EFFECT_OTHER;
+            RETURN_IF_ITEM_EFFECT;
         }
     }
 
@@ -7899,6 +7918,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_MentalHerbCureRet;
             effect = ITEM_EFFECT_OTHER;
+            RETURN_IF_ITEM_EFFECT;
         }
     }
 
@@ -10885,9 +10905,30 @@ static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEff
     uq4_12_t percentBoost = UQ_4_12(1.0);
 
     if (BattlerHeldItemHasEffect(battlerAtk, HOLD_EFFECT_METRONOME, TRUE)) {
-        uq4_12_t tempBoost = min((gBattleStruct->sameMoveTurns[battlerAtk] * GetBattlerHoldEffectParam(battlerAtk)), 100);
+        switch(gBattleStruct->sameMoveTurns[battlerAtk]){
+            case 0:
+                percentBoost = UQ_4_12(1.0);
+            break;
+            case 1:
+                percentBoost = UQ_4_12(1.2);
+            break;
+            case 2:
+                percentBoost = UQ_4_12(1.4);
+            break;
+            case 3:
+                percentBoost = UQ_4_12(1.6);
+            break;
+            case 4:
+                percentBoost = UQ_4_12(1.8);
+            break;
+            default:
+            case 5:
+                percentBoost = UQ_4_12(2.0);
+            break;
+        }
+        //uq4_12_t tempBoost = min((gBattleStruct->sameMoveTurns[battlerAtk] * GetBattlerHoldEffectParam(battlerAtk)), 100);
         //tempBoost = uq4_12_add(sPercentToModifier[tempBoost], UQ_4_12(1.0));
-        percentBoost = uq4_12_multiply_half_down(percentBoost, tempBoost);
+        //percentBoost = uq4_12_multiply_half_down(percentBoost, tempBoost);
     
         /*
         //Will need to take a good look at this and implement it in the future
