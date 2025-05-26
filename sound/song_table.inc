@@ -612,6 +612,10 @@ gSongTable::
 	song ph_nurse_held, 2, 2
 	song ph_nurse_solo, 2, 2
 
+	@@ Seel Version Songs @@
+
+	song mus_sv_main_menu, 0, 0 @@ Expedition 33: Clair
+
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0
