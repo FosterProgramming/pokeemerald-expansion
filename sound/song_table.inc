@@ -616,6 +616,7 @@ gSongTable::
 
 	song mus_sv_main_menu, 0, 0 @@ Expedition 33: Clair
 	song mus_sv_vee, 0, 0 @@ Expedition 33: Gustave
+	song mus_sv_glacierra, 0, 0 @@ Octopath Traveller: Stillsnow
 
 	.align 2
 dummy_song_header:

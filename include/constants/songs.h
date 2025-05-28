@@ -549,7 +549,8 @@
 // Seel Version Music
 
 #define MUS_SV_MAIN_MENU            610 // Expedition 33: Clair
-#define MUS_SV_MAIN_VEE            611 // Expedition 33: Gustave
+#define MUS_SV_MAIN_VEE             611 // Expedition 33: Gustave
+#define MUS_SV_GLACIERRA            612 // Octopath Traveller: Stillsnow
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
