@@ -845,7 +845,7 @@ static void Task_TitleScreenPhase6(u8 taskId)
     else
     {
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
-        gTasks[taskId].func = Task_TitleScreenPhase6;
+        gTasks[taskId].func = Task_TitleScreenPhase7;
     }
 
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16 - gTasks[taskId].tCounter, gTasks[taskId].tCounter));
