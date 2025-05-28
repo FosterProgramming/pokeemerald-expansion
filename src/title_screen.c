@@ -50,6 +50,7 @@ static void Task_TitleScreenPhase3(u8);
 static void Task_TitleScreenPhase4(u8);
 static void Task_TitleScreenPhase5(u8);
 static void Task_TitleScreenPhase6(u8);
+static void Task_TitleScreenPhase7(u8);
 static void CB2_GoToMainMenu(void);
 static void CB2_GoToClearSaveDataScreen(void);
 static void CB2_GoToResetRtcScreen(void);
@@ -770,8 +771,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
 
     LZ77UnCompVram(sTitleScreenAfterGfx, (void *)(BG_CHAR_ADDR(2)));
     LZ77UnCompVram(sTitleScreenAfterTilemap, (void *)(BG_SCREEN_ADDR(26)));
-    if (!gTasks[taskId].tSkipToNext)
-        PlaySE(SE_M_HAIL);
+    PlaySE(SE_M_HAIL);
     gTasks[taskId].tCounter = 2;
     gTasks[taskId].func = Task_TitleScreenPhase4;
 }
@@ -802,7 +802,7 @@ static void Task_TitleScreenPhase4(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG2 | BLDCNT_TGT1_OBJ | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0);
         SetGpuReg(REG_OFFSET_BLDY, 0);
         SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 16));
-        gTasks[taskId].tCounter = 16;
+        gTasks[taskId].tCounter = 24;
         gTasks[taskId].func = Task_TitleScreenPhase5;
 
         CreateSprite(&sVersionBannerLeftSpriteTemplate, VERSION_BANNER_LEFT_X, VERSION_BANNER_Y_GOAL, 0);
@@ -825,6 +825,25 @@ static void Task_TitleScreenPhase5(u8 taskId)
     }
     else
     {
+        gTasks[taskId].tCounter = 16;
+        gTasks[taskId].func = Task_TitleScreenPhase6;
+    }
+}
+
+static void Task_TitleScreenPhase6(u8 taskId)
+{
+    if (JOY_NEW(A_B_START_SELECT) || gTasks[taskId].tSkipToNext)
+    {
+        gTasks[taskId].tSkipToNext = TRUE;
+        gTasks[taskId].tCounter = 0;
+    }
+
+    if (gTasks[taskId].tCounter != 0)
+    {
+        gTasks[taskId].tCounter--;
+    }
+    else
+    {
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
         gTasks[taskId].func = Task_TitleScreenPhase6;
     }
@@ -832,7 +851,7 @@ static void Task_TitleScreenPhase5(u8 taskId)
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16 - gTasks[taskId].tCounter, gTasks[taskId].tCounter));
 }
 
-static void Task_TitleScreenPhase6(u8 taskId)
+static void Task_TitleScreenPhase7(u8 taskId)
 {
     if (JOY_NEW(A_BUTTON) || JOY_NEW(START_BUTTON))
     {
