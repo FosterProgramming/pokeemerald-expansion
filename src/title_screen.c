@@ -29,9 +29,11 @@ enum {
     TAG_LOGO_SHINE,
 };
 
-#define VERSION_BANNER_RIGHT_TILEOFFSET 64
-#define VERSION_BANNER_LEFT_X 88
-#define VERSION_BANNER_RIGHT_X 152
+#define VERSION_BANNER_MIDDLE_TILEOFFSET 64
+#define VERSION_BANNER_RIGHT_TILEOFFSET 128
+#define VERSION_BANNER_LEFT_X 56
+#define VERSION_BANNER_MIDDLE_X 120
+#define VERSION_BANNER_RIGHT_X 184
 #define VERSION_BANNER_Y 2
 #define VERSION_BANNER_Y_GOAL 135
 #define START_BANNER_X 128
@@ -53,7 +55,7 @@ static void CB2_GoToCopyrightScreen(void);
 static void UpdateLegendaryMarkingColor(u8);
 
 static void SpriteCB_VersionBannerLeft(struct Sprite *sprite);
-static void SpriteCB_VersionBannerRight(struct Sprite *sprite);
+static void SpriteCB_VersionBannerMiddleRight(struct Sprite *sprite);
 static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite);
 static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
 
@@ -123,6 +125,23 @@ static const struct OamData sVersionBannerLeftOamData =
     .affineParam = 0,
 };
 
+static const struct OamData sVersionBannerMiddleOamData =
+{
+    .y = DISPLAY_HEIGHT,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_8BPP,
+    .shape = SPRITE_SHAPE(64x32),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x32),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
 static const struct OamData sVersionBannerRightOamData =
 {
     .y = DISPLAY_HEIGHT,
@@ -146,6 +165,12 @@ static const union AnimCmd sVersionBannerLeftAnimSequence[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sVersionBannerMiddleAnimSequence[] =
+{
+    ANIMCMD_FRAME(VERSION_BANNER_MIDDLE_TILEOFFSET, 30),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sVersionBannerRightAnimSequence[] =
 {
     ANIMCMD_FRAME(VERSION_BANNER_RIGHT_TILEOFFSET, 30),
@@ -155,6 +180,11 @@ static const union AnimCmd sVersionBannerRightAnimSequence[] =
 static const union AnimCmd *const sVersionBannerLeftAnimTable[] =
 {
     sVersionBannerLeftAnimSequence,
+};
+
+static const union AnimCmd *const sVersionBannerMiddleAnimTable[] =
+{
+    sVersionBannerMiddleAnimSequence,
 };
 
 static const union AnimCmd *const sVersionBannerRightAnimTable[] =
@@ -173,6 +203,17 @@ static const struct SpriteTemplate sVersionBannerLeftSpriteTemplate =
     .callback = SpriteCB_VersionBannerLeft,
 };
 
+static const struct SpriteTemplate sVersionBannerMiddleSpriteTemplate =
+{
+    .tileTag = TAG_VERSION,
+    .paletteTag = TAG_VERSION,
+    .oam = &sVersionBannerMiddleOamData,
+    .anims = sVersionBannerMiddleAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_VersionBannerMiddleRight,
+};
+
 static const struct SpriteTemplate sVersionBannerRightSpriteTemplate =
 {
     .tileTag = TAG_VERSION,
@@ -181,14 +222,14 @@ static const struct SpriteTemplate sVersionBannerRightSpriteTemplate =
     .anims = sVersionBannerRightAnimTable,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCB_VersionBannerRight,
+    .callback = SpriteCB_VersionBannerMiddleRight,
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
 {
     {
         .data = gTitleScreenEmeraldVersionGfx,
-        .size = 0x1000,
+        .size = 0x1800,
         .tag = TAG_VERSION
     },
     {},
@@ -388,7 +429,7 @@ static void SpriteCB_VersionBannerLeft(struct Sprite *sprite)
     }
 }
 
-static void SpriteCB_VersionBannerRight(struct Sprite *sprite)
+static void SpriteCB_VersionBannerMiddleRight(struct Sprite *sprite)
 {
     if (gTasks[sprite->sParentTaskId].tSkipToNext)
     {
@@ -714,6 +755,10 @@ static void Task_TitleScreenPhase1(u8 taskId)
         // Create left side of version banner
         spriteId = CreateSprite(&sVersionBannerLeftSpriteTemplate, VERSION_BANNER_LEFT_X, VERSION_BANNER_Y, 0);
         gSprites[spriteId].sAlphaBlendIdx = ARRAY_COUNT(gTitleScreenAlphaBlend);
+        gSprites[spriteId].sParentTaskId = taskId;
+
+        // Create middle of version banner
+        spriteId = CreateSprite(&sVersionBannerMiddleSpriteTemplate, VERSION_BANNER_MIDDLE_X, VERSION_BANNER_Y, 0);
         gSprites[spriteId].sParentTaskId = taskId;
 
         // Create right side of version banner
