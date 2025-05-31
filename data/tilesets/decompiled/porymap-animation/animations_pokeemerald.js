@@ -476,4 +476,24 @@ export const tilesetsData = {
             },
         },
     },
+    "gTileset_Pyroden": {
+        folder: "pyroden/anim",
+        primary: false,
+        tileAnimations: {
+            512: { // (0x200)
+                folder: "lava",
+                frames: ["0", "1", "2", "3", "4", "5", "6", "7"],
+                numTiles: 4,
+                interval: 16,
+                imageWidth: 32,
+            },
+            516: { // (0x204)
+                folder: "lava_waterfall",
+                frames: ["0", "1", "2", "3"],
+                numTiles: 4,
+                interval: 16,
+                imageWidth: 32,
+            },
+        },
+    },
 };
