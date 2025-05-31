@@ -4934,7 +4934,7 @@
     {
       "id": "LAYOUT_STRATOSCAPE",
       "name": "Stratoscape_Layout",
-      "width": 80,
+      "width": 90,
       "height": 70,
       "primary_tileset": "gTileset_StratoscapePrimary",
       "secondary_tileset": "gTileset_Petalburg",

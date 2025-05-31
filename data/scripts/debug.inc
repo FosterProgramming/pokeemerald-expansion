@@ -277,24 +277,7 @@ Debug_EventScript_Script_5::
 	end
 
 Debug_EventScript_Script_6::
-	giveitem ITEM_CHARCOAL, 2
-	giveitem ITEM_MYSTIC_WATER, 2
-	giveitem ITEM_MAGNET, 2
-	giveitem ITEM_MIRACLE_SEED, 2
-	giveitem ITEM_SOFT_SAND, 2
-	giveitem ITEM_NEVER_MELT_ICE, 2
-	giveitem ITEM_BLACK_BELT, 2
-	giveitem ITEM_TWISTED_SPOON, 2
-	giveitem ITEM_DRAGON_FANG, 2
-	giveitem ITEM_SPELL_TAG, 2
-	giveitem ITEM_POISON_BARB, 2
-	giveitem ITEM_SILVER_POWDER, 2
-	giveitem ITEM_HARD_STONE, 2
-	giveitem ITEM_SHARP_BEAK, 2
-	giveitem ITEM_METAL_COAT, 2
-	giveitem ITEM_BLACK_GLASSES, 2
-	giveitem ITEM_SILK_SCARF, 2
-	giveitem ITEM_FAIRY_FEATHER, 2
+	givemon SPECIES_CRABOMINABLE, 50, ITEM_BLASTOISINITE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_ICE_SHARD, MOVE_BUBBLEBEAM, MOVE_DISABLE, MOVE_SAFEGUARD
 	release
 	end
 

@@ -2598,3 +2598,9 @@
 	.byte \battler
 	.2byte \ability
 	.endm
+
+	.macro jumpifinmapsec mapSec:req, jumpInstr:req
+	callnative BS_JumpIfInMapSec
+	.byte \mapSec
+	.4byte \jumpInstr
+	.endm

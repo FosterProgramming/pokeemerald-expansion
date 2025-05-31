@@ -32792,7 +32792,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 13094
-            .species = SPECIES_SANDSHREW,
+            .species = SPECIES_CRABOMINABLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13096
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
@@ -32826,7 +32826,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 13107
-            .species = SPECIES_ROSELIA,
+            .species = SPECIES_CRABOMINABLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13109
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
