@@ -480,6 +480,19 @@ static const u8 sText_MyMenu_Text_6[] = _("No.004");
 static const u8 sText_MyMenu_Text_7[] = _("If attacked, it strikes back");
 static const u8 sText_MyMenu_Text_8[] = _("MOVES");
 static const u8 sText_MyMenu_Text_9[] = _("DESCRIPTION");
+static const u8 sText_MyMenu_Text_10[] = _("21");
+
+
+static const u8 sText_Summary_Screen_Stats[]       = _("STATS");
+static const u8 sText_Summary_Screen_Ivs[]         = _("IVS");
+static const u8 sText_Summary_Screen_Evs[]         = _("EVS");
+
+static const u8 sText_Summary_Screen_Stat_HP[]         = _("HP");
+static const u8 sText_Summary_Screen_Stat_Attack[]     = _("ATTACK");
+static const u8 sText_Summary_Screen_Stat_Defense[]    = _("DEFENSE");
+static const u8 sText_Summary_Screen_Stat_SP_Attack[]  = _("SP.ATK");
+static const u8 sText_Summary_Screen_Stat_SP_Defense[] = _("SP.DEF");
+static const u8 sText_Summary_Screen_Stat_Speed[]      = _("SPEED");
 
 static void PrintToWindow(void)
 {
@@ -663,6 +676,75 @@ static void PrintToWindow(void)
             }
         }
         break;
+        case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
+        {
+            u16 stat;
+            bool8 shouldDisplayDescriptin = FALSE;
+            u8 descriptionMoveIdx = 0;
+
+            //Battle Move Names and PP
+            x  = 14;
+            x2 = 2;
+            y  = 2;
+            y2 = 6;
+            
+            AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8)        + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Stats);
+            AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x + 9) * 8)  + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Ivs);
+            AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x + 13) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Evs);
+
+            //Battle Move Names and PP
+            x  = 11;
+            x2 = 0;
+            y  = 5;
+            y2 = 0;
+
+            for(i = 0; i < NUM_STATS; i++){
+                stat = i;
+                switch(stat){
+                    case STAT_HP:
+                        StringCopy(gStringVar1, sText_Summary_Screen_Stat_HP);
+	                    ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_HP),      STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar3, GetMonData(mon, MON_DATA_HP_IV),   STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar4, GetMonData(mon, MON_DATA_HP_EV),   STR_CONV_MODE_LEFT_ALIGN, 3);
+                    break;
+                    case STAT_ATK:
+                        StringCopy(gStringVar1, sText_Summary_Screen_Stat_Attack);
+	                    ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_ATK),      STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar3, GetMonData(mon, MON_DATA_ATK_IV),   STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar4, GetMonData(mon, MON_DATA_ATK_EV),   STR_CONV_MODE_LEFT_ALIGN, 3);
+                    break;
+                    case STAT_DEF:
+                        StringCopy(gStringVar1, sText_Summary_Screen_Stat_Defense);
+	                    ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_DEF),      STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar3, GetMonData(mon, MON_DATA_DEF_IV),   STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar4, GetMonData(mon, MON_DATA_DEF_EV),   STR_CONV_MODE_LEFT_ALIGN, 3);
+                    break;
+                    case STAT_SPATK:
+                        StringCopy(gStringVar1, sText_Summary_Screen_Stat_SP_Attack);
+	                    ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_SPATK),    STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar3, GetMonData(mon, MON_DATA_SPATK_IV), STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar4, GetMonData(mon, MON_DATA_SPATK_EV), STR_CONV_MODE_LEFT_ALIGN, 3);
+                    break;
+                    case STAT_SPDEF:
+                        StringCopy(gStringVar1, sText_Summary_Screen_Stat_SP_Defense);
+	                    ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_SPDEF),    STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar3, GetMonData(mon, MON_DATA_SPDEF_IV), STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar4, GetMonData(mon, MON_DATA_SPDEF_EV), STR_CONV_MODE_LEFT_ALIGN, 3);
+                    break;
+                    case STAT_SPEED:
+                        StringCopy(gStringVar1, sText_Summary_Screen_Stat_Speed);
+	                    ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_SPEED),    STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar3, GetMonData(mon, MON_DATA_SPEED_IV), STR_CONV_MODE_LEFT_ALIGN, 3);
+	                    ConvertIntToDecimalStringN(gStringVar4, GetMonData(mon, MON_DATA_SPEED_EV), STR_CONV_MODE_LEFT_ALIGN, 3);
+                    break;
+                }
+                
+                AddTextPrinterParameterized4(windowId, FONT_NORMAL, (x * 8)        + x2, ((y + (i * 2)) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar1);
+                AddTextPrinterParameterized4(windowId, FONT_NORMAL, ((x + 9)  * 8) + x2, ((y + (i * 2)) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar2);
+                AddTextPrinterParameterized4(windowId, FONT_NORMAL, ((x + 13) * 8) + x2, ((y + (i * 2)) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar3);
+                AddTextPrinterParameterized4(windowId, FONT_NORMAL, ((x + 17) * 8) + x2, ((y + (i * 2)) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+            }
+        }
     }
 
     //Icons
