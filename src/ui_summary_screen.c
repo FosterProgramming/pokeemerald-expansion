@@ -17,6 +17,7 @@
 #include "international_string_util.h"
 #include "main.h"
 #include "malloc.h"
+#include "move.h"
 #include "menu.h"
 #include "menu_helpers.h"
 #include "palette.h"
@@ -471,12 +472,14 @@ static const u8 sText_Page_Title_06[] = _("POKEMON SKILLS");
 
 static const u8 sText_Summary_Name[] = _("{STR_VAR_1}\n/{STR_VAR_2}");
 
-static const u8 sText_MyMenu_Text_1[] = _("POKEMON INFO");
+static const u8 sText_MyMenu_Text_1[] = _("PP35/35");
 static const u8 sText_MyMenu_Text_2[] = _("PROFILE");
 static const u8 sText_MyMenu_Text_3[] = _("TRAINER MEMO");
 static const u8 sText_MyMenu_Text_4[] = _("Lax nature,\nmet at Lv5\nRoute 1.");
 static const u8 sText_MyMenu_Text_6[] = _("No.004");
 static const u8 sText_MyMenu_Text_7[] = _("If attacked, it strikes back");
+static const u8 sText_MyMenu_Text_8[] = _("MOVES");
+static const u8 sText_MyMenu_Text_9[] = _("DESCRIPTION");
 
 static void PrintToWindow(void)
 {
@@ -598,6 +601,7 @@ static void PrintToWindow(void)
             x2 = 0;
             y  = 2;
             y2 = 7;
+
             for(i = 0; i < 4; i++){
                 switch(i){
                     case 0:
@@ -613,10 +617,49 @@ static void PrintToWindow(void)
 	                    heldItem = GetMonData(mon, MON_DATA_HELD_ITEM_4);
                     break;
                 }
-
                 AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].name);
-                //AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2 - 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].description); //Needs to use 1 line
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2 - 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].description); //Needs to use 1 line
                 y = y + 4;
+            }
+        }
+        break;
+        case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
+        {
+            u16 move;
+            bool8 shouldDisplayDescriptin = FALSE;
+            u8 descriptionMoveIdx = 0;
+
+            //Battle Move Names and PP
+            x  = 14;
+            x2 = 0;
+            y  = 2;
+            y2 = 6;
+            
+            AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_MyMenu_Text_8);
+
+            //Battle Move Names and PP
+            x  = 15;
+            x2 = 3;
+            y  = 5;
+            y2 = 0;
+            
+            for(i = 0; i < 4; i++){
+	            move = GetMonData(mon, MON_DATA_MOVE1 + i);
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetMoveName(move));
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 9) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_MyMenu_Text_1);
+                y = y + 2;
+            }
+
+            //Description
+            x  = 14;
+            x2 = 0;
+            y  = 13;
+            y2 = 6;
+            
+            if(shouldDisplayDescriptin){
+                move = GetMonData(mon, MON_DATA_MOVE1 + descriptionMoveIdx);
+                AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_MyMenu_Text_9);
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetMoveDescription(move));
             }
         }
         break;
