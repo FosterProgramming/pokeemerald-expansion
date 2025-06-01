@@ -93,6 +93,7 @@ SECTIONS {
         *libc.a:*.o(.text*);
         *libnosys.a:*.o(.text*);
         src/libisagbprn.o(.text);
+        src/ui_summary_screen.o(.text);
     } > ROM =0
 
     .rodata :
