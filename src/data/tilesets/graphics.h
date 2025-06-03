@@ -1900,3 +1900,22 @@ const u16 gTilesetPalettes_AbyssalReefPrimary[][16] =
 };
 
 const u32 gTilesetTiles_AbyssalReefPrimary[] = INCBIN_U32("data/tilesets/primary/abyssal_reef_primary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Route6[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/route_6/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Route6[] = INCBIN_U32("data/tilesets/secondary/route_6/tiles.4bpp.lz");
