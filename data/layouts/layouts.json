@@ -4565,7 +4565,7 @@
       "id": "LAYOUT_ROUTE6A",
       "name": "Route6A_Layout",
       "width": 28,
-      "height": 58,
+      "height": 113,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Route6",
       "border_filepath": "data/layouts/Route6A/border.bin",
