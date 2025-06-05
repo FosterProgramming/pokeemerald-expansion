@@ -4564,7 +4564,7 @@
     {
       "id": "LAYOUT_ROUTE6A",
       "name": "Route6A_Layout",
-      "width": 28,
+      "width": 49,
       "height": 113,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Route6",
