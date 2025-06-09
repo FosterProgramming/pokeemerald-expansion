@@ -4554,7 +4554,7 @@
     {
       "id": "LAYOUT_ROUTE6",
       "name": "Route6_Layout",
-      "width": 60,
+      "width": 145,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_VoltbrookTown",
