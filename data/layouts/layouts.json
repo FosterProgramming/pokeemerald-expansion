@@ -4577,7 +4577,7 @@
       "width": 68,
       "height": 34,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_DunemireDesertSecondary",
+      "secondary_tileset": "gTileset_Route6",
       "border_filepath": "data/layouts/Dunemire/border.bin",
       "blockdata_filepath": "data/layouts/Dunemire/map.bin"
     },

@@ -252,3 +252,6 @@ const u16 gMetatileAttributes_AbyssalReefPrimary[] = INCBIN_U16("data/tilesets/p
 
 const u16 gMetatiles_Route6[] = INCBIN_U16("data/tilesets/secondary/route_6/metatiles.bin");
 const u16 gMetatileAttributes_Route6[] = INCBIN_U16("data/tilesets/secondary/route_6/metatile_attributes.bin");
+
+const u16 gMetatiles_GlacierraSecondary[] = INCBIN_U16("data/tilesets/secondary/glacierra_secondary/metatiles.bin");
+const u16 gMetatileAttributes_GlacierraSecondary[] = INCBIN_U16("data/tilesets/secondary/glacierra_secondary/metatile_attributes.bin");
