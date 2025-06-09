@@ -4496,8 +4496,8 @@
       "name": "Route3A_Layout",
       "width": 40,
       "height": 45,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Route3A/border.bin",
       "blockdata_filepath": "data/layouts/Route3A/map.bin"
     },
