@@ -4426,8 +4426,8 @@
       "name": "Route1_Layout",
       "width": 20,
       "height": 50,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_DominionCity",
       "border_filepath": "data/layouts/Route1/border.bin",
       "blockdata_filepath": "data/layouts/Route1/map.bin"
     },
@@ -4435,9 +4435,9 @@
       "id": "LAYOUT_EMBERGLIDE",
       "name": "Emberglide_Layout",
       "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "height": 22,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_DominionCity",
       "border_filepath": "data/layouts/Emberglide/border.bin",
       "blockdata_filepath": "data/layouts/Emberglide/map.bin"
     },
@@ -4445,9 +4445,9 @@
       "id": "LAYOUT_ROUTE2",
       "name": "Route2_Layout",
       "width": 66,
-      "height": 20,
+      "height": 21,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/Route2/border.bin",
       "blockdata_filepath": "data/layouts/Route2/map.bin"
     },
@@ -4474,9 +4474,9 @@
     {
       "id": "LAYOUT_PYRODEN",
       "name": "Pyroden_Layout",
-      "width": 40,
-      "height": 45,
-      "primary_tileset": "gTileset_General",
+      "width": 56,
+      "height": 76,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Pyroden/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden/map.bin"
@@ -4486,8 +4486,8 @@
       "name": "Route3_Layout",
       "width": 30,
       "height": 96,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Route3/border.bin",
       "blockdata_filepath": "data/layouts/Route3/map.bin"
     },
@@ -4496,8 +4496,8 @@
       "name": "Route3A_Layout",
       "width": 40,
       "height": 45,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Route3A/border.bin",
       "blockdata_filepath": "data/layouts/Route3A/map.bin"
     },
@@ -4554,7 +4554,7 @@
     {
       "id": "LAYOUT_ROUTE6",
       "name": "Route6_Layout",
-      "width": 60,
+      "width": 145,
       "height": 22,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_VoltbrookTown",
@@ -4564,10 +4564,10 @@
     {
       "id": "LAYOUT_ROUTE6A",
       "name": "Route6A_Layout",
-      "width": 28,
-      "height": 58,
+      "width": 49,
+      "height": 113,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Route6",
       "border_filepath": "data/layouts/Route6A/border.bin",
       "blockdata_filepath": "data/layouts/Route6A/map.bin"
     },
@@ -4577,7 +4577,7 @@
       "width": 68,
       "height": 34,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_DunemireDesertSecondary",
+      "secondary_tileset": "gTileset_Route6",
       "border_filepath": "data/layouts/Dunemire/border.bin",
       "blockdata_filepath": "data/layouts/Dunemire/map.bin"
     },
@@ -4934,7 +4934,7 @@
     {
       "id": "LAYOUT_STRATOSCAPE",
       "name": "Stratoscape_Layout",
-      "width": 60,
+      "width": 90,
       "height": 70,
       "primary_tileset": "gTileset_StratoscapePrimary",
       "secondary_tileset": "gTileset_Petalburg",

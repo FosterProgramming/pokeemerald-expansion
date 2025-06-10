@@ -3111,7 +3111,7 @@ static inline bool32 TrySetReflect(u32 battler)
     if (!(gSideStatuses[side] & SIDE_STATUS_REFLECT))
     {
         gSideStatuses[side] |= SIDE_STATUS_REFLECT;
-        if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+        if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LIGHT_CLAY, TRUE))
             gSideTimers[side].reflectTimer = gBattleTurnCounter + 8;
         else
             gSideTimers[side].reflectTimer = gBattleTurnCounter + 5;
@@ -3133,7 +3133,7 @@ static inline bool32 TrySetLightScreen(u32 battler)
     if (!(gSideStatuses[side] & SIDE_STATUS_LIGHTSCREEN))
     {
         gSideStatuses[side] |= SIDE_STATUS_LIGHTSCREEN;
-        if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+        if (BattlerHeldItemHasEffect(battler, HOLD_EFFECT_LIGHT_CLAY, TRUE))
             gSideTimers[side].lightscreenTimer = gBattleTurnCounter + 8;
         else
             gSideTimers[side].lightscreenTimer = gBattleTurnCounter + 5;
@@ -4499,7 +4499,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 if (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_AURORA_VEIL))
                 {
                     gSideStatuses[GetBattlerSide(gBattlerAttacker)] |= SIDE_STATUS_AURORA_VEIL;
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
+                    if (BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LIGHT_CLAY, TRUE))
                         gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = gBattleTurnCounter + 8;
                     else
                         gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = gBattleTurnCounter + 5;
@@ -5204,7 +5204,8 @@ static void Cmd_getexp(void)
                     && (gBattleMons[0].hp || (IsDoubleBattle() && gBattleMons[2].hp))
                     && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
                     && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))
-                    && !gBattleStruct->wildVictorySong)
+                    && !gBattleStruct->wildVictorySong
+                    && !ShouldSkipBattleMusic())
                 {
                     BattleStopLowHpSound();
                     PlayBGM(MUS_VICTORY_WILD);
@@ -6271,7 +6272,7 @@ static inline bool32 CanEjectButtonTrigger(u32 battlerAtk, u32 battlerDef, u32 m
 static inline bool32 CanEjectPackTrigger(u32 battlerAtk, u32 battlerDef, u32 moveEffect)
 {
     if (gProtectStructs[battlerDef].statFell
-     && GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_EJECT_PACK
+     && BattlerHeldItemHasEffect(battlerDef, HOLD_EFFECT_EJECT_PACK, TRUE)
      && IsBattlerAlive(battlerDef)
      && CountUsablePartyMons(battlerDef) > 0
      && !gProtectStructs[battlerDef].disableEjectPack
@@ -9151,8 +9152,8 @@ static bool32 TrySymbiosis(u32 battler, u32 itemId)
 {
     if (!gBattleStruct->itemLost[B_SIDE_PLAYER][gBattlerPartyIndexes[battler]].stolen
         && gBattleStruct->changedItems[battler] == ITEM_NONE
-        && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_EJECT_BUTTON
-        && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_EJECT_PACK
+        && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_EJECT_PACK, TRUE)
+        && !BattlerHeldItemHasEffect(battler, HOLD_EFFECT_EJECT_PACK, TRUE)
         && (B_SYMBIOSIS_GEMS < GEN_7 || !(gSpecialStatuses[battler].gemBoost))
         && gCurrentMove != MOVE_FLING //Fling and damage-reducing berries are handled separately.
         && !gSpecialStatuses[battler].berryReduced
@@ -19114,6 +19115,16 @@ void BS_PushTraitStack(void)
     u32 battler = GetBattlerForBattleScript(cmd->battler);
     PushTraitStack(battler, cmd->ability);
     gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_JumpIfInMapSec(void)
+{
+    NATIVE_ARGS(u8 mapSec, const u8 *jumpInstr);
+
+    if (gMapHeader.regionMapSectionId == cmd->mapSec)
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    else
+        gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 void BS_DefaultProtect(void)

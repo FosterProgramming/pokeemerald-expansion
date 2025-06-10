@@ -979,3 +979,25 @@ const struct Tileset gTileset_AbyssalReefPrimary =
     .metatileAttributes = gMetatileAttributes_AbyssalReefPrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Route6 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route6,
+    .palettes = gTilesetPalettes_Route6,
+    .metatiles = gMetatiles_Route6,
+    .metatileAttributes = gMetatileAttributes_Route6,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GlacierraSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GlacierraSecondary,
+    .palettes = gTilesetPalettes_GlacierraSecondary,
+    .metatiles = gMetatiles_GlacierraSecondary,
+    .metatileAttributes = gMetatileAttributes_GlacierraSecondary,
+    .callback = NULL,
+};

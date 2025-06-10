@@ -2599,6 +2599,12 @@
 	.2byte \ability
 	.endm
 
+	.macro jumpifinmapsec mapSec:req, jumpInstr:req
+	callnative BS_JumpIfInMapSec
+	.byte \mapSec
+	.4byte \jumpInstr
+	.endm
+
 	.macro defaultprotect battler:req
 	callnative BS_DefaultProtect
 	.byte \battler

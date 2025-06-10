@@ -277,7 +277,7 @@ Debug_EventScript_Script_5::
 	end
 
 Debug_EventScript_Script_6::
-	removeobject 8
+	givemon SPECIES_CRABOMINABLE, 50, ITEM_BLASTOISINITE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_ICE_SHARD, MOVE_BUBBLEBEAM, MOVE_DISABLE, MOVE_SAFEGUARD
 	release
 	end
 

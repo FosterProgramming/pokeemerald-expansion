@@ -6130,7 +6130,6 @@ BattleScript_TargetItemStatRaiseRemoveItemRet:
 	return
 
 BattleScript_TargetItemStatRaise_Luminous_Moss::
-	setlastuseditem BS_TARGET, HOLD_EFFECT_LUMINOUS_MOSS
 	copybyte sBATTLER, gBattlerTarget
 	statbuffchange 0, BattleScript_TargetItemStatRaiseRemoveItemRet_Luminous_Moss
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TargetItemStatRaiseRemoveItemRet_Luminous_Moss
@@ -6165,7 +6164,6 @@ BattleScript_TargetItemStatRaiseRemoveItemRet_Snowball:
 	return
 
 BattleScript_TargetItemStatRaise_Cell_Battery::
-	setlastuseditem BS_TARGET, HOLD_EFFECT_CELL_BATTERY
 	copybyte sBATTLER, gBattlerTarget
 	statbuffchange 0, BattleScript_TargetItemStatRaiseRemoveItemRet_Cell_Battery
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TargetItemStatRaiseRemoveItemRet_Cell_Battery
@@ -6183,7 +6181,6 @@ BattleScript_TargetItemStatRaiseRemoveItemRet_Cell_Battery:
 	return
 
 BattleScript_TargetItemStatRaise_Absorb_Bulb::
-	setlastuseditem BS_TARGET, HOLD_EFFECT_ABSORB_BULB
 	copybyte sBATTLER, gBattlerTarget
 	statbuffchange 0, BattleScript_TargetItemStatRaiseRemoveItemRet_Absorb_Bulb
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TargetItemStatRaiseRemoveItemRet_Absorb_Bulb
@@ -9352,7 +9349,7 @@ BattleScript_MirrorHerbCopyStatChange::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, NULL
 	printstring STRINGID_MIRRORHERBCOPIED
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING HOLD_EFFECT_NONE //gLastUsedItem
 	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 BattleScript_MirrorHerbStartCopyStats:
 	copyfoesstatincrease BS_SCRIPTING, BattleScript_MirrorHerbStartReturn
@@ -9680,7 +9677,7 @@ BattleScript_RedCardActivates::
 	jumpifstatus3 BS_EFFECT_BATTLER, STATUS3_ROOTED, BattleScript_RedCardIngrain
 	jumpifability BS_EFFECT_BATTLER, ABILITY_SUCTION_CUPS, BattleScript_RedCardSuctionCups
 	jumpiftargetdynamaxed BattleScript_RedCardDynamaxed
-	removeitem BS_SCRIPTING
+	removeitemwitheffect BS_SCRIPTING, HOLD_EFFECT_RED_CARD
 	setbyte sSWITCH_CASE, B_SWITCH_RED_CARD
 	forcerandomswitch BattleScript_RedCardEnd
 	@ changes the current battle script. the rest happens in BattleScript_RoarSuccessSwitch_Ret, if switch is successful
