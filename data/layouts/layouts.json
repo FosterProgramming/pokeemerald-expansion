@@ -4575,7 +4575,7 @@
       "id": "LAYOUT_DUNEMIRE",
       "name": "Dunemire_Layout",
       "width": 68,
-      "height": 34,
+      "height": 52,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Route6",
       "border_filepath": "data/layouts/Dunemire/border.bin",
