@@ -2598,3 +2598,8 @@
 	.byte \battler
 	.2byte \ability
 	.endm
+
+	.macro defaultprotect battler:req
+	callnative BS_DefaultProtect
+	.byte \battler
+	.endm

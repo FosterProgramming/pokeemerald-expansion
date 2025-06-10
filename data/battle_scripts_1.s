@@ -1328,6 +1328,7 @@ BattleScript_EffectDefault::
 	attackstring
 	attackanimation
 	waitanimation
+	defaultprotect BS_ATTACKER
 	printstring STRINGID_DEFAULTING
 	goto BattleScript_MoveEnd
 

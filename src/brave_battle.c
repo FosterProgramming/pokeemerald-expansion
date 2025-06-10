@@ -7,9 +7,9 @@ EWRAM_DATA u16 gBraveStoredSpeeds[4];
 
 void Brave_TestActions(void)
 {
-    for (u32 battler = 0; battler < 4; battler++)
+    for (u32 battler = 0; battler < 3; battler++)
     {
-        for (u32 action = 0; action < 1; action++)
+        for (u32 action = 0; action < 4; action++)
         {
             u32 target = 0;
             switch (battler)
@@ -32,9 +32,13 @@ void Brave_TestActions(void)
             gBraveBattleAction[battler][action].target = target;
             gBraveBattleAction[battler][action].moveSlot = 0;
             gBraveBattleAction[battler][action].isSlotUsed = TRUE;
-            gBraveBattleAction[battler][action].isDefaulting = TRUE;
+            //gBraveBattleAction[battler][action].isDefaulting = TRUE;
         }
     }
+    gBraveBattleAction[3][0].action = B_ACTION_USE_MOVE;
+    gBraveBattleAction[3][0].battler = 3;
+    gBraveBattleAction[3][0].isSlotUsed = TRUE;
+    gBraveBattleAction[3][0].isDefaulting = TRUE;
 }
 
 u32 BraveGetCurrentAction(void)
@@ -110,7 +114,7 @@ u16 GetBravePrioMod(u32 move, u32 battler)
 
 void BraveSetCurrentAction(void)
 {
-    bool8 battlerWantsToMove[4];
+    bool8 battlerWantsToMove[4] = {0, 0, 0, 0};
     u32 battlerSpeeds[4];
     u32 speedThreshold = 0;
     u32 numBattlers = IsDoubleBattle() ? 4 : 2;
@@ -160,6 +164,7 @@ void BraveSetCurrentAction(void)
     if (battlerIsDefaulting)
     {
         gBraveCurrentAction = gBraveBattleAction[battlerToDefault][0];
+        MgbaPrintf(MGBA_LOG_WARN, "To Default: %u", battlerToDefault);
         BraveClearBattlerAction(battlerToDefault, 0);
     }
     else
@@ -209,7 +214,12 @@ void BraveSetCurrentAction(void)
                 break;
             }
         }
-        MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
+        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[0][0].isSlotUsed, gBraveBattleAction[0][1].isSlotUsed, gBraveBattleAction[0][2].isSlotUsed, gBraveBattleAction[0][3].isSlotUsed);
+        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[1][0].isSlotUsed, gBraveBattleAction[1][1].isSlotUsed, gBraveBattleAction[1][2].isSlotUsed, gBraveBattleAction[1][3].isSlotUsed);
+        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[2][0].isSlotUsed, gBraveBattleAction[2][1].isSlotUsed, gBraveBattleAction[2][2].isSlotUsed, gBraveBattleAction[2][3].isSlotUsed);
+        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", battlerWantsToMove[0], battlerWantsToMove[1], battlerWantsToMove[2],battlerWantsToMove[3]);
+        //MgbaPrintf(MGBA_LOG_WARN, "%u", battlerToMove);
+        //MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
     }
 
     //  Check if any other mons can move

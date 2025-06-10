@@ -11071,6 +11071,11 @@ static inline s32 DoMoveDamageCalcVars(struct DamageCalculationData *damageCalcD
     DAMAGE_APPLY_MODIFIER(GetZMaxMoveAgainstProtectionModifier(damageCalcData));
     DAMAGE_APPLY_MODIFIER(GetOtherModifiers(damageCalcData, typeEffectivenessModifier, abilityAtk, abilityDef, holdEffectAtk, holdEffectDef));
 
+    if (IsBattlerDefaulting(battlerDef))
+    {
+        dmg = dmg >> 1;
+    }
+
     if (dmg == 0)
         dmg = 1;
     return dmg;
@@ -11130,9 +11135,6 @@ static inline s32 DoFutureSightAttackDamageCalcVars(struct DamageCalculationData
     else
         DAMAGE_APPLY_MODIFIER(UQ_4_12(1.0));
     DAMAGE_APPLY_MODIFIER(typeEffectivenessModifier);
-
-    if (IsBattlerDefaulting(battlerDef))
-        dmg = dmg >> 1;
 
     if (dmg == 0)
         dmg = 1;

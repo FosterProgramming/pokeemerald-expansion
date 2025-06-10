@@ -19115,3 +19115,12 @@ void BS_PushTraitStack(void)
     PushTraitStack(battler, cmd->ability);
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
+void BS_DefaultProtect(void)
+{
+    NATIVE_ARGS(u8 battler);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    gProtectStructs[battler].usedDefault = TRUE;
+    MgbaPrintf(MGBA_LOG_WARN, "Executing Default: %u", battler);
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
