@@ -4970,6 +4970,16 @@
       "secondary_tileset": "gTileset_GlacierraSecondary",
       "border_filepath": "data/layouts/Glacierra/border.bin",
       "blockdata_filepath": "data/layouts/Glacierra/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_1F",
+      "name": "GlacierraCaverns_1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_1F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_1F/map.bin"
     }
   ]
 }

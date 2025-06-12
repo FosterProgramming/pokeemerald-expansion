@@ -1938,3 +1938,22 @@ const u16 gTilesetPalettes_GlacierraSecondary[][16] =
 };
 
 const u32 gTilesetTiles_GlacierraSecondary[] = INCBIN_U32("data/tilesets/secondary/glacierra_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GlacierraCaverns[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GlacierraCaverns[] = INCBIN_U32("data/tilesets/primary/glacierra_caverns/tiles.4bpp.lz");
