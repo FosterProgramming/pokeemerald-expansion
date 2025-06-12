@@ -4667,7 +4667,7 @@
       "width": 120,
       "height": 60,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
       "border_filepath": "data/layouts/Route12/border.bin",
       "blockdata_filepath": "data/layouts/Route12/map.bin"
     },
@@ -4677,7 +4677,7 @@
       "width": 90,
       "height": 80,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
       "border_filepath": "data/layouts/Route12A/border.bin",
       "blockdata_filepath": "data/layouts/Route12A/map.bin"
     },
@@ -4960,6 +4960,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/AbyssalReefShipyard/border.bin",
       "blockdata_filepath": "data/layouts/AbyssalReefShipyard/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA",
+      "name": "Glacierra_Layout",
+      "width": 60,
+      "height": 70,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
+      "border_filepath": "data/layouts/Glacierra/border.bin",
+      "blockdata_filepath": "data/layouts/Glacierra/map.bin"
     }
   ]
 }
