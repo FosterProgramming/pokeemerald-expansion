@@ -1272,3 +1272,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Glacierra/scripts.inc"
 
 	.include "data/maps/GlacierraCaverns_1F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_B1F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_2F/scripts.inc"
