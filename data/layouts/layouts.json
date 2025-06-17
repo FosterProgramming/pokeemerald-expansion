@@ -5000,6 +5000,66 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/GlacierraCaverns_2F/border.bin",
       "blockdata_filepath": "data/layouts/GlacierraCaverns_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_3F",
+      "name": "GlacierraCaverns_3F_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_3F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_3F_SIDE_ROOM",
+      "name": "GlacierraCaverns_3F_SideRoom_Layout",
+      "width": 50,
+      "height": 40,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_3F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_3F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_OUTSIDE",
+      "name": "GlacierraCaverns_Outside_Layout",
+      "width": 55,
+      "height": 37,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
+      "border_filepath": "data/layouts/GlacierraCaverns_Outside/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_Outside/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_4F",
+      "name": "GlacierraCaverns_4F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_4F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_5F",
+      "name": "GlacierraCaverns_5F_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_5F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_5F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_6F",
+      "name": "GlacierraCaverns_6F_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_6F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_6F/map.bin"
     }
   ]
 }
