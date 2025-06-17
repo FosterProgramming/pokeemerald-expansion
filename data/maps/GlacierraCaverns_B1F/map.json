@@ -17,7 +17,20 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 11,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_GLACIERRA_CAVERNS_1F",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 20,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_GLACIERRA_CAVERNS_1F",
+      "dest_warp_id": "5"
+    }
   ],
   "coord_events": [
 
