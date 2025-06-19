@@ -4966,7 +4966,7 @@
       "name": "Glacierra_Layout",
       "width": 60,
       "height": 70,
-      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "primary_tileset": "gTileset_GlacierraPrimary",
       "secondary_tileset": "gTileset_GlacierraSecondary",
       "border_filepath": "data/layouts/Glacierra/border.bin",
       "blockdata_filepath": "data/layouts/Glacierra/map.bin"
