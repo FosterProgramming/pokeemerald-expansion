@@ -255,3 +255,6 @@ const u16 gMetatileAttributes_Route6[] = INCBIN_U16("data/tilesets/secondary/rou
 
 const u16 gMetatiles_GlacierraSecondary[] = INCBIN_U16("data/tilesets/secondary/glacierra_secondary/metatiles.bin");
 const u16 gMetatileAttributes_GlacierraSecondary[] = INCBIN_U16("data/tilesets/secondary/glacierra_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_GlacierraCaverns[] = INCBIN_U16("data/tilesets/primary/glacierra_caverns/metatiles.bin");
+const u16 gMetatileAttributes_GlacierraCaverns[] = INCBIN_U16("data/tilesets/primary/glacierra_caverns/metatile_attributes.bin");

@@ -28,8 +28,10 @@
 #include "string_util.h"
 #include "strings.h"
 #include "task.h"
+#include "trainer_pokemon_sprites.h"
 #include "text_window.h"
 #include "overworld.h"
+#include "pokeball.h"
 #include "event_data.h"
 #include "constants/items.h"
 #include "constants/field_weather.h"
@@ -41,6 +43,16 @@ enum{
 	START_MENU_BG_TRANSPARENT,
 	NUM_SUMMARY_BACKGROUNDS,
 };
+
+enum{
+    SUMMARY_SPRITE_POKEBALL,
+    SUMMARY_SPRITE_POKEMON,
+    SUMMARY_SPRITE_HELD_ITEM_1,
+    SUMMARY_SPRITE_HELD_ITEM_2,
+    SUMMARY_SPRITE_HELD_ITEM_3,
+    SUMMARY_SPRITE_HELD_ITEM_4,
+    NUM_SUMMARY_SPRITES,
+};
  
 //==========DEFINES==========//
 struct MenuResources
@@ -50,6 +62,7 @@ struct MenuResources
     u8 currentPage;
     u8 currentPokemonIdx;
 	u16 bgTilemapBuffers[NUM_SUMMARY_BACKGROUNDS][0x400];
+    u16 spriteIDs[NUM_SUMMARY_SPRITES];
 };
 
 enum WindowIds
@@ -70,6 +83,10 @@ static void Menu_InitWindows(void);
 static void PrintToWindow(void);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
+static u8 CreateSummaryMonSprite(struct Pokemon *unused);
+static void CreateCaughtBallSprite(struct Pokemon *mon);
+static void CreateHeldItemIcons(struct Pokemon *mon);
+static void CreateHeldItemIcon(u16 item, u8 iconSlot);
 
 static void SetNormalBackground();
 static void SetTransparentBackground();
@@ -174,6 +191,7 @@ void Task_OpenSummaryScreenFromStartMenu(u8 taskId)
 // This is our main initialization function if you want to call the menu from elsewhere
 void SummaryScreen_Init(MainCallback callback)
 {
+    u8 i;
     if ((sMenuDataPtr = AllocZeroed(sizeof(struct MenuResources))) == NULL)
     {
         SetMainCallback2(callback);
@@ -184,6 +202,9 @@ void SummaryScreen_Init(MainCallback callback)
     sMenuDataPtr->gfxLoadState = 0;
     sMenuDataPtr->savedCallback = callback;
     sMenuDataPtr->currentPokemonIdx = 0;
+
+    for(i = 0; i < NUM_SUMMARY_SPRITES; i++)
+        sMenuDataPtr->spriteIDs[i] != SPRITE_NONE;
     
     SetMainCallback2(Menu_RunSetup);
 }
@@ -376,6 +397,7 @@ static bool8 Menu_LoadGraphics(void)
         break;
     case 3:
         LoadPalette(sMenuPalette, 0, 32);
+        CreateSummaryMonSprite(&gPlayerParty[sMenuDataPtr->currentPokemonIdx]);
         sMenuDataPtr->gfxLoadState++;
         break;
     default:
@@ -430,6 +452,128 @@ struct StringList sSummaryScreen_Title[NUM_SUMMARY_SCREEN_PAGES] =
 };
 */
 
+// Pokemon Front Sprite Stuff Start -----------------------------------------------------
+static void SpriteCB_Pokemon(struct Sprite *sprite)
+{
+    if (!gPaletteFade.active && sprite->data[2] != 1)
+    {
+        sprite->data[1] = IsMonSpriteNotFlipped(sprite->data[0]);
+        //PlayMonCry();
+        PokemonSummaryDoMonAnimation(sprite, sprite->data[0], FALSE);
+    }
+}
+
+static void RefreshCurrentPokemonSprite(void){
+    struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
+    gSprites[sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_POKEMON]].invisible = TRUE;
+
+    CreateSummaryMonSprite(mon);
+}
+
+#define POKEMON_BACK_SPRITE_X 40
+#define POKEMON_BACK_SPRITE_Y 65
+#define POKEMON_FRONT_SPRITE_PALETTE 15
+
+static u8 CreateSummaryMonSprite(struct Pokemon *mon)
+{
+    int paletteTag = 0xFFFF;
+    u16 spriteID = SUMMARY_SPRITE_POKEMON;
+
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    u32 personality = GetMonData(mon, MON_DATA_PERSONALITY);
+    bool8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+
+    if(sMenuDataPtr->spriteIDs[spriteID] != SPRITE_NONE)
+    {
+        FreeAndDestroyTrainerPicSprite(sMenuDataPtr->spriteIDs[spriteID]);
+        sMenuDataPtr->spriteIDs[spriteID] = SPRITE_NONE;
+    }
+
+    sMenuDataPtr->spriteIDs[spriteID] = CreateMonPicSprite(species, isShiny, personality, TRUE, POKEMON_BACK_SPRITE_X, POKEMON_BACK_SPRITE_Y, POKEMON_FRONT_SPRITE_PALETTE, paletteTag);
+
+    if (!IsMonSpriteNotFlipped(species))
+        gSprites[sMenuDataPtr->spriteIDs[spriteID]].hFlip = TRUE;
+    else
+        gSprites[sMenuDataPtr->spriteIDs[spriteID]].hFlip = FALSE;
+
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].callback = SpriteCB_Pokemon;
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].oam.priority = 0;
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].data[0] = species;
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].data[2] = 0;
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].invisible = FALSE;
+
+    CreateCaughtBallSprite(mon);
+    CreateHeldItemIcons(mon);
+
+    return sMenuDataPtr->spriteIDs[spriteID];
+}
+// Pokemon Front Sprite Stuff End -----------------------------------------------------
+static void CreateCaughtBallSprite(struct Pokemon *mon)
+{
+    u8 ball = GetMonData(mon, MON_DATA_POKEBALL);
+    u16 spriteID = SUMMARY_SPRITE_POKEBALL;
+
+    LoadBallGfx(ball);
+
+    sMenuDataPtr->spriteIDs[spriteID] = CreateSprite(&gBallSpriteTemplates[ball], 16, 136, 0);
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].callback = SpriteCallbackDummy;
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].oam.priority = 0;
+}
+
+// Held Items ---------------
+static void ShowOrHideAllHeldItemIcons(bool8 hide){
+    u8 i;
+    u8 spriteId = SPRITE_NONE;
+    for(i = 0; i < 4; i++){
+        spriteId = sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_HELD_ITEM_1 + i];
+        gSprites[spriteId].invisible = hide;
+    }
+}
+
+static void CreateHeldItemIcons(struct Pokemon *mon)
+{
+    u8 i;
+    u16 helditem;
+    for(i = 0; i < 4; i++){
+        switch(i){
+            case 0:
+                helditem = GetMonData(mon, MON_DATA_HELD_ITEM);
+            break;
+            default:
+                helditem = GetMonData(mon, MON_DATA_HELD_ITEM_2 + (i - 1));
+            break;
+        }
+        CreateHeldItemIcon(helditem, i);
+    }
+}
+
+#define TAG_ITEM_ICON     4133
+static void CreateHeldItemIcon(u16 item, u8 iconSlot)
+{
+    u8 spriteId = SPRITE_NONE;
+
+    /*if(sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_HELD_ITEM_1 + iconSlot] != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_HELD_ITEM_1 + iconSlot]]);
+        //sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_HELD_ITEM_1 + iconSlot] = SPRITE_NONE;
+    }*/
+
+    if (item == ITEM_NONE){
+        return;
+    }
+    else{
+        spriteId = AddItemIconSprite(TAG_ITEM_ICON + iconSlot, TAG_ITEM_ICON + iconSlot, item);
+        if (spriteId != MAX_SPRITES)
+        {
+            gSprites[spriteId].x2 = 224;
+            gSprites[spriteId].y2 = 32 + (32 * iconSlot);
+            gSprites[spriteId].invisible = FALSE;
+        }
+    }
+
+    sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_HELD_ITEM_1 + iconSlot] = spriteId;
+}
+
 void LoadTilemapFromMode(void) {
     try_free(sMenuDataPtr->bgTilemapBuffers[BACKGROUND_NORMAL]);
 
@@ -463,6 +607,7 @@ void LoadTilemapFromMode(void) {
         break;
     }
 }
+
 static const u8 sText_Page_Title_01[] = _("POKEMON INFO");
 static const u8 sText_Page_Title_02[] = _("TRAITS");
 static const u8 sText_Page_Title_03[] = _("HELD ITEMS");
@@ -583,6 +728,7 @@ static void PrintToWindow(void)
             y  = 13;
             y2 = 0;
             AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_MyMenu_Text_4);
+            ShowOrHideAllHeldItemIcons(TRUE);
         break;
         case SUMMARY_SCREEN_PAGE_TRAITS:
         {
@@ -603,6 +749,7 @@ static void PrintToWindow(void)
                 AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gAbilitiesInfo[trait].description);
                 y = y + 4;
             }
+            ShowOrHideAllHeldItemIcons(TRUE);
         }
         break;
         case SUMMARY_SCREEN_PAGE_HELD_ITEMS:
@@ -631,9 +778,11 @@ static void PrintToWindow(void)
                     break;
                 }
                 AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].name);
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2 - 4, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].description); //Needs to use 1 line
+                //AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].description); //Needs to use 1 line
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gItemsInfo[heldItem].name); //Needs to use 1 line
                 y = y + 4;
             }
+            ShowOrHideAllHeldItemIcons(FALSE);
         }
         break;
         case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
@@ -674,6 +823,7 @@ static void PrintToWindow(void)
                 AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_MyMenu_Text_9);
                 AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetMoveDescription(move));
             }
+            ShowOrHideAllHeldItemIcons(TRUE);
         }
         break;
         case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
@@ -744,6 +894,7 @@ static void PrintToWindow(void)
                 AddTextPrinterParameterized4(windowId, FONT_NORMAL, ((x + 13) * 8) + x2, ((y + (i * 2)) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar3);
                 AddTextPrinterParameterized4(windowId, FONT_NORMAL, ((x + 17) * 8) + x2, ((y + (i * 2)) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
             }
+            ShowOrHideAllHeldItemIcons(TRUE);
         }
     }
 
@@ -885,6 +1036,7 @@ static void Task_MenuMain(u8 taskId)
             sMenuDataPtr->currentPokemonIdx++;
         else
             sMenuDataPtr->currentPokemonIdx = 0;
+        RefreshCurrentPokemonSprite();
         PrintToWindow();
         LoadTilemapFromMode();
     }
@@ -896,6 +1048,7 @@ static void Task_MenuMain(u8 taskId)
             sMenuDataPtr->currentPokemonIdx--;
         else
             sMenuDataPtr->currentPokemonIdx = GetPlayerUsableMons();
+        RefreshCurrentPokemonSprite();
         PrintToWindow();
         LoadTilemapFromMode();
     }

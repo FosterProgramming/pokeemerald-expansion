@@ -14238,4 +14238,149 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_AssaultVest,
         .iconPalette = gItemIconPalette_AssaultVest,
     },
+
+    //Start qol_field_moves
+
+    [ITEM_CUT_TOOL] =
+    {
+        .name = _("Cut Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Cut down trees."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CutTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_FLY_TOOL] =
+    {
+        .name = _("Fly Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Fly to destination."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_FlyTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_SURF_TOOL] =
+    {
+        .name = _("Surf Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Surf on water."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_SurfTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_STRENGTH_TOOL] =
+    {
+        .name = _("Strength Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Push heavy objects."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_StrengthTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_FLASH_TOOL] =
+    {
+        .name = _("Flash Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Illuminate dark areas."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_FlashTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_ROCKSMASH_TOOL] =
+    {
+        .name = _("RockSmashTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Smash rocks."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_RockSmashTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_WATERFALL_TOOL] =
+    {
+        .name = _("WaterfallTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Surf up waterfalls."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_WaterfallTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_DIVE_TOOL] =
+    {
+        .name = _("Dive Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Dive in deep water."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_DiveTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_TELEPORT_TOOL] =
+    {
+        .name = _("Teleport Tool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Teleport to last spot\n"
+            "healed."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_TeleportTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_SWEETSCENT_TOOL] =
+    {
+        .name = _("SweetScntTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Attract wild Pokemon."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_SweetScentTool,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    //End qol_field_moves
 };
