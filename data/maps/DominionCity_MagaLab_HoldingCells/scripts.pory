@@ -62,14 +62,15 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
 	speakername("Vee")
 	msgbox(format("
 	Oh, and, um…\nSpeaking of friends…\p
-	That Porygon over there?\n Not much of a talker.\p
-	Oh, they used to talk lots.\nNumbers, and beeps, and stuff…\p
-	I didn't really get what they were saying, but…\p
-	It was nice having company.\p
-	But they did something to them, and now…\pThey just sit there, flickering.\p
-	They won't even beep at me anymore!\nCreepy, right?\p
+	See that Porygon over there?\p 
+	They're nice, but they're not much of a talker.\p
+	They USED to talk nonstop, actually.\nNumbers, and beeps, and stuff…\p
+	I didn't really understand what they were saying.\p
+	But it was nice having company.\p
+	But then the scientists did something to them, and now…\pThey just kinda sit there…\n Flickering.\p
+	Creepy, right?\p
 	Oh, but I'm being rude!\nWhat's your story?\p
-	Let me guess: you tried picking a fight with the weird men, and lost.\p
+	Let me guess: you tried picking a fight with the rude men, and lost.\p
 	Am I right?"))
 	msgbox(format(
 	"Wait, whaat?\nDid you just say you used to be human?\p
@@ -78,7 +79,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
 	Maybe you can help me escape!\p
 	I might have a plan, but you'll need to come to my cell first.\p
 	See the vent covers?\nThe guards don't know this, but you can open them.\p
-	I've tried escaping through them before, but…\p
+	I've tried escaping through there before, but…\p
 	I may be a little… Scared… Of the dark…\p
 	But I know for a fact that you can get to my cell through them!\p 
 	And once you're here, we can talk more quietly.\p
@@ -110,17 +111,18 @@ script DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript {
 	speakername("Vee")
     msgbox(format(
 	"Phew!\nYou made it!\p
-	I told ya the vents were the best way around here.\p
-	Alright, here's the deal- I know how we can get out.\p
-	The guard always leaves his keycard on his desk while he's on break.\p
+	I told ya the vents were the best way to move around.\p
+	Alright, alright, here's the deal.\nI know how we can get out.\p
+	There's a guard that comes and goes through the locked door.\p 
+	When he's on break, he always leaves his keycard on his desk.\p
 	Stealing it will be a piece of pie!\p
 	Buuut, there's just one little, tiny problem…\p
-	To open the doors, you need to swipe the card and then insert a code.\p
+	To open the door to outside, you need to swipe the card and then insert a code.\p
 	The good news is that the code is probably written down somewhere.\p
 	The bad news is that… Well…\n
 	I don't really… Know… How to read.\p
 	But you were human!\nWith your human powers, you can read it and open the doors!\p
-	Alright, it's settled then!\nLet's go."),MSGBOX_NPC)
+	Alright, it's a plan then!\nLet's go!"),MSGBOX_NPC)
 	playfanfare(MUS_OBTAIN_ITEM)
 	removeobject(LOCALID_VEE)
 	setflag(FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE)
@@ -159,7 +161,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey {
 		… … …\p
 		Whaa? I'm being silly?\p
 		…No you're right, we should focus on escaping.\l
-		Sowwyyy!"))
+		Sorryyy!"))
 		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 		waitmovement(LOCALID_VEE)
 		removeobject(LOCALID_VEE)

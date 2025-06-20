@@ -37,7 +37,7 @@ DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank::
 
 DominionCity_MagaLab_ExperimentationChamber_EventScript_DoorRequiresFourDigitCode_Text_0:
 # 8 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
-	.string "The door requires a 4 digit code to\n"
+	.string "The door requires a 8 digit code to\n"
 	.string "unlock.$"
 
 DominionCity_MagaLab_ExperimentationChamber_EventScript_ClassifiedExperiments_Text_0:

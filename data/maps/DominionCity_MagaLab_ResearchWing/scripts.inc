@@ -161,147 +161,155 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth::
 	lockall
 # 189 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	compare VAR_DOMINION_CITY_LAB_INTRO_STATE, 3
-	goto_if_eq DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2
-# 234 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2
-# 235 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-# 236 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 238 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	goto_if_lt DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2
+# 197 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	compare VAR_DOMINION_CITY_LAB_INTRO_STATE, 3
+	goto_if_eq DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_3
+# 241 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_2:
 # 191 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 192 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 193 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	addobject LOCALID_VEE
-# 194 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
-# 195 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	playse SE_PIN
-# 196 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement LOCALID_VEE
-# 197 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitse
-# 198 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_0
-# 199 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 200 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	speakername DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_3
-# 201 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_0
-# 211 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Movement_0
-# 212 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 192 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+# 193 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 213 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	playse SE_DOOR
-# 214 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitse
-# 215 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_0
-# 216 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 217 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	speakername DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_3
-# 218 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_1
-# 224 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
-# 225 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 194 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	releaseall
+	end
+
+DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_3:
+# 199 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 200 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
+# 201 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	addobject LOCALID_VEE
+# 202 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
+# 203 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	playse SE_PIN
+# 204 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement LOCALID_VEE
-# 226 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	removeobject LOCALID_VEE
-# 227 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Movement_0
-# 228 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 205 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	waitse
+# 206 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_0
+# 207 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 229 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 208 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	speakername DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_3
+# 209 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_1
+# 219 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Movement_0
+# 220 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 221 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	playse SE_DOOR
+# 222 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	waitse
+# 223 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_0
+# 224 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 225 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	speakername DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_3
+# 226 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2
+# 232 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+# 233 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	waitmovement LOCALID_VEE
+# 234 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	removeobject LOCALID_VEE
+# 235 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Movement_0
+# 236 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 237 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 4
-# 230 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 238 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal1::
-# 244 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 247 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 245 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 248 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal1_Text_0
-# 255 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 258 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal2::
-# 260 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 263 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 261 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 264 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal2_Text_0
-# 271 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 274 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	release
 	end
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal3::
-# 276 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 279 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 277 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 280 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0
-# 293 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 296 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	release
 	end
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1::
-# 298 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 301 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 299 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0, MSGBOX_YESNO
 # 302 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0, MSGBOX_YESNO
+# 305 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq DominionCity_MagaLab_ResearchWing_EventScript_Book1_2
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_1:
-# 314 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 317 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_2:
-# 304 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 307 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_1
 	goto DominionCity_MagaLab_ResearchWing_EventScript_Book1_1
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book2::
-# 320 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 323 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 322 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 325 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0, MSGBOX_YESNO
-# 324 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 327 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq DominionCity_MagaLab_ResearchWing_EventScript_Book2_2
 DominionCity_MagaLab_ResearchWing_EventScript_Book2_1:
-# 335 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 338 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book2_2:
-# 326 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 329 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0
 	goto DominionCity_MagaLab_ResearchWing_EventScript_Book2_1
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks::
-# 341 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 344 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 342 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 345 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks_Text_0
-# 343 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 346 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
@@ -318,9 +326,9 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Movement_1:
 	walk_in_place_left
 	step_end
 
-# 211 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 219 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Movement_0:
-# 211 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 219 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	walk_in_place_down
 	step_end
 
@@ -380,14 +388,13 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_6:
 	.string "You read the contents of the\n"
 	.string "documents out loud for Vee.\p"
 	.string "The first note reads as follows:\p"
-	.string "“PROJECT METAMORPHOSIS: STATUS\n"
-	.string "REPORT\p"
+	.string "PROJECT METAMORPHOSIS: STATUS REPORT\p"
 	.string "Subject Adaptation Success Rate: 87%\p"
 	.string "Voluntary Conversion Rate: 43%\p"
 	.string "Reversal Feasibility: REQUIRES\n"
-	.string "ADDITIONAL RESOURCES”\p"
+	.string "ADDITIONAL RESOURCES\p"
 	.string "The second note reads as follows:\p"
-	.string "“My esteemed colleagues,\p"
+	.string "My esteemed colleagues,\p"
 	.string "We have achieved consistent success in\n"
 	.string "the Pokémon conversion process.\p"
 	.string "Many of our own have volunteered to\n"
@@ -401,9 +408,9 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_6:
 	.string "reversion.\p"
 	.string "Priority remains on the refinement of\n"
 	.string "the transformation and continued\l"
-	.string "testing on non-voluntary subjects.”\p"
+	.string "testing on non-voluntary subjects.\p"
 	.string "The third note reads as follows:\p"
-	.string "“PROJECT METAMORPHOSIS: REVERSION\n"
+	.string "PROJECT METAMORPHOSIS: REVERSION\n"
 	.string "PROTOCOL\p"
 	.string "Reversal of transformation requires\n"
 	.string "activation of eight artifacts, each\l"
@@ -436,7 +443,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_6:
 	.string "clearance.\p"
 	.string "UNAUTHORIZED ACCESS TO THIS\n"
 	.string "INFORMATION IS PUNISHABLE WITH\l"
-	.string "TERMINATION.”\p"
+	.string "TERMINATION\p"
 	.string "One final message appears on the\n"
 	.string "screen.\p"
 	.string "It is a four digit number labeled 'Door\n"
@@ -478,14 +485,13 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_8:
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_9:
 # 148 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "The first note reads as follows:\p"
-	.string "“PROJECT METAMORPHOSIS: STATUS\n"
-	.string "REPORT\p"
+	.string "PROJECT METAMORPHOSIS: STATUS REPORT\p"
 	.string "Subject Adaptation Success Rate: 87%\p"
 	.string "Voluntary Conversion Rate: 43%\p"
 	.string "Reversal Feasibility: REQUIRES\n"
-	.string "ADDITIONAL RESOURCES”\p"
+	.string "ADDITIONAL RESOURCES\p"
 	.string "The second note reads as follows:\p"
-	.string "“My esteemed colleagues,\p"
+	.string "My esteemed colleagues,\p"
 	.string "We have achieved consistent success in\n"
 	.string "the Pokémon conversion process.\p"
 	.string "Many of our own have volunteered to\n"
@@ -499,9 +505,9 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_9:
 	.string "reversion.\p"
 	.string "Priority remains on the refinement of\n"
 	.string "the transformation and continued\l"
-	.string "testing on non-voluntary subjects.”\p"
+	.string "testing on non-voluntary subjects.\p"
 	.string "The third note reads as follows:\p"
-	.string "“PROJECT METAMORPHOSIS: REVERSION\n"
+	.string "PROJECT METAMORPHOSIS: REVERSION\n"
 	.string "PROTOCOL\p"
 	.string "Reversal of transformation requires\n"
 	.string "activation of eight artifacts, each\l"
@@ -534,19 +540,24 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal_Text_9:
 	.string "clearance.\p"
 	.string "UNAUTHORIZED ACCESS TO THIS\n"
 	.string "INFORMATION IS PUNISHABLE WITH\l"
-	.string "TERMINATION.”\p"
+	.string "TERMINATION\p"
 	.string "One final message appears on the\n"
 	.string "screen.\p"
 	.string "It is a four digit number labeled 'Door\n"
 	.string "Code'.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_0:
-# 201 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 191 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+	.string "The door requires a 4 digit code to\n"
+	.string "unlock.$"
+
+DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_1:
+# 209 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Alright!\n"
 	.string "You got the numbers, so let's try 'em\l"
 	.string "out!\p"
 	.string "I bet the code is something stupid like\n"
-	.string "'1234' right?\l"
+	.string "“1234”, right?\l"
 	.string "Right?\p"
 	.string "Hey, hey! Is it working? Is it?\p"
 	.string "Can you type faster?\n"
@@ -555,23 +566,18 @@ DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_0:
 	.string "Do you want a hug?\l"
 	.string "I like hugs!$"
 
-DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_1:
-# 218 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2:
+# 226 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Oooh!\n"
 	.string "It worked, it worked!\p"
 	.string "We're so good at this, aren't we?\p"
 	.string "Alright, now let's get out before they\n"
-	.string "find us!\l"
-	.string "We'll be in a world of trouble if we get\l"
+	.string "find us!\p"
+	.string "We'll be in a world of trouble if we get\n"
 	.string "caught!$"
 
-DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth_Text_2:
-# 234 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
-	.string "The door appears to require a 4 digit\n"
-	.string "code to unlock$"
-
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal1_Text_0:
-# 245 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 248 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "EVOFLUX INITIATIVE\p"
 	.string "OBJECTIVE:\p"
 	.string "Induce elemental-based adaptive\n"
@@ -590,7 +596,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal1_Text_0:
 	.string "Initiative).$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal2_Text_0:
-# 261 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 264 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "PORYGON ADAPTIVE EVOLUTION TRIALS\p"
 	.string "OBJECTIVE:\p"
 	.string "Develop an artificial Pokémon capable\n"
@@ -607,12 +613,12 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal2_Text_0:
 	.string "of autonomous decision-making beyond\l"
 	.string "intended programming.\p"
 	.string "STATUS: Experiment under review.\p"
-	.string "Further modifications pending to\n"
+	.string "Further modifications are pending to\n"
 	.string "ensure compliance and prevent\l"
 	.string "unsanctioned adaptability.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0:
-# 277 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 280 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "PROJECT METAMORPHOSIS\p"
 	.string "SUBJECT SELECTION:\p"
 	.string "Volunteers sourced from internal Team\n"
@@ -640,13 +646,13 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0:
 	.string "with the airforce.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0:
-# 299 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 302 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "A handwritten note is placed as a\n"
 	.string "bookmark in this book.\p"
 	.string "Read it?$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_1:
-# 305 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 308 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Project Evo Flux aimed to induce\n"
 	.string "evolution at will, removing the need for\l"
 	.string "elemental catalysts.\p"
@@ -667,7 +673,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_1:
 	.string "dynamically.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0:
-# 327 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 330 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Ordered to terminate Subject 0042.\n"
 	.string "“Unstable, not viable.”\p"
 	.string "Ridiculous.\p"
@@ -681,6 +687,6 @@ DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0:
 	.string "before it's too late.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks_Text_0:
-# 342 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 345 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Piles of scientific books lay scattered\n"
 	.string "about.$"

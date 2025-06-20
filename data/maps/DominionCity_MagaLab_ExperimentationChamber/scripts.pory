@@ -5,7 +5,7 @@ DominionCity_MagaLab_ExperimentationChamber_MapScripts::
 script DominionCity_MagaLab_ExperimentationChamber_EventScript_DoorRequiresFourDigitCode	
 {
     lockall
-		msgbox(format("The door requires a 4 digit code to unlock."),MSGBOX_SIGN)
+		msgbox(format("The door requires a 8 digit code to unlock."),MSGBOX_SIGN)
 	releaseall
     end
 }

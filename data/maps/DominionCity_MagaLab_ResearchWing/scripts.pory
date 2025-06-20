@@ -97,7 +97,7 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal
 			8: Verdant Hallow\nGuardian: Redacted\p
 			Access to artifacts is restricted to authorized personnel only.\p
 			Retrieval is impossible without proper clearance.\p
-			UNAUTHORIZED ACCESS TO THIS INFORMATION IS PUNISHABLE WITH TERMINATION.\p
+			UNAUTHORIZED ACCESS TO THIS INFORMATION IS PUNISHABLE WITH TERMINATION\p
 			One final message appears on the screen.\p
 			It is a four digit number labeled 'Door Code'."))
 			getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
@@ -172,7 +172,7 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal
 			8: Verdant Hallow\nGuardian: Redacted\p
 			Access to artifacts is restricted to authorized personnel only.\p
 			Retrieval is impossible without proper clearance.\p
-			UNAUTHORIZED ACCESS TO THIS INFORMATION IS PUNISHABLE WITH TERMINATION.\p
+			UNAUTHORIZED ACCESS TO THIS INFORMATION IS PUNISHABLE WITH TERMINATION\p
 			One final message appears on the screen.\p
 			It is a four digit number labeled 'Door Code'."))
 				}
@@ -188,7 +188,7 @@ script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
     lockall
 	if(var(VAR_DOMINION_CITY_LAB_INTRO_STATE) < 3)
 		{
-			msgbox(format("The door appears to require a 4 digit code to unlock"))
+			msgbox(format("The door requires a 4 digit code to unlock."))
 			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			releaseall
@@ -209,7 +209,7 @@ script DominionCity_MagaLab_ResearchWing_EventScript_CantExitSouth
 					msgbox(format("
 					Alright!\n
 					You got the numbers, so let's try 'em out!\p
-					I bet the code is something stupid like “1234” right?\N Right?\p
+					I bet the code is something stupid like “1234”, right?\N Right?\p
 					Hey, hey! Is it working? Is it?\p
 					Can you type faster?\n
 					Are you done yet?\p
@@ -270,7 +270,7 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal2
 	Subject disregarded preset combat parameters.\p
 	- Version 2.5: Subject exhibited signs of autonomous decision-making beyond intended programming.\p
 	STATUS: Experiment under review.\p
-	Further modifications pending to ensure compliance and prevent unsanctioned adaptability."))
+	Further modifications are pending to ensure compliance and prevent unsanctioned adaptability."))
 	release
 	end
 }
