@@ -1012,3 +1012,14 @@ const struct Tileset gTileset_GlacierraCaverns =
     .metatileAttributes = gMetatileAttributes_GlacierraCaverns,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GlacierraPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GlacierraPrimary,
+    .palettes = gTilesetPalettes_GlacierraPrimary,
+    .metatiles = gMetatiles_GlacierraPrimary,
+    .metatileAttributes = gMetatileAttributes_GlacierraPrimary,
+    .callback = NULL,
+};

@@ -239,7 +239,13 @@
     "SlateportCity_Mart",
     "GlacierraCaverns_1F",
     "GlacierraCaverns_B1F",
-    "GlacierraCaverns_2F"
+    "GlacierraCaverns_2F",
+    "GlacierraCaverns_3F",
+    "GlacierraCaverns_3F_SideRoom",
+    "GlacierraCaverns_Outside",
+    "GlacierraCaverns_4F",
+    "GlacierraCaverns_5F",
+    "GlacierraCaverns_6F"
   ],
   "gMapGroup_IndoorMauville": [
     "MauvilleCity_Gym",

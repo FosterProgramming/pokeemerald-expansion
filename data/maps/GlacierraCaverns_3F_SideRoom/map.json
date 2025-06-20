@@ -1,0 +1,41 @@
+{
+  "id": "MAP_GLACIERRA_CAVERNS_3F_SIDE_ROOM",
+  "name": "GlacierraCaverns_3F_SideRoom",
+  "layout": "LAYOUT_GLACIERRA_CAVERNS_3F_SIDE_ROOM",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 19,
+      "y": 35,
+      "elevation": 0,
+      "dest_map": "MAP_GLACIERRA_CAVERNS_3F",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 33,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_GLACIERRA_CAVERNS_4F",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}
