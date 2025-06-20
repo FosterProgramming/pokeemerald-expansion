@@ -30,23 +30,24 @@ DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank::
 	lockall
 # 24 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
 	msgbox DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank_Text_0, MSGBOX_SIGN
-# 25 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
+# 26 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_MagaLab_ExperimentationChamber_EventScript_DoorRequiresFourDigitCode_Text_0:
 # 8 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
-	.string "The door appears to require a 4 digit\n"
-	.string "code to unlock$"
+	.string "The door requires a 4 digit code to\n"
+	.string "unlock.$"
 
 DominionCity_MagaLab_ExperimentationChamber_EventScript_ClassifiedExperiments_Text_0:
 # 16 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
-	.string "Classified Experiments\n"
-	.string "Do Not Enter$"
+	.string "CLASSIFIED EXPERIMENTS\n"
+	.string "DO NOT ENTER$"
 
 DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank_Text_0:
 # 24 "data/maps/DominionCity_MagaLab_ExperimentationChamber/scripts.pory"
 	.string "There is something inside that looks\n"
-	.string "like an egg. The terminal displays all\l"
-	.string "kinds of numbers and letters.$"
+	.string "like an egg.\p"
+	.string "The terminal displays all kinds of\n"
+	.string "numbers and letters.$"

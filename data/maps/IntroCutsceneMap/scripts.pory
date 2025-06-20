@@ -86,33 +86,41 @@ Common_Movement_FaceUp_LockportTrail:
 	step_end
 
 SummitCaverns_Text_TestSubjectResultsLattka1:	
-	.string "Ah yes, the prototype is\n"
-	.string "progressing very well.\p"
-	.string "Although you weren't able to\n"
-	.string "secure the Meteroite, this may prove\l"
-	.string "to be an even larger development.\p"
-	.string "Who knew that the fusion of Pokémon\n"
-	.string "DNA with humans could produce such\l"
-	.string "incredible results.$"
+	.string "Excellent…\p"
+	.string "The prototype is outperforming even\n"
+	.string "our most optimistic expectations.\p"
+	.string "Even with your failure to secure the\n"
+	.string "Meteorite…\p"
+	.string "We finally got the results that we were\n"
+	.string "looking for.\p"
+	.string "The perfect fusion of Pokémon and\n"
+	.string "human DNA…\p"
+	.string "Is now a reality.$"
 
 SummitCaverns_Text_TestSubjectResultsZendano1:	
-	.string "Is it ready for field testing\n"
-	.string "yet?$"
+	.string "Is the prototype ready for field\n"
+	.string "testing?$"
 
 SummitCaverns_Text_TestSubjectResultsLattka2:
-	.string "Not quite. Our test subject is\n"
-	.string "a proud member of the airforce, his\l"
-	.string "participation wasn't voluentary.\p"
-	.string "For the most part, he obeys commands\n"
-	.string "as he should, but sometimes I can\l"
-	.string "tell there is still a little bit of\l"
-	.string "his human side in there, fighting back.\p"
-	.string "I still need to train that out of him.$"
+	.string "Not quite.\p"
+	.string "Our subject has been causing some\n"
+	.string "delays.\p"
+	.string "His participation has not been…\n"
+	.string "Strictly voluntary.\p"
+	.string "He used to be a proud member of the\n"
+	.string "airforce, you see.\p"
+	.string "Oh, for the most part, he obeys commands\n"
+	.string "just fine.\p"
+	.string "But a part of his old self is still in\n"
+	.string "there, fighting back.\p"
+	.string "No matter.\p"
+	.string "With time, he will be conditioned out\n"
+	.string "of it.$"
 
 SummitCaverns_Text_TestSubjectResultsZendano2:	
-	.string "I'll report this to the boss.\n"
-	.string "Have the subject ready for a field\l"
-	.string "test as soon as you can.$"
+	.string "I'll report this to the Boss.\p"
+	.string "Have him be ready for a field test\n"
+	.string "as soon as you can.$"
 
 SummitCaverns_Text_WhatWasThat:
 	.string "What was that?$"
@@ -121,29 +129,43 @@ SummitCaverns_Text_YouAgain:
 	.string "You again?!$"
 
 SummitCaverns_Text_TestSubjectResultsLattka3:	
-	.string "Is this the thug that stole \n"
-	.string "the Meteorite from you Z?$"
+	.string "Ah, you know each other?\p"
+	.string "Why, could it be the very same thug\n"
+	.string "that stole the Meteorite from you, Z?$"
+
 SummitCaverns_Text_TestSubjectResultsZendano3:
-	.string "Yea, and it looks like he\n"
-	.string "wants a rematch!$"
+	.string "Darn right he is!\p"
+	.string "Let me at him, Lattka!\n"
+	.string "I'm itching for a rematch!$"
+
+
 SummitCaverns_Text_TestSubjectResultsLattka4:
-	.string "Why don't you let me handle him?\n"
-	.string "Get out of here and warn the boss\l"
-	.string "this punk is still interfering with\l"
-	.string "Team MAGA.$"
+	.string "Now, now, Z.\n"
+	.string "Don't be so hasty.\p"
+	.string "We don't want a repeat of your failure.\p"
+	.string "No, you go and report to the Boss…\p"
+	.string "That we have some kid snooping in the\n"
+	.string "affairs of Team MAGA.\p"
+	.string "… … …\p"
+	.string "…I said go, now.$"
 
 SummitCaverns_Text_LattkaChallengesFro:
-	.string "Well com on then, punk.\n"
-	.string "Challenge me if you dare.$"
+	.string "Meanwhile…\n"
+	.string "Look at who we have here.\p"
+	.string "You wanted to play hero, eh?\n"
+	.string "Very well, then.\p"
+	.string "I'll show you what happens when\n"
+	.string "you stick your nose where it doesn't\l"
+	.string "belong!$"
 
 SummitCaverns_Text_LattkaDefeat1:
-	.string "Time the moves we can make ends\n"
-	.string "meet. Something about the ends$"
+	.string "Well, this is awkward."
 
 SummitCaverns_Text_LattkaBattle:
-	.string "You really don't see that everything\n"
-	.string "we're doing is for the greater good?\p"
-	.string "I guess I'll just have to show you\n"
+	.string "You really don't see it, do you?\p"
+	.string "Everything we're doing is for the\n"
+	.string "greater good!\p"
+	.string "I guess I'll just have to show you,\n"
 	.string "then!$"
 
 SpeakerName_Lattka:
