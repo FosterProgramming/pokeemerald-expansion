@@ -829,6 +829,8 @@ void HandleAction_NothingIsFainted(void)
 {
     //  BRAVE CHANGE
     //gCurrentTurnActionNumber++;
+    if (gBattleStruct->braveTurnDone)
+        gCurrentTurnActionNumber = 4;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED
                     | HITMARKER_NO_PPDEDUCT | HITMARKER_STATUS_ABILITY_EFFECT | HITMARKER_PASSIVE_DAMAGE
@@ -843,6 +845,8 @@ void HandleAction_ActionFinished(void)
     gBattleStruct->monToSwitchIntoId[gBattlerByTurnOrder[gCurrentTurnActionNumber]] = gSelectedMonPartyId = PARTY_SIZE;
     //  BRAVE CHANGE
     //gCurrentTurnActionNumber++;
+    if (gBattleStruct->braveTurnDone)
+        gCurrentTurnActionNumber = 4;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     SpecialStatusesClear();
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED

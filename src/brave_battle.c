@@ -214,12 +214,13 @@ void BraveSetCurrentAction(void)
                 break;
             }
         }
+        //BravePrintActions();
         //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[0][0].isSlotUsed, gBraveBattleAction[0][1].isSlotUsed, gBraveBattleAction[0][2].isSlotUsed, gBraveBattleAction[0][3].isSlotUsed);
         //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[1][0].isSlotUsed, gBraveBattleAction[1][1].isSlotUsed, gBraveBattleAction[1][2].isSlotUsed, gBraveBattleAction[1][3].isSlotUsed);
         //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[2][0].isSlotUsed, gBraveBattleAction[2][1].isSlotUsed, gBraveBattleAction[2][2].isSlotUsed, gBraveBattleAction[2][3].isSlotUsed);
         //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", battlerWantsToMove[0], battlerWantsToMove[1], battlerWantsToMove[2],battlerWantsToMove[3]);
         //MgbaPrintf(MGBA_LOG_WARN, "%u", battlerToMove);
-        //MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
+        MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
     }
 
     //  Check if any other mons can move
@@ -232,7 +233,8 @@ void BraveSetCurrentAction(void)
         }
     }
     //  If this point is reached, turn is done
-    gCurrentTurnActionNumber = 4;
+    MgbaPrintf(MGBA_LOG_WARN, "Done");
+    gBattleStruct->braveTurnDone = TRUE;
 }
 
 bool32 IsBattlerDefaulting(u32 battler)
@@ -246,4 +248,38 @@ void BraveClearBattlerAction(u32 battler, u32 action)
 {
     u32 value = 0;
     memcpy(&gBraveBattleAction[battler][action], &value, sizeof(struct BraveBattleAction));
+}
+
+void BraveClearAllActions(void)
+{
+    for (u32 battler = 0; battler < 4; battler++)
+        for (u32 action = 0; action < 4; action ++)
+            BraveClearBattlerAction(battler, action);
+
+    for (u32 it = 0; it < 4; it++)
+        gBattleStruct->monBraveActions[it] = 0;
+
+    gBattleStruct->braveTurnDone = FALSE;
+}
+
+void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
+{
+    MgbaPrintf(MGBA_LOG_WARN, "%u %u %u", battler, movePos, target);
+    u32 currAction = gBattleStruct->monBraveActions[battler]++;
+    gBraveBattleAction[battler][currAction].battler = battler;
+    gBraveBattleAction[battler][currAction].moveSlot = movePos;
+    gBraveBattleAction[battler][currAction].target = target;
+    gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
+    gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
+    gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
+    //BravePrintActions();
+}
+
+void BravePrintActions(void)
+{
+        MgbaPrintf(MGBA_LOG_WARN, "0: %u %u %u %u", gBraveBattleAction[0][0].isSlotUsed, gBraveBattleAction[0][1].isSlotUsed, gBraveBattleAction[0][2].isSlotUsed, gBraveBattleAction[0][3].isSlotUsed);
+        MgbaPrintf(MGBA_LOG_WARN, "1: %u %u %u %u", gBraveBattleAction[1][0].isSlotUsed, gBraveBattleAction[1][1].isSlotUsed, gBraveBattleAction[1][2].isSlotUsed, gBraveBattleAction[1][3].isSlotUsed);
+        MgbaPrintf(MGBA_LOG_WARN, "2: %u %u %u %u", gBraveBattleAction[2][0].isSlotUsed, gBraveBattleAction[2][1].isSlotUsed, gBraveBattleAction[2][2].isSlotUsed, gBraveBattleAction[2][3].isSlotUsed);
+        MgbaPrintf(MGBA_LOG_WARN, "3: %u %u %u %u", gBraveBattleAction[3][0].isSlotUsed, gBraveBattleAction[3][1].isSlotUsed, gBraveBattleAction[3][2].isSlotUsed, gBraveBattleAction[3][3].isSlotUsed);
+        MgbaPrintf(MGBA_LOG_WARN, "=======");
 }

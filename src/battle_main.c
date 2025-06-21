@@ -3752,7 +3752,8 @@ static void DoBattleIntro(void)
 
 static void TryDoEventsBeforeFirstTurn(void)
 {
-    Brave_TestActions();
+    BraveClearAllActions();
+    //Brave_TestActions();
     s32 i, j;
 
     if (gBattleControllerExecFlags)
@@ -3985,6 +3986,8 @@ void BattleTurnPassed(void)
     gBattleScripting.animTurn = 0;
     gBattleScripting.animTargetsHit = 0;
     gBattleScripting.moveendState = 0;
+
+    BraveClearAllActions();
 
     for (i = 0; i < 5; i++)
         gBattleCommunication[i] = 0;
@@ -4519,6 +4522,7 @@ static void HandleTurnActionSelectionState(void)
                             gBattleStruct->chosenMovePositions[battler] = gBattleResources->bufferB[battler][2] & ~RET_GIMMICK;
                             gChosenMoveByBattler[battler] = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
                             gBattleStruct->moveTarget[battler] = gBattleResources->bufferB[battler][3];
+                            BraveAddMoveToQueue(battler, gBattleStruct->chosenMovePositions[battler], gBattleStruct->moveTarget[battler]);
 
                             // Check to see if any gimmicks need to be prepared.
                             if (gBattleResources->bufferB[battler][2] & RET_GIMMICK)

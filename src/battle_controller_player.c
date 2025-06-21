@@ -321,7 +321,16 @@ static void HandleInputChooseAction(u32 battler)
         switch (gActionSelectionCursor[battler])
         {
         case 0: // Top left
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
+            if (gBattleStruct->isBraveSelector)
+            {
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
+            }
+            else
+            {
+                gBattleStruct->isBraveSelector = TRUE;
+                PlayerHandleChooseAction(battler);
+                return;
+            }
             break;
         case 1: // Top right
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_ITEM, 0);
@@ -377,6 +386,13 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
+        if (gBattleStruct->isBraveSelector)
+        {
+            gBattleStruct->isBraveSelector = FALSE;
+            PlayerHandleChooseAction(battler);
+            MgbaPrintf(MGBA_LOG_WARN, "Exiting menu");
+            return;
+        }
         if (IsDoubleBattle()
          && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT
          && !(gAbsentBattlerFlags & (1u << GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
@@ -763,6 +779,7 @@ void HandleInputChooseMove(u32 battler)
     else if ((JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)  && !gBattleStruct->descriptionSubmenu)
     {
         PlaySE(SE_SELECT);
+        MgbaPrintf(MGBA_LOG_WARN, "Cancel move select");
         gBattleStruct->gimmick.playerSelect = FALSE;
         if (gBattleStruct->zmove.viewing)
         {
@@ -955,6 +972,7 @@ static u32 UNUSED HandleMoveInputUnused(u32 battler)
     return var;
 }
 
+//  Hedara note: Handle move switching so that moves can't swap after any action has been chosen
 void HandleMoveSwitching(u32 battler)
 {
     u8 perMovePPBonuses[MAX_MON_MOVES];
@@ -2027,10 +2045,14 @@ static void HandleChooseActionAfterDma3(u32 battler)
 static void PlayerHandleChooseAction(u32 battler)
 {
     s32 i;
+    MgbaPrintf(MGBA_LOG_WARN, "Choose action");
 
     gBattlerControllerFuncs[battler] = HandleChooseActionAfterDma3;
     BattleTv_ClearExplosionFaintCause();
-    BattlePutTextOnWindow(gText_BattleMenu, B_WIN_ACTION_MENU);
+    if (gBattleStruct->isBraveSelector)
+        BattlePutTextOnWindow(gText_BattleSecondMenu, B_WIN_ACTION_MENU);
+    else
+        BattlePutTextOnWindow(gText_BattleMenu, B_WIN_ACTION_MENU);
 
     for (i = 0; i < 4; i++)
         ActionSelectionDestroyCursorAt(i);

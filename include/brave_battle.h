@@ -30,3 +30,8 @@ bool32 IsBattlerDefaulting(u32 battler);
 
 void BraveSetCurrentAction(void);
 void BraveClearBattlerAction(u32 battler, u32 action);
+void BraveClearAllActions(void);
+
+void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target);
+
+void BravePrintActions(void);
