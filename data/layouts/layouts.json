@@ -4804,10 +4804,10 @@
     {
       "id": "LAYOUT_DELETE_THIS",
       "name": "DeleteThis_Layout",
-      "width": 67,
-      "height": 75,
-      "primary_tileset": "gTileset_DunemireDesertGeneral",
-      "secondary_tileset": "gTileset_DunemireDesertSecondary",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/DeleteThis/border.bin",
       "blockdata_filepath": "data/layouts/DeleteThis/map.bin"
     },

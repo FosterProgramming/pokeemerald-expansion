@@ -10,10 +10,9 @@ EventScript_UseCutTool::
 
 EventScript_UseRockSmashTool::
     lockall
-    bufferitemname STR_VAR_2, ITEM_ROCKSMASH_TOOL
-    msgbox Text_PlayerUsedFieldTool, MSGBOX_DEFAULT
-    closemessage
-    goto EventScript_SmashRock
+    dofieldeffect FLDEFF_CRUMBLE
+    releaseall
+    end
 
 EventScript_UseStrengthTool::
     lockall

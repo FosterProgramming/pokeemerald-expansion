@@ -1356,3 +1356,81 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_CaveDust = {
 };
 
 const struct SpritePalette gSpritePalette_CaveDust = {gFieldEffectObjectPalette_CaveDust, FLDEFF_PAL_TAG_CAVE_DUST};
+
+
+
+static const union AnimCmd sCrumbleAnim_South[] =
+{
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sCrumbleAnim_North[] =
+{
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sCrumbleAnim_West[] =
+{
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sCrumbleAnim_East[] =
+{
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_Crumble[] =
+{
+    sCrumbleAnim_South,
+    sCrumbleAnim_North,
+    sCrumbleAnim_West,
+    sCrumbleAnim_East,
+};
+
+const u32 gFieldEffectObjectPic_Crumble[] = INCBIN_U32("graphics/field_effects/pics/bomb2.4bpp");
+const u16 gFieldEffectObjectPaletteCrumble[] = INCBIN_U16("graphics/field_effects/pics/bomb2.gbapal");
+
+static const struct SpriteFrameImage sPicTable_Crumble[] = {
+    overworld_frame(gFieldEffectObjectPic_Crumble, 4, 4, 0),
+    overworld_frame(gFieldEffectObjectPic_Crumble, 4, 4, 1),
+    overworld_frame(gFieldEffectObjectPic_Crumble, 4, 4, 2),
+    overworld_frame(gFieldEffectObjectPic_Crumble, 4, 4, 3),
+    overworld_frame(gFieldEffectObjectPic_Crumble, 4, 4, 4),
+    overworld_frame(gFieldEffectObjectPic_Crumble, 4, 4, 5),
+};
+
+const struct SpritePalette gSpritePalette_CrumbleFieldEffect     = {gFieldEffectObjectPaletteCrumble, FLDEFF_PAL_TAG_CRUMBLE};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_Crumble = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_CRUMBLE,
+    .oam = &gObjectEventBaseOam_32x32,
+    .anims = sAnimTable_Crumble,
+    .images = sPicTable_Crumble,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};

@@ -249,7 +249,7 @@ SummitCaverns_Text_TestSubjectResultsLattka2:
 # 125 "data/maps/IntroCutsceneMap/scripts.pory"
 	.string "Not quite.\p"
 # 126 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "The speciment is still proving rather\n"
+	.string "The specimen is still proving rather\n"
 # 127 "data/maps/IntroCutsceneMap/scripts.pory"
 	.string "difficult to work with.\p"
 # 128 "data/maps/IntroCutsceneMap/scripts.pory"

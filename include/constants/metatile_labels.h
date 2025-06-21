@@ -244,6 +244,11 @@
 #define METATILE_General_YellowCaveIndent      0x1A8
 #define METATILE_General_YellowCaveOpen        0x1A9
 
+// gTileset_GeneralSeelVersion
+#define METATILE_GeneralSeelVersion_CrumbleDoorway_Bottom  0x044
+#define METATILE_GeneralSeelVersion_CrumbleDoorway_Top     0x03C
+#define METATILE_GeneralSeelVersion_CrumbleFloor           0x04C
+
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x21B
