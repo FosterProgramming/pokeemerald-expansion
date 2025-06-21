@@ -357,7 +357,7 @@ DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_3:
 	.string "Oh, but I'm being rude!\n"
 	.string "What's your story?\p"
 	.string "Let me guess: you got captured by\n"
-	.string "those scary men, too.\p"
+	.string "those scary men.\p"
 	.string "Am I right?$"
 
 DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell_Text_4:
@@ -403,9 +403,9 @@ DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript_Text_0:
 	.string "Stealing it will be a piece of pie!\p"
 	.string "Buuut, there's just one little, tiny\n"
 	.string "problem…\p"
-	.string "To open the door to outside, you need\n"
-	.string "to swipe the card and then insert a\l"
-	.string "code.\p"
+	.string "To open the door to the outside, you\n"
+	.string "need to swipe the card and then insert\l"
+	.string "a code.\p"
 	.string "The good news is that the code is\n"
 	.string "probably written down somewhere.\p"
 	.string "The bad news is that… Well…\n"
@@ -441,7 +441,7 @@ DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_Text_2:
 	.string "contest!\p"
 	.string "… … …\p"
 	.string "Whaa? I'm being silly?\p"
-	.string "…No you're right, we should focus on\n"
+	.string "…No, you're right, we should focus on\n"
 	.string "escaping.\l"
 	.string "Sorryyy!$"
 

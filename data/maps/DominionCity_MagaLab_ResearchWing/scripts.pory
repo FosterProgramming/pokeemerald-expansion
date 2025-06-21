@@ -289,8 +289,7 @@ script DominionCity_MagaLab_ResearchWing_EventScript_Terminal3
 	STATUS:\p
 	Additional testing required.\p
 	Potential candidates flagged for further trials.\p
-	NOTE:\p
-	Continue sourcing from interal Team MAGA operatives.\p
+	NOTE: Continue sourcing from interal Team MAGA operatives.\p
 	If no voluenteers step forward, utilize draft protocol.\p
 	Pull from military branches, starting with the airforce."))
 	release

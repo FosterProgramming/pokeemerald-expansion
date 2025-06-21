@@ -261,55 +261,55 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal3::
 	lockall
 # 280 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0
-# 296 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 295 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	release
 	end
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1::
-# 301 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 300 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 302 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 301 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0, MSGBOX_YESNO
-# 305 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 304 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq DominionCity_MagaLab_ResearchWing_EventScript_Book1_2
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_1:
-# 317 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 316 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_2:
-# 307 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 306 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_1
 	goto DominionCity_MagaLab_ResearchWing_EventScript_Book1_1
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book2::
-# 323 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 322 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 325 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 324 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0, MSGBOX_YESNO
-# 327 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 326 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq DominionCity_MagaLab_ResearchWing_EventScript_Book2_2
 DominionCity_MagaLab_ResearchWing_EventScript_Book2_1:
-# 338 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 337 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book2_2:
-# 329 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 328 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0
 	goto DominionCity_MagaLab_ResearchWing_EventScript_Book2_1
 
 
 DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks::
-# 344 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 343 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	lockall
-# 345 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 344 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	msgbox DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks_Text_0
-# 346 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 345 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	releaseall
 	end
 
@@ -637,22 +637,21 @@ DominionCity_MagaLab_ResearchWing_EventScript_Terminal3_Text_0:
 	.string "Additional testing required.\p"
 	.string "Potential candidates flagged for\n"
 	.string "further trials.\p"
-	.string "NOTE:\p"
-	.string "Continue sourcing from interal Team\n"
-	.string "MAGA operatives.\p"
+	.string "NOTE: Continue sourcing from interal\n"
+	.string "Team MAGA operatives.\p"
 	.string "If no voluenteers step forward, utilize\n"
 	.string "draft protocol.\p"
 	.string "Pull from military branches, starting\n"
 	.string "with the airforce.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_0:
-# 302 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 301 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "A handwritten note is placed as a\n"
 	.string "bookmark in this book.\p"
 	.string "Read it?$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_1:
-# 308 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 307 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Project Evo Flux aimed to induce\n"
 	.string "evolution at will, removing the need for\l"
 	.string "elemental catalysts.\p"
@@ -673,7 +672,7 @@ DominionCity_MagaLab_ResearchWing_EventScript_Book1_Text_1:
 	.string "dynamically.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0:
-# 330 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 329 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Ordered to terminate Subject 0042.\n"
 	.string "“Unstable, not viable.”\p"
 	.string "Ridiculous.\p"
@@ -687,6 +686,6 @@ DominionCity_MagaLab_ResearchWing_EventScript_Book2_Text_0:
 	.string "before it's too late.$"
 
 DominionCity_MagaLab_ResearchWing_EventScript_PilesOfBooks_Text_0:
-# 345 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
+# 344 "data/maps/DominionCity_MagaLab_ResearchWing/scripts.pory"
 	.string "Piles of scientific books lay scattered\n"
 	.string "about.$"

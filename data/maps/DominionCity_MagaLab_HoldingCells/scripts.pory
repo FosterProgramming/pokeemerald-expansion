@@ -76,7 +76,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
 	But then the scientists did something to them, and now…\pThey just kinda sit there…\n Flickering.\p
 	Creepy, right?\p
 	Oh, but I'm being rude!\nWhat's your story?\p
-	Let me guess: you got captured by those scary men, too.\p
+	Let me guess: you got captured by those scary men.\p
 	Am I right?"))
 	msgbox(format(
 	"Wait, whaat?\nDid you just say you used to be human?\p
@@ -123,7 +123,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_EeveeNPCScript {
 	When he's on break, he always leaves his keycard on his desk.\p
 	Stealing it will be a piece of pie!\p
 	Buuut, there's just one little, tiny problem…\p
-	To open the door to outside, you need to swipe the card and then insert a code.\p
+	To open the door to the outside, you need to swipe the card and then insert a code.\p
 	The good news is that the code is probably written down somewhere.\p
 	The bad news is that… Well…\n
 	I don't really… Know… How to read.\p
@@ -166,7 +166,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey {
 		Oooh, I know, let's have a berry holding contest!\p
 		… … …\p
 		Whaa? I'm being silly?\p
-		…No you're right, we should focus on escaping.\l
+		…No, you're right, we should focus on escaping.\l
 		Sorryyy!"))
 		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 		waitmovement(LOCALID_VEE)

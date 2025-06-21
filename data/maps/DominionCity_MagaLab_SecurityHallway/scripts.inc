@@ -38,13 +38,13 @@ DominionCity_MagaLab_SecurityHallway_EventScript_FindAspearBerry::
 DominionCity_MagaLab_SecurityHallway_IntruderCaught::
 # 31 "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.pory"
 	msgbox DominionCity_MagaLab_SecurityHallway_IntruderCaught_Text_0
-# 32 "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.pory"
+# 34 "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.pory"
 	warpsilent MAP_DOMINION_CITY_MAGA_LAB_HOLDING_CELLS, 6, 3
 	return
 
 
 DominionCity_MagaLab_SecurityHallway_IntruderCaught_Text_0:
 # 31 "data/maps/DominionCity_MagaLab_SecurityHallway/scripts.pory"
-	.string "What the-- how did you get out?! The\n"
-	.string "cells were locked!\p"
-	.string "Come with me, back to your cell!$"
+	.string "What the-\n"
+	.string "How did you get out?!\p"
+	.string "Back to your cell, freak!$"
