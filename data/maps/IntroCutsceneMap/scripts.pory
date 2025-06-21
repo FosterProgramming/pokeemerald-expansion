@@ -25,6 +25,10 @@ IntroCutsceneMap_IntroSequence:
 	speakername SpeakerName_Lattka
 	msgbox SummitCaverns_Text_TestSubjectResultsLattka1, MSGBOX_DEFAULT
 	speakername SpeakerName_Zendano
+	msgbox SummitCaverns_Text_TestSubjectResultsZendanoLooksLikeASeal, MSGBOX_DEFAULT
+	speakername SpeakerName_Lattka
+	msgbox SummitCaverns_Text_TestSubjectResultsLattkaYouFool, MSGBOX_DEFAULT
+	speakername SpeakerName_Zendano
 	msgbox SummitCaverns_Text_TestSubjectResultsZendano1, MSGBOX_DEFAULT
 	speakername SpeakerName_Lattka
 	msgbox SummitCaverns_Text_TestSubjectResultsLattka2, MSGBOX_DEFAULT
@@ -93,18 +97,34 @@ SummitCaverns_Text_TestSubjectResultsLattka1:
 	.string "Meteorite…\p"
 	.string "We finally got the results that we were\n"
 	.string "looking for.\p"
-	.string "The perfect fusion of Pokémon and\n"
-	.string "human DNA…\p"
+	.string "The perfect fusion of human and Pokémon\n"
+	.string "DNA…\p"
 	.string "Is now a reality.$"
 
+SummitCaverns_Text_TestSubjectResultsZendanoLooksLikeASeal:
+	.string "Hmm…\n"
+	.string "Ya sure it worked properly?\p"
+	.string "It just looks like a regular ol' Seel\n"
+	.string "to me.$"
+
+SummitCaverns_Text_TestSubjectResultsLattkaYouFool:
+	.string "Hah!\p"
+	.string "Of course, a simpleton like you would\n"
+	.string "not understand the magnitude of this.\p"
+	.string "What you are seeing is a new being.\p"
+	.string "Neither human nor Pokémon…\n"
+	.string "But something with much more potential.$"
+
 SummitCaverns_Text_TestSubjectResultsZendano1:	
-	.string "Is the prototype ready for field\n"
-	.string "testing?$"
+	.string "If ya say so, man.\n"
+	.string "So, is it ready for field testing?\p"
+	.string "You know the Boss has been on my tail\n"
+	.string "about that.$"
 
 SummitCaverns_Text_TestSubjectResultsLattka2:
 	.string "Not quite.\p"
-	.string "Our subject has been causing some\n"
-	.string "delays.\p"
+	.string "The speciment is still proving rather\n"
+	.string "difficult to work with.\p"
 	.string "His participation has not been…\n"
 	.string "Strictly voluntary.\p"
 	.string "He used to be a proud member of the\n"
@@ -118,9 +138,8 @@ SummitCaverns_Text_TestSubjectResultsLattka2:
 	.string "of it.$"
 
 SummitCaverns_Text_TestSubjectResultsZendano2:	
-	.string "I'll report this to the Boss.\p"
-	.string "Have him be ready for a field test\n"
-	.string "as soon as you can.$"
+	.string "I'll be telling the Boss that, then.\p"
+	.string "But if he complains, it's on you.$"
 
 SummitCaverns_Text_WhatWasThat:
 	.string "What was that?$"
@@ -154,9 +173,11 @@ SummitCaverns_Text_LattkaChallengesFro:
 	.string "Look at who we have here.\p"
 	.string "You wanted to play hero, eh?\n"
 	.string "Very well, then.\p"
-	.string "I'll show you what happens when\n"
-	.string "you stick your nose where it doesn't\l"
-	.string "belong!$"
+	.string "This might be a fine occasion to\n"
+	.string "test the worth of my specimen.\p"
+	.string "He might not be fully ready yet, but…\p"
+	.string "…Oh, to hell with it.\p"
+	.string "Seel, show me what you can do!$"
 
 SummitCaverns_Text_LattkaDefeat1:
 	.string "Well, this is awkward."

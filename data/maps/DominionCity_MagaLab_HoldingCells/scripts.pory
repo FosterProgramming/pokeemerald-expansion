@@ -27,7 +27,13 @@ script DominionCity_MagaLab_HoldingCells_EventScript_LostBossBattleGiveItems
 	playse(SE_PIN)
 	waitmovement(LOCALID_VEE)
     speakername("Vee")
-	msgbox(format("Heeeey! You CAN still talk? And did you say item's replenished? That Porygon at the entrance sure was tough, maybe we should see what kinda items Porygon has to see if they can help us escape!"))
+	msgbox(format("Heeeey!\nSo you CAN still talk!\p
+	What did you say about item… Reple… Replenishment?\p
+	Hmm…\p
+	Maybe these are the items we need to defeat the other Porygon!\p
+	It makes sense, right? Right?\p
+	Anyway, thanks Porygon!\n
+	It was nice hearing your voice again!"))
 	applymovement(LOCALID_VEE, moves(walk_right))
 	waitmovement(LOCALID_VEE)
 	removeobject(LOCALID_VEE)
@@ -70,7 +76,7 @@ script DominionCity_MagaLab_HoldingCells_EventScript_DewgongWakesInHoldingCell {
 	But then the scientists did something to them, and now…\pThey just kinda sit there…\n Flickering.\p
 	Creepy, right?\p
 	Oh, but I'm being rude!\nWhat's your story?\p
-	Let me guess: you tried picking a fight with the rude men, and lost.\p
+	Let me guess: you got captured by those scary men, too.\p
 	Am I right?"))
 	msgbox(format(
 	"Wait, whaat?\nDid you just say you used to be human?\p
