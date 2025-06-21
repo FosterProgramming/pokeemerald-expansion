@@ -123,7 +123,7 @@ SummitCaverns_Text_TestSubjectResultsZendano1:
 
 SummitCaverns_Text_TestSubjectResultsLattka2:
 	.string "Not quite.\p"
-	.string "The speciment is still proving rather\n"
+	.string "The specimen is still proving rather\n"
 	.string "difficult to work with.\p"
 	.string "His participation has not been…\n"
 	.string "Strictly voluntary.\p"
