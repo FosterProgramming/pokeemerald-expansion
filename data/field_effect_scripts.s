@@ -85,7 +85,12 @@ gFieldEffectScriptPointers::
     .4byte gFieldEffectScript_UseWaterfallTool          @ FLDEFF_USE_WATERFALL_TOOL 
     .4byte gFieldEffectScript_UseDiveTool               @ FLDEFF_USE_DIVE_TOOL
     .4byte gFieldEffectScript_UseTeleportTool           @ FLDEFF_USE_TELEPORT_TOOL
+	.4byte gFieldEffectScript_Crumble					@ FLDEFF_CRUMBLE
 @ End qol_field_moves
+
+gFieldEffectScript_Crumble::
+	field_eff_loadfadedpal_callnative gSpritePalette_CrumbleFieldEffect, FldEff_Crumble
+	field_eff_end
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon

@@ -503,4 +503,8 @@ bool8 MovementAction_EmoteX_Step0(struct ObjectEvent *, struct Sprite *);
 bool8 MovementAction_EmoteDoubleExclamationMark_Step0(struct ObjectEvent *, struct Sprite *);
 u16 GetObjectEventTrainerSightFlagByObjectEventId(u8 objEventId);
 
+u16 GetObjectEventFlagIdByObjectEventId(u8 objectEventId);
+void RemoveObjectEvent(struct ObjectEvent *objectEvent);
+u8 GetCollisionAtCoords2(struct ObjectEvent *objectEvent, s16 x, s16 y, u32 dir);
+
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
