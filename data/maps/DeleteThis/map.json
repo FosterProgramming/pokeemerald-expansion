@@ -28,25 +28,15 @@
       "flag": "FLAG_TEMP_1"
     },
     {
-<<<<<<< HEAD
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 11,
-      "y": 15,
-=======
       "graphics_id": "OBJ_EVENT_GFX_FIRE_PIT",
       "x": 16,
       "y": 14,
->>>>>>> 8b13cc9cc6d554ecb257f61ef645a574d697a5cb
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-<<<<<<< HEAD
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_1"
-=======
       "script": "TestFirePit_Script",
       "flag": "FLAG_TEMP_4"
     },
@@ -75,7 +65,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TestFirePit_Script3",
       "flag": "FLAG_TEMP_6"
->>>>>>> 8b13cc9cc6d554ecb257f61ef645a574d697a5cb
     }
   ],
   "warp_events": [
