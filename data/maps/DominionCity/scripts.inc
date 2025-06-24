@@ -698,16 +698,16 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0:
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1:
 # 34 "data/maps/DominionCity/scripts.pory"
-	.string "Whoa…\n"
+	.string "Whoa… {PLAYER}…\n"
 	.string "This is… THE OUTSIDE?!\p"
 	.string "I knew it wasn't a made up thing!\n"
 	.string "I knew it!\p"
 	.string "There's like…\n"
 	.string "A giant blue blanket over everything!\p"
 	.string "And what's that!\n"
-	.string "A huge ball in the sky\p"
+	.string "A huge ball in the sky!\p"
 	.string "Does it bounce?\n"
-	.string "Can I play with it??\p"
+	.string "Can I play with it?\p"
 	.string "Okay, okay…\n"
 	.string "Focus, Vee.\p"
 	.string "We may be outside, but we still gotta\n"
@@ -754,7 +754,7 @@ DominionCity_EventScripts_GruntsWestStillLooking_Text_1:
 DominionCity_EventScripts_GruntsWestStillLooking_Text_2:
 # 143 "data/maps/DominionCity/scripts.pory"
 	.string "Those test subjects really had to go\n"
-	.string "and escape, didn't they.\p"
+	.string "and escape.\p"
 	.string "You know what they look like?$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_3:
@@ -765,7 +765,7 @@ DominionCity_EventScripts_GruntsWestStillLooking_Text_4:
 # 150 "data/maps/DominionCity/scripts.pory"
 	.string "Ye, ye.\p"
 	.string "It's that ugly-lookin's Dewgong thing\n"
-	.string "and that…\n"
+	.string "and that…\l"
 	.string "Fox-like creature, aye?\p"
 	.string "Heard they were plannin' on gettin' rid\n"
 	.string "of her, the poor sod.$"
@@ -774,9 +774,9 @@ DominionCity_EventScripts_GruntsWestStillLooking_Text_5:
 # 159 "data/maps/DominionCity/scripts.pory"
 	.string "That's hardly our business.\p"
 	.string "We were just ordered to find them, and\n"
-	.string "find them we will. Shouldn't be too hard\l"
-	.string "of a job, anyway. Bet they’re hiding like\l"
-	.string "scared Rattata.$"
+	.string "find them we will.\p"
+	.string "Shouldn't be too hard of a job, anyway.\p"
+	.string "Bet they’re hiding like scared Rattata.$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_6:
 # 175 "data/maps/DominionCity/scripts.pory"
