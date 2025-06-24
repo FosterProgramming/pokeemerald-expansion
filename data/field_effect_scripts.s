@@ -86,7 +86,13 @@ gFieldEffectScriptPointers::
     .4byte gFieldEffectScript_UseDiveTool               @ FLDEFF_USE_DIVE_TOOL
     .4byte gFieldEffectScript_UseTeleportTool           @ FLDEFF_USE_TELEPORT_TOOL
 	.4byte gFieldEffectScript_Crumble					@ FLDEFF_CRUMBLE
+	.4byte gFieldEffectScript_Bow						@ FLDEFF_BOW
+
 @ End qol_field_moves
+
+gFieldEffectScript_Bow::
+	field_eff_loadfadedpal_callnative gSpritePalette_BowFieldEffect, FldEff_Bow
+	field_eff_end
 
 gFieldEffectScript_Crumble::
 	field_eff_loadfadedpal_callnative gSpritePalette_CrumbleFieldEffect, FldEff_Crumble

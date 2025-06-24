@@ -14325,6 +14325,20 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_AssaultVest, //placeholder
     },
 
+    [ITEM_WILLOWISP_TOOL] =
+    {
+        .name = _("Willowisp"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Light fires."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_WilloWisp,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
     [ITEM_WATERFALL_TOOL] =
     {
         .name = _("WaterfallTool"),

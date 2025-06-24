@@ -280,7 +280,7 @@ u32 CanUseStrength(u8 collision)
     bool32 collisionEvent = (collision == COLLISION_OBJECT_EVENT);
 
     if (
-        CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER)
+        (CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) || CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT))
         && !playerUsedStrength
         && collisionEvent
         && ((monHasMove && playerHasBadge) || bagHasItem)
@@ -321,6 +321,8 @@ void PushBoulderFromScript(void)
     s16 x = playerObjEvent->currentCoords.x;
     s16 y = playerObjEvent->currentCoords.y;
     s16 direction = playerObjEvent->movementDirection;
+
+    DebugPrintf("PushBoulderFromScript");
 
     MoveCoords(direction, &x, &y);
     TryPushBoulder(x, y,direction);

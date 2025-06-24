@@ -420,6 +420,7 @@ extern const u8 EventScript_UseFlashTool[];
 extern const u8 EventScript_SmashRock[];
 extern const u8 EventScript_UseRockSmash[];
 extern const u8 EventScript_UseRockSmashTool[];
+extern const u8 EventScript_UseWilloWisp[];
 extern const u8 EventScript_UseWaterfallMon[];
 extern const u8 EventScript_UseWaterfallTool[];
 extern const u8 EventScript_UseWaterfallFieldEffect[];

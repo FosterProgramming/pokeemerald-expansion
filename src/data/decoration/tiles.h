@@ -567,7 +567,7 @@ const u16 DecorGfx_PIKA_CUSHION[] = {
 };
 
 const u16 DecorGfx_ROUND_CUSHION[] = {
-    OBJ_EVENT_GFX_ROUND_CUSHION
+    OBJ_EVENT_GFX_FIRE_PIT
 };
 
 const u16 DecorGfx_KISS_CUSHION[] = {

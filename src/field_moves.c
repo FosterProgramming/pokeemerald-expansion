@@ -498,3 +498,305 @@ static bool8 Crumble_End(struct Task *task)
     task->bCrumbleAnimation++;
     return FALSE;
 }
+
+
+
+//////////////////////////////////////////////
+//      Bow Setup Functions
+//////////////////////////////////////////////
+
+bool8 IsFirePitTarget(u16 graphicsId)
+{
+    switch(graphicsId)
+    {
+        case OBJ_EVENT_GFX_FIRE_PIT:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+#define BowCollision 0
+#define BowKeepGoing 1
+#define BowLitFirePit 2
+#define BowUnlitFirePit 3
+
+s8 TryFindBowTargetAt(u16 x, u16 y)
+{   
+    u8 objEventId;
+    u8 elevation;
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    u8 collision;
+
+    elevation = PlayerGetElevation();
+    objEventId = GetObjectEventIdByPosition(x, y, elevation);
+
+
+    if(IsFirePitTarget(gObjectEvents[objEventId].graphicsId))
+    {   
+        if(!FlagGet(GetObjectEventTemplateByLocalIdAndMap(gObjectEvents[objEventId].localId, gObjectEvents[objEventId].mapNum, gObjectEvents[objEventId].mapGroup)->flagId))
+            return BowUnlitFirePit;
+        else
+            return BowLitFirePit;
+    }
+
+    collision = GetCollisionAtCoords2(playerObjEvent, x, y, GetPlayerFacingDirection());
+    if(collision && !(MapGridGetMetatileBehaviorAt((x), y) == MB_OCEAN_WATER))
+    {
+        return BowCollision;
+    }
+
+    return BowKeepGoing;
+}
+
+
+////////////////////////////////////////////
+///      BOW & ARROW TASK FUNCTIONS      ///
+////////////////////////////////////////////
+
+#define bState             data[0]
+#define bArrowSpriteID     data[1]
+#define bDir               data[2]
+#define bTargetEventID     data[3]
+#define bArrowShootAnim    data[4]
+#define bBowAnim           data[5]
+#define bTargetDistance    data[6]
+#define bIsFireArrow       data[7]
+#define bRunOnHitScript    data[8]
+
+#define BOWEND             2
+
+static void Task_Bow(u8 taskId);
+static u8 Arrow_Init(struct Task *task);
+static u8 Bow_ArrowFly(struct Task *task);
+static u8 Bow_End(struct Task *task);
+bool8 FindArrowBehaviorAt(struct Task *task, u16 arrow_position);
+
+static bool8 (*const sBowStateFuncs[])(struct Task *) =
+{
+    Arrow_Init,
+    Bow_ArrowFly,
+    Bow_End,
+};
+
+void FldEff_Bow(void)
+{
+    u8 taskId = CreateTask(Task_Bow, 0xFF);
+    gTasks[taskId].bDir = GetPlayerFacingDirection();
+    Task_Bow(taskId);
+}
+
+static void Task_Bow(u8 taskId)
+{
+    while (sBowStateFuncs[gTasks[taskId].bState](&gTasks[taskId]))
+        ;
+}
+
+static bool8 Arrow_Init(struct Task *task)
+{   
+    u8 spriteId;
+    struct Sprite *sprite;
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    s16 x2;
+    s16 y2;
+
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BOW_ARROW], 0, 0, 0);
+    task->bArrowSpriteID = spriteId;
+    if (spriteId != MAX_SPRITES)
+    {
+        sprite = &gSprites[spriteId];
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->invisible = FALSE;
+        sprite->oam.priority = 1;
+        if(PlayerGetElevation() == 3)
+        {
+            sprite->oam.priority = 2;
+        }
+    }
+
+    sprite = &gSprites[spriteId];
+    SetSpritePosToMapCoords(playerObjEvent->currentCoords.x, playerObjEvent->currentCoords.y, &x2, &y2);
+    sprite->x = x2 + 8;
+    sprite->y = y2 + 8;
+    sprite->data[0] = playerObjEvent->currentCoords.x;
+    sprite->data[1] = playerObjEvent->currentCoords.y;
+    StartSpriteAnim(&gSprites[spriteId], GetFaceDirectionAnimNum(task->bDir));
+    task->bArrowShootAnim = 0;
+
+    switch(task->bDir)
+    {
+        case DIR_NORTH:
+            sprite->y -= 8;
+            break;
+        case DIR_SOUTH:
+            sprite->x += 1;
+            sprite->y += 8;
+            break;
+        case DIR_EAST:
+            sprite->y -= 2;
+            sprite->x += 8;
+            break;
+        case DIR_WEST:
+            sprite->y -= 3;
+            sprite->x -= 8;
+            break;
+    }
+
+    task->bState++;
+    return FALSE;
+}
+
+static bool8 Bow_ArrowFly(struct Task *task)
+{
+    u16 arrow_position;
+    struct Sprite *sprite;
+    
+    sprite = &gSprites[task->bArrowSpriteID];
+
+    if((task->bArrowShootAnim % 4 == 1) && task->bArrowShootAnim != 0)
+    {
+        arrow_position = (task->bArrowShootAnim + 3) / 4;
+        if(!FindArrowBehaviorAt(task, arrow_position))
+            return FALSE;
+    }
+
+    if(task->bArrowShootAnim > (8 * 4) - 4) // Kill If OffScreen
+    {
+        task->bState = BOWEND;
+        return FALSE;
+    }
+
+    switch(task->bDir) // Move Arrow
+    {
+        case DIR_NORTH:
+            sprite->x += 0;
+            sprite->y -= 4;
+            break;
+        case DIR_SOUTH:
+            sprite->x += 0;
+            sprite->y += 4;
+            break;
+        case DIR_EAST:
+            sprite->x += 4;
+            sprite->y += 0;
+            break;
+        case DIR_WEST:
+            sprite->x -= 4;
+            sprite->y += 0;
+            break;
+    }
+    
+    task->bArrowShootAnim++;
+    return FALSE;
+}
+
+static bool8 Bow_End(struct Task *task)
+{
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    const u8 *script;
+
+    if((task->bRunOnHitScript == TRUE))
+    {
+        FlagSet(FLAG_WILLOWISP_ACTIVE);
+        gSelectedObjectEvent = task->bTargetEventID;
+        gSpecialVar_LastTalked = gObjectEvents[task->bTargetEventID].localId;
+        script = GetObjectEventScriptPointerByObjectEventId(task->bTargetEventID);
+        script = GetRamScript(gSpecialVar_LastTalked, script);
+    }
+    else{
+        script = NULL;
+    }
+
+    FieldEffectFreeGraphicsResources(&gSprites[task->bArrowSpriteID]);
+    FieldEffectActiveListRemove(FLDEFF_BOW);
+    DestroyTask(FindTaskIdByFunc(Task_Bow));
+
+    if((task->bRunOnHitScript == TRUE))
+        ScriptContext_SetupScript(script);
+    return FALSE;
+}
+
+bool8 FindArrowBehaviorAt(struct Task *task, u16 arrow_position)
+{
+    u8 elevation; 
+    struct Sprite *sprite;
+    struct Sprite *fire_pit_sprite;
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    struct ObjectEvent *objectEvent;
+    s16 x = playerObjEvent->currentCoords.x;
+    s16 y = playerObjEvent->currentCoords.y;
+    sprite = &gSprites[task->bArrowSpriteID];
+
+    switch(task->bDir)
+    {
+        case DIR_NORTH:
+            x += 0;
+            y -= arrow_position;
+            break;
+        case DIR_SOUTH:
+            x += 0;
+            y += arrow_position;
+            break;
+        case DIR_EAST:
+            x += arrow_position;
+            y += 0;
+            break;
+        case DIR_WEST:
+            x -= arrow_position;
+            y += 0;
+            break;
+    }
+    
+    switch(TryFindBowTargetAt(x, y))
+    {
+        case BowCollision: // Collision
+            task->bState = BOWEND;
+            return FALSE;
+        case BowKeepGoing: // No collision or object or Fire Pit (both object and tile based)
+            break;
+        case BowLitFirePit: // Over a Lit Fire Pit
+            break;
+        case BowUnlitFirePit: // Over an Unlit Fire Pit
+            elevation = PlayerGetElevation();
+            objectEvent = &gObjectEvents[GetObjectEventIdByPosition((u16) (x), (u16) y, elevation)];
+            fire_pit_sprite = &gSprites[objectEvent->spriteId];
+            StartSpriteAnim(fire_pit_sprite, 0);
+            FlagSet(GetObjectEventTemplateByLocalIdAndMap(objectEvent->localId, objectEvent->mapNum, objectEvent->mapGroup)->flagId);
+            task->bTargetEventID = GetObjectEventIdByPosition((u16) (x), (u16) y, elevation);
+            task->bRunOnHitScript = TRUE;
+            break;
+    }
+    return TRUE;
+}
+
+void SetFirePitOn(void)
+{
+    struct Sprite *sprite;
+    struct ObjectEvent *objectEvent;
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
+    objectEvent = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_0x8000)];
+    FlagSet(gMapHeader.events->objectEvents[gSpecialVar_0x8000].flagId);
+    sprite = &gSprites[objectEvent->spriteId];
+    StartSpriteAnim(sprite, 0);
+    return;
+}
+
+void SetFirePitOff(void)
+{
+    u16 objectEventId = 0;
+    struct Sprite *sprite;
+    struct ObjectEvent *objectEvent;
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
+    objectEvent = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_0x8000)];
+
+    for (objectEventId = 0; objectEventId < gMapHeader.events->objectEventCount; objectEventId++)
+    {
+        if (gMapHeader.events->objectEvents[objectEventId].localId == gSpecialVar_0x8000)
+            break;
+    }
+
+    FlagClear(gMapHeader.events->objectEvents[objectEventId].flagId);
+    sprite = &gSprites[objectEvent->spriteId];
+    StartSpriteAnim(sprite, 1);
+    return;
+}

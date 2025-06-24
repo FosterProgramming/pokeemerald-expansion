@@ -4932,3 +4932,8 @@ graphics/door_anims/battle_tower_multi_corridor.4bpp: %.4bpp: %.png
 $(FLDEFFGFXDIR)/bomb2.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(FLDEFFGFXDIR)/bow_arrow.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(OBJEVENTGFXDIR)/misc/fire_pit.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2

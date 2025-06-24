@@ -9,8 +9,16 @@ EventScript_UseCutTool::
     goto EventScript_CutTreeDown
 
 EventScript_UseRockSmashTool::
-    lockall
+    lock
     dofieldeffect FLDEFF_CRUMBLE
+    waitfieldeffect FLDEFF_CRUMBLE
+    releaseall
+    end
+
+EventScript_UseWilloWisp::
+    lock
+    dofieldeffect FLDEFF_BOW
+    waitfieldeffect FLDEFF_BOW
     releaseall
     end
 
@@ -18,9 +26,6 @@ EventScript_UseStrengthTool::
     lockall
     call_if_set FLAG_SYS_USE_STRENGTH, EventScript_PushBoulderScript @ qol_field_moves
     setflag FLAG_SYS_USE_STRENGTH
-	bufferitemname STR_VAR_2, ITEM_STRENGTH_TOOL
-    msgbox Text_PlayerUsedFieldTool, MSGBOX_DEFAULT
-    msgbox Text_StrengthActivated, MSGBOX_DEFAULT
     releaseall
     end
 

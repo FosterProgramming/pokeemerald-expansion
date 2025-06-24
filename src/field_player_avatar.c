@@ -831,7 +831,7 @@ bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
     {
         u8 objectEventId = GetObjectEventIdByXY(x, y);
 
-        if (objectEventId != OBJECT_EVENTS_COUNT && gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER)
+        if (objectEventId != OBJECT_EVENTS_COUNT && ((gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER) || (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_FIRE_PIT)))
         {
             x = gObjectEvents[objectEventId].currentCoords.x;
             y = gObjectEvents[objectEventId].currentCoords.y;
@@ -1593,6 +1593,12 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
     if (!ObjectEventIsMovementOverridden(player)
      && !ObjectEventIsMovementOverridden(boulder))
     {
+        if(boulder->graphicsId == OBJ_EVENT_GFX_FIRE_PIT)
+        {
+            boulder->enableAnim = FALSE;
+            boulder->inanimate = TRUE;
+        }
+
         ObjectEventClearHeldMovementIfFinished(player);
         ObjectEventClearHeldMovementIfFinished(boulder);
         ObjectEventSetHeldMovement(player, GetWalkInPlaceNormalMovementAction((u8)task->tDirection));
@@ -1614,7 +1620,18 @@ static bool8 PushBoulder_End(struct Task *task, struct ObjectEvent *player, stru
      && ObjectEventCheckHeldMovementStatus(boulder))
     {
         ObjectEventClearHeldMovementIfFinished(player);
-        ObjectEventClearHeldMovementIfFinished(boulder);
+        ObjectEventClearHeldMovement(boulder);
+
+        if(boulder->graphicsId == OBJ_EVENT_GFX_FIRE_PIT)
+        {
+            if(FlagGet(GetObjectEventTemplateByLocalIdAndMap(boulder->localId, boulder->mapNum, boulder->mapGroup)->flagId))
+                StartSpriteAnim(&gSprites[boulder->spriteId], 0);
+            else
+                StartSpriteAnim(&gSprites[boulder->spriteId], 1);
+            boulder->enableAnim = TRUE;
+            boulder->inanimate = FALSE;
+        }
+
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
         DestroyTask(FindTaskIdByFunc(Task_PushBoulder));
