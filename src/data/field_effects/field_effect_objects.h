@@ -1434,3 +1434,60 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_Crumble = {
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
 };
+
+static const union AnimCmd sHookshotChainAnim_South[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_FRAME(1, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sHookshotChainAnim_North[] =
+{
+    ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
+    ANIMCMD_FRAME(1, 1, .vFlip = TRUE),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sHookshotChainAnim_West[] =
+{
+    ANIMCMD_FRAME(2, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(3, 1, .hFlip = TRUE),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sHookshotChainAnim_East[] =
+{
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_FRAME(3, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_BowArrow[] =
+{
+    sHookshotChainAnim_South,
+    sHookshotChainAnim_North,
+    sHookshotChainAnim_West,
+    sHookshotChainAnim_East,
+};
+
+const u32 gFieldEffectObjectPic_Bow_Arrow[] = INCBIN_U32("graphics/field_effects/pics/bow_arrow.4bpp");
+const u16 gFieldEffectObjectPaletteBow_Arrow[] = INCBIN_U16("graphics/field_effects/pics/bow_arrow.gbapal");
+const struct SpritePalette gSpritePalette_BowFieldEffect      = {gFieldEffectObjectPaletteBow_Arrow, FLDEFF_PAL_TAG_BOW_ARROW};
+
+static const struct SpriteFrameImage sPicTable_Bow_Arrow[] = {
+    overworld_frame(gFieldEffectObjectPic_Bow_Arrow, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_Bow_Arrow, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_Bow_Arrow, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_Bow_Arrow, 2, 2, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_Bow_Arrow = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_BOW_ARROW,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_BowArrow,
+    .images = sPicTable_Bow_Arrow,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};

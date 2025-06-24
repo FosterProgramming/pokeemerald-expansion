@@ -1564,3 +1564,41 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {},
 };
+
+static const union AnimCmd sAnim_FirePitOn[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_JUMP(0),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_FirePitOff[] =
+{
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_FirePit[] = {
+    sAnim_FirePitOn,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+    sAnim_FirePitOff,
+};

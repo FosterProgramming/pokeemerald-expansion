@@ -1715,6 +1715,25 @@ void ItemUseOnFieldCB_FlashTool(u8 taskId)
     FldEff_UseFlashTool();
     DestroyTask(taskId);
 }
+
+static void ItemUseOnFieldCB_WilloWisp(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(EventScript_UseWilloWisp);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_WilloWisp(u8 taskId)
+{
+    if (TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_WilloWisp;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+}
+
 void ItemUseOutOfBattle_RockSmashTool(u8 taskId)
 {
     if (TRUE)

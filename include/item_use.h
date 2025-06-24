@@ -78,6 +78,7 @@ void ItemUseOutOfBattle_FlashTool(u8);
 void ItemUseOnFieldCB_FlashTool(u8 taskId);
 
 void ItemUseOutOfBattle_RockSmashTool(u8);
+void ItemUseOutOfBattle_WilloWisp(u8);
 
 void ItemUseOutOfBattle_WaterfallTool(u8);
 void ItemUseOnFieldCB_WaterfallTool(u8);

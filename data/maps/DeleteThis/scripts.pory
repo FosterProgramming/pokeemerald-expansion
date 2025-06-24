@@ -1,4 +1,92 @@
-raw `
-DeleteThis_MapScripts::
-	.byte 0
-`
+mapscripts DeleteThis_MapScripts {
+
+}
+
+script TestFirePit_Script {
+	lock
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		if(flag(FLAG_TEMP_4) && flag(FLAG_TEMP_5) && flag(FLAG_TEMP_6))
+		{
+			call(OpenDoorTestScript)
+		}
+		else
+		{
+			delay(20)
+			setvar(VAR_0x8000, 2)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 3)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 4)
+			callnative(SetFirePitOff)
+		}
+		clearflag(FLAG_WILLOWISP_ACTIVE)
+	}
+	else{
+		goto(EventScript_StrengthBoulder)
+	}
+	release
+	end
+}
+
+script TestFirePit_Script2 {
+	lock
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		if(flag(FLAG_TEMP_4) && flag(FLAG_TEMP_5) && flag(FLAG_TEMP_6))
+		{
+			call(OpenDoorTestScript)
+		}
+		else
+		{
+			delay(20)
+			setvar(VAR_0x8000, 2)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 3)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 4)
+			callnative(SetFirePitOff)
+		}
+		clearflag(FLAG_WILLOWISP_ACTIVE)
+	}
+	else{
+		goto(EventScript_StrengthBoulder)
+	}
+	release
+	end
+}
+
+script TestFirePit_Script3 {
+	lock
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		if(flag(FLAG_TEMP_4) && flag(FLAG_TEMP_5) && flag(FLAG_TEMP_6))
+		{
+			call(OpenDoorTestScript)
+		}
+		else
+		{
+			delay(20)
+			setvar(VAR_0x8000, 2)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 3)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 4)
+			callnative(SetFirePitOff)
+		}
+		clearflag(FLAG_WILLOWISP_ACTIVE)
+	}
+	else{
+		goto(EventScript_StrengthBoulder)
+	}
+	release
+	end
+}
+
+script OpenDoorTestScript {
+	call(CommonEventScript_ScreenShake)
+	setmetatile(15, 11, 0x044, TRUE)
+	setmetatile(15, 10, 0x03C, TRUE)
+	special(DrawWholeMapView)
+	return
+}

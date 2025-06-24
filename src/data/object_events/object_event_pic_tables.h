@@ -785,7 +785,10 @@ static const struct SpriteFrameImage sPicTable_PikaCushion[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_RoundCushion[] = {
-    obj_frame_tiles(gObjectEventPic_RoundCushion),
+    overworld_frame(gObjectEventPic_RoundCushion, 2, 2, 0),
+    overworld_frame(gObjectEventPic_RoundCushion, 2, 2, 1),
+    overworld_frame(gObjectEventPic_RoundCushion, 2, 2, 2),
+    overworld_frame(gObjectEventPic_RoundCushion, 2, 2, 3),
 };
 
 static const struct SpriteFrameImage sPicTable_KissCushion[] = {
