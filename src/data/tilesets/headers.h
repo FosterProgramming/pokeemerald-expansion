@@ -1023,3 +1023,14 @@ const struct Tileset gTileset_GlacierraPrimary =
     .metatileAttributes = gMetatileAttributes_GlacierraPrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_StratoscapeSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_StratoscapeSecondary,
+    .palettes = gTilesetPalettes_StratoscapeSecondary,
+    .metatiles = gMetatiles_StratoscapeSecondary,
+    .metatileAttributes = gMetatileAttributes_StratoscapeSecondary,
+    .callback = NULL,
+};

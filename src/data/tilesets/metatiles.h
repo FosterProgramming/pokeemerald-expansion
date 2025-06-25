@@ -261,3 +261,6 @@ const u16 gMetatileAttributes_GlacierraCaverns[] = INCBIN_U16("data/tilesets/pri
 
 const u16 gMetatiles_GlacierraPrimary[] = INCBIN_U16("data/tilesets/primary/glacierra_primary/metatiles.bin");
 const u16 gMetatileAttributes_GlacierraPrimary[] = INCBIN_U16("data/tilesets/primary/glacierra_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_StratoscapeSecondary[] = INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/metatiles.bin");
+const u16 gMetatileAttributes_StratoscapeSecondary[] = INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/metatile_attributes.bin");
