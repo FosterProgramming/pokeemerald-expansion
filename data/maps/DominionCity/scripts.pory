@@ -63,6 +63,7 @@ mapscripts DominionCity_MapScripts
         VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
         {
             setflag(FLAG_HIDE_DOMINION_GRUNTS)
+            setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 11)
             end
         }
         

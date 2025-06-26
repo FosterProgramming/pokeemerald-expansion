@@ -14,7 +14,7 @@ Route1_MapScripts::
 
 script Route1_EventScript_GruntBlocking_Left
 {
-	lockall
+	lock
 	call(Route1_EventScript_SpawnParty)
 	applymovement(LOCALID_VEE, moves(
 		walk_down
@@ -24,15 +24,17 @@ script Route1_EventScript_GruntBlocking_Left
 		walk_right
 		face_left
 	))
-	waitmovement(0)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
-	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_in_place_down))
+
+	waitmovement(LOCALID_VEE)
+
 	call(Route1_EventScript_RoadIsBlocked)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
 		walk_left*2
-		face_right
+		walk_in_place_right
 	))
 	applymovement(LOCALID_VEE, moves(
 		walk_up*2
@@ -43,7 +45,7 @@ script Route1_EventScript_GruntBlocking_Left
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(
 		walk_right
 	))
-	waitmovement(0)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
 	goto(Route1_EventScript_GruntBlocking_Continues)
 }
 
@@ -59,15 +61,15 @@ script Route1_EventScript_GruntBlocking_MiddleLeft
 		walk_right
 		face_left
 	))
-	waitmovement(0)
+	waitmovement(LOCALID_FRO)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
-	waitmovement(0)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	call(Route1_EventScript_RoadIsBlocked)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
 		walk_left*3
-		face_right
+		walk_in_place_right
 	))
 	applymovement(LOCALID_VEE, moves(
 		walk_up*2
@@ -78,7 +80,7 @@ script Route1_EventScript_GruntBlocking_MiddleLeft
 	applymovement(LOCALID_FRO, moves(
 		walk_left
 	))
-	waitmovement(0)
+	waitmovement(LOCALID_FRO)
 	goto(Route1_EventScript_GruntBlocking_Continues)
 }
 
@@ -95,15 +97,17 @@ script Route1_EventScript_GruntBlocking_MiddleRight
 		walk_right
 		face_left
 	))
-	waitmovement(0)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
-	waitmovement(0)
+	waitmovement(LOCALID_FRO)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_in_place_down
+		))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	call(Route1_EventScript_RoadIsBlocked)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
 		walk_left*4
-		face_right
+		walk_in_place_right
 	))
 	applymovement(LOCALID_VEE, moves(
 		walk_up*2
@@ -132,17 +136,18 @@ script Route1_EventScript_GruntBlocking_Right
 	))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_left
-		face_down
+		walk_in_place_down
 	))
+	applymovement(LOCALID_FRO, moves(face_left))
 	waitmovement(LOCALID_VEE)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
-	waitmovement(0)
+	waitmovement(LOCALID_FRO)
 	call(Route1_EventScript_RoadIsBlocked)
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
 		walk_left*4
-		face_right
+		walk_in_place_right
 	))
 	applymovement(LOCALID_VEE, moves(
 		walk_up*2
@@ -166,14 +171,13 @@ script Route1_EventScript_SpawnParty
 	{
 		goto(Route1_EventScript_NoCake)
 	}
-	
-	clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
 	clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+	clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
+	setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
 	addobject(LOCALID_VEE)
-	setobjectxy(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates)
 	addobject(LOCALID_FRO)
-	setobjectxy(LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates)
-	return
 }
 
 script Route1_EventScript_RoadIsBlocked
@@ -187,7 +191,7 @@ script Route1_EventScript_RoadIsBlocked
 		Do we need to fight them?"
 	))
 	applymovement(LOCALID_VEE, moves(face_right))
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_right))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	speakername("Fro")
 	msgbox(format(
 		"Hey, chill out, girl.\n
@@ -207,14 +211,14 @@ script Route1_EventScript_RoadIsBlocked
 		Figure something out.\p
 		You guys go hide, and I'll handle this."
 	))
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
 	applymovement(LOCALID_VEE, moves(face_up))
 	waitmovement(0)
 	speakername("Vee")
 	msgbox(format(
 		"Hmm…\n"
 		"If he's sure…\p"
-		"We should hide behind those trees,{PLAYER}!"
+		"We should hide behind those trees, {PLAYER}!"
 	))
 	return
 }
@@ -228,7 +232,7 @@ script Route1_EventScript_GruntBlocking_Continues
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(
 		walk_up*3
 	))
-	waitmovement(0)
+	waitmovement(LOCALID_FRO)
 	speakername("Fro")
 	msgbox(format(
 		"Hello, friends."
@@ -260,12 +264,13 @@ script Route1_EventScript_GruntBlocking_Continues
 	applymovement(LOCALID_GRUNT_M, moves(
 		face_left
 		delay_16
+		delay_16
+		delay_16
 	))
 	waitmovement(0)
 	speakername("Grunt 1")
 	msgbox(format(
-		"… … …\p
-		Oh yeah!\n
+		"Oh yeah!\n
 		It is, isn't it!\p
 		Fro from the cafe!"
 	))
@@ -284,7 +289,7 @@ script Route1_EventScript_GruntBlocking_Continues
 	))
 	speakername("Fro")
 	msgbox(format(
-		"I am.\p
+		"Well.\p
 		I am…\n
 		Gathering ingredients."
 	))
@@ -318,6 +323,7 @@ script Route1_EventScript_GruntBlocking_Continues
 		face_right
 		delay_16
 		delay_16
+		delay_16
 		face_down
 	))
 	waitmovement(0)
@@ -331,7 +337,7 @@ script Route1_EventScript_GruntBlocking_Continues
 	))
 	speakername("Fro")
 	msgbox(format(
-		"An acceptable condition.\n
+		"An acceptable deal.\n
 		Yes, I can make that happen.\p
 		Just wait here for a while, and I will bring it to you."
 	))
@@ -350,7 +356,7 @@ script Route1_EventScript_GruntBlocking_Continues
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_right*3
 		walk_down*2
-		face_right
+		walk_in_place_right
 	))
 	applymovement(LOCALID_VEE, moves(
 		walk_right
