@@ -28,8 +28,13 @@ script Route1_EventScript_GruntBlocking_Left
 		walk_in_place_down))
 
 	waitmovement(LOCALID_VEE)
-
+	if(var(VAR_RESULT) == TRUE)
+	{
+	call(Route1_EventScript_StartGivingMeal)
+	}
+	else{
 	call(Route1_EventScript_RoadIsBlocked)
+	}
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
@@ -46,7 +51,15 @@ script Route1_EventScript_GruntBlocking_Left
 		walk_right
 	))
 	waitmovement(OBJ_EVENT_ID_CAMERA)
-	goto(Route1_EventScript_GruntBlocking_Continues)
+	if(var(VAR_RESULT) == TRUE)
+	{
+		goto(Route1_EventScript_FroDeliversMeal)
+	}
+	else
+	{
+		goto(Route1_EventScript_GruntBlocking_Continues)
+	}
+	
 }
 
 script Route1_EventScript_GruntBlocking_MiddleLeft
@@ -62,9 +75,15 @@ script Route1_EventScript_GruntBlocking_MiddleLeft
 		face_left
 	))
 	waitmovement(LOCALID_FRO)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
+	if(var(VAR_RESULT) == TRUE)
+	{
+	call(Route1_EventScript_StartGivingMeal)
+	}
+	else{
 	call(Route1_EventScript_RoadIsBlocked)
+	}
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
@@ -81,7 +100,14 @@ script Route1_EventScript_GruntBlocking_MiddleLeft
 		walk_left
 	))
 	waitmovement(LOCALID_FRO)
-	goto(Route1_EventScript_GruntBlocking_Continues)
+	if(var(VAR_RESULT) == TRUE)
+	{
+		goto(Route1_EventScript_FroDeliversMeal)
+	}
+	else
+	{
+		goto(Route1_EventScript_GruntBlocking_Continues)
+	}
 }
 
 
@@ -102,7 +128,13 @@ script Route1_EventScript_GruntBlocking_MiddleRight
 		walk_in_place_down
 		))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
+	if(var(VAR_RESULT) == TRUE)
+	{
+	call(Route1_EventScript_StartGivingMeal)
+	}
+	else{
 	call(Route1_EventScript_RoadIsBlocked)
+	}
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
@@ -122,7 +154,14 @@ script Route1_EventScript_GruntBlocking_MiddleRight
 		walk_left
 	))
 	waitmovement(LOCALID_FRO)
-	goto(Route1_EventScript_GruntBlocking_Continues)
+	if(var(VAR_RESULT) == TRUE)
+	{
+		goto(Route1_EventScript_FroDeliversMeal)
+	}
+	else
+	{
+		goto(Route1_EventScript_GruntBlocking_Continues)
+	}
 }
 
 script Route1_EventScript_GruntBlocking_Right
@@ -142,7 +181,13 @@ script Route1_EventScript_GruntBlocking_Right
 	waitmovement(LOCALID_VEE)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 	waitmovement(LOCALID_FRO)
+	if(var(VAR_RESULT) == TRUE)
+	{
+	call(Route1_EventScript_StartGivingMeal)
+	}
+	else{
 	call(Route1_EventScript_RoadIsBlocked)
+	}
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(
 		walk_up
@@ -162,12 +207,20 @@ script Route1_EventScript_GruntBlocking_Right
 		walk_left
 	))
 	waitmovement(LOCALID_FRO)
-	goto(Route1_EventScript_GruntBlocking_Continues)
+	if(var(VAR_RESULT) == TRUE)
+	{
+		goto(Route1_EventScript_FroDeliversMeal)
+	}
+	else
+	{
+		goto(Route1_EventScript_GruntBlocking_Continues)
+	}
 }
 
 script Route1_EventScript_SpawnParty
 {
-	if(flag(FLAG_TALKED_TO_GRUNTS_ROUTE1))
+	checkitem(ITEM_POTION)
+	if(flag(FLAG_TALKED_TO_GRUNTS_ROUTE1) && !var(VAR_RESULT))
 	{
 		goto(Route1_EventScript_NoCake)
 	}
@@ -395,6 +448,242 @@ script Route1_EventScript_NoCake{
 	))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
 	waitmovement(0)
+	releaseall
+	end
+}
+
+script Route1_EventScript_StartGivingMeal
+{
+	speakername("Vee")
+	msgbox(format(
+		"Ok!\n
+		We got the special meal!\p
+		Now we just gotta deliver it to those guys!"
+	))
+	applymovement(LOCALID_VEE, moves(face_right))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+	waitmovement(0)
+	speakername("Fro")
+	msgbox(format(
+		"Yup, yup.\n
+		I'm on it."
+	))
+	return
+}
+
+script Route1_EventScript_FroDeliversMeal
+{
+	closemessage
+	applymovement(LOCALID_FRO, moves(
+		walk_up*3
+	))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(
+		walk_up*3
+	))
+	waitmovement(LOCALID_FRO)
+	speakername("Fro")
+	msgbox(format(
+		"Hi.\n
+		I'm back."
+	))
+	applymovement(LOCALID_GRUNT_F, moves(
+		face_down
+		delay_16
+	))
+	applymovement(LOCALID_GRUNT_M, moves(
+		face_down
+		delay_16
+	))
+	waitmovement(0)
+	speakername("Grunt 1")
+	msgbox(format(
+		"So…\n
+		You brought it?"
+	))
+	speakername("Grunt 2")
+	msgbox(format(
+		"Yeah!\n
+		Do you have the goods?"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Yup.\n
+		My special meal, just for you."
+	))
+	closemessage
+	applymovement(LOCALID_FRO, moves(
+		walk_left
+		face_up
+		delay_16
+		walk_in_place_up
+		delay_16
+		delay_16
+		walk_right*2
+		face_up
+		delay_16
+		walk_in_place_up
+		delay_16
+		delay_16
+		walk_left
+		face_up
+		delay_16
+	))
+	waitmovement(0)
+	speakername("Grunt 1")
+	msgbox(format(
+		"Aw yeah, baby!\n
+		That's the stuff!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Ok.\n
+		Can I pass, now?"
+	))
+	speakername("Grunt 2")
+	msgbox(format(
+		"A deal's a deal.\n
+		We'll be getting out of here.\p
+		Good luck with the surprise for the Boss, eh?"
+	))
+	closemessage
+	applymovement(LOCALID_FRO, moves(
+		walk_left
+		face_right
+	))
+	applymovement(LOCALID_GRUNT_F, moves(
+		walk_right
+		walk_down*4
+		walk_right
+		walk_down*4
+	))
+	waitmovement(LOCALID_GRUNT_F)
+	removeobject(LOCALID_GRUNT_F)
+	applymovement(LOCALID_GRUNT_M, moves(
+		walk_down*3
+		delay_16*2
+		face_left
+		delay_16*2
+	))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(
+		walk_down*2
+	))
+	waitmovement(LOCALID_GRUNT_M)
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_M, moves(
+		emote_question_mark
+		delay_16*2
+	))
+	waitmovement(LOCALID_GRUNT_M)
+	speakername("Grunt 1")
+	msgbox(format(
+		"What the heck is going on back there, anyway?"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Uh, nothing."
+	))
+	speakername("Grunt 1")
+	msgbox(format(
+		"No cause it kinda looks like-"
+	))
+	closemessage
+	applymovement(LOCALID_FRO, moves(
+		walk_down*2
+		face_right
+	))
+	waitmovement(0)
+	speakername("Fro")
+	msgbox(format(
+		"I would, uh.\n
+		Recommend not looking there.\p
+		Because.\p
+		There's wild Pokémon that are…\n
+		Eating each other."
+	))
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_M, moves(
+		emote_exclamation_mark
+		delay_16
+	))
+	waitmovement(0)
+	speakername("Grunt 1")
+	msgbox(format(
+		"EATING each other?\n
+		What the hell, man!\p
+		That's gross!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Yes.\n
+		Nature can be cruel.\p
+		That's why I'm hiding the sight from you.\p
+		Wouldn't want to ruin your appetite."
+	))
+	speakername("Grunt 1")
+	msgbox(format(
+		"Yeah, thanks, man!\n
+		That's intense!\p
+		So, like…\n
+		Now that you're a Pokémon…\p
+		Do you also, like…\n
+		Eat other wild Pokémon?"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Eat wild Pokémon?\n
+		No, not really.\p
+		But I do get a bit of a craving, sometimes…\p
+		A craving for humans."
+	))
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_M, moves(
+		emote_exclamation_mark
+		delay_16*2
+		walk_fast_down*6
+	))
+	waitmovement(0)
+	removeobject(LOCALID_GRUNT_M)
+	applymovement(LOCALID_FRO, moves(
+		walk_right*2
+		face_left
+	))
+	applymovement(LOCALID_VEE, moves(
+		walk_right*2
+	))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_right*2
+	))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(
+		walk_left
+	))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Fro")
+	msgbox(format(
+		"Hee hee.\n
+		That was funny."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"That was mean!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Sometimes mean is funny.\n
+		Besides, they're gone, now.\p
+		Let's not wait any longer.\n
+		I'm looking forward to the hot springs."
+	))
+	applymovement(LOCALID_VEE, moves(
+		walk_left
+	))
+	applymovement(LOCALID_FRO, moves(
+		walk_left*2
+	))
+	waitmovement(LOCALID_FRO)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_FRO)
+	special(RemoveCameraObject)
+	setvar(VAR_ROUTE_1_STATE, 1)
 	releaseall
 	end
 }
