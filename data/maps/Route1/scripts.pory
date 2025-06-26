@@ -121,7 +121,7 @@ script Route1_EventScript_GruntBlocking_MiddleRight
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(
 		walk_left
 	))
-	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitmovement(LOCALID_FRO)
 	goto(Route1_EventScript_GruntBlocking_Continues)
 }
 
@@ -161,7 +161,7 @@ script Route1_EventScript_GruntBlocking_Right
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(
 		walk_left
 	))
-	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitmovement(LOCALID_FRO)
 	goto(Route1_EventScript_GruntBlocking_Continues)
 }
 

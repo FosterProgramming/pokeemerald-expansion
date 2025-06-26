@@ -116,7 +116,7 @@ Route1_EventScript_GruntBlocking_MiddleRight::
 # 121 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_3
 # 124 "data/maps/Route1/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement LOCALID_FRO
 # 125 "data/maps/Route1/scripts.pory"
 	goto Route1_EventScript_GruntBlocking_Continues
 	return
@@ -154,7 +154,7 @@ Route1_EventScript_GruntBlocking_Right::
 # 161 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_3
 # 164 "data/maps/Route1/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
+	waitmovement LOCALID_FRO
 # 165 "data/maps/Route1/scripts.pory"
 	goto Route1_EventScript_GruntBlocking_Continues
 	return
@@ -208,7 +208,7 @@ Route1_EventScript_RoadIsBlocked::
 # 206 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_RoadIsBlocked_Text_5
 # 214 "data/maps/Route1/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, Route1_EventScript_GruntBlocking_Left_Movement_2
 # 215 "data/maps/Route1/scripts.pory"
 	applymovement LOCALID_VEE, Route1_EventScript_RoadIsBlocked_Movement_2
 # 216 "data/maps/Route1/scripts.pory"
