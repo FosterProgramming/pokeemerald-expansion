@@ -60,6 +60,12 @@ mapscripts DominionCity_MapScripts
                 releaseall
                 end
 		}
+        VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+        {
+            setflag(FLAG_HIDE_DOMINION_GRUNTS)
+            end
+        }
+        
 	]
 }
 

@@ -15,6 +15,8 @@ DominionCity_MapScripts::
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 11 "data/maps/DominionCity/scripts.pory"
 	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 7, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
+# 63 "data/maps/DominionCity/scripts.pory"
+	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 10, DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1
 	.2byte 0
 
 DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
@@ -76,418 +78,423 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 	releaseall
 	end
 
+DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1:
+# 65 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_HIDE_DOMINION_GRUNTS
+	return
+
 
 DominionCity_EventScripts_WhatIsThisPlace::
-# 68 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 69 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 70 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 71 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 72 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_0
 # 73 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_1
+	lockall
 # 74 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 75 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 76 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_2
+	addobject LOCALID_VEE
 # 77 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_0
 # 78 "data/maps/DominionCity/scripts.pory"
-	delay 40
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_1
 # 79 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_3
-# 80 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 81 "data/maps/DominionCity/scripts.pory"
-	delay 40
-# 82 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_4
-# 83 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 84 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
-# 85 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_0
-# 92 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 93 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 94 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
-# 95 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_1
-# 100 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
-# 101 "data/maps/DominionCity/scripts.pory"
+# 80 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 81 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_2
+# 82 "data/maps/DominionCity/scripts.pory"
 	waitmovement LOCALID_VEE
-# 102 "data/maps/DominionCity/scripts.pory"
+# 83 "data/maps/DominionCity/scripts.pory"
+	delay 40
+# 84 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_3
+# 85 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 86 "data/maps/DominionCity/scripts.pory"
+	delay 40
+# 87 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_4
+# 88 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 89 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 90 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_0
+# 97 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 98 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 99 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 100 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_WhatIsThisPlace_Text_1
+# 105 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
+# 106 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 107 "data/maps/DominionCity/scripts.pory"
 	removeobject LOCALID_VEE
-# 103 "data/maps/DominionCity/scripts.pory"
+# 108 "data/maps/DominionCity/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 9
-# 104 "data/maps/DominionCity/scripts.pory"
+# 109 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_EventScripts_GruntsWestStillLooking::
-# 110 "data/maps/DominionCity/scripts.pory"
+# 115 "data/maps/DominionCity/scripts.pory"
 	goto_if_set FLAG_TEMP_1, DominionCity_EventScripts_GruntsWestStillLooking_1
-# 135 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 136 "data/maps/DominionCity/scripts.pory"
-	special SpawnCameraObject
-# 137 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsWestStillLooking_Movement_2
-# 138 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 139 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
 # 140 "data/maps/DominionCity/scripts.pory"
-	applymovement 2, DominionCity_EventScripts_GruntsWestStillLooking_Movement_3
+	lockall
 # 141 "data/maps/DominionCity/scripts.pory"
-	waitmovement 2
+	special SpawnCameraObject
 # 142 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsWestStillLooking_Movement_2
 # 143 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_2
-# 146 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
-# 147 "data/maps/DominionCity/scripts.pory"
-	applymovement 3, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 148 "data/maps/DominionCity/scripts.pory"
-	waitmovement 3
-# 149 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_3
-# 150 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_4
-# 155 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
-# 156 "data/maps/DominionCity/scripts.pory"
-	applymovement 2, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 157 "data/maps/DominionCity/scripts.pory"
-	waitmovement 2
-# 158 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
-# 159 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_5
-# 164 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsWestStillLooking_Movement_4
-# 165 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
-# 166 "data/maps/DominionCity/scripts.pory"
-	special RemoveCameraObject
-# 167 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 168 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 169 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 170 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
-# 171 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
-# 172 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 173 "data/maps/DominionCity/scripts.pory"
+# 144 "data/maps/DominionCity/scripts.pory"
 	playse SE_PIN
+# 145 "data/maps/DominionCity/scripts.pory"
+	applymovement 2, DominionCity_EventScripts_GruntsWestStillLooking_Movement_3
+# 146 "data/maps/DominionCity/scripts.pory"
+	waitmovement 2
+# 147 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+# 148 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_2
+# 151 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 152 "data/maps/DominionCity/scripts.pory"
+	applymovement 3, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 153 "data/maps/DominionCity/scripts.pory"
+	waitmovement 3
+# 154 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_3
+# 155 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_4
+# 160 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 161 "data/maps/DominionCity/scripts.pory"
+	applymovement 2, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 162 "data/maps/DominionCity/scripts.pory"
+	waitmovement 2
+# 163 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+# 164 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_5
+# 169 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsWestStillLooking_Movement_4
+# 170 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 171 "data/maps/DominionCity/scripts.pory"
+	special RemoveCameraObject
+# 172 "data/maps/DominionCity/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 173 "data/maps/DominionCity/scripts.pory"
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 174 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+	addobject LOCALID_VEE
 # 175 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_6, MSGBOX_NPC
-# 185 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
-# 186 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 187 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_VEE
-# 188 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_1
-# 189 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
+# 176 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
+# 177 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
+# 178 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 179 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 180 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_6, MSGBOX_NPC
 # 190 "data/maps/DominionCity/scripts.pory"
-	setflag FLAG_TEMP_1
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 191 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 192 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_VEE
+# 193 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_1
+# 194 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 195 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_TEMP_1
+# 196 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
 DominionCity_EventScripts_GruntsWestStillLooking_1:
-# 112 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 113 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 114 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 115 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 116 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 117 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
+	lockall
 # 118 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 119 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 120 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+	addobject LOCALID_VEE
 # 121 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_0, MSGBOX_NPC
-# 124 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
-# 125 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 126 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_VEE
-# 127 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_1
-# 128 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
+# 122 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
+# 123 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
+# 124 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 125 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 126 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_0, MSGBOX_NPC
 # 129 "data/maps/DominionCity/scripts.pory"
-	setflag FLAG_TEMP_1
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 130 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 131 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_VEE
+# 132 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_1
+# 133 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 134 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_TEMP_1
+# 135 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_EventScripts_GruntsNorthStillLooking::
-# 198 "data/maps/DominionCity/scripts.pory"
+# 203 "data/maps/DominionCity/scripts.pory"
 	goto_if_set FLAG_TEMP_2, DominionCity_EventScripts_GruntsNorthStillLooking_1
-# 223 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 224 "data/maps/DominionCity/scripts.pory"
-	special SpawnCameraObject
-# 225 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_1
-# 226 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 227 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
 # 228 "data/maps/DominionCity/scripts.pory"
-	applymovement 5, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+	lockall
 # 229 "data/maps/DominionCity/scripts.pory"
-	waitmovement 5
+	special SpawnCameraObject
 # 230 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_1
 # 231 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_0
-# 234 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
-# 235 "data/maps/DominionCity/scripts.pory"
-	applymovement 4, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 236 "data/maps/DominionCity/scripts.pory"
-	waitmovement 4
-# 237 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_3
-# 238 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_1
-# 241 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
-# 242 "data/maps/DominionCity/scripts.pory"
-	applymovement 5, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 243 "data/maps/DominionCity/scripts.pory"
-	waitmovement 5
-# 244 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
-# 245 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_2
-# 248 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2
-# 249 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
-# 250 "data/maps/DominionCity/scripts.pory"
-	special RemoveCameraObject
-# 251 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 252 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 253 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 254 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth
-# 255 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_0
-# 256 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 257 "data/maps/DominionCity/scripts.pory"
+# 232 "data/maps/DominionCity/scripts.pory"
 	playse SE_PIN
+# 233 "data/maps/DominionCity/scripts.pory"
+	applymovement 5, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 234 "data/maps/DominionCity/scripts.pory"
+	waitmovement 5
+# 235 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+# 236 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_0
+# 239 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 240 "data/maps/DominionCity/scripts.pory"
+	applymovement 4, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 241 "data/maps/DominionCity/scripts.pory"
+	waitmovement 4
+# 242 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_3
+# 243 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_1
+# 246 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 247 "data/maps/DominionCity/scripts.pory"
+	applymovement 5, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 248 "data/maps/DominionCity/scripts.pory"
+	waitmovement 5
+# 249 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+# 250 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_2
+# 253 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2
+# 254 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 255 "data/maps/DominionCity/scripts.pory"
+	special RemoveCameraObject
+# 256 "data/maps/DominionCity/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 257 "data/maps/DominionCity/scripts.pory"
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 258 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+	addobject LOCALID_VEE
 # 259 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_3, MSGBOX_NPC
-# 264 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth
-# 265 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 266 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_VEE
-# 267 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
-# 268 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth
+# 260 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_0
+# 261 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
+# 262 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 263 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 264 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_3, MSGBOX_NPC
 # 269 "data/maps/DominionCity/scripts.pory"
-	setflag FLAG_TEMP_2
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth
 # 270 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 271 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_VEE
+# 272 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
+# 273 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 274 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_TEMP_2
+# 275 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
 DominionCity_EventScripts_GruntsNorthStillLooking_1:
-# 200 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 201 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 202 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 203 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 204 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth
 # 205 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_0
+	lockall
 # 206 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 207 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 208 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+	addobject LOCALID_VEE
 # 209 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_0, MSGBOX_NPC
-# 212 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth
-# 213 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 214 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_VEE
-# 215 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
-# 216 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerSouth
+# 210 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_0
+# 211 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
+# 212 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 213 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 214 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_0, MSGBOX_NPC
 # 217 "data/maps/DominionCity/scripts.pory"
-	setflag FLAG_TEMP_2
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth
 # 218 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 219 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_VEE
+# 220 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_WhatIsThisPlace_Movement_6
+# 221 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 222 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_TEMP_2
+# 223 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
 
 DominionCity_EventScripts_GruntsSouthStillLooking::
-# 277 "data/maps/DominionCity/scripts.pory"
+# 282 "data/maps/DominionCity/scripts.pory"
 	goto_if_set FLAG_TEMP_3, DominionCity_EventScripts_GruntsSouthStillLooking_1
-# 302 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 303 "data/maps/DominionCity/scripts.pory"
-	special SpawnCameraObject
-# 304 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2
-# 305 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 306 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
 # 307 "data/maps/DominionCity/scripts.pory"
-	applymovement 6, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+	lockall
 # 308 "data/maps/DominionCity/scripts.pory"
-	waitmovement 6
+	special SpawnCameraObject
 # 309 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2
 # 310 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_0
+	waitmovement OBJ_EVENT_ID_CAMERA
 # 311 "data/maps/DominionCity/scripts.pory"
 	playse SE_PIN
 # 312 "data/maps/DominionCity/scripts.pory"
-	applymovement 7, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 313 "data/maps/DominionCity/scripts.pory"
-	waitmovement 7
-# 314 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_3
-# 315 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_1
-# 317 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
-# 318 "data/maps/DominionCity/scripts.pory"
 	applymovement 6, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
-# 319 "data/maps/DominionCity/scripts.pory"
+# 313 "data/maps/DominionCity/scripts.pory"
 	waitmovement 6
-# 320 "data/maps/DominionCity/scripts.pory"
+# 314 "data/maps/DominionCity/scripts.pory"
 	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
-# 321 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_2
-# 322 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_1
-# 323 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 324 "data/maps/DominionCity/scripts.pory"
-	special RemoveCameraObject
-# 325 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 326 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 327 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 328 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
-# 329 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
-# 330 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 331 "data/maps/DominionCity/scripts.pory"
+# 315 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_0
+# 316 "data/maps/DominionCity/scripts.pory"
 	playse SE_PIN
+# 317 "data/maps/DominionCity/scripts.pory"
+	applymovement 7, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 318 "data/maps/DominionCity/scripts.pory"
+	waitmovement 7
+# 319 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_3
+# 320 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_1
+# 322 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 323 "data/maps/DominionCity/scripts.pory"
+	applymovement 6, DominionCity_EventScripts_WhatIsThisPlace_Movement_5
+# 324 "data/maps/DominionCity/scripts.pory"
+	waitmovement 6
+# 325 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_EventScripts_GruntsWestStillLooking_Text_1
+# 326 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_2
+# 327 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_1
+# 328 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 329 "data/maps/DominionCity/scripts.pory"
+	special RemoveCameraObject
+# 330 "data/maps/DominionCity/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 331 "data/maps/DominionCity/scripts.pory"
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 332 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+	addobject LOCALID_VEE
 # 333 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_3, MSGBOX_NPC
-# 338 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
-# 339 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 340 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_VEE
-# 341 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsSouthStillLooking_Movement_0
-# 342 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
+# 334 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
+# 335 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
+# 336 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 337 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 338 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsNorthStillLooking_Text_3, MSGBOX_NPC
 # 343 "data/maps/DominionCity/scripts.pory"
-	setflag FLAG_TEMP_3
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 344 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 345 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_VEE
+# 346 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsSouthStillLooking_Movement_0
+# 347 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 348 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_TEMP_3
+# 349 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
 DominionCity_EventScripts_GruntsSouthStillLooking_1:
-# 279 "data/maps/DominionCity/scripts.pory"
-	lockall
-# 280 "data/maps/DominionCity/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 281 "data/maps/DominionCity/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 282 "data/maps/DominionCity/scripts.pory"
-	addobject LOCALID_VEE
-# 283 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
 # 284 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
+	lockall
 # 285 "data/maps/DominionCity/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 286 "data/maps/DominionCity/scripts.pory"
-	playse SE_PIN
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 287 "data/maps/DominionCity/scripts.pory"
-	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+	addobject LOCALID_VEE
 # 288 "data/maps/DominionCity/scripts.pory"
-	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_0, MSGBOX_NPC
-# 291 "data/maps/DominionCity/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
-# 292 "data/maps/DominionCity/scripts.pory"
-	waitmovement LOCALID_VEE
-# 293 "data/maps/DominionCity/scripts.pory"
-	removeobject LOCALID_VEE
-# 294 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsSouthStillLooking_Movement_0
-# 295 "data/maps/DominionCity/scripts.pory"
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth
+# 289 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsWestStillLooking_Movement_0
+# 290 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
+# 291 "data/maps/DominionCity/scripts.pory"
+	playse SE_PIN
+# 292 "data/maps/DominionCity/scripts.pory"
+	speakername DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
+# 293 "data/maps/DominionCity/scripts.pory"
+	msgbox DominionCity_EventScripts_GruntsWestStillLooking_Text_0, MSGBOX_NPC
 # 296 "data/maps/DominionCity/scripts.pory"
-	setflag FLAG_TEMP_3
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 297 "data/maps/DominionCity/scripts.pory"
+	waitmovement LOCALID_VEE
+# 298 "data/maps/DominionCity/scripts.pory"
+	removeobject LOCALID_VEE
+# 299 "data/maps/DominionCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, DominionCity_EventScripts_GruntsSouthStillLooking_Movement_0
+# 300 "data/maps/DominionCity/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 301 "data/maps/DominionCity/scripts.pory"
+	setflag FLAG_TEMP_3
+# 302 "data/maps/DominionCity/scripts.pory"
 	releaseall
 	end
 
@@ -538,157 +545,157 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5:
 	walk_right
 	step_end
 
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_0:
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_fast_up
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_fast_up
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_fast_up
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_faster_up
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_faster_up
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_faster_up
-# 72 "data/maps/DominionCity/scripts.pory"
+# 77 "data/maps/DominionCity/scripts.pory"
 	walk_faster_up
 	step_end
 
-# 73 "data/maps/DominionCity/scripts.pory"
+# 78 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_1:
-# 73 "data/maps/DominionCity/scripts.pory"
+# 78 "data/maps/DominionCity/scripts.pory"
 	walk_up
-# 73 "data/maps/DominionCity/scripts.pory"
+# 78 "data/maps/DominionCity/scripts.pory"
 	walk_up
-# 73 "data/maps/DominionCity/scripts.pory"
+# 78 "data/maps/DominionCity/scripts.pory"
 	walk_up
-# 73 "data/maps/DominionCity/scripts.pory"
+# 78 "data/maps/DominionCity/scripts.pory"
 	walk_up
-# 73 "data/maps/DominionCity/scripts.pory"
+# 78 "data/maps/DominionCity/scripts.pory"
 	walk_up
 	step_end
 
-# 76 "data/maps/DominionCity/scripts.pory"
+# 81 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_2:
-# 76 "data/maps/DominionCity/scripts.pory"
+# 81 "data/maps/DominionCity/scripts.pory"
 	emote_question_mark
-# 76 "data/maps/DominionCity/scripts.pory"
+# 81 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 76 "data/maps/DominionCity/scripts.pory"
+# 81 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 76 "data/maps/DominionCity/scripts.pory"
+# 81 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 76 "data/maps/DominionCity/scripts.pory"
+# 81 "data/maps/DominionCity/scripts.pory"
 	face_up
 	step_end
 
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_3:
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 79 "data/maps/DominionCity/scripts.pory"
+# 84 "data/maps/DominionCity/scripts.pory"
 	face_up
 	step_end
 
-# 82 "data/maps/DominionCity/scripts.pory"
+# 87 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_4:
-# 82 "data/maps/DominionCity/scripts.pory"
+# 87 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 82 "data/maps/DominionCity/scripts.pory"
+# 87 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 82 "data/maps/DominionCity/scripts.pory"
+# 87 "data/maps/DominionCity/scripts.pory"
 	walk_down
 	step_end
 
-# 92 "data/maps/DominionCity/scripts.pory"
+# 97 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_5:
-# 92 "data/maps/DominionCity/scripts.pory"
+# 97 "data/maps/DominionCity/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 100 "data/maps/DominionCity/scripts.pory"
+# 105 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_WhatIsThisPlace_Movement_6:
-# 100 "data/maps/DominionCity/scripts.pory"
+# 105 "data/maps/DominionCity/scripts.pory"
 	walk_down
 	step_end
 
-# 117 "data/maps/DominionCity/scripts.pory"
+# 122 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsWestStillLooking_Movement_0:
-# 117 "data/maps/DominionCity/scripts.pory"
+# 122 "data/maps/DominionCity/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 127 "data/maps/DominionCity/scripts.pory"
+# 132 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsWestStillLooking_Movement_1:
-# 127 "data/maps/DominionCity/scripts.pory"
+# 132 "data/maps/DominionCity/scripts.pory"
 	walk_right
 	step_end
 
-# 137 "data/maps/DominionCity/scripts.pory"
+# 142 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsWestStillLooking_Movement_2:
-# 137 "data/maps/DominionCity/scripts.pory"
+# 142 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 137 "data/maps/DominionCity/scripts.pory"
+# 142 "data/maps/DominionCity/scripts.pory"
 	walk_left
-# 137 "data/maps/DominionCity/scripts.pory"
+# 142 "data/maps/DominionCity/scripts.pory"
 	walk_left
 	step_end
 
-# 140 "data/maps/DominionCity/scripts.pory"
+# 145 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsWestStillLooking_Movement_3:
-# 140 "data/maps/DominionCity/scripts.pory"
+# 145 "data/maps/DominionCity/scripts.pory"
 	emote_question_mark
 	step_end
 
-# 164 "data/maps/DominionCity/scripts.pory"
+# 169 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsWestStillLooking_Movement_4:
-# 164 "data/maps/DominionCity/scripts.pory"
+# 169 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 164 "data/maps/DominionCity/scripts.pory"
+# 169 "data/maps/DominionCity/scripts.pory"
 	walk_right
-# 164 "data/maps/DominionCity/scripts.pory"
+# 169 "data/maps/DominionCity/scripts.pory"
 	walk_right
 	step_end
 
-# 205 "data/maps/DominionCity/scripts.pory"
+# 210 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsNorthStillLooking_Movement_0:
-# 205 "data/maps/DominionCity/scripts.pory"
+# 210 "data/maps/DominionCity/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 225 "data/maps/DominionCity/scripts.pory"
+# 230 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsNorthStillLooking_Movement_1:
-# 225 "data/maps/DominionCity/scripts.pory"
+# 230 "data/maps/DominionCity/scripts.pory"
 	walk_up
-# 225 "data/maps/DominionCity/scripts.pory"
+# 230 "data/maps/DominionCity/scripts.pory"
 	walk_up
-# 225 "data/maps/DominionCity/scripts.pory"
+# 230 "data/maps/DominionCity/scripts.pory"
 	walk_up
 	step_end
 
-# 248 "data/maps/DominionCity/scripts.pory"
+# 253 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2:
-# 248 "data/maps/DominionCity/scripts.pory"
+# 253 "data/maps/DominionCity/scripts.pory"
 	walk_down
-# 248 "data/maps/DominionCity/scripts.pory"
+# 253 "data/maps/DominionCity/scripts.pory"
 	walk_down
-# 248 "data/maps/DominionCity/scripts.pory"
+# 253 "data/maps/DominionCity/scripts.pory"
 	walk_down
 	step_end
 
-# 294 "data/maps/DominionCity/scripts.pory"
+# 299 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsSouthStillLooking_Movement_0:
-# 294 "data/maps/DominionCity/scripts.pory"
+# 299 "data/maps/DominionCity/scripts.pory"
 	walk_up
 	step_end
 
@@ -723,7 +730,7 @@ DominionCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1:
 	.string "Let's find a way outta here, and fast!$"
 
 DominionCity_EventScripts_WhatIsThisPlace_Text_0:
-# 85 "data/maps/DominionCity/scripts.pory"
+# 90 "data/maps/DominionCity/scripts.pory"
 	.string "Huh? What is this place?\n"
 	.string "Is it a town?\p"
 	.string "I've never seen a town before.\n"
@@ -734,7 +741,7 @@ DominionCity_EventScripts_WhatIsThisPlace_Text_0:
 	.string "{PLAYER}?$"
 
 DominionCity_EventScripts_WhatIsThisPlace_Text_1:
-# 95 "data/maps/DominionCity/scripts.pory"
+# 100 "data/maps/DominionCity/scripts.pory"
 	.string "…Oh. Yeah.\p"
 	.string "I guess if you were gonna do a bunch of\n"
 	.string "creepy experiments, you'd wanna do it\l"
@@ -743,26 +750,26 @@ DominionCity_EventScripts_WhatIsThisPlace_Text_1:
 	.string "Let's get out of here!$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_0:
-# 121 "data/maps/DominionCity/scripts.pory"
+# 126 "data/maps/DominionCity/scripts.pory"
 	.string "Hmm…\n"
 	.string "There's gotta be another way around.$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_1:
-# 142 "data/maps/DominionCity/scripts.pory"
+# 147 "data/maps/DominionCity/scripts.pory"
 	.string "Grunt 1$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_2:
-# 143 "data/maps/DominionCity/scripts.pory"
+# 148 "data/maps/DominionCity/scripts.pory"
 	.string "Those test subjects really had to go\n"
 	.string "and escape.\p"
 	.string "You know what they look like?$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_3:
-# 149 "data/maps/DominionCity/scripts.pory"
+# 154 "data/maps/DominionCity/scripts.pory"
 	.string "Grunt 2$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_4:
-# 150 "data/maps/DominionCity/scripts.pory"
+# 155 "data/maps/DominionCity/scripts.pory"
 	.string "Ye, ye.\p"
 	.string "It's that ugly-lookin's Dewgong thing\n"
 	.string "and that…\l"
@@ -771,7 +778,7 @@ DominionCity_EventScripts_GruntsWestStillLooking_Text_4:
 	.string "of her, the poor sod.$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_5:
-# 159 "data/maps/DominionCity/scripts.pory"
+# 164 "data/maps/DominionCity/scripts.pory"
 	.string "That's hardly our business.\p"
 	.string "We were just ordered to find them, and\n"
 	.string "find them we will.\p"
@@ -779,7 +786,7 @@ DominionCity_EventScripts_GruntsWestStillLooking_Text_5:
 	.string "Bet they’re hiding like scared Rattata.$"
 
 DominionCity_EventScripts_GruntsWestStillLooking_Text_6:
-# 175 "data/maps/DominionCity/scripts.pory"
+# 180 "data/maps/DominionCity/scripts.pory"
 	.string "Those grunts are everywhere…\p"
 	.string "W-what did they say about…\n"
 	.string "Getting rid of me…?\p"
@@ -791,25 +798,25 @@ DominionCity_EventScripts_GruntsWestStillLooking_Text_6:
 	.string "C'mon, there has to be a way around!$"
 
 DominionCity_EventScripts_GruntsNorthStillLooking_Text_0:
-# 231 "data/maps/DominionCity/scripts.pory"
+# 236 "data/maps/DominionCity/scripts.pory"
 	.string "HQ is losing it, man.\n"
 	.string "Said if we don’t find them soon, heads\l"
 	.string "will roll.$"
 
 DominionCity_EventScripts_GruntsNorthStillLooking_Text_1:
-# 238 "data/maps/DominionCity/scripts.pory"
+# 243 "data/maps/DominionCity/scripts.pory"
 	.string "What kind of Pokémon breaks out of\n"
 	.string "Sector 7, anyway?!\n"
 	.string "This is bad… Really bad.$"
 
 DominionCity_EventScripts_GruntsNorthStillLooking_Text_2:
-# 245 "data/maps/DominionCity/scripts.pory"
+# 250 "data/maps/DominionCity/scripts.pory"
 	.string "Listen, if you spot anything weird, and\n"
 	.string "I mean ANYTHING, report it.\p"
 	.string "No way I'm taking the fall for this one.$"
 
 DominionCity_EventScripts_GruntsNorthStillLooking_Text_3:
-# 259 "data/maps/DominionCity/scripts.pory"
+# 264 "data/maps/DominionCity/scripts.pory"
 	.string "Those grunts are everywhere…\n"
 	.string "{PLAYER}, we can't let them catch us.\p"
 	.string "I'm not going back in there.\n"
@@ -817,16 +824,16 @@ DominionCity_EventScripts_GruntsNorthStillLooking_Text_3:
 	.string "C'mon, there has to be a way around!$"
 
 DominionCity_EventScripts_GruntsSouthStillLooking_Text_0:
-# 310 "data/maps/DominionCity/scripts.pory"
+# 315 "data/maps/DominionCity/scripts.pory"
 	.string "Cleaning up after another lab failure…\n"
 	.string "Again.$"
 
 DominionCity_EventScripts_GruntsSouthStillLooking_Text_1:
-# 315 "data/maps/DominionCity/scripts.pory"
+# 320 "data/maps/DominionCity/scripts.pory"
 	.string "They said Sector 7 was secure.\n"
 	.string "They always say that…$"
 
 DominionCity_EventScripts_GruntsSouthStillLooking_Text_2:
-# 321 "data/maps/DominionCity/scripts.pory"
+# 326 "data/maps/DominionCity/scripts.pory"
 	.string "This was not what they advertised in\n"
 	.string "the job description…$"

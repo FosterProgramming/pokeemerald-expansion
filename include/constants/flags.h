@@ -43,9 +43,9 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
+#define FLAG_HIDE_DOMINION_GRUNTS    0x20
+#define FLAG_HIDE_ROUTE_1_GRUNTS    0x21
+#define FLAG_TALKED_TO_GRUNTS_ROUTE1    0x22 // Unused Flag
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
@@ -744,6 +744,7 @@
 #define FLAG_SYS_HIDE_ACE_PARTY_MEMBER      0x2B9 // Unused Flag
 #define FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER    0x2BA // Unused Flag
 #define FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER    0x2BB // Unused Flag
+#define FLAG_SYS_HIDE_FRO_PARTY_MEMBER    0x2BC // Unused Flag
 
 // Event Flags
 #define FLAG_HIDE_DOMINION_CITY_LAB_HOLDING_CELLS_EEVEE             0x2BC

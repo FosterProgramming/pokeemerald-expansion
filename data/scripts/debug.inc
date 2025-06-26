@@ -223,6 +223,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	setflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
+	setflag FLAG_SYS_HIDE_FRO_PARTY_MEMBER
 	setflag FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER
 	setflag FLAG_SYS_HIDE_NYX_PARTY_MEMBER
 	setflag FLAG_SYS_HIDE_ACE_PARTY_MEMBER
