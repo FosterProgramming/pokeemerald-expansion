@@ -283,3 +283,8 @@ void BravePrintActions(void)
         MgbaPrintf(MGBA_LOG_WARN, "3: %u %u %u %u", gBraveBattleAction[3][0].isSlotUsed, gBraveBattleAction[3][1].isSlotUsed, gBraveBattleAction[3][2].isSlotUsed, gBraveBattleAction[3][3].isSlotUsed);
         MgbaPrintf(MGBA_LOG_WARN, "=======");
 }
+
+u32 BraveGetBattlerActionCount(u32 battler)
+{
+    return gBattleStruct->monBraveActions[battler];
+}

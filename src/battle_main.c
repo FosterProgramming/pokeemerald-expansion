@@ -4522,7 +4522,11 @@ static void HandleTurnActionSelectionState(void)
                             gBattleStruct->chosenMovePositions[battler] = gBattleResources->bufferB[battler][2] & ~RET_GIMMICK;
                             gChosenMoveByBattler[battler] = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
                             gBattleStruct->moveTarget[battler] = gBattleResources->bufferB[battler][3];
-                            BraveAddMoveToQueue(battler, gBattleStruct->chosenMovePositions[battler], gBattleStruct->moveTarget[battler]);
+                            //  BRAVE CHANGE
+                            if (battler == 1 || battler == 3)
+                            {
+                                BraveAddMoveToQueue(battler, gBattleStruct->chosenMovePositions[battler], gBattleStruct->moveTarget[battler]);
+                            }
 
                             // Check to see if any gimmicks need to be prepared.
                             if (gBattleResources->bufferB[battler][2] & RET_GIMMICK)

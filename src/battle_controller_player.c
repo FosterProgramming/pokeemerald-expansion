@@ -47,6 +47,8 @@
 #include "pokemon_summary_screen.h"
 #include "type_icons.h"
 
+#include "brave_battle.h"
+
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleSwitchInAnim(u32 battler);
@@ -467,7 +469,10 @@ void HandleInputChooseTarget(u32 battler)
         EndBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX);
         TryHideLastUsedBall();
         HideGimmickTriggerSprite();
-        PlayerBufferExecCompleted(battler);
+        BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        gBattlerControllerFuncs[battler] = PlayerHandleChooseMove;
+        if (BraveGetBattlerActionCount(battler) == 4)
+            PlayerBufferExecCompleted(battler);
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
@@ -894,6 +899,8 @@ void HandleInputChooseMove(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
+        PlayerBufferExecCompleted(battler);
+        /*
         if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE && !HasTrainerUsedGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler]))
         {
             gBattleStruct->gimmick.playerSelect ^= 1;
@@ -901,6 +908,7 @@ void HandleInputChooseMove(u32 battler)
             ChangeGimmickTriggerSprite(gBattleStruct->gimmick.triggerSpriteId, gBattleStruct->gimmick.playerSelect);
             PlaySE(SE_SELECT);
         }
+        */
     }
 }
 
