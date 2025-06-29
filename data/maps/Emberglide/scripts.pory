@@ -2,3 +2,44 @@ raw `
 Emberglide_MapScripts::
 	.byte 0
 `
+script Emberglide_EventScript_Weepinbell
+{
+	speakername("Weepinbell")
+	msgbox(format(
+		"Welcome to Emberglide!\p
+		We're a quaint and historic town with a rich history and-…\p
+		… … …\p
+		You're looking for Pyroden.\n
+		Of course.\p
+		Left on Route 2, and then up.\N
+		Sigh…"
+		), MSGBOX_NPC)
+	release
+	end
+}
+
+script Emberglide_EventScript_Ledyba
+{
+	speakername("Ledyba")
+	msgbox(format(
+		"Uhm, uhm!\n
+		I'm worried for my friend!\p
+		We used to hang out lots, but it's been a while since I've seen her.\p
+		She lives in Driftshore, but the way through Dominion City is dangerous now!\p
+		If you see her, could you check up on her?\p
+		THIS IS A QUEST SETUP. THE QUEST IS NOT IMPLEMENTED YET."
+	), MSGBOX_NPC)
+	end
+}
+
+script Emberglide_EventScript_Magby
+{
+	speakername("Magby")
+	msgbox(format(
+		"There's not many humans around here, usually.\N
+		Never really liked them, anyway.\p
+		They stink. And are rude. And ugly.\N
+		I'm sure you agree."
+	), MSGBOX_NPC)
+	end
+}

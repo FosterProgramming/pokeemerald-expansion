@@ -1,0 +1,13 @@
+mapscripts Emberglide_House3_MapScripts {}
+
+
+script Emberglide_EventScript_Rhyhorn
+{
+    speakername("Rhyhorn")
+    msgbox(format(
+        "What do I need a chair for?\n
+        Simple.\p
+        It's for my wife."
+    ), MSGBOX_NPC)
+    end
+}

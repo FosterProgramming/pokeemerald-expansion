@@ -1,0 +1,50 @@
+mapscripts Emberglide_House1_MapScripts {}
+
+raw `
+.set LOCALID_POLIWAG, 2
+`
+
+script Emberglide_EventScript_Aipom
+{
+    speakername("Aipom")
+    msgbox(format(
+        "What are you doing in my house?\N
+        Please leave."
+    ), MSGBOX_NPC)
+    
+}
+
+script Emberglide_EventScript_Poliwag
+{
+    lock
+    faceplayer
+    speakername("Poliwag")
+    msgbox(format(
+        "This is mmmmmmmy bucket.\n
+        Do you wwwwwwanna add to it?"
+    ), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES)
+    {
+    speakername(NULL)
+    msgbox(format(
+        "You reluctantly spray some water in the bucket."
+    ))
+    speakername("Poliwag")
+    msgbox(format(
+        "Hmmmm, yes.
+        Sssssplendid."
+    ))
+    closemessage
+    applymovement(LOCALID_POLIWAG, moves(face_up))
+    release
+    end
+    }
+    speakername("Poliwag")
+    msgbox(format(
+        "Howwwwww disappointinggggggg."
+    ))
+    closemessage
+    applymovement(LOCALID_POLIWAG, moves(face_up))
+    release
+    end
+}

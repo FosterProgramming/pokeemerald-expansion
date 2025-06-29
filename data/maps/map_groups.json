@@ -154,7 +154,10 @@
     "DominionCity_MagaLab_Entrance",
     "DominionCity_MagaLab_EntranceHallway",
     "IntroCutsceneMap",
-    "DominionCity_MagaLab_ExitCode"
+    "DominionCity_MagaLab_ExitCode",
+    "Emberglide_House1",
+    "Emberglide_House2",
+    "Emberglide_House3"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",

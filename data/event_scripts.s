@@ -1289,3 +1289,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/GlacierraCaverns_5F/scripts.inc"
 
 	.include "data/maps/GlacierraCaverns_6F/scripts.inc"
+
+	.include "data/maps/Emberglide_House1/scripts.inc"
+
+	.include "data/maps/Emberglide_House2/scripts.inc"
+
+	.include "data/maps/Emberglide_House3/scripts.inc"

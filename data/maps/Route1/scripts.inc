@@ -1278,7 +1278,8 @@ Route1_EventScript_FroDeliversMeal_Text_6:
 # 544 "data/maps/Route1/scripts.pory"
 	.string "A deal's a deal.\n"
 	.string "We'll be getting out of here.\p"
-	.string "Good luck with the boss, eh?$"
+	.string "Good luck with the surprise for the\n"
+	.string "Boss, eh?$"
 
 Route1_EventScript_FroDeliversMeal_Text_7:
 # 579 "data/maps/Route1/scripts.pory"
