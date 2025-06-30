@@ -164,7 +164,12 @@
     "OldaleTown_House2",
     "OldaleTown_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_2F",
-    "OldaleTown_Mart"
+    "OldaleTown_Mart",
+    "Pyroden_House1",
+    "Pyroden_House2",
+    "Pyroden_House3",
+    "Pyroden_House4",
+    "Pyroden_House5"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",

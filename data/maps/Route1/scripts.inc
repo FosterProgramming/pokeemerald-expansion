@@ -504,124 +504,128 @@ Route1_EventScript_FroDeliversMeal::
 # 533 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_4
 # 537 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_RoadIsBlocked_Text_2
+	speakername Route1_EventScript_GruntBlocking_Continues_Text_3
 # 538 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_5
-# 542 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_GruntBlocking_Continues_Text_3
 # 543 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_RoadIsBlocked_Text_2
+# 544 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_6
 # 548 "data/maps/Route1/scripts.pory"
-	closemessage
+	speakername Route1_EventScript_GruntBlocking_Continues_Text_3
 # 549 "data/maps/Route1/scripts.pory"
+	msgbox Route1_EventScript_FroDeliversMeal_Text_7
+# 554 "data/maps/Route1/scripts.pory"
+	closemessage
+# 555 "data/maps/Route1/scripts.pory"
 	applymovement LOCALID_FRO, Route1_EventScript_FroDeliversMeal_Movement_2
-# 553 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_GRUNT_F, Route1_EventScript_FroDeliversMeal_Movement_3
 # 559 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_GRUNT_F, Route1_EventScript_FroDeliversMeal_Movement_3
+# 565 "data/maps/Route1/scripts.pory"
 	waitmovement LOCALID_GRUNT_F
-# 560 "data/maps/Route1/scripts.pory"
+# 566 "data/maps/Route1/scripts.pory"
 	removeobject LOCALID_GRUNT_F
-# 561 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_4
 # 567 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_4
+# 573 "data/maps/Route1/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, Route1_EventScript_FroDeliversMeal_Movement_5
-# 570 "data/maps/Route1/scripts.pory"
-	waitmovement LOCALID_GRUNT_M
-# 571 "data/maps/Route1/scripts.pory"
-	playse SE_PIN
-# 572 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_6
 # 576 "data/maps/Route1/scripts.pory"
 	waitmovement LOCALID_GRUNT_M
 # 577 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
-# 578 "data/maps/Route1/scripts.pory"
-	msgbox Route1_EventScript_FroDeliversMeal_Text_7
-# 581 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_RoadIsBlocked_Text_2
-# 582 "data/maps/Route1/scripts.pory"
-	msgbox Route1_EventScript_FroDeliversMeal_Text_8
-# 585 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
-# 586 "data/maps/Route1/scripts.pory"
-	msgbox Route1_EventScript_FroDeliversMeal_Text_9
-# 589 "data/maps/Route1/scripts.pory"
-	closemessage
-# 590 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_FRO, Route1_EventScript_FroDeliversMeal_Movement_7
-# 594 "data/maps/Route1/scripts.pory"
-	waitmovement 0
-# 595 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_RoadIsBlocked_Text_2
-# 596 "data/maps/Route1/scripts.pory"
-	msgbox Route1_EventScript_FroDeliversMeal_Text_10
-# 603 "data/maps/Route1/scripts.pory"
 	playse SE_PIN
-# 604 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_8
-# 608 "data/maps/Route1/scripts.pory"
-	waitmovement 0
-# 609 "data/maps/Route1/scripts.pory"
+# 578 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_6
+# 582 "data/maps/Route1/scripts.pory"
+	waitmovement LOCALID_GRUNT_M
+# 583 "data/maps/Route1/scripts.pory"
 	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
-# 610 "data/maps/Route1/scripts.pory"
-	msgbox Route1_EventScript_FroDeliversMeal_Text_11
-# 615 "data/maps/Route1/scripts.pory"
+# 584 "data/maps/Route1/scripts.pory"
+	msgbox Route1_EventScript_FroDeliversMeal_Text_8
+# 587 "data/maps/Route1/scripts.pory"
 	speakername Route1_EventScript_RoadIsBlocked_Text_2
+# 588 "data/maps/Route1/scripts.pory"
+	msgbox Route1_EventScript_FroDeliversMeal_Text_9
+# 591 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
+# 592 "data/maps/Route1/scripts.pory"
+	msgbox Route1_EventScript_FroDeliversMeal_Text_10
+# 595 "data/maps/Route1/scripts.pory"
+	closemessage
+# 596 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_FRO, Route1_EventScript_FroDeliversMeal_Movement_7
+# 600 "data/maps/Route1/scripts.pory"
+	waitmovement 0
+# 601 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_RoadIsBlocked_Text_2
+# 602 "data/maps/Route1/scripts.pory"
+	msgbox Route1_EventScript_FroDeliversMeal_Text_11
+# 609 "data/maps/Route1/scripts.pory"
+	playse SE_PIN
+# 610 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_8
+# 614 "data/maps/Route1/scripts.pory"
+	waitmovement 0
+# 615 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
 # 616 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_12
+# 621 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_RoadIsBlocked_Text_2
 # 622 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
-# 623 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_13
-# 631 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_RoadIsBlocked_Text_2
-# 632 "data/maps/Route1/scripts.pory"
+# 628 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_GruntBlocking_Continues_Text_1
+# 629 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_14
+# 637 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_RoadIsBlocked_Text_2
 # 638 "data/maps/Route1/scripts.pory"
-	playse SE_PIN
-# 639 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_9
-# 644 "data/maps/Route1/scripts.pory"
-	waitmovement 0
-# 645 "data/maps/Route1/scripts.pory"
-	removeobject LOCALID_GRUNT_M
-# 646 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_FRO, Route1_EventScript_FroDeliversMeal_Movement_10
-# 650 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_VEE, Route1_EventScript_FroDeliversMeal_Movement_11
-# 653 "data/maps/Route1/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route1_EventScript_FroDeliversMeal_Movement_11
-# 656 "data/maps/Route1/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_2
-# 659 "data/maps/Route1/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 660 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_RoadIsBlocked_Text_2
-# 661 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_15
+# 644 "data/maps/Route1/scripts.pory"
+	playse SE_PIN
+# 645 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_GRUNT_M, Route1_EventScript_FroDeliversMeal_Movement_9
+# 650 "data/maps/Route1/scripts.pory"
+	waitmovement 0
+# 651 "data/maps/Route1/scripts.pory"
+	removeobject LOCALID_GRUNT_M
+# 652 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_FRO, Route1_EventScript_FroDeliversMeal_Movement_10
+# 656 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_VEE, Route1_EventScript_FroDeliversMeal_Movement_11
+# 659 "data/maps/Route1/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Route1_EventScript_FroDeliversMeal_Movement_11
+# 662 "data/maps/Route1/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_2
 # 665 "data/maps/Route1/scripts.pory"
-	speakername Route1_EventScript_RoadIsBlocked_Text_0
+	waitmovement OBJ_EVENT_ID_PLAYER
 # 666 "data/maps/Route1/scripts.pory"
-	msgbox Route1_EventScript_FroDeliversMeal_Text_16
-# 669 "data/maps/Route1/scripts.pory"
 	speakername Route1_EventScript_RoadIsBlocked_Text_2
-# 670 "data/maps/Route1/scripts.pory"
+# 667 "data/maps/Route1/scripts.pory"
+	msgbox Route1_EventScript_FroDeliversMeal_Text_16
+# 671 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_RoadIsBlocked_Text_0
+# 672 "data/maps/Route1/scripts.pory"
 	msgbox Route1_EventScript_FroDeliversMeal_Text_17
+# 675 "data/maps/Route1/scripts.pory"
+	speakername Route1_EventScript_RoadIsBlocked_Text_2
 # 676 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_VEE, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_2
-# 679 "data/maps/Route1/scripts.pory"
-	applymovement LOCALID_FRO, Route1_EventScript_GruntBlocking_MiddleRight_Movement_2
+	msgbox Route1_EventScript_FroDeliversMeal_Text_18
 # 682 "data/maps/Route1/scripts.pory"
-	waitmovement LOCALID_FRO
-# 683 "data/maps/Route1/scripts.pory"
-	removeobject LOCALID_VEE
-# 684 "data/maps/Route1/scripts.pory"
-	removeobject LOCALID_FRO
+	applymovement LOCALID_VEE, Route1_EventScript_GruntBlocking_MiddleLeft_Movement_2
 # 685 "data/maps/Route1/scripts.pory"
+	applymovement LOCALID_FRO, Route1_EventScript_GruntBlocking_MiddleRight_Movement_2
+# 688 "data/maps/Route1/scripts.pory"
+	waitmovement LOCALID_FRO
+# 689 "data/maps/Route1/scripts.pory"
+	removeobject LOCALID_VEE
+# 690 "data/maps/Route1/scripts.pory"
+	removeobject LOCALID_FRO
+# 691 "data/maps/Route1/scripts.pory"
 	special RemoveCameraObject
-# 686 "data/maps/Route1/scripts.pory"
+# 692 "data/maps/Route1/scripts.pory"
 	setvar VAR_ROUTE_1_STATE, 1
-# 687 "data/maps/Route1/scripts.pory"
+# 693 "data/maps/Route1/scripts.pory"
 	releaseall
 	end
 
@@ -958,131 +962,131 @@ Route1_EventScript_FroDeliversMeal_Movement_1:
 	delay_16
 	step_end
 
-# 549 "data/maps/Route1/scripts.pory"
+# 555 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_2:
-# 550 "data/maps/Route1/scripts.pory"
+# 556 "data/maps/Route1/scripts.pory"
 	walk_left
-# 551 "data/maps/Route1/scripts.pory"
+# 557 "data/maps/Route1/scripts.pory"
 	face_right
 	step_end
 
-# 553 "data/maps/Route1/scripts.pory"
+# 559 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_3:
-# 554 "data/maps/Route1/scripts.pory"
+# 560 "data/maps/Route1/scripts.pory"
 	walk_right
-# 555 "data/maps/Route1/scripts.pory"
-	walk_down
-# 555 "data/maps/Route1/scripts.pory"
-	walk_down
-# 555 "data/maps/Route1/scripts.pory"
-	walk_down
-# 555 "data/maps/Route1/scripts.pory"
-	walk_down
-# 556 "data/maps/Route1/scripts.pory"
-	walk_right
-# 557 "data/maps/Route1/scripts.pory"
-	walk_down
-# 557 "data/maps/Route1/scripts.pory"
-	walk_down
-# 557 "data/maps/Route1/scripts.pory"
-	walk_down
-# 557 "data/maps/Route1/scripts.pory"
-	walk_down
-	step_end
-
 # 561 "data/maps/Route1/scripts.pory"
-Route1_EventScript_FroDeliversMeal_Movement_4:
-# 562 "data/maps/Route1/scripts.pory"
+	walk_down
+# 561 "data/maps/Route1/scripts.pory"
+	walk_down
+# 561 "data/maps/Route1/scripts.pory"
+	walk_down
+# 561 "data/maps/Route1/scripts.pory"
 	walk_down
 # 562 "data/maps/Route1/scripts.pory"
-	walk_down
-# 562 "data/maps/Route1/scripts.pory"
+	walk_right
+# 563 "data/maps/Route1/scripts.pory"
 	walk_down
 # 563 "data/maps/Route1/scripts.pory"
-	delay_16
+	walk_down
 # 563 "data/maps/Route1/scripts.pory"
-	delay_16
-# 564 "data/maps/Route1/scripts.pory"
-	face_left
-# 565 "data/maps/Route1/scripts.pory"
-	delay_16
-# 565 "data/maps/Route1/scripts.pory"
-	delay_16
+	walk_down
+# 563 "data/maps/Route1/scripts.pory"
+	walk_down
 	step_end
 
 # 567 "data/maps/Route1/scripts.pory"
-Route1_EventScript_FroDeliversMeal_Movement_5:
+Route1_EventScript_FroDeliversMeal_Movement_4:
 # 568 "data/maps/Route1/scripts.pory"
 	walk_down
 # 568 "data/maps/Route1/scripts.pory"
 	walk_down
+# 568 "data/maps/Route1/scripts.pory"
+	walk_down
+# 569 "data/maps/Route1/scripts.pory"
+	delay_16
+# 569 "data/maps/Route1/scripts.pory"
+	delay_16
+# 570 "data/maps/Route1/scripts.pory"
+	face_left
+# 571 "data/maps/Route1/scripts.pory"
+	delay_16
+# 571 "data/maps/Route1/scripts.pory"
+	delay_16
 	step_end
 
-# 572 "data/maps/Route1/scripts.pory"
-Route1_EventScript_FroDeliversMeal_Movement_6:
 # 573 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Movement_5:
+# 574 "data/maps/Route1/scripts.pory"
+	walk_down
+# 574 "data/maps/Route1/scripts.pory"
+	walk_down
+	step_end
+
+# 578 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Movement_6:
+# 579 "data/maps/Route1/scripts.pory"
 	emote_question_mark
-# 574 "data/maps/Route1/scripts.pory"
+# 580 "data/maps/Route1/scripts.pory"
 	delay_16
-# 574 "data/maps/Route1/scripts.pory"
+# 580 "data/maps/Route1/scripts.pory"
 	delay_16
 	step_end
 
-# 590 "data/maps/Route1/scripts.pory"
+# 596 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_7:
-# 591 "data/maps/Route1/scripts.pory"
+# 597 "data/maps/Route1/scripts.pory"
 	walk_down
-# 591 "data/maps/Route1/scripts.pory"
+# 597 "data/maps/Route1/scripts.pory"
 	walk_down
-# 592 "data/maps/Route1/scripts.pory"
+# 598 "data/maps/Route1/scripts.pory"
 	face_right
 	step_end
 
-# 604 "data/maps/Route1/scripts.pory"
+# 610 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_8:
-# 605 "data/maps/Route1/scripts.pory"
+# 611 "data/maps/Route1/scripts.pory"
 	emote_exclamation_mark
-# 606 "data/maps/Route1/scripts.pory"
+# 612 "data/maps/Route1/scripts.pory"
 	delay_16
 	step_end
 
-# 639 "data/maps/Route1/scripts.pory"
+# 645 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_9:
-# 640 "data/maps/Route1/scripts.pory"
+# 646 "data/maps/Route1/scripts.pory"
 	emote_exclamation_mark
-# 641 "data/maps/Route1/scripts.pory"
+# 647 "data/maps/Route1/scripts.pory"
 	delay_16
-# 641 "data/maps/Route1/scripts.pory"
+# 647 "data/maps/Route1/scripts.pory"
 	delay_16
-# 642 "data/maps/Route1/scripts.pory"
+# 648 "data/maps/Route1/scripts.pory"
 	walk_fast_down
-# 642 "data/maps/Route1/scripts.pory"
+# 648 "data/maps/Route1/scripts.pory"
 	walk_fast_down
-# 642 "data/maps/Route1/scripts.pory"
+# 648 "data/maps/Route1/scripts.pory"
 	walk_fast_down
-# 642 "data/maps/Route1/scripts.pory"
+# 648 "data/maps/Route1/scripts.pory"
 	walk_fast_down
-# 642 "data/maps/Route1/scripts.pory"
+# 648 "data/maps/Route1/scripts.pory"
 	walk_fast_down
-# 642 "data/maps/Route1/scripts.pory"
+# 648 "data/maps/Route1/scripts.pory"
 	walk_fast_down
 	step_end
 
-# 646 "data/maps/Route1/scripts.pory"
+# 652 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_10:
-# 647 "data/maps/Route1/scripts.pory"
+# 653 "data/maps/Route1/scripts.pory"
 	walk_right
-# 647 "data/maps/Route1/scripts.pory"
+# 653 "data/maps/Route1/scripts.pory"
 	walk_right
-# 648 "data/maps/Route1/scripts.pory"
+# 654 "data/maps/Route1/scripts.pory"
 	face_left
 	step_end
 
-# 650 "data/maps/Route1/scripts.pory"
+# 656 "data/maps/Route1/scripts.pory"
 Route1_EventScript_FroDeliversMeal_Movement_11:
-# 651 "data/maps/Route1/scripts.pory"
+# 657 "data/maps/Route1/scripts.pory"
 	walk_right
-# 651 "data/maps/Route1/scripts.pory"
+# 657 "data/maps/Route1/scripts.pory"
 	walk_right
 	step_end
 
@@ -1271,53 +1275,59 @@ Route1_EventScript_FroDeliversMeal_Text_4:
 
 Route1_EventScript_FroDeliversMeal_Text_5:
 # 539 "data/maps/Route1/scripts.pory"
+	.string "Hmm…\n"
+	.string "It's a bit burnt.\p"
+	.string "But I suppose it will have to do.$"
+
+Route1_EventScript_FroDeliversMeal_Text_6:
+# 545 "data/maps/Route1/scripts.pory"
 	.string "Ok.\n"
 	.string "Can I pass, now?$"
 
-Route1_EventScript_FroDeliversMeal_Text_6:
-# 544 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_7:
+# 550 "data/maps/Route1/scripts.pory"
 	.string "A deal's a deal.\n"
 	.string "We'll be getting out of here.\p"
 	.string "Good luck with the surprise for the\n"
 	.string "Boss, eh?$"
 
-Route1_EventScript_FroDeliversMeal_Text_7:
-# 579 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_8:
+# 585 "data/maps/Route1/scripts.pory"
 	.string "What the heck is going on back there,\n"
 	.string "anyway?$"
 
-Route1_EventScript_FroDeliversMeal_Text_8:
-# 583 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_9:
+# 589 "data/maps/Route1/scripts.pory"
 	.string "Uh, nothing.$"
 
-Route1_EventScript_FroDeliversMeal_Text_9:
-# 587 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_10:
+# 593 "data/maps/Route1/scripts.pory"
 	.string "No cause it kinda looks like-$"
 
-Route1_EventScript_FroDeliversMeal_Text_10:
-# 597 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_11:
+# 603 "data/maps/Route1/scripts.pory"
 	.string "I would, uh.\n"
 	.string "Recommend not looking there.\p"
 	.string "Because.\p"
 	.string "There's wild Pokémon that are…\n"
 	.string "Eating each other.$"
 
-Route1_EventScript_FroDeliversMeal_Text_11:
-# 611 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_12:
+# 617 "data/maps/Route1/scripts.pory"
 	.string "EATING each other?\n"
 	.string "What the hell, man!\p"
 	.string "That's gross!$"
 
-Route1_EventScript_FroDeliversMeal_Text_12:
-# 617 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_13:
+# 623 "data/maps/Route1/scripts.pory"
 	.string "Yes.\n"
 	.string "Nature can be cruel.\p"
 	.string "That's why I'm hiding the sight from\n"
 	.string "you.\p"
 	.string "Wouldn't want to ruin your appetite.$"
 
-Route1_EventScript_FroDeliversMeal_Text_13:
-# 624 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_14:
+# 630 "data/maps/Route1/scripts.pory"
 	.string "Yeah, thanks, man!\n"
 	.string "That's intense!\p"
 	.string "So, like…\n"
@@ -1325,25 +1335,25 @@ Route1_EventScript_FroDeliversMeal_Text_13:
 	.string "Do you also, like…\n"
 	.string "Eat other wild Pokémon?$"
 
-Route1_EventScript_FroDeliversMeal_Text_14:
-# 633 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_15:
+# 639 "data/maps/Route1/scripts.pory"
 	.string "Eat wild Pokémon?\n"
 	.string "No, not really.\p"
 	.string "But I do get a bit of a craving,\n"
 	.string "sometimes…\p"
 	.string "A craving for humans.$"
 
-Route1_EventScript_FroDeliversMeal_Text_15:
-# 662 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_16:
+# 668 "data/maps/Route1/scripts.pory"
 	.string "Hee hee.\n"
 	.string "That was funny.$"
 
-Route1_EventScript_FroDeliversMeal_Text_16:
-# 667 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_17:
+# 673 "data/maps/Route1/scripts.pory"
 	.string "That was mean!$"
 
-Route1_EventScript_FroDeliversMeal_Text_17:
-# 671 "data/maps/Route1/scripts.pory"
+Route1_EventScript_FroDeliversMeal_Text_18:
+# 677 "data/maps/Route1/scripts.pory"
 	.string "Sometimes mean is funny.\n"
 	.string "Besides, they're gone, now.\p"
 	.string "Let's not wait any longer.\n"

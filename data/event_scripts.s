@@ -1295,3 +1295,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Emberglide_House2/scripts.inc"
 
 	.include "data/maps/Emberglide_House3/scripts.inc"
+
+	.include "data/maps/Pyroden_House1/scripts.inc"
+
+	.include "data/maps/Pyroden_House2/scripts.inc"
+
+	.include "data/maps/Pyroden_House3/scripts.inc"
+
+	.include "data/maps/Pyroden_House4/scripts.inc"
+
+	.include "data/maps/Pyroden_House5/scripts.inc"

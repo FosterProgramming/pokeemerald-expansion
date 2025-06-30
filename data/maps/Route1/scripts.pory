@@ -534,6 +534,12 @@ script Route1_EventScript_FroDeliversMeal
 		"Aw yeah, baby!\n
 		That's the stuff!"
 	))
+	speakername("Grunt 2")
+	msgbox(format(
+		"Hmm…\n
+		It's a bit burnt.\p
+		But I suppose it will have to do."
+	))
 	speakername("Fro")
 	msgbox(format(
 		"Ok.\n
