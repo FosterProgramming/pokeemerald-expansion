@@ -1,4 +1,439 @@
 raw `
-Pyroden_MapScripts::
-	.byte 0
+.set LOCALID_VEE, 2
+.set LOCALID_FRO, 3
+.set LOCALID_VEE_TOWN, 10
+.set LOCALID_FRO_TOWN, 13
+.set LOCALID_SUDOWOODO, 10
+.set LOCALID_SUNKERN, 8
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 `
+
+
+
+mapscripts Pyroden_MapScripts
+{
+	MAP_SCRIPT_ON_TRANSITION{
+		if(var(VAR_PYRODEN_INVESTIGATION_STATE) == 1)
+		{
+		setobjectxyperm(LOCALID_VEE_TOWN, 13, 37)
+		setobjectxyperm(LOCALID_FRO_TOWN, 14, 37)
+		setobjectmovementtype(LOCALID_VEE_TOWN, MOVEMENT_TYPE_FACE_RIGHT)
+		setobjectmovementtype(LOCALID_FRO_TOWN, MOVEMENT_TYPE_FACE_LEFT)
+		}
+		if(var(VAR_PYRODEN_INVESTIGATION_STATE) != 0)
+		{
+			setobjectmovementtype(LOCALID_SUDOWOODO, MOVEMENT_TYPE_FACE_DOWN)
+			setobjectmovementtype(LOCALID_SUNKERN, MOVEMENT_TYPE_WANDER_AROUND)
+		}
+		end
+	}
+}
+
+
+script Generic_EventScript_SpawnVeeFro
+{
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+	addobject(LOCALID_VEE)
+	addobject(LOCALID_FRO)
+	return
+}
+
+
+script Pyroden_EventScript_IntroVeeDown
+{
+	lock
+	call(Generic_EventScript_SpawnVeeFro)
+	applymovement(LOCALID_FRO, moves(
+		walk_left
+		face_right
+	))
+	applymovement(LOCALID_VEE, moves(
+		walk_down
+		face_up
+	))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_in_place_down
+	))
+	waitmovement(LOCALID_VEE)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_1)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_1)
+	playse(SE_PIN)
+	applymovement(LOCALID_VEE, moves(
+		emote_exclamation_mark
+		delay_16
+		face_left
+	))
+	waitmovement(0)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_2)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_2)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_3)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_3)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_4)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_4)
+	closemessage
+	applymovement(LOCALID_FRO, moves(walk_right*9))
+	waitmovement(0)
+	removeobject(LOCALID_FRO)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+	applymovement(LOCALID_VEE, moves(face_up))
+	waitmovement(0)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_5)
+	closemessage
+	applymovement(LOCALID_VEE, moves(walk_right*9))
+	waitmovement(0)
+	removeobject(LOCALID_VEE)
+	setvar(VAR_PYRODEN_STATE, 1)
+	release
+	end
+}
+
+script Pyroden_EventScript_IntroVeeUp
+{
+	lock
+	call(Generic_EventScript_SpawnVeeFro)
+	applymovement(LOCALID_FRO, moves(
+		walk_left
+		face_right
+	))
+	applymovement(LOCALID_VEE, moves(
+		walk_up
+		face_down
+	))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_in_place_up
+	))
+	waitmovement(LOCALID_VEE)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_1)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+	waitmovement(0)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_1)
+	playse(SE_PIN)
+	applymovement(LOCALID_VEE, moves(
+		emote_exclamation_mark
+		delay_16
+		face_left
+	))
+	waitmovement(0)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_2)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_2)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_3)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_3)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_4)
+	speakername("Fro")
+	msgbox(Pyroden_Text_Intro_Fro_4)
+	closemessage
+	applymovement(LOCALID_FRO, moves(walk_right*9))
+	waitmovement(0)
+	removeobject(LOCALID_FRO)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+	applymovement(LOCALID_VEE, moves(face_down))
+	waitmovement(0)
+	speakername("Vee")
+	msgbox(Pyroden_Text_Intro_Vee_5)
+	closemessage
+	applymovement(LOCALID_VEE, moves(walk_right*9))
+	waitmovement(0)
+	removeobject(LOCALID_VEE)
+	setvar(VAR_PYRODEN_STATE, 1)
+	release
+	end
+}
+
+
+text Pyroden_Text_Intro_Vee_1
+{
+	format(
+		"Yahoo!\n
+		We're finally in Pyroden!")
+}
+
+text Pyroden_Text_Intro_Fro_1
+{
+	format(
+		"Yes.\n
+		I can already feel it.\p
+		The heavenly warmth…\n
+		Almost like being slow cooked…\p
+		Hot springs, here I come."
+	)
+}
+
+text Pyroden_Text_Intro_Vee_2
+{
+	format(
+		"Not so fast!\n
+		We're not here just to relax!"
+	)
+}
+
+text Pyroden_Text_Intro_Fro_2
+{
+	format(
+		"I am."
+	)
+}
+
+text Pyroden_Text_Intro_Vee_3
+{
+	format(
+		"No!\n
+		We need to find the artifact, remember?\p
+		You promised!"
+	)
+}
+
+text Pyroden_Text_Intro_Fro_3
+{
+	format(
+		"Hmm…\n
+		Did I now…?\p
+		… … …\p
+		Alright, alright.\n
+		We can do some info gathering.\p
+		But after that, a visit to the hot springs is in order."
+	)
+}
+
+text Pyroden_Text_Intro_Vee_4
+{
+	format("Yay!")
+}
+
+text Pyroden_Text_Intro_Fro_4
+{
+	format(
+		"How about this.\p
+		Let's split up, and ask around if anyone has seen anything strange.\p
+		Once we get enough info, let's meet up at the hot springs.\p
+		Ready? Go."
+	)
+}
+
+text Pyroden_Text_Intro_Vee_5
+{
+	format(
+		"…And theeere he goes.\n
+		But this is exciting, isn't it?\p
+		Back when I was in the lab, sometimes the guards left these comics around…\p
+		I couldn't really read the words, but I liked the pictures a lot!\p
+		And you know what they were about?\n
+		Investigators!\p
+		So, what I'm saying, {PLAYER}, is…\n
+		Don't feel to bad if you can't crack this case by yourself.\p
+		Because Special Agent Vee will get to the bottom of this!\n
+		Gyahaha!"
+		)
+}
+
+script Pyroden_EventScript_InvestigationNotOver
+{
+	lock
+	msgbox(format(
+		"The investigation is not over!\N
+		Don't leave your friends like that!"
+	))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+	waitmovement(0)
+	release
+	end
+}
+
+script Pyroden_EventScript_Slugma
+{
+	speakername("Slugma")
+	msgbox(format(
+		"Welcome to Pyroden!\n
+		Have you come for our world-famous hot springs?\p
+		Lately they haven't been as hot, though.\p
+		Maybe I should take a dip in lava."
+	), MSGBOX_NPC)
+	end
+}
+
+
+script Pyroden_EventScript_Sandshrew
+{
+	lock
+	speakername("Sandshrew")
+	msgbox(format(
+		"See those torches around town?\p
+		They used to be burning bright all day and night.\p
+		Dunno who turned them off.\n
+		But it's definitely unusual."
+	), MSGBOX_NPC)
+	if(!flag(FLAG_INVESTIGATION_HINT_TORCHES))
+	{
+		setflag(FLAG_INVESTIGATION_HINT_TORCHES)
+		call(Pyroden_EventScript_CheckHints)
+	}
+	release
+	end
+}
+
+script Pyroden_EventScript_CheckHints
+{
+	playse(SE_M_PAY_DAY)
+	msgbox(format(
+		"This felt like {COLOR RED}important information{COLOR DARK_GRAY}."
+	))
+	closemessage
+	if(flag(FLAG_INVESTIGATION_HINT_TORCHES) 
+	&& flag(FLAG_INVESTIGATION_HINT_MAGMORTAR) 
+	&& flag(FLAG_INVESTIGATION_HINT_MAN) 
+	&& flag(FLAG_INVESTIGATION_HINT_ENTRANCE))
+	{
+		setvar(VAR_PYRODEN_INVESTIGATION_STATE, 1)
+		msgbox(format(
+			"You feel like you've gathered as many hints as you could.\p
+			Meet up with the others at the hot springs!"
+		))
+		fadescreen(FADE_TO_BLACK)
+		setobjectxyperm(LOCALID_VEE_TOWN, 13, 37)
+		setobjectxyperm(LOCALID_FRO_TOWN, 14, 37)
+		setobjectmovementtype(LOCALID_VEE_TOWN, MOVEMENT_TYPE_FACE_RIGHT)
+		setobjectmovementtype(LOCALID_FRO_TOWN, MOVEMENT_TYPE_FACE_LEFT)
+		fadescreen(FADE_FROM_BLACK)
+	}
+return
+}
+
+script Pyroden_EventScript_Growlithe
+{
+	speakername("Growlithe")
+	msgbox(format(
+		"Been some trouble lately, but the chief ain't doin' nothin' 'bout it.\p
+		Reckon it'd be time to replace 'im."
+	), MSGBOX_NPC)
+	end
+}
+
+script Pyroden_EventScript_Sudowoodo{
+	speakername("Sudowoodo")
+	if(var(VAR_PYRODEN_INVESTIGATION_STATE) == 0)
+		{
+			lock
+			msgbox(format("I'm telling you, I'm not a tree!\pAre you racist or something?"))
+			closemessage
+			release
+			end
+		}
+	msgbox(format(
+		"I'm glad I'm not a real tree, or I'd be burned to a crisp by now."
+	), MSGBOX_NPC)
+	end
+}
+
+script Pyroden_EventScript_Fro
+{
+	lock
+	speakername("Fro")
+	msgbox(format(
+		"Hmm…\n
+		What a funny looking tree.\p
+		I wonder if it holds any secrets."
+		))
+	closemessage
+	release
+	end
+}
+
+script Pyroden_EventScript_Vee
+{
+	lock
+	speakername("Vee")
+	msgbox(format(
+		"Where were you last night!?\n
+		Any alibi!?\p
+		You did it, didn't you!?\p
+		Confess!"
+	))
+	closemessage
+	release
+	end
+}
+
+script Pyroden_EventScript_Sunkern
+{
+	speakername("Sunkern")
+	if(var(VAR_PYRODEN_INVESTIGATION_STATE) == 0)
+		{
+			lock
+			msgbox(format(
+			"Ah…\n
+			I'm just a little seed…\l
+			I don't know anything…"))
+			closemessage
+			release
+			end
+		}
+	msgbox(format(
+		"Ah…\n
+		I'm just a little seed…\p
+		I don't really know much about the world…"
+	), MSGBOX_NPC)
+	end
+}
+
+script Pyroden_EventScript_Nidorina
+{
+	lock
+	speakername("Sandshrew")
+	msgbox(format(
+		"I could have sworn there was an entrance to the volcano north of here.\p
+		But now it's not there anymore?\n
+		I'm not really sure what happened.\p
+		Maybe I just imagined it."
+	), MSGBOX_NPC)
+	if(!flag(FLAG_INVESTIGATION_HINT_ENTRANCE))
+	{
+		setflag(FLAG_INVESTIGATION_HINT_ENTRANCE)
+		call(Pyroden_EventScript_CheckHints)
+	}
+	release
+	end
+}
+
+script Pyroden_EventScript_Snubbul
+{
+	speakername("Snubbul")
+	msgbox(format(
+		"That spinning guy is SO annoying.\p
+		I'm just trying to enjoy the hot springs, but he makes me dizzy just by looking at him.\p
+		He NEVER leaves, either.\n
+		Weirdo."
+	), MSGBOX_NPC)
+	end
+}
+
+script Pyroden_EventScript_Spinda{
+	speakername("Spinda")
+	msgbox(format(
+		"Spinning round, and round, and round again!\N
+		From dawn to dusk, from hot to cold!\p
+		Up, and down, and all around!\n
+		The spinning never stops!"
+	))
+	closemessage
+	end
+}
