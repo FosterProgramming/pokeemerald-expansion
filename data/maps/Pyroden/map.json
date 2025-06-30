@@ -26,19 +26,6 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 2,
-      "y": 39,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_PYRODEN_ROCK_4"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
       "x": 35,
       "y": 18,
@@ -221,19 +208,6 @@
       "flag": "FLAG_PYRODEN_ROCK_6"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": -5,
-      "y": 19,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_PYRODEN_ROCK_3"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNUBBULL)",
       "x": 16,
       "y": 43,
@@ -245,6 +219,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Pyroden_EventScript_Snubbul",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 2,
+      "y": 39,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_PYRODEN_ROCK_3"
     }
   ],
   "warp_events": [
