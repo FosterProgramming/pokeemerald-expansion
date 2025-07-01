@@ -1,1 +1,32 @@
 mapscripts Pyroden_House3_MapScripts {}
+
+
+script Pyroden_EventScript_Geodude{
+    speakername("Geodude")
+    switch(var(VAR_PYRODEN_CHIEF_QUEST_STATE))
+    {
+        case 0:
+        msgbox(format(
+            "I'll say!\n
+            This village is in the pits!\p
+            There's rockS everywhere blocking the way!\p
+            What!\n
+            Don't look at me!\l
+            I move around, at least!\p
+            I tried bringing it up the the mayor, but she refused to do anything!\N
+            But maybe you will have better luck!\p
+            Try talking to her, maybe she will listen for once!\N
+            If she even has any hearing left!"
+        ), MSGBOX_NPC)
+        setvar(VAR_PYRODEN_CHIEF_QUEST_STATE, 1)
+        end
+
+        default:
+        case 1:
+        msgbox(format(
+            "Good luck with the mayor!\n
+            You will need it!"
+        ), MSGBOX_NPC)
+        end
+    }
+}
