@@ -328,7 +328,7 @@ bool32 HandleMoveTargetRedirection(void)
 void HandleAction_UseMove(void)
 {
     //  BRAVE CHANGE
-    BraveSetCurrentAction();
+    //BraveSetCurrentAction();
     u32 i;
 
     //  BRAVE CHANGE
@@ -828,12 +828,13 @@ void HandleAction_TryFinish(void)
 void HandleAction_NothingIsFainted(void)
 {
     //  BRAVE CHANGE
-    //gCurrentTurnActionNumber++;
-    if (gBattleStruct->braveTurnDone)
-        gCurrentTurnActionNumber = 4;
+    gCurrentTurnActionNumber++;
+    //if (gBattleStruct->braveTurnDone)
+    //    gCurrentTurnActionNumber = 4;
     //  Action is set here
     BraveSetCurrentAction();
-    gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
+    gCurrentActionFuncId = gBraveCurrentAction.action;
+    //gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED
                     | HITMARKER_NO_PPDEDUCT | HITMARKER_STATUS_ABILITY_EFFECT | HITMARKER_PASSIVE_DAMAGE
                     | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONISE_EFFECT
@@ -846,12 +847,13 @@ void HandleAction_ActionFinished(void)
     bool32 afterYouActive = gSpecialStatuses[gBattlerByTurnOrder[gCurrentTurnActionNumber + 1]].afterYou;
     gBattleStruct->monToSwitchIntoId[gBattlerByTurnOrder[gCurrentTurnActionNumber]] = gSelectedMonPartyId = PARTY_SIZE;
     //  BRAVE CHANGE
-    //gCurrentTurnActionNumber++;
-    if (gBattleStruct->braveTurnDone)
-        gCurrentTurnActionNumber = 4;
+    gCurrentTurnActionNumber++;
+    //if (gBattleStruct->braveTurnDone)
+    //    gCurrentTurnActionNumber = 4;
     //  Action is set here
-    //BraveSetCurrentAction();
-    gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
+    BraveSetCurrentAction();
+    //gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
+    gCurrentActionFuncId = gBraveCurrentAction.action;
     SpecialStatusesClear();
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED
                     | HITMARKER_NO_PPDEDUCT | HITMARKER_STATUS_ABILITY_EFFECT | HITMARKER_PASSIVE_DAMAGE

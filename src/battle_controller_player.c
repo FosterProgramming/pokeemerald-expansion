@@ -2053,7 +2053,6 @@ static void HandleChooseActionAfterDma3(u32 battler)
 static void PlayerHandleChooseAction(u32 battler)
 {
     s32 i;
-    MgbaPrintf(MGBA_LOG_WARN, "Choose action");
 
     gBattlerControllerFuncs[battler] = HandleChooseActionAfterDma3;
     BattleTv_ClearExplosionFaintCause();

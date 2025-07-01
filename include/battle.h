@@ -844,7 +844,8 @@ struct BattleStruct
     u16 opponentMonCanTera:6;
     u16 opponentMonCanDynamax:6;
     u16 braveTurnDone:1;
-    u16 padding:3;
+    u16 braveTurnActuallyDone:1;
+    u16 padding:2;
     u8 monBraveActions[4];
 };
 

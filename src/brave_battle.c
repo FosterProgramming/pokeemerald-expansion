@@ -114,6 +114,11 @@ u16 GetBravePrioMod(u32 move, u32 battler)
 
 void BraveSetCurrentAction(void)
 {
+    if (gBattleStruct->braveTurnDone)
+    {
+        gBattleStruct->braveTurnActuallyDone = TRUE;
+        return;
+    }
     bool8 battlerWantsToMove[4] = {0, 0, 0, 0};
     u32 battlerSpeeds[4];
     u32 speedThreshold = 0;
@@ -233,7 +238,7 @@ void BraveSetCurrentAction(void)
         }
     }
     //  If this point is reached, turn is done
-    MgbaPrintf(MGBA_LOG_WARN, "Done");
+    //MgbaPrintf(MGBA_LOG_WARN, "Done");
     gBattleStruct->braveTurnDone = TRUE;
 }
 
@@ -260,11 +265,12 @@ void BraveClearAllActions(void)
         gBattleStruct->monBraveActions[it] = 0;
 
     gBattleStruct->braveTurnDone = FALSE;
+    gBattleStruct->braveTurnActuallyDone = FALSE;
 }
 
 void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
 {
-    MgbaPrintf(MGBA_LOG_WARN, "%u %u %u", battler, movePos, target);
+    //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u", battler, movePos, target);
     u32 currAction = gBattleStruct->monBraveActions[battler]++;
     gBraveBattleAction[battler][currAction].battler = battler;
     gBraveBattleAction[battler][currAction].moveSlot = movePos;
@@ -287,4 +293,9 @@ void BravePrintActions(void)
 u32 BraveGetBattlerActionCount(u32 battler)
 {
     return gBattleStruct->monBraveActions[battler];
+}
+
+bool32 IsBraveTurnActuallyDone(void)
+{
+    return gBattleStruct->braveTurnDone && gBattleStruct->braveTurnActuallyDone;
 }

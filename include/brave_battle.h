@@ -36,3 +36,5 @@ void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target);
 
 void BravePrintActions(void);
 u32 BraveGetBattlerActionCount(u32 battler);
+
+bool32 IsBraveTurnActuallyDone(void);

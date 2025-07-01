@@ -5383,9 +5383,10 @@ static void CheckChangingTurnOrderEffects(void)
     gCurrentTurnActionNumber = 0;
     //  BRAVE change
     //  Action is initially set here
-    //BraveSetCurrentAction();
-    gCurrentActionFuncId = gActionsByTurnOrder[0];
-    //gCurrentActionFuncId = gBraveCurrentAction.action;
+    MgbaPrintf(MGBA_LOG_WARN, "Action 0 Set");
+    BraveSetCurrentAction();
+    //gCurrentActionFuncId = gActionsByTurnOrder[0];
+    gCurrentActionFuncId = gBraveCurrentAction.action;
     gBattleStruct->dynamicMoveType = 0;
     gBattleStruct->effectsBeforeUsingMoveDone = FALSE;
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
@@ -5428,7 +5429,7 @@ static void RunTurnActionsFunctions(void)
     *(&gBattleStruct->savedTurnActionNumber) = gCurrentTurnActionNumber;
     sTurnActionsFuncsTable[gCurrentActionFuncId]();
 
-    if (gCurrentTurnActionNumber >= gBattlersCount) // everyone did their actions, turn finished
+    if (IsBraveTurnActuallyDone()) // everyone did their actions, turn finished
     {
         gHitMarker &= ~HITMARKER_PASSIVE_DAMAGE;
         gBattleMainFunc = sEndTurnFuncsTable[gBattleOutcome & 0x7F];
