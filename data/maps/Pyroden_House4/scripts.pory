@@ -1,1 +1,25 @@
 mapscripts Pyroden_House4_MapScripts {}
+
+
+script Pyroden_EventScript_Gloom
+{
+	lock
+	speakername("Gloom")
+	msgbox(format(
+		"I saw a human the other day!\n
+        It was so intense!\p
+        He was running around everywhere!\n
+        And dragging machinery everywhere!\p
+        He was around the volcano, I think?\n
+        But then he disappeared!\p
+        Where did he go, where did he go?\n
+        I don't know!"
+	), MSGBOX_NPC)
+	if(!flag(FLAG_INVESTIGATION_HINT_MAN))
+	{
+		setflag(FLAG_INVESTIGATION_HINT_MAN)
+		call(Pyroden_EventScript_CheckHintsInside)
+	}
+	release
+	end
+}

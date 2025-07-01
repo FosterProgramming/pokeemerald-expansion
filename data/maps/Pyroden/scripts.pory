@@ -1,10 +1,10 @@
 raw `
 .set LOCALID_VEE, 2
 .set LOCALID_FRO, 3
-.set LOCALID_VEE_TOWN, 10
-.set LOCALID_FRO_TOWN, 13
-.set LOCALID_SUDOWOODO, 10
-.set LOCALID_SUNKERN, 8
+.set LOCALID_VEE_TOWN, 8
+.set LOCALID_FRO_TOWN, 10
+.set LOCALID_SUDOWOODO, 9
+.set LOCALID_SUNKERN, 7
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
 `
@@ -18,13 +18,15 @@ mapscripts Pyroden_MapScripts
 		{
 		setobjectxyperm(LOCALID_VEE_TOWN, 13, 37)
 		setobjectxyperm(LOCALID_FRO_TOWN, 14, 37)
-		setobjectmovementtype(LOCALID_VEE_TOWN, MOVEMENT_TYPE_FACE_RIGHT)
-		setobjectmovementtype(LOCALID_FRO_TOWN, MOVEMENT_TYPE_FACE_LEFT)
 		}
 		if(var(VAR_PYRODEN_INVESTIGATION_STATE) != 0)
 		{
 			setobjectmovementtype(LOCALID_SUDOWOODO, MOVEMENT_TYPE_FACE_DOWN)
 			setobjectmovementtype(LOCALID_SUNKERN, MOVEMENT_TYPE_WANDER_AROUND)
+		}
+		if(var(VAR_SLOWPOKE_QUEST_STATE) == 0 || var(VAR_SLOWPOKE_QUEST_STATE) == 1 || var(VAR_SLOWPOKE_QUEST_STATE) == 2)
+		{
+			setvar(VAR_SLOWPOKE_QUEST_STATE, 0)
 		}
 		end
 	}
@@ -293,6 +295,7 @@ script Pyroden_EventScript_Sandshrew
 
 script Pyroden_EventScript_CheckHints
 {
+	lock
 	playse(SE_M_PAY_DAY)
 	msgbox(format(
 		"This felt like {COLOR RED}important information{COLOR DARK_GRAY}."
@@ -305,16 +308,40 @@ script Pyroden_EventScript_CheckHints
 	{
 		setvar(VAR_PYRODEN_INVESTIGATION_STATE, 1)
 		msgbox(format(
-			"You feel like you've gathered as many hints as you could.\p
+			"You've gathered as many hints as you could.\p
 			Meet up with the others at the hot springs!"
 		))
 		fadescreen(FADE_TO_BLACK)
+		setobjectxy(LOCALID_VEE_TOWN, 13, 37)
 		setobjectxyperm(LOCALID_VEE_TOWN, 13, 37)
+		setobjectxy(LOCALID_FRO_TOWN, 14, 37)
 		setobjectxyperm(LOCALID_FRO_TOWN, 14, 37)
-		setobjectmovementtype(LOCALID_VEE_TOWN, MOVEMENT_TYPE_FACE_RIGHT)
-		setobjectmovementtype(LOCALID_FRO_TOWN, MOVEMENT_TYPE_FACE_LEFT)
 		fadescreen(FADE_FROM_BLACK)
 	}
+return
+}
+
+
+script Pyroden_EventScript_CheckHintsInside
+{
+	lock
+	playse(SE_M_PAY_DAY)
+	msgbox(format(
+		"This felt like {COLOR RED}important information{COLOR DARK_GRAY}."
+	))
+	
+	if(flag(FLAG_INVESTIGATION_HINT_TORCHES) 
+	&& flag(FLAG_INVESTIGATION_HINT_MAGMORTAR) 
+	&& flag(FLAG_INVESTIGATION_HINT_MAN) 
+	&& flag(FLAG_INVESTIGATION_HINT_ENTRANCE))
+	{
+		setvar(VAR_PYRODEN_INVESTIGATION_STATE, 1)
+		msgbox(format(
+			"You feel like you've gathered as many hints as you could.\p
+			Meet up with the others at the hot springs!"
+		))
+	}
+closemessage
 return
 }
 
@@ -323,7 +350,7 @@ script Pyroden_EventScript_Growlithe
 	speakername("Growlithe")
 	msgbox(format(
 		"Been some trouble lately, but the chief ain't doin' nothin' 'bout it.\p
-		Reckon it'd be time to replace 'im."
+		Reckon it'd be time to replace 'er."
 	), MSGBOX_NPC)
 	end
 }
@@ -398,12 +425,13 @@ script Pyroden_EventScript_Sunkern
 script Pyroden_EventScript_Nidorina
 {
 	lock
-	speakername("Sandshrew")
+	speakername("Nidorina")
 	msgbox(format(
-		"I could have sworn there was an entrance to the volcano north of here.\p
+		"There used to be an entrance to the volcano north of here.\p
 		But now it's not there anymore?\n
 		I'm not really sure what happened.\p
-		Maybe I just imagined it."
+		One day it was there, and the next…\n
+		Poof."
 	), MSGBOX_NPC)
 	if(!flag(FLAG_INVESTIGATION_HINT_ENTRANCE))
 	{
