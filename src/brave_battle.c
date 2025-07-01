@@ -270,7 +270,6 @@ void BraveClearAllActions(void)
 
 void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
 {
-    //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u", battler, movePos, target);
     u32 currAction = gBattleStruct->monBraveActions[battler]++;
     gBraveBattleAction[battler][currAction].battler = battler;
     gBraveBattleAction[battler][currAction].moveSlot = movePos;
@@ -278,7 +277,25 @@ void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
-    //BravePrintActions();
+}
+
+void BraveAddDefaultToQueue(u32 battler)
+{
+    u32 currAction = gBattleStruct->monBraveActions[battler]++;
+    gBraveBattleAction[battler][currAction].battler = battler;
+    gBraveBattleAction[battler][currAction].moveSlot = 0;
+    gBraveBattleAction[battler][currAction].target = battler;
+    gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
+    gBraveBattleAction[battler][currAction].isDefaulting = TRUE;
+    gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
+}
+
+void BraveAddSwitchToQueue(u32 battler, u32 target)
+{
+}
+
+void BraveAddItemToQueue(u32 battler, u32 item, u32 target)
+{
 }
 
 void BravePrintActions(void)

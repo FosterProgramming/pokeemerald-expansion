@@ -335,7 +335,19 @@ static void HandleInputChooseAction(u32 battler)
             }
             break;
         case 1: // Top right
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_ITEM, 0);
+            if (gBattleStruct->isBraveSelector)
+            {
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_ITEM, 0);
+            }
+            else
+            {
+                //  Use Default
+                MgbaPrintf(MGBA_LOG_WARN, "Defaulting");
+                BraveAddDefaultToQueue(battler);
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
+                gBattleStruct->skipMoveInput = TRUE;
+                PlayerBufferExecCompleted(battler);
+            }
             break;
         case 2: // Bottom left
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
@@ -678,6 +690,11 @@ static void TryShowAsTarget(u32 battler)
 
 void HandleInputChooseMove(u32 battler)
 {
+    if (gBattleStruct->skipMoveInput)
+    {
+        gBattleStruct->skipMoveInput = FALSE;
+        PlayerBufferExecCompleted(battler);
+    }
     u16 moveTarget;
     u32 canSelectTarget = 0;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
@@ -2153,21 +2170,28 @@ void PlayerHandleChooseMove(u32 battler)
     }
     else
     {
-        struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+        if (!gBattleStruct->skipMoveInput)
+        {
+            struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
 
-        InitMoveSelectionsVarsAndStrings(battler);
-        gBattleStruct->gimmick.playerSelect = FALSE;
-        TryToAddMoveInfoWindow();
+            InitMoveSelectionsVarsAndStrings(battler);
+            gBattleStruct->gimmick.playerSelect = FALSE;
+            TryToAddMoveInfoWindow();
 
-        AssignUsableZMoves(battler, moveInfo->moves);
-        gBattleStruct->zmove.viable = (gBattleStruct->zmove.possibleZMoves[battler] & (1u << gMoveSelectionCursor[battler])) != 0;
+            AssignUsableZMoves(battler, moveInfo->moves);
+            gBattleStruct->zmove.viable = (gBattleStruct->zmove.possibleZMoves[battler] & (1u << gMoveSelectionCursor[battler])) != 0;
 
-        if (!IsGimmickTriggerSpriteActive())
-            gBattleStruct->gimmick.triggerSpriteId = 0xFF;
-        if (!(gBattleStruct->gimmick.usableGimmick[battler] == GIMMICK_Z_MOVE && !gBattleStruct->zmove.viable))
-            CreateGimmickTriggerSprite(battler);
+            if (!IsGimmickTriggerSpriteActive())
+                gBattleStruct->gimmick.triggerSpriteId = 0xFF;
+            if (!(gBattleStruct->gimmick.usableGimmick[battler] == GIMMICK_Z_MOVE && !gBattleStruct->zmove.viable))
+                CreateGimmickTriggerSprite(battler);
 
-        gBattlerControllerFuncs[battler] = HandleChooseMoveAfterDma3;
+            gBattlerControllerFuncs[battler] = HandleChooseMoveAfterDma3;
+        }
+        else
+        {
+            gBattlerControllerFuncs[battler] = HandleChooseMoveAfterDma3;
+        }
     }
 }
 
