@@ -831,6 +831,8 @@ void HandleAction_NothingIsFainted(void)
     //gCurrentTurnActionNumber++;
     if (gBattleStruct->braveTurnDone)
         gCurrentTurnActionNumber = 4;
+    //  Action is set here
+    BraveSetCurrentAction();
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED
                     | HITMARKER_NO_PPDEDUCT | HITMARKER_STATUS_ABILITY_EFFECT | HITMARKER_PASSIVE_DAMAGE
@@ -847,6 +849,8 @@ void HandleAction_ActionFinished(void)
     //gCurrentTurnActionNumber++;
     if (gBattleStruct->braveTurnDone)
         gCurrentTurnActionNumber = 4;
+    //  Action is set here
+    //BraveSetCurrentAction();
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     SpecialStatusesClear();
     gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED

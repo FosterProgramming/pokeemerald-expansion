@@ -5381,7 +5381,11 @@ static void CheckChangingTurnOrderEffects(void)
     // setup stuff before turns/actions
     TryClearRageAndFuryCutter();
     gCurrentTurnActionNumber = 0;
+    //  BRAVE change
+    //  Action is initially set here
+    //BraveSetCurrentAction();
     gCurrentActionFuncId = gActionsByTurnOrder[0];
+    //gCurrentActionFuncId = gBraveCurrentAction.action;
     gBattleStruct->dynamicMoveType = 0;
     gBattleStruct->effectsBeforeUsingMoveDone = FALSE;
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
