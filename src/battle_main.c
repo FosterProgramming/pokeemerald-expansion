@@ -4233,6 +4233,7 @@ static void HandleTurnActionSelectionState(void)
                 // Do scoring
                 gBattleStruct->aiMoveOrAction[battler] = BattleAI_ChooseMoveOrAction(battler);
                 AI_DATA->aiCalcInProgress = FALSE;
+                AddAiActionsForBattler(battler);
             }
             // fallthrough
         case STATE_BEFORE_ACTION_CHOSEN: // Choose an action.
@@ -4522,11 +4523,6 @@ static void HandleTurnActionSelectionState(void)
                             gBattleStruct->chosenMovePositions[battler] = gBattleResources->bufferB[battler][2] & ~RET_GIMMICK;
                             gChosenMoveByBattler[battler] = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
                             gBattleStruct->moveTarget[battler] = gBattleResources->bufferB[battler][3];
-                            //  BRAVE CHANGE
-                            if (battler == 1 || battler == 3)
-                            {
-                                BraveAddMoveToQueue(battler, gBattleStruct->chosenMovePositions[battler], gBattleStruct->moveTarget[battler]);
-                            }
 
                             // Check to see if any gimmicks need to be prepared.
                             if (gBattleResources->bufferB[battler][2] & RET_GIMMICK)
@@ -6186,7 +6182,7 @@ bool32 IsWildMonSmart(void)
 #if B_SMART_WILD_AI_FLAG != 0
     return (FlagGet(B_SMART_WILD_AI_FLAG));
 #else
-    return FALSE;
+    return TRUE;
 #endif
 }
 

@@ -316,3 +316,16 @@ bool32 IsBraveTurnActuallyDone(void)
 {
     return gBattleStruct->braveTurnDone && gBattleStruct->braveTurnActuallyDone;
 }
+
+void AddAiActionsForBattler(u32 battler)
+{
+    // Placeholder
+    u32 rnd = Random32() & 1;
+    if (rnd)
+        BraveAddDefaultToQueue(battler);
+    else
+    {
+        u32 target = Random32() & 0x2;
+        BraveAddMoveToQueue(battler, 0, target);
+    }
+}

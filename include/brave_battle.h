@@ -41,3 +41,4 @@ void BravePrintActions(void);
 u32 BraveGetBattlerActionCount(u32 battler);
 
 bool32 IsBraveTurnActuallyDone(void);
+void AddAiActionsForBattler(u32 battler);
