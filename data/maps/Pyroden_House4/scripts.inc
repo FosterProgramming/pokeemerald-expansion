@@ -33,7 +33,7 @@ Pyroden_EventScript_Gloom_Text_1:
 	.string "I saw a human the other day!\n"
 	.string "It was so intense!\p"
 	.string "He was running around everywhere!\n"
-	.string "And dragging equipment everywhere!\p"
+	.string "And dragging machinery everywhere!\p"
 	.string "He was around the volcano, I think?\n"
 	.string "But then he disappeared!\p"
 	.string "Where did he go, where did he go?\n"
