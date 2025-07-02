@@ -506,6 +506,7 @@ u16 GetObjectEventTrainerSightFlagByObjectEventId(u8 objEventId);
 u16 GetObjectEventFlagIdByObjectEventId(u8 objectEventId);
 void RemoveObjectEvent(struct ObjectEvent *objectEvent);
 u8 GetCollisionAtCoords2(struct ObjectEvent *objectEvent, s16 x, s16 y, u32 dir);
+u8 GetCollisionAtCoords3(struct ObjectEvent *objectEvent, s16 x, s16 y, u32 dir);
 const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup);
 
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
