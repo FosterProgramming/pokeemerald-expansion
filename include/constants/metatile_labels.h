@@ -439,6 +439,25 @@
 #define METATILE_PokemonCenter_Floor_ShadowTop           0x21E
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
 
+// gTileset_Pyroden
+#define METATILE_Pyroden_EmptyPool_BottomLeft         0x2D8
+#define METATILE_Pyroden_EmptyPool_BottomLeftCorner   0x2D3
+#define METATILE_Pyroden_EmptyPool_BottomMiddle       0x2D9
+#define METATILE_Pyroden_EmptyPool_BottomRight        0x2DA
+#define METATILE_Pyroden_EmptyPool_BottomRightCorner  0x2D4
+#define METATILE_Pyroden_EmptyPool_MiddleLeft         0x2D0
+#define METATILE_Pyroden_EmptyPool_MiddleMiddle       0x2D1
+#define METATILE_Pyroden_EmptyPool_MiddleRight        0x2D2
+#define METATILE_Pyroden_EmptyPool_TopLeft            0x2C8
+#define METATILE_Pyroden_EmptyPool_TopLeftCorner      0x2CB
+#define METATILE_Pyroden_EmptyPool_TopMiddle          0x2C9
+#define METATILE_Pyroden_EmptyPool_TopRight           0x2CA
+#define METATILE_Pyroden_EmptyPool_TopRightCorner     0x2CC
+#define METATILE_Pyroden_Puddle_BottomLeft            0x2DD
+#define METATILE_Pyroden_Puddle_BottomRight           0x2DF
+#define METATILE_Pyroden_Puddle_TopLeft               0x2CD
+#define METATILE_Pyroden_Puddle_TopRight              0x2CF
+
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F
 #define METATILE_Rustboro_Door_Tan   0x22F

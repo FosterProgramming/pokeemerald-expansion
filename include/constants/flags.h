@@ -59,9 +59,9 @@
 #define FLAG_PYRODEN_ROCK_5    0x2D // Unused Flag
 #define FLAG_PYRODEN_ROCK_6    0x2E // Unused Flag
 #define FLAG_PYRODEN_ROCK_7    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_HIDE_HOT_SPRINGS_GANG    0x30 // Unused Flag
+#define FLAG_HIDE_SNUBBUL_PYRODEN    0x31 // Unused Flag
+#define FLAG_HIDE_NIDORINA_PYRODEN    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag

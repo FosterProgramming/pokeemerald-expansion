@@ -166,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Pyroden_EventScript_Nidorina",
-      "flag": "0"
+      "flag": "FLAG_HIDE_NIDORINA_PYRODEN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -209,16 +209,16 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNUBBULL)",
-      "x": 16,
-      "y": 43,
+      "x": 18,
+      "y": 40,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Pyroden_EventScript_Snubbul",
-      "flag": "0"
+      "flag": "FLAG_HIDE_SNUBBUL_PYRODEN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -232,6 +232,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_PYRODEN_ROCK_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NIHILEGO)",
+      "x": 9,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_HOT_SPRINGS_GANG"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PHEROMOSA)",
+      "x": 9,
+      "y": 40,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_HOT_SPRINGS_GANG"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SOLGALEO)",
+      "x": 10,
+      "y": 41,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_HOT_SPRINGS_GANG"
     }
   ],
   "warp_events": [
