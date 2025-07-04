@@ -293,7 +293,8 @@ Debug_EventScript_Script_6::
 	end
 
 Debug_EventScript_Script_7::
-	additem ITEM_WILLOWISP_TOOL, 1
+	additem ITEM_FIREROD_TOOL, 1
+	additem ITEM_ICEROD_TOOL, 1
 	release
 	end
 

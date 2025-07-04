@@ -1734,6 +1734,44 @@ void ItemUseOutOfBattle_WilloWisp(u8 taskId)
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
 }
 
+
+static void ItemUseOnFieldCB_FireRod(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(EventScript_UseFireRod);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_FireRod(u8 taskId)
+{
+    if (TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_FireRod;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+}
+
+
+static void ItemUseOnFieldCB_IceRod(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(EventScript_UseIceRod);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_IceRod(u8 taskId)
+{
+    if (TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_IceRod;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+}
+
 void ItemUseOutOfBattle_RockSmashTool(u8 taskId)
 {
     if (TRUE)

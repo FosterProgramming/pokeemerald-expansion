@@ -22,6 +22,20 @@ EventScript_UseWilloWisp::
     releaseall
     end
 
+EventScript_UseFireRod::
+    lock
+    dofieldeffect FLDEFF_FIREROD
+    waitfieldeffect FLDEFF_FIREROD
+    releaseall
+    end
+
+EventScript_UseIceRod::
+    lock
+    dofieldeffect FLDEFF_ICEROD
+    waitfieldeffect FLDEFF_ICEROD
+    releaseall
+    end
+
 EventScript_UseStrengthTool::
     lockall
     call_if_set FLAG_SYS_USE_STRENGTH, EventScript_PushBoulderScript @ qol_field_moves

@@ -14339,6 +14339,34 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_AssaultVest, //placeholder
     },
 
+    [ITEM_FIREROD_TOOL] =
+    {
+        .name = _("FireRod"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Melts Ice."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_FireRod,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
+    [ITEM_ICEROD_TOOL] =
+    {
+        .name = _("IceRod"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Freezes Water."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_IceRod,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
     [ITEM_WATERFALL_TOOL] =
     {
         .name = _("WaterfallTool"),
