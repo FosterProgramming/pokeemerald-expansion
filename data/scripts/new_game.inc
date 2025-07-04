@@ -115,6 +115,7 @@ EventScript_ResetAllBerries::
 EventScript_ResetAllMapFlags::
 	setflag FLAG_UNUSED_0x2B5
 	setflag FLAG_HIDE_HOT_SPRINGS_GANG
+	setflag FLAG_HIDE_GIRATINA
 	setflag FLAG_SYS_DOUBLE_WILD_BATTLES
 	setflag FLAG_HIDE_CONTEST_POKE_BALL
 	setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE

@@ -25,1293 +25,2017 @@
 # 13 "data/maps/Pyroden/scripts.pory"
 .set LOCALID_NIDORINA, 11
 # 14 "data/maps/Pyroden/scripts.pory"
-.set PlayerXCoordinates, VAR_TEMP_3
+.set LOCALID_GIRATINA, 20
 # 15 "data/maps/Pyroden/scripts.pory"
+.set PlayerXCoordinates, VAR_TEMP_3
+# 16 "data/maps/Pyroden/scripts.pory"
 .set PlayerYCoordinates, VAR_TEMP_4
 
 Pyroden_MapScripts::
-# 22 "data/maps/Pyroden/scripts.pory"
+# 23 "data/maps/Pyroden/scripts.pory"
 	map_script MAP_SCRIPT_ON_TRANSITION, Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-# 23 "data/maps/Pyroden/scripts.pory"
+# 24 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_INVESTIGATION_STATE, 1
 	goto_if_eq Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-# 28 "data/maps/Pyroden/scripts.pory"
+# 29 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_INVESTIGATION_STATE, 0
 	goto_if_ne Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-# 33 "data/maps/Pyroden/scripts.pory"
+# 34 "data/maps/Pyroden/scripts.pory"
 	compare VAR_SLOWPOKE_QUEST_STATE, 0
 	goto_if_eq Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
-# 33 "data/maps/Pyroden/scripts.pory"
+# 34 "data/maps/Pyroden/scripts.pory"
 	compare VAR_SLOWPOKE_QUEST_STATE, 1
 	goto_if_eq Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
-# 33 "data/maps/Pyroden/scripts.pory"
+# 34 "data/maps/Pyroden/scripts.pory"
 	compare VAR_SLOWPOKE_QUEST_STATE, 2
 	goto_if_eq Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	end
 
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-# 25 "data/maps/Pyroden/scripts.pory"
-	setobjectxyperm LOCALID_VEE_TOWN, 13, 37
 # 26 "data/maps/Pyroden/scripts.pory"
+	setobjectxyperm LOCALID_VEE_TOWN, 13, 37
+# 27 "data/maps/Pyroden/scripts.pory"
 	setobjectxyperm LOCALID_FRO_TOWN, 14, 37
 	goto Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-# 30 "data/maps/Pyroden/scripts.pory"
-	setobjectmovementtype LOCALID_SUDOWOODO, MOVEMENT_TYPE_FACE_DOWN
 # 31 "data/maps/Pyroden/scripts.pory"
+	setobjectmovementtype LOCALID_SUDOWOODO, MOVEMENT_TYPE_FACE_DOWN
+# 32 "data/maps/Pyroden/scripts.pory"
 	setobjectmovementtype LOCALID_SUNKERN, MOVEMENT_TYPE_WANDER_AROUND
 	goto Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 
 Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
-# 35 "data/maps/Pyroden/scripts.pory"
+# 36 "data/maps/Pyroden/scripts.pory"
 	setvar VAR_SLOWPOKE_QUEST_STATE, 0
 	goto Pyroden_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
 
 
 Generic_EventScript_SpawnVeeFro::
-# 44 "data/maps/Pyroden/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 45 "data/maps/Pyroden/scripts.pory"
-	setobjectxyperm LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 46 "data/maps/Pyroden/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
+	setobjectxyperm LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates
 # 47 "data/maps/Pyroden/scripts.pory"
-	addobject LOCALID_VEE
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 48 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_VEE
+# 49 "data/maps/Pyroden/scripts.pory"
 	addobject LOCALID_FRO
 	return
 
 
 Pyroden_EventScript_IntroVeeDown::
-# 55 "data/maps/Pyroden/scripts.pory"
-	lock
 # 56 "data/maps/Pyroden/scripts.pory"
-	call Generic_EventScript_SpawnVeeFro
+	lock
 # 57 "data/maps/Pyroden/scripts.pory"
+	call Generic_EventScript_SpawnVeeFro
+# 58 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_FRO, Pyroden_EventScript_IntroVeeDown_Movement_0
-# 61 "data/maps/Pyroden/scripts.pory"
+# 62 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_1
-# 65 "data/maps/Pyroden/scripts.pory"
+# 66 "data/maps/Pyroden/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_2
-# 68 "data/maps/Pyroden/scripts.pory"
-	waitmovement LOCALID_VEE
 # 69 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	waitmovement LOCALID_VEE
 # 70 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_1
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 71 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_3
+	msgbox Pyroden_Text_Intro_Vee_1
 # 72 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_3
 # 73 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	waitmovement 0
 # 74 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_1
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 75 "data/maps/Pyroden/scripts.pory"
-	playse SE_PIN
+	msgbox Pyroden_Text_Intro_Fro_1
 # 76 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 77 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_4
-# 81 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
 # 82 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	waitmovement 0
 # 83 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_2
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 84 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	msgbox Pyroden_Text_Intro_Vee_2
 # 85 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_2
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 86 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	msgbox Pyroden_Text_Intro_Fro_2
 # 87 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_3
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 88 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	msgbox Pyroden_Text_Intro_Vee_3
 # 89 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_3
-# 90 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 91 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_4
-# 92 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 93 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_4
-# 94 "data/maps/Pyroden/scripts.pory"
-	closemessage
-# 95 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO, Pyroden_EventScript_IntroVeeDown_Movement_5
-# 96 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 97 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_FRO
-# 98 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_2
-# 99 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_6
-# 100 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 101 "data/maps/Pyroden/scripts.pory"
+# 90 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Fro_3
+# 91 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 102 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_5
-# 103 "data/maps/Pyroden/scripts.pory"
+# 92 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Vee_4
+# 93 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 94 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Fro_4
+# 95 "data/maps/Pyroden/scripts.pory"
 	closemessage
-# 104 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_5
-# 105 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO, Pyroden_EventScript_IntroVeeDown_Movement_5
+# 97 "data/maps/Pyroden/scripts.pory"
 	waitmovement 0
+# 98 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_FRO
+# 99 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_2
+# 100 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_6
+# 101 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 102 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 103 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Vee_5
+# 104 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 105 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_5
 # 106 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_VEE
+	waitmovement 0
 # 107 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_PYRODEN_STATE, 1
+	removeobject LOCALID_VEE
 # 108 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_PYRODEN_STATE, 1
+# 109 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 
 Pyroden_EventScript_IntroVeeUp::
-# 114 "data/maps/Pyroden/scripts.pory"
-	lock
 # 115 "data/maps/Pyroden/scripts.pory"
-	call Generic_EventScript_SpawnVeeFro
+	lock
 # 116 "data/maps/Pyroden/scripts.pory"
+	call Generic_EventScript_SpawnVeeFro
+# 117 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_FRO, Pyroden_EventScript_IntroVeeDown_Movement_0
-# 120 "data/maps/Pyroden/scripts.pory"
+# 121 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeUp_Movement_0
-# 124 "data/maps/Pyroden/scripts.pory"
+# 125 "data/maps/Pyroden/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeUp_Movement_1
-# 127 "data/maps/Pyroden/scripts.pory"
-	waitmovement LOCALID_VEE
 # 128 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	waitmovement LOCALID_VEE
 # 129 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_1
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 130 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_3
+	msgbox Pyroden_Text_Intro_Vee_1
 # 131 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_3
 # 132 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	waitmovement 0
 # 133 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_1
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 134 "data/maps/Pyroden/scripts.pory"
-	playse SE_PIN
+	msgbox Pyroden_Text_Intro_Fro_1
 # 135 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 136 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_4
-# 140 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
 # 141 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	waitmovement 0
 # 142 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_2
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 143 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	msgbox Pyroden_Text_Intro_Vee_2
 # 144 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_2
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 145 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	msgbox Pyroden_Text_Intro_Fro_2
 # 146 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_3
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 147 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	msgbox Pyroden_Text_Intro_Vee_3
 # 148 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_3
-# 149 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 150 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_4
-# 151 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 152 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Fro_4
-# 153 "data/maps/Pyroden/scripts.pory"
-	closemessage
-# 154 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO, Pyroden_EventScript_IntroVeeDown_Movement_5
-# 155 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 156 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_FRO
-# 157 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeUp_Movement_1
-# 158 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeUp_Movement_2
-# 159 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 160 "data/maps/Pyroden/scripts.pory"
+# 149 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Fro_3
+# 150 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 161 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_Text_Intro_Vee_5
-# 162 "data/maps/Pyroden/scripts.pory"
+# 151 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Vee_4
+# 152 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 153 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Fro_4
+# 154 "data/maps/Pyroden/scripts.pory"
 	closemessage
-# 163 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_5
-# 164 "data/maps/Pyroden/scripts.pory"
+# 155 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO, Pyroden_EventScript_IntroVeeDown_Movement_5
+# 156 "data/maps/Pyroden/scripts.pory"
 	waitmovement 0
+# 157 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_FRO
+# 158 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeUp_Movement_1
+# 159 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeUp_Movement_2
+# 160 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 161 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 162 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_Text_Intro_Vee_5
+# 163 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 164 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE, Pyroden_EventScript_IntroVeeDown_Movement_5
 # 165 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_VEE
+	waitmovement 0
 # 166 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_PYRODEN_STATE, 1
+	removeobject LOCALID_VEE
 # 167 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_PYRODEN_STATE, 1
+# 168 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 
 Pyroden_EventScript_InvestigationNotOver::
-# 259 "data/maps/Pyroden/scripts.pory"
-	lock
 # 260 "data/maps/Pyroden/scripts.pory"
+	lock
+# 261 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_InvestigationNotOver_Text_0
-# 264 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_InvestigationNotOver_Movement_0
 # 265 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_InvestigationNotOver_Movement_0
 # 266 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 267 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 
 Pyroden_EventScript_Slugma::
-# 272 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Slugma_Text_0
 # 273 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Slugma_Text_0
+# 274 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Slugma_Text_1, MSGBOX_NPC
 	end
 
 
 Pyroden_EventScript_Sandshrew::
-# 285 "data/maps/Pyroden/scripts.pory"
-	lock
 # 286 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Sandshrew_Text_0
+	lock
 # 287 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Sandshrew_Text_0
+# 288 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Sandshrew_Text_1, MSGBOX_NPC
-# 293 "data/maps/Pyroden/scripts.pory"
+# 294 "data/maps/Pyroden/scripts.pory"
 	goto_if_unset FLAG_INVESTIGATION_HINT_TORCHES, Pyroden_EventScript_Sandshrew_2
 Pyroden_EventScript_Sandshrew_1:
-# 298 "data/maps/Pyroden/scripts.pory"
+# 299 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 Pyroden_EventScript_Sandshrew_2:
-# 295 "data/maps/Pyroden/scripts.pory"
-	setflag FLAG_INVESTIGATION_HINT_TORCHES
 # 296 "data/maps/Pyroden/scripts.pory"
+	setflag FLAG_INVESTIGATION_HINT_TORCHES
+# 297 "data/maps/Pyroden/scripts.pory"
 	call Pyroden_EventScript_CheckHints
 	goto Pyroden_EventScript_Sandshrew_1
 
 
 Pyroden_EventScript_CheckHints::
-# 304 "data/maps/Pyroden/scripts.pory"
-	lock
 # 305 "data/maps/Pyroden/scripts.pory"
-	playse SE_M_PAY_DAY
+	lock
 # 306 "data/maps/Pyroden/scripts.pory"
+	playse SE_M_PAY_DAY
+# 307 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_CheckHints_Text_0
-# 309 "data/maps/Pyroden/scripts.pory"
-	closemessage
 # 310 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 311 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_TORCHES, Pyroden_EventScript_CheckHints_4
 Pyroden_EventScript_CheckHints_1:
 	return
 
 Pyroden_EventScript_CheckHints_2:
-# 315 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_PYRODEN_INVESTIGATION_STATE, 1
 # 316 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_PYRODEN_INVESTIGATION_STATE, 1
+# 317 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_CheckHints_Text_1
-# 320 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_TO_BLACK
 # 321 "data/maps/Pyroden/scripts.pory"
-	setobjectxy LOCALID_VEE_TOWN, 13, 37
+	fadescreen FADE_TO_BLACK
 # 322 "data/maps/Pyroden/scripts.pory"
-	setobjectxyperm LOCALID_VEE_TOWN, 13, 37
+	setobjectxy LOCALID_VEE_TOWN, 13, 37
 # 323 "data/maps/Pyroden/scripts.pory"
-	setobjectxy LOCALID_FRO_TOWN, 14, 37
+	setobjectxyperm LOCALID_VEE_TOWN, 13, 37
 # 324 "data/maps/Pyroden/scripts.pory"
-	setobjectxyperm LOCALID_FRO_TOWN, 14, 37
+	setobjectxy LOCALID_FRO_TOWN, 14, 37
 # 325 "data/maps/Pyroden/scripts.pory"
+	setobjectxyperm LOCALID_FRO_TOWN, 14, 37
+# 326 "data/maps/Pyroden/scripts.pory"
 	fadescreen FADE_FROM_BLACK
 	goto Pyroden_EventScript_CheckHints_1
 
 Pyroden_EventScript_CheckHints_3:
-# 312 "data/maps/Pyroden/scripts.pory"
+# 313 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_MAN, Pyroden_EventScript_CheckHints_7
 	goto Pyroden_EventScript_CheckHints_1
 
 Pyroden_EventScript_CheckHints_4:
-# 311 "data/maps/Pyroden/scripts.pory"
+# 312 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_MAGMORTAR, Pyroden_EventScript_CheckHints_3
 	goto Pyroden_EventScript_CheckHints_1
 
 Pyroden_EventScript_CheckHints_7:
-# 313 "data/maps/Pyroden/scripts.pory"
+# 314 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_ENTRANCE, Pyroden_EventScript_CheckHints_2
 	goto Pyroden_EventScript_CheckHints_1
 
 
 Pyroden_EventScript_CheckHintsInside::
-# 333 "data/maps/Pyroden/scripts.pory"
-	lock
 # 334 "data/maps/Pyroden/scripts.pory"
-	playse SE_M_PAY_DAY
+	lock
 # 335 "data/maps/Pyroden/scripts.pory"
+	playse SE_M_PAY_DAY
+# 336 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_CheckHints_Text_0
-# 339 "data/maps/Pyroden/scripts.pory"
+# 340 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_TORCHES, Pyroden_EventScript_CheckHintsInside_4
 Pyroden_EventScript_CheckHintsInside_1:
-# 350 "data/maps/Pyroden/scripts.pory"
+# 351 "data/maps/Pyroden/scripts.pory"
 	closemessage
 	return
 
 Pyroden_EventScript_CheckHintsInside_2:
-# 344 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_PYRODEN_INVESTIGATION_STATE, 1
 # 345 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_PYRODEN_INVESTIGATION_STATE, 1
+# 346 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_CheckHintsInside_Text_0
 	goto Pyroden_EventScript_CheckHintsInside_1
 
 Pyroden_EventScript_CheckHintsInside_3:
-# 341 "data/maps/Pyroden/scripts.pory"
+# 342 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_MAN, Pyroden_EventScript_CheckHintsInside_7
 	goto Pyroden_EventScript_CheckHintsInside_1
 
 Pyroden_EventScript_CheckHintsInside_4:
-# 340 "data/maps/Pyroden/scripts.pory"
+# 341 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_MAGMORTAR, Pyroden_EventScript_CheckHintsInside_3
 	goto Pyroden_EventScript_CheckHintsInside_1
 
 Pyroden_EventScript_CheckHintsInside_7:
-# 342 "data/maps/Pyroden/scripts.pory"
+# 343 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_INVESTIGATION_HINT_ENTRANCE, Pyroden_EventScript_CheckHintsInside_2
 	goto Pyroden_EventScript_CheckHintsInside_1
 
 
 Pyroden_EventScript_Growlithe::
-# 356 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Growlithe_Text_0
 # 357 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Growlithe_Text_0
+# 358 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Growlithe_Text_1, MSGBOX_NPC
 	end
 
 
 Pyroden_EventScript_Sudowoodo::
-# 365 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Sudowoodo_Text_0
 # 366 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Sudowoodo_Text_0
+# 367 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_INVESTIGATION_STATE, 0
 	goto_if_eq Pyroden_EventScript_Sudowoodo_2
-# 374 "data/maps/Pyroden/scripts.pory"
+# 375 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Sudowoodo_Text_2, MSGBOX_NPC
 	end
 
 Pyroden_EventScript_Sudowoodo_2:
-# 368 "data/maps/Pyroden/scripts.pory"
-	lock
 # 369 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_Sudowoodo_Text_1
+	lock
 # 370 "data/maps/Pyroden/scripts.pory"
-	closemessage
+	msgbox Pyroden_EventScript_Sudowoodo_Text_1
 # 371 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 372 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 
 Pyroden_EventScript_Fro::
-# 382 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 383 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 384 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_INVESTIGATION_STATE, 1
 	goto_if_eq Pyroden_EventScript_Fro_2
-# 431 "data/maps/Pyroden/scripts.pory"
-	lock
 # 432 "data/maps/Pyroden/scripts.pory"
+	lock
+# 433 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Fro_Text_3
-# 437 "data/maps/Pyroden/scripts.pory"
-	closemessage
 # 438 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 439 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 Pyroden_EventScript_Fro_2:
-# 385 "data/maps/Pyroden/scripts.pory"
-	faceplayer
 # 386 "data/maps/Pyroden/scripts.pory"
+	faceplayer
+# 387 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Fro_Text_0, MSGBOX_YESNO
-# 394 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 395 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 396 "data/maps/Pyroden/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq Pyroden_EventScript_Fro_5
-# 405 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 406 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 407 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Fro_Text_2
-# 412 "data/maps/Pyroden/scripts.pory"
-	closemessage
 # 413 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 414 "data/maps/Pyroden/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_Fro_Movement_0
-# 418 "data/maps/Pyroden/scripts.pory"
+# 419 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_Fro_Movement_1
-# 421 "data/maps/Pyroden/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
 # 422 "data/maps/Pyroden/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 423 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_Fro_Movement_2
-# 427 "data/maps/Pyroden/scripts.pory"
-	waitmovement LOCALID_FRO_TOWN
 # 428 "data/maps/Pyroden/scripts.pory"
+	waitmovement LOCALID_FRO_TOWN
+# 429 "data/maps/Pyroden/scripts.pory"
 	goto Pyroden_EventScript_FroJumpsInSprings
 	end
 
 Pyroden_EventScript_Fro_5:
-# 397 "data/maps/Pyroden/scripts.pory"
+# 398 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Fro_Text_1
-# 402 "data/maps/Pyroden/scripts.pory"
+# 403 "data/maps/Pyroden/scripts.pory"
 	closemessage
 	end
 
 
 Pyroden_EventScript_Vee::
-# 444 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 445 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 446 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_INVESTIGATION_STATE, 1
 	goto_if_eq Pyroden_EventScript_Vee_2
-# 498 "data/maps/Pyroden/scripts.pory"
-	lock
 # 499 "data/maps/Pyroden/scripts.pory"
+	lock
+# 500 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Vee_Text_4
-# 505 "data/maps/Pyroden/scripts.pory"
-	closemessage
 # 506 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 507 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 Pyroden_EventScript_Vee_2:
-# 447 "data/maps/Pyroden/scripts.pory"
-	faceplayer
 # 448 "data/maps/Pyroden/scripts.pory"
+	faceplayer
+# 449 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Vee_Text_0, MSGBOX_YESNO
-# 456 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 457 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 458 "data/maps/Pyroden/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq Pyroden_EventScript_Vee_5
-# 467 "data/maps/Pyroden/scripts.pory"
+# 468 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Vee_Text_2
-# 471 "data/maps/Pyroden/scripts.pory"
-	playse SE_PIN
 # 472 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 473 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_Vee_Movement_0
-# 477 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
 # 478 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+	waitmovement 0
 # 479 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 480 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Vee_Text_3
-# 486 "data/maps/Pyroden/scripts.pory"
-	closemessage
 # 487 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_Fro_Movement_1
+	closemessage
 # 488 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_Vee_Movement_1
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_Fro_Movement_1
 # 489 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_Vee_Movement_1
+# 490 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_Fro_Movement_2
-# 494 "data/maps/Pyroden/scripts.pory"
-	waitmovement LOCALID_FRO_TOWN
 # 495 "data/maps/Pyroden/scripts.pory"
+	waitmovement LOCALID_FRO_TOWN
+# 496 "data/maps/Pyroden/scripts.pory"
 	goto Pyroden_EventScript_FroJumpsInSprings
 	end
 
 Pyroden_EventScript_Vee_5:
-# 459 "data/maps/Pyroden/scripts.pory"
+# 460 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Vee_Text_1
-# 464 "data/maps/Pyroden/scripts.pory"
+# 465 "data/maps/Pyroden/scripts.pory"
 	closemessage
 	end
 
 
 Pyroden_EventScript_Sunkern::
-# 512 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Sunkern_Text_0
 # 513 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Sunkern_Text_0
+# 514 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_INVESTIGATION_STATE, 0
 	goto_if_eq Pyroden_EventScript_Sunkern_2
-# 524 "data/maps/Pyroden/scripts.pory"
+# 525 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Sunkern_Text_2, MSGBOX_NPC
 	end
 
 Pyroden_EventScript_Sunkern_2:
-# 515 "data/maps/Pyroden/scripts.pory"
-	lock
 # 516 "data/maps/Pyroden/scripts.pory"
+	lock
+# 517 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Sunkern_Text_1
-# 520 "data/maps/Pyroden/scripts.pory"
-	closemessage
 # 521 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 522 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 
 Pyroden_EventScript_Nidorina::
-# 534 "data/maps/Pyroden/scripts.pory"
-	lock
 # 535 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Nidorina_Text_0
+	lock
 # 536 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Nidorina_Text_0
+# 537 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Nidorina_Text_1, MSGBOX_NPC
-# 543 "data/maps/Pyroden/scripts.pory"
+# 544 "data/maps/Pyroden/scripts.pory"
 	goto_if_unset FLAG_INVESTIGATION_HINT_ENTRANCE, Pyroden_EventScript_Nidorina_2
 Pyroden_EventScript_Nidorina_1:
-# 548 "data/maps/Pyroden/scripts.pory"
+# 549 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 Pyroden_EventScript_Nidorina_2:
-# 545 "data/maps/Pyroden/scripts.pory"
-	setflag FLAG_INVESTIGATION_HINT_ENTRANCE
 # 546 "data/maps/Pyroden/scripts.pory"
+	setflag FLAG_INVESTIGATION_HINT_ENTRANCE
+# 547 "data/maps/Pyroden/scripts.pory"
 	call Pyroden_EventScript_CheckHints
 	goto Pyroden_EventScript_Nidorina_1
 
 
 Pyroden_EventScript_Snubbul::
-# 554 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Snubbul_Text_0
 # 555 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Snubbul_Text_0
+# 556 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_STATE, 1
 	goto_if_gt Pyroden_EventScript_Snubbul_2
-# 562 "data/maps/Pyroden/scripts.pory"
+# 563 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Snubbul_Text_2, MSGBOX_NPC
 	end
 
 Pyroden_EventScript_Snubbul_2:
-# 557 "data/maps/Pyroden/scripts.pory"
+# 558 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Snubbul_Text_1, MSGBOX_NPC
 	end
 
 
 Pyroden_EventScript_Spinda::
-# 572 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Spinda_Text_0
 # 573 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 574 "data/maps/Pyroden/scripts.pory"
 	compare VAR_PYRODEN_STATE, 2
-	goto_if_eq Pyroden_EventScript_Spinda_2
-# 583 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_Spinda_Text_2
-# 589 "data/maps/Pyroden/scripts.pory"
+	goto_if_gt Pyroden_EventScript_Spinda_2
+# 582 "data/maps/Pyroden/scripts.pory"
+	compare VAR_PYRODEN_STATE, 2
+	goto_if_eq Pyroden_EventScript_Spinda_5
+# 598 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_Spinda_Text_3
+# 604 "data/maps/Pyroden/scripts.pory"
 	closemessage
 	end
 
 Pyroden_EventScript_Spinda_2:
-# 575 "data/maps/Pyroden/scripts.pory"
+# 576 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_Spinda_Text_1
-# 580 "data/maps/Pyroden/scripts.pory"
+	end
+
+Pyroden_EventScript_Spinda_5:
+# 584 "data/maps/Pyroden/scripts.pory"
+	checkitem ITEM_FIRE_STONE
+# 585 "data/maps/Pyroden/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq Pyroden_EventScript_Spinda_8
+# 590 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_Spinda_Text_2
+# 595 "data/maps/Pyroden/scripts.pory"
 	closemessage
+	end
+
+Pyroden_EventScript_Spinda_8:
+# 587 "data/maps/Pyroden/scripts.pory"
+	goto Pyroden_EventScript_TeachWillOWisp
 	end
 
 
 Pyroden_EventScript_FroJumpsInSprings::
-# 595 "data/maps/Pyroden/scripts.pory"
-	special SpawnCameraObject
-# 596 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 597 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_0
-# 600 "data/maps/Pyroden/scripts.pory"
-	playse SE_PIN
-# 601 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SNUBBUL, Pyroden_EventScript_FroJumpsInSprings_Movement_0
-# 606 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Snubbul_Text_0
-# 607 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_1
 # 610 "data/maps/Pyroden/scripts.pory"
-	closemessage
+	special SpawnCameraObject
 # 611 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_IntroVeeUp_Movement_2
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 612 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_2
-# 613 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_1
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_0
+# 615 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
 # 616 "data/maps/Pyroden/scripts.pory"
-	waitmovement LOCALID_FRO_TOWN
-# 617 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_TO_WHITE
-# 618 "data/maps/Pyroden/scripts.pory"
-	playse SE_LEDGE
-# 619 "data/maps/Pyroden/scripts.pory"
-	waitse
-# 620 "data/maps/Pyroden/scripts.pory"
-	playse SE_FALL
+	applymovement LOCALID_SNUBBUL, Pyroden_EventScript_FroJumpsInSprings_Movement_0
 # 621 "data/maps/Pyroden/scripts.pory"
-	waitse
-# 622 "data/maps/Pyroden/scripts.pory"
-	playse SE_M_EXPLOSION
-# 623 "data/maps/Pyroden/scripts.pory"
-	waitse
-# 624 "data/maps/Pyroden/scripts.pory"
-	setmetatile 16, 41, METATILE_Pyroden_EmptyPool_TopLeft, TRUE
-# 625 "data/maps/Pyroden/scripts.pory"
-	setmetatile 17, 41, METATILE_Pyroden_EmptyPool_TopMiddle, TRUE
-# 626 "data/maps/Pyroden/scripts.pory"
-	setmetatile 18, 41, METATILE_Pyroden_EmptyPool_TopRight, TRUE
-# 627 "data/maps/Pyroden/scripts.pory"
-	setmetatile 15, 42, METATILE_Pyroden_EmptyPool_TopLeft, TRUE
-# 628 "data/maps/Pyroden/scripts.pory"
-	setmetatile 16, 42, METATILE_Pyroden_EmptyPool_BottomRightCorner, TRUE
-# 629 "data/maps/Pyroden/scripts.pory"
-	setmetatile 17, 42, METATILE_Pyroden_EmptyPool_MiddleMiddle, TRUE
-# 630 "data/maps/Pyroden/scripts.pory"
-	setmetatile 18, 42, METATILE_Pyroden_EmptyPool_MiddleRight, TRUE
-# 631 "data/maps/Pyroden/scripts.pory"
-	setmetatile 15, 43, METATILE_Pyroden_EmptyPool_BottomLeft, TRUE
-# 632 "data/maps/Pyroden/scripts.pory"
-	setmetatile 16, 43 METATILE_Pyroden_EmptyPool_BottomMiddle, TRUE
-# 633 "data/maps/Pyroden/scripts.pory"
-	setmetatile 17, 43, METATILE_Pyroden_EmptyPool_BottomMiddle, TRUE
-# 634 "data/maps/Pyroden/scripts.pory"
-	setmetatile 18, 43, METATILE_Pyroden_EmptyPool_BottomRight, TRUE
-# 636 "data/maps/Pyroden/scripts.pory"
-	setmetatile 19, 39, METATILE_Pyroden_Puddle_TopLeft, FALSE
-# 637 "data/maps/Pyroden/scripts.pory"
-	setmetatile 20, 39, METATILE_Pyroden_Puddle_TopRight, FALSE
-# 638 "data/maps/Pyroden/scripts.pory"
-	setmetatile 19, 40, METATILE_Pyroden_Puddle_BottomLeft, FALSE
-# 639 "data/maps/Pyroden/scripts.pory"
-	setmetatile 20, 40, METATILE_Pyroden_Puddle_BottomRight, FALSE
-# 641 "data/maps/Pyroden/scripts.pory"
-	setmetatile 14, 40, METATILE_Pyroden_Puddle_TopLeft, FALSE
-# 642 "data/maps/Pyroden/scripts.pory"
-	setmetatile 15, 40, METATILE_Pyroden_Puddle_TopRight, FALSE
-# 643 "data/maps/Pyroden/scripts.pory"
-	setmetatile 14, 41, METATILE_Pyroden_Puddle_BottomLeft, FALSE
-# 644 "data/maps/Pyroden/scripts.pory"
-	setmetatile 15, 41, METATILE_Pyroden_Puddle_BottomRight, FALSE
-# 645 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_NIDORINA
-# 646 "data/maps/Pyroden/scripts.pory"
-	special DrawWholeMapView
-# 647 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_1
-# 648 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Pyroden_EventScript_FroJumpsInSprings_Movement_2
-# 649 "data/maps/Pyroden/scripts.pory"
-	waitmovement OBJ_EVENT_ID_CAMERA
-# 650 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_FROM_WHITE
-# 651 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_3
-# 660 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 661 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 662 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_2
-# 666 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_Snubbul_Text_0
-# 667 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_3
-# 672 "data/maps/Pyroden/scripts.pory"
+# 622 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_1
+# 625 "data/maps/Pyroden/scripts.pory"
 	closemessage
-# 673 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SNUBBUL, Pyroden_EventScript_FroJumpsInSprings_Movement_4
+# 626 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_IntroVeeUp_Movement_2
+# 627 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_IntroVeeDown_Movement_2
+# 628 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_1
+# 631 "data/maps/Pyroden/scripts.pory"
+	waitmovement LOCALID_FRO_TOWN
+# 632 "data/maps/Pyroden/scripts.pory"
+	fadescreen FADE_TO_WHITE
+# 633 "data/maps/Pyroden/scripts.pory"
+	playse SE_LEDGE
+# 634 "data/maps/Pyroden/scripts.pory"
+	waitse
+# 635 "data/maps/Pyroden/scripts.pory"
+	playse SE_FALL
+# 636 "data/maps/Pyroden/scripts.pory"
+	waitse
+# 637 "data/maps/Pyroden/scripts.pory"
+	playse SE_M_EXPLOSION
+# 638 "data/maps/Pyroden/scripts.pory"
+	waitse
+# 639 "data/maps/Pyroden/scripts.pory"
+	setmetatile 16, 41, METATILE_Pyroden_EmptyPool_TopLeft, TRUE
+# 640 "data/maps/Pyroden/scripts.pory"
+	setmetatile 17, 41, METATILE_Pyroden_EmptyPool_TopMiddle, TRUE
+# 641 "data/maps/Pyroden/scripts.pory"
+	setmetatile 18, 41, METATILE_Pyroden_EmptyPool_TopRight, TRUE
+# 642 "data/maps/Pyroden/scripts.pory"
+	setmetatile 15, 42, METATILE_Pyroden_EmptyPool_TopLeft, TRUE
+# 643 "data/maps/Pyroden/scripts.pory"
+	setmetatile 16, 42, METATILE_Pyroden_EmptyPool_BottomRightCorner, TRUE
+# 644 "data/maps/Pyroden/scripts.pory"
+	setmetatile 17, 42, METATILE_Pyroden_EmptyPool_MiddleMiddle, TRUE
+# 645 "data/maps/Pyroden/scripts.pory"
+	setmetatile 18, 42, METATILE_Pyroden_EmptyPool_MiddleRight, TRUE
+# 646 "data/maps/Pyroden/scripts.pory"
+	setmetatile 15, 43, METATILE_Pyroden_EmptyPool_BottomLeft, TRUE
+# 647 "data/maps/Pyroden/scripts.pory"
+	setmetatile 16, 43 METATILE_Pyroden_EmptyPool_BottomMiddle, TRUE
+# 648 "data/maps/Pyroden/scripts.pory"
+	setmetatile 17, 43, METATILE_Pyroden_EmptyPool_BottomMiddle, TRUE
+# 649 "data/maps/Pyroden/scripts.pory"
+	setmetatile 18, 43, METATILE_Pyroden_EmptyPool_BottomRight, TRUE
+# 651 "data/maps/Pyroden/scripts.pory"
+	setmetatile 19, 39, METATILE_Pyroden_Puddle_TopLeft, FALSE
+# 652 "data/maps/Pyroden/scripts.pory"
+	setmetatile 20, 39, METATILE_Pyroden_Puddle_TopRight, FALSE
+# 653 "data/maps/Pyroden/scripts.pory"
+	setmetatile 19, 40, METATILE_Pyroden_Puddle_BottomLeft, FALSE
+# 654 "data/maps/Pyroden/scripts.pory"
+	setmetatile 20, 40, METATILE_Pyroden_Puddle_BottomRight, FALSE
+# 656 "data/maps/Pyroden/scripts.pory"
+	setmetatile 14, 40, METATILE_Pyroden_Puddle_TopLeft, FALSE
+# 657 "data/maps/Pyroden/scripts.pory"
+	setmetatile 15, 40, METATILE_Pyroden_Puddle_TopRight, FALSE
+# 658 "data/maps/Pyroden/scripts.pory"
+	setmetatile 14, 41, METATILE_Pyroden_Puddle_BottomLeft, FALSE
+# 659 "data/maps/Pyroden/scripts.pory"
+	setmetatile 15, 41, METATILE_Pyroden_Puddle_BottomRight, FALSE
+# 660 "data/maps/Pyroden/scripts.pory"
+	special DrawWholeMapView
+# 661 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_1
+# 662 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Pyroden_EventScript_FroJumpsInSprings_Movement_2
+# 663 "data/maps/Pyroden/scripts.pory"
+	waitmovement OBJ_EVENT_ID_CAMERA
+# 664 "data/maps/Pyroden/scripts.pory"
+	fadescreen FADE_FROM_WHITE
+# 665 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_3
+# 674 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 675 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 676 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 677 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_SNUBBUL
-# 678 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_IntroVeeDown_Movement_6
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_2
+# 680 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Snubbul_Text_0
 # 681 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 682 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 683 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_4
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_3
+# 686 "data/maps/Pyroden/scripts.pory"
+	closemessage
 # 687 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 688 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_5
+	applymovement LOCALID_SNUBBUL, Pyroden_EventScript_FroJumpsInSprings_Movement_4
+# 690 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
 # 691 "data/maps/Pyroden/scripts.pory"
-	closemessage
+	removeobject LOCALID_SNUBBUL
 # 692 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 693 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_FRO_TOWN
-# 694 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_VEE_TOWN
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_IntroVeeDown_Movement_6
 # 695 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Pyroden_EventScript_FroJumpsInSprings_Movement_5
-# 699 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_FroJumpsInSprings_Movement_6
+	waitmovement 0
+# 696 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 697 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_4
+# 701 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 702 "data/maps/Pyroden/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 703 "data/maps/Pyroden/scripts.pory"
-	clearflag FLAG_HIDE_HOT_SPRINGS_GANG
-# 704 "data/maps/Pyroden/scripts.pory"
-	addobject LOCALID_SEEL_HOT_SPRINGS
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_5
 # 705 "data/maps/Pyroden/scripts.pory"
-	addobject LOCALID_FRO_HOT_SPRINGS
-# 706 "data/maps/Pyroden/scripts.pory"
-	addobject LOCALID_VEE_HOT_SPRINGS
-# 707 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_FROM_BLACK
-# 708 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_FroJumpsInSprings_Movement_7
-# 711 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 712 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 713 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_6
-# 718 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 719 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_7
-# 724 "data/maps/Pyroden/scripts.pory"
 	closemessage
+# 706 "data/maps/Pyroden/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 707 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_FRO_TOWN
+# 708 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_VEE_TOWN
+# 709 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Pyroden_EventScript_FroJumpsInSprings_Movement_5
+# 713 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_FroJumpsInSprings_Movement_6
+# 716 "data/maps/Pyroden/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 717 "data/maps/Pyroden/scripts.pory"
+	clearflag FLAG_HIDE_HOT_SPRINGS_GANG
+# 718 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_SEEL_HOT_SPRINGS
+# 719 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_FRO_HOT_SPRINGS
+# 720 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_VEE_HOT_SPRINGS
+# 721 "data/maps/Pyroden/scripts.pory"
+	fadescreen FADE_FROM_BLACK
+# 722 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_FroJumpsInSprings_Movement_7
 # 725 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_IntroVeeDown_Movement_6
+	waitmovement 0
 # 726 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_IntroVeeDown_Movement_6
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 727 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
-# 728 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 729 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_8
-# 730 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 731 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_6
 # 732 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_8
-# 736 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 737 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_9
-# 741 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 742 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_10
-# 743 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
-# 744 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_IntroVeeUp_Movement_2
-# 745 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_9
-# 746 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 747 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 748 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_11
-# 755 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 756 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_12
-# 759 "data/maps/Pyroden/scripts.pory"
+# 733 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_7
+# 738 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 739 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_IntroVeeDown_Movement_6
+# 740 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_IntroVeeDown_Movement_6
+# 741 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
+# 742 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 743 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_8
+# 744 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 745 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 746 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_8
+# 750 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 751 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_9
+# 755 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 756 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_10
+# 757 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
+# 758 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_IntroVeeUp_Movement_2
+# 759 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_9
 # 760 "data/maps/Pyroden/scripts.pory"
 	waitmovement 0
 # 761 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
 # 762 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_13
-# 765 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 766 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_14
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_11
 # 769 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_9
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 770 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_12
+# 773 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_IntroVeeDown_Movement_6
+# 774 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 775 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 771 "data/maps/Pyroden/scripts.pory"
+# 776 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_13
+# 779 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 780 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_14
+# 783 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_9
+# 784 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 785 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_15
-# 781 "data/maps/Pyroden/scripts.pory"
+# 795 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 782 "data/maps/Pyroden/scripts.pory"
+# 796 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_16
-# 792 "data/maps/Pyroden/scripts.pory"
+# 806 "data/maps/Pyroden/scripts.pory"
 	playse SE_PIN
-# 793 "data/maps/Pyroden/scripts.pory"
+# 807 "data/maps/Pyroden/scripts.pory"
 	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_10
-# 798 "data/maps/Pyroden/scripts.pory"
+# 812 "data/maps/Pyroden/scripts.pory"
 	waitmovement 0
-# 799 "data/maps/Pyroden/scripts.pory"
+# 813 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 800 "data/maps/Pyroden/scripts.pory"
+# 814 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_17
-# 804 "data/maps/Pyroden/scripts.pory"
+# 818 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 805 "data/maps/Pyroden/scripts.pory"
+# 819 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_18
-# 810 "data/maps/Pyroden/scripts.pory"
+# 824 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 811 "data/maps/Pyroden/scripts.pory"
+# 825 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_19
-# 816 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 817 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_20
-# 822 "data/maps/Pyroden/scripts.pory"
-	playse SE_PIN
-# 823 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SPINDA, Pyroden_EventScript_FroJumpsInSprings_Movement_11
 # 830 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 831 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
-# 832 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
-# 833 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
-# 834 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
-# 835 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Spinda_Text_0
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_20
 # 836 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_21
-# 842 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 843 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_22
+	playse SE_PIN
+# 837 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_FroJumpsInSprings_Movement_11
+# 844 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 845 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
+# 846 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SEEL_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
 # 847 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Spinda_Text_0
+	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_Fro_Movement_1
 # 848 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 849 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 850 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_21
+# 856 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 857 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_22
+# 861 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 862 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_23
-# 863 "data/maps/Pyroden/scripts.pory"
+# 877 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 864 "data/maps/Pyroden/scripts.pory"
+# 878 "data/maps/Pyroden/scripts.pory"
 	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_24
-# 868 "data/maps/Pyroden/scripts.pory"
+# 882 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 869 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_25
-# 872 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Spinda_Text_0
-# 873 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_26
-# 879 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_0
-# 880 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_27
 # 883 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_25
+# 886 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_Spinda_Text_0
-# 884 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_28
-# 890 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 891 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_29
-# 896 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_Spinda_Text_0
+# 887 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_26
+# 893 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 894 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_27
 # 897 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_30
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 898 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_28
 # 904 "data/maps/Pyroden/scripts.pory"
 	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 905 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_31
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_29
 # 909 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_IntroVeeUp_Movement_2
+	speakername Pyroden_EventScript_Spinda_Text_0
 # 910 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_9
-# 911 "data/maps/Pyroden/scripts.pory"
-	speakername Pyroden_EventScript_IntroVeeDown_Text_1
-# 912 "data/maps/Pyroden/scripts.pory"
-	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_32
-# 916 "data/maps/Pyroden/scripts.pory"
-	closemessage
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_30
 # 917 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 918 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_FRO_HOT_SPRINGS
-# 919 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_VEE_HOT_SPRINGS
-# 920 "data/maps/Pyroden/scripts.pory"
-	removeobject LOCALID_SEEL_HOT_SPRINGS
-# 921 "data/maps/Pyroden/scripts.pory"
-	clearflag FLAG_HIDE_SNUBBUL_PYRODEN
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_31
 # 922 "data/maps/Pyroden/scripts.pory"
-	addobject LOCALID_SNUBBUL
+	applymovement LOCALID_FRO_HOT_SPRINGS, Pyroden_EventScript_IntroVeeUp_Movement_2
 # 923 "data/maps/Pyroden/scripts.pory"
-	clearflag FLAG_HIDE_NIDORINA_PYRODEN
+	applymovement LOCALID_VEE_HOT_SPRINGS, Pyroden_EventScript_FroJumpsInSprings_Movement_9
 # 924 "data/maps/Pyroden/scripts.pory"
-	addobject LOCALID_NIDORINA
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
 # 925 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_PYRODEN_STATE, 2
-# 926 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, Pyroden_EventScript_FroJumpsInSprings_Movement_12
+	msgbox Pyroden_EventScript_FroJumpsInSprings_Text_32
 # 929 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_FroJumpsInSprings_Movement_13
+	closemessage
+# 930 "data/maps/Pyroden/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 931 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_FRO_HOT_SPRINGS
+# 932 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_VEE_HOT_SPRINGS
+# 933 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_SEEL_HOT_SPRINGS
 # 934 "data/maps/Pyroden/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	clearflag FLAG_HIDE_SNUBBUL_PYRODEN
 # 935 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_SPINDA, Pyroden_EventScript_IntroVeeUp_Movement_2
+	addobject LOCALID_SNUBBUL
 # 936 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
+	clearflag FLAG_HIDE_NIDORINA_PYRODEN
 # 937 "data/maps/Pyroden/scripts.pory"
-	special RemoveCameraObject
+	setvar VAR_PYRODEN_STATE, 2
 # 938 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_CAMERA, Pyroden_EventScript_FroJumpsInSprings_Movement_12
+# 941 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_FroJumpsInSprings_Movement_13
+# 946 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_FroJumpsInSprings_Movement_14
+# 951 "data/maps/Pyroden/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 952 "data/maps/Pyroden/scripts.pory"
+	special RemoveCameraObject
+# 953 "data/maps/Pyroden/scripts.pory"
 	fadescreen FADE_FROM_BLACK
 	end
 
 
-# 57 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_IntroVeeDown_Movement_0:
+Pyroden_EventScript_TeachWillOWisp::
+# 959 "data/maps/Pyroden/scripts.pory"
+	clearflag FLAG_HIDE_PARTY_PYRODEN
+# 960 "data/maps/Pyroden/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 961 "data/maps/Pyroden/scripts.pory"
+	setobjectxyperm LOCALID_FRO_TOWN, PlayerXCoordinates, PlayerYCoordinates
+# 962 "data/maps/Pyroden/scripts.pory"
+	setobjectxyperm LOCALID_VEE_TOWN, PlayerXCoordinates, PlayerYCoordinates
+# 963 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_VEE_TOWN
+# 964 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_FRO_TOWN
+# 965 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_0
+# 966 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_1
+# 967 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 968 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 969 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_0
+# 974 "data/maps/Pyroden/scripts.pory"
+	speakername NULL
+# 975 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_1
+# 978 "data/maps/Pyroden/scripts.pory"
+	removeitem ITEM_FIRE_STONE
+# 979 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 980 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_2
+# 984 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 985 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_3
+# 990 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 991 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_4
+# 998 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 999 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 1000 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_2
+# 1004 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1005 "data/maps/Pyroden/scripts.pory"
+	waitse
+# 1006 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_5
+# 1009 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1010 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_6
+# 1018 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 1019 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_7
+# 1025 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1026 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_8
+# 1033 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1034 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_3
+# 1039 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_TeachWillOWisp_Movement_4
+# 1044 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_5
+# 1050 "data/maps/Pyroden/scripts.pory"
+	waitmovement LOCALID_VEE_TOWN
+# 1051 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 1052 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_9
+# 1055 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 1056 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_10
+# 1059 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1060 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_6
+# 1061 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1062 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1063 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_11
+# 1067 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 1068 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SNUBBUL, Pyroden_EventScript_IntroVeeDown_Movement_4
+# 1073 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Snubbul_Text_0
+# 1074 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_12
+# 1077 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1078 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SNUBBUL, Pyroden_EventScript_FroJumpsInSprings_Movement_4
+# 1081 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1082 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_7
+# 1086 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1087 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1088 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_13
+# 1092 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1093 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_8
+# 1119 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 1120 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_14
+# 1123 "data/maps/Pyroden/scripts.pory"
+	fadeoutbgm 1
+# 1124 "data/maps/Pyroden/scripts.pory"
+	setweather WEATHER_SHADE
+# 1125 "data/maps/Pyroden/scripts.pory"
+	doweather
+# 1126 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 1127 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_2
+# 1128 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_2
+# 1129 "data/maps/Pyroden/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_TeachWillOWisp_Movement_2
+# 1130 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1131 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_9
+# 1169 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1170 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1171 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_15
+# 1174 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1175 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_10
+# 1191 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1192 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1193 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_16
+# 1196 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1197 "data/maps/Pyroden/scripts.pory"
+	setweather WEATHER_RAIN_THUNDERSTORM
+# 1198 "data/maps/Pyroden/scripts.pory"
+	doweather
+# 1199 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 1200 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_17
+# 1204 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1205 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_11
+# 1221 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1222 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_18
+# 1226 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1227 "data/maps/Pyroden/scripts.pory"
+	playmoncry SPECIES_GIRATINA, CRY_MODE_NORMAL
+# 1228 "data/maps/Pyroden/scripts.pory"
+	waitmoncry
+# 1229 "data/maps/Pyroden/scripts.pory"
+	clearflag FLAG_HIDE_GIRATINA
+# 1230 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_GIRATINA
+# 1231 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_GIRATINA, Pyroden_EventScript_TeachWillOWisp_Movement_12
+# 1234 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1235 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 1236 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_19
+# 1239 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 1240 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_20
+# 1245 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 1246 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_21
+# 1249 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1250 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1251 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_22
+# 1254 "data/maps/Pyroden/scripts.pory"
+	playmoncry SPECIES_GIRATINA, CRY_MODE_NORMAL
+# 1255 "data/maps/Pyroden/scripts.pory"
+	waitmoncry
+# 1256 "data/maps/Pyroden/scripts.pory"
+	setweather WEATHER_NONE
+# 1257 "data/maps/Pyroden/scripts.pory"
+	doweather
+# 1258 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_GIRATINA, Pyroden_EventScript_TeachWillOWisp_Movement_13
+# 1261 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1262 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1263 "data/maps/Pyroden/scripts.pory"
+	fadescreenswapbuffers FADE_TO_WHITE
+# 1264 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_GIRATINA
+# 1265 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_SNUBBUL
+# 1266 "data/maps/Pyroden/scripts.pory"
+	clearflag FLAG_HIDE_SNUBBUL_PYRODEN
+# 1267 "data/maps/Pyroden/scripts.pory"
+	addobject LOCALID_SNUBBUL
+# 1268 "data/maps/Pyroden/scripts.pory"
+	setobjectmovementtype LOCALID_SNUBBUL, MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT
+# 1269 "data/maps/Pyroden/scripts.pory"
+	delay 120
+# 1270 "data/maps/Pyroden/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_WHITE
+# 1271 "data/maps/Pyroden/scripts.pory"
+	special WaitWeather
+# 1272 "data/maps/Pyroden/scripts.pory"
+	waitstate
+# 1273 "data/maps/Pyroden/scripts.pory"
+	fadeinbgm 1
+# 1274 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_14
+# 1278 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1279 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1280 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_23
+# 1285 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 1286 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_24
+# 1289 "data/maps/Pyroden/scripts.pory"
+	playse SE_PIN
+# 1290 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_15
+# 1291 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1292 "data/maps/Pyroden/scripts.pory"
+	waitse
+# 1293 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1294 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_25
+# 1297 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 1298 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_26
+# 1304 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_Spinda_Text_0
+# 1305 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_27
+# 1312 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1313 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_SPINDA, Pyroden_EventScript_TeachWillOWisp_Movement_16
+# 1318 "data/maps/Pyroden/scripts.pory"
+	setobjectmovementtype LOCALID_SPINDA, MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE
+# 1319 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_Fro_Movement_1
+# 1320 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_FroJumpsInSprings_Movement_9
+# 1321 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1322 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_0
+# 1323 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_28
+# 1328 "data/maps/Pyroden/scripts.pory"
+	speakername Pyroden_EventScript_IntroVeeDown_Text_1
+# 1329 "data/maps/Pyroden/scripts.pory"
+	msgbox Pyroden_EventScript_TeachWillOWisp_Text_29
+# 1332 "data/maps/Pyroden/scripts.pory"
+	closemessage
+# 1333 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_InvestigationNotOver_Movement_0
+# 1334 "data/maps/Pyroden/scripts.pory"
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_17
+# 1335 "data/maps/Pyroden/scripts.pory"
+	waitmovement 0
+# 1336 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_VEE_TOWN
+# 1337 "data/maps/Pyroden/scripts.pory"
+	removeobject LOCALID_FRO_TOWN
+# 1338 "data/maps/Pyroden/scripts.pory"
+	setflag FLAG_WILL_O_WISP
+# 1339 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_PYRODEN_STATE, 3
+# 1340 "data/maps/Pyroden/scripts.pory"
+	end
+	end
+
+
 # 58 "data/maps/Pyroden/scripts.pory"
-	walk_left
+Pyroden_EventScript_IntroVeeDown_Movement_0:
 # 59 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 60 "data/maps/Pyroden/scripts.pory"
 	face_right
 	step_end
 
-# 61 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_IntroVeeDown_Movement_1:
 # 62 "data/maps/Pyroden/scripts.pory"
-	walk_down
+Pyroden_EventScript_IntroVeeDown_Movement_1:
 # 63 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 64 "data/maps/Pyroden/scripts.pory"
 	face_up
 	step_end
 
-# 65 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_IntroVeeDown_Movement_2:
 # 66 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_IntroVeeDown_Movement_2:
+# 67 "data/maps/Pyroden/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 71 "data/maps/Pyroden/scripts.pory"
+# 72 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_IntroVeeDown_Movement_3:
-# 71 "data/maps/Pyroden/scripts.pory"
+# 72 "data/maps/Pyroden/scripts.pory"
 	walk_in_place_left
 	step_end
 
-# 76 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_IntroVeeDown_Movement_4:
 # 77 "data/maps/Pyroden/scripts.pory"
-	emote_exclamation_mark
+Pyroden_EventScript_IntroVeeDown_Movement_4:
 # 78 "data/maps/Pyroden/scripts.pory"
-	delay_16
+	emote_exclamation_mark
 # 79 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 80 "data/maps/Pyroden/scripts.pory"
 	face_left
 	step_end
 
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_IntroVeeDown_Movement_5:
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 95 "data/maps/Pyroden/scripts.pory"
+# 96 "data/maps/Pyroden/scripts.pory"
 	walk_right
 	step_end
 
-# 99 "data/maps/Pyroden/scripts.pory"
+# 100 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_IntroVeeDown_Movement_6:
-# 99 "data/maps/Pyroden/scripts.pory"
+# 100 "data/maps/Pyroden/scripts.pory"
 	face_up
 	step_end
 
-# 120 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_IntroVeeUp_Movement_0:
 # 121 "data/maps/Pyroden/scripts.pory"
-	walk_up
+Pyroden_EventScript_IntroVeeUp_Movement_0:
 # 122 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 123 "data/maps/Pyroden/scripts.pory"
 	face_down
 	step_end
 
-# 124 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_IntroVeeUp_Movement_1:
 # 125 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_IntroVeeUp_Movement_1:
+# 126 "data/maps/Pyroden/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 158 "data/maps/Pyroden/scripts.pory"
+# 159 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_IntroVeeUp_Movement_2:
-# 158 "data/maps/Pyroden/scripts.pory"
+# 159 "data/maps/Pyroden/scripts.pory"
 	face_down
 	step_end
 
-# 264 "data/maps/Pyroden/scripts.pory"
+# 265 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_InvestigationNotOver_Movement_0:
-# 264 "data/maps/Pyroden/scripts.pory"
+# 265 "data/maps/Pyroden/scripts.pory"
 	walk_left
 	step_end
 
-# 413 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_Fro_Movement_0:
 # 414 "data/maps/Pyroden/scripts.pory"
-	walk_left
+Pyroden_EventScript_Fro_Movement_0:
 # 415 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 416 "data/maps/Pyroden/scripts.pory"
 	walk_in_place_right
 	step_end
 
-# 418 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_Fro_Movement_1:
 # 419 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_Fro_Movement_1:
+# 420 "data/maps/Pyroden/scripts.pory"
 	face_right
 	step_end
 
-# 422 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_Fro_Movement_2:
 # 423 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_Fro_Movement_2:
+# 424 "data/maps/Pyroden/scripts.pory"
 	walk_down
-# 424 "data/maps/Pyroden/scripts.pory"
-	walk_right
-# 424 "data/maps/Pyroden/scripts.pory"
-	walk_right
-# 424 "data/maps/Pyroden/scripts.pory"
+# 425 "data/maps/Pyroden/scripts.pory"
 	walk_right
 # 425 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 425 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 426 "data/maps/Pyroden/scripts.pory"
 	face_down
 	step_end
 
-# 472 "data/maps/Pyroden/scripts.pory"
-Pyroden_EventScript_Vee_Movement_0:
 # 473 "data/maps/Pyroden/scripts.pory"
-	emote_exclamation_mark
+Pyroden_EventScript_Vee_Movement_0:
 # 474 "data/maps/Pyroden/scripts.pory"
-	delay_16
+	emote_exclamation_mark
 # 475 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 476 "data/maps/Pyroden/scripts.pory"
 	face_down
 	step_end
 
-# 488 "data/maps/Pyroden/scripts.pory"
+# 489 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_Vee_Movement_1:
-# 488 "data/maps/Pyroden/scripts.pory"
+# 489 "data/maps/Pyroden/scripts.pory"
 	walk_in_place_fast_right
 	step_end
 
-# 601 "data/maps/Pyroden/scripts.pory"
+# 616 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_0:
-# 602 "data/maps/Pyroden/scripts.pory"
+# 617 "data/maps/Pyroden/scripts.pory"
 	emote_exclamation_mark
-# 603 "data/maps/Pyroden/scripts.pory"
+# 618 "data/maps/Pyroden/scripts.pory"
 	face_left
-# 604 "data/maps/Pyroden/scripts.pory"
+# 619 "data/maps/Pyroden/scripts.pory"
 	delay_16
 	step_end
 
-# 613 "data/maps/Pyroden/scripts.pory"
+# 628 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_1:
-# 614 "data/maps/Pyroden/scripts.pory"
+# 629 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 614 "data/maps/Pyroden/scripts.pory"
+# 629 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
 	step_end
 
-# 648 "data/maps/Pyroden/scripts.pory"
+# 662 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_2:
-# 648 "data/maps/Pyroden/scripts.pory"
+# 662 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 648 "data/maps/Pyroden/scripts.pory"
+# 662 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 648 "data/maps/Pyroden/scripts.pory"
+# 662 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 648 "data/maps/Pyroden/scripts.pory"
+# 662 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
 	step_end
 
-# 651 "data/maps/Pyroden/scripts.pory"
+# 665 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_3:
-# 652 "data/maps/Pyroden/scripts.pory"
+# 666 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 652 "data/maps/Pyroden/scripts.pory"
+# 666 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 652 "data/maps/Pyroden/scripts.pory"
+# 666 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 653 "data/maps/Pyroden/scripts.pory"
+# 667 "data/maps/Pyroden/scripts.pory"
 	face_right
-# 654 "data/maps/Pyroden/scripts.pory"
+# 668 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 654 "data/maps/Pyroden/scripts.pory"
+# 668 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 655 "data/maps/Pyroden/scripts.pory"
+# 669 "data/maps/Pyroden/scripts.pory"
 	face_left
-# 656 "data/maps/Pyroden/scripts.pory"
+# 670 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 656 "data/maps/Pyroden/scripts.pory"
+# 670 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 657 "data/maps/Pyroden/scripts.pory"
+# 671 "data/maps/Pyroden/scripts.pory"
 	face_down
-# 658 "data/maps/Pyroden/scripts.pory"
+# 672 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 658 "data/maps/Pyroden/scripts.pory"
+# 672 "data/maps/Pyroden/scripts.pory"
 	delay_16
 	step_end
 
-# 673 "data/maps/Pyroden/scripts.pory"
+# 687 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_4:
-# 674 "data/maps/Pyroden/scripts.pory"
+# 688 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 674 "data/maps/Pyroden/scripts.pory"
+# 688 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 674 "data/maps/Pyroden/scripts.pory"
+# 688 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 674 "data/maps/Pyroden/scripts.pory"
+# 688 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 674 "data/maps/Pyroden/scripts.pory"
+# 688 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 674 "data/maps/Pyroden/scripts.pory"
+# 688 "data/maps/Pyroden/scripts.pory"
 	walk_right
 	step_end
 
-# 695 "data/maps/Pyroden/scripts.pory"
+# 709 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_5:
-# 696 "data/maps/Pyroden/scripts.pory"
+# 710 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 696 "data/maps/Pyroden/scripts.pory"
+# 710 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 696 "data/maps/Pyroden/scripts.pory"
+# 710 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 696 "data/maps/Pyroden/scripts.pory"
+# 710 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 697 "data/maps/Pyroden/scripts.pory"
+# 711 "data/maps/Pyroden/scripts.pory"
 	walk_fast_up
 	step_end
 
-# 699 "data/maps/Pyroden/scripts.pory"
+# 713 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_6:
-# 700 "data/maps/Pyroden/scripts.pory"
+# 714 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 700 "data/maps/Pyroden/scripts.pory"
+# 714 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 700 "data/maps/Pyroden/scripts.pory"
+# 714 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 700 "data/maps/Pyroden/scripts.pory"
+# 714 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 700 "data/maps/Pyroden/scripts.pory"
+# 714 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 700 "data/maps/Pyroden/scripts.pory"
+# 714 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
 	step_end
 
-# 708 "data/maps/Pyroden/scripts.pory"
+# 722 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_7:
-# 709 "data/maps/Pyroden/scripts.pory"
+# 723 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 709 "data/maps/Pyroden/scripts.pory"
+# 723 "data/maps/Pyroden/scripts.pory"
 	delay_16
 	step_end
 
-# 729 "data/maps/Pyroden/scripts.pory"
+# 743 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_8:
-# 729 "data/maps/Pyroden/scripts.pory"
+# 743 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 729 "data/maps/Pyroden/scripts.pory"
+# 743 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 729 "data/maps/Pyroden/scripts.pory"
+# 743 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 729 "data/maps/Pyroden/scripts.pory"
+# 743 "data/maps/Pyroden/scripts.pory"
 	delay_16
 	step_end
 
-# 745 "data/maps/Pyroden/scripts.pory"
+# 759 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_9:
-# 745 "data/maps/Pyroden/scripts.pory"
+# 759 "data/maps/Pyroden/scripts.pory"
 	face_left
 	step_end
 
-# 793 "data/maps/Pyroden/scripts.pory"
+# 807 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_10:
-# 794 "data/maps/Pyroden/scripts.pory"
+# 808 "data/maps/Pyroden/scripts.pory"
 	emote_exclamation_mark
-# 795 "data/maps/Pyroden/scripts.pory"
+# 809 "data/maps/Pyroden/scripts.pory"
 	face_up
-# 796 "data/maps/Pyroden/scripts.pory"
+# 810 "data/maps/Pyroden/scripts.pory"
 	delay_16
 	step_end
 
-# 823 "data/maps/Pyroden/scripts.pory"
+# 837 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_11:
-# 824 "data/maps/Pyroden/scripts.pory"
+# 838 "data/maps/Pyroden/scripts.pory"
 	emote_exclamation_mark
-# 825 "data/maps/Pyroden/scripts.pory"
+# 839 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 825 "data/maps/Pyroden/scripts.pory"
+# 839 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 826 "data/maps/Pyroden/scripts.pory"
+# 840 "data/maps/Pyroden/scripts.pory"
 	walk_right
-# 827 "data/maps/Pyroden/scripts.pory"
+# 841 "data/maps/Pyroden/scripts.pory"
 	walk_down
-# 828 "data/maps/Pyroden/scripts.pory"
+# 842 "data/maps/Pyroden/scripts.pory"
 	face_left
 	step_end
 
-# 926 "data/maps/Pyroden/scripts.pory"
+# 938 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_12:
-# 927 "data/maps/Pyroden/scripts.pory"
+# 939 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 927 "data/maps/Pyroden/scripts.pory"
+# 939 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 927 "data/maps/Pyroden/scripts.pory"
+# 939 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
-# 927 "data/maps/Pyroden/scripts.pory"
+# 939 "data/maps/Pyroden/scripts.pory"
 	walk_fast_right
 	step_end
 
-# 929 "data/maps/Pyroden/scripts.pory"
+# 941 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_FroJumpsInSprings_Movement_13:
-# 930 "data/maps/Pyroden/scripts.pory"
+# 942 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 930 "data/maps/Pyroden/scripts.pory"
+# 942 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 930 "data/maps/Pyroden/scripts.pory"
+# 942 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 930 "data/maps/Pyroden/scripts.pory"
+# 942 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 930 "data/maps/Pyroden/scripts.pory"
+# 942 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 930 "data/maps/Pyroden/scripts.pory"
+# 942 "data/maps/Pyroden/scripts.pory"
 	walk_fast_left
-# 931 "data/maps/Pyroden/scripts.pory"
+# 943 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 931 "data/maps/Pyroden/scripts.pory"
+# 943 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 931 "data/maps/Pyroden/scripts.pory"
+# 943 "data/maps/Pyroden/scripts.pory"
 	walk_fast_down
-# 932 "data/maps/Pyroden/scripts.pory"
+# 944 "data/maps/Pyroden/scripts.pory"
 	face_down
 	step_end
 
+# 946 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_FroJumpsInSprings_Movement_14:
+# 947 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 948 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 949 "data/maps/Pyroden/scripts.pory"
+	face_right
+	step_end
+
+# 965 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_0:
+# 965 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 965 "data/maps/Pyroden/scripts.pory"
+	face_left
+	step_end
+
+# 966 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_1:
+# 966 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 966 "data/maps/Pyroden/scripts.pory"
+	face_left
+	step_end
+
+# 1000 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_2:
+# 1001 "data/maps/Pyroden/scripts.pory"
+	emote_exclamation_mark
+# 1002 "data/maps/Pyroden/scripts.pory"
+	delay_16
+	step_end
+
+# 1034 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_3:
+# 1035 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1035 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1036 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1036 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1036 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1036 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1036 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1037 "data/maps/Pyroden/scripts.pory"
+	face_up
+	step_end
+
+# 1039 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_4:
+# 1040 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1041 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1041 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1041 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1041 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1042 "data/maps/Pyroden/scripts.pory"
+	walk_in_place_up
+	step_end
+
+# 1044 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_5:
+# 1045 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1046 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1046 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1046 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1047 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1048 "data/maps/Pyroden/scripts.pory"
+	face_up
+	step_end
+
+# 1060 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_6:
+# 1060 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1060 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1060 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1060 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1060 "data/maps/Pyroden/scripts.pory"
+	walk_right
+	step_end
+
+# 1082 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_7:
+# 1083 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1083 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1084 "data/maps/Pyroden/scripts.pory"
+	face_down
+	step_end
+
+# 1093 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_8:
+# 1094 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1095 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1095 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1096 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1097 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1097 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1098 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1099 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1099 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1100 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1101 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1101 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1102 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1103 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1104 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 1105 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1106 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1107 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1108 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1109 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1110 "data/maps/Pyroden/scripts.pory"
+	walk_right
+# 1111 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1112 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 1113 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1114 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1115 "data/maps/Pyroden/scripts.pory"
+	delay_16
+# 1116 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1117 "data/maps/Pyroden/scripts.pory"
+	delay_16
+	step_end
+
+# 1131 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_9:
+# 1132 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1133 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1134 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1135 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1136 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1137 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1138 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1139 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1140 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1141 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1142 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1143 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1144 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1145 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1146 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1147 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1148 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1149 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1150 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1151 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1152 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1153 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1154 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1155 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1156 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1157 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1158 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1159 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1160 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1161 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1162 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1163 "data/maps/Pyroden/scripts.pory"
+	face_down
+# 1164 "data/maps/Pyroden/scripts.pory"
+	face_right
+# 1165 "data/maps/Pyroden/scripts.pory"
+	face_up
+# 1166 "data/maps/Pyroden/scripts.pory"
+	face_left
+# 1167 "data/maps/Pyroden/scripts.pory"
+	face_down
+	step_end
+
+# 1175 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_10:
+# 1176 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1177 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1178 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1178 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1179 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 1180 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1180 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1181 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1182 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1182 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1183 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 1184 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1184 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1185 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1186 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1186 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1187 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 1188 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1189 "data/maps/Pyroden/scripts.pory"
+	face_down
+	step_end
+
+# 1205 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_11:
+# 1206 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1207 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1208 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1208 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1209 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 1210 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1210 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1211 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1212 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1212 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1213 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 1214 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1214 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1215 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1216 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1216 "data/maps/Pyroden/scripts.pory"
+	walk_fast_left
+# 1217 "data/maps/Pyroden/scripts.pory"
+	walk_fast_up
+# 1218 "data/maps/Pyroden/scripts.pory"
+	walk_fast_right
+# 1219 "data/maps/Pyroden/scripts.pory"
+	face_down
+	step_end
+
+# 1231 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_12:
+# 1232 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1232 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1232 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1232 "data/maps/Pyroden/scripts.pory"
+	walk_down
+	step_end
+
+# 1258 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_13:
+# 1259 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1259 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+# 1259 "data/maps/Pyroden/scripts.pory"
+	walk_fast_down
+	step_end
+
+# 1274 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_14:
+# 1275 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1276 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1276 "data/maps/Pyroden/scripts.pory"
+	walk_down
+# 1276 "data/maps/Pyroden/scripts.pory"
+	walk_down
+	step_end
+
+# 1290 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_15:
+# 1290 "data/maps/Pyroden/scripts.pory"
+	emote_question_mark
+# 1290 "data/maps/Pyroden/scripts.pory"
+	delay_16
+	step_end
+
+# 1313 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_16:
+# 1314 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 1314 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 1314 "data/maps/Pyroden/scripts.pory"
+	walk_up
+# 1315 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1315 "data/maps/Pyroden/scripts.pory"
+	walk_left
+# 1316 "data/maps/Pyroden/scripts.pory"
+	face_right
+	step_end
+
+# 1334 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_TeachWillOWisp_Movement_17:
+# 1334 "data/maps/Pyroden/scripts.pory"
+	walk_right
+	step_end
+
 Pyroden_EventScript_IntroVeeDown_Text_0:
-# 69 "data/maps/Pyroden/scripts.pory"
+# 70 "data/maps/Pyroden/scripts.pory"
 	.string "Vee$"
 
 Pyroden_EventScript_IntroVeeDown_Text_1:
-# 73 "data/maps/Pyroden/scripts.pory"
+# 74 "data/maps/Pyroden/scripts.pory"
 	.string "Fro$"
 
 Pyroden_EventScript_InvestigationNotOver_Text_0:
-# 261 "data/maps/Pyroden/scripts.pory"
+# 262 "data/maps/Pyroden/scripts.pory"
 	.string "The investigation is not over!\n"
 	.string "Don't leave your friends like that!$"
 
 Pyroden_EventScript_Slugma_Text_0:
-# 272 "data/maps/Pyroden/scripts.pory"
+# 273 "data/maps/Pyroden/scripts.pory"
 	.string "Slugma$"
 
 Pyroden_EventScript_Slugma_Text_1:
-# 274 "data/maps/Pyroden/scripts.pory"
+# 275 "data/maps/Pyroden/scripts.pory"
 	.string "Welcome to Pyroden!\n"
 	.string "Have you come for our world-famous hot\l"
 	.string "springs?\p"
@@ -1320,11 +2044,11 @@ Pyroden_EventScript_Slugma_Text_1:
 	.string "Maybe I should take a dip in lava.$"
 
 Pyroden_EventScript_Sandshrew_Text_0:
-# 286 "data/maps/Pyroden/scripts.pory"
+# 287 "data/maps/Pyroden/scripts.pory"
 	.string "Sandshrew$"
 
 Pyroden_EventScript_Sandshrew_Text_1:
-# 288 "data/maps/Pyroden/scripts.pory"
+# 289 "data/maps/Pyroden/scripts.pory"
 	.string "See those torches around town?\p"
 	.string "They used to be burning bright all day\n"
 	.string "and night.\p"
@@ -1332,49 +2056,49 @@ Pyroden_EventScript_Sandshrew_Text_1:
 	.string "But it's definitely unusual.$"
 
 Pyroden_EventScript_CheckHints_Text_0:
-# 307 "data/maps/Pyroden/scripts.pory"
+# 308 "data/maps/Pyroden/scripts.pory"
 	.string "This felt like {COLOR RED}important information{COLOR DARK_GRAY}.$"
 
 Pyroden_EventScript_CheckHints_Text_1:
-# 317 "data/maps/Pyroden/scripts.pory"
+# 318 "data/maps/Pyroden/scripts.pory"
 	.string "You've gathered as many hints as you\n"
 	.string "could.\p"
 	.string "Meet up with the others at the hot\n"
 	.string "springs!$"
 
 Pyroden_EventScript_CheckHintsInside_Text_0:
-# 346 "data/maps/Pyroden/scripts.pory"
+# 347 "data/maps/Pyroden/scripts.pory"
 	.string "You feel like you've gathered as many\n"
 	.string "hints as you could.\p"
 	.string "Meet up with the others at the hot\n"
 	.string "springs!$"
 
 Pyroden_EventScript_Growlithe_Text_0:
-# 356 "data/maps/Pyroden/scripts.pory"
+# 357 "data/maps/Pyroden/scripts.pory"
 	.string "Growlithe$"
 
 Pyroden_EventScript_Growlithe_Text_1:
-# 358 "data/maps/Pyroden/scripts.pory"
+# 359 "data/maps/Pyroden/scripts.pory"
 	.string "Been some trouble lately, but the chief\n"
 	.string "ain't doin' nothin' 'bout it.\p"
 	.string "Reckon it'd be time to replace 'er.$"
 
 Pyroden_EventScript_Sudowoodo_Text_0:
-# 365 "data/maps/Pyroden/scripts.pory"
+# 366 "data/maps/Pyroden/scripts.pory"
 	.string "Sudowoodo$"
 
 Pyroden_EventScript_Sudowoodo_Text_1:
-# 369 "data/maps/Pyroden/scripts.pory"
+# 370 "data/maps/Pyroden/scripts.pory"
 	.string "I'm telling you, I'm not a tree!\p"
 	.string "Are you racist or something?$"
 
 Pyroden_EventScript_Sudowoodo_Text_2:
-# 375 "data/maps/Pyroden/scripts.pory"
+# 376 "data/maps/Pyroden/scripts.pory"
 	.string "I'm glad I'm not a real tree, or I'd be\n"
 	.string "burned to a crisp by now.$"
 
 Pyroden_EventScript_Fro_Text_0:
-# 387 "data/maps/Pyroden/scripts.pory"
+# 388 "data/maps/Pyroden/scripts.pory"
 	.string "Hmmmm…\p"
 	.string "Investigating sure is a tough job…\p"
 	.string "I haven't really learned much…\p"
@@ -1384,13 +2108,13 @@ Pyroden_EventScript_Fro_Text_0:
 	.string "Wanna go?$"
 
 Pyroden_EventScript_Fro_Text_1:
-# 398 "data/maps/Pyroden/scripts.pory"
+# 399 "data/maps/Pyroden/scripts.pory"
 	.string "Sigh…\p"
 	.string "Oh, my sweet hot springs…\n"
 	.string "When will I have you?$"
 
 Pyroden_EventScript_Fro_Text_2:
-# 407 "data/maps/Pyroden/scripts.pory"
+# 408 "data/maps/Pyroden/scripts.pory"
 	.string "Great!\p"
 	.string "If you wanna discuss what you've\n"
 	.string "discovered in the mean time, feel free\l"
@@ -1399,13 +2123,13 @@ Pyroden_EventScript_Fro_Text_2:
 	.string "But before that…$"
 
 Pyroden_EventScript_Fro_Text_3:
-# 433 "data/maps/Pyroden/scripts.pory"
+# 434 "data/maps/Pyroden/scripts.pory"
 	.string "Hmm…\n"
 	.string "What a funny looking tree.\p"
 	.string "I wonder if it holds any secrets.$"
 
 Pyroden_EventScript_Vee_Text_0:
-# 449 "data/maps/Pyroden/scripts.pory"
+# 450 "data/maps/Pyroden/scripts.pory"
 	.string "{PLAYER}!\n"
 	.string "Hi, hi!\p"
 	.string "I made sure to interrogate everyone in\n"
@@ -1416,18 +2140,18 @@ Pyroden_EventScript_Vee_Text_0:
 	.string "Do you wanna share it with us?$"
 
 Pyroden_EventScript_Vee_Text_1:
-# 460 "data/maps/Pyroden/scripts.pory"
+# 461 "data/maps/Pyroden/scripts.pory"
 	.string "Oh…\n"
 	.string "Well, ok!\p"
 	.string "Whenever you want, {PLAYER}!$"
 
 Pyroden_EventScript_Vee_Text_2:
-# 468 "data/maps/Pyroden/scripts.pory"
+# 469 "data/maps/Pyroden/scripts.pory"
 	.string "Yay!\n"
 	.string "Let's do it!$"
 
 Pyroden_EventScript_Vee_Text_3:
-# 480 "data/maps/Pyroden/scripts.pory"
+# 481 "data/maps/Pyroden/scripts.pory"
 	.string "Now, hold up a second.\n"
 	.string "I was promised hot springs.\p"
 	.string "If you want to discuss things, that's\n"
@@ -1436,35 +2160,35 @@ Pyroden_EventScript_Vee_Text_3:
 	.string "So, if you would please excuse me…$"
 
 Pyroden_EventScript_Vee_Text_4:
-# 500 "data/maps/Pyroden/scripts.pory"
+# 501 "data/maps/Pyroden/scripts.pory"
 	.string "Where were you last night!?\n"
 	.string "Any alibi!?\p"
 	.string "You did it, didn't you!?\p"
 	.string "Confess!$"
 
 Pyroden_EventScript_Sunkern_Text_0:
-# 512 "data/maps/Pyroden/scripts.pory"
+# 513 "data/maps/Pyroden/scripts.pory"
 	.string "Sunkern$"
 
 Pyroden_EventScript_Sunkern_Text_1:
-# 517 "data/maps/Pyroden/scripts.pory"
+# 518 "data/maps/Pyroden/scripts.pory"
 	.string "Ah…\n"
 	.string "I'm just a little seed…\l"
 	.string "I don't know anything…$"
 
 Pyroden_EventScript_Sunkern_Text_2:
-# 525 "data/maps/Pyroden/scripts.pory"
+# 526 "data/maps/Pyroden/scripts.pory"
 	.string "Ah…\n"
 	.string "I'm just a little seed…\p"
 	.string "I don't really know much about the\n"
 	.string "world…$"
 
 Pyroden_EventScript_Nidorina_Text_0:
-# 535 "data/maps/Pyroden/scripts.pory"
+# 536 "data/maps/Pyroden/scripts.pory"
 	.string "Nidorina$"
 
 Pyroden_EventScript_Nidorina_Text_1:
-# 537 "data/maps/Pyroden/scripts.pory"
+# 538 "data/maps/Pyroden/scripts.pory"
 	.string "There used to be an entrance to the\n"
 	.string "volcano north of here.\p"
 	.string "But now it's not there anymore?\n"
@@ -1473,15 +2197,15 @@ Pyroden_EventScript_Nidorina_Text_1:
 	.string "Poof.$"
 
 Pyroden_EventScript_Snubbul_Text_0:
-# 554 "data/maps/Pyroden/scripts.pory"
+# 555 "data/maps/Pyroden/scripts.pory"
 	.string "Snubbul$"
 
 Pyroden_EventScript_Snubbul_Text_1:
-# 558 "data/maps/Pyroden/scripts.pory"
+# 559 "data/maps/Pyroden/scripts.pory"
 	.string "Please, no more dives!$"
 
 Pyroden_EventScript_Snubbul_Text_2:
-# 563 "data/maps/Pyroden/scripts.pory"
+# 564 "data/maps/Pyroden/scripts.pory"
 	.string "That spinning guy is SO annoying.\p"
 	.string "I'm just trying to enjoy the hot\n"
 	.string "springs, but he makes me dizzy just by\l"
@@ -1490,18 +2214,23 @@ Pyroden_EventScript_Snubbul_Text_2:
 	.string "Weirdo.$"
 
 Pyroden_EventScript_Spinda_Text_0:
-# 572 "data/maps/Pyroden/scripts.pory"
+# 573 "data/maps/Pyroden/scripts.pory"
 	.string "Spinda$"
 
 Pyroden_EventScript_Spinda_Text_1:
-# 576 "data/maps/Pyroden/scripts.pory"
+# 577 "data/maps/Pyroden/scripts.pory"
+	.string "I'm late! I'm late!\n"
+	.string "For a very important appointment!$"
+
+Pyroden_EventScript_Spinda_Text_2:
+# 591 "data/maps/Pyroden/scripts.pory"
 	.string "Find my Fire Stone, Fire Stone!\n"
 	.string "It's on Route 2!\p"
 	.string "Then I'll show you how to light up\n"
 	.string "torches!$"
 
-Pyroden_EventScript_Spinda_Text_2:
-# 584 "data/maps/Pyroden/scripts.pory"
+Pyroden_EventScript_Spinda_Text_3:
+# 599 "data/maps/Pyroden/scripts.pory"
 	.string "Spinning round, and round, and round\n"
 	.string "again!\l"
 	.string "From dawn to dusk, from hot to cold!\p"
@@ -1509,62 +2238,62 @@ Pyroden_EventScript_Spinda_Text_2:
 	.string "The spinning never stops!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_0:
-# 598 "data/maps/Pyroden/scripts.pory"
+# 613 "data/maps/Pyroden/scripts.pory"
 	.string "I'm jumping in!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_1:
-# 608 "data/maps/Pyroden/scripts.pory"
+# 623 "data/maps/Pyroden/scripts.pory"
 	.string "No, sto-$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_2:
-# 663 "data/maps/Pyroden/scripts.pory"
+# 677 "data/maps/Pyroden/scripts.pory"
 	.string "Oh, bother.\n"
 	.string "I seem to have miscalculated.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_3:
-# 668 "data/maps/Pyroden/scripts.pory"
+# 682 "data/maps/Pyroden/scripts.pory"
 	.string "Forget it!\n"
 	.string "Can't even have a day at the hot\l"
 	.string "springs in peace!\p"
 	.string "I'm outta here!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_4:
-# 684 "data/maps/Pyroden/scripts.pory"
+# 698 "data/maps/Pyroden/scripts.pory"
 	.string "Uhm, well.\n"
 	.string "Let's try the other pool, maybe.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_5:
-# 689 "data/maps/Pyroden/scripts.pory"
+# 703 "data/maps/Pyroden/scripts.pory"
 	.string "And be careful this time!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_6:
-# 714 "data/maps/Pyroden/scripts.pory"
+# 728 "data/maps/Pyroden/scripts.pory"
 	.string "Ahhh…\n"
 	.string "Now that's the stuff.\p"
-	.string "I feel like a boiled egg.$"
+	.string "I feel like a soaking egg.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_7:
-# 720 "data/maps/Pyroden/scripts.pory"
+# 734 "data/maps/Pyroden/scripts.pory"
 	.string "Yeah!\n"
 	.string "It's really nice!\p"
 	.string "Except, uhm…$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_8:
-# 733 "data/maps/Pyroden/scripts.pory"
+# 747 "data/maps/Pyroden/scripts.pory"
 	.string "That guy is…\n"
 	.string "A bit distracting.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_9:
-# 738 "data/maps/Pyroden/scripts.pory"
+# 752 "data/maps/Pyroden/scripts.pory"
 	.string "Ignore them.\n"
 	.string "Maybe they will go away on their own.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_10:
-# 742 "data/maps/Pyroden/scripts.pory"
+# 756 "data/maps/Pyroden/scripts.pory"
 	.string "If you think so…$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_11:
-# 749 "data/maps/Pyroden/scripts.pory"
+# 763 "data/maps/Pyroden/scripts.pory"
 	.string "Anyway, {PLAYER}, have you found any\n"
 	.string "hints for our mission?\p"
 	.string "… … …\p"
@@ -1573,19 +2302,19 @@ Pyroden_EventScript_FroJumpsInSprings_Text_11:
 	.string "Maybe we should do a recap!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_12:
-# 757 "data/maps/Pyroden/scripts.pory"
+# 771 "data/maps/Pyroden/scripts.pory"
 	.string "I understood it perfectly.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_13:
-# 763 "data/maps/Pyroden/scripts.pory"
+# 777 "data/maps/Pyroden/scripts.pory"
 	.string "I SAID we should do a recap!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_14:
-# 767 "data/maps/Pyroden/scripts.pory"
+# 781 "data/maps/Pyroden/scripts.pory"
 	.string "Ugh. Fine.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_15:
-# 772 "data/maps/Pyroden/scripts.pory"
+# 786 "data/maps/Pyroden/scripts.pory"
 	.string "Eheh.\p"
 	.string "So! Here's what we have discovered.\p"
 	.string "Recently, a big mean Magmortar came\n"
@@ -1600,7 +2329,7 @@ Pyroden_EventScript_FroJumpsInSprings_Text_15:
 	.string "What could it mean?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_16:
-# 783 "data/maps/Pyroden/scripts.pory"
+# 797 "data/maps/Pyroden/scripts.pory"
 	.string "Here's how I see it.\p"
 	.string "The big bad Magmortar is probably the\n"
 	.string "Guardian we're looking for.\p"
@@ -1616,12 +2345,12 @@ Pyroden_EventScript_FroJumpsInSprings_Text_16:
 	.string "Maybe.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_17:
-# 801 "data/maps/Pyroden/scripts.pory"
+# 815 "data/maps/Pyroden/scripts.pory"
 	.string "Fro!\n"
 	.string "You're so good at this!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_18:
-# 806 "data/maps/Pyroden/scripts.pory"
+# 820 "data/maps/Pyroden/scripts.pory"
 	.string "I suppose.\p"
 	.string "But we aren't really any closer to\n"
 	.string "figuring it out.\p"
@@ -1629,31 +2358,31 @@ Pyroden_EventScript_FroJumpsInSprings_Text_18:
 	.string "back up…?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_19:
-# 812 "data/maps/Pyroden/scripts.pory"
+# 826 "data/maps/Pyroden/scripts.pory"
 	.string "Speaking of lighting things up…\p"
 	.string "Aren't these hot springs getting a bit…\n"
 	.string "Lukewarm?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_20:
-# 818 "data/maps/Pyroden/scripts.pory"
+# 832 "data/maps/Pyroden/scripts.pory"
 	.string "…\p"
 	.string "Now that you mention it…\n"
 	.string "These hot springs are not hot at all!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_21:
-# 837 "data/maps/Pyroden/scripts.pory"
+# 851 "data/maps/Pyroden/scripts.pory"
 	.string "Friends, friends!\n"
 	.string "I must introduce myself!\p"
 	.string "I am Spinda!\p"
 	.string "But you can call me… Spinda!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_22:
-# 844 "data/maps/Pyroden/scripts.pory"
+# 858 "data/maps/Pyroden/scripts.pory"
 	.string "Uhm, hi.\n"
 	.string "Can we help you?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_23:
-# 849 "data/maps/Pyroden/scripts.pory"
+# 863 "data/maps/Pyroden/scripts.pory"
 	.string "Help!\n"
 	.string "Yes! Yes!\p"
 	.string "Hot springs gone cold?\n"
@@ -1669,43 +2398,40 @@ Pyroden_EventScript_FroJumpsInSprings_Text_23:
 	.string "It can heat up the hot springs again!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_24:
-# 865 "data/maps/Pyroden/scripts.pory"
+# 879 "data/maps/Pyroden/scripts.pory"
 	.string "Ok.\p"
 	.string "And you can't do it yourself, because…?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_25:
-# 870 "data/maps/Pyroden/scripts.pory"
+# 884 "data/maps/Pyroden/scripts.pory"
 	.string "Oh, Fro, don't be mean!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_26:
-# 874 "data/maps/Pyroden/scripts.pory"
+# 888 "data/maps/Pyroden/scripts.pory"
 	.string "No, I understand, I understand!\n"
 	.string "But, I have a proposition!\p"
 	.string "If you bring the Fire Stone here…\p"
 	.string "I'll teach you how to light up torches!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_27:
-# 881 "data/maps/Pyroden/scripts.pory"
+# 895 "data/maps/Pyroden/scripts.pory"
 	.string "You will?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_28:
-# 885 "data/maps/Pyroden/scripts.pory"
+# 899 "data/maps/Pyroden/scripts.pory"
 	.string "Yes, yes!\n"
 	.string "I could not help but overhear!\p"
 	.string "You need to light up the torches!\n"
 	.string "And I have a special way to do it!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_29:
-# 892 "data/maps/Pyroden/scripts.pory"
+# 906 "data/maps/Pyroden/scripts.pory"
 	.string "Hold on a second…\p"
 	.string "Can we not just use the Fire Stone to\n"
-	.string "light up the torches…\p"
-	.string "And then you use whatever you do with\n"
-	.string "the torches to heat up the springs\l"
-	.string "instead?$"
+	.string "light up the torches…?$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_30:
-# 898 "data/maps/Pyroden/scripts.pory"
+# 911 "data/maps/Pyroden/scripts.pory"
 	.string "No, no!\n"
 	.string "That's all out of order!\p"
 	.string "Torches are special!\n"
@@ -1713,23 +2439,188 @@ Pyroden_EventScript_FroJumpsInSprings_Text_30:
 	.string "Bring me the Stone, and I'll show you!$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_31:
-# 906 "data/maps/Pyroden/scripts.pory"
+# 919 "data/maps/Pyroden/scripts.pory"
 	.string "Hmm…\n"
 	.string "Fine.$"
 
 Pyroden_EventScript_FroJumpsInSprings_Text_32:
-# 913 "data/maps/Pyroden/scripts.pory"
+# 926 "data/maps/Pyroden/scripts.pory"
 	.string "Ok.\n"
 	.string "Let's find this Fire Stone, and then\l"
 	.string "come back here.$"
 
+Pyroden_EventScript_TeachWillOWisp_Text_0:
+# 970 "data/maps/Pyroden/scripts.pory"
+	.string "Friends! Friends!\n"
+	.string "You found the Fire Stone!\p"
+	.string "Give it to me! To me!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_1:
+# 976 "data/maps/Pyroden/scripts.pory"
+	.string "You gave the Fire Stone to Spinda.$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_2:
+# 981 "data/maps/Pyroden/scripts.pory"
+	.string "Great! Great!\n"
+	.string "Now the springs will be hot once again!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_3:
+# 986 "data/maps/Pyroden/scripts.pory"
+	.string "Ok.\n"
+	.string "Very happy to know that.\p"
+	.string "Now, you promised to teach us how to\n"
+	.string "light the torches back up, didn't you?$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_4:
+# 992 "data/maps/Pyroden/scripts.pory"
+	.string "Oh, me?\n"
+	.string "Teach you how to light torches?\p"
+	.string "Oh, I cannot do that!\n"
+	.string "I cannot do that!\l"
+	.string "Not me!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_5:
+# 1007 "data/maps/Pyroden/scripts.pory"
+	.string "I swear I'm gonna…$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_6:
+# 1011 "data/maps/Pyroden/scripts.pory"
+	.string "Wait! Wait!\n"
+	.string "Hear me out, first!\p"
+	.string "What I'm saying is:\n"
+	.string "I cannot teach that to you. But!\p"
+	.string "I have a friend who can!\n"
+	.string "Yes, a very special friend!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_7:
+# 1020 "data/maps/Pyroden/scripts.pory"
+	.string "Ooh!\n"
+	.string "I like friends!\p"
+	.string "Where's your friend right now?\n"
+	.string "Is he inside you?$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_8:
+# 1027 "data/maps/Pyroden/scripts.pory"
+	.string "No, no!\n"
+	.string "Not inside!\p"
+	.string "The friend is coming!\n"
+	.string "But I need to call them, first!\p"
+	.string "Look, why don't you all get over there!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_9:
+# 1053 "data/maps/Pyroden/scripts.pory"
+	.string "This is stupid.$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_10:
+# 1057 "data/maps/Pyroden/scripts.pory"
+	.string "This is exciting!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_11:
+# 1064 "data/maps/Pyroden/scripts.pory"
+	.string "Shoo, shoo!\p"
+	.string "I need some room!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_12:
+# 1075 "data/maps/Pyroden/scripts.pory"
+	.string "What rudeness!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_13:
+# 1089 "data/maps/Pyroden/scripts.pory"
+	.string "Ok!\n"
+	.string "Time to call my friend here!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_14:
+# 1121 "data/maps/Pyroden/scripts.pory"
+	.string "What in the world are they…$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_15:
+# 1172 "data/maps/Pyroden/scripts.pory"
+	.string "Dlrowrednu eht morf eeht nommus I, em\n"
+	.string "nopu detnarg srewop eht htiw!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_16:
+# 1194 "data/maps/Pyroden/scripts.pory"
+	.string "Sluos tsol eseht ot WILL OF THE WISPS\n"
+	.string "eht wohs dna, niagrab eht fo dne ruoy\l"
+	.string "dlohpu!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_17:
+# 1201 "data/maps/Pyroden/scripts.pory"
+	.string "{PLAYER}!\n"
+	.string "What's happening, {PLAYER}!?$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_18:
+# 1223 "data/maps/Pyroden/scripts.pory"
+	.string "Pape, GIRATINA!\n"
+	.string "Pape GIRATINA aleppe!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_19:
+# 1237 "data/maps/Pyroden/scripts.pory"
+	.string "Oh, my.$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_20:
+# 1241 "data/maps/Pyroden/scripts.pory"
+	.string "SEEL!\n"
+	.string "I CAN'T MOVE!\p"
+	.string "PLEASE, SOMEBODY HELP!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_21:
+# 1247 "data/maps/Pyroden/scripts.pory"
+	.string "Our father, who art in Heaven…$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_22:
+# 1252 "data/maps/Pyroden/scripts.pory"
+	.string "Egdelwonk terces eht meht hcaet,\n"
+	.string "GIRATINA!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_23:
+# 1281 "data/maps/Pyroden/scripts.pory"
+	.string "Done!\n"
+	.string "You have learned {COLOR RED}Will-O-Wisp{COLOR DARK_GRAY}!\p"
+	.string "You can now light the torches back up!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_24:
+# 1287 "data/maps/Pyroden/scripts.pory"
+	.string "What. Was. That.$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_25:
+# 1295 "data/maps/Pyroden/scripts.pory"
+	.string "What was what?$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_26:
+# 1299 "data/maps/Pyroden/scripts.pory"
+	.string "What do you MEAN what was WHAT?\p"
+	.string "The thing!\n"
+	.string "That just happened!\p"
+	.string "With youre extremely terrifying friend!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_27:
+# 1306 "data/maps/Pyroden/scripts.pory"
+	.string "I don't really have any friends.\n"
+	.string "Who are you guys, anyway?\p"
+	.string "Oh, I'm sorry!\n"
+	.string "I gotta go!\p"
+	.string "I'm late for an appointment!$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_28:
+# 1324 "data/maps/Pyroden/scripts.pory"
+	.string "I guess we can light up the torches\n"
+	.string "now…\l"
+	.string "Haha…\p"
+	.string "We should see if the entrance to the\n"
+	.string "volcano opens up…$"
+
+Pyroden_EventScript_TeachWillOWisp_Text_29:
+# 1330 "data/maps/Pyroden/scripts.pory"
+	.string "Let's never speak of this again.$"
+
 Pyroden_Text_Intro_Vee_1::
-# 172 "data/maps/Pyroden/scripts.pory"
+# 173 "data/maps/Pyroden/scripts.pory"
 	.string "Yahoo!\n"
 	.string "We're finally in Pyroden!$"
 
 Pyroden_Text_Intro_Fro_1::
-# 179 "data/maps/Pyroden/scripts.pory"
+# 180 "data/maps/Pyroden/scripts.pory"
 	.string "Yes.\n"
 	.string "I can already feel it.\p"
 	.string "The heavenly warmth…\n"
@@ -1737,22 +2628,22 @@ Pyroden_Text_Intro_Fro_1::
 	.string "Hot springs, here I come.$"
 
 Pyroden_Text_Intro_Vee_2::
-# 190 "data/maps/Pyroden/scripts.pory"
+# 191 "data/maps/Pyroden/scripts.pory"
 	.string "Not so fast!\n"
 	.string "We're not here just to relax!$"
 
 Pyroden_Text_Intro_Fro_2::
-# 198 "data/maps/Pyroden/scripts.pory"
+# 199 "data/maps/Pyroden/scripts.pory"
 	.string "I am.$"
 
 Pyroden_Text_Intro_Vee_3::
-# 205 "data/maps/Pyroden/scripts.pory"
+# 206 "data/maps/Pyroden/scripts.pory"
 	.string "No!\n"
 	.string "We need to find the artifact, remember?\p"
 	.string "You promised!$"
 
 Pyroden_Text_Intro_Fro_3::
-# 214 "data/maps/Pyroden/scripts.pory"
+# 215 "data/maps/Pyroden/scripts.pory"
 	.string "Hmm…\n"
 	.string "Did I now…?\p"
 	.string "… … …\p"
@@ -1762,11 +2653,11 @@ Pyroden_Text_Intro_Fro_3::
 	.string "springs is in order.$"
 
 Pyroden_Text_Intro_Vee_4::
-# 226 "data/maps/Pyroden/scripts.pory"
+# 227 "data/maps/Pyroden/scripts.pory"
 	.string "Yay!$"
 
 Pyroden_Text_Intro_Fro_4::
-# 231 "data/maps/Pyroden/scripts.pory"
+# 232 "data/maps/Pyroden/scripts.pory"
 	.string "How about this.\p"
 	.string "Let's split up, and ask around if anyone\n"
 	.string "has seen anything strange.\p"
@@ -1775,7 +2666,7 @@ Pyroden_Text_Intro_Fro_4::
 	.string "Ready? Go.$"
 
 Pyroden_Text_Intro_Vee_5::
-# 241 "data/maps/Pyroden/scripts.pory"
+# 242 "data/maps/Pyroden/scripts.pory"
 	.string "…And theeere he goes.\n"
 	.string "But this is exciting, isn't it?\p"
 	.string "Back when I was in the lab, sometimes\n"

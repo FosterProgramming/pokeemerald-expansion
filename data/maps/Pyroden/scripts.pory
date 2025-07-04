@@ -11,6 +11,7 @@ raw `
 .set LOCALID_FRO_HOT_SPRINGS, 18
 .set LOCALID_VEE_HOT_SPRINGS, 19
 .set LOCALID_NIDORINA, 11
+.set LOCALID_GIRATINA, 20
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
 `
@@ -570,8 +571,22 @@ script Pyroden_EventScript_Snubbul
 
 script Pyroden_EventScript_Spinda{
 	speakername("Spinda")
+	if(var(VAR_PYRODEN_STATE) > 2)
+	{
+		msgbox(format(
+			"I'm late! I'm late!\n
+			For a very important appointment!"
+		))
+		end
+	}
 	if(var(VAR_PYRODEN_STATE) == 2)
 	{
+		checkitem(ITEM_FIRE_STONE)
+		if(var(VAR_RESULT) == TRUE)
+		{
+			goto(Pyroden_EventScript_TeachWillOWisp)
+			end
+		}
 		msgbox(format(
 			"Find my Fire Stone, Fire Stone!\N
 			It's on Route 2!\p
@@ -642,7 +657,6 @@ script Pyroden_EventScript_FroJumpsInSprings
 	setmetatile(15, 40, METATILE_Pyroden_Puddle_TopRight, FALSE)
 	setmetatile(14, 41, METATILE_Pyroden_Puddle_BottomLeft, FALSE)
 	setmetatile(15, 41, METATILE_Pyroden_Puddle_BottomRight, FALSE)
-	removeobject(LOCALID_NIDORINA)
 	special(DrawWholeMapView)
 	applymovement(LOCALID_FRO_TOWN, moves(walk_fast_down*2))
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down*4))
@@ -713,7 +727,7 @@ script Pyroden_EventScript_FroJumpsInSprings
 	msgbox(format(
 		"Ahhh…\n
 		Now that's the stuff.\p
-		I feel like a boiled egg."
+		I feel like a soaking egg."
 	))
 	speakername("Vee")
 	msgbox(format(
@@ -890,8 +904,7 @@ script Pyroden_EventScript_FroJumpsInSprings
 	speakername("Fro")
 	msgbox(format(
 		"Hold on a second…\p
-		Can we not just use the Fire Stone to light up the torches…\p
-		And then you use whatever you do with the torches to heat up the springs instead?"
+		Can we not just use the Fire Stone to light up the torches…?"
 	))
 	speakername("Spinda")
 	msgbox(format(
@@ -921,7 +934,6 @@ script Pyroden_EventScript_FroJumpsInSprings
 	clearflag(FLAG_HIDE_SNUBBUL_PYRODEN)
 	addobject(LOCALID_SNUBBUL)
 	clearflag(FLAG_HIDE_NIDORINA_PYRODEN)
-	addobject(LOCALID_NIDORINA)
 	setvar(VAR_PYRODEN_STATE, 2)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(
 		walk_fast_right*4
@@ -931,10 +943,401 @@ script Pyroden_EventScript_FroJumpsInSprings
 		walk_fast_down*3
 		face_down
 	))
+	applymovement(LOCALID_SPINDA, moves(
+		walk_fast_up
+		walk_fast_left
+		face_right
+	))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
-	applymovement(LOCALID_SPINDA, moves(face_down))
-	waitmovement(0)
 	special(RemoveCameraObject)
 	fadescreen(FADE_FROM_BLACK)
 	end
+}
+
+script Pyroden_EventScript_TeachWillOWisp
+{
+	clearflag(FLAG_HIDE_PARTY_PYRODEN)
+	getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_FRO_TOWN, PlayerXCoordinates, PlayerYCoordinates)
+	setobjectxyperm(LOCALID_VEE_TOWN, PlayerXCoordinates, PlayerYCoordinates)
+	addobject(LOCALID_VEE_TOWN)
+	addobject(LOCALID_FRO_TOWN)
+	applymovement(LOCALID_VEE_TOWN, moves(walk_up face_left))
+	applymovement(LOCALID_FRO_TOWN, moves(walk_down face_left))
+	waitmovement(0)
+	speakername("Spinda")
+	msgbox(format(
+		"Friends! Friends!\n
+		You found the Fire Stone!\p
+		Give it to me! To me!"
+	))
+	speakername(NULL)
+	msgbox(format(
+		"You gave the Fire Stone to Spinda."
+	))
+	removeitem(ITEM_FIRE_STONE)
+	speakername("Spinda")
+	msgbox(format(
+		"Great! Great!\n
+		Now the springs will be hot once again!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Ok.\n
+		Very happy to know that.\p
+		Now, you promised to teach us how to light the torches back up, didn't you?"
+	))
+	speakername("Spinda")
+	msgbox(format(
+		"Oh, me?\n
+		Teach you how to light torches?\p
+		Oh, I cannot do that!\n
+		I cannot do that!\l
+		Not me!"
+	))
+	speakername("Fro")
+	playse(SE_PIN)
+	applymovement(LOCALID_FRO_TOWN, moves(
+		emote_exclamation_mark
+		delay_16
+	))
+	waitmovement(0)
+	waitse
+	msgbox(format(
+		"I swear I'm gonna…"
+	))
+	speakername("Spinda")
+	msgbox(format(
+		"Wait! Wait!\n
+		Hear me out, first!\p
+		What I'm saying is:\n
+		I cannot teach that to you. But!\p
+		I have a friend who can!\n
+		Yes, a very special friend!"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Ooh!\n
+		I like friends!\p
+		Where's your friend right now?\n
+		Is he inside you?"
+	))
+	speakername("Spinda")
+	msgbox(format(
+		"No, no!\n
+		Not inside!\p
+		The friend is coming!\n
+		But I need to call them, first!\p
+		Look, why don't you all get over there!"
+	))
+	closemessage
+	applymovement(LOCALID_VEE_TOWN, moves(
+		walk_right*2
+		walk_down*5
+		face_up
+	))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		walk_right
+		walk_down*4
+		walk_in_place_up
+	))
+	applymovement(LOCALID_FRO_TOWN, moves(
+		walk_right
+		walk_down*3
+		walk_left
+		face_up
+	))
+	waitmovement(LOCALID_VEE_TOWN)
+	speakername("Fro")
+	msgbox(format(
+		"This is stupid."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"This is exciting!"
+	))
+	closemessage
+	applymovement(LOCALID_SPINDA, moves(walk_right*5))
+	waitmovement(0)
+	speakername("Spinda")
+	msgbox(format(
+		"Shoo, shoo!\p
+		I need some room!"
+	))
+	playse(SE_PIN)
+	applymovement(LOCALID_SNUBBUL, moves(
+		emote_exclamation_mark
+		delay_16
+		face_left
+	))
+	speakername("Snubbul")
+	msgbox(format(
+		"What rudeness!"
+	))
+	closemessage
+	applymovement(LOCALID_SNUBBUL, moves(
+		walk_right*6
+	))
+	waitmovement(0)
+	applymovement(LOCALID_SPINDA, moves(
+		walk_left*2
+		face_down
+	))
+	waitmovement(0)
+	speakername("Spinda")
+	msgbox(format(
+		"Ok!\n
+		Time to call my friend here!"
+	))
+	closemessage
+	applymovement(LOCALID_SPINDA, moves(
+		face_right
+		delay_16*2
+		face_up
+		delay_16*2
+		face_left
+		delay_16*2
+		face_down
+		delay_16*2
+		walk_left
+		delay_16
+		walk_up
+		delay_16
+		walk_right
+		delay_16
+		walk_down
+		delay_16
+		walk_right
+		delay_16
+		walk_up
+		delay_16
+		walk_left
+		delay_16
+		walk_down
+		delay_16
+	))
+	speakername("Fro")
+	msgbox(format(
+		"What in the world are they…"
+	))
+	fadeoutbgm(1)
+	setweather(WEATHER_SHADE)
+	doweather
+	playse(SE_PIN)
+	applymovement(LOCALID_FRO_TOWN, moves(emote_exclamation_mark delay_16))
+	applymovement(LOCALID_VEE_TOWN, moves(emote_exclamation_mark delay_16))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark delay_16))
+	waitmovement(0)
+	applymovement(LOCALID_SPINDA, moves(
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+		face_right
+		face_up
+		face_left
+		face_down
+	))
+	waitmovement(0)
+	speakername("Spinda")
+	msgbox(format(
+		"Dlrowrednu eht morf eeht nommus I, em nopu detnarg srewop eht htiw!"
+	))
+	closemessage
+	applymovement(LOCALID_SPINDA, moves(
+		walk_fast_left
+		walk_fast_down
+		walk_fast_right*2
+		walk_fast_up
+		walk_fast_left*2
+		walk_fast_down
+		walk_fast_right*2
+		walk_fast_up
+		walk_fast_left*2
+		walk_fast_down
+		walk_fast_right*2
+		walk_fast_up
+		walk_fast_left
+		face_down
+	))
+	waitmovement(0)
+	speakername("Spinda")
+	msgbox(format(
+		"Sluos tsol eseht ot WILL OF THE WISPS eht wohs dna, niagrab eht fo dne ruoy dlohpu!"
+	))
+	closemessage
+	setweather(WEATHER_RAIN_THUNDERSTORM)
+	doweather
+	speakername("Vee")
+	msgbox(format(
+		"{PLAYER}!\n
+		What's happening, {PLAYER}!?"
+	))
+	closemessage
+		applymovement(LOCALID_SPINDA, moves(
+		walk_fast_right
+		walk_fast_down
+		walk_fast_left*2
+		walk_fast_up
+		walk_fast_right*2
+		walk_fast_down
+		walk_fast_left*2
+		walk_fast_up
+		walk_fast_right*2
+		walk_fast_down
+		walk_fast_left*2
+		walk_fast_up
+		walk_fast_right
+		face_down
+	))
+	speakername("Spinda")
+	msgbox(format(
+		"Pape, GIRATINA!\n
+		Pape GIRATINA aleppe!"
+	))
+	closemessage
+	playmoncry(SPECIES_GIRATINA, CRY_MODE_NORMAL)
+	waitmoncry
+	clearflag(FLAG_HIDE_GIRATINA)
+	addobject(LOCALID_GIRATINA)
+	applymovement(LOCALID_GIRATINA, moves(
+		walk_down*4
+	))
+	waitmovement(0)
+	speakername("Fro")
+	msgbox(format(
+		"Oh, my."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"SEEL!\n
+		I CAN'T MOVE!\p
+		PLEASE, SOMEBODY HELP!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Our father, who art in Heaven…"
+	))
+	closemessage
+	speakername("Spinda")
+	msgbox(format(
+		"Egdelwonk terces eht meht hcaet, GIRATINA!"
+	))
+	playmoncry(SPECIES_GIRATINA, CRY_MODE_NORMAL)
+	waitmoncry
+	setweather(WEATHER_NONE)
+	doweather
+	applymovement(LOCALID_GIRATINA, moves(
+		walk_fast_down*3
+	))
+	waitmovement(0)
+	closemessage
+	fadescreenswapbuffers(FADE_TO_WHITE)
+	removeobject(LOCALID_GIRATINA)
+	removeobject(LOCALID_SNUBBUL)
+	clearflag(FLAG_HIDE_SNUBBUL_PYRODEN)
+	addobject(LOCALID_SNUBBUL)
+	setobjectmovementtype(LOCALID_SNUBBUL, MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT)
+	delay(120)
+	fadescreenswapbuffers(FADE_FROM_WHITE)
+	special(WaitWeather)
+	waitstate
+	fadeinbgm(1)
+	applymovement(LOCALID_SPINDA, moves(
+		walk_left
+		walk_down*3
+	))
+	waitmovement(0)
+	speakername("Spinda")
+	msgbox(format(
+		"Done!\n
+		You have learned {COLOR RED}Will-O-Wisp{COLOR DARK_GRAY}!\p
+		You can now light the torches back up!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"What. Was. That."
+	))
+	playse(SE_PIN)
+	applymovement(LOCALID_SPINDA, moves(emote_question_mark, delay_16))
+	waitmovement(0)
+	waitse
+	speakername("Spinda")
+	msgbox(format(
+		"What was what?"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"What do you MEAN what was WHAT?\p
+		The thing!\n
+		That just happened!\p
+		With youre extremely terrifying friend!"
+	))
+	speakername("Spinda")
+	msgbox(format(
+		"I don't really have any friends.\n
+		Who are you guys, anyway?\p
+		Oh, I'm sorry!\n
+		I gotta go!\p
+		I'm late for an appointment!"
+	))
+	closemessage
+	applymovement(LOCALID_SPINDA, moves(
+		walk_up*3
+		walk_left*2
+		face_right
+	))
+	setobjectmovementtype(LOCALID_SPINDA, MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE)
+	applymovement(LOCALID_FRO_TOWN, moves(face_right))
+	applymovement(LOCALID_VEE_TOWN, moves(face_left))
+	waitmovement(0)
+	speakername("Vee")
+	msgbox(format(
+		"I guess we can light up the torches now…\N
+		Haha…\p
+		We should see if the entrance to the volcano opens up…"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Let's never speak of this again."
+	))
+	closemessage
+	applymovement(LOCALID_FRO_TOWN, moves(walk_right))
+	applymovement(LOCALID_VEE_TOWN, moves(walk_left))
+	waitmovement(0)
+	removeobject(LOCALID_VEE_TOWN)
+	removeobject(LOCALID_FRO_TOWN)
+	setflag(FLAG_WILL_O_WISP)
+	setvar(VAR_PYRODEN_STATE, 3)
+	end
+	end
+
 }
