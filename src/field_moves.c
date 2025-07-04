@@ -828,6 +828,42 @@ u16 GetFireRodMetatileIdByTileset(u16 metatileId)
 	return 0xFFFF;
 }
 
+u16 GetFireRodElevationByTilesetAndId(u16 metatileId)
+{
+	if(gMapHeader.mapLayout->primaryTileset == &gTileset_GeneralSeelVersion)
+	{
+		switch(metatileId)
+		{
+			case METATILE_GeneralSeelVersion_FrozenWater:
+				return 1; // Surf Elevation
+		}
+	}
+
+//	if(gMapHeader.mapLayout->secondaryTileset == &gTileset_GeneralSeelVersion)
+//	{
+//
+//	}
+	return 1; // Surf Elevation
+}
+
+u16 GetFireRodCollisionByTilesetAndId(u16 metatileId)
+{
+	if(gMapHeader.mapLayout->primaryTileset == &gTileset_GeneralSeelVersion)
+	{
+		switch(metatileId)
+		{
+			case METATILE_GeneralSeelVersion_FrozenWater:
+				return 0;
+		}
+	}
+
+//	if(gMapHeader.mapLayout->secondaryTileset == &gTileset_GeneralSeelVersion)
+//	{
+//
+//	}
+	return 0;
+}
+
 s8 TryFindFireRodTargetAt(u16 x, u16 y)
 {   
     u8 objEventId;
@@ -1043,7 +1079,9 @@ bool8 FindFireRodBehaviorAt(struct Task *task, u16 arrow_position)
         case FireRodKeepGoing: // No collision or tile to swap
             break;
         case FireRodKeepGoingChangeTile: // Over a swappable tile
-            u16 metatile = (MAPGRID_METATILE_ID_MASK & GetFireRodMetatileIdByTileset(MapGridGetMetatileIdAt(x, y))) + (0x0 << MAPGRID_COLLISION_SHIFT) + (1 << MAPGRID_ELEVATION_SHIFT); // Surf is elevation 1
+            u16 metatile = (MAPGRID_METATILE_ID_MASK & GetFireRodMetatileIdByTileset(MapGridGetMetatileIdAt(x, y))) \
+                           + (GetFireRodCollisionByTilesetAndId(MapGridGetMetatileIdAt(x, y)) << MAPGRID_COLLISION_SHIFT) \
+                           + (GetFireRodElevationByTilesetAndId(MapGridGetMetatileIdAt(x, y)) << MAPGRID_ELEVATION_SHIFT); // Surf is elevation 1
             MapGridSetMetatileEntryAt(x, y, metatile);
             DrawWholeMapView();
             break;
@@ -1075,6 +1113,42 @@ u16 GetIceRodMetatileIdByTileset(u16 metatileId)
 //
 //	}
 	return 0xFFFF;
+}
+
+u16 GetIceRodElevationByTilesetAndId(u16 metatileId)
+{
+	if(gMapHeader.mapLayout->primaryTileset == &gTileset_GeneralSeelVersion)
+	{
+		switch(metatileId)
+		{
+			case METATILE_GeneralSeelVersion_PondMiddleWater:
+				return PlayerGetElevation();
+		}
+	}
+
+//	if(gMapHeader.mapLayout->secondaryTileset == &gTileset_GeneralSeelVersion)
+//	{
+//
+//	}
+	return PlayerGetElevation();
+}
+
+u16 GetIceRodCollisionByTilesetAndId(u16 metatileId)
+{
+	if(gMapHeader.mapLayout->primaryTileset == &gTileset_GeneralSeelVersion)
+	{
+		switch(metatileId)
+		{
+			case METATILE_GeneralSeelVersion_PondMiddleWater:
+				return 0;
+		}
+	}
+
+//	if(gMapHeader.mapLayout->secondaryTileset == &gTileset_GeneralSeelVersion)
+//	{
+//
+//	}
+	return 0;
 }
 
 s8 TryFindIceRodTargetAt(u16 x, u16 y)
@@ -1292,7 +1366,9 @@ bool8 FindIceRodBehaviorAt(struct Task *task, u16 arrow_position)
         case IceRodKeepGoing: // No collision or tile to swap
             break;
         case IceRodKeepGoingChangeTile: // Over a swappable tile
-            u16 metatile = (MAPGRID_METATILE_ID_MASK & GetIceRodMetatileIdByTileset(MapGridGetMetatileIdAt(x, y))) + (0x0 << MAPGRID_COLLISION_SHIFT) + (PlayerGetElevation() << MAPGRID_ELEVATION_SHIFT);
+            u16 metatile = (MAPGRID_METATILE_ID_MASK & GetIceRodMetatileIdByTileset(MapGridGetMetatileIdAt(x, y)))              \
+                           + (GetIceRodCollisionByTilesetAndId(MapGridGetMetatileIdAt(x, y)) << MAPGRID_COLLISION_SHIFT)        \
+                           + (GetIceRodElevationByTilesetAndId(MapGridGetMetatileIdAt(x, y)) << MAPGRID_ELEVATION_SHIFT);
             MapGridSetMetatileEntryAt(x, y, metatile);
             DrawWholeMapView();
             break;
