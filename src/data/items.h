@@ -14367,6 +14367,20 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_AssaultVest, //placeholder
     },
 
+    [ITEM_LENSOFTRUTH] =
+    {
+        .name = _("Lens of Truth"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "See hidden paths."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_LensOfTruth,
+        .iconPic = gItemIcon_AssaultVest, //placeholder
+        .iconPalette = gItemIconPalette_AssaultVest, //placeholder
+    },
+
     [ITEM_WATERFALL_TOOL] =
     {
         .name = _("WaterfallTool"),

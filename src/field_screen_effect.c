@@ -1006,6 +1006,12 @@ void AnimateFlash(u8 newFlashLevel)
     LockPlayerFieldControls();
 }
 
+void ClearFlashForLensOfTruth(void)
+{
+    SetFlashScanlineEffectWindowBoundaries(&gScanlineEffectRegBuffers[0][0], DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, sFlashLevelToRadius[0]);
+    CpuFastSet(&gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 480);
+}
+
 void WriteFlashScanlineEffectBuffer(u8 flashLevel)
 {
     if (flashLevel)

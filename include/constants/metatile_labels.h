@@ -249,6 +249,7 @@
 #define METATILE_GeneralSeelVersion_CrumbleDoorway_Top     0x03C
 #define METATILE_GeneralSeelVersion_CrumbleFloor           0x04C
 #define METATILE_GeneralSeelVersion_FrozenWater            0x04E
+#define METATILE_GeneralSeelVersion_HiddenGroundTile       0x04F
 #define METATILE_GeneralSeelVersion_NormalGrass            0x001
 #define METATILE_GeneralSeelVersion_PondLeftEdge           0x0C0
 #define METATILE_GeneralSeelVersion_PondLeftTopCorner      0x0B8
@@ -256,6 +257,7 @@
 #define METATILE_GeneralSeelVersion_PondRightEdge          0x0C2
 #define METATILE_GeneralSeelVersion_PondRightTopCorner     0x0BA
 #define METATILE_GeneralSeelVersion_PondTopEdge            0x0B9
+#define METATILE_GeneralSeelVersion_RevealedGroundTile     0x067
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1

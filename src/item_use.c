@@ -1772,6 +1772,23 @@ void ItemUseOutOfBattle_IceRod(u8 taskId)
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
 }
 
+static void ItemUseOnFieldCB_LensOfTruth(u8 taskId)
+{
+    CreateTask(Task_StartLensOfTruth, 7);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_LensOfTruth(u8 taskId)
+{
+    if (TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_LensOfTruth;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+}
+
 void ItemUseOutOfBattle_RockSmashTool(u8 taskId)
 {
     if (TRUE)

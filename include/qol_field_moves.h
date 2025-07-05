@@ -41,6 +41,9 @@ bool8 FldEff_SweetScentTool(void);
 void ClearFieldMoveFlags(void);
 bool32 PartyHasMonLearnsKnowsFieldMove(u16);
 
+void Task_StartLensOfTruth(u8 taskId);
+void LensOfTruth_ClearLens();
+
 enum FieldMoveActionSource
 {
     FIELD_MOVE_FAIL,
