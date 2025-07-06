@@ -1277,9 +1277,9 @@ Pyroden_EventScript_TeachWillOWisp::
 # 1332 "data/maps/Pyroden/scripts.pory"
 	closemessage
 # 1333 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_InvestigationNotOver_Movement_0
+	applymovement LOCALID_FRO_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_17
 # 1334 "data/maps/Pyroden/scripts.pory"
-	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_TeachWillOWisp_Movement_17
+	applymovement LOCALID_VEE_TOWN, Pyroden_EventScript_InvestigationNotOver_Movement_0
 # 1335 "data/maps/Pyroden/scripts.pory"
 	waitmovement 0
 # 1336 "data/maps/Pyroden/scripts.pory"
@@ -2011,9 +2011,9 @@ Pyroden_EventScript_TeachWillOWisp_Movement_16:
 	face_right
 	step_end
 
-# 1334 "data/maps/Pyroden/scripts.pory"
+# 1333 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_TeachWillOWisp_Movement_17:
-# 1334 "data/maps/Pyroden/scripts.pory"
+# 1333 "data/maps/Pyroden/scripts.pory"
 	walk_right
 	step_end
 
