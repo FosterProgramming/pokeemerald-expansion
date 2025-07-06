@@ -37,7 +37,7 @@ const struct EvenCraftingUiTemplate sECU_Templates[ECU_TEMPLATE_NUMBER] =
 
 static const u8 sIngredientCategoryTexts[NUM_INGREDIENT_CATEGORIES][CATEGORY_NAME_MAX_LENGTH] =
 {
-    [INGREDIENT_CATEGORY_PLANT] = _("Plants"),
+    [INGREDIENT_CATEGORY_BERRIES] = _("Berries"),
     [INGREDIENT_CATEGORY_FLUID] = _("Fluids"),
 };
 

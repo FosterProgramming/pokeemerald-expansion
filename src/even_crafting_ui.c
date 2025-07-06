@@ -399,7 +399,7 @@ static void EvenCraftingUi_SetupCB(void)
         gMain.state++;
         break;
     case 5:
-        sEvenCraftingUiState->currIngredientCategory = INGREDIENT_CATEGORY_PLANT;
+        sEvenCraftingUiState->currIngredientCategory = INGREDIENT_CATEGORY_BERRIES;
         sEvenCraftingUiState->currRecipeCategory = RECIPE_CATEGORY_MEDICINE;
         sEvenCraftingUiState->numItemsAdded = 0;
         sEvenCraftingUiState->hasCraftResult = FALSE;

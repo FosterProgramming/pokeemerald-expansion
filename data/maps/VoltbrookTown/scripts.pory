@@ -136,6 +136,7 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
+						speakername("Grunt 1")
 						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
 					case 23:
 						setobjectxyperm(1, 23, 21)

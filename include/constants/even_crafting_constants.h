@@ -11,7 +11,7 @@ enum Recipes {
 };
 
 enum IngredientCategories {
-    INGREDIENT_CATEGORY_PLANT,
+    INGREDIENT_CATEGORY_BERRIES,
     INGREDIENT_CATEGORY_FLUID,
     //  Must be last
     NUM_INGREDIENT_CATEGORIES
