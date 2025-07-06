@@ -329,3 +329,29 @@ void AddAiActionsForBattler(u32 battler)
         BraveAddMoveToQueue(battler, 0, target);
     }
 }
+
+void BraveFirstTurnSetAP(void)
+{
+    MgbaPrintf(MGBA_LOG_WARN, "Set AP to 1 for all battlers");
+    for (u32 i = 0; i < 4; i++)
+        gBattleStruct->monStoredAP[i] = 1;
+
+    //  Set up the gimmick indicators
+}
+
+void BraveIncrementAP(void)
+{
+    MgbaPrintf(MGBA_LOG_WARN, "Increment AP for all pokemon");
+    for (u32 i = 0; i < 4; i++)
+    {
+        if (gBattleStruct->monStoredAP[i] < 4)
+            gBattleStruct->monStoredAP[i]++;
+    }
+    // Update the gimmick indicators
+}
+
+void BraveConsumeAP(u32 battler, u32 move)
+{
+    if (move != MOVE_DEFAULT)
+        gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
+}

@@ -3753,6 +3753,7 @@ static void DoBattleIntro(void)
 static void TryDoEventsBeforeFirstTurn(void)
 {
     BraveClearAllActions();
+    BraveFirstTurnSetAP();
     //Brave_TestActions();
     s32 i, j;
 
@@ -3988,6 +3989,7 @@ void BattleTurnPassed(void)
     gBattleScripting.moveendState = 0;
 
     BraveClearAllActions();
+    BraveIncrementAP();
 
     for (i = 0; i < 5; i++)
         gBattleCommunication[i] = 0;

@@ -433,6 +433,8 @@ void HandleAction_UseMove(void)
             gBattleResults.lastUsedMoveOpponent = gCurrentMove;
     }
 
+    BraveConsumeAP(gBattlerAttacker, gChosenMove);
+
     // Set dynamic move type.
     SetTypeBeforeUsingMove(gChosenMove, gBattlerAttacker);
 

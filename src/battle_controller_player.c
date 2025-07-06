@@ -247,6 +247,14 @@ static u32 GetNextBall(u32 ballId)
 
 static void HandleInputChooseAction(u32 battler)
 {
+    if (gBattleStruct->monStoredAP[battler] < 1)
+    {
+        MgbaPrintf(MGBA_LOG_WARN, "Stopping move selection");
+        BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
+        gBattleStruct->skipMoveInput = TRUE;
+        PlayerBufferExecCompleted(battler);
+    }
+
     u16 itemId = gBattleResources->bufferA[battler][2] | (gBattleResources->bufferA[battler][3] << 8);
 
     DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
@@ -472,6 +480,7 @@ void HandleInputChooseTarget(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        MgbaPrintf(MGBA_LOG_WARN, "Targeting select");
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         if (gBattleStruct->gimmick.playerSelect)
@@ -484,7 +493,10 @@ void HandleInputChooseTarget(u32 battler)
         BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
         gBattlerControllerFuncs[battler] = PlayerHandleChooseMove;
         if (BraveGetBattlerActionCount(battler) == 4)
+        {
+            MgbaPrintf(MGBA_LOG_WARN, "Queue full, ending mon action select");
             PlayerBufferExecCompleted(battler);
+        }
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
@@ -639,6 +651,7 @@ void HandleInputShowEntireFieldTargets(u32 battler)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
         HideGimmickTriggerSprite();
         PlayerBufferExecCompleted(battler);
+        MgbaPrintf(MGBA_LOG_WARN, "Entire Field");
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
@@ -662,12 +675,21 @@ void HandleInputShowTargets(u32 battler)
         PlaySE(SE_SELECT);
         HideShownTargets(battler);
         if (gBattleStruct->gimmick.playerSelect)
+        {
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | RET_GIMMICK | (gMultiUsePlayerCursor << 8));
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        }
         else
+        {
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        }
         HideGimmickTriggerSprite();
         TryHideLastUsedBall();
-        PlayerBufferExecCompleted(battler);
+        if (BraveGetBattlerActionCount(battler) == 4)
+            PlayerBufferExecCompleted(battler);
+        else
+            gBattlerControllerFuncs[battler] = PlayerHandleChooseMove;
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
@@ -777,6 +799,7 @@ void HandleInputChooseMove(u32 battler)
             HideGimmickTriggerSprite();
             TryHideLastUsedBall();
             PlayerBufferExecCompleted(battler);
+            MgbaPrintf(MGBA_LOG_WARN, "Otherthing");
             break;
         case 1:
             gBattlerControllerFuncs[battler] = HandleInputChooseTarget;
@@ -813,6 +836,7 @@ void HandleInputChooseMove(u32 battler)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, 0xFFFF);
             HideGimmickTriggerSprite();
             PlayerBufferExecCompleted(battler);
+            MgbaPrintf(MGBA_LOG_WARN, "Thing 1");
             TryToHideMoveInfoWindow();
         }
     }
@@ -2231,6 +2255,7 @@ static void PlayerHandleChoosePokemon(u32 battler)
     {
         BtlController_EmitChosenMonReturnValue(battler, BUFFER_B, gBattlerPartyIndexes[battler] + 1, gBattlePartyCurrentOrder);
         PlayerBufferExecCompleted(battler);
+        MgbaPrintf(MGBA_LOG_WARN, "Select Pokemon");
     }
     else
     {

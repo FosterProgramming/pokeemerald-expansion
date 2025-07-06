@@ -42,3 +42,6 @@ u32 BraveGetBattlerActionCount(u32 battler);
 
 bool32 IsBraveTurnActuallyDone(void);
 void AddAiActionsForBattler(u32 battler);
+void BraveFirstTurnSetAP(void);
+void BraveIncrementAP(void);
+void BraveConsumeAP(u32 battler, u32 move);

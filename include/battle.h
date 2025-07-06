@@ -848,6 +848,7 @@ struct BattleStruct
     u16 skipMoveInput:1;
     u16 padding:1;
     u8 monBraveActions[4];
+    s8 monStoredAP[4];
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,
