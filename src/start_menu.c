@@ -51,6 +51,8 @@
 #include "constants/songs.h"
 #include "ui_summary_screen.h"
 
+#include "even_crafting_ui.h"
+
 // Menu actions
 enum
 {
