@@ -354,6 +354,7 @@ static void HandleInputChooseAction(u32 battler)
                 BraveAddDefaultToQueue(battler);
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
                 gBattleStruct->skipMoveInput = TRUE;
+                gBattleStruct->isBraveSelector = FALSE;
                 PlayerBufferExecCompleted(battler);
             }
             break;
@@ -495,6 +496,7 @@ void HandleInputChooseTarget(u32 battler)
         if (BraveGetBattlerActionCount(battler) == 4)
         {
             MgbaPrintf(MGBA_LOG_WARN, "Queue full, ending mon action select");
+            gBattleStruct->isBraveSelector = FALSE;
             PlayerBufferExecCompleted(battler);
         }
     }
@@ -940,6 +942,7 @@ void HandleInputChooseMove(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
+        gBattleStruct->isBraveSelector = FALSE;
         PlayerBufferExecCompleted(battler);
         /*
         if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE && !HasTrainerUsedGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler]))
