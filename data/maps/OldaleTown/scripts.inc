@@ -30,7 +30,10 @@ OldaleTown_EventScript_TownSign::
 	end
 
 OldaleTown_EventScript_Girl::
-	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
+	//msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
+	setwilddoubleflag
+	createmon 1, 0, SPECIES_MEWTWO, 5, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31, move1=MOVE_NIGHT_SHADE, move2=MOVE_FOCUS_PUNCH, move3=MOVE_PSYSTRIKE, move4=MOVE_PSYCHIC
+	dowildbattle
 	end
 
 OldaleTown_EventScript_MartEmployee::
