@@ -222,11 +222,10 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_NYX_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_ACE_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_TALON_PARTY_MEMBER
+    additem ITEM_ORAN_BERRY, 5
+    additem ITEM_FRESH_WATER, 5
+	fadescreen FADE_TO_BLACK
+	openevencrafting ECU_DEFAULT
 	release
 	end
 
@@ -292,7 +291,8 @@ Debug_EventScript_Script_6::
 	end
 
 Debug_EventScript_Script_7::
-	additem ITEM_WILLOWISP_TOOL, 1
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	setflag FLAG_SYS_B_DASH
 	release
 	end
 

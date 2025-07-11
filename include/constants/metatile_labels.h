@@ -248,6 +248,16 @@
 #define METATILE_GeneralSeelVersion_CrumbleDoorway_Bottom  0x044
 #define METATILE_GeneralSeelVersion_CrumbleDoorway_Top     0x03C
 #define METATILE_GeneralSeelVersion_CrumbleFloor           0x04C
+#define METATILE_GeneralSeelVersion_FrozenWater            0x04E
+#define METATILE_GeneralSeelVersion_HiddenGroundTile       0x04F
+#define METATILE_GeneralSeelVersion_NormalGrass            0x001
+#define METATILE_GeneralSeelVersion_PondLeftEdge           0x0C0
+#define METATILE_GeneralSeelVersion_PondLeftTopCorner      0x0B8
+#define METATILE_GeneralSeelVersion_PondMiddleWater        0x0C1
+#define METATILE_GeneralSeelVersion_PondRightEdge          0x0C2
+#define METATILE_GeneralSeelVersion_PondRightTopCorner     0x0BA
+#define METATILE_GeneralSeelVersion_PondTopEdge            0x0B9
+#define METATILE_GeneralSeelVersion_RevealedGroundTile     0x067
 
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
@@ -438,6 +448,25 @@
 #define METATILE_PokemonCenter_Floor_Plain_Alt           0x2E4
 #define METATILE_PokemonCenter_Floor_ShadowTop           0x21E
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
+
+// gTileset_Pyroden
+#define METATILE_Pyroden_EmptyPool_BottomLeft         0x2D8
+#define METATILE_Pyroden_EmptyPool_BottomLeftCorner   0x2D3
+#define METATILE_Pyroden_EmptyPool_BottomMiddle       0x2D9
+#define METATILE_Pyroden_EmptyPool_BottomRight        0x2DA
+#define METATILE_Pyroden_EmptyPool_BottomRightCorner  0x2D4
+#define METATILE_Pyroden_EmptyPool_MiddleLeft         0x2D0
+#define METATILE_Pyroden_EmptyPool_MiddleMiddle       0x2D1
+#define METATILE_Pyroden_EmptyPool_MiddleRight        0x2D2
+#define METATILE_Pyroden_EmptyPool_TopLeft            0x2C8
+#define METATILE_Pyroden_EmptyPool_TopLeftCorner      0x2CB
+#define METATILE_Pyroden_EmptyPool_TopMiddle          0x2C9
+#define METATILE_Pyroden_EmptyPool_TopRight           0x2CA
+#define METATILE_Pyroden_EmptyPool_TopRightCorner     0x2CC
+#define METATILE_Pyroden_Puddle_BottomLeft            0x2DD
+#define METATILE_Pyroden_Puddle_BottomRight           0x2DF
+#define METATILE_Pyroden_Puddle_TopLeft               0x2CD
+#define METATILE_Pyroden_Puddle_TopRight              0x2CF
 
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F

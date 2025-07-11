@@ -1,0 +1,92 @@
+raw `
+.set LOCALID_TORKOAL, 1
+`
+
+
+
+mapscripts Pyroden_House5_MapScripts {}
+
+
+script Pyroden_EventScript_Torkoal
+{
+    speakername("Torkoal")
+    switch(var(VAR_PYRODEN_CHIEF_QUEST_STATE))
+    {
+        
+        case 0:
+            msgbox(format(
+                "Heeelloooo.\n
+                I aaam the chieeeef of Pyrodeeeen.\p
+                … … …\p
+                I apooooologize.\n
+                I aaaam quiiite tired.\p
+                I dooooon't haaaave the eeeenergyyy to taaaaalk."
+            ), MSGBOX_NPC)
+            end
+
+        case 1:
+            faceplayer
+            msgbox(format(
+                "Heeelloooo.\n
+                I aaam the chieeeef of Pyrodeeeen.\p
+                Whaaaat is iiiiit?\p
+                … … …\p
+                Aaaaah, yeees.\n
+                The rooooocks.\p
+                Ooook.\n
+                I will geeeet riiid of theeeem.\p
+                I wiiill goooo noooow."
+            ))
+            closemessage
+            if(var(VAR_FACING) == DIR_NORTH)
+            {
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(
+                    walk_left
+                    walk_in_place_right
+                ))
+                waitmovement(0)
+            }
+                applymovement(LOCALID_TORKOAL, moves(
+                    delay_16*8
+                    walk_down
+                    delay_16*4
+
+                ))
+                waitmovement(0)
+                speakername("Torkoal")
+                msgbox(format(
+                    "I'm sooooorryyyyy.\n
+                    I'm tooooo tiiiireeeeed."
+                ))
+                closemessage
+                applymovement(LOCALID_TORKOAL, moves(
+                    walk_up
+                ))
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, moves(
+                    walk_right
+                    walk_in_place_up
+                ))
+                waitmovement(0)
+                faceplayer
+                speakername("Torkoal")
+                msgbox(format(
+                    "If youuu waaaant to geeet riiid of the roooocks…\p
+                    You maaaay waaaant to doooo iiiit yourseeeeelf.\p
+                    I'm sooooorrry.\n
+                    I'm oooooold."
+                ))
+                closemessage
+                setvar(VAR_PYRODEN_CHIEF_QUEST_STATE, 2)
+                end
+
+            default:
+            case 2:
+                msgbox(format(
+                    "Heeelloooo.\n
+                    Goooood luuuuuck with the rooooocks.\p
+                    THIS IS A QUEST SETUP. THE QUEST IS NOT IMPLEMENTED YET."
+                ), MSGBOX_NPC)
+                end
+    }
+}

@@ -5060,6 +5060,86 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/GlacierraCaverns_6F/border.bin",
       "blockdata_filepath": "data/layouts/GlacierraCaverns_6F/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE_HOUSE1",
+      "name": "Emberglide_House1_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Emberglide_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE_HOUSE2",
+      "name": "Emberglide_House2_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Emberglide_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE_HOUSE3",
+      "name": "Emberglide_House3_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Emberglide_House3/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE1",
+      "name": "Pyroden_House1_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE2",
+      "name": "Pyroden_House2_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE3",
+      "name": "Pyroden_House3_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House3/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE4",
+      "name": "Pyroden_House4_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House4/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House4/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE5",
+      "name": "Pyroden_House5_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House5/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House5/map.bin"
     }
   ]
 }

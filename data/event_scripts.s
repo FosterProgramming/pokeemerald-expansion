@@ -58,6 +58,7 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/even_crafting_constants.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -1289,3 +1290,19 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/GlacierraCaverns_5F/scripts.inc"
 
 	.include "data/maps/GlacierraCaverns_6F/scripts.inc"
+
+	.include "data/maps/Emberglide_House1/scripts.inc"
+
+	.include "data/maps/Emberglide_House2/scripts.inc"
+
+	.include "data/maps/Emberglide_House3/scripts.inc"
+
+	.include "data/maps/Pyroden_House1/scripts.inc"
+
+	.include "data/maps/Pyroden_House2/scripts.inc"
+
+	.include "data/maps/Pyroden_House3/scripts.inc"
+
+	.include "data/maps/Pyroden_House4/scripts.inc"
+
+	.include "data/maps/Pyroden_House5/scripts.inc"

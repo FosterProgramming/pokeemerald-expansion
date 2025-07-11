@@ -4937,3 +4937,9 @@ $(FLDEFFGFXDIR)/bow_arrow.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/misc/fire_pit.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(FLDEFFGFXDIR)/ice_rod.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(FLDEFFGFXDIR)/fire_rod.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2

@@ -1,0 +1,23 @@
+mapscripts Pyroden_House2_MapScripts {}
+
+script Pyroden_EventScript_Houndour
+{
+	lock
+	speakername("Houndour")
+	msgbox(format(
+		"Oh? A new face?\n
+        Funny.\p
+        This town's usually pretty quiet, but you're the second stranger we've had recently.\p
+        Yeah, there was this big Magmortar that strolled through here a while ago.\N
+        Real mean guy, that one.\p
+        I think he said something about the volcano?\p
+        I dunno. I wouldn't wanna mess with him."
+	), MSGBOX_NPC)
+	if(!flag(FLAG_INVESTIGATION_HINT_MAGMORTAR))
+	{
+		setflag(FLAG_INVESTIGATION_HINT_MAGMORTAR)
+		call(Pyroden_EventScript_CheckHintsInside)
+	}
+	release
+	end
+}

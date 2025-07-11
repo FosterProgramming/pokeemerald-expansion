@@ -1491,3 +1491,63 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_Bow_Arrow = {
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
 };
+
+
+static const union AnimCmd *const sAnimTable_FireRod[] =
+{
+    sHookshotChainAnim_South,
+    sHookshotChainAnim_North,
+    sHookshotChainAnim_West,
+    sHookshotChainAnim_East,
+};
+
+const u32 gFieldEffectObjectPic_FireRod[] = INCBIN_U32("graphics/field_effects/pics/fire_rod.4bpp");
+const u16 gFieldEffectObjectPaletteFireRod[] = INCBIN_U16("graphics/field_effects/pics/fire_rod.gbapal");
+const struct SpritePalette gSpritePalette_FireRodFieldEffect      = {gFieldEffectObjectPaletteFireRod, FLDEFF_PAL_TAG_FIREROD};
+
+static const struct SpriteFrameImage sPicTable_FireRod[] = {
+    overworld_frame(gFieldEffectObjectPic_FireRod, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_FireRod, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_FireRod, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_FireRod, 2, 2, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_FireRod = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_FIREROD,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_FireRod,
+    .images = sPicTable_FireRod,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+
+static const union AnimCmd *const sAnimTable_IceRod[] =
+{
+    sHookshotChainAnim_South,
+    sHookshotChainAnim_North,
+    sHookshotChainAnim_West,
+    sHookshotChainAnim_East,
+};
+
+const u32 gFieldEffectObjectPic_IceRod[] = INCBIN_U32("graphics/field_effects/pics/ice_rod.4bpp");
+const u16 gFieldEffectObjectPaletteIceRod[] = INCBIN_U16("graphics/field_effects/pics/ice_rod.gbapal");
+const struct SpritePalette gSpritePalette_IceRodFieldEffect      = {gFieldEffectObjectPaletteIceRod, FLDEFF_PAL_TAG_ICEROD};
+
+static const struct SpriteFrameImage sPicTable_IceRod[] = {
+    overworld_frame(gFieldEffectObjectPic_IceRod, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_IceRod, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_IceRod, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_IceRod, 2, 2, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_IceRod = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_ICEROD,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_IceRod,
+    .images = sPicTable_IceRod,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};

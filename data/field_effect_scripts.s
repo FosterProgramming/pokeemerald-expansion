@@ -87,11 +87,21 @@ gFieldEffectScriptPointers::
     .4byte gFieldEffectScript_UseTeleportTool           @ FLDEFF_USE_TELEPORT_TOOL
 	.4byte gFieldEffectScript_Crumble					@ FLDEFF_CRUMBLE
 	.4byte gFieldEffectScript_Bow						@ FLDEFF_BOW
+	.4byte gFieldEffectScript_FireRod					@ FLDEFF_FIREROD
+	.4byte gFieldEffectScript_IceRod					@ FLDEFF_ICEROD
 
 @ End qol_field_moves
 
 gFieldEffectScript_Bow::
 	field_eff_loadfadedpal_callnative gSpritePalette_BowFieldEffect, FldEff_Bow
+	field_eff_end
+
+gFieldEffectScript_FireRod::
+	field_eff_loadfadedpal_callnative gSpritePalette_FireRodFieldEffect, FldEff_FireRod
+	field_eff_end
+
+gFieldEffectScript_IceRod::
+	field_eff_loadfadedpal_callnative gSpritePalette_IceRodFieldEffect, FldEff_IceRod
 	field_eff_end
 
 gFieldEffectScript_Crumble::

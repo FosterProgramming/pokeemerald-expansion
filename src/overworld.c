@@ -1901,6 +1901,12 @@ static void InitCurrentFlashLevelScanlineEffect(void)
     }
 }
 
+void InitFlashEffectForLensOfTruth(void)
+{
+    WriteFlashScanlineEffectBuffer(1);
+    ScanlineEffect_SetParams(sFlashEffectParams);
+}
+
 static bool32 LoadMapInStepsLink(u8 *state)
 {
     switch (*state)

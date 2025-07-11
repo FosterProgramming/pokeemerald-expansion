@@ -10,6 +10,7 @@
 #include "constants/map_scripts.h"
 #include "field_message_box.h"
 #include "trainer_see.h"
+#include "qol_field_moves.h"
 
 #define RAM_SCRIPT_MAGIC 51
 
@@ -200,6 +201,7 @@ u32 ScriptPeekWord(struct ScriptContext *ctx)
 void LockPlayerFieldControls(void)
 {
     sLockFieldControls = TRUE;
+    LensOfTruth_ClearLens();
 }
 
 void UnlockPlayerFieldControls(void)
