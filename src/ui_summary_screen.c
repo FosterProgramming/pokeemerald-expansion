@@ -67,6 +67,7 @@ enum{
     SUMMARY_MODE_DEFAULT,
     SUMMARY_MODE_MOVE_SELECT,
     SUMMARY_MODE_EV_MODIFIER,
+    SUMMARY_MODE_SKILL_MODIFIER,
 };
  
 //==========DEFINES==========//
@@ -82,6 +83,8 @@ struct MenuResources
     u8 summaryMode;
     u8 currentStat;
     u8 moveToSwap;
+    u8 currentSkill;
+    u8 firstSkill;
 };
 
 enum WindowIds
@@ -198,6 +201,13 @@ static const u8 sSummaryScreen_Icon_Marking_1_Gfx[]        = INCBIN_U8("graphics
 static const u8 sSummaryScreen_Icon_Marking_2_Gfx[]        = INCBIN_U8("graphics/ui_menus/summary_screen/icons/marking_2.4bpp");
 static const u8 sSummaryScreen_Icon_Marking_3_Gfx[]        = INCBIN_U8("graphics/ui_menus/summary_screen/icons/marking_3.4bpp");
 
+static const u8 sSummaryScreen_Icon_Skill_Move_Gfx[]       = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/move.4bpp");
+static const u8 sSummaryScreen_Icon_Skill_Ability_Gfx[]    = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/ability.4bpp");
+static const u8 sSummaryScreen_Icon_Skill_Stat_Gfx[]       = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/stat.4bpp");
+static const u8 sSummaryScreen_Icon_Skill_Cap_Gfx[]        = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/ev_cap.4bpp");
+static const u8 sSummaryScreen_Icon_Skill_Locked_Gfx[]     = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/locked.4bpp");
+
+
 enum Colors
 {
     FONT_BLACK,
@@ -249,6 +259,9 @@ void SummaryScreen_Init(MainCallback callback)
     sMenuDataPtr->summaryMode = SUMMARY_MODE_DEFAULT;
     sMenuDataPtr->currentStat = STAT_HP;
     sMenuDataPtr->moveToSwap = 0xFF;
+
+    sMenuDataPtr->currentSkill = 0;
+    sMenuDataPtr->firstSkill = 0;
 
     for(i = 0; i < NUM_SUMMARY_SPRITES; i++)
         sMenuDataPtr->spriteIDs[i] = SPRITE_NONE;
@@ -916,9 +929,151 @@ static const u8 sText_Summary_Screen_Profile_Snorlax[]      = _("If attacked, it
 static const u8 sText_Summary_Screen_Profile_Honchkrow[]    = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Gengar[]       = _("If attacked, it strikes back");
 
+static const u8 sText_Summary_Skill_Stat[]       = _("{STR_VAR_1} + {STR_VAR_2}");
+static const u8 sText_Summary_Cap[]              = _("EVs Cap + {STR_VAR_1}");
+static const u8 sText_Summary_Locked[]           = _("Skill Locked Until {LV_2}{STR_VAR_1}");
+static const u8 sText_Summary_Skill_Points[]     = _("{STR_VAR_1} points");
+
+static const u8 sText_Summary_Skill_Description_Move[]    = _("Gives the Player the ability to\ngive the Pokémon this move at\nany time.");
+static const u8 sText_Summary_Skill_Description_Ability[] = _("Gives the Player the ability to\ngive the Pokémon this ability\nat any time.");
+static const u8 sText_Summary_Skill_Description_Stat[]    = _("Gives the Pokémon extra IVs");
+static const u8 sText_Summary_Skill_Description_Cap[]     = _("Gives the Player more EVs to\nfreely invest on the Stat\nScreen.");
+static const u8 sText_Summary_Skill_Description_Locked[]  = _("This skill is locked until you\nreach a certain level.");
+
 //Trainer Memo Text Stuff
 static const u8 sMemoNatureTextColor[] = _("{COLOR LIGHT_RED}{SHADOW GREEN}");
 static const u8 sMemoMiscTextColor[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}"); // This is also affected by palettes, apparently
+
+//Skill tree stuff, to be moved to a different file for easier access
+#define MAX_SKILLS_PER_TREE 20
+
+enum{
+    SKILL_TYPE_NONE,
+    SKILL_TREE_TYPE_MOVE,     //Gives the Player the ability to give the Pokémon this move at any time
+    SKILL_TREE_TYPE_ABILITY,  //Gives the Player the ability to give the Pokémon this ability at any time
+    SKILL_TREE_TYPE_STAT,     //Gives the Pokémon extra IVs
+    SKILL_TREE_TYPE_CAP,      //Gives the Player more EVs to freely invest on the Stat Screen.
+};
+
+enum{
+    PARTY_MEMBER_DEWGONG,
+    PARTY_MEMBER_PERSIAN,
+    NUM_PARTY_MEMBERS,
+};
+
+struct SkillTree
+{
+    u8 skill_type;
+    u8 skill;
+    u8 argument;
+    u8 neededPoints;
+    u8 unlockLevel;
+};
+
+static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE] = 
+{
+    [PARTY_MEMBER_DEWGONG] = 
+    {
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_FURY_SWIPES,
+            .neededPoints = 8,
+            .unlockLevel  = 0,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_LIBERO,
+            .neededPoints = 2,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_STAT,
+            .skill        = STAT_ATK,
+            .argument     = 3,
+            .neededPoints = 3,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 4, //+10 EVs
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_FLAMETHROWER,
+            .neededPoints = 8,
+            .unlockLevel  = 0,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_PROTEAN,
+            .neededPoints = 2,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 5, //+10 EVs
+            .neededPoints = 5,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_ROCK_THROW,
+            .neededPoints = 2,
+            .unlockLevel  = 0,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_MOODY,
+            .neededPoints = 4,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_STAT,
+            .skill        = STAT_SPEED,
+            .argument     = 4,
+            .neededPoints = 3,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 20, //+10 EVs
+            .neededPoints = 10,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TYPE_NONE,
+        },
+    },
+    [PARTY_MEMBER_PERSIAN] = 
+    {
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_SCRATCH,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_BLAZE,
+            .neededPoints = 5,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_STAT,
+            .skill        = STAT_DEF,
+            .argument     = 4,
+            .neededPoints = 10,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 10, //+10 EVs
+            .neededPoints = 10,
+            .unlockLevel  = 10,
+        },
+    },
+};
 
 static void GetMetLevelString(u8 *output, u8 level)
 {
@@ -984,7 +1139,21 @@ u8 GetCorrectNatureOrderForIndex(u8 index){
     return index;
 }
 
+u8 GetNumberOfPartyMemberDefinedSkills(u8 partyMember){
+    u8 i;
+    for(i = 0; i < MAX_SKILLS_PER_TREE; i++){
+        if(sSkillTree[partyMember][i].skill_type == SKILL_TYPE_NONE)
+            return i;
+    }
+    return MAX_SKILLS_PER_TREE;
+}
+
+u8 getCurrentPartyMember(void){
+    return PARTY_MEMBER_DEWGONG;
+}
+
 #define SPACE_BETWEEN_MARKINGS 8
+#define MAX_SHOWN_SKILLS 4
 
 static void PrintToWindow(void)
 {
@@ -1376,6 +1545,10 @@ static void PrintToWindow(void)
         }
         break;
         case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:{
+            u8 selectSkillMode = sMenuDataPtr->summaryMode == SUMMARY_MODE_SKILL_MODIFIER;
+            u8 partyMember = getCurrentPartyMember();
+            u8 numSkills = GetNumberOfPartyMemberDefinedSkills(partyMember);
+
             //Skills
             x  = 14;
             x2 = 0;
@@ -1383,13 +1556,124 @@ static void PrintToWindow(void)
             y2 = 6;
             
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Skills);
-            
+
+            //Skills
+            x  = 10;
+            x2 = 6;
+            y  = 5;
+            y2 = 3;
+            for(i = 0; i < MAX_SHOWN_SKILLS; i++){
+                u8 currentSkill = sMenuDataPtr->firstSkill + i;
+                u8 currentSkillType = sSkillTree[partyMember][currentSkill].skill_type;
+                u8 locked = FALSE;
+
+                switch(currentSkillType){
+                    case SKILL_TREE_TYPE_MOVE:{
+                        u16 move = sSkillTree[partyMember][currentSkill].skill;
+                        StringCopy(gStringVar4, GetMoveName(move));
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Skill_Move_Gfx,    (x * 8) + x2, ((y + (i  * 2)) * 8) + y2, 40, 16);
+                    }
+                    break;
+                    case SKILL_TREE_TYPE_ABILITY:{
+                        u16 ability = sSkillTree[partyMember][currentSkill].skill;
+                        StringCopy(gStringVar4, gAbilitiesInfo[ability].name);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Skill_Ability_Gfx, (x * 8) + x2, ((y + (i  * 2)) * 8) + y2, 40, 16);
+                    }
+                    break;
+                    case SKILL_TREE_TYPE_STAT:{
+                        u16 stat = GetCorrectNatureOrderForIndex(sSkillTree[partyMember][currentSkill].skill);
+                        u16 extraStat = sSkillTree[partyMember][currentSkill].argument;
+
+                        switch(stat){
+                            case STAT_HP:
+                                StringCopy(gStringVar1, sText_Summary_Screen_Stat_HP);
+                            break;
+                            case STAT_ATK:
+                                StringCopy(gStringVar1, sText_Summary_Screen_Stat_Attack);
+                            break;
+                            case STAT_DEF:
+                                StringCopy(gStringVar1, sText_Summary_Screen_Stat_Defense);
+                            break;
+                            case STAT_SPATK:
+                                StringCopy(gStringVar1, sText_Summary_Screen_Stat_SP_Attack);
+                            break;
+                            case STAT_SPDEF:
+                                StringCopy(gStringVar1, sText_Summary_Screen_Stat_SP_Defense);
+                            break;
+                            case STAT_SPEED:
+                                StringCopy(gStringVar1, sText_Summary_Screen_Stat_Speed);
+                            break;
+                        }
+                        
+	                    ConvertIntToDecimalStringN(gStringVar2, extraStat, STR_CONV_MODE_LEFT_ALIGN, 3);
+                        StringExpandPlaceholders(gStringVar4, sText_Summary_Skill_Stat);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Skill_Stat_Gfx,    (x * 8) + x2, ((y + (i  * 2)) * 8) + y2, 40, 16);
+                    }
+                    break;
+                    case SKILL_TREE_TYPE_CAP:{
+                        u16 extraStat = sSkillTree[partyMember][currentSkill].skill;
+	                    ConvertIntToDecimalStringN(gStringVar1, extraStat, STR_CONV_MODE_LEFT_ALIGN, 3);
+                        StringExpandPlaceholders(gStringVar4, sText_Summary_Cap);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Skill_Cap_Gfx,  (x * 8) + x2, ((y + (i  * 2)) * 8) + y2, 40, 16);
+                    }
+                    break;
+                    default:
+                        u16 level = sSkillTree[partyMember][currentSkill].unlockLevel;
+	                    ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3);
+                        StringExpandPlaceholders(gStringVar4, sText_Summary_Locked);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Skill_Locked_Gfx,  (x * 8) + x2, ((y + (i  * 2)) * 8) + y2, 40, 16);
+                    break;
+                }
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 5) * 8) + x2, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+
+                if(!locked){
+                    u8 pointsToUnlock = sSkillTree[partyMember][currentSkill].neededPoints;
+	                ConvertIntToDecimalStringN(gStringVar1, pointsToUnlock, STR_CONV_MODE_LEFT_ALIGN, 3);
+                    StringExpandPlaceholders(gStringVar4, sText_Summary_Skill_Points);
+                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x + 13) * 8) + x2, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+                }
+
+                if(selectSkillMode){
+                    if(currentSkill == sMenuDataPtr->currentSkill){
+                        u8 j;
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, ((x + 4) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
+                        for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
+	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + 4 + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_3_Gfx, (((x + 4) + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
+                    }
+                }
+            }
+
             //Description
             x  = 14;
             x2 = 0;
             y  = 13;
             y2 = 6;
+
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Description);
+            
+            if(selectSkillMode){
+                u8 currentSkill = sMenuDataPtr->currentSkill;
+                u8 currentSkillType = sSkillTree[partyMember][currentSkill].skill_type;
+                switch(currentSkillType){
+                    case SKILL_TREE_TYPE_MOVE:
+                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Move);
+                    break;
+                    case SKILL_TREE_TYPE_ABILITY:
+                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Ability);
+                    break;
+                    case SKILL_TREE_TYPE_STAT:
+                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Stat);
+                    break;
+                    case SKILL_TREE_TYPE_CAP:
+                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Cap);
+                    break;
+                    default:
+                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Locked);
+                    break;
+                }
+                AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x - 3) * 8) + x2, ((y + 2) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+            }
         }
         break;
     }
@@ -1682,6 +1966,70 @@ static void SwapMonMoves(u8 moveIndex1, u8 moveIndex2)
     SetMoveTypeIcons(&gPlayerParty[sMenuDataPtr->currentPokemonIdx]);
 }
 
+static void Menu_PressedButtonUp_OnSkillMenu(void)
+{
+    u8 numEntries      = GetNumberOfPartyMemberDefinedSkills(getCurrentPartyMember());
+    u8 halfScreen      = MAX_SHOWN_SKILLS / 2;
+    u8 finalhalfScreen = numEntries - halfScreen + 1;
+
+    if (numEntries < MAX_SHOWN_SKILLS)
+    {
+        if (sMenuDataPtr->currentSkill > 0)
+            sMenuDataPtr->currentSkill--;
+        else
+            sMenuDataPtr->currentSkill = numEntries - 1;
+    }
+    else
+    {
+        if(sMenuDataPtr->currentSkill > halfScreen && sMenuDataPtr->currentSkill <= (finalhalfScreen - 1)){
+            sMenuDataPtr->currentSkill--;
+            sMenuDataPtr->firstSkill--;
+        }
+        else if(sMenuDataPtr->currentSkill == 0){ 
+            //If you are in the first option go to the last one
+            sMenuDataPtr->currentSkill = numEntries - 1;
+            sMenuDataPtr->firstSkill = numEntries - MAX_SHOWN_SKILLS;
+        }
+        else{
+            sMenuDataPtr->currentSkill--;
+        }
+    }
+}
+
+static void Menu_PressedButtonDown_OnSkillMenu(void)
+{
+    u8 numEntries      = GetNumberOfPartyMemberDefinedSkills(getCurrentPartyMember());
+    u8 halfScreen      = MAX_SHOWN_SKILLS / 2;
+    u8 finalhalfScreen = numEntries - halfScreen + 1;
+
+    if (numEntries < MAX_SHOWN_SKILLS)
+    {
+        if (sMenuDataPtr->currentSkill < numEntries)
+            sMenuDataPtr->currentSkill++;
+        else
+            sMenuDataPtr->currentSkill = 0;
+    }
+    else
+    {
+        if(sMenuDataPtr->currentSkill < halfScreen){
+            sMenuDataPtr->currentSkill++;
+        }
+        else if(sMenuDataPtr->currentSkill >= (numEntries - 1)){ //If you are in the last option go to the first one
+            sMenuDataPtr->currentSkill = 0;
+            sMenuDataPtr->firstSkill = 0;
+        }
+        else if(sMenuDataPtr->currentSkill >= (finalhalfScreen - 1)){
+            sMenuDataPtr->currentSkill++;
+        }
+        else{
+            sMenuDataPtr->currentSkill++;
+            sMenuDataPtr->firstSkill++;
+        }
+    }
+
+    //MgbaPrintf(MGBA_LOG_WARN, "Menu_PressedButtonDown_OnSkillMenu currentSkill = %d, firstSkill = %d, numEntries = %d", sMenuDataPtr->currentSkill, sMenuDataPtr->firstSkill, numEntries);
+}
+
 /* This is the meat of the UI. This is where you wait for player inputs and can branch to other tasks accordingly */
 static void Task_MenuMain(u8 taskId)
 {
@@ -1725,6 +2073,16 @@ static void Task_MenuMain(u8 taskId)
             case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
                 if(sMenuDataPtr->summaryMode != SUMMARY_MODE_EV_MODIFIER){
                     sMenuDataPtr->summaryMode = SUMMARY_MODE_EV_MODIFIER;
+                }
+                else{
+                    sMenuDataPtr->currentMoveIdx = 0;
+                    sMenuDataPtr->summaryMode = SUMMARY_MODE_DEFAULT;
+                }
+                gTasks[taskId].func = Task_ChangeSummaryPage;
+            break;
+            case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
+                if(sMenuDataPtr->summaryMode != SUMMARY_MODE_SKILL_MODIFIER){
+                    sMenuDataPtr->summaryMode = SUMMARY_MODE_SKILL_MODIFIER;
                 }
                 else{
                     sMenuDataPtr->currentMoveIdx = 0;
@@ -1893,90 +2251,20 @@ static void Task_MenuMain(u8 taskId)
             }
         }
         break;
+        case SUMMARY_MODE_SKILL_MODIFIER:
+        {
+            if (JOY_NEW(DPAD_DOWN) || JOY_REPEAT(DPAD_DOWN))
+            {
+                Menu_PressedButtonDown_OnSkillMenu();
+                PrintToWindow();
+            }
+
+            if (JOY_NEW(DPAD_UP) || JOY_REPEAT(DPAD_UP))
+            {
+                Menu_PressedButtonUp_OnSkillMenu();
+                PrintToWindow();
+            }
+        }
+        break;
     }
 }
-/*
-#define MAX_SKILLS_PER_TREE 20
-
-enum{
-    SKILL_TREE_TYPE_MOVE,
-    SKILL_TREE_TYPE_ABILITY,
-    SKILL_TREE_TYPE_STAT,
-    SKILL_TREE_TYPE_CAP,
-};
-
-enum{
-    PARTY_MEMBER_DEWGONG,
-    PARTY_MEMBER_PERSIAN,
-    NUM_PARTY_MEMBERS,
-};
-
-struct SkillTree
-{
-    u8 skill_type;
-    u8 skill;
-    u8 argument;
-    u8 neededPoints;
-    u8 unlockLevel;
-};
-
-static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE] = 
-{
-    [PARTY_MEMBER_DEWGONG] = 
-    {
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_SCRATCH,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_BLAZE,
-            .neededPoints = 5,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_DEF,
-            .argument     = 4,
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 10, //+10 EVs
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-    },
-    [PARTY_MEMBER_PERSIAN] = 
-    {
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_SCRATCH,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_BLAZE,
-            .neededPoints = 5,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_DEF,
-            .argument     = 4,
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 10, //+10 EVs
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-    },
-};
-*/
