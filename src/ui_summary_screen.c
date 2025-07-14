@@ -908,26 +908,27 @@ static const u8 sText_Summary_Screen_Stats[]           = _("STATS");
 static const u8 sText_Summary_Screen_Ivs[]             = _("IVS");
 static const u8 sText_Summary_Screen_Evs[]             = _("EVS");
 static const u8 sText_Summary_Screen_Reset_EVs[]       = _("RESET EVS");
-static const u8 sText_Summary_Screen_Stat_HP[]         = _("HP");
-static const u8 sText_Summary_Screen_Stat_Attack[]     = _("ATTACK");
-static const u8 sText_Summary_Screen_Stat_Defense[]    = _("DEFENSE");
-static const u8 sText_Summary_Screen_Stat_SP_Attack[]  = _("SP.ATK");
-static const u8 sText_Summary_Screen_Stat_SP_Defense[] = _("SP.DEF");
-static const u8 sText_Summary_Screen_Stat_Speed[]      = _("SPEED");
 static const u8 sText_Summary_Screen_Profile[]         = _("PROFILE");
 static const u8 sText_Summary_Screen_Recruit_Info[]    = _("RECRUITMENT INFO");
 static const u8 sText_Summary_Screen_Skills[]          = _("SKILLS");
 static const u8 sText_Summary_Screen_Description[]     = _("DESCRIPTION");
 static const u8 sText_Summary_Screen_Moves[]           = _("MOVES");
 
+static const u8 sText_Summary_Screen_Stat_HP[]         = _("HP");
+static const u8 sText_Summary_Screen_Stat_Attack[]     = _("Attack");
+static const u8 sText_Summary_Screen_Stat_Defense[]    = _("Defense");
+static const u8 sText_Summary_Screen_Stat_SP_Attack[]  = _("Sp.Atk");
+static const u8 sText_Summary_Screen_Stat_SP_Defense[] = _("Sp.Def");
+static const u8 sText_Summary_Screen_Stat_Speed[]      = _("Speed");
+
 static const u8 sText_Summary_Screen_Profile_Generic[]      = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Persian[]      = _("If attacked, it strikes back");
-static const u8 sText_Summary_Screen_Profile_Venomoth[]     = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Eevee[]        = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Dewgong[]      = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Snorlax[]      = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Honchkrow[]    = _("If attacked, it strikes back");
 static const u8 sText_Summary_Screen_Profile_Gengar[]       = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Human[]        = _("If attacked, it strikes back");
 
 static const u8 sText_Summary_Skill_Stat[]       = _("{STR_VAR_1} + {STR_VAR_2}");
 static const u8 sText_Summary_Cap[]              = _("EVs Cap + {STR_VAR_1}");
@@ -944,136 +945,7 @@ static const u8 sText_Summary_Skill_Description_Locked[]  = _("This skill is loc
 static const u8 sMemoNatureTextColor[] = _("{COLOR LIGHT_RED}{SHADOW GREEN}");
 static const u8 sMemoMiscTextColor[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}"); // This is also affected by palettes, apparently
 
-//Skill tree stuff, to be moved to a different file for easier access
-#define MAX_SKILLS_PER_TREE 20
-
-enum{
-    SKILL_TYPE_NONE,
-    SKILL_TREE_TYPE_MOVE,     //Gives the Player the ability to give the Pokémon this move at any time
-    SKILL_TREE_TYPE_ABILITY,  //Gives the Player the ability to give the Pokémon this ability at any time
-    SKILL_TREE_TYPE_STAT,     //Gives the Pokémon extra IVs
-    SKILL_TREE_TYPE_CAP,      //Gives the Player more EVs to freely invest on the Stat Screen.
-};
-
-enum{
-    PARTY_MEMBER_DEWGONG,
-    PARTY_MEMBER_PERSIAN,
-    NUM_PARTY_MEMBERS,
-};
-
-struct SkillTree
-{
-    u8 skill_type;
-    u8 skill;
-    u8 argument;
-    u8 neededPoints;
-    u8 unlockLevel;
-};
-
-static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE] = 
-{
-    [PARTY_MEMBER_DEWGONG] = 
-    {
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_FURY_SWIPES,
-            .neededPoints = 8,
-            .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_LIBERO,
-            .neededPoints = 2,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_ATK,
-            .argument     = 3,
-            .neededPoints = 3,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 4, //+10 EVs
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_FLAMETHROWER,
-            .neededPoints = 8,
-            .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_PROTEAN,
-            .neededPoints = 2,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 5, //+10 EVs
-            .neededPoints = 5,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_ROCK_THROW,
-            .neededPoints = 2,
-            .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_MOODY,
-            .neededPoints = 4,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_SPEED,
-            .argument     = 4,
-            .neededPoints = 3,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 20, //+10 EVs
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TYPE_NONE,
-        },
-    },
-    [PARTY_MEMBER_PERSIAN] = 
-    {
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_SCRATCH,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_BLAZE,
-            .neededPoints = 5,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_DEF,
-            .argument     = 4,
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 10, //+10 EVs
-            .neededPoints = 10,
-            .unlockLevel  = 10,
-        },
-    },
-};
+#include "data/pokemon/skills.h"
 
 static void GetMetLevelString(u8 *output, u8 level)
 {
@@ -1149,6 +1021,36 @@ u8 GetNumberOfPartyMemberDefinedSkills(u8 partyMember){
 }
 
 u8 getCurrentPartyMember(void){
+    struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+
+    switch(species){
+        case SPECIES_DEWGONG:
+            return PARTY_MEMBER_DEWGONG;
+        break;
+        case SPECIES_PERSIAN:
+            return PARTY_MEMBER_PERSIAN;
+        break;
+        case SPECIES_EEVEE:
+        case SPECIES_VAPOREON:
+        case SPECIES_JOLTEON:
+        case SPECIES_FLAREON:
+            return PARTY_MEMBER_EEVEE;
+        break;
+        case SPECIES_SNORLAX:
+            return PARTY_MEMBER_SNORLAX;
+        break;
+        case SPECIES_GENGAR:
+            return PARTY_MEMBER_GENGAR;
+        break;
+        case SPECIES_HONCHKROW:
+            return PARTY_MEMBER_HONCHKROW;
+        break;
+        /*case SPECIES_HUMAN:
+            return PARTY_MEMBER_HUMAN;
+        break;*/
+    }
+
     return PARTY_MEMBER_DEWGONG;
 }
 
@@ -1264,30 +1166,27 @@ static void PrintToWindow(void)
             y  = 5;
             y2 = 0;
 
-            switch(species){
-                case SPECIES_PERSIAN:
+            switch(getCurrentPartyMember()){
+                case PARTY_MEMBER_PERSIAN:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Persian);
                 break;
-                case SPECIES_VENOMOTH:
-                    StringCopy(gStringVar1, sText_Summary_Screen_Profile_Venomoth);
-                break;
-                case SPECIES_EEVEE:
-                case SPECIES_VAPOREON:
-                case SPECIES_JOLTEON:
-                case SPECIES_FLAREON:
+                case PARTY_MEMBER_EEVEE:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Eevee);
                 break;
-                case SPECIES_DEWGONG:
+                case PARTY_MEMBER_DEWGONG:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Dewgong);
                 break;
-                case SPECIES_SNORLAX:
+                case PARTY_MEMBER_SNORLAX:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Snorlax);
                 break;
-                case SPECIES_HONCHKROW:
+                case PARTY_MEMBER_HONCHKROW:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Honchkrow);
                 break;
-                case SPECIES_GENGAR:
+                case PARTY_MEMBER_GENGAR:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Gengar);
+                break;
+                case PARTY_MEMBER_HUMAN:
+                    StringCopy(gStringVar1, sText_Summary_Screen_Profile_Human);
                 break;
                 default:
                     StringCopy(gStringVar1, sText_Summary_Screen_Profile_Generic);
@@ -1581,7 +1480,7 @@ static void PrintToWindow(void)
                     }
                     break;
                     case SKILL_TREE_TYPE_STAT:{
-                        u16 stat = GetCorrectNatureOrderForIndex(sSkillTree[partyMember][currentSkill].skill);
+                        u16 stat = sSkillTree[partyMember][currentSkill].skill;
                         u16 extraStat = sSkillTree[partyMember][currentSkill].argument;
 
                         switch(stat){
@@ -1761,7 +1660,6 @@ static void Task_MenuTurnOff(u8 taskId)
 u8 GetPlayerUsableMons(void)
 {
     int i;
-	u8 PartySize = 0;
     u16 species;
 
     for (i = 0; i < PARTY_SIZE; i++)
@@ -1769,11 +1667,9 @@ u8 GetPlayerUsableMons(void)
         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
 
         if (species == SPECIES_NONE || species == SPECIES_EGG)
-        {
-            PartySize++;
-        }
+            return i;
     }
-    return PartySize;
+    return PARTY_SIZE;
 }
 
 u8 GetCurrentMonUsableMoves(void)
@@ -2037,8 +1933,14 @@ static void Task_MenuMain(u8 taskId)
     {
         switch(sMenuDataPtr->summaryMode){
             case SUMMARY_MODE_MOVE_SELECT:
-                sMenuDataPtr->summaryMode = SUMMARY_MODE_DEFAULT;
+            case SUMMARY_MODE_EV_MODIFIER:
+            case SUMMARY_MODE_SKILL_MODIFIER:
+                sMenuDataPtr->summaryMode    = SUMMARY_MODE_DEFAULT;
                 sMenuDataPtr->currentMoveIdx = 0;
+                sMenuDataPtr->moveToSwap     = 0xFF;
+                sMenuDataPtr->currentStat    = 0;
+                sMenuDataPtr->currentSkill   = 0;
+                sMenuDataPtr->firstSkill     = 0;
                 gTasks[taskId].func = Task_ChangeSummaryPage;
             break;
             default:
@@ -2054,8 +1956,8 @@ static void Task_MenuMain(u8 taskId)
         switch(sMenuDataPtr->currentPage){
             case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
                 if(sMenuDataPtr->summaryMode != SUMMARY_MODE_MOVE_SELECT){
-                    sMenuDataPtr->summaryMode = SUMMARY_MODE_MOVE_SELECT;
-                    sMenuDataPtr->moveToSwap  = 0xFF;
+                    sMenuDataPtr->summaryMode    = SUMMARY_MODE_MOVE_SELECT;
+                    sMenuDataPtr->moveToSwap     = 0xFF;
                     sMenuDataPtr->currentMoveIdx = 0;
                 }
                 else{
@@ -2071,23 +1973,21 @@ static void Task_MenuMain(u8 taskId)
                 gTasks[taskId].func = Task_ChangeSummaryPage;
             break;
             case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
-                if(sMenuDataPtr->summaryMode != SUMMARY_MODE_EV_MODIFIER){
+                sMenuDataPtr->currentStat = 0;
+                if(sMenuDataPtr->summaryMode != SUMMARY_MODE_EV_MODIFIER)
                     sMenuDataPtr->summaryMode = SUMMARY_MODE_EV_MODIFIER;
-                }
-                else{
-                    sMenuDataPtr->currentMoveIdx = 0;
+                else
                     sMenuDataPtr->summaryMode = SUMMARY_MODE_DEFAULT;
-                }
                 gTasks[taskId].func = Task_ChangeSummaryPage;
             break;
             case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
-                if(sMenuDataPtr->summaryMode != SUMMARY_MODE_SKILL_MODIFIER){
+                sMenuDataPtr->currentSkill = 0;
+                sMenuDataPtr->firstSkill   = 0;
+
+                if(sMenuDataPtr->summaryMode != SUMMARY_MODE_SKILL_MODIFIER)
                     sMenuDataPtr->summaryMode = SUMMARY_MODE_SKILL_MODIFIER;
-                }
-                else{
-                    sMenuDataPtr->currentMoveIdx = 0;
+                else
                     sMenuDataPtr->summaryMode = SUMMARY_MODE_DEFAULT;
-                }
                 gTasks[taskId].func = Task_ChangeSummaryPage;
             break;
         }
@@ -2128,7 +2028,7 @@ static void Task_MenuMain(u8 taskId)
             if (JOY_NEW(DPAD_DOWN) || JOY_REPEAT(DPAD_DOWN))
             {
                 PlaySE(SE_SELECT);
-                if(sMenuDataPtr->currentPokemonIdx < GetPlayerUsableMons() + 1)
+                if(sMenuDataPtr->currentPokemonIdx < GetPlayerUsableMons() - 1)
                     sMenuDataPtr->currentPokemonIdx++;
                 else
                     sMenuDataPtr->currentPokemonIdx = 0;
@@ -2141,7 +2041,7 @@ static void Task_MenuMain(u8 taskId)
                 if(sMenuDataPtr->currentPokemonIdx != 0)
                     sMenuDataPtr->currentPokemonIdx--;
                 else
-                    sMenuDataPtr->currentPokemonIdx = GetPlayerUsableMons() + 1;
+                    sMenuDataPtr->currentPokemonIdx = GetPlayerUsableMons() - 1;
                 gTasks[taskId].func = Task_ChangeSummaryMon;
             }
         break;
