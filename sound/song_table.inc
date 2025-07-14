@@ -617,6 +617,11 @@ gSongTable::
 	song mus_sv_main_menu, 0, 0 @@ Expedition 33: Clair
 	song mus_sv_vee, 0, 0 @@ Expedition 33: Gustave
 	song mus_sv_glacierra, 0, 0 @@ Octopath Traveller: Stillsnow
+	song mus_sv_ultima, 0, 0 @@ FFXIV: Ultima
+	song mus_sv_elemental_stars, 0, 0 @@ Golden Sun: Elemental Stars
+	song mus_sv_schala, 0, 0 @@ FFIV: Schalas Theme
+	song mus_sv_ancient_library, 0, 0 @@ FFIV: Schalas Theme
+	song mus_sv_terras_theme, 0, 0 @@ FFIV: Terras Theme
 
 	.align 2
 dummy_song_header:

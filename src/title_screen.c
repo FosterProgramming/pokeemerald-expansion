@@ -699,7 +699,7 @@ void CB2_InitTitleScreen(void)
                                     | DISPCNT_OBJ_ON
                                     | DISPCNT_WIN0_ON
                                     | DISPCNT_OBJWIN_ON);
-        m4aSongNumStart(MUS_SV_MAIN_MENU);
+        m4aSongNumStart(MUS_SV_TERRAS_THEME);
         gMain.state = 5;
         break;
     case 5:
