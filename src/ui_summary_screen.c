@@ -2074,10 +2074,12 @@ static void TryToUseUnlockedSkill(u8 taskId, bool8 isBeingUnlocked){
         case SKILL_TREE_TYPE_STAT:
             if(isBeingUnlocked)
                 TryToGiveStat();
+            PrintToWindow();
         break;
         case SKILL_TREE_TYPE_CAP:
             if(isBeingUnlocked)
                 TryToGiveEVs();
+            PrintToWindow();
         break;
     }
 }
@@ -2093,7 +2095,6 @@ static void TryToUnlockSkill(u8 taskId){
 
     if(sMemberData.unlockedSkills[skillNum]){
         TryToUseUnlockedSkill(taskId, FALSE);
-        PrintToWindow();
     }
     else{
         if(sMemberData.remainingSkillPoints >= sSkillData.neededPoints){
@@ -2101,7 +2102,6 @@ static void TryToUnlockSkill(u8 taskId){
             sMenuDataPtr->sPartyMembers[partyMember].unlockedSkills[skillNum] = TRUE;
             sMenuDataPtr->sPartyMembers[partyMember].remainingSkillPoints = sMemberData.remainingSkillPoints - sSkillData.neededPoints;
             TryToUseUnlockedSkill(taskId, TRUE);
-            PrintToWindow();
         }
         else{
             //Not enough points
@@ -2208,7 +2208,6 @@ static void Task_MenuMain(u8 taskId)
                     sMenuDataPtr->currentSkill = 0;
                     sMenuDataPtr->firstSkill   = 0;
                     gTasks[taskId].func = Task_ChangeSummaryPage;
-                    //PrintToWindow();
                 }
                 else{
                     TryToUnlockSkill(taskId);
