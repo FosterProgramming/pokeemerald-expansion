@@ -1,12 +1,15 @@
 
+//Configuration
 #define MAX_SKILLS_PER_TREE 20
 
-enum{
-    SKILL_TYPE_NONE,
-    SKILL_TREE_TYPE_MOVE,     //Gives the Player the ability to give the Pokémon this move at any time
-    SKILL_TREE_TYPE_ABILITY,  //Gives the Player the ability to give the Pokémon this ability at any time
-    SKILL_TREE_TYPE_STAT,     //Gives the Pokémon extra IVs
-    SKILL_TREE_TYPE_CAP,      //Gives the Player more EVs to freely invest on the Stat Screen.
+struct PartyMemberData
+{
+    u16 maxSkillPoints;                         //Total of Skll Points this Member has gained
+    u16 remainingSkillPoints;                   //Number of points left after unlocking skills
+    bool8 unlockedSkills[MAX_SKILLS_PER_TREE];  //Unlocked Skills
+    u16 abilities[MAX_MON_INNATES + 1];         //Current Assigned Abilities
+    u16 extraEVs;                               //Extra EVs available to assign at any point
+    u8 extraStats[NUM_STATS];                   //Extra raw stats for this Pokémon
 };
 
 enum{
@@ -18,6 +21,36 @@ enum{
     PARTY_MEMBER_GENGAR,
     PARTY_MEMBER_HUMAN,
     NUM_PARTY_MEMBERS,
+};
+
+static u16 sPartyMembersToSpecies[NUM_PARTY_MEMBERS] = 
+{
+    [PARTY_MEMBER_DEWGONG]   = SPECIES_DEWGONG,
+    [PARTY_MEMBER_PERSIAN]   = SPECIES_PERSIAN,
+    [PARTY_MEMBER_EEVEE]     = SPECIES_EEVEE,
+    [PARTY_MEMBER_SNORLAX]   = SPECIES_SNORLAX,
+    [PARTY_MEMBER_HONCHKROW] = SPECIES_HONCHKROW,
+    [PARTY_MEMBER_GENGAR]    = SPECIES_GENGAR,
+    [PARTY_MEMBER_HUMAN]     = SPECIES_BULBASAUR, //Placeholder
+};
+
+//Profile Description
+static const u8 sText_Summary_Screen_Profile_Generic[]      = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Persian[]      = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Eevee[]        = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Dewgong[]      = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Snorlax[]      = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Honchkrow[]    = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Gengar[]       = _("If attacked, it strikes back");
+static const u8 sText_Summary_Screen_Profile_Human[]        = _("If attacked, it strikes back");
+
+//Skill Tree
+enum{
+    SKILL_TYPE_NONE,
+    SKILL_TREE_TYPE_MOVE,     //Gives the Player the ability to give the Pokémon this move at any time
+    SKILL_TREE_TYPE_ABILITY,  //Gives the Player the ability to give the Pokémon this ability at any time
+    SKILL_TREE_TYPE_STAT,     //Gives the Pokémon extra IVs
+    SKILL_TREE_TYPE_CAP,      //Gives the Player more EVs to freely invest on the Stat Screen.
 };
 
 struct SkillTree
@@ -128,7 +161,13 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
         },
         {
             .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_LIMBER,
+            .skill        = ABILITY_TECHNICIAN,
+            .neededPoints = 5,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_UNNERVE,
             .neededPoints = 5,
             .unlockLevel  = 10,
         },
