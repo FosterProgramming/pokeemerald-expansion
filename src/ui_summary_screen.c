@@ -67,6 +67,7 @@ enum{
 enum{
     SUMMARY_MODE_DEFAULT,
     SUMMARY_MODE_MOVE_SELECT,
+    SUMMARY_MODE_MOVE_CHANGER,
     SUMMARY_MODE_EV_MODIFIER,
     SUMMARY_MODE_SKILL_MODIFIER,
 };
@@ -76,17 +77,26 @@ struct MenuResources
 {
     MainCallback savedCallback;     // determines callback to run when we exit. e.g. where do we want to go after closing the menu
     u8 gfxLoadState;
-    u8 currentPage;
-    u8 currentPokemonIdx;
-    u8 currentMoveIdx;
+    //Graphics Data
 	u16 bgTilemapBuffers[NUM_SUMMARY_BACKGROUNDS][0x400];
     u16 spriteIDs[NUM_SUMMARY_SPRITES];
+    //Default
+    struct PartyMemberData sPartyMembers[NUM_PARTY_MEMBERS];
+    u8 currentPokemonIdx;
+    u8 currentPage;
     u8 summaryMode;
+    //Ability Screen
+    u8 currentAbilityIdx;
+    u16 newAbility;
+    //Stat Screen
     u8 currentStat;
+    //Move Screen
+    u8 currentMoveIdx;
     u8 moveToSwap;
+    u16 newMove;
+    //Skill Screen
     u8 currentSkill;
     u8 firstSkill;
-    struct PartyMemberData sPartyMembers[NUM_PARTY_MEMBERS];
 };
 
 enum WindowIds
@@ -266,6 +276,10 @@ void SummaryScreen_Init(MainCallback callback)
 
     sMenuDataPtr->currentSkill = 0;
     sMenuDataPtr->firstSkill = 0;
+
+    sMenuDataPtr->currentAbilityIdx = 0;
+    sMenuDataPtr->newAbility = ABILITY_NONE;
+    sMenuDataPtr->newMove = MOVE_NONE;
     
     for(i = 0; i < NUM_PARTY_MEMBERS; i++){
         u16 species = sPartyMembersToSpecies[i];
@@ -1274,7 +1288,7 @@ static void PrintToWindow(void)
         case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
         {
             u16 move;
-            bool8 shouldDisplayDescriptin = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_SELECT;
+            bool8 shouldDisplayDescriptin = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_SELECT || sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER;
             u8 descriptionMoveIdx = sMenuDataPtr->currentMoveIdx;
 
             //Battle Move Names and PP
@@ -1865,6 +1879,11 @@ static void SwapMonMoves(u8 moveIndex1, u8 moveIndex2)
     SetMoveTypeIcons(&gPlayerParty[sMenuDataPtr->currentPokemonIdx]);
 }
 
+static void ReplaceMonMove(u8 moveIndex, u16 newMove){
+    SetMonData(&gPlayerParty[sMenuDataPtr->currentPokemonIdx], MON_DATA_MOVE1 + moveIndex, &newMove);
+    SetMoveTypeIcons(&gPlayerParty[sMenuDataPtr->currentPokemonIdx]);
+}
+
 static void Menu_PressedButtonUp_OnSkillMenu(void)
 {
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
@@ -1956,7 +1975,7 @@ static void TryToGiveAbility(void){
     //Ask player ability to replace
 }
 
-static void TryToGiveMove(void){
+static void TryToGiveMove(u8 taskId){
     u8 i;
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 species         = GetMonData(mon, MON_DATA_SPECIES);
@@ -1976,7 +1995,11 @@ static void TryToGiveMove(void){
         }
     }
 
-    //Ask player move to replace
+    sMenuDataPtr->summaryMode    = SUMMARY_MODE_MOVE_CHANGER;
+    sMenuDataPtr->currentMoveIdx = 0;
+    sMenuDataPtr->currentPage    = SUMMARY_SCREEN_PAGE_BATTLE_MOVES;
+    sMenuDataPtr->newMove        = moveToGive;
+    gTasks[taskId].func          = Task_ChangeSummaryPage;
 }
 
 static void TryToGiveStat(void){
@@ -2008,7 +2031,7 @@ static void TryToGiveEVs(void){
     sMenuDataPtr->sPartyMembers[partyMember].extraEVs += EVsToGive;
 }
 
-static void TryToUseUnlockedSkill(bool8 isBeingUnlocked){
+static void TryToUseUnlockedSkill(u8 taskId, bool8 isBeingUnlocked){
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 species         = GetMonData(mon, MON_DATA_SPECIES);
     u8 partyMember      = getCurrentPartyMember(species);
@@ -2022,7 +2045,7 @@ static void TryToUseUnlockedSkill(bool8 isBeingUnlocked){
             TryToGiveAbility();
         break;
         case SKILL_TREE_TYPE_MOVE:
-            TryToGiveMove();
+            TryToGiveMove(taskId);
             SetMoveTypeIcons(mon);
         break;
         case SKILL_TREE_TYPE_STAT:
@@ -2036,7 +2059,7 @@ static void TryToUseUnlockedSkill(bool8 isBeingUnlocked){
     }
 }
 
-static void TryToUnlockSkill(void){
+static void TryToUnlockSkill(u8 taskId){
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 species         = GetMonData(mon, MON_DATA_SPECIES);
     u8 partyMember      = getCurrentPartyMember(species);
@@ -2046,7 +2069,7 @@ static void TryToUnlockSkill(void){
     struct SkillTree       sSkillData  = sSkillTree[partyMember][skillNum];
 
     if(sMemberData.unlockedSkills[skillNum]){
-        TryToUseUnlockedSkill(FALSE);
+        TryToUseUnlockedSkill(taskId, FALSE);
         PrintToWindow();
     }
     else{
@@ -2054,7 +2077,7 @@ static void TryToUnlockSkill(void){
             //Unlock Skill
             sMenuDataPtr->sPartyMembers[partyMember].unlockedSkills[skillNum] = TRUE;
             sMenuDataPtr->sPartyMembers[partyMember].remainingSkillPoints = sMemberData.remainingSkillPoints - sSkillData.neededPoints;
-            TryToUseUnlockedSkill(TRUE);
+            TryToUseUnlockedSkill(taskId, TRUE);
             PrintToWindow();
         }
         else{
@@ -2081,6 +2104,13 @@ static void Task_MenuMain(u8 taskId)
                 sMenuDataPtr->firstSkill     = 0;
                 gTasks[taskId].func = Task_ChangeSummaryPage;
             break;
+            case SUMMARY_MODE_MOVE_CHANGER:
+                //Go back to the skill screen -- To change
+                sMenuDataPtr->currentPage = SUMMARY_SCREEN_PAGE_POKEMON_SKILLS;
+                sMenuDataPtr->summaryMode = SUMMARY_MODE_SKILL_MODIFIER;
+                ShowOrHideAllMoveTypeIcons(&gPlayerParty[sMenuDataPtr->currentPokemonIdx], TRUE);
+                gTasks[taskId].func = Task_ChangeSummaryPage;
+            break;
             default:
                 PlaySE(SE_PC_OFF);
                 BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
@@ -2093,22 +2123,35 @@ static void Task_MenuMain(u8 taskId)
     {
         switch(sMenuDataPtr->currentPage){
             case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
-                if(sMenuDataPtr->summaryMode != SUMMARY_MODE_MOVE_SELECT){
-                    sMenuDataPtr->summaryMode    = SUMMARY_MODE_MOVE_SELECT;
-                    sMenuDataPtr->moveToSwap     = 0xFF;
-                    sMenuDataPtr->currentMoveIdx = 0;
+            {
+                switch(sMenuDataPtr->summaryMode){
+                    case SUMMARY_MODE_DEFAULT:
+                        sMenuDataPtr->summaryMode    = SUMMARY_MODE_MOVE_SELECT;
+                        sMenuDataPtr->moveToSwap     = 0xFF;
+                        sMenuDataPtr->currentMoveIdx = 0;
+                        gTasks[taskId].func = Task_ChangeSummaryPage;
+                    break;
+                    case SUMMARY_MODE_MOVE_SELECT:
+                        if(sMenuDataPtr->moveToSwap != 0xFF){
+                            SwapMonMoves(sMenuDataPtr->moveToSwap, sMenuDataPtr->currentMoveIdx);
+                            sMenuDataPtr->moveToSwap  = 0xFF;
+                        }
+                        else{
+                            sMenuDataPtr->moveToSwap = sMenuDataPtr->currentMoveIdx;
+                        }
+                        gTasks[taskId].func = Task_ChangeSummaryPage;
+                    break;
+                    case SUMMARY_MODE_MOVE_CHANGER:
+                        ReplaceMonMove(sMenuDataPtr->currentMoveIdx, sMenuDataPtr->newMove);
+                        sMenuDataPtr->currentPage    = SUMMARY_SCREEN_PAGE_POKEMON_SKILLS;
+                        sMenuDataPtr->newMove        = 0;
+                        sMenuDataPtr->currentMoveIdx = 0;
+                        sMenuDataPtr->summaryMode    = SUMMARY_MODE_SKILL_MODIFIER;
+                        ShowOrHideAllMoveTypeIcons(&gPlayerParty[sMenuDataPtr->currentPokemonIdx], TRUE);
+                        gTasks[taskId].func = Task_ChangeSummaryPage;
+                    break;
                 }
-                else{
-                    if(sMenuDataPtr->moveToSwap != 0xFF){
-                        SwapMonMoves(sMenuDataPtr->moveToSwap, sMenuDataPtr->currentMoveIdx);
-                        sMenuDataPtr->moveToSwap  = 0xFF;
-                    }
-                    else{
-                        sMenuDataPtr->moveToSwap = sMenuDataPtr->currentMoveIdx;
-                    }
-                }
-
-                gTasks[taskId].func = Task_ChangeSummaryPage;
+            }
             break;
             case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
                 sMenuDataPtr->currentStat = 0;
@@ -2121,14 +2164,14 @@ static void Task_MenuMain(u8 taskId)
             case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
 
                 if(sMenuDataPtr->summaryMode != SUMMARY_MODE_SKILL_MODIFIER){
-                    sMenuDataPtr->summaryMode = SUMMARY_MODE_SKILL_MODIFIER;
+                    sMenuDataPtr->summaryMode  = SUMMARY_MODE_SKILL_MODIFIER;
                     sMenuDataPtr->currentSkill = 0;
                     sMenuDataPtr->firstSkill   = 0;
                     gTasks[taskId].func = Task_ChangeSummaryPage;
-                    PrintToWindow();
+                    //PrintToWindow();
                 }
                 else{
-                    TryToUnlockSkill();
+                    TryToUnlockSkill(taskId);
                 }
             break;
         }
@@ -2187,6 +2230,27 @@ static void Task_MenuMain(u8 taskId)
             }
         break;
         case SUMMARY_MODE_MOVE_SELECT:
+            if (JOY_NEW(DPAD_DOWN) || JOY_REPEAT(DPAD_DOWN))
+            {
+                PlaySE(SE_SELECT);
+                if(sMenuDataPtr->currentMoveIdx < GetCurrentMonUsableMoves() - 1)
+                    sMenuDataPtr->currentMoveIdx++;
+                else
+                    sMenuDataPtr->currentMoveIdx = 0;
+                PrintToWindow();
+            }
+
+            if (JOY_NEW(DPAD_UP) || JOY_REPEAT(DPAD_UP))
+            {
+                PlaySE(SE_SELECT);
+                if(sMenuDataPtr->currentMoveIdx != 0)
+                    sMenuDataPtr->currentMoveIdx--;
+                else
+                    sMenuDataPtr->currentMoveIdx = GetCurrentMonUsableMoves() - 1;
+                PrintToWindow();
+            }
+        break;
+        case SUMMARY_MODE_MOVE_CHANGER:
             if (JOY_NEW(DPAD_DOWN) || JOY_REPEAT(DPAD_DOWN))
             {
                 PlaySE(SE_SELECT);
