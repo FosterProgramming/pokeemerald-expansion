@@ -1584,7 +1584,7 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
 
     friendship = MAX_FRIENDSHIP;
     // Give the chosen Pokémon its specified moves.
-    for (j = 0; j < MAX_MON_MOVES; j++)
+    for (j = 0; j < 4; j++)
     {
         move = fmon->moves[j];
         if (flags & FLAG_FRONTIER_MON_FACTORY && move == MOVE_RETURN)

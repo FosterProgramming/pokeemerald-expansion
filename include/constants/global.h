@@ -97,7 +97,7 @@
 #define FRONTIER_LVL_TENT       FRONTIER_LVL_MODE_COUNT // Special usage for indicating Battle Tent
 
 #define TRAINER_ID_LENGTH 4
-#define MAX_MON_MOVES 4
+#define MAX_MON_MOVES 6
 #define ALL_MOVES_MASK ((1 << MAX_MON_MOVES) - 1)
 
 #define CONTESTANT_COUNT 4

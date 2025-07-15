@@ -1866,22 +1866,16 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
 {
     bool32 noMoveSet = TRUE;
     u32 j;
+    u32 move;
 
     for (j = 0; j < MAX_MON_MOVES; ++j)
     {
-        if (partyEntry->moves[j] != MOVE_NONE)
-            noMoveSet = FALSE;
-    }
-    if (noMoveSet)
-    {
-        // TODO: Figure out a default strategy when moves are not set, to generate a good moveset
-        return;
-    }
-
-    for (j = 0; j < MAX_MON_MOVES; ++j)
-    {
-        u32 pp = GetMovePP(partyEntry->moves[j]);
-        SetMonData(mon, MON_DATA_MOVE1 + j, &partyEntry->moves[j]);
+        if (j < 4)
+            move = partyEntry->moves[j];
+        else
+            move = MOVE_NONE;
+        u32 pp = GetMovePP(move);
+        SetMonData(mon, MON_DATA_MOVE1 + j, &move);
         SetMonData(mon, MON_DATA_PP1 + j, &pp);
     }
 }

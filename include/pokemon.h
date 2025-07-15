@@ -41,10 +41,14 @@ enum MonData {
     MON_DATA_MOVE2,
     MON_DATA_MOVE3,
     MON_DATA_MOVE4,
+    MON_DATA_MOVE5,
+    MON_DATA_MOVE6,
     MON_DATA_PP1,
     MON_DATA_PP2,
     MON_DATA_PP3,
     MON_DATA_PP4,
+    MON_DATA_PP5,
+    MON_DATA_PP6,
     MON_DATA_PP_BONUSES,
     MON_DATA_COOL,
     MON_DATA_BEAUTY,
@@ -167,14 +171,14 @@ struct PokemonSubstruct2
     u8 attackEV;
     u8 defenseEV;
     u8 speedEV;
+
     u8 spAttackEV;
     u8 spDefenseEV;
-    u8 cool;
-    u8 beauty;
-    u8 cute;
-    u8 smart;
-    u8 tough;
-    u8 sheen;
+
+    u16 move5;
+    u16 move6;
+    u8 pp5;
+    u8 pp6;
 };
 
 struct PokemonSubstruct3

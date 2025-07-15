@@ -609,7 +609,7 @@ static void GetOpponentBattleStyle(void)
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         u16 monId = gFrontierTempParty[i];
-        for (j = 0; j < MAX_MON_MOVES; j++)
+        for (j = 0; j < 4; j++)
         {
             u8 battleStyle = GetMoveBattleStyle(gFacilityTrainerMons[monId].moves[j]);
             stylePoints[battleStyle]++;

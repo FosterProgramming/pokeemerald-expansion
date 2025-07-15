@@ -1334,7 +1334,7 @@ void CreateBattleTowerMon(struct Pokemon *mon, struct BattleTowerPokemon *src)
 
     CreateMon(mon, src->species, src->level, 0, TRUE, src->personality, OT_ID_PRESET, src->otId);
 
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (i = 0; i < 4; i++)
         SetMonMoveSlot(mon, src->moves[i], i);
 
     SetMonData(mon, MON_DATA_PP_BONUSES, &src->ppBonuses);
@@ -1396,7 +1396,7 @@ void CreateBattleTowerMon_HandleLevel(struct Pokemon *mon, struct BattleTowerPok
 
     CreateMon(mon, src->species, level, 0, TRUE, src->personality, OT_ID_PRESET, src->otId);
 
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (i = 0; i < 4; i++)
         SetMonMoveSlot(mon, src->moves[i], i);
 
     SetMonData(mon, MON_DATA_PP_BONUSES, &src->ppBonuses);
@@ -1460,7 +1460,7 @@ void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 m
               otId);
 
     SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (i = 0; i < 4; i++)
         SetMonMoveSlot(mon, src->party[monId].moves[i], i);
 
     evAmount = MAX_TOTAL_EVS / NUM_STATS;
@@ -1520,7 +1520,7 @@ void ConvertPokemonToBattleTowerPokemon(struct Pokemon *mon, struct BattleTowerP
 
     dest->heldItem = heldItem;
 
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (i = 0; i < 4; i++)
         dest->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
 
     dest->level = GetMonData(mon, MON_DATA_LEVEL, NULL);
@@ -2473,6 +2473,12 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_MOVE4:
             retVal = GetSubstruct1(boxMon)->move4;
             break;
+        case MON_DATA_MOVE5:
+            retVal = substruct2->move5;
+            break;
+        case MON_DATA_MOVE6:
+            retVal = substruct2->move6;
+            break;
         case MON_DATA_PP1:
             retVal = GetSubstruct1(boxMon)->pp1;
             break;
@@ -2484,6 +2490,12 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             break;
         case MON_DATA_PP4:
             retVal = GetSubstruct1(boxMon)->pp4;
+            break;
+        case MON_DATA_PP5:
+            retVal = substruct2->pp5;
+            break;
+        case MON_DATA_PP6:
+            retVal = substruct2->pp6;
             break;
         case MON_DATA_HP_EV:
             retVal = GetSubstruct2(boxMon)->hpEV;
@@ -2504,22 +2516,12 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = GetSubstruct2(boxMon)->spDefenseEV;
             break;
         case MON_DATA_COOL:
-            retVal = GetSubstruct2(boxMon)->cool;
-            break;
         case MON_DATA_BEAUTY:
-            retVal = GetSubstruct2(boxMon)->beauty;
-            break;
         case MON_DATA_CUTE:
-            retVal = GetSubstruct2(boxMon)->cute;
-            break;
         case MON_DATA_SMART:
-            retVal = GetSubstruct2(boxMon)->smart;
-            break;
         case MON_DATA_TOUGH:
-            retVal = GetSubstruct2(boxMon)->tough;
-            break;
         case MON_DATA_SHEEN:
-            retVal = GetSubstruct2(boxMon)->sheen;
+            retVal = 0;
             break;
         case MON_DATA_POKERUS:
             retVal = GetSubstruct3(boxMon)->pokerus;
@@ -2969,6 +2971,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_MOVE4:
             SET16(GetSubstruct1(boxMon)->move4);
             break;
+        case MON_DATA_MOVE5:
+            SET16(substruct2->move5);
+            break;
+        case MON_DATA_MOVE6:
+            SET16(substruct2->move6);
+            break; 
         case MON_DATA_PP1:
             SET8(GetSubstruct1(boxMon)->pp1);
             break;
@@ -2980,6 +2988,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             break;
         case MON_DATA_PP4:
             SET8(GetSubstruct1(boxMon)->pp4);
+            break;
+        case MON_DATA_PP5:
+            SET8(substruct2->pp5);
+            break;
+        case MON_DATA_PP6:
+            SET8(substruct2->pp6);
             break;
         case MON_DATA_HP_EV:
             SET8(GetSubstruct2(boxMon)->hpEV);
@@ -3000,22 +3014,11 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(GetSubstruct2(boxMon)->spDefenseEV);
             break;
         case MON_DATA_COOL:
-            SET8(GetSubstruct2(boxMon)->cool);
-            break;
         case MON_DATA_BEAUTY:
-            SET8(GetSubstruct2(boxMon)->beauty);
-            break;
         case MON_DATA_CUTE:
-            SET8(GetSubstruct2(boxMon)->cute);
-            break;
         case MON_DATA_SMART:
-            SET8(GetSubstruct2(boxMon)->smart);
-            break;
         case MON_DATA_TOUGH:
-            SET8(GetSubstruct2(boxMon)->tough);
-            break;
         case MON_DATA_SHEEN:
-            SET8(GetSubstruct2(boxMon)->sheen);
             break;
         case MON_DATA_POKERUS:
             SET8(GetSubstruct3(boxMon)->pokerus);
@@ -5647,7 +5650,7 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
 
 u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
 {
-    u16 learnedMoves[4];
+    u16 learnedMoves[6];
     u8 numMoves = 0;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u8 level = GetMonData(mon, MON_DATA_LEVEL, 0);

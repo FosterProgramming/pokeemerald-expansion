@@ -266,7 +266,7 @@ static void SetRandomQuestionData(void)
     for (i = 0; i < NUM_WHICH_MOVE_QUESTIONS; i++)
     {
         for (j = 0; j < MULTI_PARTY_SIZE; j++)
-            gApprenticePartyMovesData->moveSlots[j][i] = MAX_MON_MOVES;
+            gApprenticePartyMovesData->moveSlots[j][i] = 4;
     }
 
     partySlot = 0;
@@ -281,7 +281,7 @@ static void SetRandomQuestionData(void)
             {
                 do
                 {
-                    rand = Random() % MAX_MON_MOVES;
+                    rand = Random() % 4;
                     for (j = 0; j < gApprenticePartyMovesData->moveCounter + 1; j++)
                     {
                         if (gApprenticePartyMovesData->moveSlots[id][j] == rand)
@@ -359,10 +359,13 @@ static u16 GetRandomAlternateMove(u8 monId)
                 }
                 while (!shouldUseMove);
 
-                if (numLearnsetMoves <= MAX_MON_MOVES)
+                move = ItemIdToBattleMoveId(ITEM_TM01 + id);
+                shouldUseMove = TRUE;
+
+                if (numLearnsetMoves <= 4)
                     j = 0;
                 else
-                    j = numLearnsetMoves - MAX_MON_MOVES;
+                    j = numLearnsetMoves - 4;
 
                 for (; j < numLearnsetMoves; j++)
                 {
@@ -377,7 +380,7 @@ static u16 GetRandomAlternateMove(u8 monId)
         }
         else
         {
-            if (numLearnsetMoves <= MAX_MON_MOVES)
+            if (numLearnsetMoves <= 4)
             {
                 needTMs = TRUE;
                 continue;
@@ -390,11 +393,11 @@ static u16 GetRandomAlternateMove(u8 monId)
                 do
                 {
                     // Get a random move excluding the 4 it would know at max level
-                    u8 learnsetId = Random() % (numLearnsetMoves - MAX_MON_MOVES);
+                    u8 learnsetId = Random() % (numLearnsetMoves - 4);
                     move = learnset[learnsetId].move;
                     shouldUseMove = TRUE;
 
-                    for (j = numLearnsetMoves - MAX_MON_MOVES; j < numLearnsetMoves; j++)
+                    for (j = numLearnsetMoves - 4; j < numLearnsetMoves; j++)
                     {
                         // Keep looking for moves until one not in the last 4 is found
                         if ((learnset[j].move) == move)
@@ -452,8 +455,8 @@ static void GetLatestLearnedMoves(u16 species, u16 *moves)
     }
 
     numLearnsetMoves = i;
-    if (numLearnsetMoves > MAX_MON_MOVES)
-        numLearnsetMoves = MAX_MON_MOVES;
+    if (numLearnsetMoves > 4)
+        numLearnsetMoves = 4;
 
     for (j = 0; j < numLearnsetMoves; j++)
         moves[j] = learnset[(i - 1) - j].move;
@@ -463,7 +466,7 @@ static void GetLatestLearnedMoves(u16 species, u16 *moves)
 // Compare to GetRandomAlternateMove, which gets the move that will be the second choice
 static u16 GetDefaultMove(u8 monId, u8 speciesArrayId, u8 moveSlot)
 {
-    u16 moves[MAX_MON_MOVES];
+    u16 moves[4];
     u8 i, numQuestions;
 
     if (PLAYER_APPRENTICE.questionsAnswered < NUM_WHICH_MON_QUESTIONS)
@@ -497,7 +500,7 @@ static void SaveApprenticeParty(u8 numQuestions)
     {
         gSaveBlock2Ptr->apprentices[0].party[i].species = SPECIES_NONE;
         gSaveBlock2Ptr->apprentices[0].party[i].item = ITEM_NONE;
-        for (j = 0; j < MAX_MON_MOVES; j++)
+        for (j = 0; j < 4; j++)
             gSaveBlock2Ptr->apprentices[0].party[i].moves[j] = MOVE_NONE;
     }
 

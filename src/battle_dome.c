@@ -1949,7 +1949,7 @@ static void InitDomeTrainers(void)
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         DOME_MONS[0][i] = GetMonData(&gPlayerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_SPECIES, NULL);
-        for (j = 0; j < MAX_MON_MOVES; j++)
+        for (j = 0; j < 4; j++)
             gSaveBlock2Ptr->frontier.domePlayerPartyData[i].moves[j] = GetMonData(&gPlayerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_MOVE1 + j, NULL);
         for (j = 0; j < NUM_STATS; j++)
             gSaveBlock2Ptr->frontier.domePlayerPartyData[i].evs[j] = GetMonData(&gPlayerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_HP_EV + j, NULL);
@@ -2277,7 +2277,7 @@ static int SelectOpponentMons_Good(u16 tournamentTrainerId, bool8 allowRandom)
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         partyMovePoints[i] = 0;
-        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+        for (moveIndex = 0; moveIndex < 4; moveIndex++)
         {
             for (playerMonId = 0; playerMonId < FRONTIER_PARTY_SIZE; playerMonId++)
             {
@@ -2306,7 +2306,7 @@ static int SelectOpponentMons_Bad(u16 tournamentTrainerId, bool8 allowRandom)
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         partyMovePoints[i] = 0;
-        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
+        for (moveIndex = 0; moveIndex < 4; moveIndex++)
         {
             for (playerMonId = 0; playerMonId < FRONTIER_PARTY_SIZE; playerMonId++)
             {
@@ -4308,7 +4308,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     // Calculate move scores to determine the trainers battle style
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        for (j = 0; j < MAX_MON_MOVES; j++)
+        for (j = 0; j < 4; j++)
         {
             for (k = 0; k < NUM_MOVE_POINT_TYPES; k++)
             {
@@ -5108,8 +5108,8 @@ static void ResolveDomeRoundWinners(void)
 static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roundId)
 {
     int i, j, k;
-    int moveScores[MAX_MON_MOVES * FRONTIER_PARTY_SIZE];
-    u16 moves[MAX_MON_MOVES * FRONTIER_PARTY_SIZE];
+    int moveScores[4 * FRONTIER_PARTY_SIZE];
+    u16 moves[4 * FRONTIER_PARTY_SIZE];
     u16 bestScore = 0;
     u16 bestId = 0;
     int movePower = 0;
@@ -5118,14 +5118,14 @@ static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roun
     // Calc move points of all 4 moves for all 3 Pokémon hitting all 3 target mons.
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        for (j = 0; j < MAX_MON_MOVES; j++)
+        for (j = 0; j < 4; j++)
         {
             // TODO: Clean this up, looks like a different data structure (2D array)
-            moveScores[i * MAX_MON_MOVES + j] = 0;
+            moveScores[i * 4 + j] = 0;
             if (DOME_TRAINERS[winnerTournamentId].trainerId == TRAINER_FRONTIER_BRAIN)
-                moves[i * MAX_MON_MOVES + j] = GetFrontierBrainMonMove(i, j);
+                moves[i * 4 + j] = GetFrontierBrainMonMove(i, j);
             else
-                moves[i * MAX_MON_MOVES + j] = gFacilityTrainerMons[DOME_MONS[winnerTournamentId][i]].moves[j];
+                moves[i * 4 + j] = gFacilityTrainerMons[DOME_MONS[winnerTournamentId][i]].moves[j];
 
             movePower = GetMovePower(moves[i * MAX_MON_MOVES + j]);
             enum BattleMoveEffects effect = GetMoveEffect(moves[i * MAX_MON_MOVES + j]);
@@ -5157,24 +5157,24 @@ static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roun
 
                 typeMultiplier = CalcPartyMonTypeEffectivenessMultiplier(moves[i * 4 + j], targetSpecies, targetAbility);
                 if (typeMultiplier == UQ_4_12(0))
-                    moveScores[i * MAX_MON_MOVES + j] += 0;
+                    moveScores[i * 4 + j] += 0;
                 else if (typeMultiplier >= UQ_4_12(2))
-                    moveScores[i * MAX_MON_MOVES + j] += movePower * 2;
+                    moveScores[i * 4 + j] += movePower * 2;
                 else if (typeMultiplier <= UQ_4_12(0.5))
-                    moveScores[i * MAX_MON_MOVES + j] += movePower / 2;
+                    moveScores[i * 4 + j] += movePower / 2;
                 else
-                    moveScores[i * MAX_MON_MOVES + j] += movePower;
+                    moveScores[i * 4 + j] += movePower;
             }
 
-            if (bestScore < moveScores[i * MAX_MON_MOVES + j])
+            if (bestScore < moveScores[i * 4 + j])
             {
-                bestId = i * MAX_MON_MOVES + j;
-                bestScore = moveScores[i * MAX_MON_MOVES + j];
+                bestId = i * 4 + j;
+                bestScore = moveScores[i * 4 + j];
             }
-            else if (bestScore == moveScores[i * MAX_MON_MOVES + j])
+            else if (bestScore == moveScores[i * 4 + j])
             {
-                if (moves[bestId] < moves[i * MAX_MON_MOVES + j]) // Why not use (Random() & 1) instead of promoting moves with a higher id?
-                    bestId = i * MAX_MON_MOVES + j;
+                if (moves[bestId] < moves[i * 4 + j]) // Why not use (Random() & 1) instead of promoting moves with a higher id?
+                    bestId = i * 4 + j;
             }
         }
     }
@@ -5192,12 +5192,12 @@ static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roun
             moveScores[j] = 0;
             bestScore = 0;
             j = 0;
-            for (k = 0; k < MAX_MON_MOVES * FRONTIER_PARTY_SIZE; k++)
+            for (k = 0; k < 4 * FRONTIER_PARTY_SIZE; k++)
                 j += moveScores[k];
             if (j == 0)
                 break;
             j = 0;
-            for (k = 0; k < MAX_MON_MOVES * FRONTIER_PARTY_SIZE; k++)
+            for (k = 0; k < 4 * FRONTIER_PARTY_SIZE; k++)
             {
                 if (bestScore < moveScores[k])
                 {
@@ -5676,16 +5676,16 @@ static void ResetSketchedMoves(void)
         int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
         int count;
 
-        for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
+        for (moveSlot = 0; moveSlot < 4; moveSlot++)
         {
             count = 0;
-            while (count < MAX_MON_MOVES)
+            while (count < 4)
             {
                 if (GetMonData(GetSavedPlayerPartyMon(playerMonId), MON_DATA_MOVE1 + count, NULL) == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveSlot, NULL))
                     break;
                 count++;
             }
-            if (count == MAX_MON_MOVES)
+            if (count == 4)
                 SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, moveSlot);
         }
 
@@ -5943,7 +5943,7 @@ static void DecideRoundWinners(u8 roundId)
             // Calculate points for both trainers.
             for (monId1 = 0; monId1 < FRONTIER_PARTY_SIZE; monId1++)
             {
-                for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
+                for (moveSlot = 0; moveSlot < 4; moveSlot++)
                 {
                     for (monId2 = 0; monId2 < FRONTIER_PARTY_SIZE; monId2++)
                     {
@@ -5961,7 +5961,7 @@ static void DecideRoundWinners(u8 roundId)
 
             for (monId1 = 0; monId1 < FRONTIER_PARTY_SIZE; monId1++)
             {
-                for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
+                for (moveSlot = 0; moveSlot < 4; moveSlot++)
                 {
                     for (monId2 = 0; monId2 < FRONTIER_PARTY_SIZE; monId2++)
                     {

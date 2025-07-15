@@ -780,8 +780,8 @@ void SetPlayerSecretBaseParty(void)
     {
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                party->moves[i * MAX_MON_MOVES + moveIndex] = MOVE_NONE;
+            for (moveIndex = 0; moveIndex < 4; moveIndex++)
+                party->moves[i * 4 + moveIndex] = MOVE_NONE;
 
             party->species[i] = SPECIES_NONE;
             party->heldItems[i] = ITEM_NONE;
@@ -792,8 +792,8 @@ void SetPlayerSecretBaseParty(void)
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
             && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
             {
-                for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
-                    party->moves[partyId * MAX_MON_MOVES + moveIndex] = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveIndex);
+                for (moveIndex = 0; moveIndex < 4; moveIndex++)
+                    party->moves[partyId * 4 + moveIndex] = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveIndex);
 
                 party->species[partyId] = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
                 party->heldItems[partyId] = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
