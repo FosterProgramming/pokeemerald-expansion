@@ -1306,3 +1306,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Pyroden_House4/scripts.inc"
 
 	.include "data/maps/Pyroden_House5/scripts.inc"
+
+	.include "data/maps/PyrodenDungeon_Clock_Room_Test/scripts.inc"
