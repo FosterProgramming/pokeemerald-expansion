@@ -171,6 +171,18 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .neededPoints = 5,
             .unlockLevel  = 10,
         },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_PROTEAN,
+            .neededPoints = 5,
+            .unlockLevel  = 10,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_BLAZE,
+            .neededPoints = 5,
+            .unlockLevel  = 10,
+        },
     },
     [PARTY_MEMBER_EEVEE] = 
     {
