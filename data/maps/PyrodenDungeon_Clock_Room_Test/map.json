@@ -1,0 +1,35 @@
+{
+  "id": "MAP_PYRODEN_DUNGEON_CLOCK_ROOM_TEST",
+  "name": "PyrodenDungeon_Clock_Room_Test",
+  "layout": "LAYOUT_PYRODEN_DUNGEON_CLOCK_ROOM_TEST",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Clock_Puzzle_Test"
+    }
+  ]
+}

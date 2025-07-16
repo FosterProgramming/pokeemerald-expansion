@@ -450,6 +450,15 @@
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
 
 // gTileset_Pyroden
+#define METATILE_Pyroden_Door_BottomLeft              0x22B
+#define METATILE_Pyroden_Door_BottomMiddle            0x22C
+#define METATILE_Pyroden_Door_BottomRight             0x22D
+#define METATILE_Pyroden_Door_MiddleLeft              0x223
+#define METATILE_Pyroden_Door_MiddleMiddle            0x224
+#define METATILE_Pyroden_Door_MiddleRight             0x225
+#define METATILE_Pyroden_Door_TopLeft                 0x21B
+#define METATILE_Pyroden_Door_TopMiddle               0x21C
+#define METATILE_Pyroden_Door_TopRight                0x21D
 #define METATILE_Pyroden_EmptyPool_BottomLeft         0x2D8
 #define METATILE_Pyroden_EmptyPool_BottomLeftCorner   0x2D3
 #define METATILE_Pyroden_EmptyPool_BottomMiddle       0x2D9

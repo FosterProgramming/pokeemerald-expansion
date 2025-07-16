@@ -5140,6 +5140,16 @@
       "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/Pyroden_House5/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden_House5/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_DUNGEON_CLOCK_ROOM_TEST",
+      "name": "PyrodenDungeon_Clock_Room_Test_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Pyroden",
+      "border_filepath": "data/layouts/PyrodenDungeon_Clock_Room_Test/border.bin",
+      "blockdata_filepath": "data/layouts/PyrodenDungeon_Clock_Room_Test/map.bin"
     }
   ]
 }

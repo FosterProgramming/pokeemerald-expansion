@@ -1,0 +1,15 @@
+mapscripts PyrodenDungeon_Clock_Room_Test_MapScripts {}
+
+
+script Clock_Puzzle_Test{
+    lockall
+    setflag(FLAG_PAUSE_TIME)
+    initclock(16, 0)
+    msgbox(format("Follow the hands."))
+    fadescreen(FADE_TO_BLACK)
+	special(Special_ViewWallClock)
+	waitstate
+    clearflag(FLAG_PAUSE_TIME)
+	releaseall
+	end
+}
