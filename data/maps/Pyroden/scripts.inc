@@ -2130,8 +2130,6 @@ Pyroden_EventScript_TeachWillOWisp_Movement_14:
 	walk_down
 # 1283 "data/maps/Pyroden/scripts.pory"
 	walk_down
-# 1283 "data/maps/Pyroden/scripts.pory"
-	walk_down
 	step_end
 
 # 1299 "data/maps/Pyroden/scripts.pory"

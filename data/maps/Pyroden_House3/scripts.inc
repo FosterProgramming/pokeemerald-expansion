@@ -32,7 +32,7 @@ Pyroden_EventScript_Geodude_Text_1:
 # 10 "data/maps/Pyroden_House3/scripts.pory"
 	.string "I'll say!\n"
 	.string "This village is in the pits!\p"
-	.string "There's rockS everywhere blocking the\n"
+	.string "There's rocks everywhere blocking the\n"
 	.string "way!\p"
 	.string "What!\n"
 	.string "Don't look at me!\l"
