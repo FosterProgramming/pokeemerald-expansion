@@ -5150,6 +5150,116 @@
       "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/PyrodenDungeon_Clock_Room_Test/border.bin",
       "blockdata_filepath": "data/layouts/PyrodenDungeon_Clock_Room_Test/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F",
+      "name": "MountPyroden_1F_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_EAST",
+      "name": "MountPyroden_1F_East_Layout",
+      "width": 44,
+      "height": 30,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_East/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_WEST",
+      "name": "MountPyroden_1F_West_Layout",
+      "width": 44,
+      "height": 30,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_West/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_NORTH",
+      "name": "MountPyroden_1F_North_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_North/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_North/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_NORTH_WEST",
+      "name": "MountPyroden_1F_NorthWest_Layout",
+      "width": 30,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_NorthWest/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_NorthWest/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F",
+      "name": "MountPyroden_2F_Layout",
+      "width": 25,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F_SOUTH",
+      "name": "MountPyroden_2F_South_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F_South/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F",
+      "name": "MountPyroden_3F_Layout",
+      "width": 49,
+      "height": 39,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_EAST",
+      "name": "MountPyroden_3F_East_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_East/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_WEST",
+      "name": "MountPyroden_3F_West_Layout",
+      "width": 45,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_West/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F_WEST",
+      "name": "MountPyroden_2F_West_Layout",
+      "width": 30,
+      "height": 20,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F_West/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F_West/map.bin"
     }
   ]
 }

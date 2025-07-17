@@ -1995,3 +1995,22 @@ const u16 gTilesetPalettes_StratoscapeSecondary[][16] =
 };
 
 const u32 gTilesetTiles_StratoscapeSecondary[] = INCBIN_U32("data/tilesets/secondary/stratoscape_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_MountPyroden[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_MountPyroden[] = INCBIN_U32("data/tilesets/primary/mount_pyroden/tiles.4bpp.lz");

@@ -1308,3 +1308,25 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Pyroden_House5/scripts.inc"
 
 	.include "data/maps/PyrodenDungeon_Clock_Room_Test/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_East/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_West/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_North/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_NorthWest/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_South/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_East/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_West/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_West/scripts.inc"
