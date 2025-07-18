@@ -9,7 +9,7 @@ script Pyroden_EventScript_Geodude{
         msgbox(format(
             "I'll say!\n
             This village is in the pits!\p
-            There's rockS everywhere blocking the way!\p
+            There's rocks everywhere blocking the way!\p
             What!\n
             Don't look at me!\l
             I move around, at least!\p

@@ -169,7 +169,19 @@
     "Pyroden_House2",
     "Pyroden_House3",
     "Pyroden_House4",
-    "Pyroden_House5"
+    "Pyroden_House5",
+    "PyrodenDungeon_Clock_Room_Test",
+    "MountPyroden_1F",
+    "MountPyroden_1F_East",
+    "MountPyroden_1F_West",
+    "MountPyroden_1F_North",
+    "MountPyroden_1F_NorthWest",
+    "MountPyroden_2F",
+    "MountPyroden_2F_South",
+    "MountPyroden_2F_West",
+    "MountPyroden_3F",
+    "MountPyroden_3F_East",
+    "MountPyroden_3F_West"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",

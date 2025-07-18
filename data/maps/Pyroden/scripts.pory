@@ -1,6 +1,6 @@
 raw `
-.set LOCALID_VEE, 2
-.set LOCALID_FRO, 3
+.set LOCALID_VEE, 1
+.set LOCALID_FRO, 2
 .set LOCALID_SPINDA, 4
 .set LOCALID_VEE_TOWN, 8
 .set LOCALID_FRO_TOWN, 10
@@ -34,6 +34,12 @@ mapscripts Pyroden_MapScripts
 		if(var(VAR_SLOWPOKE_QUEST_STATE) == 0 || var(VAR_SLOWPOKE_QUEST_STATE) == 1 || var(VAR_SLOWPOKE_QUEST_STATE) == 2)
 		{
 			setvar(VAR_SLOWPOKE_QUEST_STATE, 0)
+		}
+		end
+	}
+	MAP_SCRIPT_ON_LOAD{
+		if(flag(FLAG_PYRODEN_DOOR_OPENED)){
+			call(SetPyrodenDoorMetatiles)
 		}
 		end
 	}
@@ -574,8 +580,9 @@ script Pyroden_EventScript_Spinda{
 	if(var(VAR_PYRODEN_STATE) > 2)
 	{
 		msgbox(format(
-			"I'm late! I'm late!\n
-			For a very important appointment!"
+			"Hello, friend!\n
+			The springs are hot again, again!/p
+			All thanks to the Fire Stone, Stone!"
 		))
 		end
 	}
@@ -1282,6 +1289,8 @@ script Pyroden_EventScript_TeachWillOWisp
 		You have learned {COLOR RED}Will-O-Wisp{COLOR DARK_GRAY}!\p
 		You can now light the torches back up!"
 	))
+	speakername(NULL)
+	giveitem(ITEM_WILLOWISP_TOOL)
 	speakername("Fro")
 	msgbox(format(
 		"What. Was. That."
@@ -1340,4 +1349,66 @@ script Pyroden_EventScript_TeachWillOWisp
 	end
 	end
 
+}
+
+
+script FirePit_Pyroden_Script {
+	lock
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		if(flag(FLAG_PYRODEN_FIRE_1) && flag(FLAG_PYRODEN_FIRE_2) && flag(FLAG_PYRODEN_FIRE_3)
+		&& flag(FLAG_PYRODEN_FIRE_4) && flag(FLAG_PYRODEN_FIRE_5) && flag(FLAG_PYRODEN_FIRE_6) && !flag(FLAG_PYRODEN_DOOR_OPENED))
+		{
+			call(Pyroden_EventScript_OpenSecretDoor)
+		}
+	clearflag(FLAG_WILLOWISP_ACTIVE)
+	}
+	release
+	end
+}
+
+script Pyroden_EventScript_OpenSecretDoor{
+	lockall
+	setvar(VAR_0x8004, 1) 
+	setvar(VAR_0x8005, 1)  
+	setvar(VAR_0x8006, 8)  
+	setvar(VAR_0x8007, 5)  
+	special(ShakeCamera)
+	waitstate
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(
+		emote_exclamation_mark
+		delay_16
+		delay_16
+	))
+	waitmovement(0)
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_PYRODEN_DOOR_OPENED)
+	setvar(VAR_0x8004, 33)
+	setvar(VAR_0x8005, 5)
+	special(TeleportCamera)
+	fadescreen(FADE_FROM_BLACK)
+	delay(16)
+	playse(SE_UNLOCK)
+	call(SetPyrodenDoorMetatiles)
+	waitse
+	delay(16)
+	fadescreen(FADE_TO_BLACK)
+	special(ReturnCameraToPlayer)
+	fadescreen(FADE_FROM_BLACK)
+	return
+}
+
+script SetPyrodenDoorMetatiles{
+	setmetatile(32, 6, METATILE_Pyroden_Door_BottomLeft, FALSE)
+	setmetatile(33, 6, METATILE_Pyroden_Door_BottomMiddle, FALSE)
+	setmetatile(34, 6, METATILE_Pyroden_Door_BottomRight, FALSE)
+	setmetatile(32, 5, METATILE_Pyroden_Door_MiddleLeft, TRUE)
+	setmetatile(33, 5, METATILE_Pyroden_Door_MiddleMiddle, FALSE)
+	setmetatile(34, 5, METATILE_Pyroden_Door_MiddleRight, TRUE)
+	setmetatile(32, 4, METATILE_Pyroden_Door_TopLeft, TRUE)
+	setmetatile(33, 4, METATILE_Pyroden_Door_TopMiddle, TRUE)
+	setmetatile(34, 4, METATILE_Pyroden_Door_TopRight, TRUE)
+	special(DrawWholeMapView)
+	return
 }

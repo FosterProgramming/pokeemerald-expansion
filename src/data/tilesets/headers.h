@@ -1034,3 +1034,14 @@ const struct Tileset gTileset_StratoscapeSecondary =
     .metatileAttributes = gMetatileAttributes_StratoscapeSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_MountPyroden =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_MountPyroden,
+    .palettes = gTilesetPalettes_MountPyroden,
+    .metatiles = gMetatiles_MountPyroden,
+    .metatileAttributes = gMetatileAttributes_MountPyroden,
+    .callback = NULL,
+};
