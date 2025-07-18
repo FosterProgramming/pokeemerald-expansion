@@ -1363,6 +1363,13 @@ script FirePit_Pyroden_Script {
 		}
 	clearflag(FLAG_WILLOWISP_ACTIVE)
 	}
+	else{
+		checkitem(ITEM_STRENGTH_TOOL)
+		if(var(VAR_RESULT) == TRUE)
+		{
+		goto(EventScript_StrengthBoulder)
+		}
+	}
 	release
 	end
 }

@@ -388,6 +388,17 @@
 // gTileset_MossdeepGym
 #define METATILE_MossdeepGym_YellowArrow_Right  0x250
 
+// gTileset_MountPyroden
+#define METATILE_MountPyroden_Floor                0x009
+#define METATILE_MountPyroden_Lava_BottomLeft      0x015
+#define METATILE_MountPyroden_Lava_BottomRight     0x017
+#define METATILE_MountPyroden_Lava_TopLeft         0x005
+#define METATILE_MountPyroden_Lava_TopRight        0x007
+#define METATILE_MountPyroden_Stairs_Left          0x04B
+#define METATILE_MountPyroden_Stairs_Right         0x04C
+#define METATILE_MountPyroden_Stairs_Right_Bottom  0x066
+#define METATILE_MountPyroden_Stairs_Right_Top     0x04E
+
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
 #define METATILE_Pacifidlog_FloatingLogs_HorizontalLeft        0x250

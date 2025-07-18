@@ -5195,7 +5195,7 @@
       "id": "LAYOUT_MOUNT_PYRODEN_1F_NORTH_WEST",
       "name": "MountPyroden_1F_NorthWest_Layout",
       "width": 30,
-      "height": 25,
+      "height": 27,
       "primary_tileset": "gTileset_MountPyroden",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/MountPyroden_1F_NorthWest/border.bin",

@@ -1317,127 +1317,137 @@ FirePit_Pyroden_Script::
 	lock
 # 1357 "data/maps/Pyroden/scripts.pory"
 	goto_if_set FLAG_WILLOWISP_ACTIVE, FirePit_Pyroden_Script_2
+# 1367 "data/maps/Pyroden/scripts.pory"
+	checkitem ITEM_STRENGTH_TOOL
+# 1368 "data/maps/Pyroden/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq FirePit_Pyroden_Script_20
 FirePit_Pyroden_Script_1:
-# 1366 "data/maps/Pyroden/scripts.pory"
+# 1373 "data/maps/Pyroden/scripts.pory"
 	release
 	end
 
 FirePit_Pyroden_Script_2:
 # 1359 "data/maps/Pyroden/scripts.pory"
-	goto_if_set FLAG_PYRODEN_FIRE_1, FirePit_Pyroden_Script_7
-FirePit_Pyroden_Script_4:
+	goto_if_set FLAG_PYRODEN_FIRE_1, FirePit_Pyroden_Script_8
+FirePit_Pyroden_Script_5:
 # 1364 "data/maps/Pyroden/scripts.pory"
 	clearflag FLAG_WILLOWISP_ACTIVE
 	goto FirePit_Pyroden_Script_1
 
-FirePit_Pyroden_Script_5:
+FirePit_Pyroden_Script_6:
 # 1362 "data/maps/Pyroden/scripts.pory"
 	call Pyroden_EventScript_OpenSecretDoor
-	goto FirePit_Pyroden_Script_4
-
-FirePit_Pyroden_Script_6:
-# 1359 "data/maps/Pyroden/scripts.pory"
-	goto_if_set FLAG_PYRODEN_FIRE_3, FirePit_Pyroden_Script_11
-	goto FirePit_Pyroden_Script_4
+	goto FirePit_Pyroden_Script_5
 
 FirePit_Pyroden_Script_7:
 # 1359 "data/maps/Pyroden/scripts.pory"
-	goto_if_set FLAG_PYRODEN_FIRE_2, FirePit_Pyroden_Script_6
-	goto FirePit_Pyroden_Script_4
+	goto_if_set FLAG_PYRODEN_FIRE_3, FirePit_Pyroden_Script_12
+	goto FirePit_Pyroden_Script_5
 
-FirePit_Pyroden_Script_10:
-# 1360 "data/maps/Pyroden/scripts.pory"
-	goto_if_set FLAG_PYRODEN_FIRE_5, FirePit_Pyroden_Script_15
-	goto FirePit_Pyroden_Script_4
+FirePit_Pyroden_Script_8:
+# 1359 "data/maps/Pyroden/scripts.pory"
+	goto_if_set FLAG_PYRODEN_FIRE_2, FirePit_Pyroden_Script_7
+	goto FirePit_Pyroden_Script_5
 
 FirePit_Pyroden_Script_11:
 # 1360 "data/maps/Pyroden/scripts.pory"
-	goto_if_set FLAG_PYRODEN_FIRE_4, FirePit_Pyroden_Script_10
-	goto FirePit_Pyroden_Script_4
+	goto_if_set FLAG_PYRODEN_FIRE_5, FirePit_Pyroden_Script_16
+	goto FirePit_Pyroden_Script_5
 
-FirePit_Pyroden_Script_14:
+FirePit_Pyroden_Script_12:
 # 1360 "data/maps/Pyroden/scripts.pory"
-	goto_if_unset FLAG_PYRODEN_DOOR_OPENED, FirePit_Pyroden_Script_5
-	goto FirePit_Pyroden_Script_4
+	goto_if_set FLAG_PYRODEN_FIRE_4, FirePit_Pyroden_Script_11
+	goto FirePit_Pyroden_Script_5
 
 FirePit_Pyroden_Script_15:
 # 1360 "data/maps/Pyroden/scripts.pory"
-	goto_if_set FLAG_PYRODEN_FIRE_6, FirePit_Pyroden_Script_14
-	goto FirePit_Pyroden_Script_4
+	goto_if_unset FLAG_PYRODEN_DOOR_OPENED, FirePit_Pyroden_Script_6
+	goto FirePit_Pyroden_Script_5
+
+FirePit_Pyroden_Script_16:
+# 1360 "data/maps/Pyroden/scripts.pory"
+	goto_if_set FLAG_PYRODEN_FIRE_6, FirePit_Pyroden_Script_15
+	goto FirePit_Pyroden_Script_5
+
+FirePit_Pyroden_Script_20:
+# 1370 "data/maps/Pyroden/scripts.pory"
+	goto EventScript_StrengthBoulder
+	goto FirePit_Pyroden_Script_1
 
 
 Pyroden_EventScript_OpenSecretDoor::
-# 1371 "data/maps/Pyroden/scripts.pory"
-	lockall
-# 1372 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_0x8004, 1
-# 1373 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_0x8005, 1
-# 1374 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_0x8006, 8
-# 1375 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_0x8007, 5
-# 1376 "data/maps/Pyroden/scripts.pory"
-	special ShakeCamera
-# 1377 "data/maps/Pyroden/scripts.pory"
-	waitstate
 # 1378 "data/maps/Pyroden/scripts.pory"
-	playse SE_PIN
+	lockall
 # 1379 "data/maps/Pyroden/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_OpenSecretDoor_Movement_0
+	setvar VAR_0x8004, 1
+# 1380 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_0x8005, 1
+# 1381 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_0x8006, 8
+# 1382 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_0x8007, 5
+# 1383 "data/maps/Pyroden/scripts.pory"
+	special ShakeCamera
 # 1384 "data/maps/Pyroden/scripts.pory"
-	waitmovement 0
+	waitstate
 # 1385 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	playse SE_PIN
 # 1386 "data/maps/Pyroden/scripts.pory"
-	setflag FLAG_PYRODEN_DOOR_OPENED
-# 1387 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_0x8004, 33
-# 1388 "data/maps/Pyroden/scripts.pory"
-	setvar VAR_0x8005, 5
-# 1389 "data/maps/Pyroden/scripts.pory"
-	special TeleportCamera
-# 1390 "data/maps/Pyroden/scripts.pory"
-	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER, Pyroden_EventScript_OpenSecretDoor_Movement_0
 # 1391 "data/maps/Pyroden/scripts.pory"
-	delay 16
+	waitmovement 0
 # 1392 "data/maps/Pyroden/scripts.pory"
-	playse SE_UNLOCK
-# 1393 "data/maps/Pyroden/scripts.pory"
-	call SetPyrodenDoorMetatiles
-# 1394 "data/maps/Pyroden/scripts.pory"
-	waitse
-# 1395 "data/maps/Pyroden/scripts.pory"
-	delay 16
-# 1396 "data/maps/Pyroden/scripts.pory"
 	fadescreen FADE_TO_BLACK
+# 1393 "data/maps/Pyroden/scripts.pory"
+	setflag FLAG_PYRODEN_DOOR_OPENED
+# 1394 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_0x8004, 33
+# 1395 "data/maps/Pyroden/scripts.pory"
+	setvar VAR_0x8005, 5
+# 1396 "data/maps/Pyroden/scripts.pory"
+	special TeleportCamera
 # 1397 "data/maps/Pyroden/scripts.pory"
-	special ReturnCameraToPlayer
+	fadescreen FADE_FROM_BLACK
 # 1398 "data/maps/Pyroden/scripts.pory"
+	delay 16
+# 1399 "data/maps/Pyroden/scripts.pory"
+	playse SE_UNLOCK
+# 1400 "data/maps/Pyroden/scripts.pory"
+	call SetPyrodenDoorMetatiles
+# 1401 "data/maps/Pyroden/scripts.pory"
+	waitse
+# 1402 "data/maps/Pyroden/scripts.pory"
+	delay 16
+# 1403 "data/maps/Pyroden/scripts.pory"
+	fadescreen FADE_TO_BLACK
+# 1404 "data/maps/Pyroden/scripts.pory"
+	special ReturnCameraToPlayer
+# 1405 "data/maps/Pyroden/scripts.pory"
 	fadescreen FADE_FROM_BLACK
 	return
 
 
 SetPyrodenDoorMetatiles::
-# 1403 "data/maps/Pyroden/scripts.pory"
-	setmetatile 32, 6, METATILE_Pyroden_Door_BottomLeft, FALSE
-# 1404 "data/maps/Pyroden/scripts.pory"
-	setmetatile 33, 6, METATILE_Pyroden_Door_BottomMiddle, FALSE
-# 1405 "data/maps/Pyroden/scripts.pory"
-	setmetatile 34, 6, METATILE_Pyroden_Door_BottomRight, FALSE
-# 1406 "data/maps/Pyroden/scripts.pory"
-	setmetatile 32, 5, METATILE_Pyroden_Door_MiddleLeft, TRUE
-# 1407 "data/maps/Pyroden/scripts.pory"
-	setmetatile 33, 5, METATILE_Pyroden_Door_MiddleMiddle, FALSE
-# 1408 "data/maps/Pyroden/scripts.pory"
-	setmetatile 34, 5, METATILE_Pyroden_Door_MiddleRight, TRUE
-# 1409 "data/maps/Pyroden/scripts.pory"
-	setmetatile 32, 4, METATILE_Pyroden_Door_TopLeft, TRUE
 # 1410 "data/maps/Pyroden/scripts.pory"
-	setmetatile 33, 4, METATILE_Pyroden_Door_TopMiddle, TRUE
+	setmetatile 32, 6, METATILE_Pyroden_Door_BottomLeft, FALSE
 # 1411 "data/maps/Pyroden/scripts.pory"
-	setmetatile 34, 4, METATILE_Pyroden_Door_TopRight, TRUE
+	setmetatile 33, 6, METATILE_Pyroden_Door_BottomMiddle, FALSE
 # 1412 "data/maps/Pyroden/scripts.pory"
+	setmetatile 34, 6, METATILE_Pyroden_Door_BottomRight, FALSE
+# 1413 "data/maps/Pyroden/scripts.pory"
+	setmetatile 32, 5, METATILE_Pyroden_Door_MiddleLeft, TRUE
+# 1414 "data/maps/Pyroden/scripts.pory"
+	setmetatile 33, 5, METATILE_Pyroden_Door_MiddleMiddle, FALSE
+# 1415 "data/maps/Pyroden/scripts.pory"
+	setmetatile 34, 5, METATILE_Pyroden_Door_MiddleRight, TRUE
+# 1416 "data/maps/Pyroden/scripts.pory"
+	setmetatile 32, 4, METATILE_Pyroden_Door_TopLeft, TRUE
+# 1417 "data/maps/Pyroden/scripts.pory"
+	setmetatile 33, 4, METATILE_Pyroden_Door_TopMiddle, TRUE
+# 1418 "data/maps/Pyroden/scripts.pory"
+	setmetatile 34, 4, METATILE_Pyroden_Door_TopRight, TRUE
+# 1419 "data/maps/Pyroden/scripts.pory"
 	special DrawWholeMapView
 	return
 
@@ -2130,6 +2140,8 @@ Pyroden_EventScript_TeachWillOWisp_Movement_14:
 	walk_down
 # 1283 "data/maps/Pyroden/scripts.pory"
 	walk_down
+# 1283 "data/maps/Pyroden/scripts.pory"
+	walk_down
 	step_end
 
 # 1299 "data/maps/Pyroden/scripts.pory"
@@ -2162,13 +2174,13 @@ Pyroden_EventScript_TeachWillOWisp_Movement_17:
 	walk_right
 	step_end
 
-# 1379 "data/maps/Pyroden/scripts.pory"
+# 1386 "data/maps/Pyroden/scripts.pory"
 Pyroden_EventScript_OpenSecretDoor_Movement_0:
-# 1380 "data/maps/Pyroden/scripts.pory"
+# 1387 "data/maps/Pyroden/scripts.pory"
 	emote_exclamation_mark
-# 1381 "data/maps/Pyroden/scripts.pory"
+# 1388 "data/maps/Pyroden/scripts.pory"
 	delay_16
-# 1382 "data/maps/Pyroden/scripts.pory"
+# 1389 "data/maps/Pyroden/scripts.pory"
 	delay_16
 	step_end
 
