@@ -147,6 +147,12 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .unlockLevel  = 0,
         },
         {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_HIGH_JUMP_KICK,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+        },
+        {
             .skill_type   = SKILL_TREE_TYPE_CAP,
             .skill        = 10, //+10 EVs
             .neededPoints = 10,
