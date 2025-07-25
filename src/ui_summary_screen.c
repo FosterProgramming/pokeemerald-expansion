@@ -62,6 +62,8 @@ enum{
     SUMMARY_SPRITE_MOVE_TYPE_ICON_3,
     SUMMARY_SPRITE_MOVE_TYPE_ICON_4,
     SUMMARY_SPRITE_MOVE_TYPE_ICON_5,
+    SUMMARY_SPRITE_MON_TYPE_ICON_1,
+    SUMMARY_SPRITE_MON_TYPE_ICON_2,
     NUM_SUMMARY_SPRITES,
 };
 
@@ -131,6 +133,7 @@ static void SetTransparentBackground(void);
 static void CreateMoveTypeIcons(void);
 static void SetMoveTypeIcons(struct Pokemon *mon);
 static u16 GetCurrentMonRemainingEVs(void);
+u8 GetCurrentMonUsableMoves(void);
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[NUM_SUMMARY_BACKGROUNDS + 1] =
@@ -176,7 +179,7 @@ static const u32 sMenuTiles[]                              = INCBIN_U32("graphic
 static const u16 sMenuPalette[]                            = INCBIN_U16("graphics/ui_menus/summary_screen/palette.gbapal");
 
 static const u32 sMenuTilemap_Background_0[]               = INCBIN_U32("graphics/ui_menus/summary_screen/summary_background_0.bin.lz");
-static const u32 sMenuTilemap_Background_0_No_Markings[]   = INCBIN_U32("graphics/ui_menus/summary_screen/summary_background_0_no_markings.bin.lz");
+static const u32 sMenuTilemap_Background_0_No_Markings[]   = INCBIN_U32("graphics/ui_menus/summary_screen/summary_background_0.bin.lz");
 static const u32 sMenuTilemap_Background_1[]               = INCBIN_U32("graphics/ui_menus/summary_screen/summary_background_1.bin.lz");
 
 static const u32 sMenuTilemap_Pokemon_Info[]               = INCBIN_U32("graphics/ui_menus/summary_screen/summary_info.bin.lz");
@@ -185,6 +188,7 @@ static const u32 sMenuTilemap_Held_Items[]                 = INCBIN_U32("graphic
 static const u32 sMenuTilemap_Battle_Moves[]               = INCBIN_U32("graphics/ui_menus/summary_screen/summary_moves.bin.lz");
 static const u32 sMenuTilemap_Pokemon_Stats[]              = INCBIN_U32("graphics/ui_menus/summary_screen/summary_stats.bin.lz");
 static const u32 sMenuTilemap_Pokemon_Skills[]             = INCBIN_U32("graphics/ui_menus/summary_screen/summary_skills.bin.lz");
+static const u32 sMenuTilemap_Pokemon_Skills_Normal[]      = INCBIN_U32("graphics/ui_menus/summary_screen/summary_skills_no_description.bin.lz");
 
 static const u32 sMenuTilemap_Battle_Moves_Select[]        = INCBIN_U32("graphics/ui_menus/summary_screen/summary_moves_replace.bin.lz");
 static const u32 sMenuTilemap_Pokemon_Traits_Select[]      = INCBIN_U32("graphics/ui_menus/summary_screen/summary_traits_select.bin.lz");
@@ -227,6 +231,9 @@ static const u8 sSummaryScreen_Icon_Skill_Ability_Gfx[]    = INCBIN_U8("graphics
 static const u8 sSummaryScreen_Icon_Skill_Stat_Gfx[]       = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/stat.4bpp");
 static const u8 sSummaryScreen_Icon_Skill_Cap_Gfx[]        = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/ev_cap.4bpp");
 static const u8 sSummaryScreen_Icon_Skill_Locked_Gfx[]     = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/locked.4bpp");
+
+static const u8 sSummaryScreen_Icon_HP_Bar_Gfx[]           = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_hp_bar.4bpp");
+static const u8 sSummaryScreen_Icon_Exp_Bar_Gfx[]          = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_exp_bar.4bpp");
 
 
 enum Colors
@@ -331,6 +338,10 @@ bool8 isSelectModeEnabled(void){
         break;
         case SUMMARY_SCREEN_PAGE_TRAITS:
             if(sMenuDataPtr->summaryMode == SUMMARY_MODE_ABILITY_CHANGER)
+                return TRUE;
+        break;
+        case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
+            if(sMenuDataPtr->summaryMode == SUMMARY_MODE_SKILL_MODIFIER)
                 return TRUE;
         break;
     }
@@ -600,7 +611,7 @@ static void SpriteCB_Pokemon(struct Sprite *sprite)
 }
 
 #define POKEMON_BACK_SPRITE_X 40
-#define POKEMON_BACK_SPRITE_Y 65
+#define POKEMON_BACK_SPRITE_Y 76
 #define POKEMON_FRONT_SPRITE_PALETTE 15
 #define TAG_FRONT_SPRITE     0xFFFF
 
@@ -642,13 +653,8 @@ static u8 CreateSummaryMonSprite(struct Pokemon *mon)
     return sMenuDataPtr->spriteIDs[spriteID];
 }
 
-static void SpriteCallback_Pokeball(struct Sprite* sprite)
-{
-    if (isSelectModeEnabled())
-        sprite->invisible = TRUE;
-    else
-        sprite->invisible = FALSE;
-}
+#define POKEBALL_ICON_X (8 * 8) + 4
+#define POKEBALL_ICON_Y (4 * 8) + 3
 
 // Pokemon Front Sprite Stuff End -----------------------------------------------------
 static void CreateCaughtBallSprite(struct Pokemon *mon)
@@ -656,10 +662,18 @@ static void CreateCaughtBallSprite(struct Pokemon *mon)
     u8 ball = GetMonData(mon, MON_DATA_POKEBALL);
     u16 spriteID = SUMMARY_SPRITE_POKEBALL;
 
+    //Destroy Item Icon
+    if(sMenuDataPtr->spriteIDs[spriteID] != SPRITE_NONE)
+    {
+        FreeSpriteOamMatrix(&gSprites[sMenuDataPtr->spriteIDs[spriteID]]);
+        DestroySprite(&gSprites[sMenuDataPtr->spriteIDs[spriteID]]);
+        sMenuDataPtr->spriteIDs[spriteID] = SPRITE_NONE;
+    }
+
     LoadBallGfx(ball);
 
-    sMenuDataPtr->spriteIDs[spriteID] = CreateSprite(&gBallSpriteTemplates[ball], 16, 136, 0);
-    gSprites[sMenuDataPtr->spriteIDs[spriteID]].callback = SpriteCallback_Pokeball;
+    sMenuDataPtr->spriteIDs[spriteID] = CreateSprite(&gBallSpriteTemplates[ball], POKEBALL_ICON_X, POKEBALL_ICON_Y, 0);
+    gSprites[sMenuDataPtr->spriteIDs[spriteID]].callback = SpriteCallbackDummy;
     gSprites[sMenuDataPtr->spriteIDs[spriteID]].oam.priority = 0;
 }
 
@@ -765,7 +779,10 @@ void LoadTilemapFromMode(void) {
             LZDecompressWram(sMenuTilemap_Pokemon_Stats, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
         break;
         case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
-            LZDecompressWram(sMenuTilemap_Pokemon_Skills, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
+            if(isSelectModeEnabled())
+                LZDecompressWram(sMenuTilemap_Pokemon_Skills, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
+            else
+                LZDecompressWram(sMenuTilemap_Pokemon_Skills_Normal, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
         break;
     }
 }
@@ -924,23 +941,51 @@ static void SpriteCallback_Extra_MoveTypes(struct Sprite* sprite)
         sprite->invisible = FALSE;
 }
 
-void SetTypeSpritePosAndPalUI(u8 typeId, u8 x, u8 y, u8 spriteId, bool8 isExtraMove)
+static void SpriteCallback_Pokemon_Types(struct Sprite* sprite)
+{
+    if (isSelectModeEnabled())
+        sprite->invisible = TRUE;
+    else
+        sprite->invisible = FALSE;
+}
+
+#define MON_TYPE_ICON_X (3 * 8) - 4
+#define MON_TYPE_ICON_Y (15 * 8)
+#define MON_TYPE_ICON_SPACE (4 * 8) + 3
+
+void SetTypeSpritePosAndPalUI(u8 typeId, u8 x, u8 y, u8 spriteId, u8 index)
 {
     struct Sprite *sprite = &gSprites[spriteId];
     StartSpriteAnim(sprite, typeId);
     sprite->oam.paletteNum = gTypesInfo[typeId].palette;
-    sprite->x = x + 16;
-    sprite->y = y + 8;
-    //gSprites[spriteId].callback = SpriteCallback_MoveTypes;
-    if(!isExtraMove)
-        sprite->callback = SpriteCallback_MoveTypes;
-    else
-        sprite->callback = SpriteCallback_Extra_MoveTypes;
+    switch(index){
+        default:
+            sprite->callback = SpriteCallback_MoveTypes;
+            sprite->x = x + 16;
+            sprite->y = y + 8;
+        break;
+        case SUMMARY_SPRITE_MOVE_TYPE_ICON_5:
+            sprite->callback = SpriteCallback_Extra_MoveTypes;
+            sprite->x = x + 16;
+            sprite->y = y + 8;
+        break;
+        case SUMMARY_SPRITE_MON_TYPE_ICON_1:
+            sprite->callback = SpriteCallback_Pokemon_Types;
+            sprite->x = MON_TYPE_ICON_X;
+            sprite->y = MON_TYPE_ICON_Y;
+        break;
+        case SUMMARY_SPRITE_MON_TYPE_ICON_2:
+            sprite->callback = SpriteCallback_Pokemon_Types;
+            sprite->x = MON_TYPE_ICON_X + MON_TYPE_ICON_SPACE;
+            sprite->y = MON_TYPE_ICON_Y;
+        break;
+    }
 }
 
 static void SetMoveTypeIcons(struct Pokemon *mon)
 {
     u16 i, type, move, spriteId;
+	u16 species = GetMonData(mon, MON_DATA_SPECIES);
 
     for (i = 0; i < MAX_MON_MOVES + 1; i++)
     {
@@ -956,20 +1001,40 @@ static void SetMoveTypeIcons(struct Pokemon *mon)
             type = GetMoveType(move);
             if (P_SHOW_DYNAMIC_TYPES)
                 type = CheckDynamicMoveType(mon, move, 0);
-            SetTypeSpritePosAndPalUI(type, 85, 40 + (i * 16), spriteId, isExtraMove);
+            SetTypeSpritePosAndPalUI(type, 85, 40 + (i * 16), spriteId, SUMMARY_SPRITE_MOVE_TYPE_ICON_1 + i);
         }
         else{
+            gSprites[spriteId].callback = SpriteCallbackDummy;
             gSprites[spriteId].invisible = TRUE;
         }
     }
+
+    //Type 1
+    spriteId = sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_MON_TYPE_ICON_1];
+    SetTypeSpritePosAndPalUI(gSpeciesInfo[species].types[0], MON_TYPE_ICON_X, MON_TYPE_ICON_Y, spriteId, SUMMARY_SPRITE_MON_TYPE_ICON_1);
+
+    //Type 2
+    spriteId = sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_MON_TYPE_ICON_2];
+    if (gSpeciesInfo[species].types[0] != gSpeciesInfo[species].types[1])
+    {
+        SetTypeSpritePosAndPalUI(gSpeciesInfo[species].types[1], MON_TYPE_ICON_X + MON_TYPE_ICON_SPACE, MON_TYPE_ICON_Y, spriteId, SUMMARY_SPRITE_MON_TYPE_ICON_2);
+        gSprites[spriteId].invisible = FALSE;
+    }
+    else
+    {
+        gSprites[spriteId].callback = SpriteCallbackDummy;
+        gSprites[spriteId].invisible = TRUE;
+    }
 }
+
+#define EXTRA_TYPE_ICONS 3
 
 static void CreateMoveTypeIcons(void)
 {
     u8 i;
     u16 spriteId = 0;
 
-    for (i = 0; i < MAX_MON_MOVES + 1; i++)
+    for (i = 0; i < MAX_MON_MOVES + EXTRA_TYPE_ICONS; i++)
     { 
         if (sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_MOVE_TYPE_ICON_1 + i] == SPRITE_NONE){
 
@@ -982,12 +1047,36 @@ static void CreateMoveTypeIcons(void)
     }
 }
 
+bool8 isSkillUnlockeable(u8 partyMember, u8 currentSkill){
+    struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
+	u16 level      = GetMonData(mon, MON_DATA_LEVEL);
+
+    bool8 metLevelRequirement = sSkillTree[partyMember][currentSkill].unlockLevel > level;
+    bool8 metStoryRequirement = sSkillTree[partyMember][currentSkill].unlockLevel > level;
+    bool8 metItemRequirement  = sSkillTree[partyMember][currentSkill].unlockLevel > level;
+
+    if(metLevelRequirement && metStoryRequirement && metItemRequirement)
+        return TRUE;
+
+    return TRUE;//To Change
+}
+
 static const u8 sText_Page_Title_01[] = _("POKEMON INFO");
 static const u8 sText_Page_Title_02[] = _("TRAITS");
 static const u8 sText_Page_Title_03[] = _("HELD ITEMS");
 static const u8 sText_Page_Title_04[] = _("BATTLE MOVES");
 static const u8 sText_Page_Title_05[] = _("POKEMON STATS");
 static const u8 sText_Page_Title_06[] = _("POKEMON SKILLS");
+
+static const u8 sText_Page_Help_Bar_Replace[] = _("{A_BUTTON} Replace");
+static const u8 sText_Page_Help_Bar_Swap[]    = _("{A_BUTTON} Swap");
+static const u8 sText_Page_Help_Bar_Unlock[]  = _("{A_BUTTON} Unlock");
+static const u8 sText_Page_Help_Bar_Change[]  = _("{A_BUTTON} Change");
+static const u8 sText_Page_Help_Bar_Learn[]   = _("{A_BUTTON} Learn");
+static const u8 sText_Page_Help_Bar_Save[]    = _("{B_BUTTON} Save");
+static const u8 sText_Page_Help_Bar_Skills[]  = _("{A_BUTTON} Skills");
+static const u8 sText_Page_Help_Bar_Cancel[]  = _("{B_BUTTON} Cancel");
+static const u8 sText_Page_Help_Bar_Exit[]    = _("{B_BUTTON} Exit");
 
 static const u8 sText_Summary_Name[]     = _("{STR_VAR_1}\n/{STR_VAR_2}");
 static const u8 sText_Summary_PP[]       = _("{PP}{STR_VAR_1}/{STR_VAR_2}");
@@ -1019,14 +1108,18 @@ static const u8 sText_Summary_Screen_Stat_Speed[]      = _("Speed");
 
 static const u8 sText_Summary_Skill_Stat[]       = _("{STR_VAR_1} + {STR_VAR_2}");
 static const u8 sText_Summary_Cap[]              = _("EVs Cap + {STR_VAR_1}");
-static const u8 sText_Summary_Locked[]           = _("Skill Locked Until {LV_2}{STR_VAR_1}");
-static const u8 sText_Summary_Skill_Points[]     = _("{STR_VAR_1} points");
-static const u8 sText_Summary_Unlocked[]         = _("unlocked");
+static const u8 sText_Summary_Locked[]           = _("Skill Locked");
+static const u8 sText_Summary_Skill_Points[]     = _("{STR_VAR_1} pts");
+static const u8 sText_Summary_Unlocked[]         = _("Unlocked");
+static const u8 sText_Summary_Equiped[]          = _("Equiped");
+static const u8 sText_Summary_Learned[]          = _("Learned");
+static const u8 sText_Summary_Cancel[]           = _("Cancel");
+static const u8 sText_Summary_ThreeDashes[]      = _("---");
 
-static const u8 sText_Summary_Skill_Description_Move[]    = _("Gives the Player the ability to\ngive the Pokémon this move at\nany time.");
-static const u8 sText_Summary_Skill_Description_Ability[] = _("Gives the Player the ability to\ngive the Pokémon this ability\nat any time.");
+static const u8 sText_Summary_Skill_Description_Move[]    = _("Gives the Player the ability to\ngive the Pokémon this move.");
+static const u8 sText_Summary_Skill_Description_Ability[] = _("Gives the Player the ability to\ngive the Pokémon this ability.");
 static const u8 sText_Summary_Skill_Description_Stat[]    = _("Gives the Pokémon extra IVs");
-static const u8 sText_Summary_Skill_Description_Cap[]     = _("Gives the Player more EVs to\nfreely invest on the Stat\nScreen.");
+static const u8 sText_Summary_Skill_Description_Cap[]     = _("Gives the Player more EVs to\ninvest on the Stat Screen.");
 static const u8 sText_Summary_Skill_Description_Locked[]  = _("This skill is locked until you\nreach a certain level.");
 
 //Select Mode Stuff
@@ -1133,8 +1226,9 @@ u8 getCurrentPartyMember(u16 species){
     return NUM_PARTY_MEMBERS;
 }
 
-#define SPACE_BETWEEN_MARKINGS 8
-#define MAX_SHOWN_SKILLS 4
+#define SPACE_BETWEEN_MARKINGS  8
+#define MAX_SHOWN_SKILLS        5
+#define MAX_SHOWN_SKILLS_NORMAL 7
 
 static void PrintToWindow(void)
 {
@@ -1164,41 +1258,70 @@ static void PrintToWindow(void)
     switch(currentPage){
         case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
             AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_01);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
         break;
         case SUMMARY_SCREEN_PAGE_TRAITS:
             AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_02);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
         break;
         case SUMMARY_SCREEN_PAGE_HELD_ITEMS:
             AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_03);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
         break;
         case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
             AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_04);
+            if(sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER)
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Replace);
+            else
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Swap);
         break;
         case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
             AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_05);
+            if(isSelectModeEnabled())
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Save);
+            else
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Change);
         break;
         case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
             AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_06);
+            if(isSelectModeEnabled())
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Unlock);
+            else
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Skills);
         break;
     }
 
+    /*
+    //Help Bar
+    x  = 24;
+    x2 = 2;
+    y  = 0;
+    y2 = 0;
+    AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Moves_Help_Bar);
+    */
+
     //Pokemon Number
-    x  = 1;
+    /*x  = 1;
     x2 = 0;
     y  = 2;
     y2 = 0;
         
     ConvertIntToDecimalStringN(gStringVar1, species, STR_CONV_MODE_LEADING_ZEROS, 4);
     StringExpandPlaceholders(gStringVar4, sText_Summary_Num);
-    AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+    AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);*/
 
     //Pokemon Name
     x  = 1;
-    x2 = 0;
-    y  = 12;
-    y2 = 4;
+    x2 = 1;
+    y  = 1;
+    y2 = 7;
 
     AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetSpeciesName(species));
+
+    //Pokémon Level
+    ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringExpandPlaceholders(gStringVar4, sText_Summary_Level);
+    AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2 + 12, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
 
     //Pokemon Gender
     x  = 3;
@@ -1210,21 +1333,15 @@ static void PrintToWindow(void)
     }
 
     if(!isSelectModeEnabled()){
-        //Pokemon Level
-        x  = 3;
-        x2 = 4;
+
+        //HP Bar and Exp Bar
+        x  = 0;
+        x2 = 5;
         y  = 16;
         y2 = 0;
-
-        ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringExpandPlaceholders(gStringVar4, sText_Summary_Level);
-        AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
-
-        //Markings - ToDo
-        x  = 5;
-        x2 = 4;
-        y  = 2;
-        y2 = 6;
+        
+	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_HP_Bar_Gfx,   (x * 8) + x2, (y * 8) + y2, 72, 8);
+	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Exp_Bar_Gfx,  (x * 8) + x2, (y * 8) + y2 + 8, 72, 8);
 
         if(ENABLE_MARKINGS){
             BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Marking_0_Gfx, (x * 8) + x2 + (SPACE_BETWEEN_MARKINGS * 0), (y * 8) + y2, 8, 8);
@@ -1362,28 +1479,11 @@ static void PrintToWindow(void)
         case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
         {
             u16 move;
-            bool8 shouldDisplayDescriptin = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_SELECT || sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER;
             bool8 replaceMode = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER;
-            u8 descriptionMoveIdx = sMenuDataPtr->currentMoveIdx;
+            bool8 swapMode    = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_SELECT;
+            bool8 shouldShowDescription = replaceMode || swapMode;
+            u8 currentMoveIndex = sMenuDataPtr->currentMoveIdx;
             u8 numMoves = MAX_MON_MOVES + replaceMode;
-
-            /*if(isSelectModeEnabled()){
-                x  = 1;
-                x2 = 0;
-                y  = 2;
-                y2 = 6;
-
-                if(sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER){
-                    StringCopy(gStringVar1, GetMoveName(sMenuDataPtr->newMove));
-                    StringExpandPlaceholders(gStringVar4, sText_Summary_Screen_Moves_Replace);
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2 + 18, 0, 0, sMenuWindowFontColors[FONT_WHITE_2], 0xFF, sText_Summary_Screen_Moves_Replace_Help);
-                }
-                else{
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Moves_Swap);
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2 + 10, 0, 0, sMenuWindowFontColors[FONT_WHITE_2], 0xFF, sText_Summary_Screen_Moves_Swap_Help);
-                }
-            }*/
 
             //Battle Move Names and PP
             x  = 14;
@@ -1421,14 +1521,14 @@ static void PrintToWindow(void)
                     ConvertIntToDecimalStringN(gStringVar2, maxPP, STR_CONV_MODE_LEADING_ZEROS, 2);
                     StringExpandPlaceholders(gStringVar4, sText_Summary_PP);
                     AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 9) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
-                    if(shouldDisplayDescriptin && descriptionMoveIdx == i){
+                    if(shouldShowDescription && currentMoveIndex == i){
                         u8 j;
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                         for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
 	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_3_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                     }
-                    else if(shouldDisplayDescriptin && sMenuDataPtr->moveToSwap == i){
+                    else if(shouldShowDescription && sMenuDataPtr->moveToSwap == i){
                         u8 j;
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                         for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
@@ -1436,7 +1536,22 @@ static void PrintToWindow(void)
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_3_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                     }
                 }
+                else{
+                    AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_ThreeDashes);
+                }
                 y = y + 2;
+            }
+
+            if(swapMode){
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Cancel);
+
+                if(shouldShowDescription && currentMoveIndex == GetCurrentMonUsableMoves()){
+                    u8 j;
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
+                    for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
+	                     BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_3_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
+                }
             }
 
             //Description
@@ -1445,13 +1560,9 @@ static void PrintToWindow(void)
             y  = 13;
             y2 = 6;
             
-            if(shouldDisplayDescriptin){
-                move = GetMonData(mon, MON_DATA_MOVE1 + descriptionMoveIdx);
-                if(!replaceMode){
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Description);
-                    AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x - 3) * 8) + x2, ((y + 2)* 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetMoveDescription(move));
-                }
-                else{
+            if(shouldShowDescription){
+                if(currentMoveIndex != GetCurrentMonUsableMoves() || replaceMode){
+                    move = GetMonData(mon, MON_DATA_MOVE1 + currentMoveIndex);
                     y2 += 12;
                     AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Description);
                     AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x - 3) * 8) + x2, (y* 8) + y2 + 16, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetMoveDescription(move));
@@ -1460,6 +1571,7 @@ static void PrintToWindow(void)
                     ConvertIntToDecimalStringN(gStringVar1, gMovesInfo[move].power,    STR_CONV_MODE_LEFT_ALIGN, 3);
                     ConvertIntToDecimalStringN(gStringVar2, gMovesInfo[move].accuracy, STR_CONV_MODE_LEFT_ALIGN, 3);
                     StringExpandPlaceholders(gStringVar4, sText_Summary_Effect);
+
                     AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Effect);
                     AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x - 3) * 8) + x2, (y* 8) + y2 + 16, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
                 }
@@ -1562,8 +1674,16 @@ static void PrintToWindow(void)
         }
         break;
         case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:{
-            u8 selectSkillMode = sMenuDataPtr->summaryMode == SUMMARY_MODE_SKILL_MODIFIER;
+            u8 selectSkillMode = isSelectModeEnabled();
             u8 numSkills = GetNumberOfPartyMemberDefinedSkills(partyMember);
+            u8 maxNumSkills = MAX_SHOWN_SKILLS;
+            u8 offset;
+
+            if(!selectSkillMode)
+                maxNumSkills = MAX_SHOWN_SKILLS_NORMAL;
+
+            if(maxNumSkills > numSkills)
+                maxNumSkills = numSkills;
 
             //Skills
             x  = 14;
@@ -1582,10 +1702,14 @@ static void PrintToWindow(void)
             x2 = 6;
             y  = 5;
             y2 = 3;
-            for(i = 0; i < MAX_SHOWN_SKILLS; i++){
+            for(i = 0; i < maxNumSkills; i++){
                 u8 currentSkill = sMenuDataPtr->firstSkill + i;
                 u8 currentSkillType = sSkillTree[partyMember][currentSkill].skill_type;
-                u8 locked = sMemberData.unlockedSkills[currentSkill];
+                u8 unlockedSkill = sMemberData.unlockedSkills[currentSkill];
+                u8 metRequirments = isSkillUnlockeable(partyMember, currentSkill);
+
+                if(!metRequirments)
+                    currentSkillType = SKILL_TYPE_NONE;
 
                 switch(currentSkillType){
                     case SKILL_TREE_TYPE_MOVE:{
@@ -1644,25 +1768,52 @@ static void PrintToWindow(void)
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Skill_Locked_Gfx,  (x * 8) + x2 - 2, ((y + (i  * 2)) * 8) + y2 - 3, 40, 16);
                     break;
                 }
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 5) * 8) + x2, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
 
-                if(!locked){
-                    u8 pointsToUnlock = sSkillTree[partyMember][currentSkill].neededPoints;
-	                ConvertIntToDecimalStringN(gStringVar1, pointsToUnlock, STR_CONV_MODE_LEFT_ALIGN, 3);
-                    StringExpandPlaceholders(gStringVar4, sText_Summary_Skill_Points);
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x + 13) * 8) + x2, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
-                }
-                else{
-                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x + 13) * 8) + x2, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Unlocked);
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 5) * 8) + x2 - 1, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+
+                if(metRequirments){
+                    if(unlockedSkill){
+                        u16 j, argument;
+                        StringCopy(gStringVar4, sText_Summary_Unlocked);
+                        switch(currentSkillType){
+                            case SKILL_TREE_TYPE_MOVE:
+                                argument = sSkillTree[partyMember][currentSkill].skill;
+                                for(j = 0; j < MAX_MON_MOVES; j++){
+                                    if(argument == GetMonData(mon, MON_DATA_MOVE1 + j))
+                                        StringCopy(gStringVar4, sText_Summary_Learned);
+                                }
+                            break;
+                            case SKILL_TREE_TYPE_ABILITY:
+                                argument = sSkillTree[partyMember][currentSkill].skill;
+                                for(j = 0; j < MAX_MON_MOVES; j++){
+                                    if(argument == sMenuDataPtr->sPartyMembers[partyMember].abilities[j])
+                                        StringCopy(gStringVar4, sText_Summary_Equiped);
+                                }
+                            break;
+                            case SKILL_TREE_TYPE_STAT:
+                            case SKILL_TREE_TYPE_CAP:
+                                StringCopy(gStringVar4, sText_Summary_Equiped);
+                            break;
+                        }
+                    }
+                    else{
+                        u8 pointsToUnlock = sSkillTree[partyMember][currentSkill].neededPoints;
+                        ConvertIntToDecimalStringN(gStringVar1, pointsToUnlock, STR_CONV_MODE_LEFT_ALIGN, 3);
+                        StringExpandPlaceholders(gStringVar4, sText_Summary_Skill_Points);
+                    }
+
+                    offset = GetStringRightAlignXOffset(FONT_SMALL_NARROW, gStringVar4, 42);
+                    AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x + 13) * 8) + x2 + offset, ((y + (i  * 2)) * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
+
                 }
 
                 if(selectSkillMode){
                     if(currentSkill == sMenuDataPtr->currentSkill){
                         u8 j;
-	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, ((x + 4) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_1_Gfx, ((x + 4) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
                         for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
-	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + 4 + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
-	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_3_Gfx, (((x + 4) + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
+	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_2_Gfx, ((x + 4 + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_3_Gfx, (((x + 4) + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
                     }
                 }
             }
@@ -1672,18 +1823,23 @@ static void PrintToWindow(void)
             x2 = 0;
             y  = 13;
             y2 = 6;
-
-            AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Description);
             
-            if(selectSkillMode){
+            if(selectSkillMode){//
                 u8 currentSkill = sMenuDataPtr->currentSkill;
                 u8 currentSkillType = sSkillTree[partyMember][currentSkill].skill_type;
+                u16 argument = sSkillTree[partyMember][currentSkill].skill;
+                u8 metRequirments = isSkillUnlockeable(partyMember, currentSkill);
+
+                y2 += 12;
+                x = 4;
+                AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Description);
+
                 switch(currentSkillType){
                     case SKILL_TREE_TYPE_MOVE:
-                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Move);
+                        StringCopy(gStringVar4, GetMoveDescription(argument));
                     break;
                     case SKILL_TREE_TYPE_ABILITY:
-                        StringCopy(gStringVar4, sText_Summary_Skill_Description_Ability);
+                        StringCopy(gStringVar4, gAbilitiesInfo[argument].description);
                     break;
                     case SKILL_TREE_TYPE_STAT:
                         StringCopy(gStringVar4, sText_Summary_Skill_Description_Stat);
@@ -1695,6 +1851,10 @@ static void PrintToWindow(void)
                         StringCopy(gStringVar4, sText_Summary_Skill_Description_Locked);
                     break;
                 }
+
+                if(!metRequirments)
+                    StringCopy(gStringVar4, sText_Summary_Skill_Description_Locked);
+
                 AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x - 3) * 8) + x2, ((y + 2) * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
             }
         }
@@ -2022,8 +2182,8 @@ static void Menu_PressedButtonUp_OnSkillMenu(void)
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 species         = GetMonData(mon, MON_DATA_SPECIES);
     u8 numEntries       = GetNumberOfPartyMemberDefinedSkills(getCurrentPartyMember(species));
-    u8 halfScreen       = MAX_SHOWN_SKILLS / 2;
-    u8 finalhalfScreen  = numEntries - halfScreen + 1;
+    u8 halfScreen       = 2;
+    u8 finalhalfScreen  = numEntries - halfScreen;
 
     if (numEntries < MAX_SHOWN_SKILLS)
     {
@@ -2054,8 +2214,8 @@ static void Menu_PressedButtonDown_OnSkillMenu(void)
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 species         = GetMonData(mon, MON_DATA_SPECIES);
     u8 numEntries       = GetNumberOfPartyMemberDefinedSkills(getCurrentPartyMember(species));
-    u8 halfScreen       = MAX_SHOWN_SKILLS / 2;
-    u8 finalhalfScreen  = numEntries - halfScreen + 1;
+    u8 halfScreen       = 2;
+    u8 finalhalfScreen  = numEntries - halfScreen;
 
     if (numEntries < MAX_SHOWN_SKILLS)
     {
@@ -2101,6 +2261,7 @@ static void TryToGiveAbility(u8 taskId){
             return; //Abilitie already given to this mon
         else if(sMemberData.abilities[i] == ABILITY_NONE){
             sMenuDataPtr->sPartyMembers[partyMember].abilities[i] = abilityToGive;
+            gTasks[taskId].func = Task_RefreshSummaryPage;
             return;
         }
     }
@@ -2239,7 +2400,7 @@ static void Task_MenuMain(u8 taskId)
                 sMenuDataPtr->currentStat    = 0;
                 sMenuDataPtr->currentSkill   = 0;
                 sMenuDataPtr->firstSkill     = 0;
-                gTasks[taskId].func          = Task_RefreshSummaryPage;
+                gTasks[taskId].func          = Task_ChangeSummaryPage;
             break;
             case SUMMARY_MODE_MOVE_CHANGER:
                 //Go back to the skill screen -- To change
@@ -2272,18 +2433,39 @@ static void Task_MenuMain(u8 taskId)
                         sMenuDataPtr->summaryMode    = SUMMARY_MODE_MOVE_SELECT;
                         sMenuDataPtr->moveToSwap     = 0xFF;
                         sMenuDataPtr->currentMoveIdx = 0;
-                        gTasks[taskId].func          = Task_RefreshSummaryPage;
+                        gTasks[taskId].func          = Task_ChangeSummaryPage;
                     break;
                     case SUMMARY_MODE_MOVE_SELECT:
-                        //Swap Moves
-                        if(sMenuDataPtr->moveToSwap != 0xFF){
-                            SwapMonMoves(sMenuDataPtr->moveToSwap, sMenuDataPtr->currentMoveIdx);
-                            sMenuDataPtr->moveToSwap  = 0xFF;
+                        if(sMenuDataPtr->currentMoveIdx == GetCurrentMonUsableMoves()){
+                            //In the Cancel Button
+                            if(sMenuDataPtr->moveToSwap != 0xFF){
+                                //Exit the swap state
+                                sMenuDataPtr->moveToSwap  = 0xFF;
+                                gTasks[taskId].func = Task_RefreshSummaryPage;
+                            }
+                            else{
+                                //Exit the move select mode
+                                sMenuDataPtr->summaryMode    = SUMMARY_MODE_DEFAULT;
+                                sMenuDataPtr->currentMoveIdx = 0;
+                                sMenuDataPtr->moveToSwap     = 0xFF;
+                                sMenuDataPtr->currentStat    = 0;
+                                sMenuDataPtr->currentSkill   = 0;
+                                sMenuDataPtr->firstSkill     = 0;
+                                gTasks[taskId].func          = Task_ChangeSummaryPage;
+                            }
+
                         }
                         else{
-                            sMenuDataPtr->moveToSwap = sMenuDataPtr->currentMoveIdx;
+                            //Swap Moves
+                            if(sMenuDataPtr->moveToSwap != 0xFF){
+                                SwapMonMoves(sMenuDataPtr->moveToSwap, sMenuDataPtr->currentMoveIdx);
+                                sMenuDataPtr->moveToSwap  = 0xFF;
+                            }
+                            else{
+                                sMenuDataPtr->moveToSwap = sMenuDataPtr->currentMoveIdx;
+                            }
+                            gTasks[taskId].func = Task_RefreshSummaryPage;
                         }
-                        gTasks[taskId].func = Task_RefreshSummaryPage;
                     break;
                     case SUMMARY_MODE_MOVE_CHANGER:
                         //Replace Move with new Move
@@ -2325,7 +2507,7 @@ static void Task_MenuMain(u8 taskId)
                     sMenuDataPtr->summaryMode  = SUMMARY_MODE_SKILL_MODIFIER;
                     sMenuDataPtr->currentSkill = 0;
                     sMenuDataPtr->firstSkill   = 0;
-                    gTasks[taskId].func        = Task_RefreshSummaryPage;
+                    gTasks[taskId].func        = Task_ChangeSummaryPage;
                 }
                 else{
                     TryToUnlockSkill(taskId);
@@ -2390,7 +2572,7 @@ static void Task_MenuMain(u8 taskId)
             if (JOY_NEW(DPAD_DOWN) || JOY_REPEAT(DPAD_DOWN))
             {
                 PlaySE(SE_SELECT);
-                if(sMenuDataPtr->currentMoveIdx < GetCurrentMonUsableMoves() - 1)
+                if(sMenuDataPtr->currentMoveIdx < GetCurrentMonUsableMoves())
                     sMenuDataPtr->currentMoveIdx++;
                 else
                     sMenuDataPtr->currentMoveIdx = 0;
@@ -2403,7 +2585,7 @@ static void Task_MenuMain(u8 taskId)
                 if(sMenuDataPtr->currentMoveIdx != 0)
                     sMenuDataPtr->currentMoveIdx--;
                 else
-                    sMenuDataPtr->currentMoveIdx = GetCurrentMonUsableMoves() - 1;
+                    sMenuDataPtr->currentMoveIdx = GetCurrentMonUsableMoves();
                 gTasks[taskId].func = Task_RefreshSummaryPage;
             }
         break;
