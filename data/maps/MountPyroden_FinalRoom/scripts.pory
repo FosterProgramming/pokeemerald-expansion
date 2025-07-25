@@ -1,0 +1,554 @@
+raw `
+.set LOCALID_BALL, 11
+.set LOCALID_VEE, 10
+.set LOCALID_FRO, 9
+.set LOCALID_DOM, 7
+.set LOCALID_MAGMORTAR, 8
+`
+
+mapscripts MountPyroden_FinalRoom_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(!flag(FLAG_BEATEN_MAGMORTAR)){
+            clearflag(FLAG_SYS_HIDE_DOM_PARTY_MEMBER)
+            addobject(LOCALID_DOM)
+            setvar(VAR_PYRODEN_LAST_ROOM_STATE, 0)
+            removeobject(LOCALID_VEE)
+            removeobject(LOCALID_FRO)
+            removeobject(LOCALID_BALL)
+        }
+        else
+        {
+            setvar(VAR_0x8000, 1)
+            callnative(SetFirePitOn)
+            setvar(VAR_0x8000, 2)
+            callnative(SetFirePitOn)
+            setvar(VAR_0x8000, 3)
+            callnative(SetFirePitOn)
+            setvar(VAR_0x8000, 4)
+            callnative(SetFirePitOn)
+            setvar(VAR_0x8000, 5)
+            callnative(SetFirePitOn)
+            setvar(VAR_0x8000, 6)
+            callnative(SetFirePitOn)
+        }
+    }
+}
+
+script MountPyrooden_FinalRoom_EventScript_Fire1
+{
+    setvar(VAR_0x8000, 1)
+    callnative(SetFirePitOn)
+    setvar(VAR_0x8000, 2)
+    callnative(SetFirePitOn)
+    playse(SE_M_EMBER)
+    removeobject(LOCALID_VEE)
+    removeobject(LOCALID_FRO)
+    removeobject(LOCALID_BALL)
+    setvar(VAR_PYRODEN_LAST_ROOM_STATE, 1)
+    end
+}
+
+script MountPyrooden_FinalRoom_EventScript_Fire2
+{
+    setvar(VAR_0x8000, 3)
+    callnative(SetFirePitOn)
+    setvar(VAR_0x8000, 4)
+    callnative(SetFirePitOn)
+    playse(SE_M_EMBER)
+    setvar(VAR_PYRODEN_LAST_ROOM_STATE, 2)
+    end
+}
+
+script MountPyrooden_FinalRoom_EventScript_Fire3
+{
+    lock
+    setvar(VAR_0x8000, 5)
+    callnative(SetFirePitOn)
+    setvar(VAR_0x8000, 6)
+    callnative(SetFirePitOn)
+    playse(SE_M_EMBER)
+    setvar(VAR_PYRODEN_LAST_ROOM_STATE, 3)
+    fadeoutbgm(0)
+    special(SpawnCameraObject)
+    delay(20)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(
+        walk_up*8
+    ))
+    waitmovement(0)
+    delay(16)
+    playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+    speakername("Dom")
+    msgbox(format(
+        "Urgh…\n
+        What power…!"
+    ))
+    speakername("Magmortar")
+    msgbox(format(
+        "Didn't your momma teach you not to bring fists to a gun fight?\N
+        Gya ha!"))
+
+    speakername("Dom")
+    msgbox(format(
+        "So this…\n
+        Is the culmination of Team MAGA's research, eh?\p
+        The fusion of humans and Pokémon.\n
+        Impressive."
+    ))
+
+    speakername("Magmortar")
+    msgbox(format(
+        "Now you regret crossing us, don't you?\p
+        You could have gotten all of this and more.\p
+        But you just had to go and grow a conscience!\N
+        How cute!\p
+        You're nothing but a traitor.\p
+        And traitors…\n
+        Get what they deserve."
+    ))
+
+    speakername("Dom")
+    msgbox(format(
+        "… … …\p
+        So, this is the end, then?\p
+        …Very well.\p
+        I suppose I deserve it, after what I've done.\p
+        But before you do it…\p
+        Would you mind answering a question for me?\p
+        Just for old time's sake.\p
+        Is this kind of power really worth it…\p
+        …If you end up stuck with a face that looks like a butt?"
+    ))
+    playse(SE_PIN)
+    applymovement(LOCALID_MAGMORTAR, moves(emote_exclamation_mark))
+    waitmovement(0)
+    waitse
+    speakername("Magmortar")
+    msgbox(format(
+        "Now you've done it!\p
+        Get blown to smithereens!"
+    ))
+    closemessage
+    applymovement(LOCALID_MAGMORTAR, moves(walk_down))
+    waitmovement(0)
+    delay(10)
+    fadescreen(FADE_TO_WHITE)
+    playse(SE_M_FLAMETHROWER)
+    
+    clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+    clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
+    addobject(LOCALID_FRO)
+    addobject(LOCALID_VEE)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_faster_left
+        walk_faster_up*8
+    ))
+    waitmovement(0)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    delay(10)
+    playse(SE_PIN)
+    applymovement(LOCALID_MAGMORTAR, moves(emote_exclamation_mark))
+    applymovement(LOCALID_DOM, moves(emote_exclamation_mark))
+    waitmovement(0)
+    waitse
+    speakername("Fro")
+    msgbox(format("Cavalry's here."))
+    speakername("Dom")
+    msgbox(format("My saviors!\n
+    My angels!\p
+    Tell me, did it hurt when you fell from Heaven?"))
+    speakername("Magmortar")
+    msgbox(format(
+        "How in the world!?\p
+        Who are you?\p
+        Why are you?\p
+        How are you?"
+    ))
+    speakername("Vee")
+    msgbox(format("Pretty good, thanks."))
+    speakername("Magmortar")
+    msgbox("
+        But…\n
+        But…!\p
+        I made sure to seal the entrance!\p
+        How did you manage to get in here?!\p
+        Dom!\n
+        Are these your allies, you sly coward?"
+        )
+    speakername("Dom")
+    msgbox("Yes!")
+    speakername("Fro")
+    msgbox(format("No."))
+    speakername("Magmortar")
+    msgbox(format(
+        "It doesn't matter!\p
+        Those who stand against Team MAGA will be incinerated!"
+    ))
+    speakername("Narrator")
+    msgbox(format("Please pretend that you're looking at a fierce battle against the Magmortar, with our heroes coming out victorious."))
+    speakername("Magmortar")
+    msgbox(format(
+        "… … …\p
+        So you think you've beaten me, don't you?\p
+        … … …\p
+        And you would be correct.\p
+        But!\n
+        Let's see how you like it when you get locked up inside a volcano!\p
+        See you never, suckers!"
+    ))
+    closemessage
+    fadedefaultbgm
+    clearflag(FLAG_HIDE_BALL_PYRODEN)
+    addobject(LOCALID_BALL)
+    applymovement(LOCALID_MAGMORTAR, moves(
+        walk_fast_left*2
+        walk_fast_down*2
+    ))
+    waitmovement(0)
+    applymovement(LOCALID_DOM, moves(face_left))
+    applymovement(LOCALID_FRO, moves(face_left))
+    applymovement(LOCALID_VEE, moves(face_left))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_MAGMORTAR, moves(walk_fast_down walk_fast_right))
+    waitmovement(LOCALID_MAGMORTAR)
+    applymovement(LOCALID_DOM, moves(face_down))
+    applymovement(LOCALID_FRO, moves(face_down))
+    applymovement(LOCALID_VEE, moves(face_down))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+    applymovement(LOCALID_MAGMORTAR, moves(walk_fast_right walk_fast_down*6))
+    waitmovement(LOCALID_MAGMORTAR)
+    removeobject(LOCALID_MAGMORTAR)
+    playse(SE_PIN)
+    applymovement(LOCALID_VEE, moves(
+        emote_exclamation_mark
+        delay_16
+        face_up
+    ))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "Look, {PLAYER}!\n
+        That Magmortar dropped something!\p
+        It looks like…\n
+        It's one of the artifacts!\p
+        {PLAYER}, grab it!"
+    ))
+    closemessage
+    applymovement(LOCALID_DOM, moves(face_up))
+    applymovement(LOCALID_FRO, moves(face_up))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_up
+        walk_right
+        walk_in_place_up
+    ))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    removeobject(LOCALID_BALL)
+    playfanfare(MUS_OBTAIN_ITEM)
+    msgbox(format("You obtained the {COLOR RED}second Artifact{COLOR DARK_GRAY}!"))
+    waitfanfare
+    speakername("Dom")
+    msgbox(format(
+        "Seel, eh?\n
+        Funny, that.\p
+        Used to know a guy called Seel.\n
+        But he was a human, not a Pokémon.\p
+        Interesting fellow.\n
+        Wonder what happened to him."
+    ))
+    closemessage
+    applymovement(LOCALID_VEE, moves(face_down))
+    applymovement(LOCALID_FRO, moves(face_down))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+    waitmovement(0)
+    delay(64)
+    speakername("Dom")
+    msgbox(format(
+        "… … …\p
+        Wait.\n
+        Wait wait wait.\p
+        Wait wait wait wait wait wait wait wait wait.\p
+        Wait wait.\n
+        Wait.\p
+        Wait wait wait.\n
+        Hold up a second.\p
+        You're telling me.\n
+        You're TELLING me.\p
+        That THIS…\n
+        Creature?\p
+        This beast?\p
+        Is my ol' buddy pal Seel?\p
+        Oh.\n
+        My God."
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "And you are…?"
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "Oh!\n
+        How rude of me!\p
+        You saved me, and I haven't even introduced myself!\p
+        Name's Dom!\n
+        Dom Colangelo!\p
+        You might've heard of me?\n
+        From Colangelo Graphics?\l
+        The company?\p
+        It was on the Chansey 500 list?"
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "Literally never heard of it.\N
+        Colangelo Graphics?\p
+        Do you do graphic design or something?"
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "Nah.\n
+        Money laundering."
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "Ah."
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "Yeah, but it's like…\n
+        Transparent money laundering, you know?\p
+        Stakeholder-focused, and all of that.\p
+        But you guys…\n
+        Can I have your names?"
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "I'm Fro.\n
+        And she's Vee."
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "Vee and Fro, eh?\n
+        Cool, cool.\p
+        Hold on, lemme take out my phone.\n
+        Can I add you guys on PorydIn?\p
+        I'm kinda out of a job, and I need some references."
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "We're, uh, not on PorydIn."
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "I am!"
+    ))
+    applymovement(LOCALID_FRO, moves(face_right))
+    waitmovement(0)
+    speakername("Fro")
+    msgbox(format(
+        "No you're not, Vee."
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "Nah, nah, wait, there she is.\p
+        Vee the Eevee.\n
+        Yup, that's it.\p
+        Work history…\p
+        Lab rat (former)…\n
+        Currently on the run…\p
+        This gap in your resume isn't gonna look good to future employers, lemme tell you."
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "How in the…"
+    ))
+    applymovement(LOCALID_VEE, moves(face_left))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "The guards were bored and made a profile for me!\p
+        They thought it was funny!"
+    ))
+    playse(SE_PIN)
+    applymovement(LOCALID_DOM, moves(
+        emote_exclamation_mark
+    ))
+    waitmovement(0)
+    waitse
+    speakername("Dom")
+    msgbox(format(
+        "But…\n
+        Wait a minute!\p
+        We're getting sidetracked, here!\n
+        Seel!\n
+        Oh, man, Seel!"
+    ))
+    closemessage
+    applymovement(LOCALID_DOM, moves(
+        walk_left
+        walk_up*2
+        face_right
+    ))
+    waitmovement(0)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+    applymovement(LOCALID_FRO, moves(face_up))
+    applymovement(LOCALID_VEE, moves(face_up))
+    waitmovement(0)
+    speakername("Dom")
+    msgbox(format(
+        "Oh, God, it's really you, isn't it?\p
+        I could recognize that expression anywhere!\p
+        Oh, what have I done?\n
+        It's all my fault!"
+    ))
+    closemessage
+    applymovement(LOCALID_DOM, moves(walk_left*3))
+    waitmovement(0)
+    speakername("Dom")
+    msgbox(format(
+        "I will jump into the boiling lava to atone for my sins!"
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "Please don't."
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "Do you and Seel know each other?"
+    ))
+    closemessage
+    applymovement(LOCALID_DOM, moves(
+        walk_right*3
+    ))
+    waitmovement(0)
+    speakername("Dom")
+    msgbox(format(
+        "Yeah!\n
+        We're like best buds, right?\p
+        Except I hadn't seen him in ages!\p
+        But this…\n
+        Oh, what have I done?\p
+        Look I…\n
+        Was approached, right?\p
+        A guy wrote me and told me that they needed new graphics for their website.\N
+        And I…"
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "Didn't you say you do money laundering?"
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "Yeah, that's what I said!\p
+        I said nah man, you got it all wrong!\p
+        Colangelo Graphics?\n
+        We don't do graphics!\l
+        We do money laundering!\p
+        And he said, that's perfect, we also need some money to be laundered!\p
+        And I said, cool, when can I start?\p
+        And lemme tell you, these guys?\N
+        They're something else.\p
+        I did some laundering…\n
+        We split some profits…\p
+        I know they were doing something shady, but I mean, who isn't?\p
+        And the amount of dough they had rolling in…\p
+        … … …\p
+        So I huh, decided to look a bit more into it, after a while.\p
+        And I found out they were doing some…\p
+        Highly morally questionable genetic experiments/eugenics.\p
+        And I though well, this isn't necessarily my business.\N
+        But…\p
+        If my stakeholders find about this…\N
+        They're gonna rake me over the coals!\p
+        I can't be caught supporting animal cruelty, man!\p
+        So I went to them, and said, well, hey, could you maybe tone it down with the evil science stuff?\p
+        And you know what they did?\n
+        You KNOW what they did?\p
+        They booted me out!\n
+        From my own company!\l
+        Me, Dom Colangelo!\p
+        And I said, well, now you're gonna get it!\p
+        And I tracked them down to here, and tried to get my revenge.\p
+        But…\n
+        Ya know how it is.\p
+        But Seel…\n
+        If I knew they were gonna get you like this…\p
+        Oh, man, I shouldn't have partnered with Team MAGA!"
+    ))
+    applymovement(LOCALID_DOM, moves(face_down))
+    msgbox(format(
+        "You, small fox…\n
+        You're the leader of this team, right?\p
+        Please, let me join you!\p
+        Together, we can take our revenge!"
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "Okay!"
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "Absolutely not.\p
+        What are you going to do, defeat the hybrid super-soldiers by punching them?"
+    ))
+    speakername("Dom")
+    msgbox(format(
+        "…Yes?"
+    ))
+    speakername("Fro")
+    msgbox(format(
+        "Out of the question."
+    ))
+    applymovement(LOCALID_DOM, moves(
+        face_right
+    ))
+    waitmovement(0)
+    speakername("Dom")
+    msgbox(format(
+        "Aw, come on.\p
+        Tell 'em, Seel!\n
+        They can trust me!"
+    ))
+    applymovement(LOCALID_VEE, moves(
+        face_left
+    ))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "C'mon, Fro!\n
+        Don't be mean!\p
+        It's a friend of Seel!"
+    ))
+    speakername("Fro")
+    msgbox(format(
+       " …Look, let's get outta here first.\p
+        Then we'll talk."
+    ))
+    applymovement(LOCALID_DOM, moves(
+        face_down
+    ))
+    waitmovement(0)
+    speakername("Dom")
+    msgbox(format(
+        "Yeah, sure thing, man!\n
+        Let's do that!"
+    ))
+    closemessage
+    applymovement(LOCALID_DOM, moves(
+        walk_right
+    ))
+    applymovement(LOCALID_FRO, moves(
+        walk_up
+    ))
+    applymovement(LOCALID_VEE, moves(
+        walk_left
+        walk_up
+    ))
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+    waitmovement(LOCALID_VEE)
+    special(RemoveCameraObject)
+    removeobject(LOCALID_VEE)
+    removeobject(LOCALID_FRO)
+    removeobject(LOCALID_DOM)
+    release
+    end
+}

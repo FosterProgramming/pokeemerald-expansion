@@ -181,7 +181,18 @@
     "MountPyroden_2F_West",
     "MountPyroden_3F",
     "MountPyroden_3F_East",
-    "MountPyroden_3F_West"
+    "MountPyroden_3F_West",
+    "MountPyroden_FinalRoom",
+    "MountPyroden_4F",
+    "MountPyroden_MarioRoom",
+    "MountPyroden_4F_TankRoom",
+    "MountPyroden_4F_SideRoom",
+    "MountPyroden_3F_SideRoom",
+    "MountPyroden_2F_SideRoom",
+    "MountPyroden_1F_SideRoom",
+    "MountPyroden_3F_South",
+    "MountPyroden_4F_SouthLadderRoom",
+    "MountPyroden_4F_ClockRoom"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",

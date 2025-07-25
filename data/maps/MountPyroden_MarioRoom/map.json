@@ -1,0 +1,41 @@
+{
+  "id": "MAP_MOUNT_PYRODEN_MARIO_ROOM",
+  "name": "MountPyroden_MarioRoom",
+  "layout": "LAYOUT_MOUNT_PYRODEN_MARIO_ROOM",
+  "music": "MUS_MT_CHIMNEY",
+  "region_map_section": "MAPSEC_PYRODEN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_4F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_4F_TANK_ROOM",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

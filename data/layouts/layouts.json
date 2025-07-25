@@ -5096,8 +5096,8 @@
       "name": "Pyroden_House1_Layout",
       "width": 12,
       "height": 8,
-      "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_NaturalInterior",
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Pyroden",
       "border_filepath": "data/layouts/Pyroden_House1/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden_House1/map.bin"
     },
@@ -5106,8 +5106,8 @@
       "name": "Pyroden_House2_Layout",
       "width": 12,
       "height": 8,
-      "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_NaturalInterior",
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Pyroden_House2/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden_House2/map.bin"
     },
@@ -5116,7 +5116,7 @@
       "name": "Pyroden_House3_Layout",
       "width": 12,
       "height": 8,
-      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "primary_tileset": "gTileset_MountPyroden",
       "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/Pyroden_House3/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden_House3/map.bin"
@@ -5126,7 +5126,7 @@
       "name": "Pyroden_House4_Layout",
       "width": 12,
       "height": 8,
-      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "primary_tileset": "gTileset_MountPyroden",
       "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/Pyroden_House4/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden_House4/map.bin"
@@ -5136,7 +5136,7 @@
       "name": "Pyroden_House5_Layout",
       "width": 12,
       "height": 8,
-      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "primary_tileset": "gTileset_MountPyroden",
       "secondary_tileset": "gTileset_NaturalInterior",
       "border_filepath": "data/layouts/Pyroden_House5/border.bin",
       "blockdata_filepath": "data/layouts/Pyroden_House5/map.bin"
@@ -5260,6 +5260,116 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/MountPyroden_2F_West/border.bin",
       "blockdata_filepath": "data/layouts/MountPyroden_2F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_FINAL_ROOM",
+      "name": "MountPyroden_FinalRoom_Layout",
+      "width": 27,
+      "height": 36,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_FinalRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_FinalRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F",
+      "name": "MountPyroden_4F_Layout",
+      "width": 36,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_MARIO_ROOM",
+      "name": "MountPyroden_MarioRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_PetalburgGym",
+      "border_filepath": "data/layouts/MountPyroden_MarioRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_MarioRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_TANK_ROOM",
+      "name": "MountPyroden_4F_TankRoom_Layout",
+      "width": 31,
+      "height": 24,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_TankRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_TankRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_SIDE_ROOM",
+      "name": "MountPyroden_4F_SideRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_SIDE_ROOM",
+      "name": "MountPyroden_3F_SideRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F_SIDE_ROOM",
+      "name": "MountPyroden_2F_SideRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_SIDE_ROOM",
+      "name": "MountPyroden_1F_SideRoom_Layout",
+      "width": 15,
+      "height": 20,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_SOUTH",
+      "name": "MountPyroden_3F_South_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_South/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_SOUTH_LADDER_ROOM",
+      "name": "MountPyroden_4F_SouthLadderRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_SouthLadderRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_SouthLadderRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_CLOCK_ROOM",
+      "name": "MountPyroden_4F_ClockRoom_Layout",
+      "width": 25,
+      "height": 24,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_ClockRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_ClockRoom/map.bin"
     }
   ]
 }

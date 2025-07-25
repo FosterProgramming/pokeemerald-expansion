@@ -389,12 +389,31 @@
 #define METATILE_MossdeepGym_YellowArrow_Right  0x250
 
 // gTileset_MountPyroden
+#define METATILE_MountPyroden_Door_BottomLeft      0x02B
+#define METATILE_MountPyroden_Door_BottomMid       0x02C
+#define METATILE_MountPyroden_Door_BottomRight     0x02D
+#define METATILE_MountPyroden_Door_MidLeft         0x023
+#define METATILE_MountPyroden_Door_MidMid          0x024
+#define METATILE_MountPyroden_Door_MidRight        0x025
+#define METATILE_MountPyroden_Door_TopLeft         0x01B
+#define METATILE_MountPyroden_Door_TopMid          0x01C
+#define METATILE_MountPyroden_Door_TopRight        0x01D
 #define METATILE_MountPyroden_Floor                0x009
 #define METATILE_MountPyroden_Lava_BottomLeft      0x015
+#define METATILE_MountPyroden_Lava_BottomMiddle    0x016
 #define METATILE_MountPyroden_Lava_BottomRight     0x017
+#define METATILE_MountPyroden_Lava_MiddleLeft      0x00D
+#define METATILE_MountPyroden_Lava_MiddleMiddle    0x00E
+#define METATILE_MountPyroden_Lava_MiddleRight     0x00F
 #define METATILE_MountPyroden_Lava_TopLeft         0x005
+#define METATILE_MountPyroden_Lava_TopMiddle       0x006
 #define METATILE_MountPyroden_Lava_TopRight        0x007
+#define METATILE_MountPyroden_OverhangBottom       0x0D8
+#define METATILE_MountPyroden_OverhangTop          0x0D0
 #define METATILE_MountPyroden_Stairs_Left          0x04B
+#define METATILE_MountPyroden_Stairs_Left_Bottom   0x055
+#define METATILE_MountPyroden_Stairs_Left_Top      0x04D
+#define METATILE_MountPyroden_Stairs_Middle        0x0AD
 #define METATILE_MountPyroden_Stairs_Right         0x04C
 #define METATILE_MountPyroden_Stairs_Right_Bottom  0x066
 #define METATILE_MountPyroden_Stairs_Right_Top     0x04E

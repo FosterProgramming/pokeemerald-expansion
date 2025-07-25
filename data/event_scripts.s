@@ -1330,3 +1330,25 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MountPyroden_3F_West/scripts.inc"
 
 	.include "data/maps/MountPyroden_2F_West/scripts.inc"
+
+	.include "data/maps/MountPyroden_FinalRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F/scripts.inc"
+
+	.include "data/maps/MountPyroden_MarioRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_TankRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_South/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_SouthLadderRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_ClockRoom/scripts.inc"
