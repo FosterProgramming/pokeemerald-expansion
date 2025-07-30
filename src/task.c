@@ -10,6 +10,7 @@ void ResetTasks(void)
 {
     u8 i;
 
+    DebugPrintf("resettasks");
     for (i = 0; i < NUM_TASKS; i++)
     {
         gTasks[i].isActive = FALSE;
@@ -85,6 +86,7 @@ void DestroyTask(u8 taskId)
 {
     if (gTasks[taskId].isActive)
     {
+        DebugPrintf("DestroyTask %d", taskId);
         gTasks[taskId].isActive = FALSE;
 
         if (gTasks[taskId].prev == HEAD_SENTINEL)

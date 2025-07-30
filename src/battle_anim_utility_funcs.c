@@ -167,8 +167,11 @@ static void AnimTask_BlendSpriteColor_Step2(u8 taskId)
     u32 selectedPalettes;
     u16 singlePaletteOffset = 0;
 
+    
     if (gTasks[taskId].data[9] == gTasks[taskId].data[2])
     {
+        DebugPrintf("AnimTask_BlendSpriteColor_Step2 %d", taskId);
+    DebugPrintf("2 %d 9 %d 10 %d", gTasks[taskId].data[2], gTasks[taskId].data[9], gTasks[taskId].data[10]);
         gTasks[taskId].data[9] = 0;
         selectedPalettes = gTasks[taskId].data[0] | (gTasks[taskId].data[1] << 16);
         while (selectedPalettes != 0)
@@ -179,16 +182,20 @@ static void AnimTask_BlendSpriteColor_Step2(u8 taskId)
             selectedPalettes >>= 1;
         }
 
+        DebugPrintf("Selected palette loop over");
         if (gTasks[taskId].data[10] < gTasks[taskId].data[4])
             gTasks[taskId].data[10]++;
         else if (gTasks[taskId].data[10] > gTasks[taskId].data[4])
             gTasks[taskId].data[10]--;
-        else
+        else {
+            DebugPrintf("Destroy AnimTask_BlendSpriteColor_Step2 4", gTasks[taskId].data[4]);
             DestroyAnimVisualTask(taskId);
+        }
     }
     else
     {
         gTasks[taskId].data[9]++;
+        DebugPrintf("gTasks[taskId].data[9] %d", gTasks[taskId].data[9]);
     }
 }
 
