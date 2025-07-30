@@ -402,7 +402,7 @@ static void (*const sMonAnimFunctions[])(struct Sprite *sprite) =
 // BACK_ANIM_NONE is skipped below. GetSpeciesBackAnimSet subtracts 1 from the back anim id
 static const u8 sBackAnimationIds[] =
 {
-    [(BACK_ANIM_H_VIBRATE - 1) * 3]               = ANIM_H_VIBRATE_FASTEST, ANIM_H_VIBRATE_FAST, ANIM_H_VIBRATE,
+    [(BACK_ANIM_H_VIBRATE - 1) * 3]               = ANIM_H_VIBRATE_FASTEST, ANIM_H_VIBRATE_FASTEST, ANIM_H_VIBRATE_FASTEST,
     [(BACK_ANIM_H_SLIDE - 1) * 3]                 = ANIM_H_SLIDE_FAST, ANIM_H_SLIDE, ANIM_H_SLIDE_SLOW,
     [(BACK_ANIM_H_SPRING - 1) * 3]                = ANIM_H_SPRING_FAST, ANIM_H_SPRING, ANIM_H_SPRING_SLOW,
     [(BACK_ANIM_H_SPRING_REPEATED - 1) * 3]       = ANIM_H_REPEATED_SPRING_FAST, ANIM_H_REPEATED_SPRING, ANIM_H_REPEATED_SPRING_SLOW,
@@ -470,10 +470,12 @@ static void SetPosForRotation(struct Sprite *sprite, u16 index, s16 amplitudeX, 
 
 u8 GetSpeciesBackAnimSet(u16 species)
 {
+    /*
     if (gSpeciesInfo[species].backAnimId != BACK_ANIM_NONE)
         return gSpeciesInfo[species].backAnimId - 1;
     else
-        return BACK_ANIM_NONE;
+    */
+    return BACK_ANIM_NONE;
 }
 
 #define tState  data[0]
@@ -3734,7 +3736,7 @@ static void Anim_HorizontalVibrate_Fast(struct Sprite *sprite)
 
 static void Anim_HorizontalVibrate_Fastest(struct Sprite *sprite)
 {
-    if (sprite->data[2] > 40)
+    if (sprite->data[2] > 1)
     {
         sprite->callback = WaitAnimEnd;
         sprite->x2 = 0;

@@ -1981,7 +1981,7 @@ static void PlayerHandleTrainerSlide(u32 battler)
 
 static void PlayerHandleTrainerSlideBack(u32 battler)
 {
-    BtlController_HandleTrainerSlideBack(battler, 50, TRUE);
+    BtlController_HandleTrainerSlideBack(battler, 10, TRUE);
 }
 
 static void PlayerHandlePaletteFade(u32 battler)

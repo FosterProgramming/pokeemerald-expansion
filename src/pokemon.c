@@ -2228,10 +2228,12 @@ void SetMultiuseSpriteTemplateToPokemon(u16 speciesTag, u8 battlerPosition)
             speciesTag = speciesTag - SPECIES_SHINY_TAG;
 
         speciesTag = SanitizeSpeciesId(speciesTag);
+        /*
         if (gSpeciesInfo[speciesTag].frontAnimFrames != NULL)
             gMultiuseSpriteTemplate.anims = gSpeciesInfo[speciesTag].frontAnimFrames;
         else
-            gMultiuseSpriteTemplate.anims = gSpeciesInfo[SPECIES_NONE].frontAnimFrames;
+        */
+        gMultiuseSpriteTemplate.anims = gSpeciesInfo[SPECIES_NONE].frontAnimFrames;
     }
 }
 
@@ -6238,6 +6240,8 @@ void DoMonFrontSpriteAnimation(struct Sprite *sprite, u16 species, bool8 noCry, 
     }
     else
     {
+        LaunchAnimationTaskForFrontSprite(sprite, ANIM_H_VIBRATE_FASTEST);
+        /*
         if (!noCry)
         {
             PlayCry_Normal(species, pan);
@@ -6257,6 +6261,7 @@ void DoMonFrontSpriteAnimation(struct Sprite *sprite, u16 species, bool8 noCry, 
             // No delay, start animation
             LaunchAnimationTaskForFrontSprite(sprite, gSpeciesInfo[species].frontAnimId);
         }
+        */
         sprite->callback = SpriteCallbackDummy_2;
     }
 }

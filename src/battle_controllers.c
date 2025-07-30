@@ -2920,12 +2920,12 @@ void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, c
     SetSpritePrimaryCoordsFromSecondaryCoords(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
     if (side == B_SIDE_PLAYER)
     {
-        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[0] = 50;
-        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[2] = -40;
+        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[0] = 10;
+        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[2] = 280;
     }
     else
     {
-        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[0] = 35;
+        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[0] = 7;
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].data[2] = 280;
     }
 

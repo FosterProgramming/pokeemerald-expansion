@@ -986,6 +986,7 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
     sprite->data[0] = LaunchBallFadeMonTask(TRUE, sprite->sBattler, 14, ballId);
     sprite->callback = HandleBallAnimEnd;
 
+    /*
     if (gMain.inBattle)
     {
         struct Pokemon *mon, *illusionMon;
@@ -1038,6 +1039,7 @@ static void SpriteCB_ReleaseMonFromBall(struct Sprite *sprite)
         gTasks[taskId].tCryTaskMonPtr2 = (u32)(mon);
         gTasks[taskId].tCryTaskState = 0;
     }
+    */
 
     StartSpriteAffineAnim(&gSprites[gBattlerSpriteIds[sprite->sBattler]], BATTLER_AFFINE_EMERGE);
 

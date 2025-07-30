@@ -3581,7 +3581,7 @@ static void DoBattleIntro(void)
         break;
     case BATTLE_INTRO_STATE_WAIT_FOR_PARTY_SUMMARY:
         if (!gBattleControllerExecFlags)
-            gBattleStruct->introState++;
+            gBattleStruct->introState = BATTLE_INTRO_STATE_TRAINER_1_SEND_OUT_ANIM;
         break;
     case BATTLE_INTRO_STATE_INTRO_TEXT:
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
@@ -3669,7 +3669,7 @@ static void DoBattleIntro(void)
                 return;
             }
 
-            PrepareStringBattle(STRINGID_INTROSENDOUT, battler);
+            //PrepareStringBattle(STRINGID_INTROSENDOUT, battler);
         }
         gBattleStruct->introState++;
         break;
