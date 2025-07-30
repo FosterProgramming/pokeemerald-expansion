@@ -3723,6 +3723,9 @@ BattleScript_EffectCelebrate::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectPass::
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectHappyHour::
 	attackcanceler
 	attackstring

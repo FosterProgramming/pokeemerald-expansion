@@ -2019,7 +2019,7 @@ void CloseTurn(u32 sourceLine)
              if (IsAITest() && (i & BIT_SIDE) == B_SIDE_OPPONENT) // If Move was not specified, allow any move used.
                 SetAiActionToPass(sourceLine, i);
              else
-                Move(sourceLine, &gBattleMons[i], (struct MoveContext) { move: MOVE_CELEBRATE, explicitMove: TRUE });
+                Move(sourceLine, &gBattleMons[i], (struct MoveContext) { move: MOVE_PASS, explicitMove: TRUE, allowed: TRUE });
         }
     }
     DATA.turnState = TURN_CLOSED;

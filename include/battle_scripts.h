@@ -640,6 +640,7 @@ extern const u8 BattleScript_EffectLeechSeed[];
 extern const u8 BattleScript_EffectDoNothing[];
 extern const u8 BattleScript_EffectHoldHands[];
 extern const u8 BattleScript_EffectCelebrate[];
+extern const u8 BattleScript_EffectPass[];
 extern const u8 BattleScript_EffectHappyHour[];
 extern const u8 BattleScript_EffectDisable[];
 extern const u8 BattleScript_EffectCounter[];

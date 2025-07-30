@@ -418,6 +418,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_PASS] =
+    {
+        .battleScript = BattleScript_EffectPass,
+        .battleTvScore = 1,
+        .encourageEncore = TRUE,
+    },
+
     [EFFECT_HAPPY_HOUR] =
     {
         .battleScript = BattleScript_EffectHappyHour,
