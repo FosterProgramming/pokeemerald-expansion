@@ -1775,6 +1775,7 @@ static void Cmd_panse(void)
     incrementPan = CalculatePanIncrement(currentPan, targetPan, incrementPanArg);
 
     taskId = CreateTask(Task_PanFromInitialToTarget, 1);
+    DebugPrintf("Task_PanFromInitialToTarget %d", taskId);
     gTasks[taskId].tInitialPan = currentPan;
     gTasks[taskId].tTargetPan = targetPan;
     gTasks[taskId].tIncrementPan = incrementPan;
@@ -1821,6 +1822,7 @@ void Task_PanFromInitialToTarget(u8 taskId)
         if (destroyTask)
         {
             pan = targetPanning;
+            DebugPrintf("Destroy Task_PanFromInitialToTarget %d", taskId);
             DestroyTask(taskId);
             gAnimSoundTaskCount--;
         }

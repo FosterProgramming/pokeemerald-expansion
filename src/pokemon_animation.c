@@ -548,6 +548,7 @@ void LaunchAnimationTaskForBackSprite(struct Sprite *sprite, u8 backAnimSet)
 {
     u8 nature, taskId, animId, battler;
 
+    DebugPrintf("LaunchAnimationTaskForBackSprite");
     taskId = CreateTask(Task_HandleMonAnimation, 128);
     gTasks[taskId].tPtrHi = (u32)(sprite) >> 16;
     gTasks[taskId].tPtrLo = (u32)(sprite);
