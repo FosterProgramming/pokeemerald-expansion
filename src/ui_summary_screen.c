@@ -103,11 +103,17 @@ struct MenuResources
     //Skill Screen
     u8 currentSkill;
     u8 firstSkill;
+    //Graphics
+    u8 progressBar;
+    u16 gDebugLastProgressFrame[10];
 };
 
 enum WindowIds
 {
-    WINDOW_1,
+    WINDOW_HELP_BAR,
+    WINDOW_MAIN,
+    //WINDOW_POKEMON_STATS,
+    NUM_WINDOWS
 };
 
 //==========EWRAM==========//
@@ -121,6 +127,7 @@ static void Menu_FadeAndBail(void);
 static bool8 Menu_LoadGraphics(void);
 static void Menu_InitWindows(void);
 static void PrintToWindow(void);
+static void PrintHelpBar(void);
 static void Task_MenuWaitFadeIn(u8 taskId);
 static void Task_MenuMain(u8 taskId);
 static u8 CreateSummaryMonSprite(struct Pokemon *unused);
@@ -134,6 +141,10 @@ static void CreateMoveTypeIcons(void);
 static void SetMoveTypeIcons(struct Pokemon *mon);
 static u16 GetCurrentMonRemainingEVs(void);
 u8 GetCurrentMonUsableMoves(void);
+
+void DebugTrackProgressTime(void) {
+    sMenuDataPtr->gDebugLastProgressFrame[sMenuDataPtr->progressBar] = gMain.vblankCounter1;
+}
 
 //==========CONST=DATA==========//
 static const struct BgTemplate sMenuBgTemplates[NUM_SUMMARY_BACKGROUNDS + 1] =
@@ -163,13 +174,23 @@ static const struct BgTemplate sMenuBgTemplates[NUM_SUMMARY_BACKGROUNDS + 1] =
 
 static const struct WindowTemplate sMenuWindowTemplates[] = 
 {
-    [WINDOW_1] = 
+    [WINDOW_MAIN] = 
+    {
+        .bg = 0,            // which bg to print text on
+        .tilemapLeft = 0,   // position from left (per 8 pixels)
+        .tilemapTop = 2,    // position from top (per 8 pixels)
+        .width = 30,        // width (per 8 pixels)
+        .height = 18,       // height (per 8 pixels)
+        .paletteNum = 0,    // palette index to use for text
+        .baseBlock = 200,     // tile start in VRAM
+    },
+    [WINDOW_HELP_BAR] = 
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 0,   // position from left (per 8 pixels)
         .tilemapTop = 0,    // position from top (per 8 pixels)
         .width = 30,        // width (per 8 pixels)
-        .height = 20,       // height (per 8 pixels)
+        .height = 2,       // height (per 8 pixels)
         .paletteNum = 0,    // palette index to use for text
         .baseBlock = 1,     // tile start in VRAM
     },
@@ -216,6 +237,10 @@ static const u8 sSummaryScreen_Icon_Move_Selector_3_Gfx[]  = INCBIN_U8("graphics
 static const u8 sSummaryScreen_Icon_Move_Selector2_1_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/move_selector2_1.4bpp");
 static const u8 sSummaryScreen_Icon_Move_Selector2_2_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/move_selector2_2.4bpp");
 static const u8 sSummaryScreen_Icon_Move_Selector2_3_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/move_selector2_3.4bpp");
+
+static const u8 sSummaryScreen_Icon_Trait_Selector_1_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/trait_selector_1.4bpp");
+static const u8 sSummaryScreen_Icon_Trait_Selector_2_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/trait_selector_2.4bpp");
+static const u8 sSummaryScreen_Icon_Trait_Selector_3_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/trait_selector_3.4bpp");
 
 static const u8 sSummaryScreen_Icon_Slider_0_Gfx[]         = INCBIN_U8("graphics/ui_menus/summary_screen/icons/slider_0.4bpp");
 static const u8 sSummaryScreen_Icon_Slider_1_Gfx[]         = INCBIN_U8("graphics/ui_menus/summary_screen/icons/slider_1.4bpp");
@@ -294,6 +319,7 @@ void SummaryScreen_Init(MainCallback callback)
 
     sMenuDataPtr->currentSkill = 0;
     sMenuDataPtr->firstSkill = 0;
+    sMenuDataPtr->progressBar = 0;
 
     sMenuDataPtr->currentAbilityIdx = 0;
     sMenuDataPtr->newAbility = ABILITY_NONE;
@@ -416,6 +442,7 @@ static bool8 Menu_DoGfxSetup(void)
         gMain.state++;
         break;
     case 5:
+        PrintHelpBar();
         PrintToWindow();
         taskId = CreateTask(Task_MenuWaitFadeIn, 0);
         BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
@@ -497,7 +524,8 @@ static void SetNormalBackground(){
 	ChangeBgY(BACKGROUND_NORMAL, 0, 1);
 }
 
-#define START_MENU_TRANSPARENCY_STRENGTH 9
+#define START_MENU_TRANSPARENCY_STRENGTH BLDALPHA_BLEND(10, 10)
+
 static void SetTransparentBackground(){
     SetBgAttribute(BACKGROUND_TRANSPARENT, BG_ATTR_PRIORITY, START_MENU_BG_TRANSPARENT);
     SetBgTilemapBuffer(BACKGROUND_TRANSPARENT, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
@@ -505,7 +533,7 @@ static void SetTransparentBackground(){
 
     //Transparency
     SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL | BLDCNT_TGT1_BG1); //Blend Background over the rest
-    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(START_MENU_TRANSPARENCY_STRENGTH, START_MENU_TRANSPARENCY_STRENGTH));
+    SetGpuReg(REG_OFFSET_BLDALPHA, START_MENU_TRANSPARENCY_STRENGTH);
     SetGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR);
 
     ShowBg(BACKGROUND_TRANSPARENT);
@@ -568,36 +596,20 @@ static bool8 Menu_LoadGraphics(void)
 
 static void Menu_InitWindows(void)
 {
+    u8 i;
     InitWindows(sMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
     
-    FillWindowPixelBuffer(WINDOW_1, 0);
-    LoadUserWindowBorderGfx(WINDOW_1, 720, 14 * 16);
-    PutWindowTilemap(WINDOW_1);
-    CopyWindowToVram(WINDOW_1, 3);
-    
+    for(i = 0; i < NUM_WINDOWS; i++){
+        FillWindowPixelBuffer(i, 0);
+        LoadUserWindowBorderGfx(i, 720, 14 * 16);
+        PutWindowTilemap(i);
+        CopyWindowToVram(i, 3);
+    }
+
     ScheduleBgCopyTilemapToVram(2);
 }
-
-/*
-#define STRINGLIST_MAX_LENGHT 20
-
-struct StringList
-{
-    const u8 *string;
-};
-
-struct StringList sSummaryScreen_Title[NUM_SUMMARY_SCREEN_PAGES] =
-{
-	[SUMMARY_SCREEN_PAGE_POKEMON_INFO]   = COMPOUND_STRING("POKEMON INFO"),
-	[SUMMARY_SCREEN_PAGE_TRAITS]         = COMPOUND_STRING("TRAITS"),
-	[SUMMARY_SCREEN_PAGE_HELD_ITEMS]     = COMPOUND_STRING("HELD ITEMS"),
-	[SUMMARY_SCREEN_PAGE_BATTLE_MOVES]   = COMPOUND_STRING("BATTLE MOVES"),
-	[SUMMARY_SCREEN_PAGE_POKEMON_STATS]  = COMPOUND_STRING("POKEMON STATS"),
-	[SUMMARY_SCREEN_PAGE_POKEMON_SKILLS] = COMPOUND_STRING("POKEMON SKILLS"),
-};
-*/
 
 // Pokemon Front Sprite Stuff Start -----------------------------------------------------
 static void SpriteCB_Pokemon(struct Sprite *sprite)
@@ -734,28 +746,7 @@ static void CreateHeldItemIcon(u16 item, u8 iconSlot)
     sMenuDataPtr->spriteIDs[SUMMARY_SPRITE_HELD_ITEM_1 + iconSlot] = spriteId;
 }
 
-void LoadTilemapFromMode(void) {
-    try_free(sMenuDataPtr->bgTilemapBuffers[BACKGROUND_NORMAL]);
-    try_free(sMenuDataPtr->bgTilemapBuffers[BACKGROUND_TRANSPARENT]);
-
-    ResetBgsAndClearDma3BusyFlags(0);
-    InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
-
-    SetBgTilemapBuffer(BACKGROUND_NORMAL, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
-    ScheduleBgCopyTilemapToVram(BACKGROUND_NORMAL);
-
-    SetBgTilemapBuffer(BACKGROUND_TRANSPARENT, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
-    ScheduleBgCopyTilemapToVram(BACKGROUND_TRANSPARENT);
-
-    ShowBg(0);
-    ShowBg(1);
-    ShowBg(2);
-
-    if(isSelectModeEnabled())
-        LZDecompressWram(sMenuTilemap_Background_1, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
-    else
-        LZDecompressWram(sMenuTilemap_Background_0, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
-
+void LoadTileMapFromModeDecompress(void){
     switch (sMenuDataPtr->currentPage) {
         case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
             LZDecompressWram(sMenuTilemap_Pokemon_Info, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
@@ -785,6 +776,33 @@ void LoadTilemapFromMode(void) {
                 LZDecompressWram(sMenuTilemap_Pokemon_Skills_Normal, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
         break;
     }
+}
+
+bool8 LoadTilemapFromMode(void) {
+    try_free(sMenuDataPtr->bgTilemapBuffers[BACKGROUND_NORMAL]);
+    try_free(sMenuDataPtr->bgTilemapBuffers[BACKGROUND_TRANSPARENT]);
+
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(0, sMenuBgTemplates, NELEMS(sMenuBgTemplates));
+
+    SetBgTilemapBuffer(BACKGROUND_NORMAL, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_TRANSPARENT]);
+    ScheduleBgCopyTilemapToVram(BACKGROUND_NORMAL);
+
+    SetBgTilemapBuffer(BACKGROUND_TRANSPARENT, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
+    ScheduleBgCopyTilemapToVram(BACKGROUND_TRANSPARENT);
+
+    ShowBg(0);
+    ShowBg(1);
+    ShowBg(2);
+
+    if(isSelectModeEnabled())
+        LZDecompressWram(sMenuTilemap_Background_1, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
+    else
+        LZDecompressWram(sMenuTilemap_Background_0, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
+    
+    LoadTileMapFromModeDecompress();
+
+    return TRUE;
 }
 
 //Type Icons Stuff
@@ -1115,6 +1133,7 @@ static const u8 sText_Summary_Equiped[]          = _("Equiped");
 static const u8 sText_Summary_Learned[]          = _("Learned");
 static const u8 sText_Summary_Cancel[]           = _("Cancel");
 static const u8 sText_Summary_ThreeDashes[]      = _("---");
+static const u8 sText_Summary_Replace_Ability[]  = _("REPLACE");
 
 static const u8 sText_Summary_Skill_Description_Move[]    = _("Gives the Player the ability to\ngive the Pokémon this move.");
 static const u8 sText_Summary_Skill_Description_Ability[] = _("Gives the Player the ability to\ngive the Pokémon this ability.");
@@ -1230,91 +1249,147 @@ u8 getCurrentPartyMember(u16 species){
 #define MAX_SHOWN_SKILLS        5
 #define MAX_SHOWN_SKILLS_NORMAL 7
 
+static void ClearWindow(u8 window)
+{
+    FillWindowPixelBuffer(window, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(window);
+    CopyWindowToVram(window, 3);
+}
+
+static void PrintHelpBar(void){
+    u8 i;
+    u8 windowId = WINDOW_HELP_BAR;
+    s16 x, x2, y, y2 = 0;
+    u8 colorIdx = FONT_WHITE;
+    u8 font = FONT_NORMAL;
+    u8 currentPage = sMenuDataPtr->currentPage;
+    
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
+    x  = 0;
+    x2 = 0;
+    y  = 0;
+    y2 = 0;
+
+    //Title
+    x2 = 2;
+    switch(currentPage){
+        case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
+            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_01);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
+        break;
+        case SUMMARY_SCREEN_PAGE_TRAITS:
+            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_02);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
+        break;
+        case SUMMARY_SCREEN_PAGE_HELD_ITEMS:
+            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_03);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
+        break;
+        case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
+            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_04);
+            if(sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER)
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Replace);
+            else
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Swap);
+        break;
+        case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
+            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_05);
+            if(isSelectModeEnabled())
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Save);
+            else
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Change);
+        break;
+        case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
+            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_06);
+            if(isSelectModeEnabled())
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Unlock);
+            else
+                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2 + 1, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Skills);
+        break;
+    }
+
+    //Icons
+    x  = 12;
+    if(currentPage != 0)
+	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Red_1_Gfx, (x * 8) + x2 + 1, (y * 8) + y2, 16, 16);
+
+    for(i = 0; i < NUM_SUMMARY_SCREEN_PAGES; i++){
+        if(i < currentPage){
+            u8 newX = i + 1;
+            if(newX == (currentPage))
+	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Red_Gfx,   ((x + (newX * 2)) * 8) + x2 + 1, (y * 8) + y2, 16, 16);
+            else
+	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Red_1_Gfx, ((x + (newX * 2)) * 8) + x2 + 1, (y * 8) + y2, 16, 16);
+        }
+
+        switch(i){
+            case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
+                if(i == currentPage)
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_01_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+                else
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_01_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+            break;
+            case SUMMARY_SCREEN_PAGE_TRAITS:
+                if(i == currentPage)
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_02_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+                else
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_02_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+            break;
+            case SUMMARY_SCREEN_PAGE_HELD_ITEMS:
+                if(i == currentPage)
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_03_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+                else
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_03_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+            break;
+            case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
+                if(i == currentPage)
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_04_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+                else
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_04_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+            break;
+            case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
+                if(i == currentPage)
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_05_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+                else
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_05_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+            break;
+            case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
+                if(i == currentPage)
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_06_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+                else
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_06_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
+            break;
+        }
+    }
+
+    PutWindowTilemap(windowId);
+    CopyWindowToVram(windowId, 3);
+}
+
 static void PrintToWindow(void)
 {
-    u8 windowId = WINDOW_1;
+    u8 i, j;
+    u8 windowId = WINDOW_MAIN;
     u8 colorIdx = FONT_WHITE;
-    u8 i;
     u8 font = FONT_NORMAL;
-    u8 x, x2, y, y2 = 0;
+    s16 x, x2, y, y2 = 0;
     u8 currentPage = sMenuDataPtr->currentPage;
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 species    = GetMonData(mon, MON_DATA_SPECIES);
-	u16 abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM);
 	u16 level      = GetMonData(mon, MON_DATA_LEVEL);
 	u16 nature     = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
     u8 gender      = GetMonGender(mon);
-    u8 marking     = GetMonData(mon, MON_DATA_MARKINGS);
     u8 partyMember = getCurrentPartyMember(species);
     struct PartyMemberData sMemberData = sMenuDataPtr->sPartyMembers[partyMember];
     
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    //Title
-    x  = 0;
-    x2 = 2;
-    y  = 0;
-    y2 = 0;
-    switch(currentPage){
-        case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
-            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_01);
-            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
-        break;
-        case SUMMARY_SCREEN_PAGE_TRAITS:
-            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_02);
-            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
-        break;
-        case SUMMARY_SCREEN_PAGE_HELD_ITEMS:
-            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_03);
-            AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Exit);
-        break;
-        case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
-            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_04);
-            if(sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER)
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Replace);
-            else
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Swap);
-        break;
-        case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
-            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_05);
-            if(isSelectModeEnabled())
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Save);
-            else
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Change);
-        break;
-        case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
-            AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Title_06);
-            if(isSelectModeEnabled())
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Unlock);
-            else
-                AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 24) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Page_Help_Bar_Skills);
-        break;
-    }
-
-    /*
-    //Help Bar
-    x  = 24;
-    x2 = 2;
-    y  = 0;
-    y2 = 0;
-    AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Moves_Help_Bar);
-    */
-
-    //Pokemon Number
-    /*x  = 1;
-    x2 = 0;
-    y  = 2;
-    y2 = 0;
-        
-    ConvertIntToDecimalStringN(gStringVar1, species, STR_CONV_MODE_LEADING_ZEROS, 4);
-    StringExpandPlaceholders(gStringVar4, sText_Summary_Num);
-    AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);*/
-
     //Pokemon Name
     x  = 1;
     x2 = 1;
-    y  = 1;
-    y2 = 7;
+    y  = 0;
+    y2 = 0;
 
     AddTextPrinterParameterized4(windowId, font, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, GetSpeciesName(species));
 
@@ -1333,38 +1408,29 @@ static void PrintToWindow(void)
     }
 
     if(!isSelectModeEnabled()){
-
         //HP Bar and Exp Bar
         x  = 0;
         x2 = 5;
-        y  = 16;
+        y  = 14;
         y2 = 0;
         
 	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_HP_Bar_Gfx,   (x * 8) + x2, (y * 8) + y2, 72, 8);
 	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Exp_Bar_Gfx,  (x * 8) + x2, (y * 8) + y2 + 8, 72, 8);
-
-        if(ENABLE_MARKINGS){
-            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Marking_0_Gfx, (x * 8) + x2 + (SPACE_BETWEEN_MARKINGS * 0), (y * 8) + y2, 8, 8);
-            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Marking_1_Gfx, (x * 8) + x2 + (SPACE_BETWEEN_MARKINGS * 1), (y * 8) + y2, 8, 8);
-            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Marking_2_Gfx, (x * 8) + x2 + (SPACE_BETWEEN_MARKINGS * 2), (y * 8) + y2, 8, 8);
-            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Marking_3_Gfx, (x * 8) + x2 + (SPACE_BETWEEN_MARKINGS * 3), (y * 8) + y2, 8, 8);
-        }
     }
-
 
     switch(currentPage){
         case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
             //Profile
             x  = 14;
             x2 = 0;
-            y  = 2;
+            y  = 0;
             y2 = 6;
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Profile);
 
             //Profile Text
             x  = 11;
             x2 = 0;
-            y  = 5;
+            y  = 3;
             y2 = 0;
 
             switch(partyMember){
@@ -1399,7 +1465,7 @@ static void PrintToWindow(void)
             //Trainer Memo
             x  = 14;
             x2 = 0;
-            y  = 10;
+            y  = 8;
             y2 = 6;
 
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Recruit_Info);
@@ -1407,7 +1473,7 @@ static void PrintToWindow(void)
             //Trainer Memo Text
             x  = 11;
             x2 = 0;
-            y  = 13;
+            y  = 11;
             y2 = 0;
             BufferMonTrainerMemo(mon);
             AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
@@ -1415,12 +1481,12 @@ static void PrintToWindow(void)
         case SUMMARY_SCREEN_PAGE_TRAITS:
         {
             u16 trait;
-            bool8 shouldDisplayDescription = sMenuDataPtr->summaryMode == SUMMARY_MODE_ABILITY_CHANGER;
+            bool8 shouldDisplayDescription = (sMenuDataPtr->summaryMode == SUMMARY_MODE_ABILITY_CHANGER);
 
             //Ability Name and Description
             x  = 14;
             x2 = 0;
-            y  = 2;
+            y  = 0;
             y2 = 7;
             for(i = 0; i < MAX_MON_INNATES + 1; i++){
                 trait = sMemberData.abilities[i];
@@ -1431,14 +1497,25 @@ static void PrintToWindow(void)
                 }
 
                 if(shouldDisplayDescription && sMenuDataPtr->currentAbilityIdx == i){
-                    u8 j;
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
-                    for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
-	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_3_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Trait_Selector_1_Gfx, (x * 8) + x2 - 31, (y * 8) + y2, 16, 16);
+                    for(j = 2; j < SUMMARY_MOVE_SELECTOR_PARTS + 1; j++)
+	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Trait_Selector_2_Gfx, ((x + j) * 8) + x2 - 31, (y * 8) + y2, 8, 16);
+	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Trait_Selector_3_Gfx, ((x + j) * 8) + x2 - 34, (y * 8) + y2, 8, 16);
                 }
 
                 y = y + 4;
+            }
+            
+            if(shouldDisplayDescription){
+                x  = 3;
+                x2 = 5;
+                y  = 13;
+                y2 = 1;
+                
+                AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2 + 1, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Replace_Ability);
+                StringCopy(gStringVar1, gAbilitiesInfo[sMenuDataPtr->newAbility].name);
+                StringExpandPlaceholders(gStringVar4, sText_Summary_Screen_Moves_Replace); 
+                AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, ((x - 3) * 8) + x2 + 1, (y* 8) + y2 + 16, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
             }
         }
         break;
@@ -1449,7 +1526,7 @@ static void PrintToWindow(void)
             //Item Name and Description
             x  = 14;
             x2 = 0;
-            y  = 2;
+            y  = 0;
             y2 = 7;
 
             for(i = 0; i < 4; i++){
@@ -1479,16 +1556,17 @@ static void PrintToWindow(void)
         case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
         {
             u16 move;
-            bool8 replaceMode = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER;
-            bool8 swapMode    = sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_SELECT;
+            bool8 replaceMode = (sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_CHANGER);
+            bool8 swapMode    = (sMenuDataPtr->summaryMode == SUMMARY_MODE_MOVE_SELECT);
             bool8 shouldShowDescription = replaceMode || swapMode;
             u8 currentMoveIndex = sMenuDataPtr->currentMoveIdx;
             u8 numMoves = MAX_MON_MOVES + replaceMode;
+            u8 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
 
             //Battle Move Names and PP
             x  = 14;
             x2 = 0;
-            y  = 2;
+            y  = 0;
             y2 = 6;
             
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Moves);
@@ -1496,11 +1574,10 @@ static void PrintToWindow(void)
             //Battle Move Names and PP
             x  = 15;
             x2 = 3;
-            y  = 5;
+            y  = 3;
             y2 = 0;
             
             for(i = 0; i < numMoves; i++){
-                u8 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
                 u8 currentPP = GetMonData(mon, MON_DATA_PP1 + i, NULL);
                 u8 maxPP = 0;
                 
@@ -1522,14 +1599,12 @@ static void PrintToWindow(void)
                     StringExpandPlaceholders(gStringVar4, sText_Summary_PP);
                     AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 9) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, gStringVar4);
                     if(shouldShowDescription && currentMoveIndex == i){
-                        u8 j;
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                         for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
 	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_3_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                     }
                     else if(shouldShowDescription && sMenuDataPtr->moveToSwap == i){
-                        u8 j;
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                         for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
 	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_2_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
@@ -1546,7 +1621,6 @@ static void PrintToWindow(void)
                 AddTextPrinterParameterized4(windowId, FONT_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Cancel);
 
                 if(shouldShowDescription && currentMoveIndex == GetCurrentMonUsableMoves()){
-                    u8 j;
 	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_1_Gfx, (x * 8) + x2 - 40, (y * 8) + y2, 8, 16);
                     for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
 	                     BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector_2_Gfx, ((x + j) * 8) + x2 - 40, (y * 8) + y2, 8, 16);
@@ -1557,7 +1631,7 @@ static void PrintToWindow(void)
             //Description
             x  = 14;
             x2 = 0;
-            y  = 13;
+            y  = 12;
             y2 = 6;
             
             if(shouldShowDescription){
@@ -1587,7 +1661,7 @@ static void PrintToWindow(void)
             //IVs, EVs and current Stats
             x  = 14;
             x2 = 2;
-            y  = 2;
+            y  = 0;
             y2 = 6;
             
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8)        + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Stats);
@@ -1598,7 +1672,7 @@ static void PrintToWindow(void)
             //Stat Numbers
             x  = 11;
             x2 = 0;
-            y  = 5;
+            y  = 3;
             y2 = 0;
 
             for(i = 0; i < NUM_STATS; i++){
@@ -1659,14 +1733,14 @@ static void PrintToWindow(void)
 
             x  = 21;
             x2 = 0;
-            y  = 18;
+            y  = 16;
             y2 = 3;
 	        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Select_Button_Gfx, (x * 8) + x2 + 1, (y * 8) + y2, 24, 16);
             AddTextPrinterParameterized4(windowId, FONT_NARROW, ((x + 3) * 8) + x2 + 3, (y * 8) + y2 - 2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Reset_EVs);
 
             x  = 9;
             x2 = 0;
-            y  = 18;
+            y  = 16;
             y2 = 3;
 	        ConvertIntToDecimalStringN(gStringVar1, GetCurrentMonRemainingEVs(), STR_CONV_MODE_LEFT_ALIGN, 3);
             StringExpandPlaceholders(gStringVar4, sText_Summary_EVS_Left);
@@ -1688,7 +1762,7 @@ static void PrintToWindow(void)
             //Skills
             x  = 14;
             x2 = 0;
-            y  = 2;
+            y  = 0;
             y2 = 6;
             
             AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Skills);
@@ -1700,7 +1774,7 @@ static void PrintToWindow(void)
             //Skills
             x  = 10;
             x2 = 6;
-            y  = 5;
+            y  = 3;
             y2 = 3;
             for(i = 0; i < maxNumSkills; i++){
                 u8 currentSkill = sMenuDataPtr->firstSkill + i;
@@ -1809,7 +1883,6 @@ static void PrintToWindow(void)
 
                 if(selectSkillMode){
                     if(currentSkill == sMenuDataPtr->currentSkill){
-                        u8 j;
 	                    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_1_Gfx, ((x + 4) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
                         for(j = 1; j < SUMMARY_MOVE_SELECTOR_PARTS; j++)
 	                        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Move_Selector2_2_Gfx, ((x + 4 + j) * 8) + x2 - 34, ((y + (i * 2)) * 8) + y2 - 3, 8, 16);
@@ -1821,7 +1894,7 @@ static void PrintToWindow(void)
             //Description
             x  = 14;
             x2 = 0;
-            y  = 13;
+            y  = 11;
             y2 = 6;
             
             if(selectSkillMode){//
@@ -1859,64 +1932,6 @@ static void PrintToWindow(void)
             }
         }
         break;
-    }
-
-    //Icons
-    x  = 12;
-    x2 = 0;
-    y  = 0;
-    y2 = 0;
-
-    if(currentPage != 0)
-	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Red_1_Gfx, (x * 8) + x2 + 1, (y * 8) + y2, 16, 16);
-
-    for(i = 0; i < NUM_SUMMARY_SCREEN_PAGES; i++){
-        if(i < currentPage){
-            u8 newX = i + 1;
-            if(newX == (currentPage))
-	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Red_Gfx,   ((x + (newX * 2)) * 8) + x2 + 1, (y * 8) + y2, 16, 16);
-            else
-	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Red_1_Gfx, ((x + (newX * 2)) * 8) + x2 + 1, (y * 8) + y2, 16, 16);
-        }
-
-        switch(i){
-            case SUMMARY_SCREEN_PAGE_POKEMON_INFO:
-                if(i == currentPage)
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_01_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-                else
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_01_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-            break;
-            case SUMMARY_SCREEN_PAGE_TRAITS:
-                if(i == currentPage)
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_02_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-                else
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_02_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-            break;
-            case SUMMARY_SCREEN_PAGE_HELD_ITEMS:
-                if(i == currentPage)
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_03_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-                else
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_03_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-            break;
-            case SUMMARY_SCREEN_PAGE_BATTLE_MOVES:
-                if(i == currentPage)
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_04_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-                else
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_04_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-            break;
-            case SUMMARY_SCREEN_PAGE_POKEMON_STATS:
-                if(i == currentPage)
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_05_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-                else
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_05_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-            break;
-            case SUMMARY_SCREEN_PAGE_POKEMON_SKILLS:
-                if(i == currentPage)
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_06_Enabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-                else
-	                BlitBitmapToWindow(windowId, sSummaryScreen_Icon_06_Disabled_Gfx, ((x + (i * 2)) * 8) + x2, (y * 8) + y2, 16, 16);
-            break;
-        }
     }
 
     PutWindowTilemap(windowId);
@@ -1974,6 +1989,9 @@ static void Task_RefreshSummaryPage(u8 taskId)
     switch (data[0])
     {
     case 0:
+        PrintHelpBar();
+    break;
+    case 1:
         PrintToWindow();
         break;
     default:
@@ -1991,13 +2009,16 @@ static void Task_ChangeSummaryPage(u8 taskId)
     switch (data[0])
     {
     case 0:
+        ClearWindow(WINDOW_MAIN);
         LoadTilemapFromMode();
         break;
-    default:
+    break;
+    case 1:
         data[0] = 0;
         gTasks[taskId].func = Task_RefreshSummaryPage;
         return;
     }
+
     data[0]++;
 }
 
@@ -2022,7 +2043,6 @@ static void Task_ChangeSummaryMon(u8 taskId)
         break;
     default:
         data[0] = 0;
-        PrintToWindow();
         gTasks[taskId].func = Task_ChangeSummaryPage;
         return;
     }
@@ -2614,7 +2634,7 @@ static void Task_MenuMain(u8 taskId)
             if (JOY_NEW(DPAD_DOWN) || JOY_REPEAT(DPAD_DOWN))
             {
                 PlaySE(SE_SELECT);
-                if(sMenuDataPtr->currentAbilityIdx < MAX_MON_INNATES + 1)
+                if(sMenuDataPtr->currentAbilityIdx < MAX_MON_INNATES)
                     sMenuDataPtr->currentAbilityIdx++;
                 else
                     sMenuDataPtr->currentAbilityIdx = 0;
@@ -2627,7 +2647,7 @@ static void Task_MenuMain(u8 taskId)
                 if(sMenuDataPtr->currentAbilityIdx != 0)
                     sMenuDataPtr->currentAbilityIdx--;
                 else
-                    sMenuDataPtr->currentAbilityIdx = MAX_MON_INNATES + 1;
+                    sMenuDataPtr->currentAbilityIdx = MAX_MON_INNATES;
                 gTasks[taskId].func = Task_RefreshSummaryPage;
             }
         break;
