@@ -76,6 +76,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "brave_battle.h"
+
 enum {
     MENU_SUMMARY,
     MENU_SWITCH,
@@ -7378,6 +7380,7 @@ static bool8 TrySwitchInPokemon(void)
     newSlot = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[gBattlerInMenuId]);
     SwitchPartyMonSlots(newSlot, slot);
     SwapPartyPokemon(&gPlayerParty[newSlot], &gPlayerParty[slot]);
+    BraveAddSwitchToQueue(gBattlerInMenuId, gSelectedMonPartyId);
     return TRUE;
 }
 

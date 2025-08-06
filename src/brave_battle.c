@@ -123,6 +123,54 @@ void BraveSetCurrentAction(void)
     u32 battlerSpeeds[4];
     u32 speedThreshold = 0;
     u32 numBattlers = IsDoubleBattle() ? 4 : 2;
+
+    //  Check for switching
+    if (gBraveBattleAction[0][0].action == B_ACTION_SWITCH
+     || gBraveBattleAction[1][0].action == B_ACTION_SWITCH
+     || gBraveBattleAction[2][0].action == B_ACTION_SWITCH
+     || gBraveBattleAction[3][0].action == B_ACTION_SWITCH)
+    {
+        //  Find the fastest mon that wants to switch
+        for (u32 i = 0; i < 4; i++)
+        {
+            if (gBraveBattleAction[i][0].action == B_ACTION_SWITCH)
+            {
+                battlerWantsToMove[i] = TRUE;
+                battlerSpeeds[i] = GetBattlerTotalSpeedStat(i);
+            }
+        }
+        u32 battlerToUse = 5;
+        for (u32 i = 0; i < 4; i++)
+        {
+            if (battlerWantsToMove[i])
+            {
+                if (battlerToUse == 5)
+                {
+                    battlerToUse = i;
+                }
+                else
+                {
+                    if (battlerSpeeds[i] > battlerSpeeds[battlerToUse])
+                    {
+                        battlerToUse = i;
+                    }
+                    else if (battlerSpeeds[i] == battlerSpeeds[battlerToUse]
+                      && sBattlerOrders[gBattleStruct->speedTieBreaks][i] > sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToUse])
+                    {
+                        battlerToUse = i;
+                    }
+                }
+            }
+        }
+        gBraveCurrentAction.action = B_ACTION_SWITCH;
+        gBraveCurrentAction.battler = battlerToUse;
+        gBraveCurrentAction.target = gBraveBattleAction[battlerToUse][0].target;
+        gBattleStruct->monToSwitchIntoId[battlerToUse] = gBraveCurrentAction.target;
+        BraveClearBattlerAction(battlerToUse, 0);
+        BraveResetAP(battlerToUse);
+        return;
+    }
+
     for (u32 battler = 0; battler < numBattlers; battler++)
     {
         battlerSpeeds[battler] = GetBattlerTotalSpeedStat(battler);
@@ -169,7 +217,6 @@ void BraveSetCurrentAction(void)
     if (battlerIsDefaulting)
     {
         gBraveCurrentAction = gBraveBattleAction[battlerToDefault][0];
-        MgbaPrintf(MGBA_LOG_WARN, "To Default: %u", battlerToDefault);
         BraveClearBattlerAction(battlerToDefault, 0);
     }
     else
@@ -292,6 +339,8 @@ void BraveAddDefaultToQueue(u32 battler)
 
 void BraveAddSwitchToQueue(u32 battler, u32 target)
 {
+    gBraveBattleAction[battler][0].action = B_ACTION_SWITCH;
+    gBraveBattleAction[battler][0].target = target;
 }
 
 void BraveAddItemToQueue(u32 battler, u32 item, u32 target)
@@ -354,4 +403,9 @@ void BraveConsumeAP(u32 battler, u32 move)
 {
     if (move != MOVE_DEFAULT)
         gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
+}
+
+void BraveResetAP(u32 battler)
+{
+    gBattleStruct->monStoredAP[battler] = 0;
 }
