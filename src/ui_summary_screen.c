@@ -1108,7 +1108,7 @@ bool8 isSkillUnlockeable(u8 partyMember, u8 currentSkill){
 
     bool8 metLevelRequirement = (sSkillTree[partyMember][currentSkill].unlockLevel > level);
     bool8 metStoryRequirement = (FlagGet(sSkillTree[partyMember][currentSkill].unlockFlag)            || sSkillTree[partyMember][currentSkill].unlockFlag == 0);
-    bool8 metItemRequirement  = (CheckBagHasItem(sSkillTree[partyMember][currentSkill].unlockItem, 1) || sSkillTree[partyMember][currentSkill].unlockItem == 0);
+    bool8 metItemRequirement  = (CheckBagHasItem(sSkillTree[partyMember][currentSkill].itemNeeded, 1) || sSkillTree[partyMember][currentSkill].itemNeeded == 0);
 
     if(metLevelRequirement && metStoryRequirement && metItemRequirement)
         return TRUE;

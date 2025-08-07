@@ -61,7 +61,8 @@ struct SkillTree
     u8 neededPoints;
     u8 unlockLevel;
     u16 unlockFlag;
-    u16 unlockItem;
+    u16 itemNeeded;
+    u16 skillNeeded;
 };
 
 static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE] = 
