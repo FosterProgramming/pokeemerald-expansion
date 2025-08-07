@@ -23,6 +23,7 @@
 #include "menu.h"
 #include "menu_helpers.h"
 #include "palette.h"
+#include "pokemon_animation.h"
 #include "party_menu.h"
 #include "region_map.h"
 #include "scanline_effect.h"
@@ -268,8 +269,13 @@ static const u8 sSummaryScreen_Icon_Skill_Stat_Gfx[]       = INCBIN_U8("graphics
 static const u8 sSummaryScreen_Icon_Skill_Cap_Gfx[]        = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/ev_cap.4bpp");
 static const u8 sSummaryScreen_Icon_Skill_Locked_Gfx[]     = INCBIN_U8("graphics/ui_menus/summary_screen/icons/skills/locked.4bpp");
 
-static const u8 sSummaryScreen_Icon_HP_Bar_Gfx[]           = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_hp_bar.4bpp");
+static const u8 sSummaryScreen_Icon_HP_Bar_Gfx[]                  = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_hp_bar.4bpp");
+static const u8 sSummaryScreen_Icon_HP_Bar_Progress_Gfx[]         = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_hp_bar_progress.4bpp");
+static const u8 sSummaryScreen_Icon_HP_Bar_Yellow_Progress_Gfx[]  = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_hp_bar_progress_yellow.4bpp");
+static const u8 sSummaryScreen_Icon_HP_Bar_Red_Progress_Gfx[]     = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_hp_bar_progress_red.4bpp");
+
 static const u8 sSummaryScreen_Icon_Exp_Bar_Gfx[]          = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_exp_bar.4bpp");
+static const u8 sSummaryScreen_Icon_Exp_Bar_Progress_Gfx[] = INCBIN_U8("graphics/ui_menus/summary_screen/icons/icon_exp_bar_progress.4bpp");
 
 
 enum Colors
@@ -630,7 +636,7 @@ static void SpriteCB_Pokemon(struct Sprite *sprite)
     {
         sprite->data[1] = IsMonSpriteNotFlipped(sprite->data[0]);
         //PlayMonCry();
-        //PokemonSummaryDoMonAnimation(sprite, sprite->data[0], FALSE);
+        PokemonNewSummaryDoMonAnimation(sprite, sprite->data[0], FALSE);
     }
 }
 
@@ -807,7 +813,7 @@ bool8 LoadTilemapFromMode(void) {
     ShowBg(1);
     ShowBg(2);
 
-    if(isSelectModeEnabled())
+    if(isSelectModeEnabled() && sMenuDataPtr->currentPage != SUMMARY_SCREEN_PAGE_POKEMON_SKILLS)
         LZDecompressWram(sMenuTilemap_Background_1, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
     else
         LZDecompressWram(sMenuTilemap_Background_0, sMenuDataPtr->bgTilemapBuffers[START_MENU_BG_NORMAL]);
@@ -992,7 +998,7 @@ static void SpriteCallback_Extra_MoveTypes(struct Sprite* sprite)
 
 static void SpriteCallback_Pokemon_Types(struct Sprite* sprite)
 {
-    if (isSelectModeEnabled())
+    if (isSelectModeEnabled() && sMenuDataPtr->currentPage != SUMMARY_SCREEN_PAGE_POKEMON_SKILLS)
         sprite->invisible = TRUE;
     else
         sprite->invisible = FALSE;
@@ -1098,16 +1104,16 @@ static void CreateMoveTypeIcons(void)
 
 bool8 isSkillUnlockeable(u8 partyMember, u8 currentSkill){
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
-	u16 level      = GetMonData(mon, MON_DATA_LEVEL);
+	u16 level = GetMonData(mon, MON_DATA_LEVEL);
 
-    bool8 metLevelRequirement = sSkillTree[partyMember][currentSkill].unlockLevel > level;
-    bool8 metStoryRequirement = sSkillTree[partyMember][currentSkill].unlockLevel > level;
-    bool8 metItemRequirement  = sSkillTree[partyMember][currentSkill].unlockLevel > level;
+    bool8 metLevelRequirement = (sSkillTree[partyMember][currentSkill].unlockLevel > level);
+    bool8 metStoryRequirement = (FlagGet(sSkillTree[partyMember][currentSkill].unlockFlag)            || sSkillTree[partyMember][currentSkill].unlockFlag == 0);
+    bool8 metItemRequirement  = (CheckBagHasItem(sSkillTree[partyMember][currentSkill].unlockItem, 1) || sSkillTree[partyMember][currentSkill].unlockItem == 0);
 
     if(metLevelRequirement && metStoryRequirement && metItemRequirement)
         return TRUE;
 
-    return TRUE;//To Change
+    return TRUE; //To Change
 }
 
 static const u8 sText_Page_Title_01[] = _("POKEMON INFO");
@@ -1413,9 +1419,12 @@ static void PrintPokemonNameWindow(void){
     s16 x, x2, y, y2 = 0;
 
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
-	u16 species = GetMonData(mon, MON_DATA_SPECIES);
-	u16 level   = GetMonData(mon, MON_DATA_LEVEL);
-    u8 gender   = GetMonGender(mon);
+	u16 species   = GetMonData(mon, MON_DATA_SPECIES);
+	u16 level     = GetMonData(mon, MON_DATA_LEVEL);
+    u8 gender     = GetMonGender(mon);
+    u16 currentHP = GetMonData(mon, MON_DATA_HP);
+    u16 maxHP     = GetMonData(mon, MON_DATA_MAX_HP);
+
     bool8 isSelectMode = isSelectModeEnabled();
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
@@ -1442,7 +1451,7 @@ static void PrintPokemonNameWindow(void){
             AddTextPrinterParameterized4(windowId, font, ((x + 5) * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[FONT_RED], 0xFF, gText_FemaleSymbol);
     }
 
-    if(isSelectMode){
+    if(isSelectMode && sMenuDataPtr->currentPage != SUMMARY_SCREEN_PAGE_POKEMON_SKILLS){
         switch(sMenuDataPtr->currentPage){
             case SUMMARY_SCREEN_PAGE_TRAITS:
                 x  = 3;
@@ -1475,14 +1484,49 @@ static void PrintPokemonNameWindow(void){
         }
     }
     else{
+        s32 percent     = (currentHP * 48) / maxHP;
+        s32 raw_percent = (currentHP * 100) / maxHP;
+        s32 currentExp  = GetMonData(mon, MON_DATA_EXP);
+        s32 numExpProgressBarTicks;
+
         //HP Bar and Exp Bar
         x  = 0;
         x2 = 5;
         y  = 14;
         y2 = 0;
+
+        //MgbaPrintf(MGBA_LOG_WARN, "percent = %d currentHP = %d maxHP = %d", percent, currentHP, maxHP);
         
 	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_HP_Bar_Gfx,   (x * 8) + x2, (y * 8) + y2, 72, 8);
+
+        for(i = 0 ; i < percent; i++){
+            if(raw_percent < 25)
+	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_HP_Bar_Red_Progress_Gfx, (x * 8) + x2 + i + 15, (y * 8) + y2, 8, 8);
+            else if(raw_percent < 50)
+	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_HP_Bar_Yellow_Progress_Gfx, (x * 8) + x2 + i + 15, (y * 8) + y2, 8, 8);
+            else
+	            BlitBitmapToWindow(windowId, sSummaryScreen_Icon_HP_Bar_Progress_Gfx, (x * 8) + x2 + i + 15, (y * 8) + y2, 8, 8);
+        }
+
 	    BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Exp_Bar_Gfx,  (x * 8) + x2, (y * 8) + y2 + 8, 72, 8);
+
+        if (level < MAX_LEVEL)
+        {
+            u32 expBetweenLevels  = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - gExperienceTables[gSpeciesInfo[species].growthRate][level];
+            u32 expSinceLastLevel = currentExp - gExperienceTables[gSpeciesInfo[species].growthRate][level];
+
+            // Calculate the number of 1-pixel "ticks" to illuminate in the experience progress bar.
+            // There are 8 tiles that make up the bar, and each tile has 8 "ticks". Hence, the numerator
+            // is multiplied by 64.
+            numExpProgressBarTicks = (expSinceLastLevel * 48) / expBetweenLevels;
+            if (numExpProgressBarTicks == 0 && expSinceLastLevel != 0)
+                numExpProgressBarTicks = 1;
+        }
+        else
+            numExpProgressBarTicks = 0;
+
+        for(i = 0 ; i < numExpProgressBarTicks; i++)
+	        BlitBitmapToWindow(windowId, sSummaryScreen_Icon_Exp_Bar_Progress_Gfx, (x * 8) + x2 + i + 15, (y * 8) + y2 + 8, 8, 8);
     }
 
     PutWindowTilemap(windowId);
@@ -1798,7 +1842,7 @@ static void PrintToWindow(void)
                 }
             }
 
-            x  = 11;
+            x  = 12;
             x2 = 0;
             y  = 16;
             y2 = 3;
@@ -1964,14 +2008,13 @@ static void PrintToWindow(void)
             y  = 11;
             y2 = 6;
             
-            if(selectSkillMode){//
+            if(selectSkillMode){
                 u8 currentSkill = sMenuDataPtr->currentSkill;
                 u8 currentSkillType = sSkillTree[partyMember][currentSkill].skill_type;
                 u16 argument = sSkillTree[partyMember][currentSkill].skill;
                 u8 metRequirments = isSkillUnlockeable(partyMember, currentSkill);
 
                 y2 += 12;
-                x = 4;
                 AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, (x * 8) + x2, (y * 8) + y2, 0, 0, sMenuWindowFontColors[colorIdx], 0xFF, sText_Summary_Screen_Description);
 
                 switch(currentSkillType){
@@ -2071,7 +2114,7 @@ static void Task_RefreshSummaryPage(u8 taskId)
 static void Task_ChangeSummaryPage(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    bool8 reloadBothTilemaps = FALSE;
+    bool8 reloadBothTilemaps = TRUE;
 
     switch (data[0])
     {

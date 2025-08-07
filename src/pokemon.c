@@ -6192,6 +6192,29 @@ void DoMonFrontSpriteAnimation(struct Sprite *sprite, u16 species, bool8 noCry, 
     }
 }
 
+void PokemonNewSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame)
+{
+    if (!oneFrame && HasTwoFramesAnimation(species))
+        StartSpriteAnim(sprite, 1);
+    if (gSpeciesInfo[species].frontAnimDelay != 0)
+    {
+        // Animation has delay, start delay task
+        u8 taskId = CreateTask(Task_PokemonSummaryAnimateAfterDelay, 0);
+        STORE_PTR_IN_TASK(sprite, taskId, 0);
+        gTasks[taskId].sAnimId = gSpeciesInfo[species].frontAnimId;
+        gTasks[taskId].sAnimDelay = gSpeciesInfo[species].frontAnimDelay;
+        SummaryScreen_SetAnimDelayTaskId(taskId);
+        SetSpriteCB_MonAnimDummy(sprite);
+        StartSpriteAnim(sprite, 0);
+    }
+    else
+    {
+        // No delay, start animation
+        StartMonSummaryAnimation(sprite, gSpeciesInfo[species].frontAnimId);
+        StartSpriteAnim(sprite, 0);
+    }
+}
+
 void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame)
 {
     if (!oneFrame && HasTwoFramesAnimation(species))
