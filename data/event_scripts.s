@@ -1330,3 +1330,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MountPyroden_3F_West/scripts.inc"
 
 	.include "data/maps/MountPyroden_2F_West/scripts.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+
+	.include "data/maps/StratoscapeRoute1/scripts.inc"

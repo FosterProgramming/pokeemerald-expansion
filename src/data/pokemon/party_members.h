@@ -68,71 +68,95 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
     {
         {
             .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_FURY_SWIPES,
-            .neededPoints = 8,
+            .skill        = MOVE_POWDER_SNOW,
+            .neededPoints = 0,
             .unlockLevel  = 0,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_LIBERO,
-            .neededPoints = 2,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_ATK,
-            .argument     = 3,
-            .neededPoints = 3,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 4, //+10 EVs
-            .neededPoints = 3,
-            .unlockLevel  = 10,
         },
         {
             .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_FLAMETHROWER,
-            .neededPoints = 8,
+            .skill        = MOVE_ICY_WIND,
+            .neededPoints = 5,
+            .unlockLevel  = 35,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_BLIZZARD,
+            .neededPoints = 10,
+            .unlockLevel  = 35,
+        },{
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_BUBBLE,
+            .neededPoints = 0,
             .unlockLevel  = 0,
         },
         {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_BUBBLE_BEAM,
+            .neededPoints = 5,
+            .unlockLevel  = 35,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_HYDRO_PUMP,
+            .neededPoints = 10,
+            .unlockLevel  = 35,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 4, //+4 EVs
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_STAT,
+            .skill        = STAT_DEF,
+            .argument     = 4,
+            .neededPoints = 3,
+            .unlockLevel  = 35,
+        },
+        {
             .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_PROTEAN,
+            .skill        = ABILITY_TECHNICIAN,
             .neededPoints = 2,
-            .unlockLevel  = 10,
+            .unlockLevel  = 35,
         },
         {
             .skill_type   = SKILL_TREE_TYPE_CAP,
             .skill        = 5, //+10 EVs
             .neededPoints = 5,
-            .unlockLevel  = 10,
-        },
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_ICE_BEAM,
-            .neededPoints = 2,
             .unlockLevel  = 0,
         },
         {
+            .skill_type   = SKILL_TREE_TYPE_STAT,
+            .skill        = STAT_SPDEF,
+            .argument     = 4,
+            .neededPoints = 3,
+            .unlockLevel  = 35,
+        },
+        {
             .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_MOODY,
+            .skill        = ABILITY_SHEER_FORCE,
             .neededPoints = 4,
-            .unlockLevel  = 10,
+            .unlockLevel  = 35,
         },
         {
             .skill_type   = SKILL_TREE_TYPE_STAT,
             .skill        = STAT_SPEED,
             .argument     = 4,
             .neededPoints = 3,
-            .unlockLevel  = 10,
+            .unlockLevel  = 0,
         },
         {
             .skill_type   = SKILL_TREE_TYPE_CAP,
             .skill        = 20, //+10 EVs
             .neededPoints = 10,
-            .unlockLevel  = 10,
+            .unlockLevel  = 35,
+        },
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_BATTLE_ARMOR,
+            .neededPoints = 4,
+            .unlockLevel  = 35,
         },
         {
             .skill_type   = SKILL_TYPE_NONE,

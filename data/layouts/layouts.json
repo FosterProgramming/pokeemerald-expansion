@@ -5260,6 +5260,26 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/MountPyroden_2F_West/border.bin",
       "blockdata_filepath": "data/layouts/MountPyroden_2F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP1",
+      "name": "NewMap1_Layout",
+      "width": 100,
+      "height": 70,
+      "primary_tileset": "gTileset_StratoscapePrimary",
+      "secondary_tileset": "gTileset_StratoscapeSecondary",
+      "border_filepath": "data/layouts/NewMap1/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
+    },
+    {
+      "id": "LAYOUT_STRATOSCAPE_ROUTE1",
+      "name": "StratoscapeRoute1_Layout",
+      "width": 100,
+      "height": 50,
+      "primary_tileset": "gTileset_StratoscapePrimary",
+      "secondary_tileset": "gTileset_StratoscapeSecondary",
+      "border_filepath": "data/layouts/StratoscapeRoute1/border.bin",
+      "blockdata_filepath": "data/layouts/StratoscapeRoute1/map.bin"
     }
   ]
 }
