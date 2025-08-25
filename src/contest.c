@@ -1045,7 +1045,7 @@ static const struct SpriteTemplate sSpriteTemplates_ContestantsTurnBlinkEffect[C
     }
 };
 
-static const s8 sContestExcitementTable[CONTEST_CATEGORIES_COUNT][CONTEST_CATEGORIES_COUNT] =
+const s8 gContestExcitementTable[CONTEST_CATEGORIES_COUNT][CONTEST_CATEGORIES_COUNT] =
 {
     [CONTEST_CATEGORY_COOL] = {
         [CONTEST_CATEGORY_COOL]   = +1,
@@ -4843,7 +4843,7 @@ static void UpdateApplauseMeter(void)
 
 s8 Contest_GetMoveExcitement(u16 move)
 {
-    return sContestExcitementTable[gSpecialVar_ContestCategory][GetMoveContestCategory(move)];
+    return gContestExcitementTable[gSpecialVar_ContestCategory][GetMoveContestCategory(move)];
 }
 
 static u8 StartApplauseOverflowAnimation(void)

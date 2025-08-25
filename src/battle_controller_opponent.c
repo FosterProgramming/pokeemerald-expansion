@@ -40,6 +40,8 @@
 #include "trainer_hill.h"
 #include "test_runner.h"
 
+#include "safari_contest.h"
+
 static void OpponentHandleDrawTrainerPic(u32 battler);
 static void OpponentHandleTrainerSlideBack(u32 battler);
 static void OpponentHandleChooseAction(u32 battler);
@@ -49,6 +51,7 @@ static void OpponentHandleChoosePokemon(u32 battler);
 static void OpponentHandleIntroTrainerBallThrow(u32 battler);
 static void OpponentHandleDrawPartyStatusSummary(u32 battler);
 static void OpponentHandleEndLinkBattle(u32 battler);
+static void OpponentHandleHealthBarUpdate(u32 battler);
 static u8 CountAIAliveNonEggMonsExcept(u8 slotToIgnore);
 
 static void OpponentBufferRunCommand(u32 battler);
@@ -79,7 +82,7 @@ static void (*const sOpponentBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler)
     [CONTROLLER_OPENBAG]                  = OpponentHandleChooseItem,
     [CONTROLLER_CHOOSEPOKEMON]            = OpponentHandleChoosePokemon,
     [CONTROLLER_23]                       = BtlController_Empty,
-    [CONTROLLER_HEALTHBARUPDATE]          = BtlController_HandleHealthBarUpdate,
+    [CONTROLLER_HEALTHBARUPDATE]          = OpponentHandleHealthBarUpdate,
     [CONTROLLER_EXPUPDATE]                = BtlController_Empty,
     [CONTROLLER_STATUSICONUPDATE]         = BtlController_HandleStatusIconUpdate,
     [CONTROLLER_STATUSANIMATION]          = BtlController_HandleStatusAnimation,
@@ -108,6 +111,7 @@ static void (*const sOpponentBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler)
     [CONTROLLER_RESETACTIONMOVESELECTION] = BtlController_Empty,
     [CONTROLLER_ENDLINKBATTLE]            = OpponentHandleEndLinkBattle,
     [CONTROLLER_DEBUGMENU]                = BtlController_Empty,
+    [CONTROLLER_INTROBERRYTHROW]          = BtlController_Empty,
     [CONTROLLER_TERMINATOR_NOP]           = BtlController_TerminatorNop
 };
 
@@ -616,4 +620,15 @@ static void OpponentHandleEndLinkBattle(u32 battler)
         SetMainCallback2(gMain.savedCallback);
     }
     BtlController_Complete(battler);
+}
+
+static void OpponentHandleHealthBarUpdate(u32 battler)
+{
+    if (!(gBattleTypeFlags & BATTLE_TYPE_CONTEST))
+        return BtlController_HandleHealthBarUpdate(battler);
+
+    LoadBattleBarGfx(0);
+    s16 valueChange = gBattleResources->bufferA[battler][2] | (gBattleResources->bufferA[battler][3] << 8);
+    SetBattleBarStruct(battler, gHealthboxSpriteIds[battler], 255, gCatchChance + valueChange, valueChange);
+    gBattlerControllerFuncs[battler] = Controller_WaitForHealthBar;
 }

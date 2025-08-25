@@ -77,6 +77,8 @@
 #include "constants/weather.h"
 #include "cable_club.h"
 
+#include "safari_contest.h"
+
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
 
@@ -435,6 +437,11 @@ void CB2_InitBattle(void)
 #if T_SHOULD_RUN_MOVE_ANIM
     gLoadFail = FALSE;
 #endif // T_SHOULD_RUN_MOVE_ANIM
+
+    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) {
+        gBattleTypeFlags |= BATTLE_TYPE_CONTEST;
+        InitSafariContest();
+    }
 
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
@@ -3613,6 +3620,10 @@ static void DoBattleIntro(void)
             {
                 gBattleStruct->introState++;
             }
+            else if (gBattleTypeFlags & BATTLE_TYPE_CONTEST)
+            {
+                gBattleStruct->introState = BATTLE_INTRO_THROW_BERRY;
+            }
             else
             {
                 if (B_FAST_INTRO_PKMN_TEXT == TRUE)
@@ -3752,6 +3763,21 @@ static void DoBattleIntro(void)
             gBattleMainFunc = TryDoEventsBeforeFirstTurn;
         }
         break;
+    case BATTLE_INTRO_THROW_BERRY:
+        battler = GetBattlerAtPosition(0);
+        BtlController_EmitIntroBerryThrow(battler, B_COMM_TO_CONTROLLER);
+        MarkBattlerForControllerExec(battler);
+        gBattleStruct->introState++;
+        break;
+    case BATTLE_INTRO_BERRY_WAIT:
+        if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)) && gBattleScripting.throwBerryState == 0)
+        {
+            DebugPrintf("BATTLE_INTRO continue");
+            if (B_FAST_INTRO_PKMN_TEXT == TRUE)
+                gBattleStruct->introState = BATTLE_INTRO_STATE_WAIT_FOR_WILD_BATTLE_TEXT;
+            else
+                gBattleStruct->introState = BATTLE_INTRO_STATE_WAIT_FOR_TRAINER_2_SEND_OUT_ANIM;
+        }
     }
 }
 
@@ -3890,6 +3916,10 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->eventsBeforeFirstTurnState++;
         if (TrySwitchInEjectPack(ITEMEFFECT_ON_SWITCH_IN_FIRST_TURN))
             return;
+        break;
+    case FIRST_TURN_EVENTS_IDLE_ACTION:
+        //BattleScriptPushCursorAndCallback(BattleScript_DoIdleActionEnd3);
+        gBattleStruct->eventsBeforeFirstTurnState++;
         break;
     case FIRST_TURN_EVENTS_END:
         for (i = 0; i < MAX_BATTLERS_COUNT; i++)

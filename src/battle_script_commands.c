@@ -70,6 +70,8 @@
 #include "follower_npc.h"
 #include "load_save.h"
 
+#include "safari_contest.h"
+
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
 // the quarters cancel so no need to re-quadruple them in actual calculation
@@ -13714,6 +13716,46 @@ static void Cmd_handleballthrow(void)
         BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_3_SHAKES_SUCCESS);
         MarkBattlerForControllerExec(gBattlerAttacker);
         gBattlescriptCurrInstr = BattleScript_WallyBallThrow;
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_CONTEST)
+    {
+        u32 catchRate = gCatchChance;
+        u32 rand = Random() & 0xFF;
+        u32 ballId = ItemIdToBallId(gLastUsedItem);
+        if (rand <= catchRate)
+        {
+            if (catchRate == 0xFF)
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_1_SHAKE);
+            }
+            else
+                BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_3_SHAKES_SUCCESS);
+            MarkBattlerForControllerExec(gBattlerAttacker);
+            TryBattleFormChange(gBattlerTarget, FORM_CHANGE_END_BATTLE);
+            gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
+            struct Pokemon *caughtMon = GetBattlerMon(gBattlerTarget);
+            SetMonData(caughtMon, MON_DATA_POKEBALL, &ballId);
+            gBattleCommunication[MULTISTRING_CHOOSER] = 0;
+        }
+        else
+        {
+            u32 shakes;
+            if ((rand - catchRate) < 10)
+                shakes = BALL_3_SHAKES_FAIL;
+            else if ((255 - rand) < 25)
+                shakes = BALL_2_SHAKES;
+            else if ((255 - rand) < 50)
+                shakes = BALL_1_SHAKE;
+            else
+                shakes = BALL_NO_SHAKES;
+
+            BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, shakes);
+            MarkBattlerForControllerExec(gBattlerAttacker);
+            gBattleCommunication[MULTISTRING_CHOOSER] = BALL_3_SHAKES_FAIL;
+            gBattlescriptCurrInstr = BattleScript_ShakeBallThrow;
+        }
     }
     else
     {

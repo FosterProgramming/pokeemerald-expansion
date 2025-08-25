@@ -253,6 +253,11 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_TERA_ACTIVATE]          = gBattleAnimGeneral_TeraActivate,
     [B_ANIM_SIMPLE_HEAL]            = gBattleAnimGeneral_SimpleHeal,
     [B_ANIM_POWER_CONSTRUCT]        = gBattleAnimGeneral_PowerConstruct,
+    [B_ANIM_NEGATIVE_CONTEST_MOVE]  = gBattleAnimGeneral_NegativeContestMove,
+    [B_ANIM_NEUTRAL_CONTEST_MOVE]   = gBattleAnimGeneral_NeutralContestMove,
+    [B_ANIM_POSITIVE_CONTEST_MOVE]  = gBattleAnimGeneral_PositiveContestMove,
+    [B_ANIM_THROW_BERRY]            = gBattleAnimGeneral_ThrowBerry,
+    [B_ANIM_EAT_THROWN_BERRY]       = gBattleAnimGeneral_EatingThrownBerry,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =

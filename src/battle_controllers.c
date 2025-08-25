@@ -28,6 +28,8 @@
 #include "constants/songs.h"
 #include "pokemon_animation.h"
 
+#include "safari_contest.h"
+
 static EWRAM_DATA u8 sLinkSendTaskId = 0;
 static EWRAM_DATA u8 sLinkReceiveTaskId = 0;
 
@@ -1268,6 +1270,15 @@ void BtlController_EmitSpriteInvisibility(u32 battler, u32 bufferId, bool8 isInv
     gBattleResources->transferBuffer[1] = isInvisible;
     gBattleResources->transferBuffer[2] = CONTROLLER_SPRITEINVISIBILITY;
     gBattleResources->transferBuffer[3] = CONTROLLER_SPRITEINVISIBILITY;
+    PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 4);
+}
+
+void BtlController_EmitIntroBerryThrow(u32 battler, u32 bufferId)
+{
+    gBattleResources->transferBuffer[0] = CONTROLLER_INTROBERRYTHROW;
+    gBattleResources->transferBuffer[1] = CONTROLLER_INTROBERRYTHROW;
+    gBattleResources->transferBuffer[2] = CONTROLLER_INTROBERRYTHROW;
+    gBattleResources->transferBuffer[3] = CONTROLLER_INTROBERRYTHROW;
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, 4);
 }
 

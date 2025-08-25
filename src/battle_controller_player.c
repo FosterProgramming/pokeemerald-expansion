@@ -48,6 +48,9 @@
 #include "type_icons.h"
 #include "pokedex.h"
 
+#include "contest_effect.h"
+#include "battle_scripts.h"
+
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
 static void PlayerHandleTrainerSlide(u32 battler);
@@ -95,6 +98,8 @@ static void ReloadMoveNames(u32 battler);
 static u32 CheckTypeEffectiveness(u32 battlerAtk, u32 battlerDef);
 static u32 CheckTargetTypeEffectiveness(u32 battler);
 static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, u32 battler);
+
+static void PlayerHandleIntroBerryThrow(u32 battler);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
 {
@@ -151,6 +156,7 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
     [CONTROLLER_RESETACTIONMOVESELECTION] = PlayerHandleResetActionMoveSelection,
     [CONTROLLER_ENDLINKBATTLE]            = PlayerHandleEndLinkBattle,
     [CONTROLLER_DEBUGMENU]                = PlayerHandleBattleDebug,
+    [CONTROLLER_INTROBERRYTHROW]          = PlayerHandleIntroBerryThrow,
     [CONTROLLER_TERMINATOR_NOP]           = BtlController_TerminatorNop
 };
 
@@ -1676,35 +1682,42 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     u32 type = GetMoveType(move);
     enum BattleMoveEffects effect = GetMoveEffect(move);
 
-    if (effect == EFFECT_TERA_BLAST)
+    if (!(gBattleTypeFlags & BATTLE_TYPE_CONTEST))
     {
-        if (IsGimmickSelected(battler, GIMMICK_TERA) || GetActiveGimmick(battler) == GIMMICK_TERA)
-            type = GetBattlerTeraType(battler);
+        if (effect == EFFECT_TERA_BLAST)
+        {
+            if (IsGimmickSelected(battler, GIMMICK_TERA) || GetActiveGimmick(battler) == GIMMICK_TERA)
+                type = GetBattlerTeraType(battler);
+        }
+        else if (effect == EFFECT_IVY_CUDGEL)
+        {
+            if (speciesId == SPECIES_OGERPON_WELLSPRING || speciesId == SPECIES_OGERPON_WELLSPRING_TERA
+             || speciesId == SPECIES_OGERPON_HEARTHFLAME || speciesId == SPECIES_OGERPON_HEARTHFLAME_TERA
+             || speciesId == SPECIES_OGERPON_CORNERSTONE || speciesId == SPECIES_OGERPON_CORNERSTONE_TERA)
+                type = GetSpeciesType(speciesId, 1);
+        }
+        else if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
+                 && (GetActiveGimmick(battler) == GIMMICK_DYNAMAX || IsGimmickSelected(battler, GIMMICK_DYNAMAX)))
+        {
+            type = TYPE_NORMAL; // Max Guard is always a Normal-type move
+        }
+        else if (effect == EFFECT_TERA_STARSTORM)
+        {
+            if (speciesId == SPECIES_TERAPAGOS_STELLAR
+            || (IsGimmickSelected(battler, GIMMICK_TERA) && speciesId == SPECIES_TERAPAGOS_TERASTAL))
+                type = TYPE_STELLAR;
+        }
+        else if (P_SHOW_DYNAMIC_TYPES) // Non-vanilla changes to battle UI showing dynamic types
+        {
+            struct Pokemon *mon = GetBattlerMon(battler);
+            type = CheckDynamicMoveType(mon, move, battler, MON_IN_BATTLE);
+        }
+        end = StringCopy(txtPtr, gTypesInfo[type].name);
     }
-    else if (effect == EFFECT_IVY_CUDGEL)
+    else
     {
-        if (speciesId == SPECIES_OGERPON_WELLSPRING || speciesId == SPECIES_OGERPON_WELLSPRING_TERA
-         || speciesId == SPECIES_OGERPON_HEARTHFLAME || speciesId == SPECIES_OGERPON_HEARTHFLAME_TERA
-         || speciesId == SPECIES_OGERPON_CORNERSTONE || speciesId == SPECIES_OGERPON_CORNERSTONE_TERA)
-            type = GetSpeciesType(speciesId, 1);
+        end = StringCopy(txtPtr, gContestMoveTypeTextPointers[GetMoveContestCategory(move)]);
     }
-    else if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
-             && (GetActiveGimmick(battler) == GIMMICK_DYNAMAX || IsGimmickSelected(battler, GIMMICK_DYNAMAX)))
-    {
-        type = TYPE_NORMAL; // Max Guard is always a Normal-type move
-    }
-    else if (effect == EFFECT_TERA_STARSTORM)
-    {
-        if (speciesId == SPECIES_TERAPAGOS_STELLAR
-        || (IsGimmickSelected(battler, GIMMICK_TERA) && speciesId == SPECIES_TERAPAGOS_TERASTAL))
-            type = TYPE_STELLAR;
-    }
-    else if (P_SHOW_DYNAMIC_TYPES) // Non-vanilla changes to battle UI showing dynamic types
-    {
-        struct Pokemon *mon = GetBattlerMon(battler);
-        type = CheckDynamicMoveType(mon, move, battler, MON_IN_BATTLE);
-    }
-    end = StringCopy(txtPtr, gTypesInfo[type].name);
 
     PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
@@ -2247,6 +2260,12 @@ static void PlayerHandleIntroTrainerBallThrow(u32 battler)
     const u32 paletteIndex = PlayerGetTrainerBackPicId();
     const u16 *trainerPal = gTrainerBacksprites[paletteIndex].palette.data;
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
+}
+
+static void PlayerHandleIntroBerryThrow(u32 battler)
+{
+    BattleScriptExecute(BattleScript_ThrowBerry);
+    BtlController_Complete(battler);
 }
 
 static void PlayerHandleDrawPartyStatusSummary(u32 battler)

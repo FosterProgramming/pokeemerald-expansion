@@ -1,0 +1,27 @@
+#ifndef GUARD_SAFARI_CONTEST_H
+#define GUARD_SAFARI_CONTEST_H
+
+enum 
+{
+    NEGATIVE_CONTEST_MOVE_RESULT,
+    NEUTRAL_CONTEST_MOVE_RESULT,
+    POSITIVE_CONTEST_MOVE_RESULT,
+};
+
+#define NO_MORE_IDLE_ACTION_CLUES (1 << 7)
+
+extern u8 gCatchChance;
+extern u8 gFleeChance;
+extern u8 gExcludedIdleActions;
+extern u8 gBerryTimer;
+
+#define TYPE_EXCLUDED(x, type) (x & (1 << type))
+#define EXCLUDE_TYPE(x, type) DebugPrintf("excluded %d", type);(x |= (1 << type))
+
+void InitSafariContest(void);
+u8 GetCaptureChance(void);
+void PrintCaptureChanceOnHealthbox(u8 battler);
+void UpdateCaptureChance(void);
+void BtlController_EmitIntroBerryThrow(u32 battler, u32 bufferId);
+
+#endif // GUARD_BATTLE_H

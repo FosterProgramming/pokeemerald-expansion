@@ -9689,3 +9689,57 @@ BattleScript_ForfeitBattleGaveMoney::
 .endif
 	waitmessage B_WAIT_TIME_LONG
 	end2
+
+BattleScript_DoIdleAction::
+	callnative ChooseIdleActcion
+	printfromtable gIdleActionsStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_DoIdleActionEnd3::
+	call BattleScript_DoIdleAction
+	end3
+
+BattleScript_IsTryingToEscape::
+	printstring STRINGID_PKMNISTRYINGTOESCAPE
+	setbyte sTHROWBERRY_STATE, 120
+	callnative PokemonEscapeAttempt
+	waitstate
+	setbyte gBattlerAttacker, 1
+	end
+
+BattleScript_ThrowBerry::
+	setbyte sTHROWBERRY_STATE, 0
+	printstring STRINGID_TRYTOTHROWBERRY
+	callnative YesNoBoxThrowBerry
+	jumpifbyte CMP_EQUAL, sTHROWBERRY_STATE, 0, BattleScript_ThrowBerryEnd
+	playanimation BS_OPPONENT1, B_ANIM_THROW_BERRY
+	waitanimation
+	printstring STRINGID_PKMNISEATINGBERRY
+	playanimation BS_OPPONENT1, B_ANIM_EAT_THROWN_BERRY
+	waitanimation
+	waitmessage B_WAIT_TIME_LONG
+	callnative UpdateBerryEffect
+	goto BattleScript_ThrowBerryEnd
+BattleScript_PokemonLovesBerry::
+	printstring STRINGID_PKMNLOVESBERRY
+	playanimation BS_OPPONENT1, B_ANIM_POSITIVE_CONTEST_MOVE
+	healthbarupdate BS_OPPONENT1
+BattleScript_ThrowBerryEnd:
+	setbyte sTHROWBERRY_STATE, 0
+	end2
+
+BattleScript_Contest::
+	attackcanceler
+	attackstring
+	attackanimation
+	waitanimation
+	callnative UpdateCaptureChance
+	printfromtable gContestMoveResultStringIds
+	playanimation_var BS_TARGET, sB_ANIM_ARG1
+	healthbarupdate BS_OPPONENT1
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_ContestEndTurn::
+	end2

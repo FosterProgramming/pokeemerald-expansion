@@ -536,7 +536,14 @@ void HandleAction_UseMove(void)
         }
     }
 
-    if (IsBattlerAlly(gBattlerAttacker, gBattlerTarget) && !IsBattlerAlive(gBattlerTarget))
+    if (gBattleTypeFlags & BATTLE_TYPE_CONTEST)
+    {
+        if (IsOnPlayerSide(gBattlerAttacker))
+            gBattlescriptCurrInstr = BattleScript_Contest;
+        else
+            gBattlescriptCurrInstr = BattleScript_DoIdleAction;
+    }
+    else if (IsBattlerAlly(gBattlerAttacker, gBattlerTarget) && !IsBattlerAlive(gBattlerTarget))
     {
         gBattlescriptCurrInstr = BattleScript_FailedFromAtkCanceler;
     }

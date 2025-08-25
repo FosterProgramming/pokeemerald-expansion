@@ -866,4 +866,11 @@ extern const u8 BattleScript_QuestionForfeitBattle[];
 extern const u8 BattleScript_ForfeitBattleGaveMoney[];
 extern const u8 BattleScript_AbilityPopUp[];
 
+extern const u8 BattleScript_PokemonLovesBerry[];
+extern const u8 BattleScript_ThrowBerry[];
+extern const u8 BattleScript_Contest[];
+extern const u8 BattleScript_ContestEndTurn[];
+extern const u8 BattleScript_IsTryingToEscape[];
+extern const u8 BattleScript_DoIdleAction[];
+extern const u8 BattleScript_DoIdleActionEnd3[];
 #endif // GUARD_BATTLE_SCRIPTS_H

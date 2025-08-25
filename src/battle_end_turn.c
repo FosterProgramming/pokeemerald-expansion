@@ -12,6 +12,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 
+#include "safari_contest.h"
 // General End Turn Effects based on research from smogon from vanilla games:
 // https://www.smogon.com/forums/threads/sword-shield-battle-mechanics-research.3655528/page-64#post-9244179
 enum EndTurnResolutionOrder
@@ -64,6 +65,7 @@ enum EndTurnResolutionOrder
     ENDTURN_ABILITIES,
     ENDTURN_FOURTH_EVENT_BLOCK,
     ENDTURN_DYNAMAX,
+    ENDTURN_CONTEST,
     ENDTURN_COUNT,
 };
 
@@ -1524,6 +1526,32 @@ static bool32 HandleEndTurnDynamax(u32 battler)
     return effect;
 }
 
+static bool32 HandleEndTurnContest(u32 battler)
+{
+    bool32 effect = FALSE;
+
+    gBattleStruct->turnEffectsBattlerId++;
+    if ((gBattleTypeFlags & BATTLE_TYPE_CONTEST) && IsOnPlayerSide(battler)) {
+        gFleeChance += 43;
+        if (gFleeChance > 128)
+            gFleeChance = 128;
+        if (gBerryTimer > 0)
+            gBerryTimer--;
+        else
+        {
+            gFleeChance = 255;
+            u32 rand = Random() & 0xFF;
+            if (rand <= gFleeChance)
+            {
+                BattleScriptExecute(BattleScript_IsTryingToEscape);
+                MarkBattlerForControllerExec(battler);
+            }
+        }
+        effect = TRUE;
+    }
+    return effect;
+}
+
 static bool32 (*const sEndTurnEffectHandlers[])(u32 battler) =
 {
     [ENDTURN_ORDER] = HandleEndTurnOrder,
@@ -1574,6 +1602,8 @@ static bool32 (*const sEndTurnEffectHandlers[])(u32 battler) =
     [ENDTURN_ABILITIES] = HandleEndTurnAbilities,
     [ENDTURN_FOURTH_EVENT_BLOCK] = HandleEndTurnFourthEventBlock,
     [ENDTURN_DYNAMAX] = HandleEndTurnDynamax,
+    [ENDTURN_CONTEST] = HandleEndTurnContest,
+
 };
 
 u32 DoEndTurnEffects(void)

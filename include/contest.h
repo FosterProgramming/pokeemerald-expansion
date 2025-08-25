@@ -333,6 +333,7 @@ extern struct ContestWinner gCurContestWinner;
 extern u8 gCurContestWinnerIsForArtist;
 extern u8 gCurContestWinnerSaveIdx;
 extern rng_value_t gContestRngValue;
+extern const s8 gContestExcitementTable[CONTEST_CATEGORIES_COUNT][CONTEST_CATEGORIES_COUNT];
 
 // contest.c
 void ResetLinkContestBoolean(void);

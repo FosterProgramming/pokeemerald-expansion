@@ -139,4 +139,6 @@ void CategoryIcons_LoadSpritesGfx(void);
 void TryToAddMoveInfoWindow(void);
 void TryToHideMoveInfoWindow(void);
 
+u8 *AddTextPrinterAndCreateWindowOnHealthbox(const u8 *str, u32 x, u32 y, u32 bgColor, u32 *windowId);
+void HpTextIntoHealthboxObject(void *dest, u8 *windowTileData, u32 windowWidth);
 #endif // GUARD_BATTLE_INTERFACE_H

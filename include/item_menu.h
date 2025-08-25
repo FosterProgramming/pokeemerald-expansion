@@ -121,4 +121,6 @@ void CloseItemMessage(u8 taskId);
 void ItemMenu_RotomCatalog(u8 taskId);
 void SortItemsInBag(struct BagPocket *pocket, enum BagSortOptions type);
 
+void CB2_ChooseBerryForBattle(void);
+
 #endif //GUARD_ITEM_MENU_H

@@ -16,6 +16,8 @@
 #include "battle_anim.h"
 #include "data.h"
 
+#include "safari_contest.h"
+
 // this file's functions
 static void CB2_ReshowBattleScreenAfterMenu(void);
 static void CB2_ReshowBlankBattleScreenAfterMenu(void);
@@ -275,6 +277,8 @@ static bool8 LoadBattlerSpriteGfx(u32 battler)
             else
                 BattleLoadSubstituteOrMonSpriteGfx(battler, FALSE);
         }
+        else if (gBattleTypeFlags & BATTLE_TYPE_CONTEST && gBattleScripting.throwBerryState > 0 && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
+            DecompressTrainerBackPic(gSaveBlock2Ptr->playerGender, battler);
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
             DecompressTrainerBackPic(gSaveBlock2Ptr->playerGender, battler);
         else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
@@ -317,6 +321,17 @@ void CreateBattlerSprite(u32 battler)
             gSprites[gBattlerSpriteIds[battler]].data[2] = species;
 
             StartSpriteAnim(&gSprites[gBattlerSpriteIds[battler]], 0);
+        }
+        else if (battler == B_POSITION_PLAYER_LEFT && gBattleTypeFlags & BATTLE_TYPE_CONTEST && gBattleScripting.throwBerryState > 0)
+        {
+            SetMultiuseSpriteTemplateToTrainerBack(gSaveBlock2Ptr->playerGender, GetBattlerPosition(battler));
+            gBattleStruct->trainerSlideSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate,
+                                                             0x50,
+                                                             (8 - gTrainerBacksprites[gSaveBlock2Ptr->playerGender].coordinates.size) * 4 + 80,
+                                                             GetBattlerSpriteSubpriority(battler));
+
+            gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.paletteNum = battler;
+            gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].callback = SpriteCallbackDummy;
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT)
         {
@@ -392,11 +407,17 @@ static void CreateHealthboxSprite(u32 battler)
         {
             if (GetMonData(GetBattlerMon(battler), MON_DATA_HP) == 0)
                 SetHealthboxSpriteInvisible(healthboxSpriteId);
+            //if (gBattleTypeFlags & BATTLE_TYPE_CONTEST)
+            //    PrintCaptureChanceOnHealthbox(battler);
         }
         else if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
         {
             if (!IsValidForBattle(GetBattlerMon(battler)))
                 SetHealthboxSpriteInvisible(healthboxSpriteId);
+        }
+        else if (gBattleTypeFlags & BATTLE_TYPE_CONTEST && gBattleScripting.throwBerryState > 0)
+        {
+            SetHealthboxSpriteInvisible(healthboxSpriteId);
         }
     }
 }

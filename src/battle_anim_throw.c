@@ -22,6 +22,8 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
+#include "item_icon.h"
+
 // iwram
 COMMON_DATA u32 gMonShrinkDuration = 0;
 COMMON_DATA u16 gMonShrinkDelta = 0;
@@ -953,7 +955,8 @@ void AnimTask_IsBallBlockedByTrainer(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-#define tSpriteId data[0]
+#define tThrowableSpriteId  data[0]
+#define tTrainerSpriteId    data[1]
 
 #define sDuration data[0]
 #define sTargetX  data[1]
@@ -970,13 +973,13 @@ void AnimTask_ThrowBall(u8 taskId)
     gSprites[spriteId].sTargetY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) - 16;
     gSprites[spriteId].callback = SpriteCB_Ball_Throw;
     gBattleSpritesDataPtr->animationData->wildMonInvisible = gSprites[gBattlerSpriteIds[gBattleAnimTarget]].invisible;
-    gTasks[taskId].tSpriteId = spriteId;
+    gTasks[taskId].tThrowableSpriteId = spriteId;
     gTasks[taskId].func = AnimTask_ThrowBall_Step;
 }
 
 static void AnimTask_ThrowBall_Step(u8 taskId)
 {
-    u8 spriteId = gTasks[taskId].tSpriteId;
+    u8 spriteId = gTasks[taskId].tThrowableSpriteId;
     if ((u16)gSprites[spriteId].sDuration == 0xFFFF)
         DestroyAnimVisualTask(taskId);
 }
@@ -1007,36 +1010,64 @@ void AnimTask_ThrowBall_StandingTrainer(u8 taskId)
     gSprites[spriteId].sTargetX = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X);
     gSprites[spriteId].sTargetY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) - 16;
     gSprites[spriteId].callback = SpriteCallbackDummy;
-    gSprites[gBattlerSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)]].callback = SpriteCB_TrainerThrowObject;
-    gTasks[taskId].tSpriteId = spriteId;
+    gTasks[taskId].tTrainerSpriteId = gBattlerSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)];
+    gSprites[gTasks[taskId].tTrainerSpriteId].callback = SpriteCB_TrainerThrowObject;
+    gTasks[taskId].tThrowableSpriteId = spriteId;
     gTasks[taskId].func = AnimTask_ThrowBall_StandingTrainer_Step;
 }
 
 static void AnimTask_ThrowBall_StandingTrainer_Step(u8 taskId)
 {
-    if (gSprites[gBattlerSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)]].animCmdIndex == 1)
+    if (gSprites[gTasks[taskId].tTrainerSpriteId].animCmdIndex == 1)
     {
         PlaySE12WithPanning(SE_BALL_THROW, 0);
-        gSprites[gTasks[taskId].tSpriteId].callback = SpriteCB_Ball_Throw;
+        gSprites[gTasks[taskId].tThrowableSpriteId].callback = SpriteCB_Ball_Throw;
         CreateTask(Task_PlayerThrow_Wait, 10);
         gTasks[taskId].func = AnimTask_ThrowBall_Step;
     }
+}
+
+void AnimTask_ThrowBerry(u8 taskId)
+{
+    s16 x, y;
+    u8 subpriority;
+    u8 spriteId;
+
+    x = 23;
+    y = 5;
+
+    subpriority = GetBattlerSpriteSubpriority(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)) + 1;
+    //spriteId = CreateSprite(&gBallSpriteTemplates[ballId], x + 32, y | 80, subpriority);
+    spriteId = AddItemIconSprite(ANIM_TAG_ITEM_BAG, ANIM_TAG_ITEM_BAG, gBattleScripting.throwBerryState + FIRST_BERRY_INDEX - 1);
+    gSprites[spriteId].x =  x + 32;
+    gSprites[spriteId].y = y | 80;
+    gSprites[spriteId].subpriority = subpriority;
+    gSprites[spriteId].sDuration = 48;
+    gSprites[spriteId].sTargetX = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X) - 16;
+    gSprites[spriteId].sTargetY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) + 16;
+    gSprites[spriteId].callback = SpriteCallbackDummy;
+    //DebugPrintf("spriteid %d", gBattleStruct->trainerSlideSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)]);
+    gTasks[taskId].tTrainerSpriteId = gBattleStruct->trainerSlideSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)];
+    gSprites[gTasks[taskId].tTrainerSpriteId].callback = SpriteCB_TrainerThrowObject;
+    gTasks[taskId].tThrowableSpriteId = spriteId;
+    gTasks[taskId].func = AnimTask_ThrowBall_StandingTrainer_Step;
 }
 
 #undef sDuration
 #undef sTargetX
 #undef sTargetY
 
-#undef tSpriteId
-
 static void Task_PlayerThrow_Wait(u8 taskId)
 {
-    if (gSprites[gBattlerSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)]].animEnded)
+    if (gSprites[gTasks[taskId].tTrainerSpriteId].animEnded)
     {
         StartSpriteAnim(&gSprites[gBattlerSpriteIds[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)]], 0);
         DestroyTask(taskId);
     }
 }
+
+#undef tThrowableSpriteId
+#undef tTrainerSpriteId
 
 #define sTargetXArg data[1]
 #define sTargetYArg data[2]
@@ -1072,13 +1103,34 @@ static void SpriteCB_Ball_Throw(struct Sprite *sprite)
 #define sTimer  data[5]
 #define sTaskId data[5] // re-use
 
+static void DestroySpriteAfterTimer(struct Sprite *sprite)
+{
+    if (sprite->sTimer == 0)
+    {
+        FreeSpriteOamMatrix(sprite);
+        DestroySprite(sprite);
+        FreeSpriteTilesByTag(ANIM_TAG_ITEM_BAG);
+        FreeSpritePaletteByTag(ANIM_TAG_ITEM_BAG);
+    }
+    else
+    {
+        sprite->sTimer--;
+    }
+}
+
 static void SpriteCB_Ball_Arc(struct Sprite *sprite)
 {
     u32 i;
 
     if (TranslateAnimHorizontalArc(sprite))
     {
-        if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_TRAINER_BLOCK)
+        if (gLastUsedItem >= FIRST_BERRY_INDEX && gLastUsedItem <= LAST_BERRY_INDEX)
+        {
+             sprite->sTimer = 45;
+             sprite->data[0] = -1;
+             sprite->callback = DestroySpriteAfterTimer;
+        }
+        else if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_TRAINER_BLOCK)
         {
             sprite->callback = SpriteCB_Ball_Block;
         }

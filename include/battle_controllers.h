@@ -263,6 +263,7 @@ enum
     CONTROLLER_ENDLINKBATTLE,
     CONTROLLER_DEBUGMENU,
     /*new controllers should go here*/
+    CONTROLLER_INTROBERRYTHROW,
     CONTROLLER_TERMINATOR_NOP,
     CONTROLLER_CMDS_COUNT
 };
@@ -435,5 +436,7 @@ void BtlController_HandleSwitchInShowHealthbox(u32 battler);
 void BtlController_HandleSwitchInTryShinyAnim(u32 battler);
 void BtlController_HandleSwitchInSoundAndEnd(u32 battler);
 void BtlController_HandleSwitchInShowSubstitute(u32 battler);
+
+void BtlController_EmitIntroBerryThrow(u32 battler, u32 bufferId);
 
 #endif // GUARD_BATTLE_CONTROLLERS_H

@@ -1004,6 +1004,11 @@ extern const u8 gBattleAnimGeneral_TeraCharge[];
 extern const u8 gBattleAnimGeneral_TeraActivate[];
 extern const u8 gBattleAnimGeneral_SimpleHeal[];
 extern const u8 gBattleAnimGeneral_PowerConstruct[];
+extern const u8 gBattleAnimGeneral_NegativeContestMove[];
+extern const u8 gBattleAnimGeneral_NeutralContestMove[];
+extern const u8 gBattleAnimGeneral_PositiveContestMove[];
+extern const u8 gBattleAnimGeneral_ThrowBerry[];
+extern const u8 gBattleAnimGeneral_EatingThrownBerry[];
 
 // special animations
 extern const u8 gBattleAnimSpecial_LevelUp[];

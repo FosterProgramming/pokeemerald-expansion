@@ -870,10 +870,10 @@ static inline bool32 IsBattleMoveStatus(u32 move)
 struct BattleScripting
 {
     s32 unused1;
-    s32 bideDmg;
+    s32 unused2;
     u8 multihitString[6];
     bool8 expOnCatch;
-    u8 unused2;
+    u8 throwBerryState;
     u8 animArg1;
     u8 animArg2;
     u16 savedStringId;

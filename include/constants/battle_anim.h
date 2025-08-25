@@ -591,8 +591,13 @@
 #define B_ANIM_TERA_ACTIVATE            51
 #define B_ANIM_SIMPLE_HEAL              52
 #define B_ANIM_POWER_CONSTRUCT          53
+#define B_ANIM_NEGATIVE_CONTEST_MOVE    54
+#define B_ANIM_NEUTRAL_CONTEST_MOVE     55
+#define B_ANIM_POSITIVE_CONTEST_MOVE    56
+#define B_ANIM_THROW_BERRY              57
+#define B_ANIM_EAT_THROWN_BERRY         58
 
-#define NUM_B_ANIMS_GENERAL             54
+#define NUM_B_ANIMS_GENERAL             59
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

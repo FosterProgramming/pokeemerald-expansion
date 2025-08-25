@@ -6,7 +6,7 @@
 #define sUNUSED_0x04                 (gBattleScripting + 0x04) // unused_0x04
 #define sMULTIHIT_STRING             (gBattleScripting + 0x08) // multihitString
 #define sEXP_CATCH                   (gBattleScripting + 0x0E) // expOnCatch
-#define sUNUSED                      (gBattleScripting + 0x0F) // unused
+#define sTHROWBERRY_STATE            (gBattleScripting + 0x0F) // throwBerryState
 #define sB_ANIM_ARG1                 (gBattleScripting + 0x10) // animArg1
 #define sB_ANIM_ARG2                 (gBattleScripting + 0x11) // animArg2
 #define sSAVED_STRINID               (gBattleScripting + 0x12) // savedStringId

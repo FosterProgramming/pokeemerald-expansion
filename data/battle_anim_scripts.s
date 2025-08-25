@@ -38006,3 +38006,63 @@ gBattleAnimGeneral_DynamaxGrowth:: @ PORTED FROM CFRU
 	createvisualtask AnimTask_DynamaxGrowth, 0x5, 0x1, 0x0
 	waitforvisualfinish
 	end
+
+gBattleAnimGeneral_NegativeContestMove::
+	loadspritegfx ANIM_TAG_ANGER
+	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_TARGET, 1, 0, 15, 1
+	waitforvisualfinish
+	delay 10
+	playsewithpan SE_M_SWAGGER2, SOUND_PAN_TARGET
+	createsprite gAngerMarkSpriteTemplate, ANIM_TARGET, 2, 0, 20, -28
+	waitforvisualfinish
+	delay 5
+	createvisualtask AnimTask_StrongFrustrationGrowAndShrink, 5
+	waitforvisualfinish
+	end
+
+gBattleAnimGeneral_NeutralContestMove::
+	createvisualtask AnimTask_DeepInhale, 2, ANIM_TARGET
+	playsewithpan SE_M_YAWN, SOUND_PAN_TARGET
+	waitforvisualfinish
+	end
+
+gBattleAnimGeneral_PositiveContestMove::
+	loadspritegfx ANIM_TAG_MAGENTA_HEART
+	createvisualtask AnimTask_RockMonBackAndForth, 5, ANIM_TARGET, 2, 0
+	createsprite gMagentaHeartSpriteTemplate, ANIM_TARGET, 3, 0, 20
+	playsewithpan SE_M_CHARM, SOUND_PAN_TARGET
+	delay 15
+	createsprite gMagentaHeartSpriteTemplate, ANIM_TARGET, 3, -20, 20
+	playsewithpan SE_M_CHARM, SOUND_PAN_TARGET
+	delay 15
+	createsprite gMagentaHeartSpriteTemplate, ANIM_TARGET, 3, 20, 20
+	playsewithpan SE_M_CHARM, SOUND_PAN_TARGET
+	waitforvisualfinish
+	end
+
+gBattleAnimGeneral_ThrowBerry::
+	createvisualtask AnimTask_ThrowBerry, 2
+	delay 40
+	waitforvisualfinish
+	end
+
+gBattleAnimGeneral_EatingThrownBerry::
+	loadspritegfx ANIM_TAG_THIN_RING
+	loadspritegfx ANIM_TAG_SPARKLE_2
+	delay 0
+	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_RotateMonToSideAndRestore, 2, 16, 128, ANIM_ATTACKER, 2
+	waitforvisualfinish
+	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_RotateMonToSideAndRestore, 2, 16, 128, ANIM_ATTACKER, 2
+	waitforvisualfinish
+	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_RotateMonToSideAndRestore, 2, 16, 128, ANIM_ATTACKER, 2
+	waitforvisualfinish
+	playsewithpan SE_M_MORNING_SUN, SOUND_PAN_ATTACKER
+	playsewithpan SE_SHINY, SOUND_PAN_ATTACKER
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_ATTACKER, 3, 7, 0, RGB(17, 31, 25)
+	createsprite gThinRingExpandingSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0
+	waitforvisualfinish
+	end

@@ -897,6 +897,18 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_POWERCONSTRUCTPRESENCEOFMANY]         = COMPOUND_STRING("You sense the presence of many!"),
     [STRINGID_POWERCONSTRUCTTRANSFORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed into its Complete Forme!"),
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
+    [STRINGID_DISLIKECONTESTMOVE]                   = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} didn't like that!"),
+    [STRINGID_NEUTRALCONTESTMOVE]                   = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} didn't care about it."),
+    [STRINGID_LIKECONTESTMOVE]                      = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} loved it!"),
+    [STRINGID_PKMNSTARING]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is staring at you intensely."),
+    [STRINGID_PKMNHISSING]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is making noise at you."),
+    [STRINGID_PKMNPRETENDING]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} acts like it doesn't see you."),
+    [STRINGID_PKMNHOPPING]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is jumping in place excitedly."),
+    [STRINGID_PKMNSHAKING]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} seems shaken by your presence."),
+    [STRINGID_TRYTOTHROWBERRY]                      = COMPOUND_STRING("Do you want to throw a berry?"),
+    [STRINGID_PKMNISEATINGBERRY]                    = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is eating the berry."),
+    [STRINGID_PKMNLOVESBERRY]                       = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} loves the berry you threw!"),
+    [STRINGID_PKMNISTRYINGTOESCAPE]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is fleeing!\n{R_BUTTON} Throw Ball        {B_BUTTON} Ignore"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
