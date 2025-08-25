@@ -9691,7 +9691,7 @@ BattleScript_ForfeitBattleGaveMoney::
 	end2
 
 BattleScript_DoIdleAction::
-	callnative ChooseIdleActcion
+	callnative ChooseIdleAction
 	printfromtable gIdleActionsStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd

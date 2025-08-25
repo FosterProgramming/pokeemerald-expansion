@@ -8,6 +8,14 @@ enum
     POSITIVE_CONTEST_MOVE_RESULT,
 };
 
+enum
+{
+    EASY_CONTEST_CUTE,
+    EASY_CONTEST_SMART,
+    EASY_CONTEST_TOUGH,
+    EASY_CONTEST_COUNT
+};
+
 #define NO_MORE_IDLE_ACTION_CLUES (1 << 7)
 
 extern u8 gCatchChance;

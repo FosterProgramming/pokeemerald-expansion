@@ -40,6 +40,25 @@ const u16 gIdleActionsStringIds[] =
     [CONTEST_CATEGORY_TOUGH]  = STRINGID_PKMNSHAKING,
 };
 
+static const s8 sEasyContestTable[EASY_CONTEST_COUNT][EASY_CONTEST_COUNT] =
+{
+    [EASY_CONTEST_CUTE] = {
+        [EASY_CONTEST_CUTE]  = +1,
+        [EASY_CONTEST_SMART] =  0,
+        [EASY_CONTEST_TOUGH] = -1,
+    },
+    [EASY_CONTEST_SMART] = {
+        [EASY_CONTEST_CUTE]  = -1,
+        [EASY_CONTEST_SMART] = +1,
+        [EASY_CONTEST_TOUGH] =  0,
+    },
+    [EASY_CONTEST_TOUGH] = {
+        [EASY_CONTEST_CUTE]  =  0,
+        [EASY_CONTEST_SMART] = -1,
+        [EASY_CONTEST_TOUGH] = +1,
+    }
+};
+
 static void ResetIdleActions(void)
 {
     gExcludedIdleActions = (1 << gSpecialVar_ContestCategory);
@@ -56,9 +75,13 @@ static u32 CountPossibleIdleActions(void)
     return count;
 }
 
-void ChooseIdleActcion(void)
+static u32 ChooseIdleAction_Easy(void)
 {
-    NATIVE_ARGS();
+    return RandomUniform(RNG_NONE, 0, 4);
+}
+
+static u32 ChooseIdleAction_Hard(void)
+{
     u32 actionsCount = CountPossibleIdleActions();
     if (actionsCount < 1)
     {
@@ -66,6 +89,7 @@ void ChooseIdleActcion(void)
         ResetIdleActions();
         gExcludedIdleActions |= NO_MORE_IDLE_ACTION_CLUES;
     }
+
     u32 idleIndex = RandomUniform(RNG_NONE, 0, actionsCount - 1);
     u32 idleAction = -1;
     for (u32 i = 0; i <= idleIndex; i++)
@@ -76,6 +100,18 @@ void ChooseIdleActcion(void)
     }
     if (!(gExcludedIdleActions & NO_MORE_IDLE_ACTION_CLUES))
         EXCLUDE_TYPE(gExcludedIdleActions, idleAction);
+    return idleAction;
+}
+
+void ChooseIdleAction(void)
+{
+    NATIVE_ARGS();
+
+    u32 idleAction;
+    if (gSaveBlock2Ptr->optionsDifficulty)
+        idleAction = ChooseIdleAction_Hard();
+    else
+        idleAction = ChooseIdleAction_Easy();
     gBattlerAttacker = 1;
     gBattleCommunication[MULTISTRING_CHOOSER] = idleAction;
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -89,7 +125,12 @@ void InitSafariContest(void)
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
     gCatchChance = gSpeciesInfo[species].catchRate;
     gFleeChance = 0;
-    gSpecialVar_ContestCategory = RandomUniform(RNG_WILDMON_CONTEST_TYPE, 0, CONTEST_CATEGORIES_COUNT - 1);
+    if (gSaveBlock2Ptr->optionsDifficulty)
+        gSpecialVar_ContestCategory = RandomUniform(RNG_NONE, 0, CONTEST_CATEGORIES_COUNT - 1);
+    else
+    {
+        gSpecialVar_ContestCategory = RandomUniform(RNG_NONE, 0, 2);
+    }
     ResetIdleActions();
 }
 
@@ -103,9 +144,8 @@ static void ModifyCatchChance(s32 change)
     gBattleStruct->moveDamage[1] = -1 * change;
 }
 
-void UpdateCaptureChance(void)
+static s8 GetContestMoveResult_Hard(void)
 {
-    NATIVE_ARGS();
     s8 move_result = Contest_GetMoveExcitement(gCurrentMove);
     if (move_result == 1)
     {
@@ -123,6 +163,32 @@ void UpdateCaptureChance(void)
             }
         }
     }
+    return move_result;
+}
+
+static s8 GetContestMoveResult_Easy(void)
+{
+    u32 contestType = GetMoveContestCategory(gCurrentMove);
+    if (contestType == CONTEST_CATEGORY_COOL || contestType == CONTEST_CATEGORY_BEAUTY)
+        return -1;
+    if (contestType == CONTEST_CATEGORY_CUTE)
+        contestType = EASY_CONTEST_CUTE;
+    else if (contestType == CONTEST_CATEGORY_SMART)
+        contestType = EASY_CONTEST_SMART;
+    else if (contestType == CONTEST_CATEGORY_TOUGH)
+        contestType = EASY_CONTEST_TOUGH;
+    return sEasyContestTable[gSpecialVar_ContestCategory][contestType];
+}
+
+void UpdateCaptureChance(void)
+{
+    NATIVE_ARGS();
+
+    s8 move_result;
+    if (gSaveBlock2Ptr->optionsDifficulty)
+        move_result = GetContestMoveResult_Hard();
+    else
+        move_result = GetContestMoveResult_Easy();
     move_result += 1;
     u32 change = 0;
     switch (move_result) 
