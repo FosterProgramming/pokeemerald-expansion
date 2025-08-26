@@ -1113,7 +1113,7 @@ bool8 isSkillUnlockeable(u8 partyMember, u8 currentSkill){
     if(metLevelRequirement && metStoryRequirement && metItemRequirement)
         return TRUE;
 
-    return TRUE; //To Change
+    return FALSE; //To Change
 }
 
 static const u8 sText_Page_Title_01[] = _("POKEMON INFO");
