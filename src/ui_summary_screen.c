@@ -1106,14 +1106,16 @@ bool8 isSkillUnlockeable(u8 partyMember, u8 currentSkill){
     struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
 	u16 level = GetMonData(mon, MON_DATA_LEVEL);
 
+    u16 skillNeeded           = sSkillTree[partyMember][currentSkill].skillNeeded;
     bool8 metLevelRequirement = (sSkillTree[partyMember][currentSkill].unlockLevel <= level           || sSkillTree[partyMember][currentSkill].unlockLevel == 0);
     bool8 metStoryRequirement = (FlagGet(sSkillTree[partyMember][currentSkill].unlockFlag)            || sSkillTree[partyMember][currentSkill].unlockFlag  == 0);
     bool8 metItemRequirement  = (CheckBagHasItem(sSkillTree[partyMember][currentSkill].itemNeeded, 1) || sSkillTree[partyMember][currentSkill].itemNeeded  == 0);
+    bool8 metSkillRequirment  = (sMenuDataPtr->sPartyMembers[partyMember].unlockedSkills[skillNeeded] || sSkillTree[partyMember][currentSkill].skillNeeded == SKILL_NONE);
 
-    if(metLevelRequirement && metStoryRequirement && metItemRequirement)
+    if(metLevelRequirement && metStoryRequirement && metItemRequirement && metSkillRequirment)
         return TRUE;
 
-    return FALSE; //To Change
+    return FALSE;
 }
 
 static const u8 sText_Page_Title_01[] = _("POKEMON INFO");
@@ -2642,7 +2644,15 @@ static void Task_MenuMain(u8 taskId)
                     gTasks[taskId].func        = Task_ChangeSummaryPage;
                 }
                 else{
-                    TryToUnlockSkill(taskId);
+                    struct Pokemon *mon = &gPlayerParty[sMenuDataPtr->currentPokemonIdx];
+                    u16 species         = GetMonData(mon, MON_DATA_SPECIES);
+                    u8 partyMember      = getCurrentPartyMember(species);
+                    u8 currentSkill     = sMenuDataPtr->currentSkill;
+
+                    if(isSkillUnlockeable(partyMember, currentSkill))
+                        TryToUnlockSkill(taskId);
+                    else
+                        PlaySE(SE_PC_OFF);
                 }
             break;
         }
