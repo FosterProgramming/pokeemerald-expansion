@@ -80,6 +80,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = ABILITY_LIBERO,
             .neededPoints = 2,
             .unlockLevel  = 10,
+            .itemNeeded   = ITEM_POKE_BALL,
         },
         {
             .skill_type   = SKILL_TREE_TYPE_STAT,
