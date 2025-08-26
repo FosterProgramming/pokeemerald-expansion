@@ -2918,6 +2918,8 @@ bool32 CanThrowLastUsedBall(void)
         return FALSE;
     if (gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER))
         return FALSE;
+    if (gBallToDisplay == ITEM_SAFARI_BALL)
+        return TRUE;
     if (!CheckBagHasItem(gBallToDisplay, 1))
         return FALSE;
 
@@ -2928,7 +2930,9 @@ void TryAddLastUsedBallItemSprites(void)
 {
     if (B_LAST_USED_BALL == FALSE)
         return;
-    if (gLastThrownBall == 0
+    if (GetSafariZoneFlag())
+        gBallToDisplay = ITEM_SAFARI_BALL;
+    else if (gLastThrownBall == 0
       || (gLastThrownBall != 0 && !CheckBagHasItem(gLastThrownBall, 1)))
     {
         // we're out of the last used ball, so just set it to the first ball in the bag

@@ -12,6 +12,8 @@
 #include "constants/game_stat.h"
 #include "field_screen_effect.h"
 
+#include "safari_contest.h"
+
 struct PokeblockFeeder
 {
     /*0x00*/ s16 x;
@@ -61,6 +63,8 @@ void EnterSafariMode(void)
     sSafariZoneStepCounter = 500;
     sSafariZoneCaughtMons = 0;
     sSafariZonePkblkUses = 0;
+    SafariContest_EnterSafariMode();
+
 }
 
 void ExitSafariMode(void)
@@ -74,7 +78,7 @@ void ExitSafariMode(void)
 
 bool8 SafariZoneTakeStep(void)
 {
-    if (GetSafariZoneFlag() == FALSE)
+    if (TRUE)//GetSafariZoneFlag() == FALSE)
     {
         return FALSE;
     }

@@ -6,10 +6,12 @@
 #include "battle_interface.h"
 #include "battle_scripts.h"
 #include "contest.h"
+#include "event_data.h"
 #include "item_menu.h"
 #include "pokemon.h"
 #include "random.h"
 #include "safari_contest.h"
+#include "safari_zone.h"
 #include "sound.h"
 #include "string_util.h"
 #include "text.h"
@@ -23,6 +25,10 @@ EWRAM_DATA u8 gCatchChance = 0;
 EWRAM_DATA u8 gFleeChance = 0;
 EWRAM_DATA u8 gExcludedIdleActions = 0;
 EWRAM_DATA u8 gBerryTimer = 0;
+EWRAM_DATA u32 gSafariTimer = 0;
+EWRAM_DATA u8 gSafariScore = 0;
+
+extern const u8 SafariZone_EventScript_TimesUp[];
 
 const u16 gContestMoveResultStringIds[] =
 {
@@ -58,6 +64,28 @@ static const s8 sEasyContestTable[EASY_CONTEST_COUNT][EASY_CONTEST_COUNT] =
         [EASY_CONTEST_TOUGH] = +1,
     }
 };
+
+void SafariContest_NewGameInitData(void)
+{
+    FlagSet(FLAG_SYS_B_DASH);
+    FlagSet(FLAG_SYS_POKENAV_GET);
+}
+
+void SafariContest_EnterSafariMode(void)
+{
+    gSafariTimer = SAFARI_CONTEST_DURATION;
+    gSafariScore = 0;
+}
+
+void SafariContestTimerUpdate(void)
+{
+    if (!GetSafariZoneFlag() || ArePlayerFieldControlsLocked())
+        return;
+    if (gSafariTimer == 0)
+        ScriptContext_SetupScript(SafariZone_EventScript_TimesUp);
+    else
+        gSafariTimer--;
+}
 
 static void ResetIdleActions(void)
 {
@@ -314,7 +342,8 @@ void PokemonEscapeAttempt(void)
     gBattleOutcome = B_OUTCOME_MON_FLED;
     if (JOY_NEW(R_BUTTON))
     {
-        gLastUsedItem = ITEM_POKE_BALL;
+        gLastUsedItem = ITEM_SAFARI_BALL;
+        gNumSafariBalls--;
         gBattlescriptCurrInstr = BattleScript_BallThrow;
     }
     else if (JOY_NEW(B_BUTTON) || gBattleScripting.throwBerryState == 0)

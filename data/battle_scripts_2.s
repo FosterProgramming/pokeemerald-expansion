@@ -181,7 +181,7 @@ BattleScript_SuccessBallThrow::
 	printstring STRINGID_GOTCHAPKMNCAUGHTPLAYER
 	jumpifbyte CMP_NOT_EQUAL, sEXP_CATCH, TRUE, BattleScript_TryPrintCaughtMonInfo
 	setbyte sGIVEEXP_STATE, 0
-	getexp BS_TARGET
+	//getexp BS_TARGET
 	sethword gBattle_BG2_X, 0
 BattleScript_TryPrintCaughtMonInfo:
 	jumpifbattletype BATTLE_TYPE_RECORDED, BattleScript_GiveCaughtMonEnd
@@ -189,13 +189,13 @@ BattleScript_TryPrintCaughtMonInfo:
 	printstring STRINGID_PKMNDATAADDEDTODEX
 	waitstate
 	setbyte gBattleCommunication, 0
-	displaydexinfo
+	//displaydexinfo
 BattleScript_TryNicknameCaughtMon::
-	printstring STRINGID_GIVENICKNAMECAPTURED
-	waitstate
+	//printstring STRINGID_GIVENICKNAMECAPTURED
+	//waitstate
 	setbyte gBattleCommunication, 0
 	trygivecaughtmonnick
-	givecaughtmon BattleScript_SuccessBallThrowEnd
+	//givecaughtmon BattleScript_SuccessBallThrowEnd
 	printfromtable gCaughtMonStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_SuccessBallThrowEnd

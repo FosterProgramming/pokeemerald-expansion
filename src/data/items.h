@@ -547,6 +547,7 @@ const struct Item gItemsInfo[] =
         .secondaryId = BALL_SAFARI,
         .iconPic = gItemIcon_SafariBall,
         .iconPalette = gItemIconPalette_SafariBall,
+        .importance = 1
     },
 
     [ITEM_SPORT_BALL] =

@@ -387,7 +387,7 @@ static void DoSafariBattle(void)
     FreezeObjectEvents();
     StopPlayerAvatar();
     gMain.savedCallback = CB2_EndSafariBattle;
-    gBattleTypeFlags = BATTLE_TYPE_SAFARI;
+    gBattleTypeFlags = BATTLE_TYPE_CONTEST;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
 }
 

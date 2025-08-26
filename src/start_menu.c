@@ -50,6 +50,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "safari_contest.h"
+
 // Menu actions
 enum
 {
@@ -148,8 +150,8 @@ static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
     .tilemapLeft = 1,
     .tilemapTop = 1,
-    .width = 9,
-    .height = 4,
+    .width = 10,
+    .height = 8,
     .paletteNum = 15,
     .baseBlock = 0x8
 };
@@ -436,10 +438,21 @@ static void BuildMultiPartnerRoomStartMenu(void)
 
 static void ShowSafariBallsWindow(void)
 {
+    u8 *ptr;
+    u32 seconds, minutes;
+
     sSafariBallsWindowId = AddWindow(&sWindowTemplate_SafariBalls);
     PutWindowTilemap(sSafariBallsWindowId);
     DrawStdWindowFrame(sSafariBallsWindowId, FALSE);
-    ConvertIntToDecimalStringN(gStringVar1, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar1, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gStringVar2, gSafariScore, STR_CONV_MODE_RIGHT_ALIGN, 5);
+
+    seconds = (gSafariTimer / 60) % 60;
+    minutes = (gSafariTimer / 60) / 60;
+    ptr = ConvertIntToDecimalStringN(gStringVar3, minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    *ptr = 0xF0;
+    ConvertIntToDecimalStringN(ptr + 1, seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+
     StringExpandPlaceholders(gStringVar4, gText_SafariBallStock);
     AddTextPrinterParameterized(sSafariBallsWindowId, FONT_NORMAL, gStringVar4, 0, 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sSafariBallsWindowId, COPYWIN_GFX);
