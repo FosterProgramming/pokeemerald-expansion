@@ -2474,10 +2474,10 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = GetSubstruct1(boxMon)->move4;
             break;
         case MON_DATA_MOVE5:
-            retVal = substruct2->move5;
+            retVal = GetSubstruct2(boxMon)->move5;
             break;
         case MON_DATA_MOVE6:
-            retVal = substruct2->move6;
+            retVal = GetSubstruct2(boxMon)->move6;
             break;
         case MON_DATA_PP1:
             retVal = GetSubstruct1(boxMon)->pp1;
@@ -2492,10 +2492,10 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = GetSubstruct1(boxMon)->pp4;
             break;
         case MON_DATA_PP5:
-            retVal = substruct2->pp5;
+            retVal = GetSubstruct2(boxMon)->pp5;
             break;
         case MON_DATA_PP6:
-            retVal = substruct2->pp6;
+            retVal = GetSubstruct2(boxMon)->pp6;
             break;
         case MON_DATA_HP_EV:
             retVal = GetSubstruct2(boxMon)->hpEV;
@@ -2972,10 +2972,10 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET16(GetSubstruct1(boxMon)->move4);
             break;
         case MON_DATA_MOVE5:
-            SET16(substruct2->move5);
+            SET16(GetSubstruct2(boxMon)->move5);
             break;
         case MON_DATA_MOVE6:
-            SET16(substruct2->move6);
+            SET16(GetSubstruct2(boxMon)->move6);
             break; 
         case MON_DATA_PP1:
             SET8(GetSubstruct1(boxMon)->pp1);
@@ -2990,10 +2990,10 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(GetSubstruct1(boxMon)->pp4);
             break;
         case MON_DATA_PP5:
-            SET8(substruct2->pp5);
+            SET8(GetSubstruct2(boxMon)->pp5);
             break;
         case MON_DATA_PP6:
-            SET8(substruct2->pp6);
+            SET8(GetSubstruct2(boxMon)->pp6);
             break;
         case MON_DATA_HP_EV:
             SET8(GetSubstruct2(boxMon)->hpEV);
