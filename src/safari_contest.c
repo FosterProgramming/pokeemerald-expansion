@@ -12,6 +12,7 @@
 #include "random.h"
 #include "safari_contest.h"
 #include "safari_zone.h"
+#include "script_pokemon_util.h"
 #include "sound.h"
 #include "string_util.h"
 #include "text.h"
@@ -65,11 +66,69 @@ static const s8 sEasyContestTable[EASY_CONTEST_COUNT][EASY_CONTEST_COUNT] =
     }
 };
 
+#define INITIAL_PARTY_SIZE 1
+
+static const u16 sInitParty[INITIAL_PARTY_SIZE] = {
+    SPECIES_MAWILE,
+};
+
+static const u16 sPartyMovesEasy[INITIAL_PARTY_SIZE][EASY_CONTEST_COUNT] =
+{
+    {MOVE_SING, MOVE_HIDDEN_POWER, MOVE_HARDEN},
+};
+
+static const u16 sPartyMovesHard[INITIAL_PARTY_SIZE][CONTEST_CATEGORIES_COUNT] =
+{
+    {MOVE_IRON_TAIL, MOVE_FLASH, MOVE_SING, MOVE_HIDDEN_POWER, MOVE_HARDEN},
+};
+
 void SafariContest_NewGameInitData(void)
 {
     FlagSet(FLAG_SYS_B_DASH);
     FlagSet(FLAG_SYS_POKENAV_GET);
+    FlagSet(FLAG_SYS_POKEMON_GET);
+    for (u32 i = 0; i < INITIAL_PARTY_SIZE; i++)
+        ScriptGiveMon(sInitParty[i], 50, ITEM_NONE);
+    SafariContest_SetMoves();
 }
+
+void SafariContest_SetMoves(void)
+{
+    for (u32 i = 0; i < INITIAL_PARTY_SIZE; i++)
+    {
+        u32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        u32 j = 0;
+        while (sInitParty[j] != species)
+            j++;
+        u32 k = 0;
+        if (gSaveBlock2Ptr->optionsDifficulty)
+        {
+            for (k = 0; k < CONTEST_CATEGORIES_COUNT; k++)
+            {
+                u32 pp = GetMovePP(sPartyMovesHard[j][k]);
+                SetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + k, &sPartyMovesHard[j][k]);
+                SetMonData(&gPlayerParty[i], MON_DATA_PP1 + k, &pp);
+            }
+        }
+        else
+        {
+            for (k = 0; k < EASY_CONTEST_COUNT; k++)
+            {
+                u32 pp = GetMovePP(sPartyMovesEasy[j][k]);
+                SetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + k, &sPartyMovesEasy[j][k]);
+                SetMonData(&gPlayerParty[i], MON_DATA_PP1 + k, &pp);
+            }
+        }
+        for (k; k < MAX_MON_MOVES; k++)
+        {
+            u32 move = MOVE_NONE;
+            SetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + k, &move);
+        }
+
+    }
+}
+
+#undef INITIAL_PARTY_SIZE
 
 void SafariContest_EnterSafariMode(void)
 {

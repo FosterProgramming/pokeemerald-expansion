@@ -16,6 +16,8 @@
 #include "gba/m4a_internal.h"
 #include "constants/rgb.h"
 
+#include "safari_contest.h"
+
 #define tMenuSelection data[0]
 #define tTextSpeed data[1]
 #define tBattleSceneOff data[2]
@@ -244,7 +246,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tSound = gSaveBlock2Ptr->optionsSound;
         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
-        gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsDifficulty;
+        gTasks[taskId].tDifficulty = gSaveBlock2Ptr->optionsDifficulty;
 
         TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
         //BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
@@ -375,7 +377,12 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
-    gSaveBlock2Ptr->optionsDifficulty = gTasks[taskId].tDifficulty;
+    if (gTasks[taskId].tDifficulty != gSaveBlock2Ptr->optionsDifficulty)
+    {
+        gSaveBlock2Ptr->optionsDifficulty = gTasks[taskId].tDifficulty;
+        SafariContest_SetMoves();
+    }
+    
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;

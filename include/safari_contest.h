@@ -36,6 +36,7 @@ void UpdateCaptureChance(void);
 void BtlController_EmitIntroBerryThrow(u32 battler, u32 bufferId);
 
 void SafariContest_NewGameInitData(void);
+void SafariContest_SetMoves(void);
 void SafariContest_EnterSafariMode(void);
 void SafariContestTimerUpdate(void);
 
