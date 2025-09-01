@@ -83,7 +83,7 @@
       "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PERSIAN)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNORLAX)",
       "x": 18,
       "y": 14,
       "elevation": 0,
@@ -93,7 +93,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_SYS_HIDE_ACE_PARTY_MEMBER"
+      "flag": "FLAG_SYS_HIDE_FRO_PARTY_MEMBER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",

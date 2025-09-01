@@ -566,8 +566,6 @@ MountPyroden_4F_EventScript_Statue_Movement_10:
 	walk_fast_right
 # 258 "data/maps/MountPyroden_4F/scripts.pory"
 	walk_fast_right
-# 258 "data/maps/MountPyroden_4F/scripts.pory"
-	walk_fast_right
 # 259 "data/maps/MountPyroden_4F/scripts.pory"
 	walk_fast_up
 # 259 "data/maps/MountPyroden_4F/scripts.pory"

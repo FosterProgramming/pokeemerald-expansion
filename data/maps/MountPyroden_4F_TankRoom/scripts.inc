@@ -559,7 +559,7 @@ MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_13:
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_14:
 # 107 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	.string "Hold on just a second, you bear!\p"
+	.string "Hold on just a second, you feisty bear!\p"
 	.string "I have something I need to tell you.\p"
 	.string "I can…\n"
 	.string "I can pilot this.$"
@@ -648,7 +648,7 @@ MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_28:
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_29:
 # 240 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	.string "Is a dish best served cold.$"
+	.string "…Is a dish best served cold.$"
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_30:
 # 244 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"

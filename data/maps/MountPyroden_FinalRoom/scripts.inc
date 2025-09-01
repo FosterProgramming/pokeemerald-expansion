@@ -225,59 +225,59 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 180 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_15
 # 181 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_16
+	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 182 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_17
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_16
 # 183 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_2
 # 184 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_18
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_17
 # 188 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_19
+	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_18
 # 189 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_20
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_19
 # 190 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_2
 # 191 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_21
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_20
 # 200 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 201 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	clearflag FLAG_HIDE_BALL_PYRODEN
-# 202 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	addobject LOCALID_BALL
-# 203 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_MAGMORTAR, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_4
-# 207 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	waitmovement 0
-# 208 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
-# 209 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_FRO, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
-# 210 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_VEE, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
-# 211 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_6
-# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_MAGMORTAR, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_7
-# 213 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	waitmovement LOCALID_MAGMORTAR
-# 214 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
-# 215 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_FRO, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
-# 216 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_VEE, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
-# 217 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_9
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	applymovement LOCALID_MAGMORTAR, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_10
-# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	waitmovement LOCALID_MAGMORTAR
-# 220 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	removeobject LOCALID_MAGMORTAR
-# 221 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	fadedefaultbgm
+# 202 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	clearflag FLAG_HIDE_BALL_PYRODEN
+# 203 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	addobject LOCALID_BALL
+# 204 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_MAGMORTAR, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_4
+# 208 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	waitmovement 0
+# 209 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
+# 210 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_FRO, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
+# 211 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_VEE, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
+# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_6
+# 213 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_MAGMORTAR, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_7
+# 214 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	waitmovement LOCALID_MAGMORTAR
+# 215 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
+# 216 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_FRO, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
+# 217 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_VEE, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
+# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_9
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	applymovement LOCALID_MAGMORTAR, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_10
+# 220 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	waitmovement LOCALID_MAGMORTAR
+# 221 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	removeobject LOCALID_MAGMORTAR
 # 222 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	playse SE_PIN
 # 223 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -287,7 +287,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 229 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_12
 # 230 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_22
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_21
 # 237 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 238 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -303,13 +303,13 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 247 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
 # 248 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_23
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_22
 # 249 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	waitfanfare
 # 250 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 251 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_24
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_23
 # 259 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 260 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -325,47 +325,47 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 265 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 266 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_25
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_24
 # 284 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 285 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_26
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_25
 # 288 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 289 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_27
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_26
 # 300 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 301 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_28
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_27
 # 306 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 307 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_29
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_28
 # 311 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 312 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_30
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_29
 # 315 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 316 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_31
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_30
 # 323 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 324 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_32
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_31
 # 328 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 329 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_33
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_32
 # 336 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 337 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_34
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_33
 # 340 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_12
 # 341 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_35
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_34
 # 344 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	applymovement LOCALID_FRO, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_14
 # 345 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -373,15 +373,15 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 346 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 347 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_36
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_35
 # 350 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 351 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_37
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_36
 # 360 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 361 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_38
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_37
 # 364 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	applymovement LOCALID_VEE, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
 # 365 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -389,7 +389,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 366 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_12
 # 367 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_39
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_38
 # 371 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	playse SE_PIN
 # 372 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -401,7 +401,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 377 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 378 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_40
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_39
 # 385 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 386 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -419,7 +419,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 396 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 397 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_41
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_40
 # 403 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 404 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -429,15 +429,15 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 406 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 407 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_42
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_41
 # 410 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 411 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_43
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_42
 # 414 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_12
 # 415 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_44
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_43
 # 418 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 419 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -447,35 +447,35 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 423 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 424 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_45
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_44
 # 435 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 436 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_46
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_45
 # 439 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 440 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_47
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_46
 # 477 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
 # 478 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_48
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_47
 # 484 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_12
 # 485 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_49
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_48
 # 488 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 489 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_50
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_49
 # 493 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 494 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_51
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_50
 # 497 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 498 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_52
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_51
 # 501 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_14
 # 504 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -483,7 +483,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 505 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 506 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_53
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_52
 # 511 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	applymovement LOCALID_VEE, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5
 # 514 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -491,11 +491,11 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 515 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_12
 # 516 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_54
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_53
 # 521 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_8
 # 522 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_55
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_54
 # 526 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	applymovement LOCALID_DOM, MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8
 # 529 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -503,7 +503,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3::
 # 530 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	speakername MountPyrooden_FinalRoom_EventScript_Fire3_Text_0
 # 531 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_56
+	msgbox MountPyrooden_FinalRoom_EventScript_Fire3_Text_55
 # 535 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	closemessage
 # 536 "data/maps/MountPyroden_FinalRoom/scripts.pory"
@@ -583,65 +583,65 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Movement_3:
 	walk_faster_up
 	step_end
 
-# 203 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 204 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_4:
-# 204 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	walk_fast_left
-# 204 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 205 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_left
 # 205 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+	walk_fast_left
+# 206 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 205 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 206 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
 	step_end
 
-# 208 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 209 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_5:
-# 208 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 209 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	face_left
 	step_end
 
-# 211 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_6:
-# 211 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_in_place_left
 	step_end
 
-# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 213 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_7:
-# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 213 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 212 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 213 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_right
 	step_end
 
-# 214 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 215 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_8:
-# 214 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 215 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	face_down
 	step_end
 
-# 217 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_9:
-# 217 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 MountPyrooden_FinalRoom_EventScript_Fire3_Movement_10:
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_right
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
-# 218 "data/maps/MountPyroden_FinalRoom/scripts.pory"
+# 219 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	walk_fast_down
 	step_end
 
@@ -827,30 +827,26 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_15:
 	.string "Yes!$"
 
 MountPyrooden_FinalRoom_EventScript_Fire3_Text_16:
-# 181 "data/maps/MountPyroden_FinalRoom/scripts.pory"
-	.string "Vee & Fro$"
-
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_17:
 # 182 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "No.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_18:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_17:
 # 185 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "It doesn't matter!\p"
 	.string "Those who stand against Team MAGA will\n"
 	.string "be incinerated!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_19:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_18:
 # 188 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Narrator$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_20:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_19:
 # 189 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Please pretend that you're looking at a\n"
 	.string "fierce battle against the Magmortar,\l"
 	.string "with our heroes coming out victorious.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_21:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_20:
 # 192 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "… … …\p"
 	.string "So you think you've beaten me, don't\n"
@@ -862,7 +858,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_21:
 	.string "locked up inside a volcano!\p"
 	.string "See you never, suckers!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_22:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_21:
 # 231 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Look, {PLAYER}!\n"
 	.string "That Magmortar dropped something!\p"
@@ -870,11 +866,11 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_22:
 	.string "It's one of the artifacts!\p"
 	.string "{PLAYER}, grab it!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_23:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_22:
 # 248 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "You obtained the {COLOR RED}second Artifact{COLOR DARK_GRAY}!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_24:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_23:
 # 252 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Seel, eh?\n"
 	.string "Funny, that.\p"
@@ -883,7 +879,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_24:
 	.string "Interesting fellow.\n"
 	.string "Wonder what happened to him.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_25:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_24:
 # 267 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "… … …\p"
 	.string "Wait.\n"
@@ -903,11 +899,11 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_25:
 	.string "Oh.\n"
 	.string "My God.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_26:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_25:
 # 286 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "And you are…?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_27:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_26:
 # 290 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Oh!\n"
 	.string "How rude of me!\p"
@@ -920,22 +916,22 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_27:
 	.string "The company?\p"
 	.string "It was on the Chansey 500 list?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_28:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_27:
 # 302 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Literally never heard of it.\n"
 	.string "Colangelo Graphics?\p"
 	.string "Do you do graphic design or something?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_29:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_28:
 # 308 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Nah.\n"
 	.string "Money laundering.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_30:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_29:
 # 313 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Ah.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_31:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_30:
 # 317 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Yeah, but it's like…\n"
 	.string "Transparent money laundering, you\l"
@@ -944,12 +940,12 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_31:
 	.string "But you guys…\n"
 	.string "Can I have your names?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_32:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_31:
 # 325 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "I'm Fro.\n"
 	.string "And she's Vee.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_33:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_32:
 # 330 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Vee and Fro, eh?\n"
 	.string "Cool, cool.\p"
@@ -958,19 +954,19 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_33:
 	.string "I'm kinda out of a job, and I need some\n"
 	.string "references.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_34:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_33:
 # 338 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "We're, uh, not on PorydIn.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_35:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_34:
 # 342 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "I am!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_36:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_35:
 # 348 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "No you're not, Vee.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_37:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_36:
 # 352 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Nah, nah, wait, there she is.\p"
 	.string "Vee the Eevee.\n"
@@ -982,17 +978,17 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_37:
 	.string "good to future employers, lemme tell\l"
 	.string "you.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_38:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_37:
 # 362 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "How in the…$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_39:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_38:
 # 368 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "The guards were bored and made a\n"
 	.string "profile for me!\p"
 	.string "They thought it was funny!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_40:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_39:
 # 379 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "But…\n"
 	.string "Wait a minute!\p"
@@ -1000,7 +996,7 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_40:
 	.string "Seel!\n"
 	.string "Oh, man, Seel!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_41:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_40:
 # 398 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Oh, God, it's really you, isn't it?\p"
 	.string "I could recognize that expression\n"
@@ -1008,20 +1004,20 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_41:
 	.string "Oh, what have I done?\n"
 	.string "It's all my fault!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_42:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_41:
 # 408 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "I will jump into the boiling lava to\n"
 	.string "atone for my sins!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_43:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_42:
 # 412 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Please don't.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_44:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_43:
 # 416 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Do you and Seel know each other?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_45:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_44:
 # 425 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Yeah!\n"
 	.string "We're like best buds, right?\p"
@@ -1034,11 +1030,11 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_45:
 	.string "needed new graphics for their website.\l"
 	.string "And I…$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_46:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_45:
 # 437 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Didn't you say you do money laundering?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_47:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_46:
 # 441 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Yeah, that's what I said!\p"
 	.string "I said nah man, you got it all wrong!\p"
@@ -1088,50 +1084,50 @@ MountPyrooden_FinalRoom_EventScript_Fire3_Text_47:
 	.string "Oh, man, I shouldn't have partnered with\n"
 	.string "Team MAGA!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_48:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_47:
 # 479 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "You, small fox…\n"
 	.string "You're the leader of this team, right?\p"
 	.string "Please, let me join you!\p"
 	.string "Together, we can take our revenge!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_49:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_48:
 # 486 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Okay!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_50:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_49:
 # 490 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Absolutely not.\p"
 	.string "What are you going to do, defeat the\n"
 	.string "hybrid super-soldiers by punching\l"
 	.string "them?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_51:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_50:
 # 495 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "…Yes?$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_52:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_51:
 # 499 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Out of the question.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_53:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_52:
 # 507 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Aw, come on.\p"
 	.string "Tell 'em, Seel!\n"
 	.string "They can trust me!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_54:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_53:
 # 517 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "C'mon, Fro!\n"
 	.string "Don't be mean!\p"
 	.string "It's a friend of Seel!$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_55:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_54:
 # 523 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "…Look, let's get outta here first.\p"
 	.string "Then we'll talk.$"
 
-MountPyrooden_FinalRoom_EventScript_Fire3_Text_56:
+MountPyrooden_FinalRoom_EventScript_Fire3_Text_55:
 # 532 "data/maps/MountPyroden_FinalRoom/scripts.pory"
 	.string "Yeah, sure thing, man!\n"
 	.string "Let's do that!$"
