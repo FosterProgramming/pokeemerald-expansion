@@ -133,9 +133,21 @@ script Moonthistle_EventScripts_Shade
 				waitmovement(1)
 			}
 		speakername("Vee")
-		msgbox(format("Shade, right? Linoone said you used to live in Voltbrook.\pWe’re, uh… we’re looking for something. Something important.\pA-Artifacts. Eight of them.\pWe know one of them is in Voltbrook, but we don't know where.\pThey’re connected to the experiments… the ones that turned him-my friend-into what he is now.\pIf we can find them all… we might be able to fix it."))
+		msgbox(format("
+		Shade, right?\n
+		Linoone said you used to live in Voltbrook.\p
+		We’re, uh… we’re looking for something.\nSomething important.\p
+		A-Artifacts. Eight of them.\p
+		We know one of them is in Voltbrook, but we don't know where.\p
+		They’re connected to the experiments… the ones that turned my friend into a Pokémon.\p
+		If we can find them all…\nWe might be able to fix it."))
 		speakername("Shade")
-		msgbox(format("Artifacts tied to human experiments…\p…If Team MAGA’s hoarding something like that, it’ll be in the power plant.\pLocked tight. High voltage gates, full security grid. You’re not strolling in through the front door.\pBut there was a maintenance tunnel. Back when I lived there.\pIt ran behind the powerplant. Workers used it when the plant was being built.\pIf it’s still open… that tunnel might be your way in."))
+		msgbox(format("Artifacts connected to human experiments…\p…
+		If Team MAGA’s hoarding something like that, it’ll be in the power plant.\p
+		Locked tight. High voltage gates, full security grid.\pYou’re not strolling in through the front door.\p
+		But there was a maintenance tunnel. Back when I lived there.\p
+		It ran behind the powerplant.\nWorkers used it when the plant was being built.\p
+		If it’s still open…\nThat tunnel might be your way in."))
 		speakername("Vee")
 		msgbox(format("Really? That’s… that’s actually really helpful!\pThank you, Shade. We’ll be careful. I promise!"))
 			if(var(PlayerXCoordinates) == 1)
@@ -157,7 +169,7 @@ script Moonthistle_EventScripts_Shade
 	else
 	{
 		speakername("Shade")
-		msgbox(format("If the tunnel behind the powerplant is still open… it might be your way in."), MSGBOX_NPC)
+		msgbox(format("If the tunnel behind the powerplant is still open…\pIt might be your way in."), MSGBOX_NPC)
 		release
 		end
 	}
