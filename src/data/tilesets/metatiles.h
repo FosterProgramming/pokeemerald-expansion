@@ -267,3 +267,6 @@ const u16 gMetatileAttributes_StratoscapeSecondary[] = INCBIN_U16("data/tilesets
 
 const u16 gMetatiles_MountPyroden[] = INCBIN_U16("data/tilesets/primary/mount_pyroden/metatiles.bin");
 const u16 gMetatileAttributes_MountPyroden[] = INCBIN_U16("data/tilesets/primary/mount_pyroden/metatile_attributes.bin");
+
+const u16 gMetatiles_PowerPlant[] = INCBIN_U16("data/tilesets/secondary/power_plant/metatiles.bin");
+const u16 gMetatileAttributes_PowerPlant[] = INCBIN_U16("data/tilesets/secondary/power_plant/metatile_attributes.bin");

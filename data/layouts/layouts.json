@@ -5370,6 +5370,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/MountPyroden_4F_ClockRoom/border.bin",
       "blockdata_filepath": "data/layouts/MountPyroden_4F_ClockRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
+      "name": "VoltbrookTown_PowerPlant_Entrance_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance/map.bin"
     }
   ]
 }

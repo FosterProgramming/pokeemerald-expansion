@@ -120,7 +120,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 				Hmph.\p
 				So, they know you're out there.\nThat won’t help our nerves.\p
 				But you brought it back.\n
-				Even with danger breathing down your necks.\p
+				Even with danger breathing down your neck.\p
 				Maybe you two aren’t a liability after all.\p
 				You’ve earned a place here.\p
 				Rest when you need. No one will chase you off.\p
@@ -160,7 +160,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			You’re not from here.\n
 			And in this town, that means trouble.\p
 			Wait… I know your faces.\p
-			I've seen the wanted posters from Voltbrook, head the whispers of escaped experiments…\p
+			I've seen the wanted posters from Voltbrook, heard the whispers about escaped experiments…\p
 			How do I know you're not here to spy on us?"), MSGBOX_NPC)
 			getplayerxy(PlayerXCoordinates,PlayerYCoordinates)
 			setobjectxyperm(LOCALID_VEE,PlayerXCoordinates,PlayerYCoordinates)
@@ -180,35 +180,40 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			speakername("Linoone")
 			msgbox(format("
-			Letting you stay would be a big risk.\p
-			How do we know we can trust you?"))
-			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
-			waitmovement(OBJ_EVENT_ID_PLAYER)
+			Letting you stay would be a big risk.\N
+			We have no reason to trust you."))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+			waitmovement(0)
 			speakername("Vee")
-			msgbox(format("
-			We're the victims here!\p
+			
+			msgbox(format(
+			"We're the victims here!\p
 			They locked us up and ran all sorts of experiments…\p
 			My friend here, he used to be human!\n
-			Team MAGA transformed him into a Pokémon.
-			But now that we're not useful anymore, they want to get rid of us.\p
-			Please, we don’t have anywhere else to go.")
+			Team MAGA transformed him into a Pokémon.\p
+			And me…\n
+			Well, I'm not sure what's wrong with me exactly, but…\p
+			It's all strange!\p
+			And now we're not useful anymore, so they want to get rid of us.\p
+			Please, we don’t have anywhere else to go!"))
+
 			speakername("Linoone")
 			msgbox(format(
 				"Hmm…\p
 				I've heard the rumors…\n
 				But it really does sound hard to believe…\p
-				If you're speaking the truth, then prove it.\n
+				If you're speaking the truth, then prove it.\p
 				Give us information that can help us defeat team MAGA.")
-			))
+			)
 			speakername("Vee")
 			msgbox(format("
 			We, uh… We did find something in the lab.\p
-			N-Notes that mentioned eight artifacts.\n
-			Super duper important ones."))
+			S-some note that mentioned eight artifacts.\p
+			Super duper important ones!"))
 			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			speakername("Linoone")
-			msgbox(format("Artifacts?\pYou mean like treasure?\nMagic trinkets?"))
+			msgbox(format("Artifacts?\pYou mean, like treasure?\nMagic trinkets?"))
 			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			speakername("Vee")
@@ -220,7 +225,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			Fixing what they did. To my friend.\p
 			I don’t think they’ll help me.\n
 			But he… He was human.\p
-			And the notes said these artifacts canchange him back to the way he was!\p
+			And the notes said these artifacts can change him back to the way he was!\p
 			We’re sure one of the artifacts is in Voltbrook.\N
 			We just need time to find it.\p
 			Please. We can’t even walk around out there.\p
@@ -232,7 +237,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			…What a story.\n
 			You sound like you believe it, at least.\p
 			But belief alone won’t earn you shelter.\nNot here.\p
-			One of ours wandered into Route 7.\nDropped a marked satchel.\lReal important.\p
+			One of ours wandered into Route 7.\nDropped a marked satchel.\lReally important.\p
 			If MAGA spots it, they might trace it back here.\NWe can’t take that risk.\p
 			You want trust?\pBring that satchel back.\nQuietly."))
 			applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
@@ -263,11 +268,11 @@ script Moonthistle_EventScripts_LinooneTrustQuestComplete
 				Hmph.\p
 				So, they know you're out there.\nThat won’t help our nerves.\p
 				But you brought it back.\n
-				Even with danger breathing down your necks.\p
-				Maybe you two aren’t a liability after all.\p
+				Even with danger breathing down your neck.\p
+				Maybe you two aren’t a liability after all.\N
 				You’ve earned a place here.\p
 				Rest when you need. No one will chase you off.\p
-				Feel free to meet the others.\n
+				And feel free to meet the others.\n
 				Some might be more helpful than I was."))
 		closemessage
 		delay(40)
@@ -295,7 +300,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestComplete
 				Hmph.\p
 				So, they know you're out there.\nThat won’t help our nerves.\p
 				But you brought it back.\n
-				Even with danger breathing down your necks.\p
+				Even with danger breathing down your neck.\p
 				Maybe you two aren’t a liability after all.\p
 				You’ve earned a place here.\p
 				Rest when you need. No one will chase you off.\p

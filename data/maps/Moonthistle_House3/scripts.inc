@@ -134,14 +134,15 @@ Moonthistle_EventScripts_Whismur_Text_2:
 
 Moonthistle_EventScripts_Whismur_Text_3:
 # 53 "data/maps/Moonthistle_House3/scripts.pory"
-	.string "U-um… you helped Linoone, right?\n"
+	.string "U-um…\n"
+	.string "You helped Linoone, right?\p"
 	.string "That was really brave…\p"
 	.string "I-I found this near the roots.\n"
 	.string "Maybe it’ll help…?$"
 
 Moonthistle_EventScripts_Whismur_Text_4:
 # 57 "data/maps/Moonthistle_House3/scripts.pory"
-	.string "…please don’t let Team MAGA find this\n"
+	.string "…Please don’t let Team MAGA find this\n"
 	.string "place.$"
 
 Moonthistle_EventScripts_Absol_Text_0:
