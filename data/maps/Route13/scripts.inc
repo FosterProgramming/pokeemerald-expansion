@@ -63,7 +63,7 @@ Route13_EventScripts_StayAwayFromGruntSouth::
 # 37 "data/maps/Route13/scripts.pory"
 	speakername Route13_EventScripts_StayAwayFromGruntEast_Text_0
 # 38 "data/maps/Route13/scripts.pory"
-	msgbox Route13_EventScripts_StayAwayFromGruntEast_Text_1
+	msgbox Route13_EventScripts_StayAwayFromGruntSouth_Text_0
 # 39 "data/maps/Route13/scripts.pory"
 	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth
 # 40 "data/maps/Route13/scripts.pory"
@@ -115,60 +115,62 @@ Route7_EventScripts_SatchelRetrieval::
 # 67 "data/maps/Route13/scripts.pory"
 	msgbox Route7_EventScripts_SatchelRetrieval_Text_1
 # 72 "data/maps/Route13/scripts.pory"
-	applymovement 2, Route7_EventScripts_SatchelRetrieval_Movement_1
+	closemessage
 # 73 "data/maps/Route13/scripts.pory"
-	playse SE_PIN
+	applymovement 2, Route7_EventScripts_SatchelRetrieval_Movement_1
 # 74 "data/maps/Route13/scripts.pory"
-	waitmovement 2
+	playse SE_PIN
 # 75 "data/maps/Route13/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route7_EventScripts_SatchelRetrieval_Movement_2
+	waitmovement 2
 # 76 "data/maps/Route13/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Route7_EventScripts_SatchelRetrieval_Movement_2
 # 77 "data/maps/Route13/scripts.pory"
-	applymovement LOCALID_VEE, Route7_EventScripts_SatchelRetrieval_Movement_3
+	waitmovement OBJ_EVENT_ID_PLAYER
 # 78 "data/maps/Route13/scripts.pory"
+	applymovement LOCALID_VEE, Route7_EventScripts_SatchelRetrieval_Movement_3
+# 79 "data/maps/Route13/scripts.pory"
 	trainerbattle_double TRAINER_ROUTE_13_MAGA_GRUNT, Route7_EventScripts_SatchelRetrieval_Text_2, Route7_EventScripts_SatchelRetrieval_Text_3, Route7_EventScripts_SatchelRetrieval_Text_4, Route13_EventScripts_PostGruntBattle
 	return
 
 
 Route13_EventScripts_PostGruntBattle::
-# 90 "data/maps/Route13/scripts.pory"
-	speakername Route13_EventScripts_PostGruntBattle_Text_0
 # 91 "data/maps/Route13/scripts.pory"
-	msgbox Route13_EventScripts_PostGruntBattle_Text_1
+	speakername Route13_EventScripts_PostGruntBattle_Text_0
 # 92 "data/maps/Route13/scripts.pory"
-	applymovement 2, Route13_EventScripts_PostGruntBattle_Movement_0
+	msgbox Route13_EventScripts_PostGruntBattle_Text_1
 # 93 "data/maps/Route13/scripts.pory"
-	waitmovement 2
+	applymovement 2, Route13_EventScripts_PostGruntBattle_Movement_0
 # 94 "data/maps/Route13/scripts.pory"
-	removeobject 2
+	waitmovement 2
 # 95 "data/maps/Route13/scripts.pory"
-	applymovement LOCALID_VEE, Route13_EventScripts_PostGruntBattle_Movement_1
+	removeobject 2
 # 96 "data/maps/Route13/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route7_EventScripts_SatchelRetrieval_Movement_0
+	applymovement LOCALID_VEE, Route13_EventScripts_PostGruntBattle_Movement_1
 # 97 "data/maps/Route13/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Route7_EventScripts_SatchelRetrieval_Movement_0
 # 98 "data/maps/Route13/scripts.pory"
-	speakername Route13_EventScripts_StayAwayFromGruntEast_Text_0
+	waitmovement OBJ_EVENT_ID_PLAYER
 # 99 "data/maps/Route13/scripts.pory"
-	msgbox Route13_EventScripts_PostGruntBattle_Text_2, MSGBOX_NPC
+	speakername Route13_EventScripts_StayAwayFromGruntEast_Text_0
 # 100 "data/maps/Route13/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
+	msgbox Route13_EventScripts_PostGruntBattle_Text_2, MSGBOX_NPC
 # 101 "data/maps/Route13/scripts.pory"
-	waitmovement LOCALID_VEE
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth
 # 102 "data/maps/Route13/scripts.pory"
-	removeobject LOCALID_VEE
+	waitmovement LOCALID_VEE
 # 103 "data/maps/Route13/scripts.pory"
-	setvar VAR_VOLTBROOK_TOWN_STATE, 3
+	removeobject LOCALID_VEE
 # 104 "data/maps/Route13/scripts.pory"
-	setflag FLAG_MOONTHISTLE_SATCHEL_RECOVERED
+	setvar VAR_VOLTBROOK_TOWN_STATE, 3
 # 105 "data/maps/Route13/scripts.pory"
-	setflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_3_4
+	setflag FLAG_MOONTHISTLE_SATCHEL_RECOVERED
 # 106 "data/maps/Route13/scripts.pory"
-	setflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_1
+	setflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_3_4
 # 107 "data/maps/Route13/scripts.pory"
-	setflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_2_3
+	setflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_1
 # 108 "data/maps/Route13/scripts.pory"
+	setflag FLAG_HIDE_VOLTBROOK_TOWN_GRUNT_2_3
+# 109 "data/maps/Route13/scripts.pory"
 	release
 	end
 
@@ -203,257 +205,257 @@ Route7_EventScripts_SatchelRetrieval_Movement_0:
 	walk_in_place_up
 	step_end
 
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 Route7_EventScripts_SatchelRetrieval_Movement_1:
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	walk_up
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	emote_exclamation_mark
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	walk_up
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	walk_up
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	walk_up
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	walk_up
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	walk_up
-# 72 "data/maps/Route13/scripts.pory"
+# 73 "data/maps/Route13/scripts.pory"
 	face_right
 	step_end
 
-# 75 "data/maps/Route13/scripts.pory"
+# 76 "data/maps/Route13/scripts.pory"
 Route7_EventScripts_SatchelRetrieval_Movement_2:
-# 75 "data/maps/Route13/scripts.pory"
+# 76 "data/maps/Route13/scripts.pory"
 	walk_in_place_left
 	step_end
 
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 Route7_EventScripts_SatchelRetrieval_Movement_3:
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
-# 77 "data/maps/Route13/scripts.pory"
+# 78 "data/maps/Route13/scripts.pory"
 	face_left
 	step_end
 
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 Route13_EventScripts_PostGruntBattle_Movement_0:
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
-# 92 "data/maps/Route13/scripts.pory"
+# 93 "data/maps/Route13/scripts.pory"
 	walk_faster_down
 	step_end
 
-# 95 "data/maps/Route13/scripts.pory"
+# 96 "data/maps/Route13/scripts.pory"
 Route13_EventScripts_PostGruntBattle_Movement_1:
-# 95 "data/maps/Route13/scripts.pory"
+# 96 "data/maps/Route13/scripts.pory"
 	face_down
 	step_end
 
@@ -463,6 +465,11 @@ Route13_EventScripts_StayAwayFromGruntEast_Text_0:
 
 Route13_EventScripts_StayAwayFromGruntEast_Text_1:
 # 18 "data/maps/Route13/scripts.pory"
+	.string "Look out\n"
+	.string "A Team MAGA Grunt!$"
+
+Route13_EventScripts_StayAwayFromGruntSouth_Text_0:
+# 38 "data/maps/Route13/scripts.pory"
 	.string "Look out! A Team MAGA Grunt.$"
 
 Route7_EventScripts_SatchelRetrieval_Text_0:
@@ -479,7 +486,7 @@ Route7_EventScripts_SatchelRetrieval_Text_1:
 	.string "stole it!$"
 
 Route7_EventScripts_SatchelRetrieval_Text_2:
-# 78 "data/maps/Route13/scripts.pory"
+# 79 "data/maps/Route13/scripts.pory"
 	.string "Well, well, well.\n"
 	.string "Look what we have here.\p"
 	.string "The little lab rats.\n"
@@ -487,30 +494,30 @@ Route7_EventScripts_SatchelRetrieval_Text_2:
 	.string "It doesn't matter.\n"
 	.string "I'm taking you in.\p"
 	.string "Didn’t think I’d get promoted today, but\n"
-	.string "catching you two’ll make me a hero.$"
+	.string "catching you two’ll make me a hero!$"
 
 Route7_EventScripts_SatchelRetrieval_Text_3:
-# 85 "data/maps/Route13/scripts.pory"
+# 86 "data/maps/Route13/scripts.pory"
 	.string "Ugh, no! This was my chance!$"
 
 Route7_EventScripts_SatchelRetrieval_Text_4:
-# 85 "data/maps/Route13/scripts.pory"
+# 86 "data/maps/Route13/scripts.pory"
 	.string "NULL$"
 
 Route13_EventScripts_PostGruntBattle_Text_0:
-# 90 "data/maps/Route13/scripts.pory"
+# 91 "data/maps/Route13/scripts.pory"
 	.string "Grunt$"
 
 Route13_EventScripts_PostGruntBattle_Text_1:
-# 91 "data/maps/Route13/scripts.pory"
+# 92 "data/maps/Route13/scripts.pory"
 	.string "Forget this… I'm calling it in.\p"
-	.string "You won’t stay hidden for long!$"
+	.string "But I'll be back!$"
 
 Route13_EventScripts_PostGruntBattle_Text_2:
-# 99 "data/maps/Route13/scripts.pory"
+# 100 "data/maps/Route13/scripts.pory"
 	.string "That’s… not good.\n"
 	.string "They saw us!\p"
 	.string "…We should return the satchel to\n"
 	.string "Linoone.\p"
-	.string "Hopefully he won't kick us out of\n"
+	.string "Hopefully he'll let us stay in\n"
 	.string "Moonthistle after this.$"

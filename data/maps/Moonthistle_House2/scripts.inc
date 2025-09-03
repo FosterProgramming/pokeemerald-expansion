@@ -212,50 +212,50 @@ Moonthistle_EventScripts_LinooneTrustQuestStart::
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
 # 189 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_11
-# 197 "data/maps/Moonthistle_House2/scripts.pory"
+# 200 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
-# 198 "data/maps/Moonthistle_House2/scripts.pory"
+# 201 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_12
-# 205 "data/maps/Moonthistle_House2/scripts.pory"
+# 208 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
-# 206 "data/maps/Moonthistle_House2/scripts.pory"
+# 209 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_13
-# 210 "data/maps/Moonthistle_House2/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Moonthistle_EventScripts_LinooneTrustQuestStart_Movement_3
-# 211 "data/maps/Moonthistle_House2/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 212 "data/maps/Moonthistle_House2/scripts.pory"
-	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
 # 213 "data/maps/Moonthistle_House2/scripts.pory"
-	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_14
-# 214 "data/maps/Moonthistle_House2/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Moonthistle_EventScripts_LinooneTrustQuestStart_Movement_1
-# 215 "data/maps/Moonthistle_House2/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 216 "data/maps/Moonthistle_House2/scripts.pory"
-	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
-# 217 "data/maps/Moonthistle_House2/scripts.pory"
-	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_15
-# 230 "data/maps/Moonthistle_House2/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Moonthistle_EventScripts_LinooneTrustQuestStart_Movement_3
-# 231 "data/maps/Moonthistle_House2/scripts.pory"
+# 214 "data/maps/Moonthistle_House2/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 232 "data/maps/Moonthistle_House2/scripts.pory"
+# 215 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
+# 216 "data/maps/Moonthistle_House2/scripts.pory"
+	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_14
+# 217 "data/maps/Moonthistle_House2/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Moonthistle_EventScripts_LinooneTrustQuestStart_Movement_1
+# 218 "data/maps/Moonthistle_House2/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 219 "data/maps/Moonthistle_House2/scripts.pory"
+	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
+# 220 "data/maps/Moonthistle_House2/scripts.pory"
+	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_15
 # 233 "data/maps/Moonthistle_House2/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Moonthistle_EventScripts_LinooneTrustQuestStart_Movement_3
+# 234 "data/maps/Moonthistle_House2/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 235 "data/maps/Moonthistle_House2/scripts.pory"
+	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
+# 236 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_16
-# 240 "data/maps/Moonthistle_House2/scripts.pory"
-	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
-# 241 "data/maps/Moonthistle_House2/scripts.pory"
-	waitmovement LOCALID_VEE
-# 242 "data/maps/Moonthistle_House2/scripts.pory"
-	removeobject LOCALID_VEE
 # 243 "data/maps/Moonthistle_House2/scripts.pory"
-	setflag FLAG_MOONTHISTLE_TRUST_QUEST_STARTED
+	applymovement LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest
 # 244 "data/maps/Moonthistle_House2/scripts.pory"
+	waitmovement LOCALID_VEE
+# 245 "data/maps/Moonthistle_House2/scripts.pory"
+	removeobject LOCALID_VEE
+# 246 "data/maps/Moonthistle_House2/scripts.pory"
+	setflag FLAG_MOONTHISTLE_TRUST_QUEST_STARTED
+# 247 "data/maps/Moonthistle_House2/scripts.pory"
 	clearflag FLAG_HIDE_ROUTE_13_SATCHEL
 Moonthistle_EventScripts_LinooneTrustQuestStart_1:
-# 247 "data/maps/Moonthistle_House2/scripts.pory"
+# 250 "data/maps/Moonthistle_House2/scripts.pory"
 	release
 	end
 
@@ -340,60 +340,60 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_6:
 
 
 Moonthistle_EventScripts_LinooneTrustQuestComplete::
-# 255 "data/maps/Moonthistle_House2/scripts.pory"
+# 258 "data/maps/Moonthistle_House2/scripts.pory"
 	lock
-# 256 "data/maps/Moonthistle_House2/scripts.pory"
+# 259 "data/maps/Moonthistle_House2/scripts.pory"
 	goto_if_set FLAG_MOONTHISTLE_SATCHEL_RECOVERED, Moonthistle_EventScripts_LinooneTrustQuestComplete_2
-# 290 "data/maps/Moonthistle_House2/scripts.pory"
+# 293 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
-# 291 "data/maps/Moonthistle_House2/scripts.pory"
+# 294 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_3
-# 295 "data/maps/Moonthistle_House2/scripts.pory"
+# 298 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
-# 296 "data/maps/Moonthistle_House2/scripts.pory"
+# 299 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_4
-# 306 "data/maps/Moonthistle_House2/scripts.pory"
-	closemessage
-# 307 "data/maps/Moonthistle_House2/scripts.pory"
-	delay 40
-# 308 "data/maps/Moonthistle_House2/scripts.pory"
-	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
 # 309 "data/maps/Moonthistle_House2/scripts.pory"
-	msgbox Moonthistle_EventScripts_LinooneTrustQuestComplete_Text_0
+	closemessage
 # 310 "data/maps/Moonthistle_House2/scripts.pory"
-	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
+	delay 40
 # 311 "data/maps/Moonthistle_House2/scripts.pory"
-	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_6
+	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
 # 312 "data/maps/Moonthistle_House2/scripts.pory"
-	setflag FLAG_MOONTHISTLE_TRUSTED
+	msgbox Moonthistle_EventScripts_LinooneTrustQuestComplete_Text_1
 # 313 "data/maps/Moonthistle_House2/scripts.pory"
+	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
+# 314 "data/maps/Moonthistle_House2/scripts.pory"
+	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_6
+# 315 "data/maps/Moonthistle_House2/scripts.pory"
+	setflag FLAG_MOONTHISTLE_TRUSTED
+# 316 "data/maps/Moonthistle_House2/scripts.pory"
 	release
 	end
 
 Moonthistle_EventScripts_LinooneTrustQuestComplete_2:
-# 258 "data/maps/Moonthistle_House2/scripts.pory"
+# 261 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
-# 259 "data/maps/Moonthistle_House2/scripts.pory"
+# 262 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_3
-# 263 "data/maps/Moonthistle_House2/scripts.pory"
+# 266 "data/maps/Moonthistle_House2/scripts.pory"
 	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
-# 264 "data/maps/Moonthistle_House2/scripts.pory"
-	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_4
-# 274 "data/maps/Moonthistle_House2/scripts.pory"
-	closemessage
-# 275 "data/maps/Moonthistle_House2/scripts.pory"
-	delay 40
-# 276 "data/maps/Moonthistle_House2/scripts.pory"
-	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
+# 267 "data/maps/Moonthistle_House2/scripts.pory"
+	msgbox Moonthistle_EventScripts_LinooneTrustQuestComplete_Text_0
 # 277 "data/maps/Moonthistle_House2/scripts.pory"
+	closemessage
+# 278 "data/maps/Moonthistle_House2/scripts.pory"
+	delay 40
+# 279 "data/maps/Moonthistle_House2/scripts.pory"
+	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_0
+# 280 "data/maps/Moonthistle_House2/scripts.pory"
 	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_5
-# 284 "data/maps/Moonthistle_House2/scripts.pory"
-	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
-# 285 "data/maps/Moonthistle_House2/scripts.pory"
-	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_6
-# 286 "data/maps/Moonthistle_House2/scripts.pory"
-	setflag FLAG_MOONTHISTLE_TRUSTED
 # 287 "data/maps/Moonthistle_House2/scripts.pory"
+	speakername Moonthistle_EventScripts_LinooneTrustQuestStart_Text_2
+# 288 "data/maps/Moonthistle_House2/scripts.pory"
+	msgbox Moonthistle_EventScripts_LinooneTrustQuestStart_Text_6
+# 289 "data/maps/Moonthistle_House2/scripts.pory"
+	setflag FLAG_MOONTHISTLE_TRUSTED
+# 290 "data/maps/Moonthistle_House2/scripts.pory"
 	release
 	end
 
@@ -469,7 +469,7 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_Text_4:
 	.string "That won’t help our nerves.\p"
 	.string "But you brought it back.\n"
 	.string "Even with danger breathing down your\l"
-	.string "necks.\p"
+	.string "neck.\p"
 	.string "Maybe you two aren’t a liability after\n"
 	.string "all.\p"
 	.string "You’ve earned a place here.\p"
@@ -532,13 +532,18 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_Text_11:
 	.string "experiments…\p"
 	.string "My friend here, he used to be human!\n"
 	.string "Team MAGA transformed him into a\l"
-	.string "Pokémon. But now that we're not useful\l"
-	.string "anymore, they want to get rid of us.\p"
+	.string "Pokémon.\p"
+	.string "And me…\n"
+	.string "Well, I'm not sure what's wrong with me\l"
+	.string "exactly, but…\p"
+	.string "It's all strange!\p"
+	.string "And now we're not useful anymore, so\n"
+	.string "they want to get rid of us.\p"
 	.string "Please, we don’t have anywhere else to\n"
-	.string "go.$"
+	.string "go!$"
 
 Moonthistle_EventScripts_LinooneTrustQuestStart_Text_12:
-# 199 "data/maps/Moonthistle_House2/scripts.pory"
+# 202 "data/maps/Moonthistle_House2/scripts.pory"
 	.string "Hmm…\p"
 	.string "I've heard the rumors…\n"
 	.string "But it really does sound hard to\l"
@@ -549,20 +554,20 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_Text_12:
 	.string "defeat team MAGA.$"
 
 Moonthistle_EventScripts_LinooneTrustQuestStart_Text_13:
-# 206 "data/maps/Moonthistle_House2/scripts.pory"
+# 209 "data/maps/Moonthistle_House2/scripts.pory"
 	.string "We, uh… We did find something in the lab.\p"
-	.string "N-Notes that mentioned eight\n"
-	.string "artifacts.\n"
-	.string "Super duper important ones.$"
+	.string "S-some note that mentioned eight\n"
+	.string "artifacts.\p"
+	.string "Super duper important ones!$"
 
 Moonthistle_EventScripts_LinooneTrustQuestStart_Text_14:
-# 213 "data/maps/Moonthistle_House2/scripts.pory"
+# 216 "data/maps/Moonthistle_House2/scripts.pory"
 	.string "Artifacts?\p"
-	.string "You mean like treasure?\n"
+	.string "You mean, like treasure?\n"
 	.string "Magic trinkets?$"
 
 Moonthistle_EventScripts_LinooneTrustQuestStart_Text_15:
-# 217 "data/maps/Moonthistle_House2/scripts.pory"
+# 220 "data/maps/Moonthistle_House2/scripts.pory"
 	.string "Yes!\n"
 	.string "Well, no?\l"
 	.string "Kind of?\p"
@@ -570,8 +575,8 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_Text_15:
 	.string "Fixing what they did. To my friend.\p"
 	.string "I don’t think they’ll help me.\n"
 	.string "But he… He was human.\p"
-	.string "And the notes said these artifacts\n"
-	.string "canchange him back to the way he was!\p"
+	.string "And the notes said these artifacts can\n"
+	.string "change him back to the way he was!\p"
 	.string "We’re sure one of the artifacts is in\n"
 	.string "Voltbrook.\l"
 	.string "We just need time to find it.\p"
@@ -581,14 +586,14 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_Text_15:
 	.string "worse.$"
 
 Moonthistle_EventScripts_LinooneTrustQuestStart_Text_16:
-# 233 "data/maps/Moonthistle_House2/scripts.pory"
+# 236 "data/maps/Moonthistle_House2/scripts.pory"
 	.string "…What a story.\n"
 	.string "You sound like you believe it, at least.\p"
 	.string "But belief alone won’t earn you shelter.\n"
 	.string "Not here.\p"
 	.string "One of ours wandered into Route 7.\n"
 	.string "Dropped a marked satchel.\l"
-	.string "Real important.\p"
+	.string "Really important.\p"
 	.string "If MAGA spots it, they might trace it\n"
 	.string "back here.\l"
 	.string "We can’t take that risk.\p"
@@ -597,7 +602,23 @@ Moonthistle_EventScripts_LinooneTrustQuestStart_Text_16:
 	.string "Quietly.$"
 
 Moonthistle_EventScripts_LinooneTrustQuestComplete_Text_0:
-# 309 "data/maps/Moonthistle_House2/scripts.pory"
+# 267 "data/maps/Moonthistle_House2/scripts.pory"
+	.string "Hmph.\p"
+	.string "So, they know you're out there.\n"
+	.string "That won’t help our nerves.\p"
+	.string "But you brought it back.\n"
+	.string "Even with danger breathing down your\l"
+	.string "neck.\p"
+	.string "Maybe you two aren’t a liability after\n"
+	.string "all.\l"
+	.string "You’ve earned a place here.\p"
+	.string "Rest when you need. No one will chase\n"
+	.string "you off.\p"
+	.string "And feel free to meet the others.\n"
+	.string "Some might be more helpful than I was.$"
+
+Moonthistle_EventScripts_LinooneTrustQuestComplete_Text_1:
+# 312 "data/maps/Moonthistle_House2/scripts.pory"
 	.string "That artifact story still sounds like\n"
 	.string "fantasy to me.\p"
 	.string "But… there's one ‘mon here who used to\n"

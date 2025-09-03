@@ -148,6 +148,31 @@ script Moonthistle_EventScripts_Shade
 		If it’s still open…\nThat tunnel might be your way in."))
 		speakername("Vee")
 		msgbox(format("Really? That’s…\nThat’s actually really helpful!\pThank you, Shade. We’ll be careful. I promise!"))
+		speakername("Shade")
+		msgbox(format(
+			"Wait.\p
+			Before you go…\n
+			Take this with you."
+		))
+		speakername(NULL)
+		giveitem(ITEM_STRENGTH_TOOL)
+		speakername("Shade")
+		msgbox(format(
+			"The way to the power plant may be obstructed by debris.\p
+			But with this, you will be able to clear a path.\p
+			Take good care of it."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"You know, you look scary, and your name is scary…\p
+			But you're actually a really nice person!\n
+			Hehe!"
+		))
+		speakername("Shade")
+		msgbox(format(
+			"Not sure if I should take it as a compliment or as an insult.\NBut thanks.\p
+			You better go, now."
+		))
 			if(var(PlayerXCoordinates) == 1)
 			{
 				applymovement(LOCALID_VEE,moves(walk_right walk_up))

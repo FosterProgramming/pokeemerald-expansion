@@ -9,10 +9,6 @@ mapscripts VoltbrookTown_MapScripts
 	MAP_SCRIPT_ON_LOAD
 	{
 		setrespawn(HEAL_LOCATION_VOLTBROOK_TOWN)
-        if(flag(FLAG_HINTED_AT_POWERPLANT))
-			{
-				setmetatile(17, 3, 0x3D2, FALSE)
-			}
 		// if(flag(FLAG_DEFEATED_MAGA_ELECTAVIRE))
 		// {
 		// 	setmetatile(7, 17, DOOR, TRUE)
@@ -1442,3 +1438,10 @@ script Voltbrook_EventScripts_DoorsLocked
 		release
 		//}
 	}
+
+
+script Voltbrook_EventScript_Locked
+{
+	msgbox(format("Locked."), MSGBOX_SIGN)
+	end
+}

@@ -479,6 +479,10 @@
 #define METATILE_PokemonCenter_Floor_ShadowTop           0x21E
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
 
+// gTileset_PowerPlant
+#define METATILE_PowerPlant_ButtonOff  0x268
+#define METATILE_PowerPlant_ButtonOn   0x260
+
 // gTileset_Pyroden
 #define METATILE_Pyroden_Door_BottomLeft              0x22B
 #define METATILE_Pyroden_Door_BottomMiddle            0x22C
