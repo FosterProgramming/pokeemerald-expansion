@@ -87,8 +87,11 @@ void SafariContest_NewGameInitData(void)
     FlagSet(FLAG_SYS_B_DASH);
     FlagSet(FLAG_SYS_POKENAV_GET);
     FlagSet(FLAG_SYS_POKEMON_GET);
+    FlagSet(FLAG_UNUSED_0x021);
     for (u32 i = 0; i < INITIAL_PARTY_SIZE; i++)
         ScriptGiveMon(sInitParty[i], 50, ITEM_NONE);
+    u32 abilityNum = 0;
+    SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
     SafariContest_SetMoves();
 }
 
@@ -201,6 +204,7 @@ void ChooseIdleAction(void)
         idleAction = ChooseIdleAction_Easy();
     gBattlerAttacker = 1;
     gBattleCommunication[MULTISTRING_CHOOSER] = idleAction;
+    gBattleScripting.animArg1 = B_ANIM_IDLE_ACTION_STARING + idleAction;
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 

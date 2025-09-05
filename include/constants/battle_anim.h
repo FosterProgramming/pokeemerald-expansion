@@ -596,8 +596,12 @@
 #define B_ANIM_POSITIVE_CONTEST_MOVE    56
 #define B_ANIM_THROW_BERRY              57
 #define B_ANIM_EAT_THROWN_BERRY         58
-
-#define NUM_B_ANIMS_GENERAL             59
+#define B_ANIM_IDLE_ACTION_STARING      59
+#define B_ANIM_IDLE_ACTION_HISSING      60
+#define B_ANIM_IDLE_ACTION_PRETENDING   61
+#define B_ANIM_IDLE_ACTION_HOPPING      62
+#define B_ANIM_IDLE_ACTION_SHAKING      63
+#define NUM_B_ANIMS_GENERAL             64
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

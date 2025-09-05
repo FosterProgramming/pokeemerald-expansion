@@ -38066,3 +38066,45 @@ gBattleAnimGeneral_EatingThrownBerry::
 	createsprite gThinRingExpandingSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0
 	waitforvisualfinish
 	end
+
+gBattleAnimGeneral_IdleActionStaring::
+	loadspritegfx ANIM_TAG_EYE_SPARKLE
+	createvisualtask AnimTask_BlendBattleAnimPal, 5, F_PAL_BG, 0, 0, 16, RGB_BLACK
+	waitforvisualfinish
+	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, -16, -8
+	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, 16, -8
+	playsewithpan SE_M_LEER, SOUND_PAN_ATTACKER
+	delay 2
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 5, F_PAL_BG, 0, 16, 0, RGB_BLACK
+	end
+
+gBattleAnimGeneral_IdleActionHissing::
+	loadspritegfx ANIM_TAG_NOISE_LINE
+	monbg ANIM_ATTACKER
+	splitbgprio ANIM_ATTACKER
+	setalpha 8, 8
+	createvisualtask SoundTask_PlayDoubleCry, 2, ANIM_ATTACKER, DOUBLE_CRY_ROAR
+	createvisualtask AnimTask_ScaleMonAndRestore, 5, -5, -5, 10, ANIM_ATTACKER, 1
+	call RoarEffect
+	delay 20
+	clearmonbg ANIM_ATTACKER
+	blendoff
+	waitforvisualfinish
+	createvisualtask SoundTask_WaitForCry, 5
+	waitforvisualfinish
+	end
+
+gBattleAnimGeneral_IdleActionPretending::
+	createvisualtask AnimTask_RotateMonToSideAndRestore, 2, 16, 128, ANIM_ATTACKER, 2
+	waitforvisualfinish
+	end
+
+gBattleAnimGeneral_IdleActionHopping::
+	createvisualtask AnimTask_Splash, 2, ANIM_ATTACKER, 3
+	end
+
+gBattleAnimGeneral_IdleActionShaking::
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 4, 0, 10, 1
+	waitforvisualfinish
+	end

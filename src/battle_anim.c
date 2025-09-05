@@ -258,6 +258,11 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_POSITIVE_CONTEST_MOVE]  = gBattleAnimGeneral_PositiveContestMove,
     [B_ANIM_THROW_BERRY]            = gBattleAnimGeneral_ThrowBerry,
     [B_ANIM_EAT_THROWN_BERRY]       = gBattleAnimGeneral_EatingThrownBerry,
+    [B_ANIM_IDLE_ACTION_STARING]    = gBattleAnimGeneral_IdleActionStaring,
+    [B_ANIM_IDLE_ACTION_HISSING]    = gBattleAnimGeneral_IdleActionHissing,
+    [B_ANIM_IDLE_ACTION_PRETENDING] = gBattleAnimGeneral_IdleActionPretending,
+    [B_ANIM_IDLE_ACTION_HOPPING]    = gBattleAnimGeneral_IdleActionHopping,
+    [B_ANIM_IDLE_ACTION_SHAKING]    = gBattleAnimGeneral_IdleActionShaking,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =

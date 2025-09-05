@@ -1050,6 +1050,10 @@ const union AnimCmd gEyeSparkleAnimCmds[] =
     ANIMCMD_FRAME(4, 4),
     ANIMCMD_FRAME(8, 4),
     ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(8, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(8, 4),
+    ANIMCMD_FRAME(4, 4),
     ANIMCMD_FRAME(0, 4),
     ANIMCMD_END,
 };
@@ -2242,7 +2246,7 @@ static void AnimTask_Splash_Step(u8 taskId)
     {
     case 0:
         RunAffineAnimFromTaskData(task);
-        task->data[4] += 3;
+        task->data[4] -= 3;
         gSprites[task->data[0]].y2 += task->data[4];
         if (++task->data[3] > 7)
         {
@@ -2262,8 +2266,8 @@ static void AnimTask_Splash_Step(u8 taskId)
     case 2:
         if (task->data[4] != 0)
         {
-            gSprites[task->data[0]].y2 -= 2;
-            task->data[4] -= 2;
+            gSprites[task->data[0]].y2 += 2;
+            task->data[4] += 2;
         }
         else
         {

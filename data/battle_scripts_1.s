@@ -9693,6 +9693,8 @@ BattleScript_ForfeitBattleGaveMoney::
 BattleScript_DoIdleAction::
 	callnative ChooseIdleAction
 	printfromtable gIdleActionsStringIds
+	playanimation_var BS_ATTACKER, sB_ANIM_ARG1
+	waitanimation
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
