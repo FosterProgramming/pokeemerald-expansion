@@ -6429,6 +6429,8 @@ static u8 TryUpdateMovementActionOnStairs(struct ObjectEvent *objectEvent, u8 mo
     if (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
         return movementActionId;    // handled separately
 
+    HandleBoulderActivateSwitch(objectEvent);
+
     if (!ObjectMovingOnRockStairs(objectEvent, objectEvent->movementDirection))
         return movementActionId;
 

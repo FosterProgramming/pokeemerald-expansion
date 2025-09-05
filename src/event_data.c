@@ -66,6 +66,10 @@ void ClearTempFieldEventData(void)
     ClearFieldMoveFlags(); // qol_field_moves
     FlagClear(FLAG_SYS_CTRL_OBJ_DELETE);
     FlagClear(FLAG_NURSE_UNION_ROOM_REMINDER);
+    VarSet(VAR_TEMP_0, 200);
+    VarSet(VAR_TEMP_2, 200);
+    VarSet(VAR_TEMP_4, 200);
+    VarSet(VAR_TEMP_BOULDER_SWITCH_EVENT_ID, 0);
 }
 
 void ClearDailyFlags(void)
