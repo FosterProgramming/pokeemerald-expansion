@@ -85,7 +85,7 @@ VictoryRoad_1F_EventScript_FloorSwitch1::
 # 46 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	lockall
 # 47 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	compare VAR_TEMP_1, 0
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1, 0
 	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch1_2
 # 54 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setmetatile 18, 10, METATILE_General_Grass, 0
@@ -108,7 +108,7 @@ VictoryRoad_1F_EventScript_FloorSwitch2::
 # 62 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	lockall
 # 63 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	compare VAR_TEMP_3, 0
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2, 0
 	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch2_2
 # 70 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setmetatile 20, 10, METATILE_General_Grass, 0
@@ -131,7 +131,7 @@ VictoryRoad_1F_EventScript_FloorSwitch3::
 # 78 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	lockall
 # 79 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	compare VAR_TEMP_5, 0
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3, 0
 	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch3_2
 # 86 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setmetatile 22, 10, METATILE_General_Grass, 0

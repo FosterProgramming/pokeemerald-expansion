@@ -236,17 +236,17 @@
 #define VAR_SOOTOPOLIS_WALLACE_STATE                     0x40D8
 #define VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 0x40D9
 #define VAR_REGISTER_BIRCH_STATE                         0x40DA
-#define VAR_TEMP_BOULDER_SWITCH_OBJECT_ID                0x40DB // New Var
-#define VAR_TEMP_BOULDER_SWITCH_EVENT_ID                 0x40DC // New Var
+#define VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_1              0x40DB // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1               0x40DC // Boulder Switch Variable - Gets cleaned after leaving a map
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_GIFT_UNUSED_1                                0x40DE // Var is written to, but never read
-#define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
-#define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_4                                0x40E1 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_5                                0x40E2 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_6                                0x40E3 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_7                                0x40E4 // var is written to, but never read
-#define VAR_UNUSED_0x40E5                                0x40E5 // Unused Var
+#define VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_2              0x40DE // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2               0x40DF // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_3              0x40E0 // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3               0x40E1 // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_4              0x40E2 // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_EVENT_ID_4               0x40E3 // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_5              0x40E4 // Boulder Switch Variable - Gets cleaned after leaving a map
+#define VAR_TEMP_BOULDER_SWITCH_EVENT_ID_5               0x40E5 // Boulder Switch Variable - Gets cleaned after leaving a map
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
 #define VAR_DAILY_BLENDER                                0x40E8

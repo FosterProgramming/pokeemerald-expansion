@@ -44,13 +44,13 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus:
 
 script VictoryRoad_1F_EventScript_FloorSwitch1{
 	lockall
-	if(var(VAR_TEMP_1) != 0){
-		//NPC got in the switch
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != 0){
+		//Object Event got in the switch
 		setmetatile(18, 10, METATILE_General_TallGrass, 0)
 		special(DrawWholeMapView)
 	}
 	else{
-		//NPC Stepped out of the switch
+		//Object Event Stepped out of the switch
 		setmetatile(18, 10, METATILE_General_Grass, 0)
 		special(DrawWholeMapView)
 	}
@@ -60,13 +60,13 @@ script VictoryRoad_1F_EventScript_FloorSwitch1{
 
 script VictoryRoad_1F_EventScript_FloorSwitch2{
 	lockall
-	if(var(VAR_TEMP_3) != 0){
-		//NPC got in the switch
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2) != 0){
+		//Object Event got in the switch
 		setmetatile(20, 10, METATILE_General_TallGrass, 0)
 		special(DrawWholeMapView)
 	}
 	else{
-		//NPC Stepped out of the switch
+		//Object Event Stepped out of the switch
 		setmetatile(20, 10, METATILE_General_Grass, 0)
 		special(DrawWholeMapView)
 	}
@@ -76,13 +76,13 @@ script VictoryRoad_1F_EventScript_FloorSwitch2{
 
 script VictoryRoad_1F_EventScript_FloorSwitch3{
 	lockall
-	if(var(VAR_TEMP_5) != 0){
-		//NPC got in the switch
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3) != 0){
+		//Object Event got in the switch
 		setmetatile(22, 10, METATILE_General_TallGrass, 0)
 		special(DrawWholeMapView)
 	}
 	else{
-		//NPC Stepped out of the switch
+		//Object Event Stepped out of the switch
 		setmetatile(22, 10, METATILE_General_Grass, 0)
 		special(DrawWholeMapView)
 	}

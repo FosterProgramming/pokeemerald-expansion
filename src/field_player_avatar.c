@@ -1615,7 +1615,6 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
     return FALSE;
 }
 
-#define NO_OBJECT_EVENT 200
 #define BOULDER_ON_SWITCH_NO_EVENT FALSE
 bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent)
 {
@@ -1637,7 +1636,7 @@ bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent)
                 u16 switchObjectEventID = VarGet(eventVar);
                 //MgbaPrintf(MGBA_LOG_WARN, "HandleBoulderActivateSwitch triggerID = %d, var = %d", switchObjectEventID, VAR_TEMP_BOULDER_SWITCH_OBJECT_ID);
                 
-                if(switchObjectEventID == NO_OBJECT_EVENT){
+                if(switchObjectEventID == BOULDER_SWITCH_NOT_PRESSED){
                     //MgbaPrintf(MGBA_LOG_WARN, "There was nothing in the switch, run the script");
                     //There was nothing in the switch, run the script
                     ScriptContext_SetupScript(events[i].script);
@@ -1680,7 +1679,7 @@ bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent)
                         if(switchObjectEventID == objectEventID){
                             //The Object Event left the switch, run the script 2
                             //MgbaPrintf(MGBA_LOG_WARN, "The Object Event left the switch, run the script 2");
-                            VarSet(eventVar, NO_OBJECT_EVENT);
+                            VarSet(eventVar, BOULDER_SWITCH_NOT_PRESSED);
                             VarSet(eventIDVar, 0);
                             ScriptContext_SetupScript(events[switchEventIDVar].script);
                             ScriptContext_Enable();

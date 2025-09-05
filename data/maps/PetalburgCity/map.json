@@ -278,8 +278,8 @@
       "x": 18,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "VAR_TEMP_1",
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_1",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1",
       "script": "VictoryRoad_1F_EventScript_FloorSwitch1"
     },
     {
@@ -287,8 +287,8 @@
       "x": 20,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_TEMP_2",
-      "var_value": "VAR_TEMP_3",
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_2",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2",
       "script": "VictoryRoad_1F_EventScript_FloorSwitch2"
     },
     {
@@ -296,8 +296,8 @@
       "x": 22,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "VAR_TEMP_5",
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_3",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3",
       "script": "VictoryRoad_1F_EventScript_FloorSwitch3"
     }
   ],
