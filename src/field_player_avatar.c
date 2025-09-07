@@ -30,6 +30,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "constants/metatile_behaviors.h"
 #include "qol_field_moves.h" // qol_field_moves
 
 #define NUM_FORCED_MOVEMENTS 18
@@ -827,7 +828,7 @@ static bool8 ShouldJumpLedge(s16 x, s16 y, u8 direction)
 
 bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
 {
-    if (FlagGet(FLAG_SYS_USE_STRENGTH))
+    if (FlagGet(FLAG_SYS_USE_STRENGTH) || TRUE)
     {
         u8 objectEventId = GetObjectEventIdByXY(x, y);
 
@@ -1614,6 +1615,85 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
     return FALSE;
 }
 
+#define BOULDER_ON_SWITCH_NO_EVENT FALSE
+bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent)
+{
+    int i, j;
+    const struct CoordEvent * events = gMapHeader.events->coordEvents;
+    int n = gMapHeader.events->coordEventCount;
+    u16 objectEventID = objectEvent->localId;
+    u16 x = objectEvent->currentCoords.x;
+    u16 y = objectEvent->currentCoords.y;
+
+    if (MapGridGetMetatileBehaviorAt(x, y) == MB_STRENGTH_BUTTON)
+    {
+        for (i = 0; i < n; i++)
+        {
+            if (events[i].x + 7 == x && events[i].y + 7 == y)
+            {
+                u16 eventVar            = events[i].trigger;
+                u16 eventIDVar          = events[i].index;
+                u16 switchObjectEventID = VarGet(eventVar);
+                //MgbaPrintf(MGBA_LOG_WARN, "HandleBoulderActivateSwitch triggerID = %d, var = %d", switchObjectEventID, VAR_TEMP_BOULDER_SWITCH_OBJECT_ID);
+                
+                if(switchObjectEventID == BOULDER_SWITCH_NOT_PRESSED){
+                    //MgbaPrintf(MGBA_LOG_WARN, "There was nothing in the switch, run the script");
+                    //There was nothing in the switch, run the script
+                    ScriptContext_SetupScript(events[i].script);
+                    ScriptContext_Enable();
+                    VarSet(eventVar, objectEventID);
+                    VarSet(eventIDVar, i);
+                    return TRUE;
+                }
+                else if(switchObjectEventID == objectEventID){
+                    //The script already ran, the object event should be in the switch
+                    return BOULDER_ON_SWITCH_NO_EVENT;
+                }
+                return BOULDER_ON_SWITCH_NO_EVENT;
+            }
+        }
+    }
+    else{
+        //Check the tiles next to this object event to see if it just leaved a switch
+        for(j = 0; j < 4; j++){
+            u16 tempX = x;
+            u16 tempY = y;
+
+            switch(j){
+                case 0: tempX--; break;
+                case 1: tempX++; break;
+                case 2: tempY--; break;
+                case 3: tempY++; break;
+            }
+
+            if (MapGridGetMetatileBehaviorAt(tempX, tempY) == MB_STRENGTH_BUTTON){
+                for (i = 0; i < n; i++)
+                {
+                    if (events[i].x + 7 == tempX && events[i].y + 7 == tempY)
+                    {
+                        u16 eventVar            = events[i].trigger;
+                        u16 eventIDVar          = events[i].index;
+                        u16 switchObjectEventID = VarGet(eventVar);
+                        u16 switchEventIDVar    = VarGet(eventIDVar);
+                        
+                        if(switchObjectEventID == objectEventID){
+                            //The Object Event left the switch, run the script 2
+                            //MgbaPrintf(MGBA_LOG_WARN, "The Object Event left the switch, run the script 2");
+                            VarSet(eventVar, BOULDER_SWITCH_NOT_PRESSED);
+                            VarSet(eventIDVar, 0);
+                            ScriptContext_SetupScript(events[switchEventIDVar].script);
+                            ScriptContext_Enable();
+                            return TRUE;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return FALSE;
+}
+
 static bool8 PushBoulder_End(struct Task *task, struct ObjectEvent *player, struct ObjectEvent *boulder)
 {
     if (ObjectEventCheckHeldMovementStatus(player)
@@ -1632,6 +1712,7 @@ static bool8 PushBoulder_End(struct Task *task, struct ObjectEvent *player, stru
             boulder->inanimate = FALSE;
         }
 
+        HandleBoulderActivateSwitch(boulder);
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
         DestroyTask(FindTaskIdByFunc(Task_PushBoulder));

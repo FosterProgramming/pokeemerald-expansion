@@ -41,3 +41,51 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus:
 	.string "It seems to be from an earlier era.$"
 
 `
+
+script VictoryRoad_1F_EventScript_FloorSwitch1{
+	lockall
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != 0){
+		//Object Event got in the switch
+		setmetatile(18, 10, METATILE_General_TallGrass, 0)
+		special(DrawWholeMapView)
+	}
+	else{
+		//Object Event Stepped out of the switch
+		setmetatile(18, 10, METATILE_General_Grass, 0)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script VictoryRoad_1F_EventScript_FloorSwitch2{
+	lockall
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2) != 0){
+		//Object Event got in the switch
+		setmetatile(20, 10, METATILE_General_TallGrass, 0)
+		special(DrawWholeMapView)
+	}
+	else{
+		//Object Event Stepped out of the switch
+		setmetatile(20, 10, METATILE_General_Grass, 0)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script VictoryRoad_1F_EventScript_FloorSwitch3{
+	lockall
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3) != 0){
+		//Object Event got in the switch
+		setmetatile(22, 10, METATILE_General_TallGrass, 0)
+		special(DrawWholeMapView)
+	}
+	else{
+		//Object Event Stepped out of the switch
+		setmetatile(22, 10, METATILE_General_Grass, 0)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}

@@ -72,5 +72,6 @@ u8 GetLeftSideStairsDirection(u8 direction);
 //qol field moves
 void PlayerAvatarTransition_Surfing(struct ObjectEvent *); // qol_field_moves
 void ForcePlayerToPerformMovementAction(void); // qol_field_moves
+bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent);
 
 #endif // GUARD_FIELD_PLAYER_AVATAR_H
