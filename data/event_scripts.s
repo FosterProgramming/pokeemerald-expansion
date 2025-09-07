@@ -1354,3 +1354,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MountPyroden_4F_ClockRoom/scripts.inc"
 
 	.include "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Office/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Front/scripts.inc"

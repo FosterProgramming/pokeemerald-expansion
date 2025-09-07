@@ -5380,6 +5380,26 @@
       "secondary_tileset": "gTileset_PowerPlant",
       "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance/border.bin",
       "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_OFFICE",
+      "name": "VoltbrookTown_PowerPlant_Office_Layout",
+      "width": 21,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Office/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Office/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_FRONT",
+      "name": "VoltbrookTown_PowerPlant_Front_Layout",
+      "width": 27,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front/map.bin"
     }
   ]
 }

@@ -201,7 +201,9 @@
     "DewfordTown_Gym",
     "DewfordTown_Hall",
     "DewfordTown_House2",
-    "VoltbrookTown_PowerPlant_Entrance"
+    "VoltbrookTown_PowerPlant_Entrance",
+    "VoltbrookTown_PowerPlant_Office",
+    "VoltbrookTown_PowerPlant_Front"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",
