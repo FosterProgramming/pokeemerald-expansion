@@ -1680,7 +1680,7 @@ bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent)
                             //The Object Event left the switch, run the script 2
                             //MgbaPrintf(MGBA_LOG_WARN, "The Object Event left the switch, run the script 2");
                             VarSet(eventVar, BOULDER_SWITCH_NOT_PRESSED);
-                            VarSet(eventIDVar, 0);
+                            VarSet(eventIDVar, BOULDER_SWITCH_NO_EVENT);
                             ScriptContext_SetupScript(events[switchEventIDVar].script);
                             ScriptContext_Enable();
                             return TRUE;
