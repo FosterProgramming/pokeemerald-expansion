@@ -1009,6 +1009,11 @@ extern const u8 gBattleAnimGeneral_NeutralContestMove[];
 extern const u8 gBattleAnimGeneral_PositiveContestMove[];
 extern const u8 gBattleAnimGeneral_ThrowBerry[];
 extern const u8 gBattleAnimGeneral_EatingThrownBerry[];
+extern const u8 gBattleAnimGeneral_IdleActionStaring[];
+extern const u8 gBattleAnimGeneral_IdleActionHissing[];
+extern const u8 gBattleAnimGeneral_IdleActionPretending[];
+extern const u8 gBattleAnimGeneral_IdleActionHopping[];
+extern const u8 gBattleAnimGeneral_IdleActionShaking[];
 
 // special animations
 extern const u8 gBattleAnimSpecial_LevelUp[];
