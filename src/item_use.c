@@ -46,6 +46,8 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 
+#include "safari_zone.h"
+
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
 static void Task_CallItemUseOnFieldCallback(u8);
