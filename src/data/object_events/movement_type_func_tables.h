@@ -456,3 +456,11 @@ u8 (*const gMovementTypeFuncs_Invisible[])(struct ObjectEvent *, struct Sprite *
     MovementType_Invisible_Step1,
     MovementType_Invisible_Step2,
 };
+
+u8 (*const gMovementTypeFuncs_SpotPlayer[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_SpotPlayer_Step0,
+    MovementType_SpotPlayer_Step1,
+    MovementType_SpotPlayer_Step2,
+    MovementType_SpotPlayer_Step3,
+     MovementType_SpotPlayer_Step4,
+};

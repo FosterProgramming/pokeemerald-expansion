@@ -1532,6 +1532,11 @@ static bool32 HandleEndTurnContest(u32 battler)
 
     gBattleStruct->turnEffectsBattlerId++;
     if ((gBattleTypeFlags & BATTLE_TYPE_CONTEST) && IsOnPlayerSide(battler)) {
+        struct Pokemon *mon;
+        mon = &gEnemyParty[0];
+        u32 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+        if (!CanPokemonRunFromBattle(species))
+            return FALSE;
         gFleeChance += 43;
         if (gFleeChance > 128)
             gFleeChance = 128;
@@ -1539,7 +1544,6 @@ static bool32 HandleEndTurnContest(u32 battler)
             gBerryTimer--;
         else
         {
-            gFleeChance = 255;
             u32 rand = Random() & 0xFF;
             if (rand <= gFleeChance)
             {

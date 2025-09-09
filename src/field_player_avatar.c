@@ -34,6 +34,8 @@
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
 
+#include "followmon.h"
+
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
 
@@ -855,10 +857,8 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             // speed 2 is fast, same speed as running
             PlayerWalkFast(direction);
         }
-        return;
     }
-
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
+    else if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
@@ -867,9 +867,8 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             PlayerRun(direction);
 
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
-        return;
     }
-    else if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
+    else if (heldKeys & A_BUTTON)
     {
         gPlayerAvatar.creeping = TRUE;
         PlayerWalkSlow(direction);
@@ -881,6 +880,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         else
             PlayerWalkNormal(direction);
     }
+    ScareCloseFollowmon(&gObjectEvents[gPlayerAvatar.objectEventId]);
 }
 
 static u8 CheckForPlayerAvatarCollision(u8 direction)

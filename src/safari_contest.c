@@ -1,12 +1,14 @@
 #include "global.h"
 #include "main.h"
 #include "malloc.h"
+#include "additional_species_data.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_interface.h"
 #include "battle_scripts.h"
 #include "contest.h"
 #include "event_data.h"
+#include "followmon.h"
 #include "item_menu.h"
 #include "pokemon.h"
 #include "random.h"
@@ -66,6 +68,54 @@ static const s8 sEasyContestTable[EASY_CONTEST_COUNT][EASY_CONTEST_COUNT] =
     }
 };
 
+
+
+static const struct SafariSpeciesData sSafariSpeciesData[] =
+{
+    [INDEX_SPECIES_ODDISH] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = FALSE,
+            .overworldShyFlag = FALSE
+        },
+    [INDEX_SPECIES_GIRAFARIG] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = FALSE,
+            .overworldShyFlag = TRUE
+        },
+    [INDEX_SPECIES_NATU] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = TRUE,
+            .overworldShyFlag = FALSE
+        },
+    [INDEX_SPECIES_DODUO] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = TRUE,
+            .overworldShyFlag = TRUE
+        },
+    [INDEX_SPECIES_GLOOM] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = TRUE,
+            .overworldShyFlag = FALSE
+        },
+    [INDEX_SPECIES_WOBBUFFET] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = TRUE,
+            .overworldShyFlag = FALSE
+        },
+    [INDEX_SPECIES_PIKACHU] =
+        {
+            .initialCatchRate = 128,
+            .escapeBattleFlag = TRUE,
+            .overworldShyFlag = TRUE
+        },
+};
+
 #define INITIAL_PARTY_SIZE 1
 
 static const u16 sInitParty[INITIAL_PARTY_SIZE] = {
@@ -82,12 +132,30 @@ static const u16 sPartyMovesHard[INITIAL_PARTY_SIZE][CONTEST_CATEGORIES_COUNT] =
     {MOVE_IRON_TAIL, MOVE_FLASH, MOVE_SING, MOVE_HIDDEN_POWER, MOVE_HARDEN},
 };
 
+#define ADDITIONAL_DATA(species) (sSafariSpeciesData[gAdditionalSpeciesData[species]])
+
+bool32 IsOverworldMonShy(u32 species)
+{
+    return ADDITIONAL_DATA(species).overworldShyFlag;
+}
+
+bool32 CanPokemonRunFromBattle(u32 species)
+{
+    return ADDITIONAL_DATA(species).escapeBattleFlag;
+}
+
+static u32 GetInitialCatchRate(u32 species)
+{
+    return ADDITIONAL_DATA(species).initialCatchRate;
+}
+
+#undef ADDITIONAL_DATA
+
 void SafariContest_NewGameInitData(void)
 {
     FlagSet(FLAG_SYS_B_DASH);
-    FlagSet(FLAG_SYS_POKENAV_GET);
     FlagSet(FLAG_SYS_POKEMON_GET);
-    FlagSet(FLAG_UNUSED_0x021);
+    FlagSet(OW_FLAG_SPAWN_OVERWORLD_MON);
     for (u32 i = 0; i < INITIAL_PARTY_SIZE; i++)
         ScriptGiveMon(sInitParty[i], 50, ITEM_NONE);
     u32 abilityNum = 0;
@@ -214,7 +282,11 @@ void InitSafariContest(void)
     mon = &gEnemyParty[0];
 
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
-    gCatchChance = gSpeciesInfo[species].catchRate;
+    gCatchChance = GetInitialCatchRate(species);
+    u32 rngChance = RandomUniform(RNG_NONE, 0, gCatchChance / 5);
+    if (gCatchChance + rngChance > 255)
+        rngChance = 255 - gCatchChance;
+    gCatchChance += rngChance;
     gFleeChance = 0;
     if (gSaveBlock2Ptr->optionsDifficulty)
         gSpecialVar_ContestCategory = RandomUniform(RNG_NONE, 0, CONTEST_CATEGORIES_COUNT - 1);
@@ -227,6 +299,10 @@ void InitSafariContest(void)
 
 static void ModifyCatchChance(s32 change)
 {
+    if (change >= 0)
+        change += RandomUniform(RNG_NONE, 0, change / 5);
+    else
+        change -= RandomUniform(RNG_NONE, 0, -change / 5);
     if (gCatchChance + change > 255)
         change = 255 - gCatchChance;
     else if (gCatchChance + change < 0)

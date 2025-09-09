@@ -324,6 +324,7 @@ void MovementType_RunInPlace(struct Sprite *sprite);
 void MovementType_Invisible(struct Sprite *sprite);
 void MovementType_WalkSlowlyInPlace(struct Sprite *sprite);
 void MovementType_FollowPlayer(struct Sprite *sprite);
+void MovementType_SpotPlayer(struct Sprite *sprite);
 u8 GetSlideMovementAction(u32);
 u8 GetJump2MovementAction(u32);
 u8 CopySprite(struct Sprite *sprite, s16 x, s16 y, u8 subpriority);
@@ -499,6 +500,12 @@ u8 MovementType_Invisible_Step0(struct ObjectEvent *objectEvent, struct Sprite *
 u8 MovementType_Invisible_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 u8 MovementType_Invisible_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 
+u8 MovementType_SpotPlayer_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementType_SpotPlayer_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementType_SpotPlayer_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementType_SpotPlayer_Step3(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementType_SpotPlayer_Step4(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+
 u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevation, u8 direction);
 void TurnVirtualObject(u8 virtualObjId, u8 direction);
 void SetVirtualObjectGraphics(u8 virtualObjId, u16 graphicsId);
@@ -521,5 +528,7 @@ bool8 MovementAction_EmoteDoubleExclamationMark_Step0(struct ObjectEvent *, stru
 bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent);
 
 bool8 MovementAction_FollowMonSpawn(enum FollowMonSpawnAnim spawnAnimType, struct ObjectEvent *objEvent);
+
+void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite);
 
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H

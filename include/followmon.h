@@ -1,10 +1,10 @@
 #ifndef GUARD_FOLLOWMON_H
 #define GUARD_FOLLOWMON_H
 
-#define OW_FLAG_SPAWN_OVERWORLD_MON         FLAG_UNUSED_0x020
+#define OW_FLAG_SPAWN_OVERWORLD_MON         FLAG_FOLLOWMON
 
 #define FOLLOWMON_SHINY_OFFSET              10000
-#define FOLLOWMON_MAX_SPAWN_SLOTS           6
+#define FOLLOWMON_MAX_SPAWN_SLOTS           3
 #define FOLLOWMON_IDEAL_OBJECT_EVENT_COUNT  8
 
 #define INVALID_SPAWN_SLOT 0xFF
@@ -15,7 +15,7 @@ struct FollowMon
     u16 isShiny:1;
     u16 onWater:1;
     u16 timeOfDay:2;
-    u16 unused:4;
+    u16 objectEventId:4;
     u16 encounterIndex:8;
     
 };
@@ -47,4 +47,6 @@ u16 GetFollowMonObjectEventGraphicsId(u16 graphicsId);
 void FollowMon_OnWarp(void);
 void RemoveAllFollowMonObjects(void);
 
+bool8 GetEncounterInDirection(struct ObjectEvent *objectEvent, u8 direction);
+void ScareCloseFollowmon(struct ObjectEvent *objEvent);
 #endif // GUARD_FOLLOWMON_H

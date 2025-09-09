@@ -350,6 +350,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_LEFT] = MovementType_WalkSlowlyInPlace,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = MovementType_WalkSlowlyInPlace,
     [MOVEMENT_TYPE_FOLLOW_PLAYER] = MovementType_FollowPlayer,
+    [MOVEMENT_TYPE_SPOT_PLAYER] = MovementType_SpotPlayer,
 };
 
 static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
@@ -3782,7 +3783,8 @@ bool8 MovementType_WanderAround_Step2(struct ObjectEvent *objectEvent, struct Sp
 {
     if (!ObjectEventExecSingleMovementAction(objectEvent, sprite))
         return FALSE;
-    SetMovementDelay(sprite, sMovementDelaysMedium[Random() % ARRAY_COUNT(sMovementDelaysMedium)]);
+    //SetMovementDelay(sprite, sMovementDelaysMedium[Random() % ARRAY_COUNT(sMovementDelaysMedium)]);
+    SetMovementDelay(sprite, RandomUniform(RNG_NONE, 64, 128));
     sprite->sTypeFuncId = 3;
     return TRUE;
 }
@@ -3821,7 +3823,10 @@ bool8 MovementType_WanderAround_Step4(struct ObjectEvent *objectEvent, struct Sp
 
 bool8 MovementType_WanderAround_Step5(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkNormalMovementAction(objectEvent->movementDirection));
+    if (!GetEncounterInDirection(objectEvent, objectEvent->movementDirection))
+        ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkInPlaceSlowMovementAction(objectEvent->movementDirection));
+    else
+        ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowMovementAction(objectEvent->movementDirection));
     objectEvent->singleMovementActive = TRUE;
     sprite->sTypeFuncId = 6;
     return TRUE;
@@ -6055,6 +6060,64 @@ bool8 MovementType_Invisible_Step1(struct ObjectEvent *objectEvent, struct Sprit
 bool8 MovementType_Invisible_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     objectEvent->singleMovementActive = FALSE;
+    return FALSE;
+}
+
+movement_type_def(MovementType_SpotPlayer, gMovementTypeFuncs_SpotPlayer)
+
+bool8 MovementType_SpotPlayer_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ClearObjectEventMovement(objectEvent, sprite);
+    ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK);
+    sprite->sTypeFuncId = 1;
+    return TRUE;
+}
+bool8 MovementType_SpotPlayer_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (ObjectEventExecSingleMovementAction(objectEvent, sprite))
+    {
+        SetMovementDelay(sprite, 5);
+        sprite->sTypeFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementType_SpotPlayer_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    //if (ObjectEventExecSingleMovementAction(objectEvent, sprite))
+    //{
+    if (WaitForMovementDelay(sprite))
+    {
+        ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_FACE_PLAYER);
+        //ObjectEventSetSingleMovement(objectEvent, sprite, GetJumpInPlaceMovementAction(objectEvent->movementDirection));
+        sprite->sTypeFuncId = 3;
+        return TRUE;
+    }
+    //}
+    return FALSE;
+}
+
+
+bool8 MovementType_SpotPlayer_Step3(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (ObjectEventExecSingleMovementAction(objectEvent, sprite))
+    {
+        SetMovementDelay(sprite, 5);
+        sprite->sTypeFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementType_SpotPlayer_Step4(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (WaitForMovementDelay(sprite))
+    {
+        RemoveObjectEvent(objectEvent);
+        //sprite->sTypeFuncId = 0;
+        return TRUE;
+    }
     return FALSE;
 }
 

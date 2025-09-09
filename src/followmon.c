@@ -12,9 +12,11 @@
 #include "metatile_behavior.h"
 #include "overworld.h"
 #include "random.h"
+#include "safari_contest.h"
 #include "script.h"
 #include "sprite.h"
 #include "sound.h"
+#include "task.h"
 #include "wild_encounter.h"
 
 
@@ -84,6 +86,7 @@ void FollowMon_OverworldCB(void)
                     MapGridGetElevationAt(x, y)
                 );
 
+                sFollowMonData.list[spawnSlot].objectEventId = objectEventId;
                 gObjectEvents[objectEventId].disableCoveringGroundEffects = TRUE;
                 gObjectEvents[objectEventId].range.rangeX = 8;
                 gObjectEvents[objectEventId].range.rangeY = 8;
@@ -103,7 +106,7 @@ void FollowMon_OverworldCB(void)
                 }
 
                 // Slower replacement spawning
-                sFollowMonData.spawnCountdown = 60 * (3 + Random() % 2);
+                sFollowMonData.spawnCountdown = 10 * (3 + Random() % 2);
             }
         }
     }
@@ -159,13 +162,18 @@ void FollowMon_OverworldCB(void)
 
 static u8 NextSpawnMonSlot(void)
 {
-    u8 slot;
+    u32 slot;
 
-    slot = sFollowMonData.usedSlots;
+    for(slot = 0; slot < FOLLOWMON_MAX_SPAWN_SLOTS; slot++)
+    {
+        if(sFollowMonData.list[slot].encounterIndex == 0)
+            break;
+    }
 
     // All mon slots are in use
     if(slot == FOLLOWMON_MAX_SPAWN_SLOTS)
     {
+        return INVALID_SPAWN_SLOT;
         // Cycle through so we remove the oldest mon first
         sFollowMonData.oldestSlot = (sFollowMonData.oldestSlot + 1) % FOLLOWMON_MAX_SPAWN_SLOTS;
         slot = sFollowMonData.oldestSlot;   
@@ -274,17 +282,30 @@ static bool8 TrySelectTile(s16* outX, s16* outY)
     return FALSE;
 }
 
+bool8 GetEncounterInDirection(struct ObjectEvent *objectEvent, u8 direction)
+{
+    s16 x = objectEvent->currentCoords.x;
+    s16 y = objectEvent->currentCoords.y;
+    MoveCoords(direction, &x, &y);
+    u32 tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+    return MetatileBehavior_IsLandWildEncounter(tileBehavior);
+}
+
 void CreateFollowMonEncounter(void) {
     struct ObjectEvent *curObject;
     u8 lastTalkedId = VarGet(VAR_LAST_TALKED);
     u8 objEventId = GetObjectEventIdByLocalIdAndMap(lastTalkedId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
 
+    gSpecialVar_Result = 0;
     if(objEventId < OBJECT_EVENTS_COUNT)
     {
             curObject = &gObjectEvents[objEventId];
             if(!FollowMon_IsMonObject(curObject))
                return;
     } else 
+        return;
+
+    if (curObject->sEncounterIndex == 0)
         return;
 
     const struct WildPokemonInfo *wildMonInfo;
@@ -314,9 +335,97 @@ void CreateFollowMonEncounter(void) {
         0
     );
     SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &shiny);
+    gSpecialVar_Result = 1;
 }
 
+#define tTimer      data[0]
+#define tObjectId   data[1]
 
+static void Task_RemoveFollowMonAfterTimer(u8 taskId)
+{
+    gTasks[taskId].tTimer--;
+    if (gTasks[taskId].tTimer == 0)
+    {
+        struct ObjectEvent *followMon = &gObjectEvents[gTasks[taskId].tObjectId];
+        if (!IsSEPlaying())
+            PlaySE(SE_FLEE);
+        MovementAction_FollowMonSpawn(FOLLOWMON_SPAWN_ANIM_GRASS, followMon);
+        RemoveObjectEvent(followMon);
+        DestroyTask(taskId);
+    }
+}
+
+static void FollowmonHasSpottedPlayer(struct ObjectEvent *followMon, u32 objectId)
+{
+    if (followMon->movementType == MOVEMENT_TYPE_SPOT_PLAYER)
+        return;
+    SetTrainerMovementType(followMon, MOVEMENT_TYPE_SPOT_PLAYER);
+    u32 taskId = CreateTask(Task_RemoveFollowMonAfterTimer, 1);
+    gTasks[taskId].tTimer = 30;
+    gTasks[taskId].tObjectId = objectId;
+}
+
+static bool32 IsBehindFollowmon(s32 x_diff, s32 y_diff, struct ObjectEvent *followMon)
+{
+    DebugPrintf("%d %d %d", followMon->facingDirection, x_diff, y_diff);
+    switch (followMon->facingDirection)
+    {
+        case DIR_NORTH:
+            if (y_diff <= 0)
+                return TRUE;
+            break;
+        case DIR_SOUTH:
+            if (y_diff >= 0)
+                return TRUE;
+            break;
+        case DIR_WEST:
+            if (x_diff <= 0)
+                return TRUE;
+            break;
+        case DIR_EAST:
+            if (x_diff >= 0)
+                return TRUE;
+            break;
+    }
+    return FALSE;
+}
+
+void ScareCloseFollowmon(struct ObjectEvent *objEvent)
+{
+    struct ObjectEvent *followMon;
+    u32 species;
+    s32 x = objEvent->currentCoords.x;
+    s32 y = objEvent->currentCoords.y;
+    s32 x_diff, y_diff;
+    for(u32 i = 0; i < OBJECT_EVENTS_COUNT; ++i)
+    {
+        if(!IS_FOLLOWMON_GFXID(gObjectEvents[i].graphicsId))
+            continue;
+        followMon = &gObjectEvents[i];
+        species = GetFollowMonSpecies(&sFollowMonData.list[followMon->graphicsId - OBJ_EVENT_GFX_FOLLOW_MON_FIRST]);
+        x_diff = followMon->currentCoords.x - x;
+        y_diff = followMon->currentCoords.y - y;
+        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_DASH)
+        {
+            if (abs(x_diff) + abs(y_diff) <= 5)
+                FollowmonHasSpottedPlayer(followMon, i);
+        }
+        else if (IsOverworldMonShy(species))
+        {
+            if (abs(x_diff) + abs(y_diff) > 5)
+                continue;
+            bool32 test = IsBehindFollowmon(x_diff, y_diff, followMon);
+            DebugPrintf("%d %d", gPlayerAvatar.creeping, test);
+            if (gPlayerAvatar.creeping && test)//IsBehindFollowmon(x, y, followMon))
+                continue;
+            //continue;
+            FollowmonHasSpottedPlayer(followMon, i);
+        }
+    }
+}
+
+#undef tTimer
+#undef tObjectId
 
 bool8 FollowMon_ProcessMonInteraction(void)
 {
