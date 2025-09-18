@@ -509,7 +509,7 @@ Route7_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_5:
 # 53 "data/maps/Route7/scripts.pory"
 	.string "Wait…\n"
 	.string "The computer at the lab talked about\l"
-	.string "Voltrbook Town, right?\p"
+	.string "Voltbrook Town, right?\p"
 	.string "Like, one of the places that have an\n"
 	.string "artifact?\p"
 	.string "We need to find it!\p"

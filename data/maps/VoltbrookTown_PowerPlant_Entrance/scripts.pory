@@ -1,1 +1,59 @@
-mapscripts VoltbrookTown_PowerPlant_Entrance_MapScripts {}
+mapscripts VoltbrookTown_PowerPlant_Entrance_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_VOLTBROOK_PLANT_ENTRANCE_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_Entrance_TopLeftClear)
+            
+        }
+        end
+    }
+}
+
+
+script VoltbrookTown_PowerPlant_Entrance_Switch1{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        call(VoltbrookTown_PowerPlant_Entrance_TopLeftClear)
+        setflag(FLAG_VOLTBROOK_PLANT_ENTRANCE_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        call(VoltbrookTown_PowerPlant_Entrance_TopLeftSet)
+        clearflag(FLAG_VOLTBROOK_PLANT_ENTRANCE_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Entrance_TopLeftClear
+{
+        setobjectxyperm(1, 5, 9)
+        setmetatile(2, 7, METATILE_PowerPlant_TopWall, 1)
+        setmetatile(2, 8, METATILE_PowerPlant_BottomWall, 1)
+        setmetatile(2, 9, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+        setmetatile(2, 10, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+        setmetatile(2, 11, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+        setmetatile(2, 12, METATILE_PowerPlant_BackWall, 0)
+        setmetatile(5, 9, METATILE_PowerPlant_ButtonPressed, 0)
+        special(DrawWholeMapView)
+        return
+}
+
+script VoltbrookTown_PowerPlant_Entrance_TopLeftSet
+{
+        setobjectxyperm(1, 5, 11)
+        setmetatile(2, 7, METATILE_PowerPlant_BarrierTopWall, 1)
+        setmetatile(2, 8, METATILE_PowerPlant_BarrierBottomWall, 1)
+        setmetatile(2, 9, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+        setmetatile(2, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+        setmetatile(2, 11, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+        setmetatile(2, 12, METATILE_PowerPlant_BarrierBackWall, 1)
+        setmetatile(5, 9, METATILE_PowerPlant_ButtonUnpressed, 0)
+        special(DrawWholeMapView)
+        return
+}

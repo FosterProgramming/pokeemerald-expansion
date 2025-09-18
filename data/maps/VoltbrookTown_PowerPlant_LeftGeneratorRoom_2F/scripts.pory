@@ -1,0 +1,18 @@
+raw `
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_SetHoleWarp
+	.byte 0
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_OnTransition:
+	copyvar VAR_ICE_STEP_COUNT, 1
+	end
+
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_SetHoleWarp:
+	setstepcallback STEP_CB_CRACKED_FLOOR
+	setholewarp MAP_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM
+	end
+
+`

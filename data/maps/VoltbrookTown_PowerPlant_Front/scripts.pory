@@ -1,1 +1,61 @@
-mapscripts VoltbrookTown_PowerPlant_Front_MapScripts {}
+mapscripts VoltbrookTown_PowerPlant_Front_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_FRONT_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_Front_UnlockDoor)
+        }
+    }
+}
+
+script VoltbrookTown_PowerPlant_Front_Switch
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_FRONT_TRIGGERED)
+        call(VoltbrookTown_PowerPlant_Front_UnlockDoor)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_FRONT_TRIGGERED)
+        call(VoltbrookTown_PowerPlant_Front_LockDoor)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_UnlockDoor
+{
+    setmetatile(12, 4, METATILE_PowerPlant_NormalFloorTopLeftShadow, 0)
+    setmetatile(13, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(14, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(15, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(12, 5, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(13, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(14, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(15, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(14, 7, METATILE_PowerPlant_ButtonPressed, 0)
+    setobjectxyperm(1, 14, 7)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_LockDoor
+{
+    setmetatile(12, 4, METATILE_PowerPlant_BarrierNormalFloorTopLeftShadow, 0)
+    setmetatile(13, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 0)
+    setmetatile(14, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 0)
+    setmetatile(15, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 0)
+    setmetatile(12, 5, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+    setmetatile(13, 5, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    setmetatile(14, 5, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    setmetatile(15, 5, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    setmetatile(14, 7, METATILE_PowerPlant_ButtonUnpressed, 0)
+    setobjectxyperm(1, 6, 12)
+    special(DrawWholeMapView)
+    return
+}

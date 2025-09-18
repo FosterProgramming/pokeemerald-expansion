@@ -51,7 +51,7 @@ mapscripts Route7_MapScripts
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						speakername("Vee")
 						msgbox(format("Wait…\n
-						The computer at the lab talked about Voltrbook Town, right?\p
+						The computer at the lab talked about Voltbrook Town, right?\p
 						Like, one of the places that have an artifact?\p
 						We need to find it!\p
 						But, a Guardian might be there too.\p
@@ -100,7 +100,7 @@ mapscripts Route7_MapScripts
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						speakername("Vee")
 						msgbox(format("Wait…\n
-						The computer at the lab talked about Voltrbook Town, right?\p
+						The computer at the lab talked about Voltbrook Town, right?\p
 						Like, one of the places that have an artifact?\p
 						We need to find it!\p
 						But, a Guardian might be there too.\p
@@ -149,7 +149,7 @@ mapscripts Route7_MapScripts
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						speakername("Vee")
 						msgbox(format("Wait…\n
-						The computer at the lab talked about Voltrbook Town, right?\p
+						The computer at the lab talked about Voltbrook Town, right?\p
 						Like, one of the places that have an artifact?\p
 						We need to find it!\p
 						But, a Guardian might be there too.\p

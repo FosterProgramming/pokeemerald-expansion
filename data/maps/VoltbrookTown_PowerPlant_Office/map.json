@@ -17,7 +17,41 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 0,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 0,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 10,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_ROCK_DROP_BOTTOM",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 11,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_ROCK_DROP_BOTTOM",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 19,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_UNDERGROUND_TUNNEL",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

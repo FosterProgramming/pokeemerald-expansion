@@ -1,0 +1,119 @@
+{
+  "id": "MAP_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM",
+  "name": "VoltrbookTown_PowerPlant_LeftGeneratorRoom",
+  "layout": "LAYOUT_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_1A"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 9,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_10"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 19,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_1A"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 13,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_BARREL_ROOM",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 25,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_FRONT",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 25,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_FRONT",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 2,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM_2F",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_1",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1",
+      "script": "VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch1"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_2",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2",
+      "script": "VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch2"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_3",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3",
+      "script": "VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch3"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

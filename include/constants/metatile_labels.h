@@ -480,8 +480,41 @@
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
 
 // gTileset_PowerPlant
-#define METATILE_PowerPlant_ButtonOff  0x268
-#define METATILE_PowerPlant_ButtonOn   0x260
+#define METATILE_PowerPlant_BackWall                            0x204
+#define METATILE_PowerPlant_BackWallTile                        0x201
+#define METATILE_PowerPlant_BarrierBackWall                     0x23C
+#define METATILE_PowerPlant_BarrierBackWallTile                 0x239
+#define METATILE_PowerPlant_BarrierBottomWall                   0x226
+#define METATILE_PowerPlant_BarrierNormalFloorNoShadow          0x232
+#define METATILE_PowerPlant_BarrierNormalFloorTopLeftShadow     0x2BE
+#define METATILE_PowerPlant_BarrierNormalFloorTopShadow         0x231
+#define METATILE_PowerPlant_BarrierTileFloorNoShadow            0x230
+#define METATILE_PowerPlant_BarrierTileFloorTopShadow           0x233
+#define METATILE_PowerPlant_BarrierTopWall                      0x20C
+#define METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow  0x2B9
+#define METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow    0x2B8
+#define METATILE_PowerPlant_BottomWall                          0x21C
+#define METATILE_PowerPlant_ButtonPressed                       0x268
+#define METATILE_PowerPlant_ButtonUnpressed                     0x260
+#define METATILE_PowerPlant_CrackedFloor                        0x299
+#define METATILE_PowerPlant_CrackedFloorHole                    0x29A
+#define METATILE_PowerPlant_CrackedFloorHoleShadow              0x2AC
+#define METATILE_PowerPlant_CrackedFloorShadow                  0x2AB
+#define METATILE_PowerPlant_NormalFloorLeftShadow               0x22C
+#define METATILE_PowerPlant_NormalFloorNoShadow                 0x224
+#define METATILE_PowerPlant_NormalFloorTopLeftShadow            0x22B
+#define METATILE_PowerPlant_NormalFloorTopShadow                0x225
+#define METATILE_PowerPlant_RugBottomLeft                       0x2AE
+#define METATILE_PowerPlant_RugBottomRight                      0x2AF
+#define METATILE_PowerPlant_RugTopLeft                          0x2A6
+#define METATILE_PowerPlant_RugTopRight                         0x2A7
+#define METATILE_PowerPlant_TileFloorNoShadow                   0x206
+#define METATILE_PowerPlant_TileFloorTopShadow                  0x207
+#define METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow     0x2B1
+#define METATILE_PowerPlant_TopBarrierNormalFloorNoShadow       0x2B0
+#define METATILE_PowerPlant_TopBarrierNormalFloorTopShadow      0x2BF
+#define METATILE_PowerPlant_TopWall                             0x21D
+#define METATILE_PowerPlant_Vent                                0x258
 
 // gTileset_Pyroden
 #define METATILE_Pyroden_Door_BottomLeft              0x22B

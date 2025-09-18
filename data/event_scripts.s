@@ -1358,3 +1358,21 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/VoltbrookTown_PowerPlant_Office/scripts.inc"
 
 	.include "data/maps/VoltbrookTown_PowerPlant_Front/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.inc"
+
+	.include "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_RockMaze_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_RockDrop_Bottom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_RockDrop_Top/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Entrance_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.inc"

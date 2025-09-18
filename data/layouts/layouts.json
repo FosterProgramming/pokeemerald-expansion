@@ -5400,6 +5400,96 @@
       "secondary_tileset": "gTileset_PowerPlant",
       "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front/border.bin",
       "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_BARREL_ROOM",
+      "name": "VoltbrookTown_PowerPlant_BarrelRoom_Layout",
+      "width": 20,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_BarrelRoom/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_BarrelRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM",
+      "name": "VoltrbookTown_PowerPlant_LeftGeneratorRoom_Layout",
+      "width": 28,
+      "height": 22,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltrbookTown_PowerPlant_LeftGeneratorRoom/border.bin",
+      "blockdata_filepath": "data/layouts/VoltrbookTown_PowerPlant_LeftGeneratorRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM_2F",
+      "name": "VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_Layout",
+      "width": 28,
+      "height": 22,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ROCK_MAZE_2F",
+      "name": "VoltbrookTown_PowerPlant_RockMaze_2F_Layout",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_RockMaze_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_RockMaze_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_ROCK_DROP_BOTTOM",
+      "name": "VoltbrookTown_RockDrop_Bottom_Layout",
+      "width": 20,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_RockDrop_Bottom/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_RockDrop_Bottom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_ROCK_DROP_TOP",
+      "name": "VoltbrookTown_RockDrop_Top_Layout",
+      "width": 20,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_RockDrop_Top/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_RockDrop_Top/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE_2F",
+      "name": "VoltbrookTown_PowerPlant_Entrance_2F_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_FRONT_2F",
+      "name": "VoltbrookTown_PowerPlant_Front_2F_Layout",
+      "width": 27,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_UNDERGROUND_TUNNEL",
+      "name": "VoltbrookTown_PowerPlant_Underground_Tunnel_Layout",
+      "width": 23,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Underground_Tunnel/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Underground_Tunnel/map.bin"
     }
   ]
 }

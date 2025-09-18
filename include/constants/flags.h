@@ -520,8 +520,8 @@
 #define FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_4                    0x1DF // Unused Flag
 #define FLAG_CLOCK_ROOM_1                   0x1E0 // Unused Flag
 #define FLAG_CLOCK_ROOM_2                    0x1E1 // Unused Flag
-#define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
-#define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
+#define FLAG_VOLTBROOK_PLANT_ENTRANCE_TRIGGERED                    0x1E2 // Unused Flag
+#define FLAG_VOLTBROOK_PLANT_BARREL_ROOM_LEFT_TRIGGERED                    0x1E3 // Unused Flag
 
 // Mystery Gift Flags (Unknown)
 #define FLAG_MYSTERY_GIFT_DONE               0x1E4
@@ -661,21 +661,21 @@
 #define FLAG_SYS_EVOFLUX_TRANSFORM_COMPLETE  0x266 // Unused Flag
 #define FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_4  0x267 // Unused Flag
 #define FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_5  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
+#define FLAG_VOLTBROOK_PLANT_BARREL_ROOM_BOTTOM_TRIGGERED  0x269 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED  0x26A // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED  0x26B // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_3_TRIGGERED  0x26C // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_DROPPED_BOULDER_2F  0x26D // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_DROPPED_BOULDER_1F  0x26E // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_FRONT_TRIGGERED  0x26F // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_1_TRIGGERED  0x270 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_2_TRIGGERED  0x271 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_3_TRIGGERED  0x272 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_4_TRIGGERED  0x273 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_5_TRIGGERED  0x274 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_6_TRIGGERED  0x275 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED  0x276 // Unused Flag
+#define FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED  0x277 // Unused Flag
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
