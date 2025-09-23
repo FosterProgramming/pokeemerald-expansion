@@ -482,8 +482,10 @@
 // gTileset_PowerPlant
 #define METATILE_PowerPlant_BackWall                            0x204
 #define METATILE_PowerPlant_BackWallTile                        0x201
+#define METATILE_PowerPlant_BackWallTopRight                    0x39A
 #define METATILE_PowerPlant_BarrierBackWall                     0x23C
 #define METATILE_PowerPlant_BarrierBackWallTile                 0x239
+#define METATILE_PowerPlant_BarrierBackWallTopRight             0x39B
 #define METATILE_PowerPlant_BarrierBottomWall                   0x226
 #define METATILE_PowerPlant_BarrierNormalFloorNoShadow          0x232
 #define METATILE_PowerPlant_BarrierNormalFloorTopLeftShadow     0x2BE

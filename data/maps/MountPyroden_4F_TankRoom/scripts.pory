@@ -267,7 +267,9 @@ mapscripts MountPyroden_4F_TankRoom_MapScripts {
             ))
             speakername("Vee")
             msgbox(format(
-                "So, I think, that…\p
+                "And the Electivire we defeated…\n
+                He said something about being human, too!\p
+                So, I think, that…\p
                 All Guardians might turn out to be transformed humans!"
             ))
             speakername("Fro")

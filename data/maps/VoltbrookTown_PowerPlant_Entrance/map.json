@@ -39,6 +39,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
       "flag": "FLAG_TEMP_10"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
+      "x": 9,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
     }
   ],
   "warp_events": [
@@ -108,6 +121,24 @@
       "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_1",
       "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1",
       "script": "VoltbrookTown_PowerPlant_Entrance_Switch1"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_2",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2",
+      "script": "VoltbrookTown_PowerPlant_Entrance_Switch2"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_VOLTBROOK_PLANT_STATE",
+      "var_value": "0",
+      "script": "VoltbrookTown_PowerPlant_Entrance_Vee"
     }
   ],
   "bg_events": [

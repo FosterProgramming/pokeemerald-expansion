@@ -364,7 +364,7 @@ script VoltbrookTown_PowerPlant_Front_2F_Switch8
     }
     else{
         call(VoltbrookTown_PowerPlant_Front_2F_LockAllRight)
-        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED)
         playse(SE_CLICK)
         
     }
@@ -388,7 +388,7 @@ script VoltbrookTown_PowerPlant_Front_2F_UnlockAllRight
 
 script VoltbrookTown_PowerPlant_Front_2F_LockAllRight
 {
-    setmetatile(23, 10, METATILE_PowerPlant_ButtonPressed, 0)
+    setmetatile(23, 10, METATILE_PowerPlant_ButtonUnpressed, 0)
     setobjectxyperm(5, 22, 10)
     call(VoltbrookTown_PowerPlant_Front_2F_DoorRight1Lock)
     call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Lock)
@@ -456,7 +456,7 @@ script VoltbrookTown_PowerPlant_Front_2F_Switch7
     }
     else{
         call(VoltbrookTown_PowerPlant_Front_2F_LockAllLeft)
-        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED)
         playse(SE_CLICK)
         
     }

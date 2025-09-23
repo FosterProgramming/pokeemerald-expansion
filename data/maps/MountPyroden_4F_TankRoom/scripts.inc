@@ -274,49 +274,49 @@ MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 	speakername MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
 # 269 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	msgbox MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_35
-# 273 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 275 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	speakername MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
-# 274 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 276 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	msgbox MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_36
-# 278 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 280 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	speakername MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0
-# 279 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 281 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	msgbox MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_37
-# 283 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 285 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	speakername MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
-# 284 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 286 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	msgbox MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_38
-# 290 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 292 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	speakername MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_6
-# 291 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 293 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	msgbox MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_39
-# 294 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 296 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	speakername MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
-# 295 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 297 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	msgbox MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_40
-# 302 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 304 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	closemessage
-# 303 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 305 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	applymovement LOCALID_FRO, MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_14
-# 306 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 308 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	applymovement OBJ_EVENT_ID_CAMERA, MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_13
-# 307 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 309 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	applymovement LOCALID_VEE, MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_13
-# 310 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 312 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	applymovement LOCALID_DOM, MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_15
-# 314 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	waitmovement LOCALID_DOM
-# 315 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	removeobject LOCALID_DOM
 # 316 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	removeobject LOCALID_FRO
+	waitmovement LOCALID_DOM
 # 317 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	removeobject LOCALID_VEE
+	removeobject LOCALID_DOM
 # 318 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	special RemoveCameraObject
+	removeobject LOCALID_FRO
 # 319 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	setvar VAR_PYRODEN_LAST_ROOM_STATE, 6
+	removeobject LOCALID_VEE
 # 320 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+	special RemoveCameraObject
+# 321 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+	setvar VAR_PYRODEN_LAST_ROOM_STATE, 6
+# 322 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	release
 	end
 
@@ -469,17 +469,17 @@ MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_13:
 	walk_down
 	step_end
 
-# 303 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 305 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_14:
-# 304 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 306 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	walk_left
 	step_end
 
-# 310 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_15:
-# 311 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
-	walk_down
 # 312 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_15:
+# 313 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+	walk_down
+# 314 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	walk_left
 	step_end
 
@@ -679,24 +679,27 @@ MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_34:
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_35:
 # 270 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+	.string "And the Electivire we defeated…\n"
+	.string "He said something about being human,\l"
+	.string "too!\p"
 	.string "So, I think, that…\p"
 	.string "All Guardians might turn out to be\n"
 	.string "transformed humans!$"
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_36:
-# 275 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 277 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	.string "That's definitely possible.\n"
 	.string "Good job, Vee.$"
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_37:
-# 280 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 282 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	.string "Tee hee.\p"
 	.string "Are you starting to believe in the story\n"
 	.string "of the Guardians and the Artifacts,\l"
 	.string "now?$"
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_38:
-# 285 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 287 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	.string "Hmm…\p"
 	.string "I'm still not entirely convinced that\n"
 	.string "the Artifacts will turn me and Seel back\l"
@@ -707,12 +710,12 @@ MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_38:
 	.string "locations.$"
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_39:
-# 292 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 294 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	.string "I heard rumors of something happening\n"
 	.string "in Stratoscape.$"
 
 MountPyroden_4F_TankRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_40:
-# 296 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
+# 298 "data/maps/MountPyroden_4F_TankRoom/scripts.pory"
 	.string "Stratoscape…\p"
 	.string "Yes, I think Vee and Seel mentioned\n"
 	.string "that there's supposed to be a Guardian\l"

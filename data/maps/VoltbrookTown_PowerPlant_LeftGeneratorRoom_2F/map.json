@@ -72,7 +72,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_BOULDER_SWITCH_OBJECT_ID_1",
+      "var_value": "VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1",
+      "script": "VoltbrookTown_PowerPlant_Generator_2F_Switch1"
+    }
   ],
   "bg_events": [
 

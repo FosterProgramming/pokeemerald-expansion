@@ -88,7 +88,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorRight1Lock_2:
 # 59 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 15, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 60 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 15, 6, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 15, 6, METATILE_PowerPlant_BarrierBackWall, 1
 	goto VoltbrookTown_PowerPlant_Front_2F_DoorRight1Lock_1
 
 
@@ -161,7 +161,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Lock_2:
 # 110 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 10, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 111 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 10, 6, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 10, 6, METATILE_PowerPlant_BarrierBackWall, 1
 	goto VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Lock_1
 
 
@@ -364,7 +364,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorRight2Lock_2:
 # 252 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 20, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 253 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 20, 6, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 20, 6, METATILE_PowerPlant_BarrierBackWall, 1
 	goto VoltbrookTown_PowerPlant_Front_2F_DoorRight2Lock_1
 
 
@@ -471,7 +471,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Lock_2:
 # 325 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 5, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 326 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 5, 11, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 5, 11, METATILE_PowerPlant_BarrierBackWall, 1
 	goto VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Lock_1
 
 
@@ -518,7 +518,7 @@ VoltbrookTown_PowerPlant_Front_2F_Switch8::
 # 366 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	call VoltbrookTown_PowerPlant_Front_2F_LockAllRight
 # 367 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setflag FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED
+	clearflag FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED
 # 368 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	playse SE_CLICK
 VoltbrookTown_PowerPlant_Front_2F_Switch8_1:
@@ -558,7 +558,7 @@ VoltbrookTown_PowerPlant_Front_2F_UnlockAllRight::
 
 VoltbrookTown_PowerPlant_Front_2F_LockAllRight::
 # 391 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 23, 10, METATILE_PowerPlant_ButtonPressed, 0
+	setmetatile 23, 10, METATILE_PowerPlant_ButtonUnpressed, 0
 # 392 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setobjectxyperm 5, 22, 10
 # 393 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
@@ -602,7 +602,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight1Lock::
 # 418 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 15, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 419 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 15, 11, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 15, 11, METATILE_PowerPlant_BarrierBackWall, 1
 # 420 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	special DrawWholeMapView
 	return
@@ -634,7 +634,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight2Lock::
 # 441 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 20, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 442 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 20, 11, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 20, 11, METATILE_PowerPlant_BarrierBackWall, 1
 # 443 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	special DrawWholeMapView
 	return
@@ -649,7 +649,7 @@ VoltbrookTown_PowerPlant_Front_2F_Switch7::
 # 458 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	call VoltbrookTown_PowerPlant_Front_2F_LockAllLeft
 # 459 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setflag FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED
+	clearflag FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED
 # 460 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	playse SE_CLICK
 VoltbrookTown_PowerPlant_Front_2F_Switch7_1:
@@ -733,7 +733,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorLeft2Lock::
 # 511 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 5, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 512 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 5, 6, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 5, 6, METATILE_PowerPlant_BarrierBackWall, 1
 # 513 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	special DrawWholeMapView
 	return
@@ -765,7 +765,7 @@ VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft1Lock::
 # 533 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	setmetatile 10, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1
 # 534 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
-	setmetatile 10, 11, METATILE_PowerPlant_BarrierBackWall, 0
+	setmetatile 10, 11, METATILE_PowerPlant_BarrierBackWall, 1
 # 535 "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.pory"
 	special DrawWholeMapView
 	return

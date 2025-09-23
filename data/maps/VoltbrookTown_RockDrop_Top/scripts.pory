@@ -1,1 +1,46 @@
-mapscripts VoltbrookTown_RockDrop_Top_MapScripts {}
+raw `
+VoltbrookTown_RockDrop_Top_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
+    map_script MAP_SCRIPT_ON_LOAD, VoltbrookTown_RockDrop_Top_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, VoltbrookTown_RockDrop_Top_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, VoltbrookTown_RockDrop_Top_SetHoleWarp
+	.byte 0
+
+VoltbrookTown_RockDrop_Top_OnTransition:
+	copyvar VAR_ICE_STEP_COUNT, 1
+	end
+
+VoltbrookTown_RockDrop_Top_OnLoad:
+    call_if_set FLAG_VOLTBROOK_DROP_BOULDER, VoltbrookTown_RockDrop_Top_ReplaceFloor
+    end
+
+VoltbrookTown_RockDrop_Top_ReplaceFloor:
+    setmetatile 9, 6, METATILE_PowerPlant_CrackedFloor, 0
+
+VoltbrookTown_RockDrop_Top_SetHoleWarp:
+	setstepcallback STEP_CB_CRACKED_FLOOR
+	setholewarp MAP_VOLTBROOK_TOWN_ROCK_DROP_BOTTOM
+	end
+
+`
+
+script VoltbrookTown_RockDrop_Top_FakeFloor
+{
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        lockall
+        delay(64)
+        setmetatile(9, 6, METATILE_PowerPlant_CrackedFloorHole, 0)
+        special(DrawWholeMapView)
+        delay(16)
+	    removeobject(1)
+        setflag(FLAG_VOLTBROOK_DROP_BOULDER)
+	    playse(SE_FALL)
+	    delay(32)
+        playse(SE_M_STRENGTH)
+        delay(16)
+        releaseall
+        end
+
+    }
+
+}

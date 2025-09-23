@@ -185,6 +185,13 @@ script MountPyrooden_FinalRoom_EventScript_Fire3
         "It doesn't matter!\p
         Those who stand against Team MAGA will be incinerated!"
     ))
+    speakername("Vee")
+    msgbox(format(
+        "Seel! Fro!\n
+        I'm still a bit scared, but…\p
+        I've done it before, and I can do it again!\p
+        Let's beat up this guy, team!"
+    ))
     speakername("Narrator")
     msgbox(format("Please pretend that you're looking at a fierce battle against the Magmortar, with our heroes coming out victorious."))
     speakername("Magmortar")
@@ -228,10 +235,12 @@ script MountPyrooden_FinalRoom_EventScript_Fire3
     waitmovement(0)
     speakername("Vee")
     msgbox(format(
-        "Look, {PLAYER}!\n
+        "We did it, we did it!\n
+        That makes two!\p
+        And look, {PLAYER}!\n
         That Magmortar dropped something!\p
         It looks like…\n
-        It's one of the artifacts!\p
+        It's one of the Artifacts!\p
         {PLAYER}, grab it!"
     ))
     closemessage
@@ -244,7 +253,7 @@ script MountPyrooden_FinalRoom_EventScript_Fire3
     ))
     waitmovement(OBJ_EVENT_ID_PLAYER)
     removeobject(LOCALID_BALL)
-    playfanfare(MUS_OBTAIN_ITEM)
+    playfanfare(MUS_OBTAIN_BADGE)
     msgbox(format("You obtained the {COLOR RED}second Artifact{COLOR DARK_GRAY}!"))
     waitfanfare
     speakername("Dom")
@@ -409,11 +418,9 @@ script MountPyrooden_FinalRoom_EventScript_Fire3
     ))
     speakername("Fro")
     msgbox(format(
-        "Please don't."
-    ))
-    speakername("Vee")
-    msgbox(format(
-        "Do you and Seel know each other?"
+        "Please don't.\p
+        I can see why Seel never introduced you to me.\p
+        Do you really know each other?"
     ))
     closemessage
     applymovement(LOCALID_DOM, moves(
