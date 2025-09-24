@@ -144,30 +144,34 @@ VoltbrookTown_PowerPlant_Office_GateClear::
 # 95 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
 	setmetatile 19, 6, METATILE_PowerPlant_NormalFloorNoShadow, 0
 # 96 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	setmetatile 8, 4, METATILE_PowerPlant_ButtonPressed, 0
+# 97 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
 	special DrawWholeMapView
 	return
 
 
 VoltbrookTown_PowerPlant_Office_GateSet::
-# 102 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setobjectxyperm 1, 14, 5
 # 103 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 16, 5, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0
+	setobjectxyperm 1, 14, 5
 # 104 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 17, 5, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0
+	setmetatile 16, 5, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0
 # 105 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 18, 5, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0
+	setmetatile 17, 5, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0
 # 106 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 19, 5, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0
+	setmetatile 18, 5, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0
 # 107 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 16, 6, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1
+	setmetatile 19, 5, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0
 # 108 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 17, 6, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1
+	setmetatile 16, 6, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1
 # 109 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 18, 6, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1
+	setmetatile 17, 6, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1
 # 110 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
-	setmetatile 19, 6, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1
+	setmetatile 18, 6, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1
 # 111 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	setmetatile 19, 6, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1
+# 112 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	setmetatile 8, 4, METATILE_PowerPlant_ButtonUnpressed, 0
+# 113 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
 	special DrawWholeMapView
 	return
 

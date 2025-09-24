@@ -558,6 +558,7 @@ script VoltbrookTown_PowerPlant_Underground_Tunnel_Event
         You will have the power to transform back into a human.")
     )
     removeobject(LOCALID_BALL)
+    setflag(FLAG_HIDE_VOLTBROOK_ARTIFACT)
     playfanfare(MUS_OBTAIN_BADGE)
     msgbox(format("You obtained the {COLOR RED}first Artifact{COLOR DARK_GRAY}!"))
     waitfanfare

@@ -171,7 +171,7 @@ VoltbrookTown_PowerPlant_Entrance_BottomRightClear::
 # 118 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
 	setmetatile 12, 13, METATILE_PowerPlant_NormalFloorLeftShadow, 0
 # 119 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
-	setmetatile 12, 14, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1
+	setmetatile 12, 14, METATILE_PowerPlant_NormalFloorLeftShadow, 0
 # 120 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
 	special DrawWholeMapView
 	return
@@ -181,7 +181,7 @@ VoltbrookTown_PowerPlant_Entrance_BottomRightSet::
 # 126 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
 	setmetatile 12, 13, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0
 # 127 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
-	setmetatile 12, 14, METATILE_PowerPlant_NormalFloorLeftShadow, 0
+	setmetatile 12, 14, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1
 # 128 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
 	special DrawWholeMapView
 	return

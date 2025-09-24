@@ -489,7 +489,7 @@ script AfterBattle_Test
 							speakername("Vee")
 							msgbox(format(
 								"Yeah!\n
-								We gotta find the eight artifacts!\p
+								We gotta find the eight Artifacts!\p
 								There should be one in Voltbrook Town, actually!"
 							))
 							speakername("Fro")

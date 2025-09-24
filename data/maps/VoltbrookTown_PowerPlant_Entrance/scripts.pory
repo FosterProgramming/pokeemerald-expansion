@@ -116,7 +116,7 @@ script VoltbrookTown_PowerPlant_Entrance_TopRightSet
 script VoltbrookTown_PowerPlant_Entrance_BottomRightClear
 {
         setmetatile(12, 13, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
-        setmetatile(12, 14, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+        setmetatile(12, 14, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
         special(DrawWholeMapView)
         return
 }
@@ -124,7 +124,7 @@ script VoltbrookTown_PowerPlant_Entrance_BottomRightClear
 script VoltbrookTown_PowerPlant_Entrance_BottomRightSet
 {
         setmetatile(12, 13, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0)
-        setmetatile(12, 14, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+        setmetatile(12, 14, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
         special(DrawWholeMapView)
         return
 }

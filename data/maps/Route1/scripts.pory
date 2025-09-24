@@ -343,12 +343,13 @@ script Route1_EventScript_GruntBlocking_Continues
 	speakername("Fro")
 	msgbox(format(
 		"Well.\p
-		I am…\n
-		Gathering ingredients."
+		There's been an incident.\n
+		But it's under control, now."
 	))
 	speakername("Grunt 2")
 	msgbox(format(
-		"The Boss didn't say you were gonna pass through here."
+		"And you're not helping out?\p
+		Besides, the Boss didn't tell us that you were gonna pass through."
 	))
 	speakername("Fro")
 	msgbox(format(
