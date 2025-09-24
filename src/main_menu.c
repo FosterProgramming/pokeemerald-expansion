@@ -1733,6 +1733,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
+            NewGameBirchSpeech_ClearWindow(0);
             return;
         }
         if (gSaveBlock2Ptr->playerGender != MALE)
