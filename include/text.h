@@ -22,6 +22,7 @@ enum {
     FONT_SMALL_NARROWER,
     FONT_SHORT_NARROW,
     FONT_SHORT_NARROWER,
+    FONT_NORMAL_FRLG,
 };
 
 // Return values for font functions
@@ -177,5 +178,8 @@ u32 GetGlyphWidth_Braille(u16 glyphId, bool32 isJapanese);
 u32 GetFontIdToFit(const u8 *string, u32 widestFontId, u32 letterSpacing, u32 widthPx);
 u8 *PrependFontIdToFit(u8 *start, u8 *end, u32 fontId, u32 width);
 u8 *WrapFontIdToFit(u8 *start, u8 *end, u32 fontId, u32 width);
+
+void ChangePrinterFont(u32 windowId, u32 fontId);
+void DeactivateTextPrinter(u32 windowId);
 
 #endif // GUARD_TEXT_H

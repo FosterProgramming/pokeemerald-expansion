@@ -37,6 +37,8 @@ static bool8 CheckForObjectEventAtLocation(s16 x, s16 y);
 static bool8 IsInsidePlayerMap(s16 x, s16 y);
 static void GetMapSize(s32 *width, s32 *height);
 
+static void FollowmonHasSpottedPlayer(struct ObjectEvent *followMon, u32 objectId);
+
 #define sEncounterIndex trainerRange_berryTreeId
 
 void LoadFollowMonData(struct ObjectEvent *objectEvent)
@@ -60,6 +62,17 @@ void FollowMon_OverworldCB(void)
         u8 *raw = (u8 *)&sFollowMonData;
         for (u32 i = 0; i < sizeof(struct FollowMonData); i++) {
             raw[i] = 0;
+        }
+        return;
+    }
+
+    if (FlagGet(PHONE_CALL_MSGBOX_FLAG))
+    {
+        for(u32 i = 0; i < OBJECT_EVENTS_COUNT; ++i)
+        {
+            if(!IS_FOLLOWMON_GFXID(gObjectEvents[i].graphicsId))
+                continue;
+            FollowmonHasSpottedPlayer(&gObjectEvents[i], i);
         }
         return;
     }

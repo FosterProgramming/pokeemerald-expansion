@@ -106,6 +106,7 @@ static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
     { FONT_SMALL_NARROWER, GetGlyphWidth_SmallNarrower },
     { FONT_SHORT_NARROW,   GetGlyphWidth_ShortNarrow },
     { FONT_SHORT_NARROWER, GetGlyphWidth_ShortNarrower },
+    { FONT_NORMAL_FRLG,    GetGlyphWidth_Normal },
 };
 
 struct
@@ -274,6 +275,16 @@ static const struct FontInfo sFontInfos[] =
         .bgColor = 1,
         .shadowColor = 3,
     },
+    [FONT_NORMAL_FRLG] = {
+        .fontFunction = FontFunc_Normal,
+        .maxLetterWidth = 6,
+        .maxLetterHeight = 16,
+        .letterSpacing = 0,
+        .lineSpacing = 0,
+        .fgColor = 2,
+        .bgColor = 1,
+        .shadowColor = 3,
+    },
 };
 
 static const u8 sMenuCursorDimensions[][2] =
@@ -292,6 +303,7 @@ static const u8 sMenuCursorDimensions[][2] =
     [FONT_SMALL_NARROWER] = { 8,   8 },
     [FONT_SHORT_NARROW]   = { 8,  14 },
     [FONT_SHORT_NARROWER] = { 8,  14 },
+    [FONT_NORMAL_FRLG]    = { 8,  15 },
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCBIN_U16("graphics/fonts/bold.hwjpnfont");
@@ -374,6 +386,11 @@ bool32 AddTextPrinter(struct TextPrinterTemplate *printerTemplate, u8 speed, voi
     }
     gDisableTextPrinters = FALSE;
     return TRUE;
+}
+
+void DeactivateTextPrinter(u32 windowId)
+{
+    sTextPrinters[windowId].active = FALSE;
 }
 
 void RunTextPrinters(void)
@@ -2251,6 +2268,7 @@ static const s8 sNarrowerFontIds[] =
     [FONT_SMALL_NARROWER] = -1,
     [FONT_SHORT_NARROW] = FONT_SHORT_NARROWER,
     [FONT_SHORT_NARROWER] = -1,
+    [FONT_NORMAL_FRLG] = -1,
 };
 
 // If the narrowest font ID doesn't fit the text, we still return that
@@ -2303,4 +2321,9 @@ u8 *WrapFontIdToFit(u8 *start, u8 *end, u32 fontId, u32 width)
     {
         return end;
     }
+}
+
+void ChangePrinterFont(u32 windowId, u32 fontId)
+{
+    sTextPrinters[windowId].printerTemplate.fontId = fontId;
 }
