@@ -55,7 +55,7 @@ static void Task_DrawFieldMessage(u8 taskId)
         case 2:
             if (RunTextPrintersAndIsPrinter0Active() != TRUE)
             {
-                if (FlagGet(PHONE_CALL_MSGBOX_FLAG))
+                if (FlagGet(PHONE_CALL_MSGBOX_FLAG) && !FlagGet(RECEIVING_ITEMS_FLAG))
                      ScriptContext_SetupScript(GetPhoneCallScript());
                 else
                     gFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;

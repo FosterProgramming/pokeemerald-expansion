@@ -29,6 +29,8 @@ struct SafariSpeciesData
 #define NO_MORE_IDLE_ACTION_CLUES (1 << 7)
 #define SAFARI_CONTEST_DURATION (60 * 60 * 5)
 
+#define ANY_BERRY 0xFFFF
+
 extern u8 gCatchChance;
 extern u8 gFleeChance;
 extern u8 gExcludedIdleActions;
@@ -53,4 +55,5 @@ void SafariContest_SetMoves(void);
 void SafariContest_EnterSafariMode(void);
 void SafariContestTimerUpdate(void);
 
+bool32 SafariContestTakeStep(void);
 #endif // GUARD_BATTLE_H

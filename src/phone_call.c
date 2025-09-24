@@ -19,7 +19,34 @@ const u8 *GetPhoneCallScript(void)
     switch (gPhoneCallIndex)
     {
     case 0:
-        script = AnswerPhone;
+        script = ProfessorFirstCall;
+        break;
+    case 1:
+        script =  EndPhoneCall;
+        break;
+    case 2:
+        script = ProfessorExplainsSneaking;
+        break;
+    case 3:
+        script =  EndPhoneCall;
+        break;
+    case 4:
+        script = ProfessorExplainsBerries;
+        break;
+    case 5:
+        script =  ReceiveBerries;
+        break;
+    case 6:
+        script = ProfessorExplainsTms;
+        break;
+    case 7:
+        script =  ReceiveTms;
+        break;
+    case 8:
+        script =  SafariEnd;
+        break;
+    case 9:
+        script =  RollCredits;
         break;
     default:
         script = EndPhoneCall;

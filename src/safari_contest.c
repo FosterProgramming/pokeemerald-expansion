@@ -10,6 +10,8 @@
 #include "event_data.h"
 #include "followmon.h"
 #include "item_menu.h"
+#include "phone_call.h"
+#include "pokedex.h"
 #include "pokemon.h"
 #include "random.h"
 #include "safari_contest.h"
@@ -74,45 +76,52 @@ static const struct SafariSpeciesData sSafariSpeciesData[] =
 {
     [INDEX_SPECIES_ODDISH] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = FALSE,
             .overworldShyFlag = FALSE
         },
     [INDEX_SPECIES_GIRAFARIG] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = FALSE,
             .overworldShyFlag = TRUE
         },
     [INDEX_SPECIES_NATU] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = TRUE,
-            .overworldShyFlag = FALSE
+            .overworldShyFlag = FALSE,
+            .favoriteBerry = ITEM_LUM_BERRY
         },
     [INDEX_SPECIES_DODUO] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = TRUE,
-            .overworldShyFlag = TRUE
+            .overworldShyFlag = TRUE,
+            .favoriteBerry = ITEM_ASPEAR_BERRY
         },
     [INDEX_SPECIES_GLOOM] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = TRUE,
-            .overworldShyFlag = FALSE
+            .overworldShyFlag = FALSE,
+            .favoriteBerry = ITEM_LEPPA_BERRY
         },
     [INDEX_SPECIES_WOBBUFFET] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = TRUE,
-            .overworldShyFlag = FALSE
+            .overworldShyFlag = FALSE,
+            .favoriteBerry = ANY_BERRY,
+            .favoriteMove = MOVE_PSYCHIC_TERRAIN
         },
     [INDEX_SPECIES_PIKACHU] =
         {
-            .initialCatchRate = 128,
+            .initialCatchRate = 255,
             .escapeBattleFlag = TRUE,
-            .overworldShyFlag = TRUE
+            .overworldShyFlag = TRUE,
+            .favoriteBerry = ITEM_ASPEAR_BERRY,
+            .favoriteMove = MOVE_ELECTRIC_TERRAIN
         },
 };
 
@@ -490,6 +499,49 @@ void PokemonEscapeAttempt(void)
 
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
+}
+
+static bool32 RandomCallOnStep(void)
+{
+    u16 random = Random() & 0xFF;
+    if (random < 25)
+        return TRUE;
+    return FALSE;
+}
+
+static bool32 IsCaught(u16 species)
+{
+    return (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT));
+}
+
+bool32 SafariContestTakeStep(void)
+{
+    if (!GetSafariZoneFlag() || FlagGet(PHONE_CALL_MSGBOX_FLAG))
+        return FALSE;
+    switch (gPhoneCallIndex)
+    {
+    case 0:
+        if (RandomCallOnStep())
+            return TRUE;
+        break;
+    case 2:
+        if (RandomCallOnStep() && IsCaught(SPECIES_ODDISH))
+            return TRUE;
+        break;
+    case 4:
+        if (RandomCallOnStep() && IsCaught(SPECIES_GIRAFARIG))
+            return TRUE;
+        break;
+    case 6:
+        if (RandomCallOnStep() && IsCaught(SPECIES_NATU) && IsCaught(SPECIES_DODUO) && IsCaught(SPECIES_GLOOM))
+            return TRUE;
+        break;
+    case 8:
+        if (RandomCallOnStep() && IsCaught(SPECIES_WOBBUFFET) && IsCaught(SPECIES_PIKACHU))
+            return TRUE;
+        break;
+    }
+    return FALSE;
 }
 
 /*
