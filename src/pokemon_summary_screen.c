@@ -52,6 +52,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "terrain_moves.h"
+
 // Screen titles (upper left)
 #define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE 0
 #define PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE 1
@@ -2705,7 +2707,8 @@ static void Task_HandleInputCantForgetHMsMoves(u8 taskId)
 
 u8 GetMoveSlotToReplace(void)
 {
-    return sMoveSlotToReplace;
+    //return sMoveSlotToReplace;
+    return 3;
 }
 
 static void DrawPagination(void) // Updates the pagination dots at the top of the summary screen
@@ -4346,7 +4349,9 @@ static void SetMoveTypeIcons(void)
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     for (i = 0; i < 4; i++)
     {
-        if (summary->moves[i] != MOVE_NONE)
+        if (IsTerrainMove(summary->moves[i]))
+            SetTypeSpritePosAndPal(TYPE_MYSTERY, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+        else if (summary->moves[i] != MOVE_NONE)
             SetTypeSpritePosAndPal(NUMBER_OF_MON_TYPES + GetMoveContestCategory(summary->moves[i]), 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
@@ -4359,7 +4364,9 @@ static void SetContestMoveTypeIcons(void)
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     for (i = 4; i < MAX_MON_MOVES; i++)
     {
-        if (summary->moves[i] != MOVE_NONE)
+        if (IsTerrainMove(summary->moves[i]))
+            SetTypeSpritePosAndPal(TYPE_MYSTERY, 85, -32 + (i * 16), (i - 4) + SPRITE_ARR_ID_TYPE);
+        else if (summary->moves[i] != MOVE_NONE)
             SetTypeSpritePosAndPal(NUMBER_OF_MON_TYPES + GetMoveContestCategory(summary->moves[i]), 85, -32 + (i * 16), (i - 4) + SPRITE_ARR_ID_TYPE);
         else
             SetSpriteInvisibility(i - 4 + SPRITE_ARR_ID_TYPE, TRUE);

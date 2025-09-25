@@ -1336,6 +1336,7 @@ static bool32 HandleEndTurnTerrain(u32 battler)
 
     gBattleStruct->endTurnEventsCounter++;
 
+    /*
     if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
         effect = EndTurnTerrain(STATUS_FIELD_ELECTRIC_TERRAIN, B_MSG_TERRAIN_END_ELECTRIC);
     else if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
@@ -1344,6 +1345,7 @@ static bool32 HandleEndTurnTerrain(u32 battler)
         effect = EndTurnTerrain(STATUS_FIELD_GRASSY_TERRAIN, B_MSG_TERRAIN_END_GRASSY);
     else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
         effect = EndTurnTerrain(STATUS_FIELD_PSYCHIC_TERRAIN, B_MSG_TERRAIN_END_PSYCHIC);
+    */
 
     return effect;
 }

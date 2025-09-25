@@ -53,6 +53,8 @@
     F(SNATCH) \
     F(OVERHEAT) \
     F(WATER_PULSE) \
+    F(FOCUS_PUNCH) \
+    F(DRAGON_CLAW)
 
 #define FOREACH_HM(F) \
     F(CUT) \

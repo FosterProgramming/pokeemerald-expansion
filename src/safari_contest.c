@@ -19,6 +19,7 @@
 #include "script_pokemon_util.h"
 #include "sound.h"
 #include "string_util.h"
+#include "terrain_moves.h"
 #include "text.h"
 #include "window.h"
 
@@ -76,40 +77,40 @@ static const struct SafariSpeciesData sSafariSpeciesData[] =
 {
     [INDEX_SPECIES_ODDISH] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 180,
             .escapeBattleFlag = FALSE,
             .overworldShyFlag = FALSE
         },
     [INDEX_SPECIES_GIRAFARIG] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 170,
             .escapeBattleFlag = FALSE,
             .overworldShyFlag = TRUE
         },
     [INDEX_SPECIES_NATU] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 128,
             .escapeBattleFlag = TRUE,
             .overworldShyFlag = FALSE,
             .favoriteBerry = ITEM_LUM_BERRY
         },
     [INDEX_SPECIES_DODUO] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 128,
             .escapeBattleFlag = TRUE,
             .overworldShyFlag = TRUE,
             .favoriteBerry = ITEM_ASPEAR_BERRY
         },
     [INDEX_SPECIES_GLOOM] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 128,
             .escapeBattleFlag = TRUE,
             .overworldShyFlag = FALSE,
             .favoriteBerry = ITEM_LEPPA_BERRY
         },
     [INDEX_SPECIES_WOBBUFFET] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 80,
             .escapeBattleFlag = TRUE,
             .overworldShyFlag = FALSE,
             .favoriteBerry = ANY_BERRY,
@@ -117,7 +118,7 @@ static const struct SafariSpeciesData sSafariSpeciesData[] =
         },
     [INDEX_SPECIES_PIKACHU] =
         {
-            .initialCatchRate = 255,
+            .initialCatchRate = 80,
             .escapeBattleFlag = TRUE,
             .overworldShyFlag = TRUE,
             .favoriteBerry = ITEM_ASPEAR_BERRY,
@@ -244,7 +245,10 @@ static u32 CountPossibleIdleActions(void)
 
 static u32 ChooseIdleAction_Easy(void)
 {
-    return RandomUniform(RNG_NONE, 0, 4);
+    u32 rand = RandomUniform(RNG_NONE, 0, 3);
+    if (rand == 2)
+        rand += 1;
+    return rand;
 }
 
 static u32 ChooseIdleAction_Hard(void)
@@ -356,6 +360,13 @@ static s8 GetContestMoveResult_Easy(void)
     return sEasyContestTable[gSpecialVar_ContestCategory][contestType];
 }
 
+static bool32 IsFavoriteTerrainActive(struct Pokemon *mon)
+{
+    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    u32 move = sSafariSpeciesData[species].favoriteMove;
+    return (IsTerrainEffectActive(move));
+}
+
 void UpdateCaptureChance(void)
 {
     NATIVE_ARGS();
@@ -370,16 +381,17 @@ void UpdateCaptureChance(void)
     switch (move_result) 
     {
         case NEGATIVE_CONTEST_MOVE_RESULT:
-            change = -30;
+            change = -20;
             break;
         case NEUTRAL_CONTEST_MOVE_RESULT:
-            change = 50;
+            change = 20;
             break;
         case POSITIVE_CONTEST_MOVE_RESULT:
-            change = 200;
+            change = 65;
             break;
     }
-
+    if (change > 0 && IsFavoriteTerrainActive(&gEnemyParty[0]))
+        change *= 2;
     ModifyCatchChance(change);
     gBattleCommunication[MULTISTRING_CHOOSER] = move_result;
     gBattleScripting.animArg1 = B_ANIM_NEGATIVE_CONTEST_MOVE + move_result;
@@ -387,12 +399,20 @@ void UpdateCaptureChance(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+static u32 GetFavoriteBerry(struct Pokemon *mon)
+{
+    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    return sSafariSpeciesData[species].favoriteBerry;
+}
+
 void UpdateBerryEffect(void)
 {
     NATIVE_ARGS();
 
+    u32 favoriteBerry = GetFavoriteBerry(&gEnemyParty[0]);
     u32 berryId = gBattleScripting.throwBerryState + FIRST_BERRY_INDEX - 1;
-    if (berryId)
+
+    if (berryId == favoriteBerry || favoriteBerry == ANY_BERRY)
     {
         ModifyCatchChance(20);
         gBattlerTarget = 1;

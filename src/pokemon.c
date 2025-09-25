@@ -1826,7 +1826,7 @@ u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
 u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
 {
     s32 i;
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (i = 0; i < 4; i++)
     {
         u16 existingMove = GetBoxMonData(boxMon, MON_DATA_MOVE1 + i, NULL);
         if (existingMove == MOVE_NONE)

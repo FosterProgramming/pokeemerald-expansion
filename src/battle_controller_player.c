@@ -50,6 +50,7 @@
 
 #include "contest_effect.h"
 #include "battle_scripts.h"
+#include "terrain_moves.h"
 
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
@@ -162,6 +163,13 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
     [CONTROLLER_INTROBERRYTHROW]          = PlayerHandleIntroBerryThrow,
     [CONTROLLER_TERMINATOR_NOP]           = BtlController_TerminatorNop
 };
+
+static const u8 *GetBattleMoveName(u32 moveId)
+{
+    if (IsTerrainMove(moveId))
+        return GetMoveName(MOVE_NONE);
+    return GetMoveName(moveId);
+}
 
 void SetControllerToPlayer(u32 battler)
 {
@@ -1643,9 +1651,9 @@ static void MoveSelectionDisplayMoveNames(u32 battler)
     {
         MoveSelectionDestroyCursorAt(i);
         if (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
-            StringCopy(gDisplayedStringBattle, GetMoveName(GetMaxMove(battler, moveInfo->moves[i])));
+            StringCopy(gDisplayedStringBattle, GetBattleMoveName(GetMaxMove(battler, moveInfo->moves[i])));
         else
-            StringCopy(gDisplayedStringBattle, GetMoveName(moveInfo->moves[i]));
+            StringCopy(gDisplayedStringBattle, GetBattleMoveName(moveInfo->moves[i]));
         // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
         BattlePutTextOnWindow(gDisplayedStringBattle, i + B_WIN_MOVE_NAME_1);
         if (moveInfo->moves[i] != MOVE_NONE)
@@ -1656,7 +1664,8 @@ static void MoveSelectionDisplayMoveNames(u32 battler)
         if (moveInfo->moves[i] != MOVE_NONE)
             gNumberOfMovesToChoose++;
     }
-    DrawPageArrowDown();
+    if (gNumberOfMovesToChoose > 4)
+        DrawPageArrowDown();
 }
 
 static void MoveSelectionDisplayMoveNamesExtra(u32 battler)
@@ -1668,13 +1677,13 @@ static void MoveSelectionDisplayMoveNamesExtra(u32 battler)
     {
         MoveSelectionDestroyCursorAt(i);
         if (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
-            StringCopy(gDisplayedStringBattle, GetMoveName(GetMaxMove(battler, moveInfo->moves[i])));
+            StringCopy(gDisplayedStringBattle, GetBattleMoveName(GetMaxMove(battler, moveInfo->moves[i])));
         else
-            StringCopy(gDisplayedStringBattle, GetMoveName(moveInfo->moves[i]));
+            StringCopy(gDisplayedStringBattle, GetBattleMoveName(moveInfo->moves[i]));
         // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
         BattlePutTextOnWindow(gDisplayedStringBattle, i - 4 + B_WIN_MOVE_NAME_1);
     }
-    StringCopy(gDisplayedStringBattle, GetMoveName(MOVE_NONE));
+    StringCopy(gDisplayedStringBattle, GetBattleMoveName(MOVE_NONE));
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_NAME_3);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_NAME_4);
 
@@ -2063,7 +2072,7 @@ static void PlayerHandleChooseAction(u32 battler)
     {
         StringCopy(gStringVar1, COMPOUND_STRING("Partner will use:\n"));
         u32 move = gBattleMons[B_POSITION_PLAYER_RIGHT].moves[gBattleStruct->chosenMovePositions[B_POSITION_PLAYER_RIGHT]];
-        StringAppend(gStringVar1, GetMoveName(move));
+        StringAppend(gStringVar1, GetBattleMoveName(move));
         u32 moveTarget = GetBattlerMoveTargetType(B_POSITION_PLAYER_RIGHT, move);
         if (moveTarget == MOVE_TARGET_SELECTED)
         {

@@ -78,6 +78,7 @@
 #include "cable_club.h"
 
 #include "safari_contest.h"
+#include "terrain_moves.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -3913,6 +3914,18 @@ static void TryDoEventsBeforeFirstTurn(void)
         break;
     case FIRST_TURN_EVENTS_IDLE_ACTION:
         //BattleScriptPushCursorAndCallback(BattleScript_DoIdleActionEnd3);
+         gBattleStruct->terrainDone = FALSE;
+        gBattleStruct->eventsBeforeFirstTurnState++;
+        break;
+    case FIRST_TURN_TERRAIN_ACTION:
+        //BattleScriptPushCursorAndCallback(BattleScript_DoIdleActionEnd3);
+        gBattlerAttacker = 0;
+        u32 move = GetMonTerrainMove(&gPlayerParty[0]);
+        if (move)
+        {
+            gCurrentMove = gChosenMove = move;
+            BattleScriptExecute(GetMoveBattleScript(move));
+        }
         gBattleStruct->eventsBeforeFirstTurnState++;
         break;
     case FIRST_TURN_EVENTS_END:

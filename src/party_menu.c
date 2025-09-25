@@ -2237,8 +2237,10 @@ static u8 CanTeachMove(struct Pokemon *mon, u16 move)
 {
     if (GetMonData(mon, MON_DATA_IS_EGG))
         return CANNOT_LEARN_MOVE_IS_EGG;
-    else if (!CanLearnTeachableMove(GetMonData(mon, MON_DATA_SPECIES_OR_EGG), move))
-        return CANNOT_LEARN_MOVE;
+    //else if (!CanLearnTeachableMove(GetMonData(mon, MON_DATA_SPECIES_OR_EGG), move))
+    //    return CANNOT_LEARN_MOVE;
+    else if (move == MOVE_NONE)
+        return CAN_LEARN_MOVE;
     else if (MonKnowsMove(mon, move) == TRUE)
         return ALREADY_KNOWS_MOVE;
     else
@@ -5433,10 +5435,15 @@ void ItemUseCB_TMHM(u8 taskId, TaskFunc task)
     {
         gTasks[taskId].func = Task_LearnedMove;
     }
+    else if (move == MOVE_NONE)
+    {
+        gTasks[taskId].data[15] = TRUE;
+        gTasks[taskId].func = DisplayPartyMenuForgotMoveMessage;
+    }
     else
     {
-        DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
-        gTasks[taskId].func = Task_ReplaceMoveYesNo;
+        //DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
+        gTasks[taskId].func = Task_ReturnToPartyMenuWhileLearningMove;
     }
 }
 
@@ -5554,7 +5561,10 @@ static void DisplayPartyMenuForgotMoveMessage(u8 taskId)
 
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, GetMoveName(move));
-    DisplayLearnMoveMessage(gText_12PoofForgotMove);
+    if (gTasks[taskId].data[15])
+        DisplayLearnMoveMessage(gText_12PoofForgotMove);
+    else
+        DisplayLearnMoveMessage(gText_12PoofForgotMove);
     gTasks[taskId].func = Task_PartyMenuReplaceMove;
 }
 
@@ -5566,6 +5576,12 @@ static void Task_PartyMenuReplaceMove(u8 taskId)
     if (IsPartyMenuTextPrinterActive() != TRUE)
     {
         mon = &gPlayerParty[gPartyMenu.slotId];
+        if (gTasks[taskId].data[15])
+        {
+            SetMonMoveSlot(mon, MOVE_NONE, 3);
+            gTasks[taskId].func = Task_ClosePartyMenu;
+            return;
+        }
         RemoveMonPPBonus(mon, GetMoveSlotToReplace());
         move = gPartyMenu.data1;
         SetMonMoveSlot(mon, move, GetMoveSlotToReplace());
