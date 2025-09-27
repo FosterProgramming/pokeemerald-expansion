@@ -3760,8 +3760,12 @@ static void DoBattleIntro(void)
         break;
     case BATTLE_INTRO_THROW_BERRY:
         battler = GetBattlerAtPosition(0);
-        BtlController_EmitIntroBerryThrow(battler, B_COMM_TO_CONTROLLER);
-        MarkBattlerForControllerExec(battler);
+        if (PlayerHasBerries())
+        {
+            BtlController_EmitIntroBerryThrow(battler, B_COMM_TO_CONTROLLER);
+            MarkBattlerForControllerExec(battler);
+        }
+
         gBattleStruct->introState++;
         break;
     case BATTLE_INTRO_BERRY_WAIT:

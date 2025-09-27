@@ -2018,6 +2018,7 @@ static bool32 CanAbilityTrapOpponent(u16 ability, u32 opponent)
         return FALSE;
     else if (ability == ABILITY_SHADOW_TAG)
     {
+        return FALSE;
         if (B_SHADOW_TAG_ESCAPE >= GEN_4 && gAiLogicData->abilities[opponent] == ABILITY_SHADOW_TAG) // Check if ability exists in species
             return FALSE;
         else

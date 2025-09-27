@@ -1537,17 +1537,15 @@ static bool32 HandleEndTurnContest(u32 battler)
         struct Pokemon *mon;
         mon = &gEnemyParty[0];
         u32 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
-        if (!CanPokemonRunFromBattle(species))
-            return FALSE;
-        gFleeChance += 43;
-        if (gFleeChance > 128)
-            gFleeChance = 128;
+        DebugPrintf("berry timer %d", gBerryTimer);
         if (gBerryTimer > 0)
             gBerryTimer--;
         else
         {
             u32 rand = Random() & 0xFF;
-            if (rand <= gFleeChance)
+            u32 flee = GetPokemonFleeChance(species);
+            DebugPrintf("fleeChance %d %d", rand, flee);
+            if (rand <= flee)
             {
                 BattleScriptExecute(BattleScript_IsTryingToEscape);
                 MarkBattlerForControllerExec(battler);

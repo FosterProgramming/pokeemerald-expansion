@@ -10955,9 +10955,9 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("TM02"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "\n"
-            "\n"
-            ""),
+            "Teaches a pokemon\n"
+            "to set terrain when\n"
+            "entering the field."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -10969,9 +10969,9 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("TM03"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "\n"
-            "\n"
-            ""),
+            "Teaches a pokemon\n"
+            "to set terrain when\n"
+            "entering the field."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

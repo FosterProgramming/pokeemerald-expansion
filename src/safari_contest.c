@@ -28,7 +28,6 @@
 #include "constants/songs.h"
 
 EWRAM_DATA u8 gCatchChance = 0;
-EWRAM_DATA u8 gFleeChance = 0;
 EWRAM_DATA u8 gExcludedIdleActions = 0;
 EWRAM_DATA u8 gBerryTimer = 0;
 EWRAM_DATA u32 gSafariTimer = 0;
@@ -77,49 +76,51 @@ static const struct SafariSpeciesData sSafariSpeciesData[] =
 {
     [INDEX_SPECIES_ODDISH] =
         {
-            .initialCatchRate = 180,
-            .escapeBattleFlag = FALSE,
+            .catchRateMultiplier = 5,
+            .initialBerryTimer = 5,
+            .fleeChance = 25,
             .overworldShyFlag = FALSE
         },
     [INDEX_SPECIES_GIRAFARIG] =
         {
-            .initialCatchRate = 170,
-            .escapeBattleFlag = FALSE,
+            .catchRateMultiplier = 3,
+            .initialBerryTimer = 4,
+            .fleeChance = 55,
             .overworldShyFlag = TRUE
         },
     [INDEX_SPECIES_NATU] =
         {
-            .initialCatchRate = 128,
-            .escapeBattleFlag = TRUE,
+            .catchRateMultiplier = 3,
+            .fleeChance = 128,
             .overworldShyFlag = FALSE,
             .favoriteBerry = ITEM_LUM_BERRY
         },
     [INDEX_SPECIES_DODUO] =
         {
-            .initialCatchRate = 128,
-            .escapeBattleFlag = TRUE,
+            .catchRateMultiplier = 3,
+            .fleeChance = 180,
             .overworldShyFlag = TRUE,
             .favoriteBerry = ITEM_ASPEAR_BERRY
         },
     [INDEX_SPECIES_GLOOM] =
         {
-            .initialCatchRate = 128,
-            .escapeBattleFlag = TRUE,
+            .catchRateMultiplier = 3,
+            .fleeChance = 128,
             .overworldShyFlag = FALSE,
             .favoriteBerry = ITEM_LEPPA_BERRY
         },
     [INDEX_SPECIES_WOBBUFFET] =
         {
-            .initialCatchRate = 80,
-            .escapeBattleFlag = TRUE,
+            .catchRateMultiplier = 1,
+            .fleeChance = 205,
             .overworldShyFlag = FALSE,
             .favoriteBerry = ANY_BERRY,
             .favoriteMove = MOVE_PSYCHIC_TERRAIN
         },
     [INDEX_SPECIES_PIKACHU] =
         {
-            .initialCatchRate = 80,
-            .escapeBattleFlag = TRUE,
+            .catchRateMultiplier = 1,
+            .fleeChance = 255,
             .overworldShyFlag = TRUE,
             .favoriteBerry = ITEM_ASPEAR_BERRY,
             .favoriteMove = MOVE_ELECTRIC_TERRAIN
@@ -149,14 +150,32 @@ bool32 IsOverworldMonShy(u32 species)
     return ADDITIONAL_DATA(species).overworldShyFlag;
 }
 
-bool32 CanPokemonRunFromBattle(u32 species)
+u32 GetPokemonFleeChance(u32 species)
 {
-    return ADDITIONAL_DATA(species).escapeBattleFlag;
+    return ADDITIONAL_DATA(species).fleeChance;
 }
 
-static u32 GetInitialCatchRate(u32 species)
+static u32 GetInitialBerryTimer(u32 species)
 {
-    return ADDITIONAL_DATA(species).initialCatchRate;
+    return ADDITIONAL_DATA(species).initialBerryTimer;
+}
+
+static u32 GetcatchRateMultiplier(u32 species)
+{
+    return ADDITIONAL_DATA(species).catchRateMultiplier;
+}
+
+static u32 GetFavoriteBerry(struct Pokemon *mon)
+{
+    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    return ADDITIONAL_DATA(species).favoriteBerry;
+}
+
+static bool32 IsFavoriteTerrainActive(struct Pokemon *mon)
+{
+    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    u32 move = ADDITIONAL_DATA(species).favoriteMove;
+    return (IsTerrainEffectActive(move));
 }
 
 #undef ADDITIONAL_DATA
@@ -295,12 +314,8 @@ void InitSafariContest(void)
     mon = &gEnemyParty[0];
 
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
-    gCatchChance = GetInitialCatchRate(species);
-    u32 rngChance = RandomUniform(RNG_NONE, 0, gCatchChance / 5);
-    if (gCatchChance + rngChance > 255)
-        rngChance = 255 - gCatchChance;
-    gCatchChance += rngChance;
-    gFleeChance = 0;
+    gCatchChance = 0;
+    gBerryTimer = GetInitialBerryTimer(species);
     if (gSaveBlock2Ptr->optionsDifficulty)
         gSpecialVar_ContestCategory = RandomUniform(RNG_NONE, 0, CONTEST_CATEGORIES_COUNT - 1);
     else
@@ -313,9 +328,9 @@ void InitSafariContest(void)
 static void ModifyCatchChance(s32 change)
 {
     if (change >= 0)
-        change += RandomUniform(RNG_NONE, 0, change / 5);
+        change += RandomUniform(RNG_NONE, 0, change / 10);
     else
-        change -= RandomUniform(RNG_NONE, 0, -change / 5);
+        change -= RandomUniform(RNG_NONE, 0, -change / 10);
     if (gCatchChance + change > 255)
         change = 255 - gCatchChance;
     else if (gCatchChance + change < 0)
@@ -360,13 +375,6 @@ static s8 GetContestMoveResult_Easy(void)
     return sEasyContestTable[gSpecialVar_ContestCategory][contestType];
 }
 
-static bool32 IsFavoriteTerrainActive(struct Pokemon *mon)
-{
-    u32 species = GetMonData(mon, MON_DATA_SPECIES);
-    u32 move = sSafariSpeciesData[species].favoriteMove;
-    return (IsTerrainEffectActive(move));
-}
-
 void UpdateCaptureChance(void)
 {
     NATIVE_ARGS();
@@ -384,25 +392,21 @@ void UpdateCaptureChance(void)
             change = -20;
             break;
         case NEUTRAL_CONTEST_MOVE_RESULT:
-            change = 20;
+            change = 10;
             break;
         case POSITIVE_CONTEST_MOVE_RESULT:
-            change = 65;
+            change = 50;
             break;
     }
+    u32 species = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
+    change *= GetcatchRateMultiplier(species);
     if (change > 0 && IsFavoriteTerrainActive(&gEnemyParty[0]))
-        change *= 2;
+        change *= 3;
     ModifyCatchChance(change);
     gBattleCommunication[MULTISTRING_CHOOSER] = move_result;
     gBattleScripting.animArg1 = B_ANIM_NEGATIVE_CONTEST_MOVE + move_result;
     gBattlerTarget = 1;
     gBattlescriptCurrInstr = cmd->nextInstr;
-}
-
-static u32 GetFavoriteBerry(struct Pokemon *mon)
-{
-    u32 species = GetMonData(mon, MON_DATA_SPECIES);
-    return sSafariSpeciesData[species].favoriteBerry;
 }
 
 void UpdateBerryEffect(void)
@@ -411,15 +415,17 @@ void UpdateBerryEffect(void)
 
     u32 favoriteBerry = GetFavoriteBerry(&gEnemyParty[0]);
     u32 berryId = gBattleScripting.throwBerryState + FIRST_BERRY_INDEX - 1;
+    DebugPrintf("%d %d", berryId, favoriteBerry);
 
     if (berryId == favoriteBerry || favoriteBerry == ANY_BERRY)
     {
         ModifyCatchChance(20);
         gBattlerTarget = 1;
         gBattlescriptCurrInstr = BattleScript_PokemonLovesBerry;
-        gBerryTimer = 3;
+        gBerryTimer += 2;
     } else {
-        gBerryTimer = 1;
+        gBerryTimer += 1;
+        gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
 

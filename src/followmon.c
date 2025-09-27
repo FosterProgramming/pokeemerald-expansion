@@ -380,7 +380,6 @@ static void FollowmonHasSpottedPlayer(struct ObjectEvent *followMon, u32 objectI
 
 static bool32 IsBehindFollowmon(s32 x_diff, s32 y_diff, struct ObjectEvent *followMon)
 {
-    DebugPrintf("%d %d %d", followMon->facingDirection, x_diff, y_diff);
     switch (followMon->facingDirection)
     {
         case DIR_NORTH:
@@ -428,7 +427,6 @@ void ScareCloseFollowmon(struct ObjectEvent *objEvent)
             if (abs(x_diff) + abs(y_diff) > 5)
                 continue;
             bool32 test = IsBehindFollowmon(x_diff, y_diff, followMon);
-            DebugPrintf("%d %d", gPlayerAvatar.creeping, test);
             if (gPlayerAvatar.creeping && test)//IsBehindFollowmon(x, y, followMon))
                 continue;
             //continue;
