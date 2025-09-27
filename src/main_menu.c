@@ -1456,7 +1456,7 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway(u8 taskId)
 {
     if (gTasks[taskId].tBG1HOFS != -60)
     {
-        gTasks[taskId].tBG1HOFS -= 20;
+        gTasks[taskId].tBG1HOFS -= 5;
         SetGpuReg(REG_OFFSET_BG1HOFS, gTasks[taskId].tBG1HOFS);
     }
     else
@@ -1666,7 +1666,7 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway2(u8 taskId)
 {
     if (gTasks[taskId].tBG1HOFS)
     {
-        gTasks[taskId].tBG1HOFS += 20;
+        gTasks[taskId].tBG1HOFS += 5;
         SetGpuReg(REG_OFFSET_BG1HOFS, gTasks[taskId].tBG1HOFS);
     }
     else

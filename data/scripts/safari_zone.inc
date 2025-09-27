@@ -170,8 +170,9 @@ SafariZone_South_Text_StillHaveTimeExit:
 	.string "to exit the SAFARI ZONE now?$"
 
 SafariZone_South_Text_EnjoyTheRestOfYourAdventure:
-	.string "Please enjoy the rest of your wild\n"
-	.string "adventure!$"
+	.string "...$"
+	//.string "Please enjoy the rest of your wild\n"
+	//.string "adventure!$"
 
 SafariZone_South_Text_ExitEarlyThankYouForPlaying:
 	.string "Okay.\p"
@@ -191,10 +192,11 @@ SafariZone_South_Text_Boy:
 	.string "POKéMON gather around.$"
 
 SafariZone_South_Text_Man:
-	.string "I want to keep going deeper, but I\n"
-	.string "forgot to bring a BIKE.\p"
-	.string "Something tells me that rare POKéMON\n"
-	.string "live in the outlying areas.$"
+	.string "...$"
+	//.string "I want to keep going deeper, but I\n"
+	//.string "forgot to bring a BIKE.\p"
+	//.string "Something tells me that rare POKéMON\n"
+	//.string "live in the outlying areas.$"
 
 SafariZone_Southwest_Text_Woman:
 	.string "Sometimes, when I toss a {POKEBLOCK} at \n"
@@ -292,3 +294,47 @@ SafariZone_Northeast_Text_Girl:
 	.string "I can't seem to catch anything!\p"
 	.string "I'll end up wasting the admission\n"
 	.string "price if I don't catch something!$"
+
+SafariZone_ExplainsRunning:
+	.string "If you don't like the Pokemon\n"
+	.string "you see. Try scaring them by\l"
+	.string "running around and new Pokemon\l"
+	.string "will appear.$"
+
+SafariZone_ExplainsContestTypes:
+	.string "All Pokemon have different personalities.\n"
+	.string "They may like CUTE, TOUGH\n"
+	.string "or SMART things.\p"
+	.string "I saw a sign that says:\p"
+	.string "'The 3 PKMN personalities are:\n"
+	.string "CUTE + SMART . TOUGH -\l"
+	.string "CUTE - SMART + TOUGH .\l"
+	.string "CUTE . SMART - TOUGH +'\p"
+	.string "But I'm not sure what this means$"
+
+SafariZoneEntrance_ExplainContestTypesSign:
+	.string "The 3 PKMN personalities are:\n"
+	.string "CUTE + SMART . TOUGH -\l"
+	.string "CUTE - SMART + TOUGH .\l"
+	.string "CUTE . SMART - TOUGH +$"
+
+SafariZoneEntrance_Introduction:
+	.string "You are the trainee sent by\n"
+	.string "the professor, right?\p"
+	.string "We were expecting you and\n"
+	.string "have your Safari Balls ready.$"
+
+SafariZoneEntrance_GoodLuck:
+	.string "The professor will call you\n"
+	.string "and give you instructions once\l"
+	.string "you are in the park.\p"
+	.string "We hope everything will go well.\n"
+	.string "Good luck!$"
+
+SafariZoneEntrance_Info:
+	.string "You don't need to stress over\n"
+	.string "things. I'm sure everything will\l"
+	.string "go well.$"
+
+SafariZoneEntrance_Welcome:
+	.string "...$"

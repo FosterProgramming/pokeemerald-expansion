@@ -36,7 +36,7 @@ SafariZone_South_Movement_ExitAttendantBlockDoor:
 	step_end
 
 SafariZone_South_EventScript_Boy::
-	msgbox SafariZone_South_Text_Boy, MSGBOX_NPC
+	msgbox SafariZone_ExplainsRunning, MSGBOX_NPC
 	end
 
 SafariZone_South_EventScript_Man::
@@ -44,15 +44,15 @@ SafariZone_South_EventScript_Man::
 	end
 
 SafariZone_South_EventScript_Youngster::
-	msgbox SafariZone_South_Text_Youngster, MSGBOX_NPC
+	msgbox SafariZone_ExplainsContestTypes, MSGBOX_NPC
 	end
 
 SafariZone_South_EventScript_ExitAttendant::
 	lock
 	faceplayer
-	goto_if_unset FLAG_GOOD_LUCK_SAFARI_ZONE, SafariZone_South_EventScript_GoodLuck
-	msgbox SafariZone_South_Text_StillHaveTimeExit, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, SafariZone_South_EventScript_ExitEarly
+	//goto_if_unset FLAG_GOOD_LUCK_SAFARI_ZONE, SafariZone_South_EventScript_GoodLuck
+	//msgbox SafariZone_South_Text_StillHaveTimeExit, MSGBOX_YESNO
+	//goto_if_eq VAR_RESULT, YES, SafariZone_South_EventScript_ExitEarly
 	msgbox SafariZone_South_Text_EnjoyTheRestOfYourAdventure, MSGBOX_DEFAULT
 	release
 	end

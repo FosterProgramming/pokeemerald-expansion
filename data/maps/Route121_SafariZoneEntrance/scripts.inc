@@ -26,15 +26,15 @@ Route121_SafariZoneEntrance_Movement_ExitSafariZone:
 	step_end
 
 Route121_SafariZoneEntrance_EventScript_WelcomeAttendant::
-	msgbox Route121_SafariZoneEntrance_Text_WelcomeToSafariZone, MSGBOX_NPC
+	msgbox SafariZoneEntrance_Welcome, MSGBOX_NPC
 	end
 
 Route121_SafariZoneEntrance_EventScript_InfoAttendant::
 	lock
 	faceplayer
-	msgbox Route121_SafariZoneEntrance_Text_WelcomeFirstTime, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, Route121_SafariZoneEntrance_EventScript_FirstTimeInfo
-	msgbox Route121_SafariZoneEntrance_Text_ComeInAndEnjoy, MSGBOX_DEFAULT
+	msgbox SafariZoneEntrance_Info, MSGBOX_NPC
+	//goto_if_eq VAR_RESULT, YES, Route121_SafariZoneEntrance_EventScript_FirstTimeInfo
+	//msgbox Route121_SafariZoneEntrance_Text_ComeInAndEnjoy, MSGBOX_DEFAULT
 	release
 	end
 
@@ -56,13 +56,13 @@ Route121_SafariZoneEntrance_EventScript_EntranceCounterTrigger::
 	end
 
 Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone::
-	msgbox Route121_SafariZoneEntrance_Text_HereAreYourSafariBalls, MSGBOX_DEFAULT
+	msgbox SafariZoneEntrance_Introduction, MSGBOX_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
 	//message Route121_SafariZoneEntrance_Text_Received30SafariBalls
 	giveitem ITEM_SAFARI_BALL
 	//waitfanfare
-	msgbox Route121_SafariZoneEntrance_Text_PleaseEnjoyYourself, MSGBOX_DEFAULT
-	//closemessage
+	msgbox SafariZoneEntrance_GoodLuck, MSGBOX_DEFAULT
+	closemessage
 	//hidemoneybox
 	applymovement LOCALID_PLAYER, Route121_SafariZoneEntrance_Movement_EnterSafariZone
 	waitmovement 0
@@ -119,6 +119,6 @@ Route121_SafariZoneEntrance_Movement_EnterSafariZone:
 	step_end
 
 Route121_SafariZoneEntrance_EventScript_TrainerTipSign::
-	msgbox Route121_SafariZoneEntrance_Text_TrainerTip, MSGBOX_SIGN
+	msgbox SafariZoneEntrance_ExplainContestTypesSign, MSGBOX_SIGN
 	end
 

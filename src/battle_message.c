@@ -909,6 +909,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNISEATINGBERRY]                    = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is eating the berry."),
     [STRINGID_PKMNLOVESBERRY]                       = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} loves the berry you threw!"),
     [STRINGID_PKMNISTRYINGTOESCAPE]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is fleeing!\n{R_BUTTON} Throw Ball        {B_BUTTON} Ignore"),
+    [STRINGID_PKMNSENTTOPROFESSOR]                  = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} was sent to the professor.")
 };
 
 const u16 gTrainerUsedItemStringIds[] =
