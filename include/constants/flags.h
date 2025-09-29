@@ -45,7 +45,7 @@
 
 #define PHONE_CALL_MSGBOX_FLAG    0x20 // Unused Flag
 #define RECEIVING_ITEMS_FLAG    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
+#define ENDGAME_FLAG         0x22 // Unused Flag
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag

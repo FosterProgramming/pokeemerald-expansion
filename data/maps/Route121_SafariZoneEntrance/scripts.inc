@@ -4,6 +4,7 @@ Route121_SafariZoneEntrance_MapScripts::
 
 Route121_SafariZoneEntrance_OnFrame:
 	map_script_2 VAR_SAFARI_ZONE_STATE, 1, Route121_SafariZoneEntrance_EventScript_ExitSafariZone
+	map_script_2 VAR_SAFARI_ZONE_STATE, 2, SafariZoneEntrance_Endgame
 	.2byte 0
 
 Route121_SafariZoneEntrance_EventScript_ExitSafariZone::
@@ -122,3 +123,58 @@ Route121_SafariZoneEntrance_EventScript_TrainerTipSign::
 	msgbox SafariZoneEntrance_ExplainContestTypesSign, MSGBOX_SIGN
 	end
 
+SafariZoneEntrance_Endgame:
+	applymovement LOCALID_PLAYER, SafariZoneEntrance_Movement_GoToProfessor
+	waitmovement 0
+	applymovement 4, SafariZoneEntrance_ProfessorWalkForward
+	waitmovement 0
+	msgbox SafariZoneEntrance_EndgameSpeech, MSGBOX_DEFAULT
+	applymovement 4, SafariZoneEntrance_ProfessorLeaves
+	fadescreenspeed FADE_TO_BLACK, 8
+	delay 48
+	special GameClear
+	end
+
+SafariZoneEntrance_ProfessorWalkForward:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+SafariZoneEntrance_ProfessorLeaves:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SafariZoneEntrance_Movement_GoToProfessor:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+SafariZoneEntrance_EndgameSpeech:
+	.string "You did great out there, {PLAYER} {PAUSE 30}\p"
+	.string "Most trainers are confused when\n"
+	.string "they have to capture Pokemon in\l"
+	.string "a non-violent way but you dit it\l"
+	.string "with no issue. {PAUSE 10}\p"
+	.string "I don't think our techniques are\n"
+	.string "ready for widespread use yet but I\l"
+	.string "hope one day people will accept new\l"
+	.string "ways to capture Pokemon. {PAUSE 10}\p"
+	.string "I need to go back to my lab to\n"
+	.string "study the specimen you captured. {PAUSE 10}\p"
+	.string "I wish you a good day {PLAYER}.$"

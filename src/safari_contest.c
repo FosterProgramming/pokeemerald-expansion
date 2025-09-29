@@ -32,6 +32,7 @@ EWRAM_DATA u8 gExcludedIdleActions = 0;
 EWRAM_DATA u8 gBerryTimer = 0;
 EWRAM_DATA u32 gSafariTimer = 0;
 EWRAM_DATA u8 gSafariScore = 0;
+static EWRAM_DATA u8 sStepWaiter = 0;
 
 extern const u8 SafariZone_EventScript_TimesUp[];
 
@@ -185,11 +186,13 @@ void SafariContest_NewGameInitData(void)
     FlagSet(FLAG_SYS_B_DASH);
     FlagSet(FLAG_SYS_POKEMON_GET);
     FlagSet(OW_FLAG_SPAWN_OVERWORLD_MON);
+    FlagSet(ENDGAME_FLAG);
     for (u32 i = 0; i < INITIAL_PARTY_SIZE; i++)
         ScriptGiveMon(sInitParty[i], 50, ITEM_NONE);
     u32 abilityNum = 0;
     SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
     SafariContest_SetMoves();
+    sStepWaiter = 2;
 }
 
 void SafariContest_SetMoves(void)
@@ -238,12 +241,7 @@ void SafariContest_EnterSafariMode(void)
 
 void SafariContestTimerUpdate(void)
 {
-    if (!GetSafariZoneFlag() || ArePlayerFieldControlsLocked())
-        return;
-    if (gSafariTimer == 0)
-        ScriptContext_SetupScript(SafariZone_EventScript_TimesUp);
-    else
-        gSafariTimer--;
+    return;
 }
 
 static void ResetIdleActions(void)
@@ -529,9 +527,14 @@ void PokemonEscapeAttempt(void)
 
 static bool32 RandomCallOnStep(void)
 {
-    u16 random = Random() & 0xFF;
-    if (random < 25)
-        return TRUE;
+    if (sStepWaiter > 0)
+        sStepWaiter--;
+    else
+    {
+        u16 random = Random() & 0xFF;
+        if (random < 80)
+            return TRUE;
+    }
     return FALSE;
 }
 
@@ -542,31 +545,48 @@ static bool32 IsCaught(u16 species)
 
 bool32 SafariContestTakeStep(void)
 {
+    u32 rand;
+    u32 caught;
     if (!GetSafariZoneFlag() || FlagGet(PHONE_CALL_MSGBOX_FLAG))
         return FALSE;
     switch (gPhoneCallIndex)
     {
     case 0:
-        if (RandomCallOnStep())
+        rand = RandomCallOnStep();
+        DebugPrintf("new call %d %d", gPhoneCallIndex, rand);
+        if (rand)
             return TRUE;
-        break;
+        return FALSE;
     case 2:
-        if (RandomCallOnStep() && IsCaught(SPECIES_ODDISH))
+        rand = RandomCallOnStep();
+        caught = IsCaught(SPECIES_ODDISH);
+        DebugPrintf("new call %d %d %d", gPhoneCallIndex, rand, caught);
+        if (rand && caught)
             return TRUE;
-        break;
+        return FALSE;
     case 4:
-        if (RandomCallOnStep() && IsCaught(SPECIES_GIRAFARIG))
+        rand = RandomCallOnStep();
+        caught = IsCaught(SPECIES_GIRAFARIG);
+        DebugPrintf("new call %d %d %d", gPhoneCallIndex, rand, caught);
+        if (rand && caught)
             return TRUE;
-        break;
+        return FALSE;
     case 6:
-        if (RandomCallOnStep() && IsCaught(SPECIES_NATU) && IsCaught(SPECIES_DODUO) && IsCaught(SPECIES_GLOOM))
+        rand = RandomCallOnStep();
+        caught = IsCaught(SPECIES_NATU) && IsCaught(SPECIES_DODUO) && IsCaught(SPECIES_GLOOM);
+        DebugPrintf("new call %d %d %d", gPhoneCallIndex, rand, caught);
+        if (rand && caught)
             return TRUE;
-        break;
+        return FALSE;
     case 8:
-        if (RandomCallOnStep() && IsCaught(SPECIES_WOBBUFFET) && IsCaught(SPECIES_PIKACHU))
+        rand = RandomCallOnStep();
+        caught = IsCaught(SPECIES_WOBBUFFET) && IsCaught(SPECIES_PIKACHU);
+        DebugPrintf("new call %d %d %d", gPhoneCallIndex, rand, caught);
+        if (rand && caught)
             return TRUE;
-        break;
+        return FALSE;
     }
+    sStepWaiter = 3;
     return FALSE;
 }
 

@@ -170,7 +170,7 @@ SafariZone_South_Text_StillHaveTimeExit:
 	.string "to exit the SAFARI ZONE now?$"
 
 SafariZone_South_Text_EnjoyTheRestOfYourAdventure:
-	.string "...$"
+	.string "I'm guarding the door.$"
 	//.string "Please enjoy the rest of your wild\n"
 	//.string "adventure!$"
 
@@ -337,4 +337,8 @@ SafariZoneEntrance_Info:
 	.string "go well.$"
 
 SafariZoneEntrance_Welcome:
-	.string "...$"
+	.string "I keep forgetting things, so\n"
+	.string "I take notes to remember.\l"
+	.string "But sometimes, I also forget\l"
+	.string "what the note means. This one \l"
+	.string "just says 'myth'.$"

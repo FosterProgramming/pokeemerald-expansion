@@ -51,6 +51,7 @@ ReceivePhoneCall::
     waitmovement LOCALID_PLAYER
     setflag PHONE_CALL_MSGBOX_FLAG
     callnative Native_ReceivePhoneCall
+    delay 10
     end
 
 ProfessorFirstCall::
@@ -81,7 +82,7 @@ SafariEnd::
 EndPhoneCall::
     //playse SE_POKENAV_OFF
     playse SE_POKENAV_HANG_UP
-    delay 30
+    delay 60
     closemessage
     clearflag PHONE_CALL_MSGBOX_FLAG
     end
@@ -90,7 +91,8 @@ ReceiveBerries::
     //playse SE_POKENAV_OFF
     playse SE_POKENAV_HANG_UP
     setflag RECEIVING_ITEMS_FLAG
-    delay 30
+    delay 60
+    setflag PHONE_CALL_MSGBOX_FLAG
     call GiveBerries
     closemessage
     clearflag RECEIVING_ITEMS_FLAG
@@ -101,7 +103,8 @@ ReceiveTms::
     //playse SE_POKENAV_OFF
     playse SE_POKENAV_HANG_UP
     setflag RECEIVING_ITEMS_FLAG
-    delay 30
+    delay 60
+    setflag PHONE_CALL_MSGBOX_FLAG
     call GiveTms
     closemessage
     clearflag RECEIVING_ITEMS_FLAG
@@ -113,12 +116,16 @@ RollCredits::
     closemessage
     clearflag RECEIVING_ITEMS_FLAG
     clearflag PHONE_CALL_MSGBOX_FLAG
-    special GameClear
+    clearflag ENDGAME_FLAG
+    setvar VAR_SAFARI_ZONE_STATE, 2
+    warp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 0
+    waitstate
+    //special GameClear
     end
 
 FirstCallText:
-    .string "Hey it's the professor\n"
-    .string "Thank you for accepting to go though\l"
+    .string "Hey, it's the professor!\n"
+    .string "Thank you for accepting to go through\l"
     .string "this.\p"
     .string "You may be familiar with Pokemon \n"
     .string "catching, but for our studies, we\l"
@@ -134,7 +141,7 @@ FirstCallText:
     .string "Good luck!$"
 
 ExplainsSneakingText:
-    .string "Hey it's the professor\n"
+    .string "Hey, it's the professor!\n"
     .string "I see you caught an Oddish, good job!\p"
     .string "You may have noticed some Pokemon\n"
     .string "running away when you get close to\l"
@@ -143,30 +150,36 @@ ExplainsSneakingText:
     .string "Don't move if they are looking in your\n"
     .string "direction and use the A button to walk\l"
     .string "slowly towards them so you don't make\l"
-    .string "noise either\p"
+    .string "noise either.\p"
     .string "You should try catching a Girafarig now.$"
 
 ExplainsBerriesText:
-    .string "Hey it's the professor\p"
+    .string "Hey, it's the professor!\p"
     .string "You seem to be good at this. You\n"
     .string "should try to throw berries at \l"
     .string "wild Pokemon. If it's a berry \l"
     .string "they like, you might keep their\l"
     .string "attention longer. I will send you\l"
     .string "some berries. Use them to catch\l"
-    .string "a Doduo, a Natua and a Gloom.$"
+    .string "a Doduo, a Natu and a Gloom.$"
 
 ExplainsTmsText:
-    .string "Hey it's the professor\p"
+    .string "Hey, it's the professor!\p"
     .string "Some pokemon are easier to capture\n"
     .string "if you set up an environment they\l"
     .string "like. I am sending you some TMs\l"
-    .string "to try out.$"
+    .string "to try out but these ones are a bit\l"
+    .string "different from the ones you may be\l"
+    .string "used to.\p"
+    .string "You can't select the attack in battle,\n"
+    .string "instead your pokemon will use it auto-\l"
+    .string "matically. Maybe it can help you with\l"
+    .string "the remaining pokemon here.$"
 
 SafariEndText:
-    .string "Hey it's the professor\p"
-    .string "You caught every pokemon in\n"
-    .string "the safari zone. Congrats!$"
+    .string "Hey, it's the professor!\p"
+    .string "You can leave the park now.\n"
+    .string "I'm waiting for you in the lobby.$"
 
 ShakePlayer:
     shake_horizontal

@@ -223,6 +223,7 @@ BattleScript_ShakeBallThrow::
 	waitmessage B_WAIT_TIME_LONG
 	setbyte gBattleOutcome, B_OUTCOME_NO_SAFARI_BALLS
 BattleScript_ShakeBallThrowEnd::
+	setbyte gBattlerAttacker, 1
 	finishaction
 
 BattleScript_TrainerBallBlock::

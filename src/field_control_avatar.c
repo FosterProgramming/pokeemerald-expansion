@@ -175,6 +175,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
 
+    if (FlagGet(PHONE_CALL_MSGBOX_FLAG))
+        return FALSE;
+
     if (CheckForTrainersWantingBattle() == TRUE)
         return TRUE;
 

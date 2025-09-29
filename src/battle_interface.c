@@ -169,6 +169,37 @@ enum
     HEALTHBOX_GFX_123,
     HEALTHBOX_GFX_FRAME_END,
     HEALTHBOX_GFX_FRAME_END_BAR,
+    HEALTHBOX_GFX_200, //hp bar [black section]
+    HEALTHBOX_GFX_201, //hp bar "H"
+    HEALTHBOX_GFX_202, //hp bar "P"
+    HEALTHBOX_GFX_2HP_BAR_GREEN, //hp bar [0 pixels]
+    HEALTHBOX_GFX_204,  //hp bar [1 pixels]
+    HEALTHBOX_GFX_205,  //hp bar [2 pixels]
+    HEALTHBOX_GFX_206,  //hp bar [3 pixels]
+    HEALTHBOX_GFX_207,  //hp bar [4 pixels]
+    HEALTHBOX_GFX_208,  //hp bar [5 pixels]
+    HEALTHBOX_GFX_209,  //hp bar [6 pixels]
+    HEALTHBOX_GFX_210, //hp bar [7 pixels]
+    HEALTHBOX_GFX_211, //hp bar [8 pixels]
+    HEALTHBOX_GFX_2HP_BAR_YELLOW, //hp bar yellow [0 pixels]
+    HEALTHBOX_GFX_248, //hp bar yellow [1 pixels]
+    HEALTHBOX_GFX_249, //hp bar yellow [2 pixels]
+    HEALTHBOX_GFX_250, //hp bar yellow [3 pixels]
+    HEALTHBOX_GFX_251, //hp bar yellow [4 pixels]
+    HEALTHBOX_GFX_252, //hp bar yellow [5 pixels]
+    HEALTHBOX_GFX_253, //hp bar yellow [6 pixels]
+    HEALTHBOX_GFX_254, //hp bar yellow [7 pixels]
+    HEALTHBOX_GFX_255, //hp bar yellow [8 pixels]
+    HEALTHBOX_GFX_2HP_BAR_RED,  //hp bar red [0 pixels]
+    HEALTHBOX_GFX_257, //hp bar red [1 pixels]
+    HEALTHBOX_GFX_258, //hp bar red [2 pixels]
+    HEALTHBOX_GFX_259, //hp bar red [3 pixels]
+    HEALTHBOX_GFX_260, //hp bar red [4 pixels]
+    HEALTHBOX_GFX_261, //hp bar red [5 pixels]
+    HEALTHBOX_GFX_262, //hp bar red [6 pixels]
+    HEALTHBOX_GFX_263, //hp bar red [7 pixels]
+    HEALTHBOX_GFX_264, //hp bar red [8 pixels]
+    HEALTHBOX_GFX_265, //hp bar frame end
 };
 
 static const u8 *GetHealthboxElementGfxPtr(u8);
@@ -713,7 +744,10 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
     healthBarSpritePtr->subspriteMode = SUBSPRITES_IGNORE_PRIORITY;
     healthBarSpritePtr->oam.priority = 1;
 
-    CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
+    if (IsOnPlayerSide(battler))
+        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
+    else
+        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_201), (void *)(OBJ_VRAM0 + healthBarSpritePtr->oam.tileNum * TILE_SIZE_4BPP), 64);
 
     gSprites[healthboxLeftSpriteId].hMain_HealthBarSpriteId = healthbarSpriteId;
     gSprites[healthboxLeftSpriteId].hMain_Battler = battler;
@@ -1863,7 +1897,12 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
             CpuCopy32(statusGfxPtr, (void *)(OBJ_VRAM0 + (gSprites[healthboxSpriteId].oam.tileNum + tileNumAdder + i) * TILE_SIZE_4BPP), 32);
 
         if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 64);
+        {
+            if (IsOnPlayerSide(battler))
+                CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_1), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 64);
+            else
+                CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_201), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 64);
+        }
 
         TryAddPokeballIconToHealthbox(healthboxSpriteId, TRUE);
         return;
@@ -1879,7 +1918,7 @@ static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
     {
         if (!gBattleSpritesDataPtr->battlerData[battler].hpNumbersNoBars)
         {
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_0), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 32);
+            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_200), (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 32);
             CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_65), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 1) * TILE_SIZE_4BPP), 32);
         }
     }
@@ -2127,7 +2166,9 @@ static void MoveBattleBarGraphically(u8 battler, u8 whichBar)
                             &gBattleSpritesDataPtr->battleBars[battler].currValue,
                             array, B_HEALTHBAR_PIXELS / 8);
 
-        if (filledPixelsCount > (B_HEALTHBAR_PIXELS * 50 / 100)) // more than 50 % hp
+        if (!IsOnPlayerSide(battler))
+            barElementId = HEALTHBOX_GFX_2HP_BAR_YELLOW;
+        else if (filledPixelsCount > (B_HEALTHBAR_PIXELS * 50 / 100)) // more than 50 % hp
             barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
         else if (filledPixelsCount > (B_HEALTHBAR_PIXELS * 20 / 100)) // more than 20% hp
             barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
