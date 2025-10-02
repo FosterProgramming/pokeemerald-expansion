@@ -37,6 +37,7 @@
 #include "wild_encounter.h"
 #include "rtc.h"
 #include "party_menu.h"
+#include "ui_summary_screen.h"
 #include "battle_arena.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -5315,15 +5316,22 @@ static void Cmd_getexp(void)
             if (gBattleResources->bufferB[expBattler][0] == CONTROLLER_TWORETURNVALUES && gBattleResources->bufferB[expBattler][1] == RET_VALUE_LEVELED_UP)
             {
                 u16 temp, battler = 0xFF;
+                u16 gainedSkillPoints = tryToGivePartyMemberExp(&gPlayerParty[*expMonId]);//STRINGID_PKMNGREWTOLV_NO_SKILL
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && gBattlerPartyIndexes[expBattler] == *expMonId)
                     HandleLowHpMusicChange(&gPlayerParty[gBattlerPartyIndexes[expBattler]], expBattler);
 
                 PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, expBattler, *expMonId);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 3, GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL));
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff3, 3, gainedSkillPoints);
 
                 BattleScriptPushCursor();
                 gLeveledUpInBattle |= 1 << *expMonId;
-                gBattlescriptCurrInstr = BattleScript_LevelUp;
+                if(gainedSkillPoints != 0)
+                    gBattlescriptCurrInstr = BattleScript_LevelUp;
+                else
+                    gBattlescriptCurrInstr = BattleScript_LevelUp_NoSkill;
+
+                
                 gBattleStruct->battlerExpReward = T1_READ_32(&gBattleResources->bufferB[expBattler][2]);
                 AdjustFriendship(&gPlayerParty[*expMonId], FRIENDSHIP_EVENT_GROW_LEVEL);
 

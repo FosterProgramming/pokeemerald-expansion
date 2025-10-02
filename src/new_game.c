@@ -152,6 +152,8 @@ void ResetMenuAndMonGlobals(void)
 
 void NewGameInitData(void)
 {
+    u8 i;
+
     if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
         RtcReset();
 
@@ -212,6 +214,11 @@ void NewGameInitData(void)
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
     ResetDexNav();
+
+    for(i  = 0; i < NUM_PARTY_MEMBERS; i++){
+        gSaveBlock2Ptr->gPartyMembers[i].maxSkillPoints       = STARTING_MEMBER_SKILL_POINTS;
+        gSaveBlock2Ptr->gPartyMembers[i].remainingSkillPoints = STARTING_MEMBER_SKILL_POINTS;
+    }
 }
 
 static void ResetMiniGamesRecords(void)

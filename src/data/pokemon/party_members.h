@@ -1,28 +1,3 @@
-
-//Configuration
-#define MAX_SKILLS_PER_TREE 20
-
-struct PartyMemberData
-{
-    u16 maxSkillPoints;                         //Total of Skll Points this Member has gained
-    u16 remainingSkillPoints;                   //Number of points left after unlocking skills
-    bool8 unlockedSkills[MAX_SKILLS_PER_TREE];  //Unlocked Skills
-    u16 abilities[MAX_MON_INNATES + 1];         //Current Assigned Abilities
-    u16 extraEVs;                               //Extra EVs available to assign at any point
-    u8 extraStats[NUM_STATS];                   //Extra raw stats for this Pokémon
-};
-
-enum{
-    PARTY_MEMBER_DEWGONG,
-    PARTY_MEMBER_PERSIAN,
-    PARTY_MEMBER_EEVEE,
-    PARTY_MEMBER_SNORLAX,
-    PARTY_MEMBER_HONCHKROW,
-    PARTY_MEMBER_GENGAR,
-    PARTY_MEMBER_HUMAN,
-    NUM_PARTY_MEMBERS,
-};
-
 static u16 sPartyMembersToSpecies[NUM_PARTY_MEMBERS] = 
 {
     [PARTY_MEMBER_DEWGONG]   = SPECIES_DEWGONG,

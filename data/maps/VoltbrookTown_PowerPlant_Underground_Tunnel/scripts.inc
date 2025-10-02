@@ -499,30 +499,32 @@ VoltbrookTown_PowerPlant_Underground_Tunnel_Event::
 # 560 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	removeobject LOCALID_BALL
 # 561 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	playfanfare MUS_OBTAIN_BADGE
+	setflag FLAG_HIDE_VOLTBROOK_ARTIFACT
 # 562 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	msgbox VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_42
+	playfanfare MUS_OBTAIN_BADGE
 # 563 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	waitfanfare
+	msgbox VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_42
 # 564 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	applymovement LOCALID_VEE, VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_29
+	waitfanfare
 # 565 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_27
+	applymovement LOCALID_VEE, VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_29
 # 566 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_27
 # 567 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	speakername VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_0
-# 568 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	msgbox VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_43
-# 574 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	applymovement LOCALID_VEE, VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_26
-# 575 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	waitmovement 0
+# 568 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_0
+# 569 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_43
+# 575 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+	applymovement LOCALID_VEE, VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_26
 # 576 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	removeobject LOCALID_VEE
+	waitmovement 0
 # 577 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	setvar VAR_VOLTBROOK_PLANT_STATE, 2
+	removeobject LOCALID_VEE
 # 578 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+	setvar VAR_VOLTBROOK_PLANT_STATE, 2
+# 579 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	releaseall
 	end
 
@@ -833,9 +835,9 @@ VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_28:
 	walk_up
 	step_end
 
-# 564 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+# 565 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Movement_29:
-# 564 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+# 565 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	face_right
 	step_end
 
@@ -1142,11 +1144,11 @@ VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_41:
 	.string "back into a human.$"
 
 VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_42:
-# 562 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+# 563 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	.string "You obtained the {COLOR RED}first Artifact{COLOR DARK_GRAY}!$"
 
 VoltbrookTown_PowerPlant_Underground_Tunnel_Event_Text_43:
-# 569 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
+# 570 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	.string "Ok!\n"
 	.string "Let's get out of here, and then let's\l"
 	.string "figure out what to do next!\p"

@@ -33,6 +33,7 @@
 #include "pokemon_icon.h"
 #include "pokemon_summary_screen.h"
 #include "pokemon_storage_system.h"
+#include "ui_summary_screen.h"
 #include "random.h"
 #include "recorded_battle.h"
 #include "rtc.h"
@@ -43,6 +44,7 @@
 #include "test_runner.h"
 #include "text.h"
 #include "trainer_hill.h"
+#include "ui_summary_screen.h"
 #include "util.h"
 #include "constants/abilities.h"
 #include "constants/battle_frontier.h"
@@ -1745,14 +1747,25 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     return checksum;
 }
 
-#define CALC_STAT(base, iv, ev, statIndex, field)               \
-{                                                               \
-    u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
-    n = ModifyStatByNature(nature, n, statIndex);               \
-    if (B_FRIENDSHIP_BOOST == TRUE)                             \
+#define CALC_STAT(base, iv, ev, statIndex, field)                \
+{                                                                \
+    u8 baseStat = gSpeciesInfo[species].base;                    \
+    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5;  \
+    n = ModifyStatByNature(nature, n, statIndex);                \
+    if (B_FRIENDSHIP_BOOST == TRUE)                              \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
-    SetMonData(mon, field, &n);                                 \
+    SetMonData(mon, field, &n);                                  \
+}
+
+#define CALC_STAT_MEMBER(base, iv, ev, statIndex, field, partyMember)      \
+{                                                                          \
+    u8 baseStat = gSpeciesInfo[species].base;                              \
+    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5;            \
+    n = ModifyStatByNature(nature, n, statIndex);                          \
+    if (B_FRIENDSHIP_BOOST == TRUE)                                        \
+        n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));          \
+    n += gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[statIndex]; \
+    SetMonData(mon, field, &n);                                            \
 }
 
 void CalculateMonStats(struct Pokemon *mon)
@@ -1774,6 +1787,7 @@ void CalculateMonStats(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     s32 level = GetLevelFromMonExp(mon);
+    u8 partyMember = getCurrentPartyMember(species);
     s32 newMaxHP;
 
     u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
@@ -1787,7 +1801,7 @@ void CalculateMonStats(struct Pokemon *mon)
     else
     {
         s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
+        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP];
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
@@ -1796,12 +1810,22 @@ void CalculateMonStats(struct Pokemon *mon)
 
     SetMonData(mon, MON_DATA_MAX_HP, &newMaxHP);
 
-    CALC_STAT(baseAttack, attackIV, attackEV, STAT_ATK, MON_DATA_ATK)
-    CALC_STAT(baseDefense, defenseIV, defenseEV, STAT_DEF, MON_DATA_DEF)
-    CALC_STAT(baseSpeed, speedIV, speedEV, STAT_SPEED, MON_DATA_SPEED)
-    CALC_STAT(baseSpAttack, spAttackIV, spAttackEV, STAT_SPATK, MON_DATA_SPATK)
-    CALC_STAT(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
-
+    if(partyMember != NUM_PARTY_MEMBERS){
+        CALC_STAT_MEMBER(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK,   partyMember)
+        CALC_STAT_MEMBER(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF,   partyMember)
+        CALC_STAT_MEMBER(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED, partyMember)
+        CALC_STAT_MEMBER(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK, partyMember)
+        CALC_STAT_MEMBER(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF, partyMember)
+    }
+    else
+    {
+        CALC_STAT(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK)
+        CALC_STAT(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF)
+        CALC_STAT(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED)
+        CALC_STAT(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK)
+        CALC_STAT(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
+    }
+    
     // Since a pokemon's maxHP data could either not have
     // been initialized at this point or this pokemon is
     // just fainted, the check for oldMaxHP is important.
@@ -3387,6 +3411,8 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
+
+    tryToGivePartyMemberExp(mon); //Sets Initial Party Member Skill Points
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -6201,17 +6227,17 @@ void PokemonNewSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 o
         // Animation has delay, start delay task
         u8 taskId = CreateTask(Task_PokemonSummaryAnimateAfterDelay, 0);
         STORE_PTR_IN_TASK(sprite, taskId, 0);
-        gTasks[taskId].sAnimId = gSpeciesInfo[species].frontAnimId;
+        gTasks[taskId].sAnimId    = gSpeciesInfo[species].frontAnimId;
         gTasks[taskId].sAnimDelay = gSpeciesInfo[species].frontAnimDelay;
         SummaryScreen_SetAnimDelayTaskId(taskId);
         SetSpriteCB_MonAnimDummy(sprite);
-        StartSpriteAnim(sprite, 0);
+        //StartSpriteAnim(sprite, 0);
     }
     else
     {
         // No delay, start animation
         StartMonSummaryAnimation(sprite, gSpeciesInfo[species].frontAnimId);
-        StartSpriteAnim(sprite, 0);
+        //StartSpriteAnim(sprite, 0);
     }
 }
 
