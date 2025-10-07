@@ -16,6 +16,29 @@
 
 #include "data/gimmicks.h"
 
+static const u32 sBraveAP_0[] = INCBIN_U32("graphics/brave_ap/math0.4bpp");
+static const u32 sBraveAP_Minus1[] = INCBIN_U32("graphics/brave_ap/math-1.4bpp");
+static const u32 sBraveAP_Minus2[] = INCBIN_U32("graphics/brave_ap/math-2.4bpp");
+static const u32 sBraveAP_Minus3[] = INCBIN_U32("graphics/brave_ap/math-3.4bpp");
+static const u32 sBraveAP_Minus4[] = INCBIN_U32("graphics/brave_ap/math-4.4bpp");
+static const u32 sBraveAP_Plus1[] = INCBIN_U32("graphics/brave_ap/math+1.4bpp");
+static const u32 sBraveAP_Plus2[] = INCBIN_U32("graphics/brave_ap/math+2.4bpp");
+static const u32 sBraveAP_Plus3[] = INCBIN_U32("graphics/brave_ap/math+3.4bpp");
+static const u32 sBraveAP_Plus4[] = INCBIN_U32("graphics/brave_ap/math+4.4bpp");
+
+const u32 *const sBraveAP_Sprites[] =
+{
+    sBraveAP_Minus4,
+    sBraveAP_Minus3,
+    sBraveAP_Minus2,
+    sBraveAP_Minus1,
+    sBraveAP_0,
+    sBraveAP_Plus1,
+    sBraveAP_Plus2,
+    sBraveAP_Plus3,
+    sBraveAP_Plus4,
+};
+
 // Populates gBattleStruct->gimmick.usableGimmick for each battler.
 void AssignUsableGimmicks(void)
 {
@@ -286,6 +309,7 @@ static inline u32 GetIndicatorSpriteId(u32 healthboxId)
 
 const u32 *GetIndicatorSpriteSrc(u32 battler)
 {
+    /*
     u32 gimmick = GetActiveGimmick(battler);
 
     if (IsBattlerPrimalReverted(battler))
@@ -307,6 +331,8 @@ const u32 *GetIndicatorSpriteSrc(u32 battler)
     {
         return NULL;
     }
+    */
+    return sBraveAP_Sprites[4 + gBattleStruct->monStoredAP[battler]];
 }
 
 u32 GetIndicatorPalTag(u32 battler)
@@ -370,10 +396,10 @@ void UpdateIndicatorLevelData(u32 healthboxId, u32 level)
 
 static const s8 sIndicatorPositions[][2] =
 {
-    [B_POSITION_PLAYER_LEFT] = {49, -9},
-    [B_POSITION_OPPONENT_LEFT] = {40, -9},
-    [B_POSITION_PLAYER_RIGHT] = {48, -9},
-    [B_POSITION_OPPONENT_RIGHT] = {40, -9},
+    [B_POSITION_PLAYER_LEFT] = {49, -5},
+    [B_POSITION_OPPONENT_LEFT] = {40, -5},
+    [B_POSITION_PLAYER_RIGHT] = {48, -5},
+    [B_POSITION_OPPONENT_RIGHT] = {40, -5},
 };
 
 void CreateIndicatorSprite(u32 battler)

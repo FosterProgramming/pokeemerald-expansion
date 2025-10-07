@@ -1,5 +1,11 @@
 #include "brave_battle.h"
 #include "battle.h"
+#include "battle_interface.h"
+#include "battle_gimmick.h"
+
+#define BATTLER_INDICATOR_TAG 0xDEDE
+
+static void ChangeAPGraphics(u32 battler);
 
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
@@ -381,31 +387,49 @@ void AddAiActionsForBattler(u32 battler)
 
 void BraveFirstTurnSetAP(void)
 {
-    MgbaPrintf(MGBA_LOG_WARN, "Set AP to 1 for all battlers");
-    for (u32 i = 0; i < 4; i++)
-        gBattleStruct->monStoredAP[i] = 1;
-
-    //  Set up the gimmick indicators
+    for (u32 battler = 0; battler < 4; battler++)
+    {
+        gBattleStruct->monStoredAP[battler] = 1;
+        //  Set up graphics
+        struct Pokemon *party = GetBattlerParty(battler);
+        struct Pokemon *mon = &party[gBattlerPartyIndexes[battler]];
+        SetActiveGimmick(battler, GIMMICK_MEGA);
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_ALL);
+        ChangeAPGraphics(battler);
+    }
 }
 
 void BraveIncrementAP(void)
 {
-    MgbaPrintf(MGBA_LOG_WARN, "Increment AP for all pokemon");
-    for (u32 i = 0; i < 4; i++)
+    for (u32 battler = 0; battler < 4; battler++)
     {
-        if (gBattleStruct->monStoredAP[i] < 4)
-            gBattleStruct->monStoredAP[i]++;
+        if (gBattleStruct->monStoredAP[battler] < 4)
+        {
+            gBattleStruct->monStoredAP[battler]++;
+            ChangeAPGraphics(battler);
+        }
     }
-    // Update the gimmick indicators
 }
 
 void BraveConsumeAP(u32 battler, u32 move)
 {
-    if (move != MOVE_DEFAULT)
+    if (!gBraveCurrentAction.isDefaulting)
+    {
         gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
+        ChangeAPGraphics(battler);
+    }
 }
 
 void BraveResetAP(u32 battler)
 {
     gBattleStruct->monStoredAP[battler] = 0;
+    ChangeAPGraphics(battler);
+}
+
+static void ChangeAPGraphics(u32 battler)
+{
+    u32 *dst = (u32 *)(OBJ_VRAM0 + TILE_SIZE_4BPP * GetSpriteTileStartByTag(BATTLER_INDICATOR_TAG + battler));
+    const u32 *src = GetIndicatorSpriteSrc(battler);
+    for (u32 i = 0; i < 16; i++)
+        dst[i] = src[i];
 }

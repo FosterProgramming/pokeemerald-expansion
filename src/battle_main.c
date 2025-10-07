@@ -3752,9 +3752,6 @@ static void DoBattleIntro(void)
 
 static void TryDoEventsBeforeFirstTurn(void)
 {
-    BraveClearAllActions();
-    BraveFirstTurnSetAP();
-    //Brave_TestActions();
     s32 i, j;
 
     if (gBattleControllerExecFlags)
@@ -3774,6 +3771,10 @@ static void TryDoEventsBeforeFirstTurn(void)
                     gAbsentBattlerFlags |= 1u << i;
             }
         }
+
+        //  Set up Brave stuff
+        BraveClearAllActions();
+        BraveFirstTurnSetAP();
 
         // Allow for illegal abilities within tests.
         #if TESTING
