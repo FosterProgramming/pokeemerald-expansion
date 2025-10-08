@@ -32,7 +32,7 @@ enum
     MENUITEM_TEXTSPEED,
     //MENUITEM_BATTLESCENE,
     //MENUITEM_BATTLESTYLE,
-    MENUITEM_DIFFICULTY,
+    //MENUITEM_DIFFICULTY,
     MENUITEM_SOUND,
     //MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
@@ -43,6 +43,7 @@ enum
 #define MENUITEM_BATTLESCENE -1
 #define MENUITEM_BATTLESTYLE -2
 #define MENUITEM_BUTTONMODE  -3
+#define MENUITEM_DIFFICULTY -4
 
 enum
 {
@@ -92,7 +93,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
     //[MENUITEM_BATTLESCENE] = gText_BattleScene,
     //[MENUITEM_BATTLESTYLE] = gText_BattleStyle,
-    [MENUITEM_DIFFICULTY]  = gText_Difficulty,
+    //[MENUITEM_DIFFICULTY]  = gText_Difficulty,
     [MENUITEM_SOUND]       = gText_Sound,
     //[MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
