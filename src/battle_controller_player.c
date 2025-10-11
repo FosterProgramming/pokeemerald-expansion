@@ -346,11 +346,12 @@ static void HandleInputChooseAction(u32 battler)
             if (gBattleStruct->isBraveSelector)
             {
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_ITEM, 0);
+
+                //  Open a custom item use menu here
             }
             else
             {
                 //  Use Default
-                MgbaPrintf(MGBA_LOG_WARN, "Defaulting");
                 BraveAddDefaultToQueue(battler);
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
                 gBattleStruct->skipMoveInput = TRUE;

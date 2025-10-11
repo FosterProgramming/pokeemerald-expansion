@@ -12,7 +12,7 @@ struct BraveBattleAction
     u32 moveSlot:2;
     u32 isSlotUsed:1;
     u32 isDefaulting:1;
-    u32 padding:15;
+    u32 item:15;
 };
 
 extern struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
@@ -34,7 +34,7 @@ void BraveClearAllActions(void);
 
 void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target);
 void BraveAddSwitchToQueue(u32 battler, u32 target);
-void BraveAddItemToQueue(u32 battler, u32 item, u32 target);
+void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot);
 void BraveAddDefaultToQueue(u32 battler);
 
 void BravePrintActions(void);

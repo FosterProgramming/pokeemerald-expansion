@@ -5,6 +5,8 @@
 
 #define BATTLER_INDICATOR_TAG 0xDEDE
 
+#define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
+
 static void ChangeAPGraphics(u32 battler);
 
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
@@ -182,10 +184,19 @@ void BraveSetCurrentAction(void)
         battlerSpeeds[battler] = GetBattlerTotalSpeedStat(battler);
         for (u32 actionIndex = 0; actionIndex < MAX_BRAVE_ACTIONS; actionIndex++)
         {
-            if (gBraveBattleAction[battler][actionIndex].isSlotUsed)
+            if (gBraveBattleAction[battler][actionIndex].isSlotUsed
+             && gBraveBattleAction[battler][actionIndex].action == B_ACTION_USE_MOVE)
             {
                 u32 move = gBattleMons[battler].moves[gBraveBattleAction[battler][actionIndex].moveSlot];
                 battlerSpeeds[battler] = uq4_12_multiply_by_int_half_down(GetBravePrioMod(move, battler), battlerSpeeds[battler]);
+                speedThreshold += battlerSpeeds[battler];
+                battlerWantsToMove[battler] = TRUE;
+                break;
+            }
+            else if (gBraveBattleAction[battler][actionIndex].isSlotUsed
+                  && gBraveBattleAction[battler][actionIndex].action == B_ACTION_USE_ITEM)
+            {
+                battlerSpeeds[battler] = battlerSpeeds[battler] * BRAVE_ITEM_USE_SPEED_MULTIPLIER;
                 speedThreshold += battlerSpeeds[battler];
                 battlerWantsToMove[battler] = TRUE;
                 break;
@@ -272,13 +283,6 @@ void BraveSetCurrentAction(void)
                 break;
             }
         }
-        //BravePrintActions();
-        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[0][0].isSlotUsed, gBraveBattleAction[0][1].isSlotUsed, gBraveBattleAction[0][2].isSlotUsed, gBraveBattleAction[0][3].isSlotUsed);
-        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[1][0].isSlotUsed, gBraveBattleAction[1][1].isSlotUsed, gBraveBattleAction[1][2].isSlotUsed, gBraveBattleAction[1][3].isSlotUsed);
-        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", gBraveBattleAction[2][0].isSlotUsed, gBraveBattleAction[2][1].isSlotUsed, gBraveBattleAction[2][2].isSlotUsed, gBraveBattleAction[2][3].isSlotUsed);
-        //MgbaPrintf(MGBA_LOG_WARN, "%u %u %u %u", battlerWantsToMove[0], battlerWantsToMove[1], battlerWantsToMove[2],battlerWantsToMove[3]);
-        //MgbaPrintf(MGBA_LOG_WARN, "%u", battlerToMove);
-        MgbaPrintf(MGBA_LOG_WARN, "Battler, target, move: %u %u %u", gBraveCurrentAction.battler, gBraveCurrentAction.target, gBraveCurrentAction.moveSlot);
     }
 
     //  Check if any other mons can move
@@ -291,7 +295,6 @@ void BraveSetCurrentAction(void)
         }
     }
     //  If this point is reached, turn is done
-    //MgbaPrintf(MGBA_LOG_WARN, "Done");
     gBattleStruct->braveTurnDone = TRUE;
 }
 
@@ -349,8 +352,16 @@ void BraveAddSwitchToQueue(u32 battler, u32 target)
     gBraveBattleAction[battler][0].target = target;
 }
 
-void BraveAddItemToQueue(u32 battler, u32 item, u32 target)
+void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot)
 {
+    u32 currAction = gBattleStruct->monBraveActions[battler]++;
+    gBraveBattleAction[battler][currAction].battler = battler;
+    gBraveBattleAction[battler][currAction].item = item;
+    gBraveBattleAction[battler][currAction].moveSlot = slot;
+    gBraveBattleAction[battler][currAction].target = target;
+    gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
+    gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
+    gBraveBattleAction[battler][currAction].action = B_ACTION_USE_ITEM;
 }
 
 void BravePrintActions(void)
@@ -413,9 +424,16 @@ void BraveIncrementAP(void)
 
 void BraveConsumeAP(u32 battler, u32 move)
 {
-    if (!gBraveCurrentAction.isDefaulting)
+    if (gBraveCurrentAction.isDefaulting)
+        return;
+    if (gBraveCurrentAction.action == B_ACTION_USE_MOVE)
     {
         gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
+        ChangeAPGraphics(battler);
+    }
+    else if (gBraveCurrentAction.action == B_ACTION_USE_ITEM)
+    {
+        gBattleStruct->monStoredAP[battler] -= 1;
         ChangeAPGraphics(battler);
     }
 }

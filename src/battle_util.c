@@ -560,14 +560,19 @@ void HandleAction_Switch(void)
 
 void HandleAction_UseItem(void)
 {
-    gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+    //gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+    gBattlerAttacker = gBraveCurrentAction.battler;
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
     ClearVariousBattlerFlags(gBattlerAttacker);
 
-    gLastUsedItem = gBattleResources->bufferB[gBattlerAttacker][1] | (gBattleResources->bufferB[gBattlerAttacker][2] << 8);
+    //gLastUsedItem = gBattleResources->bufferB[gBattlerAttacker][1] | (gBattleResources->bufferB[gBattlerAttacker][2] << 8);
+    gLastUsedItem = gBraveCurrentAction.item;
+    gBattleStruct->itemPartyIndex[gBattlerAttacker] = gBraveCurrentAction.target;
+    gBattleStruct->itemMoveIndex[gBattlerAttacker] = gBraveCurrentAction.moveSlot;
     gBattlescriptCurrInstr = gBattlescriptsForUsingItem[ItemId_GetBattleUsage(gLastUsedItem) - 1];
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+    BraveConsumeAP(gBattlerAttacker, MOVE_NONE);
 }
 
 bool32 TryRunFromBattle(u32 battler)
