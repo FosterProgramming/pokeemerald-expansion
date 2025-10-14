@@ -2501,6 +2501,47 @@ static void TextIntoAbilityPopUp(void *dest, u8 *windowTileData, s32 xTileAmount
     }
 }
 
+static u8* AddTextPrinterAndCreateWindowOnBraveItemMenu(const u8 *str, u32 x, u32 y, u32 color1, u32 color2, u32 color3, u32 *windowId)
+{
+    u32 fontId;
+    u8 color[3] = {color1, color2, color3};
+    struct WindowTemplate winTemplate = {0};
+    winTemplate.width = 11;
+    winTemplate.height = 2;
+
+    *windowId = AddWindow(&winTemplate);
+    FillWindowPixelBuffer(*windowId, PIXEL_FILL(color1));
+
+    fontId = FONT_NORMAL;
+    AddTextPrinterParameterized4(*windowId, fontId, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
+    return (u8 *)(GetWindowAttribute(*windowId, WINDOW_TILE_DATA));
+}
+
+void PrintOnBraveItemMenu(const u8 *str, u8 *spriteTileData1, u8 *spriteTileData2, u32 x1, u32 x2, u32 y, u32 color1, u32 color2, u32 color3)
+{
+    u32 windowId;
+    u8 *windowTileData;
+    u16 width;
+
+    windowTileData = AddTextPrinterAndCreateWindowOnBraveItemMenu(str, x1, y, color1, color2, color3, &windowId);
+    u32 *src = (u32 *)windowTileData;
+    u32 *dst = (u32 *)spriteTileData1;
+    for (u32 i = 0; i < 6*8; i++)
+    {
+        dst[i] = src[i];
+        dst[64 + i] = src[88 + i];
+    }
+    RemoveWindow(windowId);
+
+    dst = (u32 *)spriteTileData2;
+    for (u32 i = 0; i < 5*8; i++)
+    {
+        dst[i] = src[48 + i];
+        dst[64 + i] = src[48 + 88 + i];
+    }
+    RemoveWindow(windowId);
+}
+
 static void PrintOnAbilityPopUp(const u8 *str, u8 *spriteTileData1, u8 *spriteTileData2, u32 x1, u32 x2, u32 y, u32 color1, u32 color2, u32 color3)
 {
     u32 windowId;

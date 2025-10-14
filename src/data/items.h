@@ -624,6 +624,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Potion,
         .iconPalette = gItemIconPalette_Potion,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_SUPER_POTION] =
@@ -647,6 +648,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Potion,
         .iconPalette = gItemIconPalette_SuperPotion,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_HYPER_POTION] =
@@ -670,6 +672,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Potion,
         .iconPalette = gItemIconPalette_HyperPotion,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_MAX_POTION] =
@@ -688,6 +691,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_LargePotion,
         .iconPalette = gItemIconPalette_MaxPotion,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_FULL_RESTORE] =
@@ -2292,6 +2296,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_BattleStatItem,
         .iconPalette = gItemIconPalette_XAttack,
+        .braveType = BRAVE_X_ITEM,
     },
 
     [ITEM_X_DEFENSE] =

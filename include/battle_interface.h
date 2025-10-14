@@ -131,4 +131,6 @@ void CategoryIcons_LoadSpritesGfx(void);
 void TryToAddMoveInfoWindow(void);
 void TryToHideMoveInfoWindow(void);
 
+void PrintOnBraveItemMenu(const u8 *str, u8 *spriteTileData1, u8 *spriteTileData2, u32 x1, u32 x2, u32 y, u32 color1, u32 color2, u32 color3);
+
 #endif // GUARD_BATTLE_INTERFACE_H

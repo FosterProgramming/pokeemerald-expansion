@@ -133,7 +133,7 @@ void TestDrawSprite(void)
     createStruct.sprite = gSpeciesInfo[SPECIES_CALYREX].frontPic;
     createStruct.spriteCompressed = TRUE;
     createStruct.tileTag = 7823;
-    createStruct.palette = gSpeciesInfo[SPECIES_CALYREX].palette;
+    //createStruct.palette = gSpeciesInfo[SPECIES_CALYREX].palette;
     createStruct.palTag = 7823;
     createStruct.spriteSize = SPRITE_SIZE(64x64);
     createStruct.spriteShape = SPRITE_SHAPE(64x64);

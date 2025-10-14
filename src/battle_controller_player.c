@@ -49,7 +49,6 @@
 
 #include "brave_battle.h"
 
-static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleSwitchInAnim(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
@@ -168,7 +167,7 @@ void SetControllerToPlayer(u32 battler)
     gPlayerDpadHoldFrames = 0;
 }
 
-static void PlayerBufferExecCompleted(u32 battler)
+void PlayerBufferExecCompleted(u32 battler)
 {
     gBattlerControllerFuncs[battler] = PlayerBufferRunCommand;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -247,7 +246,7 @@ static u32 GetNextBall(u32 ballId)
 
 static void HandleInputChooseAction(u32 battler)
 {
-    if (gBattleStruct->monStoredAP[battler] < 1)
+    if (gBattleStruct->monStoredAP[battler] < 1 || BraveGetBattlerActionCount(battler) == 4)
     {
         MgbaPrintf(MGBA_LOG_WARN, "Stopping move selection");
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
@@ -345,9 +344,10 @@ static void HandleInputChooseAction(u32 battler)
         case 1: // Top right
             if (gBattleStruct->isBraveSelector)
             {
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_ITEM, 0);
-
+                //BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_ITEM, 0);
                 //  Open a custom item use menu here
+                BraveOpenItemMenu(battler);
+                return;
             }
             else
             {
@@ -459,6 +459,11 @@ static void HandleInputChooseAction(u32 battler)
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_THROW_BALL, 0);
         PlayerBufferExecCompleted(battler);
     }
+}
+
+void SetControllerFuncToInputFromBraveItemMenu(u32 battler)
+{
+    gBattlerControllerFuncs[battler] = HandleInputChooseAction;
 }
 
 void HandleInputChooseTarget(u32 battler)
