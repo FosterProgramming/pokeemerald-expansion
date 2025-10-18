@@ -9,6 +9,7 @@
 #include "contest_util.h"
 #include "contest_painting.h"
 #include "data.h"
+#include "debug_scripting.h"
 #include "decompress.h"
 #include "decoration.h"
 #include "decoration_inventory.h"
@@ -144,11 +145,17 @@ bool8 ScrCmd_gotonative(struct ScriptContext *ctx)
 
 bool8 ScrCmd_special(struct ScriptContext *ctx)
 {
+#ifdef DEBUG_SCRIPTING
+    u16 index = ScriptReadHalfwordNoLog(ctx);
+#else
     u16 index = ScriptReadHalfword(ctx);
-
+#endif
     Script_RequestEffects(SCREFF_V1);
     Script_CheckEffectInstrumentedSpecial(index);
-
+#ifdef DEBUG_SCRIPTING
+    if (gActiveScriptDebugger)
+        DebugPrintf("%S", gSpecialStrings[index]);
+#endif
     gSpecials[index]();
     return FALSE;
 }

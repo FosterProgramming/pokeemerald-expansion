@@ -1,5 +1,6 @@
 #include "global.h"
 #include "script.h"
+#include "debug_scripting.h"
 #include "event_data.h"
 #include "mystery_gift.h"
 #include "random.h"
@@ -118,6 +119,10 @@ bool8 RunScriptCommand(struct ScriptContext *ctx)
             }
 
             cmdCode = *(ctx->scriptPtr);
+            #ifdef DEBUG_SCRIPTING
+                if (gActiveScriptDebugger)
+                    DebugPrintf("%S", gBytecodeToString[cmdCode]);
+            #endif
             ctx->scriptPtr++;
             func = &ctx->cmdTable[cmdCode];
 
@@ -178,12 +183,35 @@ void ScriptReturn(struct ScriptContext *ctx)
     ctx->scriptPtr = ScriptPop(ctx);
 }
 
+#ifdef DEBUG_SCRIPTING
+u8 ScriptReadByte(struct ScriptContext *ctx)
+{
+    u8 byte = (*(ctx->scriptPtr++));
+    if (gActiveScriptDebugger)
+        DebugPrintf("%d", byte);
+    return byte;
+}
+#endif
+
 u16 ScriptReadHalfword(struct ScriptContext *ctx)
+{
+    u16 value = *(ctx->scriptPtr++);
+    value |= *(ctx->scriptPtr++) << 8;
+#ifdef DEBUG_SCRIPTING
+    if (gActiveScriptDebugger)
+        DebugPrintf("%d", value);
+#endif
+    return value;
+}
+
+#ifdef DEBUG_SCRIPTING
+u16 ScriptReadHalfwordNoLog(struct ScriptContext *ctx)
 {
     u16 value = *(ctx->scriptPtr++);
     value |= *(ctx->scriptPtr++) << 8;
     return value;
 }
+#endif
 
 u16 ScriptPeekHalfword(struct ScriptContext *ctx)
 {
@@ -198,7 +226,12 @@ u32 ScriptReadWord(struct ScriptContext *ctx)
     u32 value1 = *(ctx->scriptPtr++);
     u32 value2 = *(ctx->scriptPtr++);
     u32 value3 = *(ctx->scriptPtr++);
-    return (((((value3 << 8) + value2) << 8) + value1) << 8) + value0;
+    value0 = (((((value3 << 8) + value2) << 8) + value1) << 8) + value0;
+#ifdef DEBUG_SCRIPTING
+    if (gActiveScriptDebugger)
+        DebugPrintf("%d", value0);
+#endif
+    return value0;
 }
 
 u32 ScriptPeekWord(struct ScriptContext *ctx)
@@ -301,6 +334,14 @@ void ScriptContext_Enable(void)
     LockPlayerFieldControls();
 }
 
+#ifdef DEBUG_SCRIPTING
+void PrintScriptStatus(void)
+{
+    DebugPrintf("sGlobalScriptContextStatus %d", sGlobalScriptContextStatus);
+    DebugPrintf("sLockFieldControls %d", sLockFieldControls);
+}
+#endif
+
 // Sets up and runs a script in its own context immediately. The script will be
 // finished when this function returns. Used mainly by all of the map header
 // scripts (except the frame table scripts).
@@ -324,6 +365,10 @@ const u8 *MapHeaderGetScriptTable(u8 tag)
             return NULL;
         if (*mapScripts == tag)
         {
+            #ifdef DEBUG_SCRIPTING
+                if (gActiveScriptDebugger && sLockFieldControls)
+                    DebugPrintf("%d", gMapScriptTypeStrings[*mapScripts]);
+            #endif
             mapScripts++;
             return T2_READ_PTR(mapScripts);
         }
@@ -579,6 +624,10 @@ static bool32 RunScriptImmediatelyUntilEffect_InternalLoop(struct ScriptContext 
 
             cmdCode = *ctx->scriptPtr;
             ctx->scriptPtr++;
+            #ifdef DEBUG_SCRIPTING
+                if (gActiveScriptDebugger)
+                    DebugPrintf("RunScriptImmediatelyUntilEffect_InternalLoop %S", gBytecodeToString[cmdCode]);
+            #endif
             func = &ctx->cmdTable[cmdCode];
 
             // Invalid script command.

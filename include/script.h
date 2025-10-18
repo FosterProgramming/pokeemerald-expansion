@@ -1,6 +1,8 @@
 #ifndef GUARD_SCRIPT_H
 #define GUARD_SCRIPT_H
 
+#include "debug_scripting.h"
+
 struct ScriptContext;
 
 typedef bool8 (*ScrCmdFunc)(struct ScriptContext *);
@@ -21,7 +23,13 @@ struct ScriptContext
     u32 data[4];
 };
 
-#define ScriptReadByte(ctx) (*(ctx->scriptPtr++))
+#ifndef DEBUG_SCRIPTING
+    #define ScriptReadByte(ctx) (*(ctx->scriptPtr++))
+#else
+    u8 ScriptReadByte(struct ScriptContext *ctx);
+    u16 ScriptReadHalfwordNoLog(struct ScriptContext *ctx);
+    void PrintScriptStatus(void);
+#endif
 
 void InitScriptContext(struct ScriptContext *ctx, void *cmdTable, void *cmdTableEnd);
 u8 SetupBytecodeScript(struct ScriptContext *ctx, const u8 *ptr);
