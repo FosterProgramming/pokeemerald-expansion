@@ -4496,16 +4496,25 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
     switch (caseID)
     {
     case FLAG_GET_SEEN:
-        retVal = ((gSaveBlock1Ptr->dexSeen[index] & mask) != 0);
+        retVal = (gSaveBlock1Ptr->dexSeen[nationalDexNo] > 0);
         break;
     case FLAG_GET_CAUGHT:
          retVal = ((gSaveBlock1Ptr->dexCaught[index] & mask) != 0);
         break;
     case FLAG_SET_SEEN:
-        gSaveBlock1Ptr->dexSeen[index] |= mask;
+        if (gSaveBlock1Ptr->dexSeen[nationalDexNo] < 1)
+            gSaveBlock1Ptr->dexSeen[nationalDexNo] += 1;
+        break;
+    case FLAG_SET_SEEN_COUNT:
+        if (gSaveBlock1Ptr->dexSeen[nationalDexNo] < 0xFF)
+            gSaveBlock1Ptr->dexSeen[nationalDexNo] += 1;
         break;
     case FLAG_SET_CAUGHT:
         gSaveBlock1Ptr->dexCaught[index] |= mask;
+        break;
+    case FLAG_CHECK_SEEN_COUNT:
+        retVal = gSaveBlock1Ptr->dexSeen[nationalDexNo];
+        DebugPrintf("FLAG_CHECK_SEEN_COUNT: %d", retVal);
         break;
     }
 

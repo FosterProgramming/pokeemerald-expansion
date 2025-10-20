@@ -348,6 +348,7 @@ static void TryUpdateEvolutionTracker(u32 evolutionMethod, u32 upAmount, u16 use
 static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u8 *failInstr, u16 move);
 static void ResetValuesForCalledMove(void);
 static void TryRestoreDamageAfterCheeckPouch(u32 battler);
+void Seel_HandleCaughtFlag(u32 battlerId);
 
 static void Cmd_attackcanceler(void);
 static void Cmd_accuracycheck(void);
@@ -4871,6 +4872,9 @@ static void Cmd_cleareffectsonfaint(void)
     if (gBattleControllerExecFlags == 0)
     {
         u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+        Seel_HandleCaughtFlag(battler);
+
         const u8 *clearDataResult = NULL;
         if (!(gBattleTypeFlags & BATTLE_TYPE_ARENA) || !IsBattlerAlive(battler))
         {
@@ -16622,6 +16626,29 @@ static void Cmd_trysetcaughtmondexflags(void)
     {
         HandleSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT, personality);
         gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
+void Seel_HandleCaughtFlag(u32 battlerId)
+{
+    if ((GetBattlerSide(battlerId) != B_SIDE_OPPONENT))
+        return;
+
+    DebugPrintf("Seel_HandleCaughtFlag");
+
+    u32 species = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_SPECIES, NULL);
+    u32 personality = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_PERSONALITY, NULL);
+
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_SEEN_COUNT);
+
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
+    {
+        return;
+    }
+    else
+    {
+        if (11 <= (u8) GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_CHECK_SEEN_COUNT))   //Its 11 Not 10 Because of the Initial Seen +1, The other 10 Are KOs
+            HandleSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT, personality);
     }
 }
 
