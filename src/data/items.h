@@ -1043,6 +1043,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Ether,
         .iconPalette = gItemIconPalette_Ether,
+        .braveType = BRAVE_PP_ITEM,
     },
 
     [ITEM_MAX_ETHER] =
@@ -1062,6 +1063,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Ether,
         .iconPalette = gItemIconPalette_MaxEther,
+        .braveType = BRAVE_PP_ITEM,
     },
 
     [ITEM_ELIXIR] =
