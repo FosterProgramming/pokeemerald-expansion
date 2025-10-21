@@ -935,6 +935,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Antidote,
         .iconPalette = gItemIconPalette_Antidote,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_PARALYZE_HEAL] =
@@ -952,6 +953,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
         .iconPalette = gItemIconPalette_ParalyzeHeal,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_BURN_HEAL] =
@@ -969,6 +971,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
         .iconPalette = gItemIconPalette_BurnHeal,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_ICE_HEAL] =
@@ -986,6 +989,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
         .iconPalette = gItemIconPalette_IceHeal,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_AWAKENING] =
@@ -1003,6 +1007,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
         .iconPalette = gItemIconPalette_Awakening,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_FULL_HEAL] =
@@ -1018,6 +1023,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_FullHeal,
         .iconPalette = gItemIconPalette_FullHeal,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_ETHER] =

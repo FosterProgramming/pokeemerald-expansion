@@ -2531,13 +2531,75 @@ void PrintOnBraveItemMenu(const u8 *str, u8 *spriteTileData1, u8 *spriteTileData
         dst[i] = src[i];
         dst[64 + i] = src[88 + i];
     }
-    RemoveWindow(windowId);
 
     dst = (u32 *)spriteTileData2;
     for (u32 i = 0; i < 5*8; i++)
     {
         dst[i] = src[48 + i];
         dst[64 + i] = src[48 + 88 + i];
+    }
+    RemoveWindow(windowId);
+}
+
+static u8* AddTextPrinterAndCreateWindowOnBraveItemMenuItem(const u8 *str, u32 x, u32 y, u32 color1, u32 color2, u32 color3, u32 *windowId)
+{
+    u32 fontId;
+    u8 color[3] = {color1, color2, color3};
+    struct WindowTemplate winTemplate = {0};
+    winTemplate.width = 16;
+    winTemplate.height = 4;
+
+    *windowId = AddWindow(&winTemplate);
+    FillWindowPixelBuffer(*windowId, PIXEL_FILL(color1));
+
+    fontId = FONT_SHORT;
+    AddTextPrinterParameterized4(*windowId, fontId, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
+    return (u8 *)(GetWindowAttribute(*windowId, WINDOW_TILE_DATA));
+}
+
+void PrintItemOnBraveItemMenu(const u8 *str, u8 *spriteTileData1, u8 *spriteTileData2, u32 x1, u32 x2, u32 y, u32 color1, u32 color2, u32 color3)
+{
+    u32 windowId;
+    u8 *windowTileData;
+    u16 width;
+
+    windowTileData = AddTextPrinterAndCreateWindowOnBraveItemMenuItem(str, x1, y, color1, color2, color3, &windowId);
+    u32 *src = (u32 *)windowTileData;
+    u32 *dst = (u32 *)spriteTileData1;
+    for (u32 i = 0; i < 56; i++)
+    {
+        dst[8 + i] = src[i];
+        dst[72 + i] = src[128 + i];
+        dst[136 + i] = src[256 + i];
+    }
+
+    for (u32 i = 0; i < 4; i++)
+    {
+        dst[200 + i] = src[384 + i];
+        dst[208 + i] = src[392 + i];
+        dst[216 + i] = src[400 + i];
+        dst[224 + i] = src[408 + i];
+        dst[232 + i] = src[416 + i];
+        dst[240 + i] = src[424 + i];
+        dst[248 + i] = src[432 + i];
+    }
+
+    dst = (u32 *)spriteTileData2;
+    for (u32 i = 0; i < 56; i++)
+    {
+        dst[i] = src[56 + i];
+        dst[64 + i] = src[56 + 128 + i];
+        dst[128 + i] = src[56 + 256 + i];
+    }
+    for (u32 i = 0; i < 4; i++)
+    {
+        dst[192 + i] = src[440 + i];
+        dst[200 + i] = src[448 + i];
+        dst[208 + i] = src[456 + i];
+        dst[216 + i] = src[464 + i];
+        dst[224 + i] = src[472 + i];
+        dst[232 + i] = src[480 + i];
+        dst[240 + i] = src[488 + i];
     }
     RemoveWindow(windowId);
 }
@@ -3332,4 +3394,40 @@ void CategoryIcons_LoadSpritesGfx(void)
 {
     LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
     LoadSpritePalette(&gSpritePal_CategoryIcons);
+}
+
+void HidePlayerHealthboxes(void)
+{
+    if (gBattleMons[0].hp > 0)
+    {
+        u32 id = gSprites[gHealthboxSpriteIds[0]].hMain_HealthBarSpriteId;
+        gSprites[id].invisible = TRUE;
+        id = gBattleStruct->gimmick.indicatorSpriteId[gSprites[gHealthboxSpriteIds[0]].hMain_Battler];
+        gSprites[id].invisible = TRUE;
+    }
+    if (gBattleMons[2].hp > 0)
+    {
+        u32 id = gSprites[gHealthboxSpriteIds[2]].hMain_HealthBarSpriteId;
+        gSprites[id].invisible = TRUE;
+        id = gBattleStruct->gimmick.indicatorSpriteId[gSprites[gHealthboxSpriteIds[2]].hMain_Battler];
+        gSprites[id].invisible = TRUE;
+    }
+}
+
+void ShowPlayerHealthboxes(void)
+{
+    if (gBattleMons[0].hp > 0)
+    {
+        u32 id = gSprites[gHealthboxSpriteIds[0]].hMain_HealthBarSpriteId;
+        gSprites[id].invisible = FALSE;
+        id = gBattleStruct->gimmick.indicatorSpriteId[gSprites[gHealthboxSpriteIds[0]].hMain_Battler];
+        gSprites[id].invisible = FALSE;
+    }
+    if (gBattleMons[2].hp > 0)
+    {
+        u32 id = gSprites[gHealthboxSpriteIds[2]].hMain_HealthBarSpriteId;
+        gSprites[id].invisible = FALSE;
+        id = gBattleStruct->gimmick.indicatorSpriteId[gSprites[gHealthboxSpriteIds[2]].hMain_Battler];
+        gSprites[id].invisible = FALSE;
+    }
 }

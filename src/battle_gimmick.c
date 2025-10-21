@@ -288,9 +288,9 @@ static void SpriteCb_GimmickTrigger(struct Sprite *sprite)
 
 void LoadIndicatorSpritesGfx(void)
 {
-    LoadSpritePalette(&sSpritePalette_MiscIndicator);
+    //LoadSpritePalette(&sSpritePalette_MiscIndicator);
     LoadSpritePalette(&sSpritePalette_MegaIndicator);
-    LoadSpritePalette(&sSpritePalette_TeraIndicator);
+    //LoadSpritePalette(&sSpritePalette_TeraIndicator);
 }
 
 static void SpriteCb_GimmickIndicator(struct Sprite *sprite)

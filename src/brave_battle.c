@@ -5,24 +5,35 @@
 #include "battle_gimmick.h"
 #include "even_sprite.h"
 #include "item.h"
+#include "item_use.h"
+#include "line_break.h"
 #include "main.h"
 #include "malloc.h"
+#include "pokemon_icon.h"
 #include "sound.h"
+#include "text.h"
 #include "constants/songs.h"
+#include "constants/characters.h"
 
 #define BATTLER_INDICATOR_TAG 0xDEDE
 
 #define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
 
 static void ChangeAPGraphics(u32 battler);
+static void BraveInitItemMenu(u32 battler);
 
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
 EWRAM_DATA u16 gBraveStoredSpeeds[4];
 
 const u32 sBraveItemMenuGfx[] = INCBIN_U32("graphics/brave_item_menu/item_menu.4bpp");
+const u32 sBraveItemMenuGfx2[] = INCBIN_U32("graphics/brave_item_menu/item_menu2.4bpp");
 const u16 sBraveItemMenuPal[] = INCBIN_U16("graphics/brave_item_menu/item_menu.gbapal");
 const u32 sBraveItemMenuOther[] = INCBIN_U32("graphics/brave_item_menu/item_menu_other_sprites.4bpp");
+const u32 sBraveItemMenuSelector[] = INCBIN_U32("graphics/brave_item_menu/item_menu_selector.4bpp");
+const u32 sBraveItemMenuHPBars[] = INCBIN_U32("graphics/brave_item_menu/item_menu_hp_bars.4bpp");
+const u32 sBraveItemMenuStatus[] = INCBIN_U32("graphics/brave_item_menu/item_menu_status.4bpp");
+
 
 void Brave_TestActions(void)
 {
@@ -463,7 +474,6 @@ static void ChangeAPGraphics(u32 battler)
         dst[i] = src[i];
 }
 
-EWRAM_DATA struct BraveItemMenuState *sBraveItemMenuState;
 
 struct BraveListItem
 {
@@ -477,8 +487,15 @@ struct BraveItemMenuState
     u8 itemCategory;
     u8 scrollPos;
     u8 spriteIds[2];
+    u8 extraSpriteIds[2];
+    u8 itemSelectX;
+    u8 itemSelectY;
+    u8 selectorSpriteId;
+    u8 monIconIds[6];
     struct BraveListItem itemList[50];
 };
+
+EWRAM_DATA struct BraveItemMenuState *sBraveItemMenuState;
 
 static void PrintBraveItemList(void)
 {
@@ -666,6 +683,363 @@ static void FreeAndExitBraveItemMenu(u32 battler)
     sBraveItemMenuState = NULL;
 }
 
+static void FreeBraveItemMenuMonSelection(u32 battler)
+{
+    DestroySprite(&gSprites[sBraveItemMenuState->spriteIds[0]]);
+    DestroySprite(&gSprites[sBraveItemMenuState->spriteIds[1]]);
+    DestroySprite(&gSprites[sBraveItemMenuState->extraSpriteIds[0]]);
+    DestroySprite(&gSprites[sBraveItemMenuState->extraSpriteIds[1]]);
+    DestroySprite(&gSprites[sBraveItemMenuState->selectorSpriteId]);
+    FreeSpritePaletteByTag(0xCEC1);
+    FreeSpriteTilesByTag(0xCEC1);
+    FreeSpriteTilesByTag(0xCEC2);
+    FreeSpriteTilesByTag(0xCEC3);
+    FreeSpriteTilesByTag(0xCEC4);
+    FreeSpriteTilesByTag(0xCEC5);
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        FreeAndDestroyMonIconSprite(&gSprites[sBraveItemMenuState->monIconIds[i]]);
+    }
+    FreeMonIconPalettes();
+    ShowPlayerHealthboxes();
+    sBraveItemMenuState->state = 0;
+}
+
+static void BraveItemMenuMonSelect_HandleInput(u32 battler)
+{
+    if (JOY_NEW(DPAD_UP))
+    {
+        if (sBraveItemMenuState->itemSelectY != 0)
+        {
+            sBraveItemMenuState->itemSelectY--;
+            gSprites[sBraveItemMenuState->selectorSpriteId].y = 38 + sBraveItemMenuState->itemSelectY * 30;
+        }
+    }
+    else if (JOY_NEW(DPAD_DOWN))
+    {
+        if (sBraveItemMenuState->itemSelectY != 2 && GetMonData(&gPlayerParty[sBraveItemMenuState->itemSelectX + (sBraveItemMenuState->itemSelectY + 1) * 2], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            sBraveItemMenuState->itemSelectY++;
+            gSprites[sBraveItemMenuState->selectorSpriteId].y = 38 + sBraveItemMenuState->itemSelectY * 30;
+        }
+    }
+    else if (JOY_NEW(DPAD_LEFT))
+    {
+        if (sBraveItemMenuState->itemSelectX != 0)
+        {
+            sBraveItemMenuState->itemSelectX--;
+            gSprites[sBraveItemMenuState->selectorSpriteId].x = 240 - 112 + sBraveItemMenuState->itemSelectX * 64;
+        }
+    }
+    else if (JOY_NEW(DPAD_RIGHT))
+    {
+        if (sBraveItemMenuState->itemSelectX != 1 && GetMonData(&gPlayerParty[(sBraveItemMenuState->itemSelectX + 1) + sBraveItemMenuState->itemSelectY * 2], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            sBraveItemMenuState->itemSelectX++;
+            gSprites[sBraveItemMenuState->selectorSpriteId].x = 240 - 112 + sBraveItemMenuState->itemSelectX * 64;
+        }
+    }
+    else if (JOY_NEW(A_BUTTON))
+    {
+        u32 battleUsage = gItemsInfo[sBraveItemMenuState->itemList[sBraveItemMenuState->scrollPos].item].battleUsage;
+        u32 item = sBraveItemMenuState->itemList[sBraveItemMenuState->scrollPos].item;
+        u32 partyIndex = sBraveItemMenuState->itemSelectX + sBraveItemMenuState->itemSelectY * 2;
+        bool32 cannotUse = CannotUseItemsInBattle(item, &gPlayerParty[partyIndex]);
+
+        if (cannotUse)
+        {
+            PlaySE(SE_PC_OFF);
+        }
+        else
+        {
+            BraveAddItemToQueue(battler, item, partyIndex, 0);
+            PlaySE(SE_SELECT);
+            FreeBraveItemMenuMonSelection(battler);
+            FreeAndExitBraveItemMenu(battler);
+        }
+        /*
+        switch (battleUsage)
+        {
+        case EFFECT_ITEM_RESTORE_HP:
+        {
+            u32 currHP = GetMonData(&gPlayerParty[partyIndex], MON_DATA_HP);
+            if (currHP > 0 && currHP < GetMonData(&gPlayerParty[partyIndex], MON_DATA_MAX_HP))
+            {
+                BraveAddItemToQueue(battler, item, partyIndex, 0);
+                PlaySE(SE_SELECT);
+                FreeBraveItemMenuMonSelection(battler);
+                FreeAndExitBraveItemMenu(battler);
+            }
+            else
+            {
+                PlaySE(SE_PC_OFF);
+            }
+            break;
+        }
+        case EFFECT_ITEM_CURE_STATUS:
+        {
+            u32 status = GetMonData(&gPlayerParty[partyIndex], MON_DATA_STATUS);
+            if (status != 0)
+            {
+                BraveAddItemToQueue(battler, item, partyIndex, 0);
+                PlaySE(SE_SELECT);
+                FreeBraveItemMenuMonSelection(battler);
+                FreeAndExitBraveItemMenu(battler);
+            }
+            else
+            {
+                PlaySE(SE_PC_OFF);
+            }
+            break;
+        }
+        case EFFECT_ITEM_REVIVE:
+        {
+            u32 currHP = GetMonData(&gPlayerParty[partyIndex], MON_DATA_HP);
+            if (currHP == 0)
+            {
+                BraveAddItemToQueue(battler, item, partyIndex, 0);
+                PlaySE(SE_SELECT);
+                FreeBraveItemMenuMonSelection(battler);
+                FreeAndExitBraveItemMenu(battler);
+            }
+            else
+            {
+                PlaySE(SE_PC_OFF);
+            }
+            break;
+        }
+        }
+        */
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        FreeBraveItemMenuMonSelection(battler);
+        gBattlerControllerFuncs[battler] = BraveInitItemMenu;
+    }
+}
+
+const u8 sUseItemEndStr[] = _(" on which mon?");
+static void BraveItemMenu_LoadMonSelectBg(void)
+{
+    //  Enlarge the bg and print which item is used at the top
+
+    //  Build the string to be printed
+    u32 item = sBraveItemMenuState->itemList[sBraveItemMenuState->scrollPos].item;
+    u8 str[ITEM_NAME_LENGTH + 4 + 16];
+    u32 currChar = 0;
+    u32 itemChar = 0;
+    u32 endStrChar = 0;
+    str[currChar++] = CHAR_U;
+    str[currChar++] = CHAR_s;
+    str[currChar++] = CHAR_e;
+    str[currChar++] = CHAR_SPACE;
+    while (gItemsInfo[item].name[itemChar] != EOS)
+        str[currChar++] = gItemsInfo[item].name[itemChar++];
+    while (sUseItemEndStr[endStrChar] != EOS)
+        str[currChar++] = sUseItemEndStr[endStrChar++];
+    str[currChar] = EOS;
+
+    BreakStringAutomatic(str, 112, 0, FONT_SHORT);
+
+    u32 *sprite1 = (u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC1) * TILE_SIZE_4BPP);
+    u32 *sprite2 = (u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC2) * TILE_SIZE_4BPP);
+    for (u32 i = 0; i < 512; i++)
+    {
+        sprite1[i] = sBraveItemMenuGfx2[i];
+        sprite2[i] = sBraveItemMenuGfx2[512 + i];
+    }
+    struct Even_CreateSpriteStruct cs = {0};
+    cs.sprite = &sBraveItemMenuGfx2[1024];
+    cs.tileTag = 0xCEC3;
+    cs.palTag = 0xCEC1;
+    cs.spriteSize = SPRITE_SIZE(64x64);
+    cs.spriteShape = SPRITE_SHAPE(64x64);
+    cs.posX = 240 - 64 - 32;
+    cs.posY = 32 + 64;
+    sBraveItemMenuState->extraSpriteIds[0] = Even_CreateSprite(&cs);
+    cs.sprite = &sBraveItemMenuGfx2[1536];
+    cs.tileTag = 0xCEC4;
+    cs.posX = 240 - 32;
+    sBraveItemMenuState->extraSpriteIds[1] = Even_CreateSprite(&cs);
+    gSprites[sBraveItemMenuState->extraSpriteIds[0]].oam.priority = 1;
+    gSprites[sBraveItemMenuState->extraSpriteIds[1]].oam.priority = 1;
+
+    PrintItemOnBraveItemMenu(str, (u8 *)sprite1, (u8 *)sprite2, 0, 0, 0, 2, 14, 15);
+
+    //  Hide player healthbars temporarily
+    HidePlayerHealthboxes();
+}
+
+static void BraveItemMenu_DrawHPBar(u32 index, u32 currHP, u32 maxHP)
+{
+    u32 fraction = 24 * currHP / (maxHP + 1);
+    const u32 *src = &sBraveItemMenuHPBars[4 * 8 * fraction];
+    u32 *dst;
+    switch (index)
+    {
+    case 0:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC1) * TILE_SIZE_4BPP))[8 * 44];
+        for (u32 i = 0; i < 32; i++)
+            dst[i] = src[i];
+        break;
+    case 1:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC2) * TILE_SIZE_4BPP))[8 * 44];
+        for (u32 i = 0; i < 32; i++)
+            dst[i] = src[i];
+        break;
+    case 2:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC3) * TILE_SIZE_4BPP))[8 * 4];
+        for (u32 i = 0; i < 4; i++)
+        {
+            dst[4 + i] = src[i];
+            dst[12 + i] = src[8 + i];
+            dst[20 + i] = src[16 + i];
+            dst[28 + i] = src[24 + i];
+        }
+        break;
+    case 3:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC4) * TILE_SIZE_4BPP))[8 * 4];
+        for (u32 i = 0; i < 4; i++)
+        {
+            dst[4 + i] = src[i];
+            dst[12 + i] = src[8 + i];
+            dst[20 + i] = src[16 + i];
+            dst[28 + i] = src[24 + i];
+        }
+        break;
+    case 4:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC3) * TILE_SIZE_4BPP))[8 * 36];
+        for (u32 i = 0; i < 32; i++)
+            dst[i] = src[i];
+        break;
+    case 5:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC4) * TILE_SIZE_4BPP))[8 * 36];
+        for (u32 i = 0; i < 32; i++)
+            dst[i] = src[i];
+        break;
+    }
+}
+
+static void BraveItemMenu_DrawStatusIcon(u32 index)
+{
+    u32 status = GetMonData(&gPlayerParty[index], MON_DATA_STATUS);
+    if (status == 0)
+        return;
+    switch (status)
+    {
+    case STATUS1_BURN:
+        status = 0;
+        break;
+    case STATUS1_POISON:
+    case STATUS1_TOXIC_POISON:
+        status = 1;
+        break;
+    case STATUS1_FREEZE:
+    case STATUS1_FROSTBITE:
+        status = 2;
+        break;
+    case STATUS1_PARALYSIS:
+        status = 3;
+        break;
+    case STATUS1_SLEEP:
+        status = 4;
+        break;
+    }
+
+    u32 *dst, *dst2;
+    const u32 *src = &sBraveItemMenuStatus[16 * status];
+
+    switch (index)
+    {
+    case 0:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC1) * TILE_SIZE_4BPP))[8 * 37];
+        for (u32 i = 0; i < 16; i++)
+            dst[i] = src[i];
+        break;
+    case 1:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC2) * TILE_SIZE_4BPP))[8 * 37];
+        for (u32 i = 0; i < 16; i++)
+            dst[i] = src[i];
+        break;
+    case 2:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC1) * TILE_SIZE_4BPP))[8 * 61];
+        dst2 = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC3) * TILE_SIZE_4BPP))[8 * 5];
+        for (u32 i = 0; i < 4; i++)
+        {
+            dst[4 + i] = src[i];
+            dst2[i] = src[4 + i];
+            dst[12 + i] = src[8 + i];
+            dst2[8 + i] = src[12 + i];
+        }
+        break;
+    case 3:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC2) * TILE_SIZE_4BPP))[8 * 61];
+        dst2 = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC4) * TILE_SIZE_4BPP))[8 * 5];
+        for (u32 i = 0; i < 4; i++)
+        {
+            dst[4 + i] = src[i];
+            dst2[i] = src[4 + i];
+            dst[12 + i] = src[8 + i];
+            dst2[8 + i] = src[12 + i];
+        }
+        break;
+    case 4:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC3) * TILE_SIZE_4BPP))[8 * 29];
+        for (u32 i = 0; i < 16; i++)
+            dst[i] = src[i];
+        break;
+    case 5:
+        dst = &((u32 *)(OBJ_VRAM0 + GetSpriteTileStartByTag(0xCEC4) * TILE_SIZE_4BPP))[8 * 29];
+        for (u32 i = 0; i < 16; i++)
+            dst[i] = src[i];
+        break;
+    }
+}
+
+static void BraveLoadMonSelection(u32 battler, u32 moveSelect)
+{
+    LoadMonIconPalettes();
+    BraveItemMenu_LoadMonSelectBg();
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        u32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        if (species == SPECIES_NONE)
+        {
+            sBraveItemMenuState->monIconIds[i] = SPRITE_NONE;
+            continue;
+        }
+        //  Draw sprite
+        u32 personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY);
+        u32 x = 240 - 112 + (i % 2) * 64;
+        u32 y = 36 + i / 2 * 30;
+        u32 spriteId = CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0 , personality);
+        sBraveItemMenuState->monIconIds[i] = spriteId;
+        gSprites[spriteId].oam.priority = 0;
+        //  Draw healthbar
+        u32 currHP = GetMonData(&gPlayerParty[i], MON_DATA_HP);
+        u32 maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
+        if (currHP != maxHP)
+            BraveItemMenu_DrawHPBar(i, currHP, maxHP);
+        //  Draw status
+        BraveItemMenu_DrawStatusIcon(i);
+    }
+
+    //  Selector sprite
+    struct Even_CreateSpriteStruct cs = {0};
+    cs.sprite = sBraveItemMenuSelector;
+    cs.tileTag = 0xCEC5;
+    cs.palTag = 0xCEC1;
+    cs.spriteSize = SPRITE_SIZE(32x32);
+    cs.spriteShape = SPRITE_SHAPE(32x32);
+    cs.posX = 240 - 112;
+    cs.posY = 38;
+    sBraveItemMenuState->selectorSpriteId = Even_CreateSprite(&cs);
+    gSprites[sBraveItemMenuState->selectorSpriteId].oam.priority = 0;
+    gBattlerControllerFuncs[battler] = BraveItemMenuMonSelect_HandleInput;
+    sBraveItemMenuState->itemSelectX = 0;
+    sBraveItemMenuState->itemSelectY = 0;
+}
+
 static void BraveItemMenu_HandleInput(u32 battler)
 {
     if (JOY_NEW(L_BUTTON))
@@ -739,6 +1113,7 @@ static void BraveItemMenu_HandleInput(u32 battler)
         case EFFECT_ITEM_CURE_STATUS:
         case EFFECT_ITEM_REVIVE:
             //  Open mon selection menu and continue mon selection
+            BraveLoadMonSelection(battler, FALSE);
             break;
         //  Items that requires targeting a move index
         case EFFECT_ITEM_RESTORE_PP:
