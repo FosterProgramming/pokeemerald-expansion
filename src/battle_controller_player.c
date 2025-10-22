@@ -487,7 +487,6 @@ void HandleInputChooseTarget(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
-        MgbaPrintf(MGBA_LOG_WARN, "Targeting select");
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         if (gBattleStruct->gimmick.playerSelect)
@@ -498,10 +497,14 @@ void HandleInputChooseTarget(u32 battler)
         TryHideLastUsedBall();
         HideGimmickTriggerSprite();
         BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        if (gMovesInfo[move].effect == EFFECT_SEMI_INVULNERABLE
+         || gMovesInfo[move].effect == EFFECT_TWO_TURNS_ATTACK)
+        {
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        }
         gBattlerControllerFuncs[battler] = PlayerHandleChooseMove;
         if (BraveGetBattlerActionCount(battler) == 4)
         {
-            MgbaPrintf(MGBA_LOG_WARN, "Queue full, ending mon action select");
             gBattleStruct->isBraveSelector = FALSE;
             PlayerBufferExecCompleted(battler);
         }
@@ -736,6 +739,14 @@ void HandleInputChooseMove(u32 battler)
 
     if (JOY_NEW(A_BUTTON) && !gBattleStruct->descriptionSubmenu)
     {
+        u32 move = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_MOVE1 + gMoveSelectionCursor[battler]);
+        if ((gMovesInfo[move].effect == EFFECT_SEMI_INVULNERABLE
+             || gMovesInfo[move].effect == EFFECT_TWO_TURNS_ATTACK)
+         && gBattleStruct->monBraveActions[battler] >= 3)
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         TryToHideMoveInfoWindow();
         PlaySE(SE_SELECT);
 
