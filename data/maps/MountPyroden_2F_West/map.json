@@ -1,0 +1,105 @@
+{
+  "id": "MAP_MOUNT_PYRODEN_2F_WEST",
+  "name": "MountPyroden_2F_West",
+  "layout": "LAYOUT_MOUNT_PYRODEN_2F_WEST",
+  "music": "MUS_MT_CHIMNEY",
+  "region_map_section": "MAPSEC_PYRODEN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FIRE_PIT",
+      "x": 17,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MountPyroden_2F_West_EventScript_FirePit",
+      "flag": "FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FIRE_PIT",
+      "x": 20,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MountPyroden_1F_East_EventScript_FirePit",
+      "flag": "FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FIRE_PIT",
+      "x": 17,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MountPyroden_2F_West_EventScript_FirePit",
+      "flag": "FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FIRE_PIT",
+      "x": 15,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MountPyroden_2F_West_EventScript_FirePit",
+      "flag": "FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FIRE_PIT",
+      "x": 18,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MountPyroden_2F_West_EventScript_FirePit",
+      "flag": "FLAG_PYRODEN_MT_2F_WEST_FIRE_PIT_4"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 13,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_3F_WEST",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 10,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_3F_WEST",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -1,0 +1,13 @@
+mapscripts Emberglide_House2_MapScripts {}
+
+script EventScript_Emberglide_Diglett{
+    speakername("Diglett")
+    msgbox(format(
+        "I am a tiny Diglett.\n
+        But I have tall dreams.\p
+        I wanna soar in the sky, one day.\p
+        I've heard that there's a city high above the clouds, somewhere.\p
+        If you find it, please tell me where it is.\p
+        THIS IS A QUEST SETUP. THE QUEST IS NOT IMPLEMENTED YET."
+    ), MSGBOX_NPC)
+}

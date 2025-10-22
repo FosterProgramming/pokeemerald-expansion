@@ -31,7 +31,27 @@ mapscripts DominionCity_MapScripts
                 waitmovement(LOCALID_VEE)
                 applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left walk_in_place_left))
                 speakername("Vee")
-                msgbox(format("Whoa-- This is… THIS IS OUTSIDE?! The sky--it's HUGE! And the air--it's all… fresh and stuff! I thought fresh air was just a myth!\pOkaaay, okay, focus! We're not safe yet! Still fences… still gotta find a way out before--\pWait, do you hear that? No alarms. No buzzing doors. No heavy boots stomping around… Just… wind. And… birds? Huh.\pOkay, no time to get distracted--gotta keep moving before Team MAGA figures out we're gone! C'mon, let's find a way outta here--fast!"))
+                msgbox(format("Whoa… {PLAYER}…\n
+                This is… THE OUTSIDE?!\p
+                I knew it wasn't a made up thing!\NI knew it!\p 
+                There's like…\n
+                A giant blue blanket over everything!\p
+                And what's that!\n
+                A huge ball in the sky!\p
+                Does it bounce?\n
+                Can I play with it?\p
+                Okay, okay…\n
+                Focus, Vee.\p
+                We may be outside, but we still gotta find a way around these fences.\p
+                Wait… Do you hear anything?\p
+                … … …\n
+                Yeah, me neither.\p
+                But that's strange, isn't it?\p
+                Where's the alarms?\n
+                Where's the footsteps coming after us?\p
+                Weird.\n
+                Well, can't really complain about that!\p
+                Let's find a way outta here, and fast!$"))
 				applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerWest)
                 waitmovement(LOCALID_VEE)
                 removeobject(LOCALID_VEE)
@@ -40,6 +60,13 @@ mapscripts DominionCity_MapScripts
                 releaseall
                 end
 		}
+        VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+        {
+            setflag(FLAG_HIDE_DOMINION_GRUNTS)
+            setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 11)
+            end
+        }
+        
 	]
 }
 
@@ -62,11 +89,21 @@ script DominionCity_EventScripts_WhatIsThisPlace
         applymovement(LOCALID_VEE, moves(walk_left * 2 walk_down))
         waitmovement(LOCALID_VEE)
         speakername("Vee")
-        msgbox(format("Huh? What is this place?\pIt's like a town, but… where is everyone?\pEvery building looks empty…\pThis is really weird, {PLAYER}.\pWait a second… why would Team MAGA have a whole lab here?\pIn a town with no people? That makes no sense."))
+        msgbox(format("
+        Huh? What is this place?\n
+        Is it a town?\p
+        I've never seen a town before.\n
+        But from what I've heard…\p
+        You'd think there'd be more, you know, townspeople in here…\p
+        This is very strange, isn't it, {PLAYER}?"))
         applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
         waitmovement(OBJ_EVENT_ID_PLAYER)
         speakername("Vee")
-        msgbox(format("…Oh. Yeah. I guess if you were gonna do a bunch of creepy experiments, you'd wanna do it somewhere private.\pStill, this place gives me the creeps. Let's get out of here."))
+        msgbox(format("
+        …Oh. Yeah.\p
+        I guess if you were gonna do a bunch of creepy experiments, you'd wanna do it somewhere private.\p
+        Still, this place gives me the creeps.\p
+        Let's get out of here!"))
         applymovement(LOCALID_VEE, moves(walk_down))
         waitmovement(LOCALID_VEE)
         removeobject( LOCALID_VEE)
@@ -88,7 +125,9 @@ script DominionCity_EventScripts_GruntsWestStillLooking
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
-            msgbox(format("There has to be another way around."), MSGBOX_NPC)
+            msgbox(format("
+            Hmm…\n
+            There's gotta be another way around."), MSGBOX_NPC)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
             waitmovement(LOCALID_VEE)
             removeobject(LOCALID_VEE)
@@ -108,17 +147,27 @@ script DominionCity_EventScripts_GruntsWestStillLooking
             applymovement(2, moves(emote_question_mark))
             waitmovement(2)
             speakername("Grunt 1")
-            msgbox(format("You hear the alert? Those two test subjects escaped."))
+            msgbox(format("
+            Those test subjects really had to go and escape.\p
+            You know what they look like?"))
             playse(SE_PIN)
             applymovement(3,moves(emote_exclamation_mark))
             waitmovement(3)
             speakername("Grunt 2")
-            msgbox(format("One of 'em’s a Dewgong-lookin' thing. The other’s some runaway fox."))
+            msgbox(format("
+            Ye, ye.\p
+            It's that ugly-lookin's Dewgong thing and that…\N
+            Fox-like creature, aye?\p
+            Heard they were plannin' on gettin' rid of her, the poor sod.$"))
             playse(SE_PIN)
             applymovement(2,moves(emote_exclamation_mark))
             waitmovement(2)
             speakername("Grunt 1")
-            msgbox(format("Heh. Shouldn’t be hard to spot. Bet they’re hiding like scared Rattata."))
+            msgbox(format("
+            That's hardly our business.\p
+            We were just ordered to find them, and find them we will.\p
+            Shouldn't be too hard of a job, anyway.\p
+            Bet they’re hiding like scared Rattata."))
             applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 3))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             special(RemoveCameraObject)
@@ -130,7 +179,16 @@ script DominionCity_EventScripts_GruntsWestStillLooking
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
-            msgbox(format("Those grunts are everywhere…\nWe can’t let them see us. If they catch us again…\pI-I’m not going back to that lab. No way. No matter what. There has to be another way around."), MSGBOX_NPC)
+            msgbox(format("
+            Those grunts are everywhere…\p
+            W-what did they say about…\n
+            Getting rid of me…?\p
+            Surely they don't mean…\p
+            … … …\p
+            {PLAYER}, we can't let them catch us.\p
+            I'm not going back in there.\n
+            Nuh-huh. No chance.\p
+            C'mon, there has to be a way around!"), MSGBOX_NPC)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
             waitmovement(LOCALID_VEE)
             removeobject(LOCALID_VEE)
@@ -155,7 +213,9 @@ script DominionCity_EventScripts_GruntsNorthStillLooking
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
-            msgbox(format("There has to be another way around."), MSGBOX_NPC)
+            msgbox(format("
+            Hmm…\n
+            There's gotta be another way around."), MSGBOX_NPC)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth)
             waitmovement(LOCALID_VEE)
             removeobject(LOCALID_VEE)
@@ -175,17 +235,23 @@ script DominionCity_EventScripts_GruntsNorthStillLooking
             applymovement(5, moves(emote_exclamation_mark))
             waitmovement(5)
             speakername("Grunt 1")
-            msgbox(format("HQ is losing it.\nSaid if we don’t find them soon, heads will roll."))
+            msgbox(format("
+            HQ is losing it, man.\n
+            Said if we don’t find them soon, heads will roll."))
             playse(SE_PIN)
             applymovement(4,moves(emote_exclamation_mark))
             waitmovement(4)
             speakername("Grunt 2")
-            msgbox(format("What kind of Pokémon breaks out of Sector 7?!\nThis is bad… really bad."))
+            msgbox(format("
+            What kind of Pokémon breaks out of Sector 7, anyway?!\n
+            This is bad… Really bad."))
             playse(SE_PIN)
             applymovement(5,moves(emote_exclamation_mark))
             waitmovement(5)
             speakername("Grunt 1")
-            msgbox(format("If you see anything weird… anything… report it.\nI’m not taking the fall for this."))
+            msgbox(format("
+            Listen, if you spot anything weird, and I mean ANYTHING, report it.\p
+            No way I'm taking the fall for this one."))
             applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             special(RemoveCameraObject)
@@ -197,7 +263,11 @@ script DominionCity_EventScripts_GruntsNorthStillLooking
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
-            msgbox(format("Those grunts are everywhere…\nWe can’t let them see us. If they catch us again…\pI-I’m not going back to that lab. No way. No matter what. There has to be another way around."), MSGBOX_NPC)
+            msgbox(format("Those grunts are everywhere…\n
+            {PLAYER}, we can't let them catch us.\p
+            I'm not going back in there.\n
+            Nuh-huh. No chance.\p
+            C'mon, there has to be a way around!"), MSGBOX_NPC)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerSouth)
             waitmovement(LOCALID_VEE)
             removeobject(LOCALID_VEE)
@@ -222,7 +292,9 @@ script DominionCity_EventScripts_GruntsSouthStillLooking
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
-            msgbox(format("There has to be another way around."), MSGBOX_NPC)
+            msgbox(format("
+            Hmm…\n
+            There's gotta be another way around."), MSGBOX_NPC)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
             waitmovement(LOCALID_VEE)
             removeobject(LOCALID_VEE)
@@ -236,24 +308,25 @@ script DominionCity_EventScripts_GruntsSouthStillLooking
         {
             lockall
             special(SpawnCameraObject)
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 7))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             playse(SE_PIN)
             applymovement(6, moves(emote_exclamation_mark))
             waitmovement(6)
             speakername("Grunt 1")
-            msgbox(format("Can’t believe we’re cleaning up after another lab failure."))
+            msgbox(format("Cleaning up after another lab failure…\nAgain."))
             playse(SE_PIN)
             applymovement(7,moves(emote_exclamation_mark))
             waitmovement(7)
             speakername("Grunt 2")
-            msgbox(format("They said Sector 7 was secure.\nThey always say that…"))
+            msgbox(format("They said Sector 7 was secure.\n
+            They always say that…"))
             playse(SE_PIN)
             applymovement(6,moves(emote_exclamation_mark))
             waitmovement(6)
             speakername("Grunt 1")
-            msgbox(format("I didn’t sign up to chase mutated test subjects…"))
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+            msgbox(format("This was not what they advertised in the job description…"))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 7))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             special(RemoveCameraObject)
             getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
@@ -264,7 +337,11 @@ script DominionCity_EventScripts_GruntsSouthStillLooking
             waitmovement(OBJ_EVENT_ID_PLAYER)
             playse(SE_PIN)
             speakername("Vee")
-            msgbox(format("Those grunts are everywhere…\nWe can’t let them see us. If they catch us again…\pI-I’m not going back to that lab. No way. No matter what. There has to be another way around."), MSGBOX_NPC)
+            msgbox(format("Those grunts are everywhere…\n
+            {PLAYER}, we can't let them catch us.\p
+            I'm not going back in there.\n
+            Nuh-huh. No chance.\p
+            C'mon, there has to be a way around!"), MSGBOX_NPC)
             applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
             waitmovement(LOCALID_VEE)
             removeobject(LOCALID_VEE)

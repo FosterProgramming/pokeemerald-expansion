@@ -5807,6 +5807,16 @@ BattleScript_Pausex20::
 	pause B_WAIT_TIME_SHORT
 	return
 
+
+BattleScript_LevelUp_NoSkill::
+	fanfare MUS_LEVEL_UP
+	printstring STRINGID_PKMNGREWTOLV_NO_SKILL
+	setbyte sLVLBOX_STATE, 0
+	drawlvlupbox
+	handlelearnnewmove BattleScript_LearnedNewMove, BattleScript_LearnMoveReturn, TRUE
+	goto BattleScript_AskToLearnMove
+	return
+
 BattleScript_LevelUp::
 	fanfare MUS_LEVEL_UP
 	printstring STRINGID_PKMNGREWTOLV

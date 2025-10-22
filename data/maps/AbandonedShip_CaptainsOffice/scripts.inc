@@ -80,3 +80,72 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus:
 	.string "This ship is called S.S. CACTUS.\n"
 # 41 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	.string "It seems to be from an earlier era.$"
+
+VictoryRoad_1F_EventScript_FloorSwitch1::
+# 46 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lockall
+# 47 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1, BOULDER_SWITCH_NO_EVENT
+	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch1_2
+# 54 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 18, 10, METATILE_General_Grass, 0
+# 55 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+VictoryRoad_1F_EventScript_FloorSwitch1_1:
+# 57 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	releaseall
+	end
+
+VictoryRoad_1F_EventScript_FloorSwitch1_2:
+# 49 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 18, 10, METATILE_General_TallGrass, 0
+# 50 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+	goto VictoryRoad_1F_EventScript_FloorSwitch1_1
+
+
+VictoryRoad_1F_EventScript_FloorSwitch2::
+# 62 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lockall
+# 63 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2, BOULDER_SWITCH_NO_EVENT
+	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch2_2
+# 70 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 20, 10, METATILE_General_Grass, 0
+# 71 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+VictoryRoad_1F_EventScript_FloorSwitch2_1:
+# 73 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	releaseall
+	end
+
+VictoryRoad_1F_EventScript_FloorSwitch2_2:
+# 65 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 20, 10, METATILE_General_TallGrass, 0
+# 66 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+	goto VictoryRoad_1F_EventScript_FloorSwitch2_1
+
+
+VictoryRoad_1F_EventScript_FloorSwitch3::
+# 78 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lockall
+# 79 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3, BOULDER_SWITCH_NO_EVENT
+	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch3_2
+# 86 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 22, 10, METATILE_General_Grass, 0
+# 87 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+VictoryRoad_1F_EventScript_FloorSwitch3_1:
+# 89 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	releaseall
+	end
+
+VictoryRoad_1F_EventScript_FloorSwitch3_2:
+# 81 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 22, 10, METATILE_General_TallGrass, 0
+# 82 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+	goto VictoryRoad_1F_EventScript_FloorSwitch3_1
+

@@ -1,0 +1,537 @@
+mapscripts VoltbrookTown_PowerPlant_Front_2F_MapScripts {
+        MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_Front_2F_UnlockAllLeft)
+            
+        }
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_Front_2F_UnlockAllRight)
+            
+        }
+        end
+    }
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch1
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        setmetatile(13, 5, METATILE_PowerPlant_ButtonPressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorRight1Unlock)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_1_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        setmetatile(13, 5, METATILE_PowerPlant_ButtonUnpressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorRight1Lock)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_1_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorRight1Unlock
+{
+    setmetatile(15, 2, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(15, 3, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(15, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(15, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(15, 6, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorRight1Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED))
+    {
+    setmetatile(15, 2, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(15, 3, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(15, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(15, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(15, 6, METATILE_PowerPlant_BarrierBackWall, 1)
+    }
+
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch2
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2) != BOULDER_SWITCH_NO_EVENT){
+        setmetatile(12, 6, METATILE_PowerPlant_ButtonPressed, 0)
+        special(DrawWholeMapView)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Unlock)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_2_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        setmetatile(12, 6, METATILE_PowerPlant_ButtonUnpressed, 0)
+        special(DrawWholeMapView)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Lock)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_2_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Unlock
+{
+    setmetatile(10, 2, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(10, 3, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(10, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(10, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(10, 6, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED))
+    {
+    setmetatile(10, 2, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(10, 3, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(10, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(10, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(10, 6, METATILE_PowerPlant_BarrierBackWall, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch3
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3) != BOULDER_SWITCH_NO_EVENT){
+        setmetatile(7, 5, METATILE_PowerPlant_ButtonPressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Unlock)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_3_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        setmetatile(7, 5, METATILE_PowerPlant_ButtonUnpressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Lock)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_3_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Unlock
+{
+    setmetatile(17, 7, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(18, 7, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(17, 8, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(18, 8, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED))
+    {
+    setmetatile(17, 7, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0)
+    setmetatile(18, 7, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0)
+    setmetatile(17, 8, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+    setmetatile(18, 8, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch4
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_4) != BOULDER_SWITCH_NO_EVENT){
+        setmetatile(18, 5, METATILE_PowerPlant_ButtonPressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft1Unlock)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_4_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        setmetatile(18, 5, METATILE_PowerPlant_ButtonUnpressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft1Lock)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_4_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft1Unlock
+{
+    setmetatile(7, 7, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(8, 7, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(7, 8, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(8, 8, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft1Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED))
+    {
+    setmetatile(7, 7, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0)
+    setmetatile(8, 7, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0)
+    setmetatile(7, 8, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+    setmetatile(8, 8, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch5
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_5) != BOULDER_SWITCH_NO_EVENT){
+        setmetatile(7, 10, METATILE_PowerPlant_ButtonPressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorRight2Unlock)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight2Unlock)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_5_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        setmetatile(7, 10, METATILE_PowerPlant_ButtonUnpressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorRight2Lock)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight2Lock)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_5_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorRight2Unlock
+{
+    setmetatile(20, 2, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(20, 3, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(20, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(20, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(20, 6, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorRight2Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED))
+    {
+    setmetatile(20, 2, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(20, 3, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(20, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(20, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(20, 6, METATILE_PowerPlant_BarrierBackWall, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight2Unlock
+{
+    setmetatile(22, 7, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(23, 7, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(22, 8, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(23, 8, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight2Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED))
+    {
+    setmetatile(22, 7, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0)
+    setmetatile(23, 7, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0)
+    setmetatile(22, 8, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+    setmetatile(23, 8, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch6
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_6) != BOULDER_SWITCH_NO_EVENT){
+        setmetatile(18, 10, METATILE_PowerPlant_ButtonPressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Unlock)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft2Unlock)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_6_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        setmetatile(18, 10, METATILE_PowerPlant_ButtonUnpressed, 0)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Lock)
+        call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft2Lock)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_6_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Unlock
+{
+    setmetatile(5, 7, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(5, 8, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(5, 9, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(5, 10, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(5, 11, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED))
+    {
+    setmetatile(5, 7, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(5, 8, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(5, 9, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(5, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(5, 11, METATILE_PowerPlant_BarrierBackWall, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft2Unlock
+{
+    setmetatile(2, 7, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(3, 7, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(2, 8, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(3, 8, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft2Lock
+{
+    if(!flag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED))
+    {
+    setmetatile(2, 7, METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow, 0)
+    setmetatile(3, 7, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0)
+    setmetatile(2, 8, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+    setmetatile(3, 8, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    }
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch8
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_8) != BOULDER_SWITCH_NO_EVENT){
+        call(VoltbrookTown_PowerPlant_Front_2F_UnlockAllRight)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        call(VoltbrookTown_PowerPlant_Front_2F_LockAllRight)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_8_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_UnlockAllRight
+{
+    setmetatile(23, 10, METATILE_PowerPlant_ButtonPressed, 0)
+    setobjectxyperm(5, 23, 10)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorRight1Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorRight2Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight2Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight1Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight2Unlock)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_LockAllRight
+{
+    setmetatile(23, 10, METATILE_PowerPlant_ButtonUnpressed, 0)
+    setobjectxyperm(5, 22, 10)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorRight1Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight1Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorRight2Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomRight2Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight1Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight2Lock)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight1Unlock
+{
+    setmetatile(15, 7, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(15, 8, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(15, 9, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(15, 10, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(15, 11, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight1Lock
+{
+    setmetatile(15, 7, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(15, 8, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(15, 9, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(15, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(15, 11, METATILE_PowerPlant_BarrierBackWall, 1)
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight2Unlock
+{
+    setmetatile(20, 7, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(20, 8, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(20, 9, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(20, 10, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(20, 11, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomRight2Lock
+{
+    setmetatile(20, 7, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(20, 8, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(20, 9, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(20, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(20, 11, METATILE_PowerPlant_BarrierBackWall, 1)
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_Switch7
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_7) != BOULDER_SWITCH_NO_EVENT){
+        call(VoltbrookTown_PowerPlant_Front_2F_UnlockAllLeft)
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        call(VoltbrookTown_PowerPlant_Front_2F_LockAllLeft)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_ENTRANCE_2F_7_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_UnlockAllLeft
+{
+    setmetatile(2, 10, METATILE_PowerPlant_ButtonPressed, 0)
+    setobjectxyperm(6, 2, 10)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft1Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorLeft2Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft2Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft1Unlock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Unlock)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_LockAllLeft
+{
+    setmetatile(2, 10, METATILE_PowerPlant_ButtonUnpressed, 0)
+    setobjectxyperm(6, 3, 10)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorLeft1Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft1Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorLeft2Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomLeft2Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft1Lock)
+    call(VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft2Lock)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorLeft2Unlock
+{
+    setmetatile(5, 2, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(5, 3, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(5, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(5, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(5, 6, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorLeft2Lock
+{
+    setmetatile(5, 2, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(5, 3, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(5, 4, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(5, 5, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(5, 6, METATILE_PowerPlant_BarrierBackWall, 1)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft1Unlock
+{
+    setmetatile(10, 7, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(10, 8, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(10, 9, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(10, 10, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(10, 11, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_Front_2F_DoorBottomBottomLeft1Lock
+{
+    setmetatile(10, 7, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(10, 8, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(10, 9, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(10, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(10, 11, METATILE_PowerPlant_BarrierBackWall, 1)
+    special(DrawWholeMapView)
+    return
+}

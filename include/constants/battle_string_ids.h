@@ -732,9 +732,10 @@
 #define STRINGID_VEEFIRSTTRANSFORMDIALOGUE            730
 #define STRINGID_GLIDEDEMBLEM                         731
 #define STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC        732
-#define STRINGID_DEFAULTING                           733
+#define STRINGID_PKMNGREWTOLV_NO_SKILL                733
+#define STRINGID_DEFAULTING                           734
 
-#define BATTLESTRINGS_COUNT                           734
+#define BATTLESTRINGS_COUNT                           735
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

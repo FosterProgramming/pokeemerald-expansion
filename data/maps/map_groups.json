@@ -137,7 +137,8 @@
     "Route4A",
     "Route8A",
     "Stratoscape",
-    "AbyssalReef"
+    "AbyssalReef",
+    "Glacierra"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -153,14 +154,45 @@
     "DominionCity_MagaLab_Entrance",
     "DominionCity_MagaLab_EntranceHallway",
     "IntroCutsceneMap",
-    "DominionCity_MagaLab_ExitCode"
+    "DominionCity_MagaLab_ExitCode",
+    "Emberglide_House1",
+    "Emberglide_House2",
+    "Emberglide_House3"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
     "OldaleTown_House2",
     "OldaleTown_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_2F",
-    "OldaleTown_Mart"
+    "OldaleTown_Mart",
+    "Pyroden_House1",
+    "Pyroden_House2",
+    "Pyroden_House3",
+    "Pyroden_House4",
+    "Pyroden_House5",
+    "PyrodenDungeon_Clock_Room_Test",
+    "MountPyroden_1F",
+    "MountPyroden_1F_East",
+    "MountPyroden_1F_West",
+    "MountPyroden_1F_North",
+    "MountPyroden_1F_NorthWest",
+    "MountPyroden_2F",
+    "MountPyroden_2F_South",
+    "MountPyroden_2F_West",
+    "MountPyroden_3F",
+    "MountPyroden_3F_East",
+    "MountPyroden_3F_West",
+    "MountPyroden_FinalRoom",
+    "MountPyroden_4F",
+    "MountPyroden_MarioRoom",
+    "MountPyroden_4F_TankRoom",
+    "MountPyroden_4F_SideRoom",
+    "MountPyroden_3F_SideRoom",
+    "MountPyroden_2F_SideRoom",
+    "MountPyroden_1F_SideRoom",
+    "MountPyroden_3F_South",
+    "MountPyroden_4F_SouthLadderRoom",
+    "MountPyroden_4F_ClockRoom"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",
@@ -168,7 +200,19 @@
     "DewfordTown_PokemonCenter_2F",
     "DewfordTown_Gym",
     "DewfordTown_Hall",
-    "DewfordTown_House2"
+    "DewfordTown_House2",
+    "VoltbrookTown_PowerPlant_Entrance",
+    "VoltbrookTown_PowerPlant_Office",
+    "VoltbrookTown_PowerPlant_Front",
+    "VoltbrookTown_PowerPlant_BarrelRoom",
+    "VoltrbookTown_PowerPlant_LeftGeneratorRoom",
+    "VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F",
+    "VoltbrookTown_PowerPlant_RockMaze_2F",
+    "VoltbrookTown_RockDrop_Bottom",
+    "VoltbrookTown_RockDrop_Top",
+    "VoltbrookTown_PowerPlant_Entrance_2F",
+    "VoltbrookTown_PowerPlant_Front_2F",
+    "VoltbrookTown_PowerPlant_Underground_Tunnel"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",
@@ -235,7 +279,16 @@
     "SlateportCity_House",
     "SlateportCity_PokemonCenter_1F",
     "SlateportCity_PokemonCenter_2F",
-    "SlateportCity_Mart"
+    "SlateportCity_Mart",
+    "GlacierraCaverns_1F",
+    "GlacierraCaverns_B1F",
+    "GlacierraCaverns_2F",
+    "GlacierraCaverns_3F",
+    "GlacierraCaverns_3F_SideRoom",
+    "GlacierraCaverns_Outside",
+    "GlacierraCaverns_4F",
+    "GlacierraCaverns_5F",
+    "GlacierraCaverns_6F"
   ],
   "gMapGroup_IndoorMauville": [
     "MauvilleCity_Gym",

@@ -244,6 +244,21 @@
 #define METATILE_General_YellowCaveIndent      0x1A8
 #define METATILE_General_YellowCaveOpen        0x1A9
 
+// gTileset_GeneralSeelVersion
+#define METATILE_GeneralSeelVersion_CrumbleDoorway_Bottom  0x044
+#define METATILE_GeneralSeelVersion_CrumbleDoorway_Top     0x03C
+#define METATILE_GeneralSeelVersion_CrumbleFloor           0x04C
+#define METATILE_GeneralSeelVersion_FrozenWater            0x04E
+#define METATILE_GeneralSeelVersion_HiddenGroundTile       0x04F
+#define METATILE_GeneralSeelVersion_NormalGrass            0x001
+#define METATILE_GeneralSeelVersion_PondLeftEdge           0x0C0
+#define METATILE_GeneralSeelVersion_PondLeftTopCorner      0x0B8
+#define METATILE_GeneralSeelVersion_PondMiddleWater        0x0C1
+#define METATILE_GeneralSeelVersion_PondRightEdge          0x0C2
+#define METATILE_GeneralSeelVersion_PondRightTopCorner     0x0BA
+#define METATILE_GeneralSeelVersion_PondTopEdge            0x0B9
+#define METATILE_GeneralSeelVersion_RevealedGroundTile     0x067
+
 // gTileset_GenericBuilding
 #define METATILE_GenericBuilding_TableEdge               0x2F1
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x21B
@@ -373,6 +388,36 @@
 // gTileset_MossdeepGym
 #define METATILE_MossdeepGym_YellowArrow_Right  0x250
 
+// gTileset_MountPyroden
+#define METATILE_MountPyroden_Door_BottomLeft      0x02B
+#define METATILE_MountPyroden_Door_BottomMid       0x02C
+#define METATILE_MountPyroden_Door_BottomRight     0x02D
+#define METATILE_MountPyroden_Door_MidLeft         0x023
+#define METATILE_MountPyroden_Door_MidMid          0x024
+#define METATILE_MountPyroden_Door_MidRight        0x025
+#define METATILE_MountPyroden_Door_TopLeft         0x01B
+#define METATILE_MountPyroden_Door_TopMid          0x01C
+#define METATILE_MountPyroden_Door_TopRight        0x01D
+#define METATILE_MountPyroden_Floor                0x009
+#define METATILE_MountPyroden_Lava_BottomLeft      0x015
+#define METATILE_MountPyroden_Lava_BottomMiddle    0x016
+#define METATILE_MountPyroden_Lava_BottomRight     0x017
+#define METATILE_MountPyroden_Lava_MiddleLeft      0x00D
+#define METATILE_MountPyroden_Lava_MiddleMiddle    0x00E
+#define METATILE_MountPyroden_Lava_MiddleRight     0x00F
+#define METATILE_MountPyroden_Lava_TopLeft         0x005
+#define METATILE_MountPyroden_Lava_TopMiddle       0x006
+#define METATILE_MountPyroden_Lava_TopRight        0x007
+#define METATILE_MountPyroden_OverhangBottom       0x0D8
+#define METATILE_MountPyroden_OverhangTop          0x0D0
+#define METATILE_MountPyroden_Stairs_Left          0x04B
+#define METATILE_MountPyroden_Stairs_Left_Bottom   0x055
+#define METATILE_MountPyroden_Stairs_Left_Top      0x04D
+#define METATILE_MountPyroden_Stairs_Middle        0x0AD
+#define METATILE_MountPyroden_Stairs_Right         0x04C
+#define METATILE_MountPyroden_Stairs_Right_Bottom  0x066
+#define METATILE_MountPyroden_Stairs_Right_Top     0x04E
+
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
 #define METATILE_Pacifidlog_FloatingLogs_HorizontalLeft        0x250
@@ -433,6 +478,73 @@
 #define METATILE_PokemonCenter_Floor_Plain_Alt           0x2E4
 #define METATILE_PokemonCenter_Floor_ShadowTop           0x21E
 #define METATILE_PokemonCenter_Floor_ShadowTop_Alt       0x2DC
+
+// gTileset_PowerPlant
+#define METATILE_PowerPlant_BackWall                            0x204
+#define METATILE_PowerPlant_BackWallTile                        0x201
+#define METATILE_PowerPlant_BackWallTopRight                    0x39A
+#define METATILE_PowerPlant_BarrierBackWall                     0x23C
+#define METATILE_PowerPlant_BarrierBackWallTile                 0x239
+#define METATILE_PowerPlant_BarrierBackWallTopRight             0x39B
+#define METATILE_PowerPlant_BarrierBottomWall                   0x226
+#define METATILE_PowerPlant_BarrierNormalFloorNoShadow          0x232
+#define METATILE_PowerPlant_BarrierNormalFloorTopLeftShadow     0x2BE
+#define METATILE_PowerPlant_BarrierNormalFloorTopShadow         0x231
+#define METATILE_PowerPlant_BarrierTileFloorNoShadow            0x230
+#define METATILE_PowerPlant_BarrierTileFloorTopShadow           0x233
+#define METATILE_PowerPlant_BarrierTopWall                      0x20C
+#define METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow  0x2B9
+#define METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow    0x2B8
+#define METATILE_PowerPlant_BottomWall                          0x21C
+#define METATILE_PowerPlant_ButtonPressed                       0x268
+#define METATILE_PowerPlant_ButtonUnpressed                     0x260
+#define METATILE_PowerPlant_CrackedFloor                        0x299
+#define METATILE_PowerPlant_CrackedFloorHole                    0x29A
+#define METATILE_PowerPlant_CrackedFloorHoleShadow              0x2AC
+#define METATILE_PowerPlant_CrackedFloorShadow                  0x2AB
+#define METATILE_PowerPlant_NormalFloorLeftShadow               0x22C
+#define METATILE_PowerPlant_NormalFloorNoShadow                 0x224
+#define METATILE_PowerPlant_NormalFloorTopLeftShadow            0x22B
+#define METATILE_PowerPlant_NormalFloorTopShadow                0x225
+#define METATILE_PowerPlant_RugBottomLeft                       0x2AE
+#define METATILE_PowerPlant_RugBottomRight                      0x2AF
+#define METATILE_PowerPlant_RugTopLeft                          0x2A6
+#define METATILE_PowerPlant_RugTopRight                         0x2A7
+#define METATILE_PowerPlant_TileFloorNoShadow                   0x206
+#define METATILE_PowerPlant_TileFloorTopShadow                  0x207
+#define METATILE_PowerPlant_TopBarrierNormalFloorLeftShadow     0x2B1
+#define METATILE_PowerPlant_TopBarrierNormalFloorNoShadow       0x2B0
+#define METATILE_PowerPlant_TopBarrierNormalFloorTopShadow      0x2BF
+#define METATILE_PowerPlant_TopWall                             0x21D
+#define METATILE_PowerPlant_Vent                                0x258
+
+// gTileset_Pyroden
+#define METATILE_Pyroden_Door_BottomLeft              0x22B
+#define METATILE_Pyroden_Door_BottomMiddle            0x22C
+#define METATILE_Pyroden_Door_BottomRight             0x22D
+#define METATILE_Pyroden_Door_MiddleLeft              0x223
+#define METATILE_Pyroden_Door_MiddleMiddle            0x224
+#define METATILE_Pyroden_Door_MiddleRight             0x225
+#define METATILE_Pyroden_Door_TopLeft                 0x21B
+#define METATILE_Pyroden_Door_TopMiddle               0x21C
+#define METATILE_Pyroden_Door_TopRight                0x21D
+#define METATILE_Pyroden_EmptyPool_BottomLeft         0x2D8
+#define METATILE_Pyroden_EmptyPool_BottomLeftCorner   0x2D3
+#define METATILE_Pyroden_EmptyPool_BottomMiddle       0x2D9
+#define METATILE_Pyroden_EmptyPool_BottomRight        0x2DA
+#define METATILE_Pyroden_EmptyPool_BottomRightCorner  0x2D4
+#define METATILE_Pyroden_EmptyPool_MiddleLeft         0x2D0
+#define METATILE_Pyroden_EmptyPool_MiddleMiddle       0x2D1
+#define METATILE_Pyroden_EmptyPool_MiddleRight        0x2D2
+#define METATILE_Pyroden_EmptyPool_TopLeft            0x2C8
+#define METATILE_Pyroden_EmptyPool_TopLeftCorner      0x2CB
+#define METATILE_Pyroden_EmptyPool_TopMiddle          0x2C9
+#define METATILE_Pyroden_EmptyPool_TopRight           0x2CA
+#define METATILE_Pyroden_EmptyPool_TopRightCorner     0x2CC
+#define METATILE_Pyroden_Puddle_BottomLeft            0x2DD
+#define METATILE_Pyroden_Puddle_BottomRight           0x2DF
+#define METATILE_Pyroden_Puddle_TopLeft               0x2CD
+#define METATILE_Pyroden_Puddle_TopRight              0x2CF
 
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F

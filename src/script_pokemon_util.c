@@ -18,6 +18,7 @@
 #include "pokedex.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "ui_summary_screen.h"
 #include "random.h"
 #include "script.h"
 #include "sprite.h"
@@ -429,6 +430,8 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, u
     // assign OT name and gender
     SetMonData(&mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(&mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
+
+    tryToGivePartyMemberExp(&mon); //Sets Initial Party Member Skill Points
 
     if (slot < PARTY_SIZE)
     {

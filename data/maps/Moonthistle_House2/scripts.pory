@@ -93,7 +93,7 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			if(flag(FLAG_MOONTHISTLE_TRUSTED))
 			{
 				speakername("Linoone")
-				msgbox(format("You’ve earned a place here. Rest when you need. No one will chase you off.\pFeel free to meet the others."),MSGBOX_NPC)
+				msgbox(format("You’ve earned a place here.\pRest when you need.\nNo one will chase you off.\pFeel free to meet the others."),MSGBOX_NPC)
 				release
 				end
 			}
@@ -109,19 +109,37 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 				waitmovement(LOCALID_VEE)
 				applymovement(1,moves(face_down*10))
 				speakername("Vee")
-				msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"))
+				msgbox(format("
+				We got the satchel!\p
+				A MAGA scout found us, but we stopped him.\p
+				He ran off, though…"))
 				applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
 				waitmovement(OBJ_EVENT_ID_PLAYER)
 				speakername("Linoone")
-				msgbox(format("Hmph. So they know you're out there. That won’t help our nerves.\pBut you brought it back. Even with danger breathing down your necks.\pMaybe you two aren’t a liability after all.\pYou’ve earned a place here. Rest when you need. No one will chase you off.\pFeel free to meet the others. Some might be more helpful than I was."))
+				msgbox(format("
+				Hmph.\p
+				So, they know you're out there.\nThat won’t help our nerves.\p
+				But you brought it back.\n
+				Even with danger breathing down your neck.\p
+				Maybe you two aren’t a liability after all.\p
+				You’ve earned a place here.\p
+				Rest when you need. No one will chase you off.\p
+				Feel free to meet the others.\n
+				Some might be more helpful than I was."))
 				closemessage
 				delay(40)
 				speakername("Linoone")
-				msgbox(format("That artifact story still sounds like fantasy to me.\pBut… there's one ‘mon here who used to live in Voltbrook.\pName’s Shade. Mightyena. Keeps to the shadows, but sees more than most.\pIf there’s a hiding spot in Voltbrook… Shade would know it."))
+				msgbox(format("
+				That artifact story still sounds like fantasy to me.\p
+				But… there's one ‘mon here who used to live in Voltbrook.\p
+				Name’s Shade, the Mightyena.\n
+				Keeps to the shadows, but sees more than most.\p
+				If there’s a hiding spot in Voltbrook…\n
+				Shade would know it."))
 				applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 				waitmovement(OBJ_EVENT_ID_PLAYER)
 				speakername("Vee")
-				msgbox(format("Thank you… really. We won’t let you down."))
+				msgbox(format("Thank you.\nWe won’t let you down."))
 				applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
 				waitmovement(LOCALID_VEE)
 				removeobject(LOCALID_VEE)
@@ -132,13 +150,18 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			else
 			{
 				speakername("Linoone")
-				msgbox(format("You want trust? Bring that satchel back. Quietly."), MSGBOX_NPC)
+				msgbox(format("You want trust?\pBring that satchel back.\nQuietly."), MSGBOX_NPC)
 			}	
 		}
 	else
 		{
 			speakername("Linoone")
-			msgbox(format("You’re not from here. And around here, that means trouble. I know your faces. I've seen the wanted posters from Voltbrook, head the whispers of the dangerous, escaped experiments…\pWe don’t trust easy. Especially not ones who walked out of a MAGA lab.\pHow do I know you're not here to spy on us? Or help Team MAGA capture us?"), MSGBOX_NPC)
+			msgbox(format("
+			You’re not from here.\n
+			And in this town, that means trouble.\p
+			Wait… I know your faces.\p
+			I've seen the wanted posters from Voltbrook, heard the whispers about escaped experiments…\p
+			How do I know you're not here to spy on us?"), MSGBOX_NPC)
 			getplayerxy(PlayerXCoordinates,PlayerYCoordinates)
 			setobjectxyperm(LOCALID_VEE,PlayerXCoordinates,PlayerYCoordinates)
 			addobject(LOCALID_VEE)
@@ -148,27 +171,75 @@ script Moonthistle_EventScripts_LinooneTrustQuestStart
 			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 			waitmovement(LOCALID_VEE)
 			speakername("Vee")
-			msgbox(format("W-We’re not here to cause any trouble! Really!\pWe just… we’re trying to stay hidden. Just for a little while."))
+			msgbox(format("
+			W-We’re not here to cause any trouble! Really!\p
+			We just…\n
+			We’re trying to stay hidden.\l
+			Just for a little while."))
 			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			speakername("Linoone")
-			msgbox(format("Letting you stay would be a big risk. How do we know we can trust you?"))
+			msgbox(format("
+			Letting you stay would be a big risk.\N
+			We have no reason to trust you."))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+			waitmovement(0)
+			speakername("Vee")
+			
+			msgbox(format(
+			"We're the victims here!\p
+			They locked us up and ran all sorts of experiments…\p
+			My friend here, he used to be human!\n
+			Team MAGA transformed him into a Pokémon.\p
+			And me…\n
+			Well, I'm not sure what's wrong with me exactly, but…\p
+			It's all strange!\p
+			And now we're not useful anymore, so they want to get rid of us.\p
+			Please, we don’t have anywhere else to go!"))
+
+			speakername("Linoone")
+			msgbox(format(
+				"Hmm…\p
+				I've heard the rumors…\n
+				But it really does sound hard to believe…\p
+				If you're speaking the truth, then prove it.\p
+				Give us information that can help us defeat team MAGA.")
+			)
+			speakername("Vee")
+			msgbox(format("
+			We, uh… We did find something in the lab.\p
+			S-some note that mentioned eight artifacts.\p
+			Super duper important ones!"))
+			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
+			waitmovement(OBJ_EVENT_ID_PLAYER)
+			speakername("Linoone")
+			msgbox(format("Artifacts?\pYou mean, like treasure?\nMagic trinkets?"))
 			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			speakername("Vee")
-			msgbox(format("Because they experimented on us.\pThey locked us up. Said we were just test subjects. When I wasn’t useful anymore… they tossed me aside.\pWe escaped. We don’t have anywhere else to go.\pWe, uh… found something in the lab.\pN-Notes that mentioned eight artifacts-really super duper important ones."))
+			msgbox(format("
+			Yes!\n
+			Well, no?\l
+			Kind of?\p
+			They're connected to…\n
+			Fixing what they did. To my friend.\p
+			I don’t think they’ll help me.\n
+			But he… He was human.\p
+			And the notes said these artifacts can change him back to the way he was!\p
+			We’re sure one of the artifacts is in Voltbrook.\N
+			We just need time to find it.\p
+			Please. We can’t even walk around out there.\p
+			They’ll send us back to the lab… or worse."))
 			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			speakername("Linoone")
-			msgbox(format("Artifacts? You mean like treasure? Magic trinkets?"))
-			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
-			waitmovement(OBJ_EVENT_ID_PLAYER)
-			speakername("Vee")
-			msgbox(format("No! I mean-yes? Kind of! But not like that.\pThey're connected to… fixing what they did. To my friend.\pI don’t think they’ll help me. But he was human. The notes said these artifacts are needed to change him back to the way he was!\pAnd we’re sure one of the artifacts is in Voltbrook. We just need time to find it.\pPlease. We can’t even walk around out there. They’ll send us back to the lab… or worse."))
-			applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
-			waitmovement(OBJ_EVENT_ID_PLAYER)
-			speakername("Linoone")
-			msgbox(format("…You sound like you believe it, at least.\pBut belief won’t earn you shelter. Not here.\pOne of ours wandered into Route 7. Dropped a marked satchel. It was real important.\pIf MAGA spots it, they might trace it back here. We can’t take that risk.\pYou want trust? Bring that satchel back. Quietly."))
+			msgbox(format("
+			…What a story.\n
+			You sound like you believe it, at least.\p
+			But belief alone won’t earn you shelter.\nNot here.\p
+			One of ours wandered into Route 7.\nDropped a marked satchel.\lReally important.\p
+			If MAGA spots it, they might trace it back here.\NWe can’t take that risk.\p
+			You want trust?\pBring that satchel back.\nQuietly."))
 			applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
 			waitmovement(LOCALID_VEE)
 			removeobject(LOCALID_VEE)
@@ -188,29 +259,59 @@ script Moonthistle_EventScripts_LinooneTrustQuestComplete
     if (flag(FLAG_MOONTHISTLE_SATCHEL_RECOVERED)) 
 	{
         speakername("Vee")
-		msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"),MSGBOX_NPC)
+		msgbox(format("
+				We got the satchel!\p
+				A MAGA scout found us, but we stopped him.\p
+				He ran off, though…"))
 		speakername("Linoone")
-		msgbox(format("Hmph. So they know you're out there. That won’t help our nerves.\pBut you brought it back. Even with danger breathing down your necks.\pMaybe you two aren’t a liability after all.\pYou’ve earned a place here. Rest when you need. No one will chase you off.\pFeel free to meet the others. Some might be more helpful than I was."))
+		msgbox(format("
+				Hmph.\p
+				So, they know you're out there.\nThat won’t help our nerves.\p
+				But you brought it back.\n
+				Even with danger breathing down your neck.\p
+				Maybe you two aren’t a liability after all.\N
+				You’ve earned a place here.\p
+				Rest when you need. No one will chase you off.\p
+				And feel free to meet the others.\n
+				Some might be more helpful than I was."))
 		closemessage
 		delay(40)
 		speakername("Linoone")
-		msgbox(format("That artifact story still sounds like fantasy to me.\pBut… there's one ‘mon here who used to live in Voltbrook.\pName’s Shade. Mightyena. Keeps to the shadows, but sees more than most.\pIf there’s a hiding spot in Voltbrook… Shade would know it."))
+		msgbox(format("
+				That artifact story still sounds like fantasy to me.\p
+				But… there's one ‘mon here who used to live in Voltbrook.\p
+				Name’s Shade, the Mightyena.\n
+				Keeps to the shadows, but sees more than most.\p
+				If there’s a hiding spot in Voltbrook…\n
+				Shade would know it."))
 		speakername("Vee")
-		msgbox(format("Thank you… really. We won’t let you down."), MSGBOX_NPC)
+		msgbox(format("Thank you.\nWe won’t let you down."))
 		setflag(FLAG_MOONTHISTLE_TRUSTED)
 		release
 		end
     }
     speakername("Vee")
-    msgbox(format("We got the satchel!\pA MAGA scout found us, but we stopped him. He ran off, though…"))
+    msgbox(format("
+				We got the satchel!\p
+				A MAGA scout found us, but we stopped him.\p
+				He ran off, though…"))
     speakername("Linoone")
-    msgbox(format("Hmph. So they know you're out there. That won’t help our nerves.\pBut you brought it back. Even with danger breathing down your necks.\pMaybe you two aren’t a liability after all.\pYou’ve earned a place here. Rest when you need. No one will chase you off.\pFeel free to meet the others. Some might be more helpful than I was."))
+    msgbox(format("
+				Hmph.\p
+				So, they know you're out there.\nThat won’t help our nerves.\p
+				But you brought it back.\n
+				Even with danger breathing down your neck.\p
+				Maybe you two aren’t a liability after all.\p
+				You’ve earned a place here.\p
+				Rest when you need. No one will chase you off.\p
+				Feel free to meet the others.\n
+				Some might be more helpful than I was."))
 	closemessage
 	delay(40)
     speakername("Linoone")
     msgbox(format("That artifact story still sounds like fantasy to me.\pBut… there's one ‘mon here who used to live in Voltbrook.\pName’s Shade. Mightyena. Keeps to the shadows, but sees more than most.\pIf there’s a hiding spot in Voltbrook… Shade would know it."))
     speakername("Vee")
-    msgbox(format("Thank you… really. We won’t let you down."), MSGBOX_NPC)
+    msgbox(format("Thank you.\nWe won’t let you down."))
     setflag(FLAG_MOONTHISTLE_TRUSTED)
     release
     end

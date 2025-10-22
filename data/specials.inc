@@ -564,3 +564,5 @@ gSpecials::
 	def_special BattleSetup_StartPorygonBattle
 	def_special EnterCode
 	def_special GetCodeFeedback
+	def_special TeleportCamera
+	def_special ReturnCameraToPlayer

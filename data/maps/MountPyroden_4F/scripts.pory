@@ -1,0 +1,332 @@
+raw `
+.set LOCALID_VEE, 3
+.set LOCALID_FRO, 2
+.set LOCALID_DOM, 4
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
+`
+
+mapscripts MountPyroden_4F_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_BEATEN_MAGMORTAR))
+        {
+            setmetatile(4, 17, METATILE_MountPyroden_Lava_TopLeft, TRUE)
+            setmetatile(5, 17, METATILE_MountPyroden_Lava_TopMiddle, TRUE)
+            setmetatile(6, 17, METATILE_MountPyroden_Lava_TopMiddle, TRUE)
+            setmetatile(7, 17, METATILE_MountPyroden_Lava_TopMiddle, TRUE)
+            setmetatile(8, 17, METATILE_MountPyroden_Lava_TopMiddle, TRUE)
+            setmetatile(9, 17, METATILE_MountPyroden_Lava_TopRight, TRUE)
+            setmetatile(4, 18, METATILE_MountPyroden_Lava_MiddleLeft, TRUE)
+            setmetatile(5, 18, METATILE_MountPyroden_Lava_MiddleMiddle, TRUE)
+            setmetatile(6, 18, METATILE_MountPyroden_Lava_MiddleMiddle, TRUE)
+            setmetatile(7, 18, METATILE_MountPyroden_Lava_MiddleMiddle, TRUE)
+            setmetatile(8, 18, METATILE_MountPyroden_Lava_MiddleMiddle, TRUE)
+            setmetatile(9, 18, METATILE_MountPyroden_Lava_MiddleRight, TRUE)
+            setmetatile(4, 19, METATILE_MountPyroden_Lava_BottomLeft, TRUE)
+            setmetatile(5, 19, METATILE_MountPyroden_Lava_BottomMiddle, TRUE)
+            setmetatile(6, 19, METATILE_MountPyroden_Lava_BottomMiddle, TRUE)
+            setmetatile(7, 19, METATILE_MountPyroden_Lava_BottomMiddle, TRUE)
+            setmetatile(8, 19, METATILE_MountPyroden_Lava_BottomMiddle, TRUE)
+            setmetatile(9, 19, METATILE_MountPyroden_Lava_BottomRight, TRUE)
+            special(DrawWholeMapView)
+        }
+        if(var(VAR_PYRODEN_LAST_ROOM_STATE) >= 5)
+        {
+            call(MountPyroden_4F_EventScript_DrainLava)
+        }
+        end
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_PYRODEN_LAST_ROOM_STATE, 3
+        {
+            lock
+            special(SpawnCameraObject)
+            delay(10)
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(
+                walk_fast_down*12
+                walk_fast_left*4
+                delay_16*3
+                walk_fast_right*4
+                walk_fast_up*12
+            ))
+            waitmovement(0)
+            special(RemoveCameraObject)
+            getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+            setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+            addobject(LOCALID_VEE)
+            applymovement(LOCALID_VEE, moves(
+                walk_right
+                face_left
+            ))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+            waitmovement(LOCALID_VEE)
+            speakername("Vee")
+            msgbox(format(
+                "Oh, no!\n
+                The exit is covered by lava!\p
+                What do we do, now?\n
+                We need to find another way out, Seel!"
+            ))
+            closemessage
+            applymovement(LOCALID_VEE, moves(walk_left))
+            waitmovement(0)
+            removeobject(LOCALID_VEE)
+            setvar(VAR_PYRODEN_LAST_ROOM_STATE, 4)
+            end
+        }
+    ]
+}
+
+
+script MountPyroden_4F_EventScript_Statue
+{
+    lock
+    if(!flag(FLAG_BEATEN_MAGMORTAR))
+    {   
+        msgbox(format(
+            "A strange statue.\n
+            There's a dial on it."
+        ))
+        getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+	    setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+        setobjectxyperm(LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates)
+        addobject(LOCALID_FRO)
+        addobject(LOCALID_VEE)
+        applymovement(LOCALID_FRO, moves(walk_down face_up))
+        applymovement(LOCALID_VEE, moves(walk_left face_right))
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_down))
+        waitmovement(LOCALID_VEE)
+        speakername("Fro")
+        msgbox(format(
+            "Well, I'll be.\n
+            This is a bit of a pickle.\p
+            I bet that this dial makes the lava disappear, or something of the sort.\p
+            But…\n
+            We're missing something important.\p
+            Something that will prevent us from turning the dial."
+        ))
+        speakername("Vee")
+        msgbox(format(
+            "A key, maybe?"
+        ))
+        speakername("Fro")
+        msgbox(format(
+            "No.\p
+            Opposable thumbs."
+        ))
+        closemessage
+        applymovement(LOCALID_FRO, moves(walk_up))
+        applymovement(LOCALID_VEE, moves(walk_right))
+        waitmovement(0)
+        removeobject(LOCALID_VEE)
+        removeobject(LOCALID_FRO)
+        release
+        end
+    }
+    else
+    {
+        if(var(VAR_PYRODEN_LAST_ROOM_STATE) == 4)
+        {
+        msgbox(format(
+            "A strange statue.\n
+            There's a dial on it."
+        ))
+        closemessage
+        getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+	    setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+        setobjectxyperm(LOCALID_FRO, PlayerXCoordinates, PlayerYCoordinates)
+        setobjectxyperm(LOCALID_DOM, PlayerXCoordinates, PlayerYCoordinates)
+        addobject(LOCALID_FRO)
+        addobject(LOCALID_VEE)
+        addobject(LOCALID_DOM)
+        applymovement(LOCALID_DOM, moves(
+            walk_down
+            face_up
+        ))
+        applymovement(LOCALID_VEE, moves(
+            walk_left
+            walk_down
+            face_right
+        ))
+        applymovement(LOCALID_FRO, moves(
+            walk_left
+            face_right
+        ))
+        waitmovement(LOCALID_VEE)
+        speakername("Fro")
+        msgbox(format(
+            "Hmm.\p
+            Say…\n
+            Dim, right?"
+            ))
+        applymovement(LOCALID_DOM, moves(face_left))
+        waitmovement(0)
+        speakername("Dom")
+        msgbox(format(
+            "It's Dom.\n Dom Colangelo, at your service."
+        ))
+        speakername("Fro")
+        msgbox(format(
+            "Ok.\p
+            Dim, it looks like you could actually be somewhat useful.\p
+            You happen to have something that none of us here possess."
+        ))
+        speakername("Dom")
+        msgbox(format(
+            "A heart of gold?"
+        ))
+        speakername("Fro")
+        msgbox(format(
+            "Opposable thumbs and fine motor skills."
+        ))
+        closemessage
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(
+            walk_down
+            walk_in_place_up
+        ))
+        applymovement(LOCALID_DOM, moves(
+            walk_up
+        ))
+        waitmovement(OBJ_EVENT_ID_PLAYER)
+        speakername("Fro")
+        msgbox(format("Now, Dim."))
+        speakername("Dom")
+        msgbox(format("It's Dom."))
+        speakername("Fro")
+        msgbox(format(
+            "Ok.\p
+            Now, Dim.\n
+            There is a dial in front of you.\p
+            I think that the dial controls the flow of the lava.\p
+            But there must be a trick to it.\p
+            It would probably be like opening a safe."
+        ))
+        speakername("Dom")
+        msgbox(format(
+            "I know how to open sa-"
+        ))
+        speakername("Fro")
+        msgbox(format(
+            "Yes, you know how to open safes.\N
+            I never doubted otherwise.\p
+            Now. Try to see if you can make something happen."
+        ))
+        speakername("Dom")
+        msgbox(format(
+            "Hmm…\n
+            Let's see…\p
+            A bit to the left…\n
+            A bit to the right…\p
+            Thirty degrees…\n
+            And a half…\l
+            And a quarter left…\p
+            And…"
+        ))
+        closemessage
+        playse(SE_UNLOCK)
+        call(MountPyroden_4F_EventScript_DrainLava)
+        applymovement(LOCALID_VEE, moves(face_right))
+        applymovement(LOCALID_DOM, moves(face_right))
+        applymovement(LOCALID_FRO, moves(face_right))
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+        waitmovement(0)
+        waitse
+        delay(16)
+        speakername("Fro")
+        msgbox(format(
+            "Well, I'm going."
+        ))
+        closemessage
+        applymovement(LOCALID_FRO, moves(
+            walk_right*6
+            walk_up*2
+            walk_right*3
+            walk_up*3
+        ))
+        waitmovement(0)
+        playse(SE_EXIT)
+        removeobject(LOCALID_FRO)
+        speakername("Vee")
+        msgbox(format(
+            "Uhm!\n
+            Wait for me!"
+        ))
+        closemessage
+        applymovement(LOCALID_VEE, moves(
+            walk_fast_right*5
+            walk_fast_up*2
+            walk_fast_right*3
+            walk_fast_up*3
+        ))
+        waitmovement(0)
+        playse(SE_EXIT)
+        removeobject(LOCALID_VEE)
+        applymovement(LOCALID_DOM, moves(face_down))
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+        speakername("Dom")
+        msgbox(format(
+            "Uhm, Seel?\n
+            Can I talk to you one-to-one for a sec?\p
+            Look, I get it.\n
+            You're mad at me.\p
+            You're mad at me 'cause I laundered money for the company that turned you into a Pokémon.\p
+            And look-\n
+            Who wouldn't be, right?\p
+            But you're killing me here, man.\n
+            You're killing me.\p
+            You gotta understand.\p
+            They took away my job.\n
+            They took away my wife!\p
+            …Well, the wife thing was a separate incident.\N
+            But still!\p
+            I got nowhere to go, man.\n
+            You gotta let me in your little group, here.\p
+            Hell, we even all have a name with exactly three letters in it!\p
+            That's fate!\n
+            We're just meant to be!\p
+            …You're as talkative as ever, aren't you?\p
+            Well, I've said what I had to say.\p
+            Please think about it."
+        ))
+        closemessage
+        applymovement(LOCALID_DOM, moves(
+            walk_right*5
+            walk_up*2
+            walk_right*3
+            walk_up*3
+        ))
+        waitmovement(0)
+        playse(SE_EXIT)
+        removeobject(LOCALID_DOM)
+        setvar(VAR_PYRODEN_LAST_ROOM_STATE, 5)
+        release
+        end
+        }
+        else
+        {
+        msgbox(format(
+            "A strange statue.\n
+            There's a dial on it."
+        ))
+        closemessage
+        release
+        end
+        }
+    }
+}
+
+script MountPyroden_4F_EventScript_DrainLava
+{
+    setmetatile(21, 10, METATILE_MountPyroden_Lava_BottomLeft, TRUE)
+    setmetatile(22, 10, METATILE_MountPyroden_Lava_BottomRight, TRUE)
+    setmetatile(21, 11, METATILE_MountPyroden_Floor, FALSE)
+    setmetatile(22, 11, METATILE_MountPyroden_Floor, FALSE)
+    setmetatile(21, 12, METATILE_MountPyroden_Floor, FALSE)
+    setmetatile(22, 12, METATILE_MountPyroden_Floor, FALSE)
+    setmetatile(21, 13, METATILE_MountPyroden_Lava_TopLeft, TRUE)
+    setmetatile(22, 13, METATILE_MountPyroden_Lava_TopRight, TRUE)
+    special(DrawWholeMapView)
+    return
+}

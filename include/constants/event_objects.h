@@ -42,7 +42,7 @@
 #define OBJ_EVENT_GFX_SCHOOL_KID_M                38
 #define OBJ_EVENT_GFX_MANIAC                      39
 #define OBJ_EVENT_GFX_HEX_MANIAC                  40
-#define OBJ_EVENT_GFX_RAYQUAZA_STILL              41
+#define OBJ_EVENT_GFX_GIRATINA_STILL              41
 #define OBJ_EVENT_GFX_SWIMMER_M                   42
 #define OBJ_EVENT_GFX_SWIMMER_F                   43
 #define OBJ_EVENT_GFX_BLACK_BELT                  44
@@ -169,7 +169,7 @@
 #define OBJ_EVENT_GFX_LOTAD_DOLL                 165
 #define OBJ_EVENT_GFX_SEEDOT_DOLL                166
 #define OBJ_EVENT_GFX_PIKA_CUSHION               167
-#define OBJ_EVENT_GFX_ROUND_CUSHION              168
+#define OBJ_EVENT_GFX_FIRE_PIT              168
 #define OBJ_EVENT_GFX_KISS_CUSHION               169
 #define OBJ_EVENT_GFX_ZIGZAG_CUSHION             170
 #define OBJ_EVENT_GFX_SPIN_CUSHION               171
@@ -404,7 +404,8 @@
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
-#define OBJ_EVENT_PAL_TAG_DYNAMIC                 0x1124
+#define OBJ_EVENT_PAL_TAG_FIRE_PIT                  0x1124
+#define OBJ_EVENT_PAL_TAG_DYNAMIC                 0x1125
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
@@ -452,5 +453,9 @@
 // for compressed graphicsInfos
 // '(C)ompressed (E)vent'
 #define COMP_OW_TILE_TAG_BASE 0xCE00
+
+//Boulder Stuff
+#define BOULDER_SWITCH_NOT_PRESSED 200
+#define BOULDER_SWITCH_NO_EVENT    200
 
 #endif  // GUARD_CONSTANTS_EVENT_OBJECTS_H

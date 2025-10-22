@@ -208,11 +208,11 @@ Moonthistle_EventScripts_Shade::
 	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Shade_1
 # 115 "data/maps/Moonthistle_House1/scripts.pory"
 	goto_if_unset FLAG_HINTED_AT_POWERPLANT, Moonthistle_EventScripts_Shade_2
-# 159 "data/maps/Moonthistle_House1/scripts.pory"
+# 194 "data/maps/Moonthistle_House1/scripts.pory"
 	speakername Moonthistle_EventScripts_Shade_Text_4
-# 160 "data/maps/Moonthistle_House1/scripts.pory"
-	msgbox Moonthistle_EventScripts_Shade_Text_7, MSGBOX_NPC
-# 161 "data/maps/Moonthistle_House1/scripts.pory"
+# 195 "data/maps/Moonthistle_House1/scripts.pory"
+	msgbox Moonthistle_EventScripts_Shade_Text_11, MSGBOX_NPC
+# 196 "data/maps/Moonthistle_House1/scripts.pory"
 	release
 	end
 
@@ -242,25 +242,45 @@ Moonthistle_EventScripts_Shade_9:
 	speakername Moonthistle_EventScripts_Shade_Text_2
 # 136 "data/maps/Moonthistle_House1/scripts.pory"
 	msgbox Moonthistle_EventScripts_Shade_Text_3
-# 137 "data/maps/Moonthistle_House1/scripts.pory"
+# 142 "data/maps/Moonthistle_House1/scripts.pory"
 	speakername Moonthistle_EventScripts_Shade_Text_4
-# 138 "data/maps/Moonthistle_House1/scripts.pory"
+# 143 "data/maps/Moonthistle_House1/scripts.pory"
 	msgbox Moonthistle_EventScripts_Shade_Text_5
-# 139 "data/maps/Moonthistle_House1/scripts.pory"
+# 149 "data/maps/Moonthistle_House1/scripts.pory"
 	speakername Moonthistle_EventScripts_Shade_Text_2
-# 140 "data/maps/Moonthistle_House1/scripts.pory"
+# 150 "data/maps/Moonthistle_House1/scripts.pory"
 	msgbox Moonthistle_EventScripts_Shade_Text_6
-# 141 "data/maps/Moonthistle_House1/scripts.pory"
+# 151 "data/maps/Moonthistle_House1/scripts.pory"
+	speakername Moonthistle_EventScripts_Shade_Text_4
+# 152 "data/maps/Moonthistle_House1/scripts.pory"
+	msgbox Moonthistle_EventScripts_Shade_Text_7
+# 157 "data/maps/Moonthistle_House1/scripts.pory"
+	speakername NULL
+# 158 "data/maps/Moonthistle_House1/scripts.pory"
+	giveitem ITEM_STRENGTH_TOOL
+# 159 "data/maps/Moonthistle_House1/scripts.pory"
+	speakername Moonthistle_EventScripts_Shade_Text_4
+# 160 "data/maps/Moonthistle_House1/scripts.pory"
+	msgbox Moonthistle_EventScripts_Shade_Text_8
+# 165 "data/maps/Moonthistle_House1/scripts.pory"
+	speakername Moonthistle_EventScripts_Shade_Text_2
+# 166 "data/maps/Moonthistle_House1/scripts.pory"
+	msgbox Moonthistle_EventScripts_Shade_Text_9
+# 171 "data/maps/Moonthistle_House1/scripts.pory"
+	speakername Moonthistle_EventScripts_Shade_Text_4
+# 172 "data/maps/Moonthistle_House1/scripts.pory"
+	msgbox Moonthistle_EventScripts_Shade_Text_10
+# 176 "data/maps/Moonthistle_House1/scripts.pory"
 	compare PlayerXCoordinates, 1
 	goto_if_eq Moonthistle_EventScripts_Shade_13
 Moonthistle_EventScripts_Shade_12:
-# 147 "data/maps/Moonthistle_House1/scripts.pory"
+# 182 "data/maps/Moonthistle_House1/scripts.pory"
 	compare PlayerXCoordinates, 0
 	goto_if_eq Moonthistle_EventScripts_Shade_16
 Moonthistle_EventScripts_Shade_15:
-# 153 "data/maps/Moonthistle_House1/scripts.pory"
+# 188 "data/maps/Moonthistle_House1/scripts.pory"
 	setflag FLAG_HINTED_AT_POWERPLANT
-# 154 "data/maps/Moonthistle_House1/scripts.pory"
+# 189 "data/maps/Moonthistle_House1/scripts.pory"
 	release
 	end
 
@@ -291,20 +311,20 @@ Moonthistle_EventScripts_Shade_10:
 	goto Moonthistle_EventScripts_Shade_9
 
 Moonthistle_EventScripts_Shade_13:
-# 143 "data/maps/Moonthistle_House1/scripts.pory"
+# 178 "data/maps/Moonthistle_House1/scripts.pory"
 	applymovement LOCALID_VEE, Moonthistle_EventScripts_Shade_Movement_4
-# 144 "data/maps/Moonthistle_House1/scripts.pory"
+# 179 "data/maps/Moonthistle_House1/scripts.pory"
 	waitmovement LOCALID_VEE
-# 145 "data/maps/Moonthistle_House1/scripts.pory"
+# 180 "data/maps/Moonthistle_House1/scripts.pory"
 	removeobject LOCALID_VEE
 	goto Moonthistle_EventScripts_Shade_12
 
 Moonthistle_EventScripts_Shade_16:
-# 149 "data/maps/Moonthistle_House1/scripts.pory"
+# 184 "data/maps/Moonthistle_House1/scripts.pory"
 	applymovement LOCALID_VEE, Moonthistle_EventScripts_Shade_Movement_5
-# 150 "data/maps/Moonthistle_House1/scripts.pory"
+# 185 "data/maps/Moonthistle_House1/scripts.pory"
 	waitmovement LOCALID_VEE
-# 151 "data/maps/Moonthistle_House1/scripts.pory"
+# 186 "data/maps/Moonthistle_House1/scripts.pory"
 	removeobject LOCALID_VEE
 	goto Moonthistle_EventScripts_Shade_15
 
@@ -345,21 +365,21 @@ Moonthistle_EventScripts_Shade_Movement_3:
 	face_right
 	step_end
 
-# 143 "data/maps/Moonthistle_House1/scripts.pory"
+# 178 "data/maps/Moonthistle_House1/scripts.pory"
 Moonthistle_EventScripts_Shade_Movement_4:
-# 143 "data/maps/Moonthistle_House1/scripts.pory"
+# 178 "data/maps/Moonthistle_House1/scripts.pory"
 	walk_right
-# 143 "data/maps/Moonthistle_House1/scripts.pory"
+# 178 "data/maps/Moonthistle_House1/scripts.pory"
 	walk_up
 	step_end
 
-# 149 "data/maps/Moonthistle_House1/scripts.pory"
+# 184 "data/maps/Moonthistle_House1/scripts.pory"
 Moonthistle_EventScripts_Shade_Movement_5:
-# 149 "data/maps/Moonthistle_House1/scripts.pory"
+# 184 "data/maps/Moonthistle_House1/scripts.pory"
 	walk_down
-# 149 "data/maps/Moonthistle_House1/scripts.pory"
+# 184 "data/maps/Moonthistle_House1/scripts.pory"
 	walk_left
-# 149 "data/maps/Moonthistle_House1/scripts.pory"
+# 184 "data/maps/Moonthistle_House1/scripts.pory"
 	face_left
 	step_end
 
@@ -379,46 +399,75 @@ Moonthistle_EventScripts_Shade_Text_2:
 
 Moonthistle_EventScripts_Shade_Text_3:
 # 136 "data/maps/Moonthistle_House1/scripts.pory"
-	.string "Shade, right? Linoone said you used to\n"
-	.string "live in Voltbrook.\p"
+	.string "Shade, right?\n"
+	.string "Linoone said you used to live in\l"
+	.string "Voltbrook.\p"
 	.string "We’re, uh… we’re looking for something.\n"
 	.string "Something important.\p"
 	.string "A-Artifacts. Eight of them.\p"
 	.string "We know one of them is in Voltbrook, but\n"
-	.string "we don't know where.\p"
-	.string "They’re connected to the experiments…\n"
-	.string "the ones that turned him-my\l"
-	.string "friend-into what he is now.\p"
-	.string "If we can find them all… we might be\n"
-	.string "able to fix it.$"
+	.string "we don't know where.$"
 
 Moonthistle_EventScripts_Shade_Text_4:
-# 137 "data/maps/Moonthistle_House1/scripts.pory"
+# 142 "data/maps/Moonthistle_House1/scripts.pory"
 	.string "Shade$"
 
 Moonthistle_EventScripts_Shade_Text_5:
-# 138 "data/maps/Moonthistle_House1/scripts.pory"
-	.string "Artifacts tied to human experiments…\p"
-	.string "…If Team MAGA’s hoarding something like\n"
-	.string "that, it’ll be in the power plant.\p"
+# 143 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "Artifacts, eh…\p"
+	.string "I don't know if it's what you're looking\n"
+	.string "for, but Team MAGA's hording something\l"
+	.string "in the power plant.\p"
 	.string "Locked tight. High voltage gates, full\n"
-	.string "security grid. You’re not strolling in\l"
-	.string "through the front door.\p"
+	.string "security grid.\p"
+	.string "You’re not strolling in through the\n"
+	.string "front door.\p"
 	.string "But there was a maintenance tunnel.\n"
 	.string "Back when I lived there.\p"
-	.string "It ran behind the powerplant. Workers\n"
-	.string "used it when the plant was being built.\p"
-	.string "If it’s still open… that tunnel might be\n"
-	.string "your way in.$"
+	.string "It ran behind the plant.\n"
+	.string "Workers used it when the plant was\l"
+	.string "being built.\p"
+	.string "If it’s still open…\n"
+	.string "That tunnel might be your way in.$"
 
 Moonthistle_EventScripts_Shade_Text_6:
-# 140 "data/maps/Moonthistle_House1/scripts.pory"
-	.string "Really? That’s… that’s actually really\n"
-	.string "helpful!\p"
+# 150 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "Really? That’s…\n"
+	.string "That’s actually really helpful!\p"
 	.string "Thank you, Shade. We’ll be careful. I\n"
 	.string "promise!$"
 
 Moonthistle_EventScripts_Shade_Text_7:
-# 160 "data/maps/Moonthistle_House1/scripts.pory"
-	.string "If the tunnel behind the powerplant is\n"
-	.string "still open… it might be your way in.$"
+# 153 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "Wait.\p"
+	.string "Before you go…\n"
+	.string "Take this with you.$"
+
+Moonthistle_EventScripts_Shade_Text_8:
+# 161 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "The way to the power plant may be\n"
+	.string "obstructed by debris.\p"
+	.string "But with this, you will be able to clear a\n"
+	.string "path.\p"
+	.string "Take good care of it.$"
+
+Moonthistle_EventScripts_Shade_Text_9:
+# 167 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "You know, you look scary, and your name\n"
+	.string "is scary…\p"
+	.string "But you're actually a really nice\n"
+	.string "person!\n"
+	.string "Hehe!$"
+
+Moonthistle_EventScripts_Shade_Text_10:
+# 173 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "Not sure if I should take it as a\n"
+	.string "compliment or as an insult.\l"
+	.string "But thanks.\p"
+	.string "You better go, now.$"
+
+Moonthistle_EventScripts_Shade_Text_11:
+# 195 "data/maps/Moonthistle_House1/scripts.pory"
+	.string "If the tunnel behind the power plant is\n"
+	.string "still open…\p"
+	.string "It might be your way in.$"

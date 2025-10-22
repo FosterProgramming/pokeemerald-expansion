@@ -58,6 +58,7 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/even_crafting_constants.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -900,7 +901,7 @@ gText_SandstormIsVicious::
 	.string "It's impossible to keep going.$"
 
 gText_SelectWithoutRegisteredItem::
-	.string "An item in the BAG can be\n"
+	.string "Up to four items in the BAG can be\n"
 	.string "registered to SELECT for easy use.$"
 
 gText_PokemonTrainerSchoolEmail::
@@ -1153,6 +1154,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+    .include "data/scripts/qol_field_move_scripts.inc" @ qol_field_moves 
 
 	.include "data/maps/DominionCity/scripts.inc"
 
@@ -1268,3 +1270,109 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/AbyssalReef/scripts.inc"
 
 	.include "data/maps/AbyssalReefShipyard/scripts.inc"
+
+	.include "data/maps/Glacierra/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_1F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_B1F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_2F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_3F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_3F_SideRoom/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_Outside/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_4F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_5F/scripts.inc"
+
+	.include "data/maps/GlacierraCaverns_6F/scripts.inc"
+
+	.include "data/maps/Emberglide_House1/scripts.inc"
+
+	.include "data/maps/Emberglide_House2/scripts.inc"
+
+	.include "data/maps/Emberglide_House3/scripts.inc"
+
+	.include "data/maps/Pyroden_House1/scripts.inc"
+
+	.include "data/maps/Pyroden_House2/scripts.inc"
+
+	.include "data/maps/Pyroden_House3/scripts.inc"
+
+	.include "data/maps/Pyroden_House4/scripts.inc"
+
+	.include "data/maps/Pyroden_House5/scripts.inc"
+
+	.include "data/maps/PyrodenDungeon_Clock_Room_Test/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_East/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_West/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_North/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_NorthWest/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_South/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_East/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_West/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_West/scripts.inc"
+
+	.include "data/maps/MountPyroden_FinalRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F/scripts.inc"
+
+	.include "data/maps/MountPyroden_MarioRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_TankRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_South/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_SouthLadderRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_ClockRoom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Office/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Front/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.inc"
+
+	.include "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_RockMaze_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_RockDrop_Bottom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_RockDrop_Top/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Entrance_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.inc"

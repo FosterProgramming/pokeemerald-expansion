@@ -5,7 +5,7 @@ DominionCity_MagaLab_ExperimentationChamber_MapScripts::
 script DominionCity_MagaLab_ExperimentationChamber_EventScript_DoorRequiresFourDigitCode	
 {
     lockall
-		msgbox(format("The door appears to require a 4 digit code to unlock"),MSGBOX_SIGN)
+		msgbox(format("The door requires a 8 digit code to unlock."),MSGBOX_SIGN)
 	releaseall
     end
 }
@@ -13,7 +13,7 @@ script DominionCity_MagaLab_ExperimentationChamber_EventScript_DoorRequiresFourD
 script DominionCity_MagaLab_ExperimentationChamber_EventScript_ClassifiedExperiments
 {
     lockall
-		msgbox(format("Classified Experiments\nDo Not Enter"),MSGBOX_SIGN)
+		msgbox(format("CLASSIFIED EXPERIMENTS\nDO NOT ENTER"),MSGBOX_SIGN)
 	releaseall
     end
 }
@@ -21,7 +21,8 @@ script DominionCity_MagaLab_ExperimentationChamber_EventScript_ClassifiedExperim
 script DominionCity_MagaLab_ExperimentationChamber_EventScript_ExperimentationTank
 {
     lockall
-		msgbox(format("There is something inside that looks like an egg. The terminal displays all kinds of numbers and letters."),MSGBOX_SIGN)
+		msgbox(format("There is something inside that looks like an egg.\p
+		The terminal displays all kinds of numbers and letters."),MSGBOX_SIGN)
 	releaseall
     end
 }

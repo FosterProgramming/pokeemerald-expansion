@@ -1,0 +1,20 @@
+mapscripts MountPyroden_1F_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD
+	{
+		if(flag(FLAG_PYRODEN_MT_1F_EAST_FIRE_PIT))
+		{
+		setmetatile(9, 13, METATILE_MountPyroden_Stairs_Left, FALSE)
+		setmetatile(10, 13, METATILE_MountPyroden_Stairs_Right, FALSE)
+		special(DrawWholeMapView)
+		}
+
+		if(flag(FLAG_PYRODEN_MT_1F_NORTH_WEST_FIRE_PIT_4) && flag(FLAG_PYRODEN_MT_1F_NORTH_WEST_FIRE_PIT_5) && flag(FLAG_PYRODEN_MT_1F_NORTH_WEST_FIRE_PIT_6))
+		{
+		setmetatile(15, 6, METATILE_MountPyroden_Stairs_Left, FALSE)
+		setmetatile(16, 6, METATILE_MountPyroden_Stairs_Right, FALSE)
+		special(DrawWholeMapView)
+		}
+		end
+	}
+}

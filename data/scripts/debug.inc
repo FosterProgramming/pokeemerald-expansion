@@ -10,76 +10,86 @@ Debug_ShowFieldMessageStringVar4::
 
 	
 Debug_CheatGiveHeldItems::
-	giveitem ITEM_CHOICE_BAND, 5
-	giveitem ITEM_CHOICE_SPECS, 5
-	giveitem ITEM_LIFE_ORB, 5
-	giveitem ITEM_EXPERT_BELT, 5
-	giveitem ITEM_MUSCLE_BAND, 5
-	giveitem ITEM_WISE_GLASSES, 5
-	giveitem ITEM_METRONOME, 5
-	giveitem ITEM_LOADED_DICE, 5
-	giveitem ITEM_SCOPE_LENS, 5
-	giveitem ITEM_RAZOR_CLAW, 5
-	giveitem ITEM_KINGS_ROCK, 5
-	giveitem ITEM_ROCKY_HELMET, 5
-	giveitem ITEM_FOCUS_SASH, 5
-	giveitem ITEM_ASSAULT_VEST, 5
-	giveitem ITEM_EVIOLITE, 5
-	giveitem ITEM_WEAKNESS_POLICY 5
-	giveitem ITEM_AIR_BALLOON, 5
-	giveitem ITEM_LIGHT_CLAY, 5
-	giveitem ITEM_SAFETY_GOGGLES, 5
-	giveitem ITEM_COVERT_CLOAK, 5
-	giveitem ITEM_MIRROR_HERB, 5
-	giveitem ITEM_LEFTOVERS, 5
-	giveitem ITEM_BLACK_SLUDGE, 5
-	giveitem ITEM_SHELL_BELL, 5
-	giveitem ITEM_SITRUS_BERRY, 5
-	giveitem ITEM_FIGY_BERRY, 5
-	giveitem ITEM_AGUAV_BERRY, 5
-	giveitem ITEM_IAPAPA_BERRY, 5
-	giveitem ITEM_QUICK_CLAW, 5
-	giveitem ITEM_BRIGHT_POWDER, 5
-	giveitem ITEM_LUMINOUS_MOSS, 5
-	giveitem ITEM_SNOWBALL, 5
-	giveitem ITEM_RED_CARD, 5
-	giveitem ITEM_EJECT_BUTTON, 5
-	giveitem ITEM_EJECT_PACK, 5
-	giveitem ITEM_IRON_BALL, 5
-	giveitem ITEM_LAGGING_TAIL, 5
-	giveitem ITEM_DESTINY_KNOT, 5
-	giveitem ITEM_CHARCOAL, 5
-	giveitem ITEM_MYSTIC_WATER, 5
-	giveitem ITEM_MAGNET, 5
-	giveitem ITEM_MIRACLE_SEED, 5
-	giveitem ITEM_SOFT_SAND, 5
-	giveitem ITEM_NEVER_MELT_ICE, 5
-	giveitem ITEM_BLACK_BELT, 5
-	giveitem ITEM_TWISTED_SPOON, 5
-	giveitem ITEM_DRAGON_FANG, 5
-	giveitem ITEM_SPELL_TAG, 5
-	giveitem ITEM_POISON_BARB, 5
-	giveitem ITEM_SILVER_POWDER, 5
-	giveitem ITEM_HARD_STONE, 5
-	giveitem ITEM_SHARP_BEAK, 5
-	giveitem ITEM_METAL_COAT, 5
-	giveitem ITEM_BLACK_GLASSES, 5
-	giveitem ITEM_SILK_SCARF, 5
-	giveitem ITEM_FAIRY_FEATHER, 5
-	giveitem ITEM_LUM_BERRY, 5
-	giveitem ITEM_CHESTO_BERRY, 5
-	giveitem ITEM_PECHA_BERRY, 5
-	giveitem ITEM_RAWST_BERRY, 5
-	giveitem ITEM_ASPEAR_BERRY, 5
-	giveitem ITEM_PERSIM_BERRY, 5
-	giveitem ITEM_PERSIM_BERRY, 5
-	giveitem ITEM_CHERI_BERRY, 5
-	giveitem ITEM_MENTAL_HERB, 5
-	giveitem ITEM_WHITE_HERB, 5
-	giveitem ITEM_UTILITY_UMBRELLA, 5
-	giveitem ITEM_RING_TARGET, 5
-	giveitem ITEM_WIDE_LENS, 5
-	giveitem ITEM_ZOOM_LENS, 5
+	additem ITEM_CHOICE_BAND, 5
+	additem ITEM_CHOICE_SPECS, 5
+	additem ITEM_LIFE_ORB, 5
+	additem ITEM_EXPERT_BELT, 5
+	additem ITEM_MUSCLE_BAND, 5
+	additem ITEM_WISE_GLASSES, 5
+	additem ITEM_METRONOME, 5
+	additem ITEM_LOADED_DICE, 5
+	additem ITEM_SCOPE_LENS, 5
+	additem ITEM_RAZOR_CLAW, 5
+	additem ITEM_KINGS_ROCK, 5
+	additem ITEM_ROCKY_HELMET, 5
+	additem ITEM_FOCUS_SASH, 5
+	additem ITEM_ASSAULT_VEST, 5
+	additem ITEM_EVIOLITE, 5
+	additem ITEM_WEAKNESS_POLICY 5
+	additem ITEM_AIR_BALLOON, 5
+	additem ITEM_LIGHT_CLAY, 5
+	additem ITEM_SAFETY_GOGGLES, 5
+	additem ITEM_COVERT_CLOAK, 5
+	additem ITEM_MIRROR_HERB, 5
+	additem ITEM_LEFTOVERS, 5
+	additem ITEM_BLACK_SLUDGE, 5
+	additem ITEM_SHELL_BELL, 5
+	additem ITEM_SITRUS_BERRY, 5
+	additem ITEM_FIGY_BERRY, 5
+	additem ITEM_AGUAV_BERRY, 5
+	additem ITEM_IAPAPA_BERRY, 5
+	additem ITEM_QUICK_CLAW, 5
+	additem ITEM_BRIGHT_POWDER, 5
+	additem ITEM_LUMINOUS_MOSS, 5
+	additem ITEM_SNOWBALL, 5
+	additem ITEM_RED_CARD, 5
+	additem ITEM_EJECT_BUTTON, 5
+	additem ITEM_EJECT_PACK, 5
+	additem ITEM_IRON_BALL, 5
+	additem ITEM_LAGGING_TAIL, 5
+	additem ITEM_DESTINY_KNOT, 5
+	additem ITEM_CHARCOAL, 5
+	additem ITEM_MYSTIC_WATER, 5
+	additem ITEM_MAGNET, 5
+	additem ITEM_MIRACLE_SEED, 5
+	additem ITEM_SOFT_SAND, 5
+	additem ITEM_NEVER_MELT_ICE, 5
+	additem ITEM_BLACK_BELT, 5
+	additem ITEM_TWISTED_SPOON, 5
+	additem ITEM_DRAGON_FANG, 5
+	additem ITEM_SPELL_TAG, 5
+	additem ITEM_POISON_BARB, 5
+	additem ITEM_SILVER_POWDER, 5
+	additem ITEM_HARD_STONE, 5
+	additem ITEM_SHARP_BEAK, 5
+	additem ITEM_METAL_COAT, 5
+	additem ITEM_BLACK_GLASSES, 5
+	additem ITEM_SILK_SCARF, 5
+	additem ITEM_FAIRY_FEATHER, 5
+	additem ITEM_LUM_BERRY, 5
+	additem ITEM_CHESTO_BERRY, 5
+	additem ITEM_PECHA_BERRY, 5
+	additem ITEM_RAWST_BERRY, 5
+	additem ITEM_ASPEAR_BERRY, 5
+	additem ITEM_PERSIM_BERRY, 5
+	additem ITEM_PERSIM_BERRY, 5
+	additem ITEM_CHERI_BERRY, 5
+	additem ITEM_MENTAL_HERB, 5
+	additem ITEM_WHITE_HERB, 5
+	additem ITEM_UTILITY_UMBRELLA, 5
+	additem ITEM_RING_TARGET, 5
+	additem ITEM_WIDE_LENS, 5
+	additem ITEM_ZOOM_LENS, 5
+	additem ITEM_CUT_TOOL, 1
+	additem ITEM_FLY_TOOL, 1
+	additem ITEM_SURF_TOOL, 1
+	additem ITEM_STRENGTH_TOOL, 1
+	additem ITEM_FLASH_TOOL, 1
+	additem ITEM_ROCKSMASH_TOOL, 1
+	additem ITEM_WATERFALL_TOOL, 1
+	additem ITEM_DIVE_TOOL, 1
+	additem ITEM_TELEPORT_TOOL, 1
+	additem ITEM_SWEETSCENT_TOOL, 1
 	release
 	end
 
@@ -212,11 +222,10 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	setflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_NYX_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_ACE_PARTY_MEMBER
-	setflag FLAG_SYS_HIDE_TALON_PARTY_MEMBER
+    additem ITEM_ORAN_BERRY, 5
+    additem ITEM_FRESH_WATER, 5
+	fadescreen FADE_TO_BLACK
+	openevencrafting ECU_DEFAULT
 	release
 	end
 
@@ -282,6 +291,8 @@ Debug_EventScript_Script_6::
 	end
 
 Debug_EventScript_Script_7::
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	setflag FLAG_SYS_B_DASH
 	release
 	end
 

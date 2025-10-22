@@ -30,6 +30,8 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "constants/metatile_behaviors.h"
+#include "qol_field_moves.h" // qol_field_moves
 
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
@@ -76,7 +78,7 @@ static u8 CheckForPlayerAvatarStaticCollision(u8);
 static u8 CheckForObjectEventStaticCollision(struct ObjectEvent *, s16, s16, u8, u8);
 static bool8 CanStopSurfing(s16, s16, u8);
 static bool8 ShouldJumpLedge(s16, s16, u8);
-static bool8 TryPushBoulder(s16, s16, u8);
+//static bool8 TryPushBoulder(s16, s16, u8); //qol_field_moves
 static void CheckAcroBikeCollision(s16, s16, u8, u8 *);
 
 static void DoPlayerAvatarTransition(void);
@@ -84,7 +86,7 @@ static void PlayerAvatarTransition_Dummy(struct ObjectEvent *);
 static void PlayerAvatarTransition_Normal(struct ObjectEvent *);
 static void PlayerAvatarTransition_MachBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *);
-static void PlayerAvatarTransition_Surfing(struct ObjectEvent *);
+//static void PlayerAvatarTransition_Surfing(struct ObjectEvent *); // qol_field_moves
 static void PlayerAvatarTransition_Underwater(struct ObjectEvent *);
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *);
 
@@ -462,6 +464,7 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
 {
     struct PlayerAvatar *playerAvatar = &gPlayerAvatar;
     u8 collision;
+    u32 fieldMoveStatus; // qol_field_moves
 
     // Check for sideways stairs onto ice movement.
     switch (direction)
@@ -477,8 +480,16 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
     }
 
     collision = CheckForPlayerAvatarCollision(direction);
+    
 
     playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED_MOVE;
+
+    // Start qol_field_moves
+    fieldMoveStatus = CanUseWaterfall(direction);
+    if (fieldMoveStatus)
+        return UseWaterfall(gPlayerAvatar, fieldMoveStatus);
+    // End qol_field_moves
+
     if (collision)
     {
         ForcedMovement_None();
@@ -736,15 +747,36 @@ static u8 CheckForPlayerAvatarStaticCollision(u8 direction)
 u8 CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction, u8 metatileBehavior)
 {
     u8 collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+    u32 fieldMoveStatus; // qol_field_moves
 
     if (collision == COLLISION_ELEVATION_MISMATCH && CanStopSurfing(x, y, direction))
         return COLLISION_STOP_SURFING;
+
+    // Start qol_field_moves
+    fieldMoveStatus = CanUseSurf(x,y,collision);
+    if (fieldMoveStatus != FIELD_MOVE_FAIL)
+        return UseSurf(fieldMoveStatus);
+
+    fieldMoveStatus = CanUseCut(x,y);
+    if (fieldMoveStatus != FIELD_MOVE_FAIL)
+        return UseCut(fieldMoveStatus);
+
+    fieldMoveStatus = CanUseRockSmash(x,y);
+    if (fieldMoveStatus != FIELD_MOVE_FAIL)
+        return UseRockSmash(fieldMoveStatus);
+    // End qol_field_moves
 
     if (ShouldJumpLedge(x, y, direction))
     {
         IncrementGameStat(GAME_STAT_JUMPED_DOWN_LEDGES);
         return COLLISION_LEDGE_JUMP;
     }
+    // Start qol_field_moves
+    fieldMoveStatus = CanUseStrength(collision);
+    if (fieldMoveStatus)
+        return UseStrength(fieldMoveStatus,x,y,direction);
+    // End qol_field_moves
+
     if (collision == COLLISION_OBJECT_EVENT && TryPushBoulder(x, y, direction))
         return COLLISION_PUSHED_BOULDER;
 
@@ -794,13 +826,13 @@ static bool8 ShouldJumpLedge(s16 x, s16 y, u8 direction)
         return FALSE;
 }
 
-static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
+bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
 {
-    if (FlagGet(FLAG_SYS_USE_STRENGTH))
+    if (FlagGet(FLAG_SYS_USE_STRENGTH) || TRUE)
     {
         u8 objectEventId = GetObjectEventIdByXY(x, y);
 
-        if (objectEventId != OBJECT_EVENTS_COUNT && gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER)
+        if (objectEventId != OBJECT_EVENTS_COUNT && ((gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER) || (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_FIRE_PIT)))
         {
             x = gObjectEvents[objectEventId].currentCoords.x;
             y = gObjectEvents[objectEventId].currentCoords.y;
@@ -915,7 +947,10 @@ static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *objEvent)
     Bike_HandleBumpySlopeJump();
 }
 
-static void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
+// Start qol_field_moves
+//static void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
+void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
+// End qol_field_moves
 {
     u8 spriteId;
 
@@ -1103,9 +1138,16 @@ void PlayerFreeze(void)
     if (gPlayerAvatar.tileTransitionState == T_TILE_CENTER || gPlayerAvatar.tileTransitionState == T_NOT_MOVING)
     {
         if (IsPlayerNotUsingAcroBikeOnBumpySlope())
-            PlayerForceSetHeldMovement(GetFaceDirectionMovementAction(gObjectEvents[gPlayerAvatar.objectEventId].facingDirection));
+    ForcePlayerToPerformMovementAction(); //qol_field_moves
     }
 }
+
+// Start qol_field_moves
+void ForcePlayerToPerformMovementAction(void)
+{
+    PlayerForceSetHeldMovement(GetFaceDirectionMovementAction(gObjectEvents[gPlayerAvatar.objectEventId].facingDirection));
+}
+// End qol_field_moves
 
 // wheelie idle
 void PlayerIdleWheelie(u8 direction)
@@ -1372,7 +1414,7 @@ bool8 IsPlayerFacingSurfableFishableWater(void)
     s16 y = playerObjEvent->currentCoords.y;
 
     MoveCoords(playerObjEvent->facingDirection, &x, &y);
-    if (GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection) == COLLISION_ELEVATION_MISMATCH
+    if (GetCollisionAtCoords3(playerObjEvent, x, y, playerObjEvent->facingDirection) == COLLISION_ELEVATION_MISMATCH
      && PlayerGetElevation() == 3
      && MetatileBehavior_IsSurfableFishableWater(MapGridGetMetatileBehaviorAt(x, y)))
         return TRUE;
@@ -1552,6 +1594,12 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
     if (!ObjectEventIsMovementOverridden(player)
      && !ObjectEventIsMovementOverridden(boulder))
     {
+        if(boulder->graphicsId == OBJ_EVENT_GFX_FIRE_PIT)
+        {
+            boulder->enableAnim = FALSE;
+            boulder->inanimate = TRUE;
+        }
+
         ObjectEventClearHeldMovementIfFinished(player);
         ObjectEventClearHeldMovementIfFinished(boulder);
         ObjectEventSetHeldMovement(player, GetWalkInPlaceNormalMovementAction((u8)task->tDirection));
@@ -1567,13 +1615,104 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
     return FALSE;
 }
 
+#define BOULDER_ON_SWITCH_NO_EVENT FALSE
+bool8 HandleBoulderActivateSwitch(struct ObjectEvent *objectEvent)
+{
+    int i, j;
+    const struct CoordEvent * events = gMapHeader.events->coordEvents;
+    int n = gMapHeader.events->coordEventCount;
+    u16 objectEventID = objectEvent->localId;
+    u16 x = objectEvent->currentCoords.x;
+    u16 y = objectEvent->currentCoords.y;
+
+    if (MapGridGetMetatileBehaviorAt(x, y) == MB_STRENGTH_BUTTON)
+    {
+        for (i = 0; i < n; i++)
+        {
+            if (events[i].x + 7 == x && events[i].y + 7 == y)
+            {
+                u16 eventVar            = events[i].trigger;
+                u16 eventIDVar          = events[i].index;
+                u16 switchObjectEventID = VarGet(eventVar);
+                //MgbaPrintf(MGBA_LOG_WARN, "HandleBoulderActivateSwitch triggerID = %d, var = %d", switchObjectEventID, VAR_TEMP_BOULDER_SWITCH_OBJECT_ID);
+                
+                if(switchObjectEventID == BOULDER_SWITCH_NOT_PRESSED){
+                    //MgbaPrintf(MGBA_LOG_WARN, "There was nothing in the switch, run the script");
+                    //There was nothing in the switch, run the script
+                    ScriptContext_SetupScript(events[i].script);
+                    ScriptContext_Enable();
+                    VarSet(eventVar, objectEventID);
+                    VarSet(eventIDVar, i);
+                    return TRUE;
+                }
+                else if(switchObjectEventID == objectEventID){
+                    //The script already ran, the object event should be in the switch
+                    return BOULDER_ON_SWITCH_NO_EVENT;
+                }
+                return BOULDER_ON_SWITCH_NO_EVENT;
+            }
+        }
+    }
+    else{
+        //Check the tiles next to this object event to see if it just leaved a switch
+        for(j = 0; j < 4; j++){
+            u16 tempX = x;
+            u16 tempY = y;
+
+            switch(j){
+                case 0: tempX--; break;
+                case 1: tempX++; break;
+                case 2: tempY--; break;
+                case 3: tempY++; break;
+            }
+
+            if (MapGridGetMetatileBehaviorAt(tempX, tempY) == MB_STRENGTH_BUTTON){
+                for (i = 0; i < n; i++)
+                {
+                    if (events[i].x + 7 == tempX && events[i].y + 7 == tempY)
+                    {
+                        u16 eventVar            = events[i].trigger;
+                        u16 eventIDVar          = events[i].index;
+                        u16 switchObjectEventID = VarGet(eventVar);
+                        u16 switchEventIDVar    = VarGet(eventIDVar);
+                        
+                        if(switchObjectEventID == objectEventID){
+                            //The Object Event left the switch, run the script 2
+                            //MgbaPrintf(MGBA_LOG_WARN, "The Object Event left the switch, run the script 2");
+                            VarSet(eventVar, BOULDER_SWITCH_NOT_PRESSED);
+                            VarSet(eventIDVar, BOULDER_SWITCH_NO_EVENT);
+                            ScriptContext_SetupScript(events[switchEventIDVar].script);
+                            ScriptContext_Enable();
+                            return TRUE;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return FALSE;
+}
+
 static bool8 PushBoulder_End(struct Task *task, struct ObjectEvent *player, struct ObjectEvent *boulder)
 {
     if (ObjectEventCheckHeldMovementStatus(player)
      && ObjectEventCheckHeldMovementStatus(boulder))
     {
         ObjectEventClearHeldMovementIfFinished(player);
-        ObjectEventClearHeldMovementIfFinished(boulder);
+        ObjectEventClearHeldMovement(boulder);
+
+        if(boulder->graphicsId == OBJ_EVENT_GFX_FIRE_PIT)
+        {
+            if(FlagGet(GetObjectEventTemplateByLocalIdAndMap(boulder->localId, boulder->mapNum, boulder->mapGroup)->flagId))
+                StartSpriteAnim(&gSprites[boulder->spriteId], 0);
+            else
+                StartSpriteAnim(&gSprites[boulder->spriteId], 1);
+            boulder->enableAnim = TRUE;
+            boulder->inanimate = FALSE;
+        }
+
+        HandleBoulderActivateSwitch(boulder);
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
         DestroyTask(FindTaskIdByFunc(Task_PushBoulder));

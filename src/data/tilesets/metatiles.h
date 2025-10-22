@@ -255,3 +255,18 @@ const u16 gMetatileAttributes_Route6[] = INCBIN_U16("data/tilesets/secondary/rou
 
 const u16 gMetatiles_GlacierraSecondary[] = INCBIN_U16("data/tilesets/secondary/glacierra_secondary/metatiles.bin");
 const u16 gMetatileAttributes_GlacierraSecondary[] = INCBIN_U16("data/tilesets/secondary/glacierra_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_GlacierraCaverns[] = INCBIN_U16("data/tilesets/primary/glacierra_caverns/metatiles.bin");
+const u16 gMetatileAttributes_GlacierraCaverns[] = INCBIN_U16("data/tilesets/primary/glacierra_caverns/metatile_attributes.bin");
+
+const u16 gMetatiles_GlacierraPrimary[] = INCBIN_U16("data/tilesets/primary/glacierra_primary/metatiles.bin");
+const u16 gMetatileAttributes_GlacierraPrimary[] = INCBIN_U16("data/tilesets/primary/glacierra_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_StratoscapeSecondary[] = INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/metatiles.bin");
+const u16 gMetatileAttributes_StratoscapeSecondary[] = INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_MountPyroden[] = INCBIN_U16("data/tilesets/primary/mount_pyroden/metatiles.bin");
+const u16 gMetatileAttributes_MountPyroden[] = INCBIN_U16("data/tilesets/primary/mount_pyroden/metatile_attributes.bin");
+
+const u16 gMetatiles_PowerPlant[] = INCBIN_U16("data/tilesets/secondary/power_plant/metatiles.bin");
+const u16 gMetatileAttributes_PowerPlant[] = INCBIN_U16("data/tilesets/secondary/power_plant/metatile_attributes.bin");

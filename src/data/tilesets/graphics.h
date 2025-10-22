@@ -1938,3 +1938,98 @@ const u16 gTilesetPalettes_GlacierraSecondary[][16] =
 };
 
 const u32 gTilesetTiles_GlacierraSecondary[] = INCBIN_U32("data/tilesets/secondary/glacierra_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GlacierraCaverns[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_caverns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GlacierraCaverns[] = INCBIN_U32("data/tilesets/primary/glacierra_caverns/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_GlacierraPrimary[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/glacierra_primary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_GlacierraPrimary[] = INCBIN_U32("data/tilesets/primary/glacierra_primary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_StratoscapeSecondary[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/stratoscape_secondary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_StratoscapeSecondary[] = INCBIN_U32("data/tilesets/secondary/stratoscape_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_MountPyroden[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mount_pyroden/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_MountPyroden[] = INCBIN_U32("data/tilesets/primary/mount_pyroden/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_PowerPlant[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/power_plant/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_PowerPlant[] = INCBIN_U32("data/tilesets/secondary/power_plant/tiles.4bpp.lz");

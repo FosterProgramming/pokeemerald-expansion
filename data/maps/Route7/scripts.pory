@@ -22,7 +22,8 @@ mapscripts Route7_MapScripts
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						playse(SE_PIN)
 						speakername("Vee")
-						msgbox(format("Wait! Over there!\nI think I saw something! C’mon, let’s check it out."))
+						msgbox(format("Wait! Over there!\nI think I saw something!\pC’mon, let’s check it out!"))
+						closemessage
 						applymovement(LOCALID_VEE, moves(walk_down*4 walk_right*3 walk_down*3 walk_right*2 face_up))
 						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down*5 walk_right*3 walk_down*3 walk_right walk_in_place_up))
 						applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
@@ -30,7 +31,15 @@ mapscripts Route7_MapScripts
 						playse(SE_PIN)
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
-						msgbox(format("Oh! It’s a sign… \p…I can’t read it.\nWhat’s it say?"))
+						msgbox(format("Oh!\n
+						Hmm…\p
+						Yes, yes…\n
+						I see."))
+						applymovement(LOCALID_VEE,moves(face_left))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						waitmovement(0)
+						msgbox(format("…I can't read it.\n
+						What's it say?"))
 						closemessage
 						applymovement(LOCALID_VEE,moves(face_up))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
@@ -41,7 +50,13 @@ mapscripts Route7_MapScripts
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						speakername("Vee")
-						msgbox(format("Wait… you said Voltbrook Town was listed on the terminal back at the lab, right? Like a place where they are hiding an artifact?\pThen we should head there.\p If the artifact’s nearby, we need to find it.\pWe might be able to hide from Team MAGA in Voltbrook, and maybe we can figure out who the guardian is…\pAnd how to get the artifact without getting caught."))
+						msgbox(format("Wait…\n
+						The computer at the lab talked about Voltbrook Town, right?\p
+						Like, one of the places that have an artifact?\p
+						We need to find it!\p
+						But, a Guardian might be there too.\p
+						Brr…\n
+						Let's try and steer clear from Team MAGA and from any Guardians, ok?"))
 						closemessage
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 						waitmovement(LOCALID_VEE)
@@ -56,7 +71,8 @@ mapscripts Route7_MapScripts
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						playse(SE_PIN)
 						speakername("Vee")
-						msgbox(format("Wait! Over there!\nI think I saw something! C’mon, let’s check it out."))
+						msgbox(format("Wait! Over there!\nI think I saw something!\pC’mon, let’s check it out!"))
+						closemessage
 						applymovement(LOCALID_VEE, moves(walk_down*4 walk_right*2 walk_down*3 walk_right*2 face_up))
 						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down*5 walk_right*2 walk_down*3 walk_right walk_in_place_up))
 						applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
@@ -64,7 +80,15 @@ mapscripts Route7_MapScripts
 						playse(SE_PIN)
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
-						msgbox(format("Oh! It’s a sign… \p…I can’t read it.\nWhat’s it say?"))
+						msgbox(format("Oh!\n
+						Hmm…\p
+						Yes, yes…\n
+						I see."))
+						applymovement(LOCALID_VEE,moves(face_left))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						waitmovement(0)
+						msgbox(format("…I can't read it.\n
+						What's it say?"))
 						closemessage
 						applymovement(LOCALID_VEE,moves(face_up))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
@@ -75,7 +99,13 @@ mapscripts Route7_MapScripts
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						speakername("Vee")
-						msgbox(format("Wait… you said Voltbrook Town was listed on the terminal back at the lab, right? Like a place where they are hiding an artifact?\pThen we should head there.\p If the artifact’s nearby, we need to find it.\pWe might be able to hide from Team MAGA in Voltbrook, and maybe we can figure out who the guardian is…\pAnd how to get the artifact without getting caught."))
+						msgbox(format("Wait…\n
+						The computer at the lab talked about Voltbrook Town, right?\p
+						Like, one of the places that have an artifact?\p
+						We need to find it!\p
+						But, a Guardian might be there too.\p
+						Brr…\n
+						Let's try and steer clear from Team MAGA and from any Guardians, ok?"))
 						closemessage
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 						waitmovement(LOCALID_VEE)
@@ -90,7 +120,8 @@ mapscripts Route7_MapScripts
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						playse(SE_PIN)
 						speakername("Vee")
-						msgbox(format("Wait! Over there!\nI think I saw something! C’mon, let’s check it out."))
+						msgbox(format("Wait! Over there!\nI think I saw something!\pC’mon, let’s check it out!"))
+						closemessage
 						applymovement(LOCALID_VEE, moves(walk_down*4 walk_right walk_down*3 walk_right*2 face_up))
 						applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down*5 walk_right walk_down*3 walk_right walk_in_place_up))
 						applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
@@ -98,7 +129,15 @@ mapscripts Route7_MapScripts
 						playse(SE_PIN)
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
-						msgbox(format("Oh! It’s a sign… \p…I can’t read it.\nWhat’s it say?"))
+						msgbox(format("Oh!\n
+						Hmm…\p
+						Yes, yes…\n
+						I see."))
+						applymovement(LOCALID_VEE,moves(face_left))
+						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
+						waitmovement(0)
+						msgbox(format("…I can't read it.\n
+						What's it say?"))
 						closemessage
 						applymovement(LOCALID_VEE,moves(face_up))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up))
@@ -109,7 +148,13 @@ mapscripts Route7_MapScripts
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						speakername("Vee")
-						msgbox(format("Wait… you said Voltbrook Town was listed on the terminal back at the lab, right? Like a place where they are hiding an artifact?\pThen we should head there.\p If the artifact’s nearby, we need to find it.\pWe might be able to hide from Team MAGA in Voltbrook, and maybe we can figure out who the guardian is…\pAnd how to get the artifact without getting caught."))
+						msgbox(format("Wait…\n
+						The computer at the lab talked about Voltbrook Town, right?\p
+						Like, one of the places that have an artifact?\p
+						We need to find it!\p
+						But, a Guardian might be there too.\p
+						Brr…\n
+						Let's try and steer clear from Team MAGA and from any Guardians, ok?"))
 						closemessage
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 						waitmovement(LOCALID_VEE)

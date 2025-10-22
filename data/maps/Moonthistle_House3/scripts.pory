@@ -50,11 +50,11 @@ script Moonthistle_EventScripts_Whismur
 	else
 	{
     speakername("Whismur")
-    msgbox(format("U-um… you helped Linoone, right?\nThat was really brave…\pI-I found this near the roots.\nMaybe it’ll help…?"), MSGBOX_NPC)
+    msgbox(format("U-um…\nYou helped Linoone, right?\pThat was really brave…\pI-I found this near the roots.\nMaybe it’ll help…?"), MSGBOX_NPC)
 	giveitem(ITEM_SITRUS_BERRY, 1)
     setflag(FLAG_MOONTHISTLE_WHISMUR_GIFT)
     speakername("Whismur")
-    msgbox(format("…please don’t let Team MAGA find this place."))
+    msgbox(format("…Please don’t let Team MAGA find this place."))
     release
     end
 	}

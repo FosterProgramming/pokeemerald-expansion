@@ -51,6 +51,8 @@
 #include "constants/songs.h"
 #include "ui_summary_screen.h"
 
+#include "even_crafting_ui.h"
+
 // Menu actions
 enum
 {
@@ -349,7 +351,7 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
 
-    AddStartMenuAction(MENU_ACTION_UI_TEST_MENU);
+    //AddStartMenuAction(MENU_ACTION_UI_TEST_MENU);
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -360,7 +362,7 @@ static void BuildNormalStartMenu(void)
 static void BuildDebugStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_DEBUG);
-    AddStartMenuAction(MENU_ACTION_UI_TEST_MENU);
+    //AddStartMenuAction(MENU_ACTION_UI_TEST_MENU);
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)

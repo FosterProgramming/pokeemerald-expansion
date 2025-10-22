@@ -4575,7 +4575,7 @@
       "id": "LAYOUT_DUNEMIRE",
       "name": "Dunemire_Layout",
       "width": 68,
-      "height": 34,
+      "height": 52,
       "primary_tileset": "gTileset_GeneralSeelVersion",
       "secondary_tileset": "gTileset_Route6",
       "border_filepath": "data/layouts/Dunemire/border.bin",
@@ -4667,7 +4667,7 @@
       "width": 120,
       "height": 60,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
       "border_filepath": "data/layouts/Route12/border.bin",
       "blockdata_filepath": "data/layouts/Route12/map.bin"
     },
@@ -4677,7 +4677,7 @@
       "width": 90,
       "height": 80,
       "primary_tileset": "gTileset_GeneralSeelVersion",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
       "border_filepath": "data/layouts/Route12A/border.bin",
       "blockdata_filepath": "data/layouts/Route12A/map.bin"
     },
@@ -4804,10 +4804,10 @@
     {
       "id": "LAYOUT_DELETE_THIS",
       "name": "DeleteThis_Layout",
-      "width": 67,
-      "height": 75,
-      "primary_tileset": "gTileset_DunemireDesertGeneral",
-      "secondary_tileset": "gTileset_DunemireDesertSecondary",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_VerdantHallow",
       "border_filepath": "data/layouts/DeleteThis/border.bin",
       "blockdata_filepath": "data/layouts/DeleteThis/map.bin"
     },
@@ -4937,7 +4937,7 @@
       "width": 90,
       "height": 70,
       "primary_tileset": "gTileset_StratoscapePrimary",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_StratoscapeSecondary",
       "border_filepath": "data/layouts/Stratoscape/border.bin",
       "blockdata_filepath": "data/layouts/Stratoscape/map.bin"
     },
@@ -4960,6 +4960,536 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/AbyssalReefShipyard/border.bin",
       "blockdata_filepath": "data/layouts/AbyssalReefShipyard/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA",
+      "name": "Glacierra_Layout",
+      "width": 60,
+      "height": 70,
+      "primary_tileset": "gTileset_GlacierraPrimary",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
+      "border_filepath": "data/layouts/Glacierra/border.bin",
+      "blockdata_filepath": "data/layouts/Glacierra/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_1F",
+      "name": "GlacierraCaverns_1F_Layout",
+      "width": 53,
+      "height": 40,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_1F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_B1F",
+      "name": "GlacierraCaverns_B1F_Layout",
+      "width": 40,
+      "height": 50,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_2F",
+      "name": "GlacierraCaverns_2F_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_2F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_3F",
+      "name": "GlacierraCaverns_3F_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_3F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_3F_SIDE_ROOM",
+      "name": "GlacierraCaverns_3F_SideRoom_Layout",
+      "width": 50,
+      "height": 40,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_3F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_3F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_OUTSIDE",
+      "name": "GlacierraCaverns_Outside_Layout",
+      "width": 55,
+      "height": 37,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_GlacierraSecondary",
+      "border_filepath": "data/layouts/GlacierraCaverns_Outside/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_Outside/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_4F",
+      "name": "GlacierraCaverns_4F_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_4F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_5F",
+      "name": "GlacierraCaverns_5F_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_5F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_5F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLACIERRA_CAVERNS_6F",
+      "name": "GlacierraCaverns_6F_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_GlacierraCaverns",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/GlacierraCaverns_6F/border.bin",
+      "blockdata_filepath": "data/layouts/GlacierraCaverns_6F/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE_HOUSE1",
+      "name": "Emberglide_House1_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Emberglide_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE_HOUSE2",
+      "name": "Emberglide_House2_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Emberglide_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBERGLIDE_HOUSE3",
+      "name": "Emberglide_House3_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Emberglide_House3/border.bin",
+      "blockdata_filepath": "data/layouts/Emberglide_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE1",
+      "name": "Pyroden_House1_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Pyroden",
+      "border_filepath": "data/layouts/Pyroden_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE2",
+      "name": "Pyroden_House2_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Pyroden_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE3",
+      "name": "Pyroden_House3_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House3/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE4",
+      "name": "Pyroden_House4_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House4/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House4/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_HOUSE5",
+      "name": "Pyroden_House5_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_NaturalInterior",
+      "border_filepath": "data/layouts/Pyroden_House5/border.bin",
+      "blockdata_filepath": "data/layouts/Pyroden_House5/map.bin"
+    },
+    {
+      "id": "LAYOUT_PYRODEN_DUNGEON_CLOCK_ROOM_TEST",
+      "name": "PyrodenDungeon_Clock_Room_Test_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_GeneralSeelVersion",
+      "secondary_tileset": "gTileset_Pyroden",
+      "border_filepath": "data/layouts/PyrodenDungeon_Clock_Room_Test/border.bin",
+      "blockdata_filepath": "data/layouts/PyrodenDungeon_Clock_Room_Test/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F",
+      "name": "MountPyroden_1F_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_EAST",
+      "name": "MountPyroden_1F_East_Layout",
+      "width": 44,
+      "height": 30,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_East/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_WEST",
+      "name": "MountPyroden_1F_West_Layout",
+      "width": 44,
+      "height": 30,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_West/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_NORTH",
+      "name": "MountPyroden_1F_North_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_North/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_North/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_NORTH_WEST",
+      "name": "MountPyroden_1F_NorthWest_Layout",
+      "width": 30,
+      "height": 27,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_NorthWest/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_NorthWest/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F",
+      "name": "MountPyroden_2F_Layout",
+      "width": 25,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F_SOUTH",
+      "name": "MountPyroden_2F_South_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F_South/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F",
+      "name": "MountPyroden_3F_Layout",
+      "width": 49,
+      "height": 39,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_EAST",
+      "name": "MountPyroden_3F_East_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_East/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_East/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_WEST",
+      "name": "MountPyroden_3F_West_Layout",
+      "width": 45,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_West/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F_WEST",
+      "name": "MountPyroden_2F_West_Layout",
+      "width": 30,
+      "height": 20,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F_West/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_FINAL_ROOM",
+      "name": "MountPyroden_FinalRoom_Layout",
+      "width": 27,
+      "height": 36,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_FinalRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_FinalRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F",
+      "name": "MountPyroden_4F_Layout",
+      "width": 36,
+      "height": 25,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_MARIO_ROOM",
+      "name": "MountPyroden_MarioRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_PetalburgGym",
+      "border_filepath": "data/layouts/MountPyroden_MarioRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_MarioRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_TANK_ROOM",
+      "name": "MountPyroden_4F_TankRoom_Layout",
+      "width": 31,
+      "height": 24,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_TankRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_TankRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_SIDE_ROOM",
+      "name": "MountPyroden_4F_SideRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_SIDE_ROOM",
+      "name": "MountPyroden_3F_SideRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_2F_SIDE_ROOM",
+      "name": "MountPyroden_2F_SideRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_2F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_2F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_1F_SIDE_ROOM",
+      "name": "MountPyroden_1F_SideRoom_Layout",
+      "width": 15,
+      "height": 20,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_1F_SideRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_1F_SideRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_3F_SOUTH",
+      "name": "MountPyroden_3F_South_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_3F_South/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_3F_South/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_SOUTH_LADDER_ROOM",
+      "name": "MountPyroden_4F_SouthLadderRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_SouthLadderRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_SouthLadderRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOUNT_PYRODEN_4F_CLOCK_ROOM",
+      "name": "MountPyroden_4F_ClockRoom_Layout",
+      "width": 25,
+      "height": 24,
+      "primary_tileset": "gTileset_MountPyroden",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MountPyroden_4F_ClockRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MountPyroden_4F_ClockRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
+      "name": "VoltbrookTown_PowerPlant_Entrance_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_OFFICE",
+      "name": "VoltbrookTown_PowerPlant_Office_Layout",
+      "width": 21,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Office/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Office/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_FRONT",
+      "name": "VoltbrookTown_PowerPlant_Front_Layout",
+      "width": 27,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_BARREL_ROOM",
+      "name": "VoltbrookTown_PowerPlant_BarrelRoom_Layout",
+      "width": 20,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_BarrelRoom/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_BarrelRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM",
+      "name": "VoltrbookTown_PowerPlant_LeftGeneratorRoom_Layout",
+      "width": 28,
+      "height": 22,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltrbookTown_PowerPlant_LeftGeneratorRoom/border.bin",
+      "blockdata_filepath": "data/layouts/VoltrbookTown_PowerPlant_LeftGeneratorRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM_2F",
+      "name": "VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_Layout",
+      "width": 28,
+      "height": 22,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ROCK_MAZE_2F",
+      "name": "VoltbrookTown_PowerPlant_RockMaze_2F_Layout",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_RockMaze_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_RockMaze_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_ROCK_DROP_BOTTOM",
+      "name": "VoltbrookTown_RockDrop_Bottom_Layout",
+      "width": 20,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_RockDrop_Bottom/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_RockDrop_Bottom/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_ROCK_DROP_TOP",
+      "name": "VoltbrookTown_RockDrop_Top_Layout",
+      "width": 20,
+      "height": 18,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_RockDrop_Top/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_RockDrop_Top/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE_2F",
+      "name": "VoltbrookTown_PowerPlant_Entrance_2F_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Entrance_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_FRONT_2F",
+      "name": "VoltbrookTown_PowerPlant_Front_2F_Layout",
+      "width": 27,
+      "height": 17,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front_2F/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Front_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_UNDERGROUND_TUNNEL",
+      "name": "VoltbrookTown_PowerPlant_Underground_Tunnel_Layout",
+      "width": 23,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PowerPlant",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Underground_Tunnel/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Underground_Tunnel/map.bin"
     }
   ]
 }

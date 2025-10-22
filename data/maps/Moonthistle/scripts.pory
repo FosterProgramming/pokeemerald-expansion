@@ -29,7 +29,7 @@ script Moonthistle_EventScripts_Loudred
     if (flag(FLAG_MOONTHISTLE_TRUSTED)) 
 	{
         speakername("Loudred")
-        msgbox(format("Keep your head down, and your voice lower."), MSGBOX_NPC)
+        msgbox(format("KEEP YOUR-\nI mean, keep your head down, and your voice low."), MSGBOX_NPC)
         release
         end
     }

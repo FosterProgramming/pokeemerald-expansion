@@ -375,7 +375,7 @@ static void PlayerDescendMirageTower(u8 taskId)
 #define tShakeDelay   data[3]
 #define tYShakeOffset data[4]
 
-static void StartScreenShake(u8 yShakeOffset, u8 xShakeOffset, u8 numShakes, u8 shakeDelay)
+void StartScreenShake(u8 yShakeOffset, u8 xShakeOffset, u8 numShakes, u8 shakeDelay)
 {
     u8 taskId = CreateTask(DoScreenShake, 9);
     gTasks[taskId].tXShakeOffset = xShakeOffset;

@@ -1,0 +1,184 @@
+mapscripts VoltrbookTown_PowerPlant_LeftGeneratorRoom_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch1Pressed)
+        }
+        else
+        {
+            setobjectxyperm(1, 8, 10)
+        }
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch2Pressed)
+        }
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED) && flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockLeftDoor)
+        }
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_3_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockRightDoor)
+            
+        }
+        end
+    }
+}
+
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch1
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED)
+        setobjectxyperm(1, 8, 9)
+        setmetatile(8, 9, METATILE_PowerPlant_ButtonPressed, 0)
+        special(DrawWholeMapView)
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED) && flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockLeftDoor)
+            playse(SE_UNLOCK)
+        }
+        else
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch1Pressed)
+            playse(SE_CLICK)
+        }
+        
+    }
+    
+    else{
+        call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockLeftDoor)
+        setmetatile(8, 9, METATILE_PowerPlant_ButtonUnpressed, 0)
+        special(DrawWholeMapView)
+        setobjectxyperm(1, 8, 8)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch1Pressed
+{
+    setobjectxyperm(1, 8, 9)
+    setmetatile(8, 9, METATILE_PowerPlant_ButtonPressed, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch2
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2) != BOULDER_SWITCH_NO_EVENT){
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED)
+        setobjectxyperm(2, 6, 11)
+        setmetatile(6, 11, METATILE_PowerPlant_ButtonPressed, 0)
+        special(DrawWholeMapView)
+        if(flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED) && flag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockLeftDoor)
+            playse(SE_UNLOCK)
+        }
+        else
+        {
+            call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch2Pressed)
+            playse(SE_CLICK)
+        }
+        
+    }
+    else{
+        call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockLeftDoor)
+        setmetatile(6, 11, METATILE_PowerPlant_ButtonUnpressed, 0)
+        special(DrawWholeMapView)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_2_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch2Pressed
+{
+    setobjectxyperm(2, 6, 11)
+    setmetatile(6, 11, METATILE_PowerPlant_ButtonPressed, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockLeftDoor
+{
+    setmetatile(3, 10, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(3, 11, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(3, 12, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(3, 13, METATILE_PowerPlant_BackWall, 0)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockLeftDoor
+{
+    setmetatile(3, 10, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(3, 11, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(3, 12, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(3, 13, METATILE_PowerPlant_BarrierBackWall, 1)
+    special(DrawWholeMapView)
+    return
+}
+
+
+
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_Switch3
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3) != BOULDER_SWITCH_NO_EVENT){
+        setflag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_3_TRIGGERED)
+        call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockRightDoor)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        call(VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockRightDoor)
+        clearflag(FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_3_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_UnlockRightDoor
+{
+    setmetatile(17, 6, METATILE_PowerPlant_TopWall, 1)
+    setmetatile(17, 7, METATILE_PowerPlant_BottomWall, 1)
+    setmetatile(17, 8, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(17, 9, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(17, 10, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(17, 11, METATILE_PowerPlant_BackWall, 0)
+    setmetatile(19, 10, METATILE_PowerPlant_ButtonPressed, 0)
+    setobjectxyperm(3, 19, 10)
+    special(DrawWholeMapView)
+    return
+}
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockRightDoor
+{
+    setmetatile(17, 6, METATILE_PowerPlant_BarrierTopWall, 1)
+    setmetatile(17, 7, METATILE_PowerPlant_BarrierBottomWall, 1)
+    setmetatile(17, 8, METATILE_PowerPlant_BarrierNormalFloorTopShadow, 1)
+    setmetatile(17, 9, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(17, 10, METATILE_PowerPlant_BarrierNormalFloorNoShadow, 1)
+    setmetatile(17, 11, METATILE_PowerPlant_BarrierBackWall, 1)
+    setmetatile(19, 10, METATILE_PowerPlant_ButtonUnpressed, 0)
+    setobjectxyperm(3, 19, 9)
+    special(DrawWholeMapView)
+    return
+}

@@ -1,0 +1,91 @@
+mapscripts MountPyroden_3F_East_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD
+	{
+		if(flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_1))
+		{
+			call(MountPyroden_3F_East_SpawnStairs1)
+		}
+		if(flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_2) && flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_3) && flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_4))
+		{
+			call(MountPyroden_3F_East_EventScript_RemoveRocks)
+		}
+		end
+	}
+}
+
+script MountPyroden_3F_East_EventScript_FirePit1
+{
+	lock  
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		lock
+        playse(SE_UNLOCK)
+        call(MountPyroden_3F_East_SpawnStairs1)
+        waitse
+		clearflag(FLAG_WILLOWISP_ACTIVE)
+		release
+		end  
+	}  
+	else
+	{   
+		checkitem(ITEM_STRENGTH_TOOL)   
+		if(var(VAR_RESULT) == TRUE)   
+		{   
+			goto(EventScript_StrengthBoulder)  
+		}  
+	}  
+	release  
+	end
+}
+
+script MountPyroden_3F_East_SpawnStairs1
+{
+	setmetatile(23, 24, METATILE_MountPyroden_Stairs_Left, FALSE)
+	setmetatile(24, 24, METATILE_MountPyroden_Stairs_Right, FALSE)
+	special(DrawWholeMapView)
+	return
+}
+
+
+script MountPyroden_3F_East_EventScript_FirePit2
+{
+	lock
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		if(flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_2) && flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_3) && flag(FLAG_PYRODEN_MT_3F_EAST_FIRE_PIT_4))
+		{
+			playse(SE_UNLOCK)
+			call(MountPyroden_3F_East_EventScript_RemoveRocks)
+			waitse
+		}
+		else
+		{
+			delay(20)
+			setvar(VAR_0x8000, 2)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 3)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 4)
+			callnative(SetFirePitOff)
+		}
+		clearflag(FLAG_WILLOWISP_ACTIVE)
+	}
+	else{
+		checkitem(ITEM_STRENGTH_TOOL)
+		if(var(VAR_RESULT) == TRUE)
+		{
+		goto(EventScript_StrengthBoulder)
+		}
+	}
+	release
+	end
+}
+
+script MountPyroden_3F_East_EventScript_RemoveRocks
+{
+	setmetatile(31, 40, METATILE_MountPyroden_Floor, FALSE)
+	setmetatile(32, 40, METATILE_MountPyroden_Floor, FALSE)
+	special(DrawWholeMapView)
+	return
+}

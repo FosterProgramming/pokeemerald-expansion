@@ -39,6 +39,10 @@ extern const struct SpriteTemplate gFieldEffectObjectTemplate_SlitherTracks;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_BugTracks;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_SpotTracks;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_CaveDust;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_Crumble;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_Bow_Arrow;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_FireRod;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_IceRod;
 
 const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SHADOW_S]              = &gFieldEffectObjectTemplate_ShadowSmall,
@@ -82,4 +86,8 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_TRACKS_SPOT]           = &gFieldEffectObjectTemplate_SpotTracks,
     [FLDEFFOBJ_TRACKS_BUG]            = &gFieldEffectObjectTemplate_BugTracks,
     [FLDEFFOBJ_CAVE_DUST]             = &gFieldEffectObjectTemplate_CaveDust,
+    [FLDEFFOBJ_CRUMBLE]               = &gFieldEffectObjectTemplate_Crumble,
+    [FLDEFFOBJ_BOW_ARROW]             = &gFieldEffectObjectTemplate_Bow_Arrow,
+    [FLDEFFOBJ_FIREROD]             = &gFieldEffectObjectTemplate_FireRod,
+    [FLDEFFOBJ_ICEROD]             = &gFieldEffectObjectTemplate_IceRod,
 };

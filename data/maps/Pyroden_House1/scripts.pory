@@ -1,0 +1,152 @@
+raw `
+.set LOCALID_SLOWPOKE, 1
+`
+
+
+mapscripts Pyroden_House1_MapScripts {}
+
+
+script Pyroden_EventScript_Slowpoke{
+    switch(var(VAR_SLOWPOKE_QUEST_STATE))
+    {
+        case 0:
+            msgbox(format("They seem to be unresponsive."))
+            setvar(VAR_SLOWPOKE_DOOR, 1)
+            closemessage
+            end
+
+        case 1:
+            speakername("Slowpoke")
+            msgbox(format(
+                "Ah… They're leaving already…\n
+                Gosh dang it…"
+            ))
+            setvar(VAR_SLOWPOKE_DOOR, 1)
+            closemessage
+            end
+        case 2:
+            speakername("Slowpoke")
+            msgbox(format(
+                "Ok. Ok.\n
+                Please wait a second.\p
+                Hold on.\n
+                I need to- Hold on.\p
+                … … …\p
+                … … …\n
+                … … …\p
+                … … …\p
+                … … …\n
+                … … …\l
+                … … …\p
+                One more second…\p
+                … … …\p
+                Ok.\p
+                If you want to talk to me, please, don't keep coming and going.\p
+                I'm rather slow.\n
+                Anyway. Hello.\p
+                My name is Slowpoke.\p
+                What brings you here…?\p
+                Oh, please, don't answer. I…\N
+                Gosh, I'm sorry. I can't really follow well.\p
+                I'm a bit…\n
+                Slow, you see.\p
+                Hmm.\p
+                I've heard…\n
+                Maybe…\p
+                That if a Shellder bites a Slowpoke…\n
+                The Slowpoke becomes smart.\p
+                Do you think that…\n
+                Even I could…\p
+                Ah! My head!\n
+                A headache!\p
+                Oh gosh, I'm so sorry.\p
+                If you could…\n
+                Find a Shellder, maybe…\p
+                I could…\n
+                Become smart."
+            ), MSGBOX_NPC)
+            setvar(VAR_SLOWPOKE_QUEST_STATE, 3)
+            end
+
+        case 3:
+        speakername("Slowpoke")
+        msgbox(format(
+            "… … …\p
+            … … …\p
+            Ah!\n
+            You're back!\p
+            Have you found a Shellder…?\p
+            THE QUEST IS NOT IMPLEMENTED YET.\p
+            No?\n
+            Ohh…\p
+            That's ok. That's ok.\p
+            If… Ah!\n
+            You can find one…\p
+            I would be glad."
+
+        ), MSGBOX_NPC)
+        end
+        default:
+            end
+    }
+    
+}
+
+script Pyroden_EventScript_Slowpoke_Entrance
+{
+    switch(var(VAR_SLOWPOKE_QUEST_STATE))
+    {
+        case 0:
+            lock
+            playse(SE_PIN)
+            applymovement(LOCALID_SLOWPOKE, moves(
+                emote_exclamation_mark
+                delay_16*4
+                face_down
+                delay_16*4
+            ))
+            waitmovement(0)
+            speakername("Slowpoke")
+            msgbox(format(
+                "Ah!\n
+                A visitor!\p
+                Come in!\n
+                Come in!"
+            ))
+            closemessage
+            setvar(VAR_SLOWPOKE_DOOR, 0)
+            setvar(VAR_SLOWPOKE_QUEST_STATE, 1)
+            applymovement(LOCALID_SLOWPOKE, moves(
+                face_up
+            ))
+            waitmovement(0)
+            release
+            end
+
+            case 1:
+            lock
+            playse(SE_PIN)
+            applymovement(LOCALID_SLOWPOKE, moves(
+                emote_exclamation_mark
+                delay_16*4
+                face_down
+                delay_16*4
+            ))
+            waitmovement(0)
+            speakername("Slowpoke")
+            msgbox(format(
+                "Ah!\n
+                You're back!\p
+                No, you're going again!\n
+                Wait, wait!"
+            ))
+            closemessage
+            setvar(VAR_SLOWPOKE_DOOR, 0)
+            setvar(VAR_SLOWPOKE_QUEST_STATE, 2)
+            release
+            end
+
+        default:
+            end
+    }
+}

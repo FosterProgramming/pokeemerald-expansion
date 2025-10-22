@@ -1,0 +1,41 @@
+{
+  "id": "MAP_MOUNT_PYRODEN_3F_SOUTH",
+  "name": "MountPyroden_3F_South",
+  "layout": "LAYOUT_MOUNT_PYRODEN_3F_SOUTH",
+  "music": "MUS_MT_CHIMNEY",
+  "region_map_section": "MAPSEC_PYRODEN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_3F_EAST",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 6,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_4F_SOUTH_LADDER_ROOM",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -1,0 +1,35 @@
+
+mapscripts MountPyroden_1F_East_MapScripts
+{
+}
+
+
+script MountPyroden_1F_East_EventScript_FirePit
+{
+	lock  
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{	
+
+		lockall  
+		setvar(VAR_0x8004, 1)   
+		setvar(VAR_0x8005, 1)   
+		setvar(VAR_0x8006, 8)    
+		setvar(VAR_0x8007, 5)    
+		special(ShakeCamera)  
+		waitstate  
+		msgbox(format("Something changed in the main room."))
+		clearflag(FLAG_WILLOWISP_ACTIVE)  
+		releaseall  
+		end  
+		}
+	else
+	{   
+		checkitem(ITEM_STRENGTH_TOOL)   
+		if(var(VAR_RESULT) == TRUE)   
+		{   
+			goto(EventScript_StrengthBoulder)  
+		}  
+	}  
+	release  
+	end
+}

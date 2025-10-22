@@ -153,7 +153,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MurkwellBog_EventScripts_NyxNPC",
-      "flag": "FLAG_SYS_HIDE_DRAKE_PARTY_MEMBER"
+      "flag": "FLAG_SYS_HIDE_FRO_PARTY_MEMBER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PERSIAN)",

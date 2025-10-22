@@ -22,6 +22,7 @@
 #include "constants/songs.h"
 
 static void FieldCallback_SweetScent(void);
+//static void StartSweetScentFieldEffect(void); // qol_field_moves
 static void TrySweetScentEncounter(u8 taskId);
 static void FailSweetScentEncounter(u8 taskId);
 
@@ -49,10 +50,13 @@ bool8 FldEff_SweetScent(void)
     return FALSE;
 }
 
+// Start qol_field_moves
 #define tPalBuffer1 data[1]
 #define tPalBuffer2 data[2]
 
+// static void StartSweetScentFieldEffect(void)
 void StartSweetScentFieldEffect(void)
+// End qol_field_moves
 {
     void *palBuffer;
     u32 taskId;

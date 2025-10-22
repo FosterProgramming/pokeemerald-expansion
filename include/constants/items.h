@@ -1003,10 +1003,26 @@
 #define ITEM_COMPOUND_SCOPE     835
 #define ITEM_BLINDING_GEM       836
 
+//qol field move items
+#define ITEM_CUT_TOOL           837
+#define ITEM_FLY_TOOL           838
+#define ITEM_SURF_TOOL          839
+#define ITEM_STRENGTH_TOOL      840
+#define ITEM_FLASH_TOOL         841
+#define ITEM_ROCKSMASH_TOOL     842
+#define ITEM_WATERFALL_TOOL     843
+#define ITEM_DIVE_TOOL          844
+#define ITEM_TELEPORT_TOOL      845
+#define ITEM_SWEETSCENT_TOOL    846
+#define ITEM_WILLOWISP_TOOL     847
+#define ITEM_FIREROD_TOOL     848
+#define ITEM_ICEROD_TOOL     849
+#define ITEM_LENSOFTRUTH     850
+
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT ITEM_BLINDING_GEM + 1
+#define ITEMS_COUNT ITEM_LENSOFTRUTH + 1
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

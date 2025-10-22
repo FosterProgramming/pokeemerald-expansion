@@ -76,6 +76,16 @@
 #define FLDEFF_TRACKS_SPOT               71
 #define FLDEFF_TRACKS_BUG                72
 #define FLDEFF_CAVE_DUST                 73
+// Start qol_field_moves
+#define FLDEFF_USE_SURF_TOOL             74
+#define FLDEFF_USE_WATERFALL_TOOL        75
+#define FLDEFF_USE_DIVE_TOOL             76
+#define FLDEFF_USE_TELEPORT_TOOL         77
+#define FLDEFF_CRUMBLE					 78
+#define FLDEFF_BOW					 	 79
+#define FLDEFF_FIREROD					 80
+#define FLDEFF_ICEROD					 81
+// End qol_field_moves
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -118,6 +128,10 @@
 #define FLDEFFOBJ_TRACKS_SPOT           38
 #define FLDEFFOBJ_TRACKS_BUG            39
 #define FLDEFFOBJ_CAVE_DUST             40
+#define FLDEFFOBJ_CRUMBLE				41
+#define FLDEFFOBJ_BOW_ARROW				42
+#define FLDEFFOBJ_FIREROD				43
+#define FLDEFFOBJ_ICEROD				44
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -132,5 +146,9 @@
 #define FLDEFF_PAL_TAG_HOF_MONITOR        0x1010
 #define FLDEFF_PAL_TAG_UNKNOWN            0x1011
 #define FLDEFF_PAL_TAG_CAVE_DUST          0x1012
+#define FLDEFF_PAL_TAG_CRUMBLE            0x1013
+#define FLDEFF_PAL_TAG_BOW_ARROW          0x1014
+#define FLDEFF_PAL_TAG_FIREROD          0x1015
+#define FLDEFF_PAL_TAG_ICEROD          0x1016
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

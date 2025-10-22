@@ -1,0 +1,61 @@
+mapscripts VoltbrookTown_RockDrop_Bottom_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        if(flag(FLAG_VOLTBROOK_DROP_BOULDER))
+        {
+            clearflag(FLAG_VOLTBROOK_TOWN_DROPPED_BOULDER_1F)
+            addobject(1)
+            end
+        }
+    }
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_VOLTBROOK_PLANT_ROCK_DROP_TRIGGERED))
+        {
+            call(VoltbrookTown_PowerPlant_RockDrop_Clear)
+        }
+    }
+}
+
+script VoltbrookTown_RockDrop_Bottom_Switch1
+{
+    lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        call(VoltbrookTown_PowerPlant_RockDrop_Clear)
+        setflag(FLAG_VOLTBROOK_PLANT_ROCK_DROP_TRIGGERED)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        call(VoltbrookTown_PowerPlant_RockDrop_Set)
+        clearflag(FLAG_VOLTBROOK_PLANT_ROCK_DROP_TRIGGERED)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_RockDrop_Clear
+{
+    setobjectxyperm(1, 6, 12)
+    setmetatile(8, 4, METATILE_PowerPlant_NormalFloorTopLeftShadow, 0)
+    setmetatile(9, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(10, 4, METATILE_PowerPlant_NormalFloorTopShadow, 0)
+    setmetatile(8, 5, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+    setmetatile(9, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    setmetatile(10, 5, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+    special(DrawWholeMapView)
+}
+
+
+script VoltbrookTown_PowerPlant_RockDrop_Set
+{
+    setobjectxyperm(1, 6, 12)
+    setmetatile(8, 4, METATILE_PowerPlant_BarrierNormalFloorTopLeftShadow, 0)
+    setmetatile(9, 4, METATILE_PowerPlant_TopBarrierNormalFloorTopShadow, 0)
+    setmetatile(10, 4, METATILE_PowerPlant_TopBarrierNormalFloorTopShadow, 0)
+    setmetatile(8, 5, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+    setmetatile(9, 5, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    setmetatile(10, 5, METATILE_PowerPlant_BottomBarrierNormalFloorNoShadow, 1)
+    special(DrawWholeMapView)
+}

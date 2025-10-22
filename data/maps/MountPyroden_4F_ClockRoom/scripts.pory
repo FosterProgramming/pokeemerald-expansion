@@ -1,0 +1,102 @@
+mapscripts MountPyroden_4F_ClockRoom_MapScripts {
+    MAP_SCRIPT_ON_LOAD{
+    if(flag(FLAG_CLOCK_ROOM_1) && flag(FLAG_CLOCK_ROOM_2))
+    {
+        call(MountPyroden_4F_ClockRoom_OpenDoor)
+        release
+        end
+    }
+    }
+}
+
+
+script ClockRoom_EventScript_Statue
+{
+    lock
+    msgbox(format(
+        "There's carvings on the statue.\p
+        “The braziers in this room are fixed in place.\p
+        Follow the hands of the clock.”"
+    ))
+    closemessage
+    setflag(FLAG_PAUSE_TIME)
+    initclock(16, 0)
+    fadescreen(FADE_TO_BLACK)
+	special(Special_ViewWallClock)
+	waitstate
+    clearflag(FLAG_PAUSE_TIME)
+	releaseall
+	end
+}
+
+
+script MountPyroden_ClockRoom_FirePit
+{
+	lock  
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		lock
+        if(var(VAR_CLOCK_ROOM_STATE) == 0)
+        {
+            addvar(VAR_CLOCK_ROOM_STATE, 1)
+            release
+            end
+        }
+        if(var(VAR_CLOCK_ROOM_STATE) == 1)
+		{
+            if(flag(FLAG_CLOCK_ROOM_1) && flag(FLAG_CLOCK_ROOM_2))
+            {
+                addvar(VAR_CLOCK_ROOM_STATE, 1)
+                playse(SE_UNLOCK)
+                call(MountPyroden_4F_ClockRoom_OpenDoor)
+                waitse
+            }
+            delay(20)
+			setvar(VAR_0x8000, 2)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 3)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 4)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 5)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 6)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 7)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 8)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 9)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 10)
+			callnative(SetFirePitOff)
+            setvar(VAR_0x8000, 11)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 12)
+			callnative(SetFirePitOff)
+			setvar(VAR_0x8000, 13)
+			callnative(SetFirePitOff)
+            setvar(VAR_CLOCK_ROOM_STATE, 0)
+        }
+        clearflag(FLAG_WILLOWISP_ACTIVE)
+        release
+		end  
+	}  
+	release  
+	end
+}
+
+script MountPyroden_4F_ClockRoom_OpenDoor
+{
+    setmetatile(11, 3, METATILE_MountPyroden_Door_TopLeft, TRUE)
+    setmetatile(12, 3, METATILE_MountPyroden_Door_TopMid, TRUE)
+    setmetatile(13, 3, METATILE_MountPyroden_Door_TopRight, TRUE)
+    setmetatile(11, 4, METATILE_MountPyroden_Door_MidLeft, TRUE)
+    setmetatile(12, 4, METATILE_MountPyroden_Door_MidMid, FALSE)
+    setmetatile(13, 4, METATILE_MountPyroden_Door_MidRight, TRUE)
+    setmetatile(11, 5, METATILE_MountPyroden_Door_BottomLeft, FALSE)
+    setmetatile(12, 5, METATILE_MountPyroden_Door_BottomMid, FALSE)
+    setmetatile(13, 5, METATILE_MountPyroden_Door_BottomRight, FALSE)
+    special(DrawWholeMapView)
+    return
+}

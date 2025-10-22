@@ -1001,3 +1001,58 @@ const struct Tileset gTileset_GlacierraSecondary =
     .metatileAttributes = gMetatileAttributes_GlacierraSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GlacierraCaverns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GlacierraCaverns,
+    .palettes = gTilesetPalettes_GlacierraCaverns,
+    .metatiles = gMetatiles_GlacierraCaverns,
+    .metatileAttributes = gMetatileAttributes_GlacierraCaverns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GlacierraPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GlacierraPrimary,
+    .palettes = gTilesetPalettes_GlacierraPrimary,
+    .metatiles = gMetatiles_GlacierraPrimary,
+    .metatileAttributes = gMetatileAttributes_GlacierraPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_StratoscapeSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_StratoscapeSecondary,
+    .palettes = gTilesetPalettes_StratoscapeSecondary,
+    .metatiles = gMetatiles_StratoscapeSecondary,
+    .metatileAttributes = gMetatileAttributes_StratoscapeSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MountPyroden =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_MountPyroden,
+    .palettes = gTilesetPalettes_MountPyroden,
+    .metatiles = gMetatiles_MountPyroden,
+    .metatileAttributes = gMetatileAttributes_MountPyroden,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PowerPlant =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PowerPlant,
+    .palettes = gTilesetPalettes_PowerPlant,
+    .metatiles = gMetatiles_PowerPlant,
+    .metatileAttributes = gMetatileAttributes_PowerPlant,
+    .callback = NULL,
+};
