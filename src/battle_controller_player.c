@@ -48,6 +48,7 @@
 #include "type_icons.h"
 
 #include "brave_battle.h"
+#include "tarc_help_system.h"
 
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleSwitchInAnim(u32 battler);
@@ -253,6 +254,9 @@ static void HandleInputChooseAction(u32 battler)
         gBattleStruct->skipMoveInput = TRUE;
         PlayerBufferExecCompleted(battler);
     }
+
+    if (HelpSystem_Process())
+        return;
 
     u16 itemId = gBattleResources->bufferA[battler][2] | (gBattleResources->bufferA[battler][3] << 8);
 

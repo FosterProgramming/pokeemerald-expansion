@@ -76,6 +76,7 @@
 #include "cable_club.h"
 
 #include "brave_battle.h"
+#include "tarc_help_system.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -3423,6 +3424,7 @@ static void DoBattleIntro(void)
         BtlController_EmitGetMonData(battler, BUFFER_A, REQUEST_ALL_BATTLE, 0);
         MarkBattlerForControllerExec(battler);
         gBattleStruct->introState++;
+        HelpSystem_AddTrigger(TRIGGER_HEAL);
         break;
     case BATTLE_INTRO_STATE_LOOP_BATTLER_DATA:
         if (!gBattleControllerExecFlags)

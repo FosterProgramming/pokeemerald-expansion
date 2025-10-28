@@ -669,3 +669,6 @@ $(SPINDAGFXDIR)/spot_2.1bpp: %.1bpp: %.png
 
 $(SPINDAGFXDIR)/spot_3.1bpp: %.1bpp: %.png
 	$(GFX) $< $@ -plain -data_width 2
+
+graphics/help_messages/help_heal.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
