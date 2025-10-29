@@ -51,6 +51,7 @@
 #include "constants/songs.h"
 #include "constants/sound.h"
 #include "constants/species.h"
+#include "constants/abilities.h"
 #include "constants/trade.h"
 #include "constants/trainer_hill.h"
 #include "constants/trainers.h"

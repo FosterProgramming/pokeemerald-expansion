@@ -55,6 +55,7 @@ static void WarpToTruck(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
+static void ResetPartyMemberData(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -215,10 +216,7 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
 
-    for(i  = 0; i < NUM_PARTY_MEMBERS; i++){
-        gSaveBlock2Ptr->gPartyMembers[i].maxSkillPoints       = STARTING_MEMBER_SKILL_POINTS;
-        gSaveBlock2Ptr->gPartyMembers[i].remainingSkillPoints = STARTING_MEMBER_SKILL_POINTS;
-    }
+    ResetPartyMemberData();
 }
 
 static void ResetMiniGamesRecords(void)
@@ -242,4 +240,28 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+}
+
+static void ResetPartyMemberData(void)
+{
+    u8 i, j;
+    
+    //Reset Abilities and Innates
+    for(i = 0; i < NUM_PARTY_MEMBERS; i++){
+        u16 species = GetSpeciesFromPartyMember(i);
+        u8 abilityNum = 0;
+
+        for(j = 0; j < MAX_MON_INNATES + 1; j++){
+            if (j == 0) //For abilities
+                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetAbilityBySpecies(species, abilityNum);
+            else if (j <= MAX_MON_INNATES)
+                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetSpeciesInnate(species, j - 1);
+        }
+    }
+
+    //Reset Skill Points
+    for(i  = 0; i < NUM_PARTY_MEMBERS; i++){
+        gSaveBlock2Ptr->gPartyMembers[i].maxSkillPoints       = STARTING_MEMBER_SKILL_POINTS;
+        gSaveBlock2Ptr->gPartyMembers[i].remainingSkillPoints = STARTING_MEMBER_SKILL_POINTS;
+    }
 }

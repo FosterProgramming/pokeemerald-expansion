@@ -5633,6 +5633,10 @@ void ResetDynamicAiFunc(void)
     sDynamicAiFunc = NULL;
 }
 
+u16 GetBattlerInnateAtSlot(u8 battlerId, u8 slot){
+    return GetSpeciesInnate(gBattleMons[battlerId].species, slot);
+}
+
 //Returns the slot the Innate is found in accouting for randomization and ability disabling. Assumes the Ability is already slot 1.  Returns 0 if not found.
 u8 BattlerHasInnate(u8 battlerId, u16 ability) {
     bool8 isEnemyMon = GetBattlerSide(battlerId) == B_SIDE_OPPONENT;

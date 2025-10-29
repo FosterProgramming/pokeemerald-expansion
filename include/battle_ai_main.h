@@ -143,5 +143,6 @@ void PushTraitStack(u8 battlerId, u16 ability); //Pushes an ability to the trait
 u8 PullTraitStackBattler(void); //Pulls a battler from the trait stack
 u16 PullTraitStackAbility(void); //Pulls a battler from the trait stack
 void PopTraitStack(void); //Pops an ability from the trait stack and clears the slot
+u16 GetBattlerInnateAtSlot(u8 battlerId, u8 slot);
 
 #endif // GUARD_BATTLE_AI_MAIN_H
