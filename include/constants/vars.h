@@ -134,19 +134,19 @@
 #define VAR_ROUTE119_STATE                               0x4072
 #define VAR_ROUTE120_STATE                               0x4073 // Unused Var
 #define VAR_ROUTE121_STATE                               0x4074
-#define VAR_ROUTE122_STATE                               0x4075 // Unused Var
-#define VAR_ROUTE123_STATE                               0x4076 // Unused Var
-#define VAR_ROUTE124_STATE                               0x4077 // Unused Var
-#define VAR_ROUTE125_STATE                               0x4078 // Unused Var
-#define VAR_ROUTE126_STATE                               0x4079 // Unused Var
-#define VAR_ROUTE127_STATE                               0x407A // Unused Var
+#define VAR_ENEMY_1_ABILITY_OVERWRITE_1                  0x4075 // Replaces the battler 1 ability in the slot 1 in case we have to make custom bosses
+#define VAR_ENEMY_1_ABILITY_OVERWRITE_2                  0x4076 // Replaces the battler 1 ability in the slot 2 in case we have to make custom bosses
+#define VAR_ENEMY_1_ABILITY_OVERWRITE_3                  0x4077 // Replaces the battler 1 ability in the slot 3 in case we have to make custom bosses
+#define VAR_ENEMY_1_ABILITY_OVERWRITE_4                  0x4078 // Replaces the battler 1 ability in the slot 4 in case we have to make custom bosses
+#define VAR_ENEMY_1_SPECIES                              0x4079 // To Make the variable above work
+#define VAR_ENEMY_1_CUSTOM_MAX_HP                        0x407A // To Make the variable above work
 #define VAR_ROUTE128_STATE                               0x407B
-#define VAR_ROUTE129_STATE                               0x407C // Unused Var
-#define VAR_ROUTE130_STATE                               0x407D // Unused Var
-#define VAR_ROUTE131_STATE                               0x407E // Unused Var
-#define VAR_ROUTE132_STATE                               0x407F // Unused Var
-#define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
+#define VAR_ENEMY_2_ABILITY_OVERWRITE_1                  0x407C // Replaces the battler 2 ability in the slot 1 in case we have to make custom bosses
+#define VAR_ENEMY_2_ABILITY_OVERWRITE_2                  0x407D // Replaces the battler 2 ability in the slot 2 in case we have to make custom bosses
+#define VAR_ENEMY_2_ABILITY_OVERWRITE_3                  0x407E // Replaces the battler 2 ability in the slot 3 in case we have to make custom bosses
+#define VAR_ENEMY_2_ABILITY_OVERWRITE_4                  0x407F // Replaces the battler 2 ability in the slot 4 in case we have to make custom bosses
+#define VAR_ENEMY_2_SPECIES                              0x4080 // Unused Var
+#define VAR_ENEMY_2_CUSTOM_MAX_HP                        0x4081 // Unused Var
 #define VAR_MURKWELL_BOG_STATE                           0x4082
 #define VAR_ROUTE_1_STATE                             0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                              0x4084

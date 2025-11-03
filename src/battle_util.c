@@ -7067,7 +7067,7 @@ u32 GetBattlerTrait(u8 battlerId, u8 traitNum){
     if (traitNum == 0)
         ability = GetBattlerAbility(battlerId);
     else
-        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum, gBattleMons[battlerId].personality, isEnemyMon); 
+        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum); 
 
     return ability;
 }
@@ -11867,6 +11867,7 @@ bool32 TryBattleFormChange(u32 battler, u32 method)
     struct Pokemon *party = GetBattlerParty(battler);
     u32 currentSpecies = GetMonData(&party[monId], MON_DATA_SPECIES);
     u32 targetSpecies;
+    u16 customHP;
 
     if (!CanBattlerFormChange(battler, method))
         return FALSE;
@@ -11887,6 +11888,24 @@ bool32 TryBattleFormChange(u32 battler, u32 method)
         SetMonData(&party[monId], MON_DATA_SPECIES, &targetSpecies);
         gBattleMons[battler].species = targetSpecies;
         RecalcBattlerStats(battler, &party[monId], method == FORM_CHANGE_BATTLE_GIGANTAMAX);
+
+        switch(battler){
+            case 1:
+                customHP  = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
+                if(customHP != 0){
+                    SetMonData(&party[monId], MON_DATA_HP, &customHP);
+                    SetMonData(&party[monId], MON_DATA_MAX_HP, &customHP);
+                }
+            break;
+            case 3:
+                customHP = VarGet(VAR_ENEMY_2_CUSTOM_MAX_HP);
+                if(customHP != 0){
+                    SetMonData(&party[monId], MON_DATA_HP, &customHP);
+                    SetMonData(&party[monId], MON_DATA_MAX_HP, &customHP);
+                }
+            break;
+        }
+        
         return TRUE;
     }
     else if (gBattleStruct->changedSpecies[side][monId] != SPECIES_NONE)
@@ -11912,6 +11931,24 @@ bool32 TryBattleFormChange(u32 battler, u32 method)
             TryToSetBattleFormChangeMoves(&party[monId], method);
             SetMonData(&party[monId], MON_DATA_SPECIES, &gBattleStruct->changedSpecies[side][monId]);
             RecalcBattlerStats(battler, &party[monId], method == FORM_CHANGE_BATTLE_GIGANTAMAX);
+
+            switch(battler){
+                case 1:
+                    customHP  = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
+                    if(customHP != 0){
+                        SetMonData(&party[monId], MON_DATA_HP, &customHP);
+                        SetMonData(&party[monId], MON_DATA_MAX_HP, &customHP);
+                    }
+                break;
+                case 3:
+                    customHP = VarGet(VAR_ENEMY_2_CUSTOM_MAX_HP);
+                    if(customHP != 0){
+                        SetMonData(&party[monId], MON_DATA_HP, &customHP);
+                        SetMonData(&party[monId], MON_DATA_MAX_HP, &customHP);
+                    }
+                break;
+            }
+
             // Battler data is not updated with regular form's ability, not doing so could cause wrong ability activation.
             if (method == FORM_CHANGE_FAINT)
                 gBattleMons[battler].ability = abilityForm;

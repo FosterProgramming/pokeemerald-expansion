@@ -66,6 +66,7 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 #include "wild_encounter.h"
+#include "data/pokemon/party_members.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
 
@@ -3554,23 +3555,35 @@ u8 GetMonsStateToDoubles_2(void)
 u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
 {
     int i;
+    u8 member = isSpeciesAPartyMember(species);
 
-    if (abilityNum < NUM_ABILITY_SLOTS)
-        gLastUsedAbility = gSpeciesInfo[species].abilities[abilityNum];
-    else
-        gLastUsedAbility = ABILITY_NONE;
+    if(member != NUM_PARTY_MEMBERS){
+        return gSaveBlock2Ptr->gPartyMembers[member].abilities[0];
+    }
+    else if(VarGet(VAR_ENEMY_1_SPECIES) == species && VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1) != ABILITY_NONE){
+        return VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1);
+    }
+    else if(VarGet(VAR_ENEMY_2_SPECIES) == species && VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1) != ABILITY_NONE){
+        return VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1);
+    }
+    else{
+        if (abilityNum < NUM_ABILITY_SLOTS)
+            gLastUsedAbility = gSpeciesInfo[species].abilities[abilityNum];
+        else
+            gLastUsedAbility = ABILITY_NONE;
 
-    if (abilityNum >= NUM_NORMAL_ABILITY_SLOTS) // if abilityNum is empty hidden ability, look for other hidden abilities
-    {
-        for (i = NUM_NORMAL_ABILITY_SLOTS; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++)
+        if (abilityNum >= NUM_NORMAL_ABILITY_SLOTS) // if abilityNum is empty hidden ability, look for other hidden abilities
+        {
+            for (i = NUM_NORMAL_ABILITY_SLOTS; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++)
+            {
+                gLastUsedAbility = gSpeciesInfo[species].abilities[i];
+            }
+        }
+
+        for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
         {
             gLastUsedAbility = gSpeciesInfo[species].abilities[i];
         }
-    }
-
-    for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
-    {
-        gLastUsedAbility = gSpeciesInfo[species].abilities[i];
     }
 
     return gLastUsedAbility;
@@ -7137,16 +7150,16 @@ u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerand
 
     for (i = 0; i < MAX_MON_INNATES; i++)
     {
-        if (gSpeciesInfo[species].innates[i] == ability)
+        if (GetSpeciesInnate(species, i) == ability || ability == ABILITY_INTIMIDATE)
             {innateNum = innateNum + 2 + i;
             //DebugPrintf("INNATE FOUND: %d", innateNum - 1);
             }
     }
     
     //if (!disablerandomizer) {
-    //    innate1 = RandomizeInnate(gBaseStats[species].innates[0], species, personality);
-    //    innate2 = RandomizeInnate(gBaseStats[species].innates[1], species, personality);
-    //    innate3 = RandomizeInnate(gBaseStats[species].innates[2], species, personality);
+    //    innate1 = RandomizeInnate(GetSpeciesInnate(species, 0), species, personality);
+    //    innate2 = RandomizeInnate(GetSpeciesInnate(species, 1), species, personality);
+    //    innate3 = RandomizeInnate(GetSpeciesInnate(species, 2), species, personality);
     //}
         return innateNum;
 }
@@ -7165,16 +7178,41 @@ bool8 MonHasTrait(struct Pokemon *mon, u16 ability, bool8 disableRandomizer)
     return (GetMonAbility(mon) == ability || SpeciesHasInnate(species, ability, personality, disableRandomizer));
 } 
 
-u16 GetSpeciesInnate(u16 species, u8 traitNum, u32 personality, bool8 disablerandomizer) {
-    //u8 i;
+u16 GetSpeciesInnate(u16 species, u8 traitNum){
+    u8 member = isSpeciesAPartyMember(species);
+    if(member != NUM_PARTY_MEMBERS){
+        return gSaveBlock2Ptr->gPartyMembers[member].abilities[traitNum + 1];
+    }
+    else if(VarGet(VAR_ENEMY_1_SPECIES) == species){
+        if(MAX_MON_INNATES > 0){
+            u16 ability = VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_2 + traitNum);
 
-    //if (!disablerandomizer) {
-    //    return RandomizeInnate(gBaseStats[species].innates[traitNum], species, personality);
-    //}
-    if (MAX_MON_INNATES > 0)
+            if (ability == ABILITY_NONE)
+                ability = gSpeciesInfo[species].innates[traitNum - 1];
+            
+            return ability;
+        }
+        else
+            return ABILITY_NONE;
+    }
+    else if(VarGet(VAR_ENEMY_2_SPECIES) == species){
+        if(MAX_MON_INNATES > 0){
+            u16 ability = VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_2 + traitNum);
+
+            if (ability == ABILITY_NONE)
+                ability = gSpeciesInfo[species].innates[traitNum - 1];
+            
+            return ability;
+        }
+        else
+            return ABILITY_NONE;
+    }
+    else{
+        if (MAX_MON_INNATES > 0)
             return gSpeciesInfo[species].innates[traitNum - 1];
-    else
-        return 0;
+        else
+            return ABILITY_NONE;
+    }
 }
 
 //Extra Held Item Stuff
@@ -7215,4 +7253,21 @@ u8 GetNumOfHeldItems(struct Pokemon *mon){
     }
 
     return MAX_HELD_ITEMS; //No Empty Slot
+}
+
+u16 GetSpeciesFromPartyMember(u8 member){
+    return sPartyMembersToSpecies[member];
+}
+
+u8 isSpeciesAPartyMember(u16 species){
+    u8 i;
+
+    for(i = 0; i < NUM_PARTY_MEMBERS; i++){
+        u16 partySpecies = GetSpeciesFromPartyMember(i);
+
+        if (species == partySpecies)
+            return i;
+    }
+
+    return NUM_PARTY_MEMBERS;
 }

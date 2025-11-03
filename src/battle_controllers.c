@@ -11,6 +11,7 @@
 #include "battle_setup.h"
 #include "battle_tv.h"
 #include "cable_club.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "link.h"
 #include "link_rfu.h"
@@ -1561,8 +1562,9 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         battleMon.personality = GetMonData(&party[monId], MON_DATA_PERSONALITY);
         battleMon.status1 = GetMonData(&party[monId], MON_DATA_STATUS);
         battleMon.level = GetMonData(&party[monId], MON_DATA_LEVEL);
-        battleMon.hp = GetMonData(&party[monId], MON_DATA_HP);
+        battleMon.hp    = GetMonData(&party[monId], MON_DATA_HP);
         battleMon.maxHP = GetMonData(&party[monId], MON_DATA_MAX_HP);
+
         battleMon.attack = GetMonData(&party[monId], MON_DATA_ATK);
         battleMon.defense = GetMonData(&party[monId], MON_DATA_DEF);
         battleMon.speed = GetMonData(&party[monId], MON_DATA_SPEED);
@@ -1774,12 +1776,14 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         break;
     case REQUEST_HP_BATTLE:
         data16 = GetMonData(&party[monId], MON_DATA_HP);
+
         dst[0] = data16;
         dst[1] = data16 >> 8;
         size = 2;
         break;
     case REQUEST_MAX_HP_BATTLE:
         data16 = GetMonData(&party[monId], MON_DATA_MAX_HP);
+
         dst[0] = data16;
         dst[1] = data16 >> 8;
         size = 2;
@@ -1900,17 +1904,17 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
             iv = battlePokemon->spAttackIV;
             SetMonData(&party[monId], MON_DATA_SPATK_IV, &iv);
             iv = battlePokemon->spDefenseIV;
-            SetMonData(&party[monId], MON_DATA_SPDEF_IV, &iv);
+            SetMonData(&party[monId], MON_DATA_SPDEF_IV,    &iv);
             SetMonData(&party[monId], MON_DATA_PERSONALITY, &battlePokemon->personality);
-            SetMonData(&party[monId], MON_DATA_STATUS, &battlePokemon->status1);
-            SetMonData(&party[monId], MON_DATA_LEVEL, &battlePokemon->level);
-            SetMonData(&party[monId], MON_DATA_HP, &battlePokemon->hp);
-            SetMonData(&party[monId], MON_DATA_MAX_HP, &battlePokemon->maxHP);
-            SetMonData(&party[monId], MON_DATA_ATK, &battlePokemon->attack);
-            SetMonData(&party[monId], MON_DATA_DEF, &battlePokemon->defense);
-            SetMonData(&party[monId], MON_DATA_SPEED, &battlePokemon->speed);
-            SetMonData(&party[monId], MON_DATA_SPATK, &battlePokemon->spAttack);
-            SetMonData(&party[monId], MON_DATA_SPDEF, &battlePokemon->spDefense);
+            SetMonData(&party[monId], MON_DATA_STATUS,      &battlePokemon->status1);
+            SetMonData(&party[monId], MON_DATA_LEVEL,       &battlePokemon->level);
+            SetMonData(&party[monId], MON_DATA_HP,          &battlePokemon->hp);
+            SetMonData(&party[monId], MON_DATA_MAX_HP,      &battlePokemon->maxHP);
+            SetMonData(&party[monId], MON_DATA_ATK,         &battlePokemon->attack);
+            SetMonData(&party[monId], MON_DATA_DEF,         &battlePokemon->defense);
+            SetMonData(&party[monId], MON_DATA_SPEED,       &battlePokemon->speed);
+            SetMonData(&party[monId], MON_DATA_SPATK,       &battlePokemon->spAttack);
+            SetMonData(&party[monId], MON_DATA_SPDEF,       &battlePokemon->spDefense);
         }
         break;
     case REQUEST_SPECIES_BATTLE:
@@ -2712,15 +2716,16 @@ void BtlController_HandlePrintString(u32 battler, bool32 updateTvData, bool32 ar
 
 void BtlController_HandleHealthBarUpdate(u32 battler, bool32 updateHpText)
 {
-    s32 maxHP, curHP;
+    s32 maxHP, curHP = 0;
     s16 hpVal;
     struct Pokemon *party = GetBattlerParty(battler);
 
     LoadBattleBarGfx(0);
     hpVal = gBattleResources->bufferA[battler][2] | (gBattleResources->bufferA[battler][3] << 8);
+
     maxHP = GetMonData(&party[gBattlerPartyIndexes[battler]], MON_DATA_MAX_HP);
     curHP = GetMonData(&party[gBattlerPartyIndexes[battler]], MON_DATA_HP);
-
+    
     if (hpVal != INSTANT_HP_BAR_DROP)
     {
         SetBattleBarStruct(battler, gHealthboxSpriteIds[battler], maxHP, curHP, hpVal);

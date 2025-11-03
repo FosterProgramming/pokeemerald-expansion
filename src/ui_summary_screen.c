@@ -347,18 +347,6 @@ void Start_New_Summary_Screen(u8 monNumber, bool8 locked, MainCallback callback)
     sMenuDataPtr->newAbility = ABILITY_NONE;
     sMenuDataPtr->newMove = MOVE_NONE;
     sMenuDataPtr->isLocked = locked;
-    
-    for(i = 0; i < NUM_PARTY_MEMBERS; i++){
-        u16 species = sPartyMembersToSpecies[i];
-        u8 abilityNum = 0;
-
-        for(j = 0; j < MAX_MON_INNATES + 1; j++){
-            if (j == 0)
-                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetAbilityBySpecies(species, abilityNum);
-            else if (j <= MAX_MON_INNATES)
-                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = gSpeciesInfo[species].innates[j - 1];
-        }
-    }
 
     for(i = 0; i < NUM_SUMMARY_SPRITES; i++)
         sMenuDataPtr->spriteIDs[i] = SPRITE_NONE;
