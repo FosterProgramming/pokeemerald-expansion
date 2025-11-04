@@ -97,11 +97,12 @@ script Common_EventScript_StartBossDebugBattle{
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOTOR_DRIVE) //Sets a custom innate to the enemy 1 in the slot 1
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_STATIC)      //Sets a custom innate to the enemy 1 in the slot 2
 	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 200)                       //Sets custom HP to the enemy 1
-	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                       //Forces a double battle vs 1 enemy
+	setflag(FLAG_SYS_SMART_WILD_AI)                              //Forces the wild Pokémon to have an smart AI
+	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_ELECTIVIRE)          //Sets custom HP to the enemy 1
 
 	playmoncry(SPECIES_ELECTIVIRE, 2,)
-	setwildbattle(SPECIES_ELECTIVIRE, 35, ITEM_NONE, SPECIES_MAGIKARP, 10, ITEM_NONE)
+	setwildbossbattle(SPECIES_ELECTIVIRE, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 252, 0, 0, 0, 252)
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)

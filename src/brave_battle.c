@@ -1,5 +1,6 @@
 #include "brave_battle.h"
 #include "battle.h"
+#include "battle_ai_util.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
 #include "battle_gimmick.h"
@@ -28,6 +29,7 @@ static void BraveLoadMonSelection(u32 battler, u32 moveSelect);
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
 EWRAM_DATA u16 gBraveStoredSpeeds[4];
+EWRAM_DATA u8 sCurrentTarget;
 
 const u32 sBraveItemMenuGfx[] = INCBIN_U32("graphics/brave_item_menu/item_menu.4bpp");
 const u32 sBraveItemMenuGfx2[] = INCBIN_U32("graphics/brave_item_menu/item_menu2.4bpp");
@@ -442,6 +444,170 @@ bool32 IsBraveTurnActuallyDone(void)
     return gBattleStruct->braveTurnDone && gBattleStruct->braveTurnActuallyDone;
 }
 
+/*
+#define B_POSITION_PLAYER_LEFT        0
+#define B_POSITION_OPPONENT_LEFT      1
+#define B_POSITION_PLAYER_RIGHT       2
+#define B_POSITION_OPPONENT_RIGHT     3
+*/
+
+#define BOSS_PHASE_DEFAULT      0
+#define BOSS_BRAVE_PHASE_1      1
+#define BOSS_BRAVE_PHASE_2      2
+#define BOSS_BRAVE_PHASE_3      3
+#define BOSS_BRAVE_PHASE_4      4
+#define BOSS_BRAVE_PHASE_MISC   5
+#define BOSS_BRAVE_PHASE_RANDOM 6 //Use the best move against the target with less HP
+#define MAX_NUM_PHASES          7
+
+static void GenerateRandomTarget(void){
+    u8 newTarget = MAX_BATTLERS_COUNT;
+    do{
+        newTarget = Random32() % MAX_BATTLERS_COUNT; //Random Target
+    }
+    while(GetBattlerSide(newTarget) == B_SIDE_OPPONENT || newTarget == MAX_BATTLERS_COUNT || !IsBattlerAlive(newTarget));
+
+    sCurrentTarget = newTarget;
+}
+
+static u8 GetCurrentBravePhase(u32 battler){
+    u16 playerMonSpecies       = gBattleMons[B_POSITION_PLAYER_LEFT].species;
+    u16 playerMonSpecies2      = gBattleMons[B_POSITION_PLAYER_RIGHT].species;
+    u16 bossHP                 = gBattleMons[battler].hp;
+    u16 bossHPMaxHP            = gBattleMons[battler].maxHP;
+    bool8 canFaintTarget1      = CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, 0);
+    bool8 canFaintTarget2      = CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, 0);
+    bool8 isBossAtLowHP        = bossHP < (bossHPMaxHP / 8);
+    bool8 playerHasOnePokemon  = (gBattleMons[B_POSITION_PLAYER_LEFT].hp == 0 || gBattleMons[B_POSITION_PLAYER_RIGHT].hp == 0);
+    u8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
+    bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE);
+    bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE);
+
+    GenerateRandomTarget();
+
+    if(bossCurrentAP != MAX_BRAVE_ACTIONS){
+        //Does not have enough AP for a Chain
+        bool8 useRandomPhase   = (Random() % 2) == 0; //Chances have to be changed as needed to spice up things
+        bool8 useMiscPhase     = FALSE;                //It's supposed to be used when the player has lowered the boss stats a lot
+        bool8 enableRandomness = FALSE;
+
+        if(CanAIFaintTarget(battler, sCurrentTarget, 0) && IsBattlerAlive(sCurrentTarget) && enableRandomness){
+            //Can faint the random target
+            MgbaPrintf(MGBA_LOG_WARN, "Can faint the random target");
+            return BOSS_BRAVE_PHASE_RANDOM;
+        }
+        else if(canFaintTarget1 && IsBattlerAlive(B_POSITION_PLAYER_LEFT)){
+            //Can faint the target to the left
+            sCurrentTarget = B_POSITION_PLAYER_LEFT;
+            MgbaPrintf(MGBA_LOG_WARN, "Can faint the target to the left");
+            return BOSS_BRAVE_PHASE_RANDOM;
+        }
+        else if(canFaintTarget2 && IsBattlerAlive(B_POSITION_PLAYER_RIGHT)){
+            //Can faint the target to the right
+            sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+            MgbaPrintf(MGBA_LOG_WARN, "Can faint the target to the right");
+            return BOSS_BRAVE_PHASE_RANDOM;
+        }
+        else if(useRandomPhase && IsBattlerAlive(sCurrentTarget) && enableRandomness){
+            //Can randomly start attacking to spice up things
+            MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
+            return BOSS_BRAVE_PHASE_RANDOM;
+        }
+        else if((Enemy1CanBeParalyzed && Enemy2CanBeParalyzed) && useMiscPhase && IsBattlerAlive(sCurrentTarget) && enableRandomness)
+        {
+            //Can Paralyze both targets so it chooses a random one
+            MgbaPrintf(MGBA_LOG_WARN, "Can Paralyze both targets so it chooses a random one");
+            return BOSS_BRAVE_PHASE_MISC;
+        }
+        else if(Enemy1CanBeParalyzed && useMiscPhase && IsBattlerAlive(B_POSITION_PLAYER_LEFT))
+        {
+            //Can Paralyze target 1
+            sCurrentTarget = B_POSITION_PLAYER_LEFT;
+            MgbaPrintf(MGBA_LOG_WARN, "Can Paralyze target 1");
+            return BOSS_BRAVE_PHASE_MISC;
+        }
+        else if(Enemy2CanBeParalyzed && useMiscPhase && IsBattlerAlive(B_POSITION_PLAYER_RIGHT))
+        {
+            //Can Paralyze target 2
+            sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+            MgbaPrintf(MGBA_LOG_WARN, "Can Paralyze target 2");
+            return BOSS_BRAVE_PHASE_MISC;
+        }
+        else{
+            //Use default if nothing is met
+            MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
+            return BOSS_PHASE_DEFAULT;
+        }
+    }
+
+    //Chain 4: to be used only when the player is down to one polemon in KO range and elective is also low health. 
+    //This one id like him to use regardless of if he has AP stored or not, it’s basically an all out suicide attack
+    //to try to make the player draw. Also I’d like a message box to appear before using this chain that I can have
+    //as a story point/character development. (Currently used at 1/8 of HP)
+    if(isBossAtLowHP && playerHasOnePokemon){
+        if(gBattleMons[B_POSITION_PLAYER_LEFT].maxHP != 0)
+            sCurrentTarget = B_POSITION_PLAYER_LEFT;
+        else
+            sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+
+        return BOSS_BRAVE_PHASE_4;
+    }
+
+    //Chain 3: to be used to target Seel specifically, if Seel is within KO range
+    if((playerMonSpecies  == SPECIES_DEWGONG && CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, MAX_BRAVE_ACTIONS))){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
+        sCurrentTarget = B_POSITION_PLAYER_LEFT;
+
+        return BOSS_BRAVE_PHASE_3;
+    }
+    else if(playerMonSpecies2 == SPECIES_DEWGONG && CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, MAX_BRAVE_ACTIONS)){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
+        sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+
+        return BOSS_BRAVE_PHASE_3;
+    }
+
+    //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
+    if(playerMonSpecies == SPECIES_FLAREON){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
+        sCurrentTarget = B_POSITION_PLAYER_LEFT;
+
+        return BOSS_BRAVE_PHASE_2;
+    }
+    else if(playerMonSpecies2 == SPECIES_FLAREON){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
+        sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+
+        return BOSS_BRAVE_PHASE_2;
+    }
+
+    //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
+    MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
+    return BOSS_BRAVE_PHASE_1;
+}
+
+static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
+    u8 i;
+    u16 currentScore = 0;
+    u16 maxScore = 0;
+    u8  maxScoreMoveId = 0;
+
+    if(CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, 0))
+        sCurrentTarget = B_POSITION_PLAYER_LEFT;
+    else if(CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, 0))
+        sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        currentScore = gBattleStruct->aiFinalScore[battler][sCurrentTarget][i];
+        if(currentScore > maxScore){
+            maxScore       = currentScore;
+            maxScoreMoveId = i;
+        }
+    }
+
+    return maxScoreMoveId;
+}
+
 static void AddRandomActionForBattler(u32 battler){
     u32 rnd = Random32() & 1;
     if (rnd)
@@ -453,60 +619,27 @@ static void AddRandomActionForBattler(u32 battler){
     }
 }
 
-static u8 GetCurrentBravePhase(u32 battler){
-    u16 playerMonSpecies      = gBattleMons[0].species;
-    u16 playerMonSpecies2     = gBattleMons[2].species;
-    u16 playerMonHP           = gBattleMons[0].hp;
-    u16 playerMonHP2          = gBattleMons[2].hp;
-    u16 playerMonMaxHP        = gBattleMons[0].maxHP;
-    u16 playerMonMaxHP2       = gBattleMons[2].maxHP;
-    u16 bossHP                = gBattleMons[battler].hp;
-    u16 bossHPMaxHP           = gBattleMons[battler].maxHP;
-    bool8 isPlayer1MonAtLowHP = bossHP < (bossHPMaxHP / 8);
-    bool8 isPlayer2MonAtLowHP = bossHP < (bossHPMaxHP / 8);
-    bool8 isBossAtLowHP       = bossHP < (bossHPMaxHP / 8);
-    bool8 playerHasOnePokemon = (playerMonHP == 0 || playerMonHP2 == 0);
-
-    //Chain 4: to be used only when the player is down to one polemon in KO range and elective is also low health. 
-    //This one id like him to use regardless of if he has AP stored or not, it’s basically an all out suicide attack
-    //to try to make the player draw. Also I’d like a message box to appear before using this chain that I can have
-    //as a story point/character development. (Currently used at 1/8 of HP)
-    if(isBossAtLowHP && playerHasOnePokemon)
-        return 3;
-
-    //Chain 3: to be used to target Seel specifically, if Seel is within KO range
-    if((playerMonSpecies  == SPECIES_DEWGONG && (playerMonHP  < (playerMonMaxHP  / 8))) || 
-       (playerMonSpecies2 == SPECIES_DEWGONG && (playerMonHP2 < (playerMonMaxHP2 / 8))))
-        return 2;
-
-    //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
-    if(playerMonSpecies == SPECIES_FLAREON || playerMonSpecies2 == SPECIES_FLAREON)
-        return 1;
-
-    //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
-    return 0;
+static void AddOptimalActionForBattler(u32 battler){
+    u32 rnd = Random32() & 1;
+    if (rnd)
+        BraveAddDefaultToQueue(battler);
+    else
+    {
+        u32 target = MAX_BATTLERS_COUNT;
+        u8 moveId = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+        BraveAddMoveToQueue(battler, moveId, target);
+    }
 }
-
-static u8 SearchPlayerBattlerBySpecies(u16 species){
-    u16 playerMonSpecies  = gBattleMons[0].species;
-    u16 playerMonSpecies2 = gBattleMons[2].species;
-
-    if(playerMonSpecies == species)
-        return 0;
-    else if(playerMonSpecies2 == species)
-        return 2;
-
-    return MAX_BATTLERS_COUNT;
-}
-
-#define MAX_NUM_PHASES 4
 
 static const u16 sBraveBossesActions[NUMBER_OF_BOSSES][MAX_NUM_PHASES][MAX_BRAVE_ACTIONS] = {
     [BRAVE_BOSS_ELECTIVIRE] = {
-        [0] = { MOVE_CHARGE,        MOVE_THUNDER_PUNCH, MOVE_CHARGE,        MOVE_THUNDER_PUNCH},
-        [1] = { MOVE_THUNDER_WAVE,  MOVE_BULLDOZE,      MOVE_BULLDOZE,      MOVE_BULLDOZE},
-        [2] = { MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH},
-        [3] = { MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH,    MOVE_BULLDOZE,      MOVE_SELFDESTRUCT},
+        [BOSS_PHASE_DEFAULT]      = { MOVE_NONE,          MOVE_NONE,          MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_1]      = { MOVE_CHARGE,        MOVE_THUNDER_PUNCH, MOVE_CHARGE,        MOVE_THUNDER_PUNCH},
+        [BOSS_BRAVE_PHASE_2]      = { MOVE_THUNDER_WAVE,  MOVE_BULLDOZE,      MOVE_BULLDOZE,      MOVE_BULLDOZE},
+        [BOSS_BRAVE_PHASE_3]      = { MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH},
+        [BOSS_BRAVE_PHASE_4]      = { MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH,    MOVE_BULLDOZE,      MOVE_SELFDESTRUCT},
+        [BOSS_BRAVE_PHASE_MISC]   = { MOVE_NONE,          MOVE_NONE,          MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_RANDOM] = { MOVE_NONE,          MOVE_NONE,          MOVE_NONE,          MOVE_NONE},
     }
 };
 
@@ -514,37 +647,66 @@ void AddAiActionsForBattler(u32 battler)
 {
     // Placeholder
     u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
+    GenerateRandomTarget();
+
     switch(bossNumber){
         case BRAVE_BOSS_NONE:
         default:
         {
-            AddRandomActionForBattler(battler);
+            u32 rnd = Random32() & 1;
+            if (rnd)
+                AddRandomActionForBattler(battler);
+            else
+                AddOptimalActionForBattler(battler);
         }
         break;
         case BRAVE_BOSS_ELECTIVIRE:
         {
-            if(battler == 1){
-                u32 target    = MAX_BATTLERS_COUNT;
-                u32 rndTarget = Random32() & 0x2; //Random Target
+            if(battler == B_POSITION_OPPONENT_LEFT){
                 u8 actionNum  = VarGet(VAR_BRAVE_ACTION_NUM);
                 u8 phase      = GetCurrentBravePhase(battler);
-                u16 move      = sBraveBossesActions[bossNumber][phase][actionNum];
+                u16 move      = MOVE_NONE;
+                bool8 useSlot = FALSE;
 
-                switch(phase){
-                    //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
-                    case 1:
-                        target = SearchPlayerBattlerBySpecies(SPECIES_FLAREON);
-                    break;
-                    //Chain 3: to be used to target Seel specifically, if Seel is within KO range
-                    case 2:
-                        target = SearchPlayerBattlerBySpecies(SPECIES_DEWGONG);
-                    break;
+                MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
+
+                if(phase != BOSS_PHASE_DEFAULT){
+                    switch(phase){
+                        default:
+                            move = sBraveBossesActions[bossNumber][phase][actionNum];
+                        break;
+                        //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
+                        case BOSS_BRAVE_PHASE_2:
+                            move   = sBraveBossesActions[bossNumber][phase][actionNum];
+                        break;
+                        //Chain 3: to be used to target Seel specifically, if Seel is within KO range
+                        case BOSS_BRAVE_PHASE_3:
+                            move   = sBraveBossesActions[bossNumber][phase][actionNum];
+                        break;
+                        case BOSS_BRAVE_PHASE_RANDOM:
+                        {
+                            move    = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            useSlot = TRUE;
+                        }
+                        break;
+                        case BOSS_BRAVE_PHASE_MISC:
+                            move   = MOVE_THUNDER_WAVE;
+                        break;
+                    }
+
+                    if(sCurrentTarget == MAX_BATTLERS_COUNT)
+                        GenerateRandomTarget();
+                    
+                    if(useSlot)
+                        BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                    else
+                        BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
+
+                    //MgbaPrintf(MGBA_LOG_WARN, "AddAiActionsForBattler battler %d move %d target %d phase %d", battler, move, target, phase);
                 }
-
-                if(target == MAX_BATTLERS_COUNT)
-                    target = rndTarget;
-                        
-                BraveAddAnyMoveToQueue(battler, move, target);
+                else{
+                    BraveAddDefaultToQueue(battler);
+                }
             }
             else{
                 AddRandomActionForBattler(battler);
