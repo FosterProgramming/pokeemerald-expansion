@@ -25,6 +25,7 @@ u32 BraveGetCurrentAction(void);
 u32 BraveGetCurrentBattler(void);
 u32 BraveGetCurrentTarget(void);
 u32 BraveGetCurrentMoveSlot(void);
+u32 BraveGetCurrentMove(void);
 u16 GetBravePrioMod(u32 move, u32 battler);
 bool32 IsBattlerDefaulting(u32 battler);
 
@@ -33,6 +34,7 @@ void BraveClearBattlerAction(u32 battler, u32 action);
 void BraveClearAllActions(void);
 
 void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target);
+void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target);
 void BraveAddSwitchToQueue(u32 battler, u32 target);
 void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot);
 void BraveAddDefaultToQueue(u32 battler);

@@ -3,6 +3,7 @@
 #include "battle_controllers.h"
 #include "battle_interface.h"
 #include "battle_gimmick.h"
+#include "event_data.h"
 #include "even_sprite.h"
 #include "item.h"
 #include "item_use.h"
@@ -37,7 +38,6 @@ const u32 sBraveItemMenuHPBars[] = INCBIN_U32("graphics/brave_item_menu/item_men
 const u32 sBraveItemMenuStatus[] = INCBIN_U32("graphics/brave_item_menu/item_menu_status.4bpp");
 const u32 sBraveItemMenuMove[] = INCBIN_U32("graphics/brave_item_menu/item_menu_move.4bpp");
 const u32 sBraveItemMenuMoveSelector[] = INCBIN_U32("graphics/brave_item_menu/item_menu_move_selector.4bpp");
-
 
 void Brave_TestActions(void)
 {
@@ -88,6 +88,18 @@ u32 BraveGetCurrentBattler(void)
 u32 BraveGetCurrentTarget(void)
 {
     return gBraveCurrentAction.target;
+}
+
+u32 BraveGetCurrentMove(void)
+{
+    bool8 isEnemyMon = GetBattlerSide(gBraveCurrentAction.battler) == B_SIDE_OPPONENT; //needed for Randomizer
+    //MgbaPrintf(MGBA_LOG_WARN, "BraveGetCurrentItem slot %d", gBraveCurrentAction.item);
+
+    //Item is used as a place to put an argument if you want to use a move not on its moveset
+    if(isEnemyMon && gBraveCurrentAction.moveSlot == 1 && gBraveCurrentAction.item != ITEM_NONE)
+        return gBraveCurrentAction.item;
+    
+    return MOVE_NONE;
 }
 
 u32 BraveGetCurrentMoveSlot(void)
@@ -214,6 +226,7 @@ void BraveSetCurrentAction(void)
              && gBraveBattleAction[battler][actionIndex].action == B_ACTION_USE_MOVE)
             {
                 u32 move = gBattleMons[battler].moves[gBraveBattleAction[battler][actionIndex].moveSlot];
+                
                 battlerSpeeds[battler] = uq4_12_multiply_by_int_half_down(GetBravePrioMod(move, battler), battlerSpeeds[battler]);
                 speedThreshold += battlerSpeeds[battler];
                 battlerWantsToMove[battler] = TRUE;
@@ -361,6 +374,26 @@ void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
 }
 
+#define VAR_BRAVE_ACTION_NUM VAR_VERDANTURF_TOWN_STATE
+void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target)
+{
+    u32 currAction = gBattleStruct->monBraveActions[battler]++;
+    u8 action = VarGet(VAR_BRAVE_ACTION_NUM);
+
+    gBraveBattleAction[battler][currAction].battler = battler;
+    gBraveBattleAction[battler][currAction].item = move;
+    gBraveBattleAction[battler][currAction].moveSlot = 1;
+    gBraveBattleAction[battler][currAction].target = target;
+    gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
+    gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
+    gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
+
+    action++;
+    VarSet(VAR_BRAVE_ACTION_NUM, (action % MAX_BRAVE_ACTIONS));
+
+    //MgbaPrintf(MGBA_LOG_WARN, "BraveAddAnyMoveToQueue battler %d move %d target %d currAction %d", battler, move, target, action);
+}
+
 void BraveAddDefaultToQueue(u32 battler)
 {
     u32 currAction = gBattleStruct->monBraveActions[battler]++;
@@ -409,9 +442,7 @@ bool32 IsBraveTurnActuallyDone(void)
     return gBattleStruct->braveTurnDone && gBattleStruct->braveTurnActuallyDone;
 }
 
-void AddAiActionsForBattler(u32 battler)
-{
-    // Placeholder
+static void AddRandomActionForBattler(u32 battler){
     u32 rnd = Random32() & 1;
     if (rnd)
         BraveAddDefaultToQueue(battler);
@@ -419,6 +450,107 @@ void AddAiActionsForBattler(u32 battler)
     {
         u32 target = Random32() & 0x2;
         BraveAddMoveToQueue(battler, 0, target);
+    }
+}
+
+static u8 GetCurrentBravePhase(u32 battler){
+    u16 playerMonSpecies      = gBattleMons[0].species;
+    u16 playerMonSpecies2     = gBattleMons[2].species;
+    u16 playerMonHP           = gBattleMons[0].hp;
+    u16 playerMonHP2          = gBattleMons[2].hp;
+    u16 playerMonMaxHP        = gBattleMons[0].maxHP;
+    u16 playerMonMaxHP2       = gBattleMons[2].maxHP;
+    u16 bossHP                = gBattleMons[battler].hp;
+    u16 bossHPMaxHP           = gBattleMons[battler].maxHP;
+    bool8 isPlayer1MonAtLowHP = bossHP < (bossHPMaxHP / 8);
+    bool8 isPlayer2MonAtLowHP = bossHP < (bossHPMaxHP / 8);
+    bool8 isBossAtLowHP       = bossHP < (bossHPMaxHP / 8);
+    bool8 playerHasOnePokemon = (playerMonHP == 0 || playerMonHP2 == 0);
+
+    //Chain 4: to be used only when the player is down to one polemon in KO range and elective is also low health. 
+    //This one id like him to use regardless of if he has AP stored or not, it’s basically an all out suicide attack
+    //to try to make the player draw. Also I’d like a message box to appear before using this chain that I can have
+    //as a story point/character development. (Currently used at 1/8 of HP)
+    if(isBossAtLowHP && playerHasOnePokemon)
+        return 3;
+
+    //Chain 3: to be used to target Seel specifically, if Seel is within KO range
+    if((playerMonSpecies  == SPECIES_DEWGONG && (playerMonHP  < (playerMonMaxHP  / 8))) || 
+       (playerMonSpecies2 == SPECIES_DEWGONG && (playerMonHP2 < (playerMonMaxHP2 / 8))))
+        return 2;
+
+    //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
+    if(playerMonSpecies == SPECIES_FLAREON || playerMonSpecies2 == SPECIES_FLAREON)
+        return 1;
+
+    //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
+    return 0;
+}
+
+static u8 SearchPlayerBattlerBySpecies(u16 species){
+    u16 playerMonSpecies  = gBattleMons[0].species;
+    u16 playerMonSpecies2 = gBattleMons[2].species;
+
+    if(playerMonSpecies == species)
+        return 0;
+    else if(playerMonSpecies2 == species)
+        return 2;
+
+    return MAX_BATTLERS_COUNT;
+}
+
+#define MAX_NUM_PHASES 4
+
+static const u16 sBraveBossesActions[NUMBER_OF_BOSSES][MAX_NUM_PHASES][MAX_BRAVE_ACTIONS] = {
+    [BRAVE_BOSS_ELECTIVIRE] = {
+        [0] = { MOVE_CHARGE,        MOVE_THUNDER_PUNCH, MOVE_CHARGE,        MOVE_THUNDER_PUNCH},
+        [1] = { MOVE_THUNDER_WAVE,  MOVE_BULLDOZE,      MOVE_BULLDOZE,      MOVE_BULLDOZE},
+        [2] = { MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH},
+        [3] = { MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH,    MOVE_BULLDOZE,      MOVE_SELFDESTRUCT},
+    }
+};
+
+void AddAiActionsForBattler(u32 battler)
+{
+    // Placeholder
+    u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
+    switch(bossNumber){
+        case BRAVE_BOSS_NONE:
+        default:
+        {
+            AddRandomActionForBattler(battler);
+        }
+        break;
+        case BRAVE_BOSS_ELECTIVIRE:
+        {
+            if(battler == 1){
+                u32 target    = MAX_BATTLERS_COUNT;
+                u32 rndTarget = Random32() & 0x2; //Random Target
+                u8 actionNum  = VarGet(VAR_BRAVE_ACTION_NUM);
+                u8 phase      = GetCurrentBravePhase(battler);
+                u16 move      = sBraveBossesActions[bossNumber][phase][actionNum];
+
+                switch(phase){
+                    //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
+                    case 1:
+                        target = SearchPlayerBattlerBySpecies(SPECIES_FLAREON);
+                    break;
+                    //Chain 3: to be used to target Seel specifically, if Seel is within KO range
+                    case 2:
+                        target = SearchPlayerBattlerBySpecies(SPECIES_DEWGONG);
+                    break;
+                }
+
+                if(target == MAX_BATTLERS_COUNT)
+                    target = rndTarget;
+                        
+                BraveAddAnyMoveToQueue(battler, move, target);
+            }
+            else{
+                AddRandomActionForBattler(battler);
+            }
+        }
+        break;
     }
 }
 

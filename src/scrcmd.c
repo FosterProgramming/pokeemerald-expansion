@@ -2471,7 +2471,13 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     if(species2 == SPECIES_NONE)
     {
         CreateScriptedWildMon(species, level, item);
-        sIsScriptedWildDouble = FALSE;
+
+        if(FlagGet(FLAG_FORCE_DOUBLE_WILD_BATTLE))
+            sIsScriptedWildDouble = TRUE;
+        else
+            sIsScriptedWildDouble = FALSE;
+
+        FlagClear(FLAG_FORCE_DOUBLE_WILD_BATTLE);
     }
     else
     {

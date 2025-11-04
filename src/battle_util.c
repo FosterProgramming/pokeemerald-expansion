@@ -330,6 +330,7 @@ void HandleAction_UseMove(void)
     //  BRAVE CHANGE
     //BraveSetCurrentAction();
     u32 i;
+    u16 sMoveToUse;
 
     //  BRAVE CHANGE
     //gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
@@ -351,9 +352,18 @@ void HandleAction_UseMove(void)
     //  BRAVE CHANGE
     //gCurrMovePos = gChosenMovePos = gBattleStruct->chosenMovePositions[gBattlerAttacker];
     gCurrMovePos = gChosenMovePos = BraveGetCurrentMoveSlot();
+    //
+    sMoveToUse = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
 
     // choose move
-    if (gProtectStructs[gBattlerAttacker].noValidMoves)
+    if(BraveGetCurrentMove() != MOVE_NONE){
+        gCurrentMove = gChosenMove = sMoveToUse = BraveGetCurrentMove();
+        gCurrMovePos = 0;
+        //gHitMarker |= HITMARKER_NO_PPDEDUCT;
+        gBattleStruct->moveTarget[gBattlerAttacker] = BraveGetCurrentTarget();
+        //MgbaPrintf(MGBA_LOG_WARN, "HandleAction_UseMove sMoveToUse %d gBattlerAttacker %d Target %d", gCurrentMove, gBattlerAttacker, gBattleStruct->moveTarget[gBattlerAttacker]);
+    }
+    else if(gProtectStructs[gBattlerAttacker].noValidMoves)
     {
         gProtectStructs[gBattlerAttacker].noValidMoves = FALSE;
         gCurrentMove = gChosenMove = MOVE_STRUGGLE;
@@ -389,7 +399,7 @@ void HandleAction_UseMove(void)
           && gDisableStructs[gBattlerAttacker].encoredMove != gBattleMons[gBattlerAttacker].moves[gDisableStructs[gBattlerAttacker].encoredMovePos])
     {
         gCurrMovePos = gChosenMovePos = gDisableStructs[gBattlerAttacker].encoredMovePos;
-        gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+        gCurrentMove = gChosenMove = sMoveToUse;
         gDisableStructs[gBattlerAttacker].encoredMove = MOVE_NONE;
         gDisableStructs[gBattlerAttacker].encoredMovePos = 0;
         gDisableStructs[gBattlerAttacker].encoreTimer = 0;
@@ -397,7 +407,7 @@ void HandleAction_UseMove(void)
         //gBattleStruct->moveTarget[gBattlerAttacker] = GetBattleMoveTarget(gCurrentMove, NO_TARGET_OVERRIDE);
         gBattleStruct->moveTarget[gBattlerAttacker] = BraveGetCurrentTarget();
     }
-    else if (gBattleMons[gBattlerAttacker].moves[gCurrMovePos] != gChosenMoveByBattler[gBattlerAttacker])
+    else if (sMoveToUse != gChosenMoveByBattler[gBattlerAttacker])
     {
         //  BRAVE CHANGE
         //gBattleStruct->moveTarget[gBattlerAttacker] = GetBattleMoveTarget(gCurrentMove, NO_TARGET_OVERRIDE);
@@ -408,7 +418,7 @@ void HandleAction_UseMove(void)
         }
         else
         {
-            gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+            gCurrentMove = gChosenMove = sMoveToUse;
             gBattleStruct->moveTarget[gBattlerAttacker] = BraveGetCurrentTarget();
         }
     }
@@ -421,7 +431,7 @@ void HandleAction_UseMove(void)
         }
         else
         {
-            gCurrentMove = gChosenMove = gBattleMons[gBattlerAttacker].moves[gCurrMovePos];
+            gCurrentMove = gChosenMove = sMoveToUse;
         }
     }
 
@@ -8839,7 +8849,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise_Luminous_Moss;
                     SET_STATCHANGER(STAT_SPDEF, 1, FALSE);
-                    MgbaPrintf(MGBA_LOG_WARN,"Test");
+                    //MgbaPrintf(MGBA_LOG_WARN,"Test");
                 }
             }
 
@@ -11891,7 +11901,7 @@ bool32 TryBattleFormChange(u32 battler, u32 method)
 
         switch(battler){
             case 1:
-                customHP  = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
+                customHP = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
                 if(customHP != 0){
                     SetMonData(&party[monId], MON_DATA_HP, &customHP);
                     SetMonData(&party[monId], MON_DATA_MAX_HP, &customHP);
