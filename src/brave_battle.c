@@ -1712,3 +1712,13 @@ void BraveOpenItemMenu(u32 battler)
     sBraveItemMenuState->itemCategory = 1;
     sBraveItemMenuState->scrollPos = 0;
 }
+
+void BraveModAP(u32 battler, s32 change)
+{
+    gBattleStruct->monStoredAP[battler] += change;
+    if (gBattleStruct->monStoredAP[battler] > 4)
+        gBattleStruct->monStoredAP[battler] = 4;
+    else if (gBattleStruct->monStoredAP[battler] < -4)
+        gBattleStruct->monStoredAP[battler] = -4;
+    ChangeAPGraphics(battler);
+}

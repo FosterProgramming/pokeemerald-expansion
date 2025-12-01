@@ -68,6 +68,8 @@
 #include "config/battle.h"
 #include "data/battle_move_effects.h"
 
+#include "brave_battle.h"
+
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
 // the quarters cancel so no need to re-quadruple them in actual calculation
@@ -4631,6 +4633,11 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 }
                 break;
             }
+            case MOVE_EFFECT_AP_MOD:
+                BraveModAP(gBattlerTarget, gMovesInfo[gCurrentMove].additionalEffects->apMod);
+                BattleScriptPush(gBattlescriptCurrInstr + 1);
+                gBattlescriptCurrInstr = BattleScript_EffectAPMod;
+                break;
             }
         }
     }

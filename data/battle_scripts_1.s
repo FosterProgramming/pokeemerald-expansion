@@ -10298,3 +10298,8 @@ BattleScript_SleepClausePreventsEnd::
 	printstring STRINGID_BLOCKEDBYSLEEPCLAUSE
 	waitmessage B_WAIT_TIME_LONG
 	end2
+
+BattleScript_EffectAPMod::
+	printstring STRINGID_AP_MOD
+	waitmessage B_WAIT_TIME_MED
+	end2
