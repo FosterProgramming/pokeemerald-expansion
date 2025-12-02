@@ -48,6 +48,7 @@
 #include "type_icons.h"
 
 #include "brave_battle.h"
+#include "brave_item_menu.h"
 #include "tarc_help_system.h"
 
 static void PlayerHandleLoadMonSprite(u32 battler);
