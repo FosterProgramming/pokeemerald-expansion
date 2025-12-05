@@ -1208,7 +1208,6 @@ void PrepareStringBattle(u16 stringId, u32 battler)
         gBattlescriptCurrInstr = BattleScript_GenerateAbilityPopUp;
     }
 
-
     // Check Defiant and Competitive stat raise whenever a stat is lowered.
     else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH)
               && ((SearchTraits(battlerTraits, ABILITY_DEFIANT) && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
@@ -4321,7 +4320,7 @@ bool32 TryChangeBattleWeather(u32 battler, u32 battleWeatherId, bool32 viaAbilit
     return FALSE;
 }
 
-static bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u16 *timer)
+bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u16 *timer)
 {
     if ((!(gFieldStatuses & statusFlag) && (!gBattleStruct->isSkyBattle)))
     {
@@ -5567,7 +5566,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         if (IsBattlerAlive(battler))
         {
             gBattlerAttacker = battler;
-
             if (SearchTraits(battlerTraits, ABILITY_PICKUP))
             {
                 gBattlerAttacker = battler;
@@ -5850,6 +5848,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         effect = CanAbilityAbsorbMove(gBattlerAttacker, battler, gLastUsedAbility, move, moveType, ABILITY_RUN_SCRIPT);
         break;
     case ABILITYEFFECT_MOVE_END: // Think contact abilities.
+        if(AddCustomScriptForBoss(gBattlerTarget))
+            effect++;
+
         if (SearchTraits(battlerTraits, ABILITY_JUSTIFIED)
          && !(gBattleStruct->moveResultFlags[battler] & MOVE_RESULT_NO_EFFECT)
          && IsBattlerTurnDamaged(gBattlerTarget)
@@ -13202,4 +13203,26 @@ u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating)
     //DebugPrintf("GetHeldItemSlot Held Item not Found - battler %d itemId %d item1 %ditem2 %ditem3 %ditem4 %d", battler, itemId, gBattleMons[battler].item, gBattleMons[battler].item2, gBattleMons[battler].item3, gBattleMons[battler].item4);
 
     return slot;
+}
+
+bool8 AddCustomScriptForBoss(u32 battler){
+    u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
+    if (bossNumber != 0 && battler == B_POSITION_OPPONENT_LEFT)
+    {
+        switch(bossNumber){
+            case BRAVE_BOSS_ELECTIVIRE:
+            {
+                u16 bossHP          = gBattleMons[battler].hp;
+                u16 bossHPMaxHP     = gBattleMons[battler].maxHP;
+                bool8 isBossAtLowHP = bossHP < (bossHPMaxHP / 2);
+                if(IsBattlerAlive(battler) && isBossAtLowHP && TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer)){
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_ElectivireBossHalfHealth;
+                    return TRUE;
+                }
+            }
+            break;
+        }
+    }
+    return FALSE;
 }

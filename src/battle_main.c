@@ -76,6 +76,7 @@
 #include "cable_club.h"
 
 #include "brave_battle.h"
+#include "brave_ai.h"
 #include "tarc_help_system.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
