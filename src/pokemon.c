@@ -3552,47 +3552,59 @@ u8 GetMonsStateToDoubles_2(void)
     return (aliveCount > 1) ? PLAYER_HAS_TWO_USABLE_MONS : PLAYER_HAS_ONE_USABLE_MON;
 }
 
-u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
-{
+u16 GetBaseAbilityBySpecies(u16 species, u8 abilityNum){
     int i;
-    u8 member = isSpeciesAPartyMember(species);
 
-    if(member != NUM_PARTY_MEMBERS){
-        return gSaveBlock2Ptr->gPartyMembers[member].abilities[0];
-    }
-    else if(VarGet(VAR_ENEMY_1_SPECIES) == species && VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1) != ABILITY_NONE){
-        return VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1);
-    }
-    else if(VarGet(VAR_ENEMY_2_SPECIES) == species && VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1) != ABILITY_NONE){
-        return VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1);
-    }
-    else{
-        if (abilityNum < NUM_ABILITY_SLOTS)
-            gLastUsedAbility = gSpeciesInfo[species].abilities[abilityNum];
-        else
-            gLastUsedAbility = ABILITY_NONE;
+    if (abilityNum < NUM_ABILITY_SLOTS)
+        gLastUsedAbility = gSpeciesInfo[species].abilities[abilityNum];
+    else
+        gLastUsedAbility = ABILITY_NONE;
 
-        if (abilityNum >= NUM_NORMAL_ABILITY_SLOTS) // if abilityNum is empty hidden ability, look for other hidden abilities
-        {
-            for (i = NUM_NORMAL_ABILITY_SLOTS; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++)
-            {
-                gLastUsedAbility = gSpeciesInfo[species].abilities[i];
-            }
-        }
-
-        for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
+    if (abilityNum >= NUM_NORMAL_ABILITY_SLOTS) // if abilityNum is empty hidden ability, look for other hidden abilities
+    {
+        for (i = NUM_NORMAL_ABILITY_SLOTS; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++)
         {
             gLastUsedAbility = gSpeciesInfo[species].abilities[i];
         }
     }
 
+    for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
+    {
+        gLastUsedAbility = gSpeciesInfo[species].abilities[i];
+    }
+
     return gLastUsedAbility;
+}
+
+u16 GetAbilityBySpeciesIgnore(u16 species, u8 abilityNum, bool8 ignoreCustomAbilities)
+{
+    u8 member = isSpeciesAPartyMember(species);
+
+    if(!ignoreCustomAbilities){
+        if(member != NUM_PARTY_MEMBERS && gSaveBlock2Ptr->gPartyMembers[member].abilities[abilityNum] != ABILITY_NONE){
+            return gSaveBlock2Ptr->gPartyMembers[member].abilities[abilityNum];
+        }
+        else if(VarGet(VAR_ENEMY_1_SPECIES) == species && VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1) != ABILITY_NONE && VarGet(VAR_ENEMY_1_SPECIES) != SPECIES_NONE){
+            return VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1);
+        }
+        else if(VarGet(VAR_ENEMY_2_SPECIES) == species && VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1) != ABILITY_NONE && VarGet(VAR_ENEMY_2_SPECIES) != SPECIES_NONE){
+            return VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1);
+        }
+    }
+
+    return GetBaseAbilityBySpecies(species, abilityNum);
+}
+
+u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
+{
+    return GetAbilityBySpeciesIgnore(species, abilityNum, FALSE);
 }
 
 u16 GetMonAbility(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM, NULL);
+
     return GetAbilityBySpecies(species, abilityNum);
 }
 
@@ -7265,7 +7277,7 @@ u8 isSpeciesAPartyMember(u16 species){
     for(i = 0; i < NUM_PARTY_MEMBERS; i++){
         u16 partySpecies = GetSpeciesFromPartyMember(i);
 
-        if (species == partySpecies)
+        if (species == partySpecies && species != SPECIES_NONE)
             return i;
     }
 

@@ -831,4 +831,5 @@ bool8 BoxMonHasInnate(struct BoxPokemon* boxmon, u16 ability, bool8 disableRando
 bool8 MonHasTrait(struct Pokemon* mon, u16 ability, bool8 disableRandomizer);
 u16 GetSpeciesFromPartyMember(u8 member);
 u8 isSpeciesAPartyMember(u16 species);
+u16 GetAbilityBySpeciesIgnore(u16 species, u8 abilityNum, bool8 ignoreCustomAbilities);
 #endif // GUARD_POKEMON_H
