@@ -13,6 +13,7 @@
 #define MULTICHOICE_DYNAMIC_STACK_INC 5
 
 extern const u8 *const gStdStrings[];
+extern const u8 *const gPasswords[];
 
 struct DynamicMultichoiceStack
 {

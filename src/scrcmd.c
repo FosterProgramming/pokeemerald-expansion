@@ -56,6 +56,8 @@
 #include "malloc.h"
 #include "constants/event_objects.h"
 #include "qol_field_moves.h" // qol_field_moves
+#include "constants/map_types.h"
+#include "constants/passwords.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -3159,3 +3161,17 @@ bool8 ScrCmd_checkpartylearnknowsfieldmove(struct ScriptContext *ctx)
     return FALSE;
 }
 // End qol_field_moves
+
+bool8 ScrCmd_comparepassword(struct ScriptContext *ctx)
+{
+    u8 passwordId = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    if (!StringCompare(gStringVar2, gPasswords[passwordId]))
+        gSpecialVar_Result = 1;
+    else
+        gSpecialVar_Result = 0;
+
+    return FALSE;
+}
