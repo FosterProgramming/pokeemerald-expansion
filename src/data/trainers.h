@@ -414,7 +414,7 @@ F_TRAINER_FEMALE |
 #line 242
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 243
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
 #line 244
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 2,
@@ -433,7 +433,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 250
-            .species = SPECIES_ELECTRODE,
+            .species = SPECIES_ELECTABUZZ,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 252
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),

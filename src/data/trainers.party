@@ -240,14 +240,14 @@ Class:
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
 
 Electabuzz
 Level: 35
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Electrode
+Electabuzz
 Level: 35
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
