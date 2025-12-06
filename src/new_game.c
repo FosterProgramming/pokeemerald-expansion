@@ -253,7 +253,7 @@ static void ResetPartyMemberData(void)
 
         for(j = 0; j < MAX_MON_INNATES + 1; j++){
             if (j == 0) //For abilities
-                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetAbilityBySpecies(species, abilityNum);
+                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetAbilityBySpeciesIgnore(species, abilityNum, TRUE);
             else if (j <= MAX_MON_INNATES)
                 gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetSpeciesInnate(species, j - 1);
         }

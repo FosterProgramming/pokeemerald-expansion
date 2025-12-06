@@ -21007,6 +21007,31 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_MalignantChain,
     },
 
+    [MOVE_DEFAULT] =
+    {
+        .name = COMPOUND_STRING("Default"),
+        .description = COMPOUND_STRING(
+            "Guards for the turn\n"),
+        .effect = EFFECT_DEFAULT,
+        .power = 0,
+        .type = TYPE_NORMAL,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_USER,
+        .priority = 4,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_RESET_STATS },
+        .metronomeBanned = TRUE,
+        .copycatBanned = TRUE,
+        .assistBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_AVOID_STARTLE,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_HARDEN},
+        .battleAnimScript = gBattleAnimMove_Protect,
+        .validApprenticeMove = TRUE,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {

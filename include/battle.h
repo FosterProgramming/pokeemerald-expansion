@@ -168,7 +168,7 @@ struct ProtectStruct
     u32 statRaised:1;
     u32 usedCustapBerry:1;    // also quick claw
     u32 touchedProtectLike:1;
-    u32 unused:1;
+    u32 usedDefault:1;
     // End of 32-bit bitfield
     u16 disableEjectPack:1;
     u16 statFell:1;
@@ -709,7 +709,8 @@ struct BattleStruct
     u8 anyMonHasTransformed:1; // Only used in battle_tv.c
     u8 multipleSwitchInState:2;
     u8 multipleSwitchInCursor:3;
-    u8 padding1:2;
+    u8 isBraveSelector:1;
+    u8 padding1:1;
     u8 multipleSwitchInSortedBattlers[MAX_BATTLERS_COUNT];
     void (*savedCallback)(void);
     u16 usedHeldItems[PARTY_SIZE][NUM_BATTLE_SIDES]; // For each party member and side. For harvest, recycle
@@ -842,7 +843,12 @@ struct BattleStruct
     u16 savedMove; // backup current move for mid-turn switching, e.g. Red Card
     u16 opponentMonCanTera:6;
     u16 opponentMonCanDynamax:6;
-    u16 padding:4;
+    u16 braveTurnDone:1;
+    u16 braveTurnActuallyDone:1;
+    u16 skipMoveInput:1;
+    u16 padding:1;
+    u8 monBraveActions[4];
+    s8 monStoredAP[4];
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,

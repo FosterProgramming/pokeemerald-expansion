@@ -371,4 +371,7 @@ bool8 hasGlidedEmblemEffect(u32 battler);
 bool8 hasSpectralCocoonEffect(u32 battler);
 bool8 hasEternalCrestEffect(u32 battler);
 
+bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u16 *timer);
+bool8 AddCustomScriptForBoss(u32 battler);
+
 #endif // GUARD_BATTLE_UTIL_H

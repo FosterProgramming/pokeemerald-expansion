@@ -75,6 +75,10 @@
 #include "constants/weather.h"
 #include "cable_club.h"
 
+#include "brave_battle.h"
+#include "brave_ai.h"
+#include "tarc_help_system.h"
+
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
 
@@ -3421,6 +3425,7 @@ static void DoBattleIntro(void)
         BtlController_EmitGetMonData(battler, BUFFER_A, REQUEST_ALL_BATTLE, 0);
         MarkBattlerForControllerExec(battler);
         gBattleStruct->introState++;
+        HelpSystem_AddTrigger(TRIGGER_HEAL);
         break;
     case BATTLE_INTRO_STATE_LOOP_BATTLER_DATA:
         if (!gBattleControllerExecFlags)
@@ -3777,6 +3782,10 @@ static void TryDoEventsBeforeFirstTurn(void)
             }
         }
 
+        //  Set up Brave stuff
+        BraveClearAllActions();
+        BraveFirstTurnSetAP();
+
         // Allow for illegal abilities within tests.
         #if TESTING
         if (gTestRunnerEnabled)
@@ -3989,6 +3998,9 @@ void BattleTurnPassed(void)
     gBattleScripting.animTurn = 0;
     gBattleScripting.animTargetsHit = 0;
     gBattleScripting.moveendState = 0;
+
+    BraveClearAllActions();
+    BraveIncrementAP();
 
     for (i = 0; i < 5; i++)
         gBattleCommunication[i] = 0;
@@ -4234,6 +4246,7 @@ static void HandleTurnActionSelectionState(void)
                 // Do scoring
                 gBattleStruct->aiMoveOrAction[battler] = BattleAI_ChooseMoveOrAction(battler);
                 AI_DATA->aiCalcInProgress = FALSE;
+                AddAiActionsForBattler(battler);
             }
             // fallthrough
         case STATE_BEFORE_ACTION_CHOSEN: // Choose an action.
@@ -5377,7 +5390,12 @@ static void CheckChangingTurnOrderEffects(void)
     // setup stuff before turns/actions
     TryClearRageAndFuryCutter();
     gCurrentTurnActionNumber = 0;
-    gCurrentActionFuncId = gActionsByTurnOrder[0];
+    //  BRAVE change
+    //  Action is initially set here
+    MgbaPrintf(MGBA_LOG_WARN, "Action 0 Set");
+    BraveSetCurrentAction();
+    //gCurrentActionFuncId = gActionsByTurnOrder[0];
+    gCurrentActionFuncId = gBraveCurrentAction.action;
     gBattleStruct->dynamicMoveType = 0;
     gBattleStruct->effectsBeforeUsingMoveDone = FALSE;
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
@@ -5420,7 +5438,7 @@ static void RunTurnActionsFunctions(void)
     *(&gBattleStruct->savedTurnActionNumber) = gCurrentTurnActionNumber;
     sTurnActionsFuncsTable[gCurrentActionFuncId]();
 
-    if (gCurrentTurnActionNumber >= gBattlersCount) // everyone did their actions, turn finished
+    if (IsBraveTurnActuallyDone()) // everyone did their actions, turn finished
     {
         gHitMarker &= ~HITMARKER_PASSIVE_DAMAGE;
         gBattleMainFunc = sEndTurnFuncsTable[gBattleOutcome & 0x7F];
@@ -6177,7 +6195,7 @@ bool32 IsWildMonSmart(void)
 #if B_SMART_WILD_AI_FLAG != 0
     return (FlagGet(B_SMART_WILD_AI_FLAG));
 #else
-    return FALSE;
+    return TRUE;
 #endif
 }
 

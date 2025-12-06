@@ -11,6 +11,9 @@ static const u16 sBurstTriggerPal[] = INCBIN_U16("graphics/battle_interface/burs
 static const u16 sDynamaxTriggerPal[] = INCBIN_U16("graphics/battle_interface/dynamax_trigger.gbapal");
 static const u16 sTeraTriggerPal[] = INCBIN_U16("graphics/battle_interface/tera_trigger.gbapal");
 
+static const u16 sBraveAP_Pal[] = INCBIN_U16("graphics/brave_ap/ap.gbapal");
+
+
 static const struct SpriteSheet sSpriteSheet_MegaTrigger = {sMegaTriggerGfx, sizeof(sMegaTriggerGfx), TAG_GIMMICK_TRIGGER_TILE};
 static const struct SpriteSheet sSpriteSheet_ZMoveTrigger = {sZMoveTriggerGfx, sizeof(sZMoveTriggerGfx), TAG_GIMMICK_TRIGGER_TILE};
 static const struct SpriteSheet sSpriteSheet_BurstTrigger = {sBurstTriggerGfx, sizeof(sBurstTriggerGfx), TAG_GIMMICK_TRIGGER_TILE};
@@ -125,13 +128,13 @@ static const u8 *sTeraIndicatorDataPtrs[] =
 };
 
 static const struct SpritePalette sSpritePalette_MiscIndicator = {sMiscIndicatorPal, TAG_MISC_INDICATOR_PAL};
-static const struct SpritePalette sSpritePalette_MegaIndicator = {sMegaIndicatorPal, TAG_MEGA_INDICATOR_PAL};
+static const struct SpritePalette sSpritePalette_MegaIndicator = {sBraveAP_Pal, TAG_MEGA_INDICATOR_PAL};
 static const struct SpritePalette sSpritePalette_TeraIndicator = {sTeraIndicatorPal, TAG_TERA_INDICATOR_PAL};
 
 static const struct OamData sOamData_GimmickIndicator =
 {
-    .shape = SPRITE_SHAPE(8x16),
-    .size = SPRITE_SIZE(8x16),
+    .shape = SPRITE_SHAPE(16x8),
+    .size = SPRITE_SIZE(16x8),
     .priority = 1,
 };
 

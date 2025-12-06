@@ -357,6 +357,7 @@ extern const u8 BattleScript_MoveUsedIsThroatChopPrevented[];
 extern const u8 BattleScript_SelectingNotAllowedMoveThroatChopInPalace[];
 extern const u8 BattleScript_ThroatChopEndTurn[];
 extern const u8 BattleScript_GemActivates[];
+extern const u8 BattleScript_ElectivireBossHalfHealth[];
 extern const u8 BattleScript_BerryReduceDmg[];
 extern const u8 BattleScript_WeaknessPolicy[];
 extern const u8 BattleScript_TargetItemStatRaise_Luminous_Moss[];
@@ -865,5 +866,7 @@ extern const u8 BattleScript_EffectSpicyExtract[];
 extern const u8 BattleScript_DamageToQuarterTargetHP[];
 extern const u8 BattleScript_EffectFickleBeam[];
 extern const u8 BattleScript_FickleBeamDoubled[];
+extern const u8 BattleScript_EffectDefault[];
+extern const u8 BattleScript_EffectAPMod[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

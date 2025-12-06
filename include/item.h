@@ -7,6 +7,15 @@
 
 typedef void (*ItemUseFunc)(u8);
 
+enum BraveItemType
+{
+    BRAVE_NO_TYPE,
+    BRAVE_HP_ITEM,
+    BRAVE_X_ITEM,
+    BRAVE_PP_ITEM,
+    BRAVE_STATUS_ITEM,
+};
+
 struct Item
 {
     u32 price;
@@ -27,6 +36,7 @@ struct Item
     u8 flingPower;
     const u32 *iconPic;
     const u32 *iconPalette;
+    enum BraveItemType braveType;
 };
 
 struct BagPocket

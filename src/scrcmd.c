@@ -2471,11 +2471,74 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     if(species2 == SPECIES_NONE)
     {
         CreateScriptedWildMon(species, level, item);
-        sIsScriptedWildDouble = FALSE;
+
+        if(FlagGet(FLAG_FORCE_DOUBLE_WILD_BATTLE))
+            sIsScriptedWildDouble = TRUE;
+        else
+            sIsScriptedWildDouble = FALSE;
+
+        FlagClear(FLAG_FORCE_DOUBLE_WILD_BATTLE);
     }
     else
     {
         CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2);
+        sIsScriptedWildDouble = TRUE;
+    }
+
+    return FALSE;
+}
+
+#define BOSS_BATTLE_USE_GENERIC_ALLY TRUE //2 Vs 1 are currently buggy this is so I can test
+bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
+{
+    u16 species  = ScriptReadHalfword(ctx);
+    u8  level    = ScriptReadByte(ctx);
+    u16 item     = ScriptReadHalfword(ctx);
+    u8  nature   = ScriptReadByte(ctx);
+    u16 move1    = ScriptReadHalfword(ctx);
+    u16 move2    = ScriptReadHalfword(ctx);
+    u16 move3    = ScriptReadHalfword(ctx);
+    u16 move4    = ScriptReadHalfword(ctx);
+    u8  evsHP    = ScriptReadByte(ctx);
+    u8  evsAtk   = ScriptReadByte(ctx);
+    u8  evsDef   = ScriptReadByte(ctx);
+    u8  evsSpAtk = ScriptReadByte(ctx);
+    u8  evsSpDef = ScriptReadByte(ctx);
+    u8  evsSpeed = ScriptReadByte(ctx);
+
+    u16 species2 = SPECIES_MAGIKARP;
+    u8 level2    = 1;
+    u16 item2    = ITEM_NONE;
+
+    Script_RequestEffects(SCREFF_V1);
+
+    if(!BOSS_BATTLE_USE_GENERIC_ALLY)
+    {
+        CreateScriptedWildMon(species, level, item);
+
+        if(FlagGet(FLAG_FORCE_DOUBLE_WILD_BATTLE))
+            sIsScriptedWildDouble = TRUE;
+        else
+            sIsScriptedWildDouble = FALSE;
+
+        FlagClear(FLAG_FORCE_DOUBLE_WILD_BATTLE);
+    }
+    else
+    {
+        CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2);
+
+        SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &nature);
+        SetMonData(&gEnemyParty[0], MON_DATA_MOVE1,         &move1);
+        SetMonData(&gEnemyParty[0], MON_DATA_MOVE2,         &move2);
+        SetMonData(&gEnemyParty[0], MON_DATA_MOVE3,         &move3);
+        SetMonData(&gEnemyParty[0], MON_DATA_MOVE4,         &move4);
+        SetMonData(&gEnemyParty[0], MON_DATA_HP_EV,         &evsHP);
+        SetMonData(&gEnemyParty[0], MON_DATA_ATK_EV,        &evsAtk);
+        SetMonData(&gEnemyParty[0], MON_DATA_DEF_EV,        &evsDef);
+        SetMonData(&gEnemyParty[0], MON_DATA_SPATK_EV,      &evsSpAtk);
+        SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_EV,      &evsSpDef);
+        SetMonData(&gEnemyParty[0], MON_DATA_SPEED_EV,      &evsSpeed);
+
         sIsScriptedWildDouble = TRUE;
     }
 

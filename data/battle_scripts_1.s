@@ -1324,6 +1324,14 @@ BattleScript_EffectSpectralThiefFromDamage:
 	moveendall
 	end
 
+BattleScript_EffectDefault::
+	attackstring
+	attackanimation
+	waitanimation
+	defaultprotect BS_ATTACKER
+	printstring STRINGID_DEFAULTING
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectPartingShot::
 	attackcanceler
 	attackstring
@@ -8942,6 +8950,15 @@ BattleScript_GemActivates::
 	removeitem BS_ATTACKER
 	return
 
+BattleScript_ElectivireBossHalfHealth::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_TERRAINBECOMESELECTRIC
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	return
+
 BattleScript_BerryReduceDmg::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
@@ -10289,4 +10306,9 @@ BattleScript_SleepClausePreventsEnd::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_BLOCKEDBYSLEEPCLAUSE
 	waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_EffectAPMod::
+	printstring STRINGID_AP_MOD
+	waitmessage B_WAIT_TIME_MED
 	end2

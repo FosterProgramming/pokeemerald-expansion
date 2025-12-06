@@ -180,6 +180,11 @@
 #define CONNECTION_DIVE     5
 #define CONNECTION_EMERGE   6
 
+//Bosses
+#define BRAVE_BOSS_NONE        0
+#define BRAVE_BOSS_ELECTIVIRE  1
+#define NUMBER_OF_BOSSES       2
+
 #if TESTING
 #include "config/test.h"
 #endif

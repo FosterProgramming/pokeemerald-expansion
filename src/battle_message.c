@@ -897,6 +897,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SENDCAUGHTMONPARTYORBOX]              = COMPOUND_STRING("Add {B_DEF_NAME} to your party?"),
     [STRINGID_PKMNSENTTOPCAFTERCATCH]               = gText_PkmnSentToPCAfterCatch,
     [STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC]        = COMPOUND_STRING("Gotcha! {B_DEF_NAME} was caught!{WAIT_SE}\p"),
+    [STRINGID_DEFAULTING]                           = COMPOUND_STRING("{B_DEF_NAME} braced itself!"),
+    [STRINGID_AP_MOD]                               = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} changed the AP of {B_DEF_NAME_WITH_PREFIX}!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1416,7 +1418,8 @@ const u8 gText_WhatWillPkmnDo[] = _("What will\n{B_BUFF1} do?");
 const u8 gText_WhatWillPkmnDo2[] = _("What will\n{B_PLAYER_NAME} do?");
 const u8 gText_WhatWillWallyDo[] = _("What will\nWALLY do?");
 const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
-const u8 gText_BattleMenu[] = _("Battle{CLEAR_TO 56}Bag\nPokémon{CLEAR_TO 56}Run");
+const u8 gText_BattleMenu[] = _("Brave{CLEAR_TO 56}Default\nPokémon{CLEAR_TO 56}Run");
+const u8 gText_BattleSecondMenu[] = _("Move{CLEAR_TO 56}Item\nBack{CLEAR_TO 56}Run");
 const u8 gText_SafariZoneMenu[] = _("Ball{CLEAR_TO 56}{POKEBLOCK}\nGo Near{CLEAR_TO 56}Run");
 const u8 gText_MoveInterfacePP[] = _("PP ");
 const u8 gText_MoveInterfaceType[] = _("TYPE/");

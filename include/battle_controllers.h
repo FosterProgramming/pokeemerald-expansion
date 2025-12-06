@@ -316,6 +316,8 @@ void HandleInputShowEntireFieldTargets(u32 battler);
 void HandleInputShowTargets(u32 battler);
 void HandleMoveSwitching(u32 battler);
 void HandleChooseMoveAfterDma3(u32 battler);
+void SetControllerFuncToInputFromBraveItemMenu(u32 battler);
+void PlayerBufferExecCompleted(u32 battler);
 
 // recorded player controller
 void SetControllerToRecordedPlayer(u32 battler);

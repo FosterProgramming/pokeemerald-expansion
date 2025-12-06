@@ -1429,8 +1429,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .expYield = 54,
     #endif
         .evYield_HP = 1,
-        .itemCommon = ITEM_PECHA_BERRY,
-        .itemRare = ITEM_BRIGHT_POWDER,
+        //.itemCommon = ITEM_PECHA_BERRY,
+        //.itemRare = ITEM_BRIGHT_POWDER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
