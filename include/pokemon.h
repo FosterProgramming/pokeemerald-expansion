@@ -783,6 +783,7 @@ const u8 *GetTrainerPartnerName(void);
 void BattleAnimateFrontSprite(struct Sprite *sprite, u16 species, bool8 noCry, u8 panMode);
 void DoMonFrontSpriteAnimation(struct Sprite *sprite, u16 species, bool8 noCry, u8 panModeAnimFlag);
 void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame);
+void PokemonNewSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame);
 void StopPokemonAnimationDelayTask(void);
 void BattleAnimateBackSprite(struct Sprite *sprite, u16 species);
 u8 GetOpposingLinkMultiBattlerId(bool8 rightSide, u8 multiplayerId);
@@ -824,8 +825,10 @@ u8 BoxMonItemHasHoldEffect(struct BoxPokemon *mon, u16 holdEffect);
 u8 GetNumOfHeldItems(struct Pokemon *mon);
 
 u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerandomizer);
-u16 GetSpeciesInnate(u16 species, u8 traitNum, u32 personality, bool8 disablerandomizer);
+u16 GetSpeciesInnate(u16 species, u8 traitNum);
 //u8 GetSpeciesInnateNum(u16 species, u16 ability, u32 personality, bool8 disableRandomizer);
 bool8 BoxMonHasInnate(struct BoxPokemon* boxmon, u16 ability, bool8 disableRandomizer);
 bool8 MonHasTrait(struct Pokemon* mon, u16 ability, bool8 disableRandomizer);
+u16 GetSpeciesFromPartyMember(u8 member);
+u8 isSpeciesAPartyMember(u16 species);
 #endif // GUARD_POKEMON_H

@@ -343,4 +343,18 @@ enum EvolutionMode {
 #define LEGENDARY_PERFECT_IV_COUNT 0
 #endif
 
+#define PARTY_MEMBER_DEWGONG   0
+#define PARTY_MEMBER_EEVEE     1
+#define PARTY_MEMBER_PERSIAN   2
+#define PARTY_MEMBER_SNORLAX   3
+#define PARTY_MEMBER_HONCHKROW 4
+#define PARTY_MEMBER_GENGAR    5
+#define PARTY_MEMBER_HUMAN     6
+
+#define NUM_PARTY_MEMBERS      7
+
+#define STARTING_MEMBER_SKILL_POINTS        20 //Skill points your party member has at level 1
+#define NUM_SKILL_POINTS_PER_LEVEL          5  //Number of skill points you gain per level
+#define LEVEL_TO_START_GAINING_SKILL_POINTS 1  //Level you need to reach to start gaining skill points, this was added since you don't start at level 1 or 5 but rather 25, this can be easily be adjusted as needed
+
 #endif // GUARD_CONSTANTS_POKEMON_H

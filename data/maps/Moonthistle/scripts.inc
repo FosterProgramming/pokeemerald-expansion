@@ -73,8 +73,9 @@ Moonthistle_EventScripts_Loudred_Text_0:
 
 Moonthistle_EventScripts_Loudred_Text_1:
 # 32 "data/maps/Moonthistle/scripts.pory"
-	.string "Keep your head down, and your voice\n"
-	.string "lower.$"
+	.string "KEEP YOUR-\n"
+	.string "I mean, keep your head down, and your\l"
+	.string "voice low.$"
 
 Moonthistle_EventScripts_Loudred_Text_2:
 # 39 "data/maps/Moonthistle/scripts.pory"

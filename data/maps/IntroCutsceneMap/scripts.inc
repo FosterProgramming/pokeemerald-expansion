@@ -31,7 +31,7 @@ IntroCutsceneMap_IntroSequence:
 # 16 "data/maps/IntroCutsceneMap/scripts.pory"
 	lockall
 # 17 "data/maps/IntroCutsceneMap/scripts.pory"
-	givemon SPECIES_DEWGONG, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_ICE_SHARD, MOVE_BUBBLEBEAM, MOVE_DISABLE, MOVE_SAFEGUARD
+	givemon SPECIES_DEWGONG, 25, ITEM_NONE, ITEM_POKE_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_ICE_SHARD, MOVE_BUBBLEBEAM, MOVE_DISABLE, MOVE_SAFEGUARD, 0, 0, 0, 0
 # 18 "data/maps/IntroCutsceneMap/scripts.pory"
 	setflag FLAG_SYS_POKEMON_GET
 # 19 "data/maps/IntroCutsceneMap/scripts.pory"

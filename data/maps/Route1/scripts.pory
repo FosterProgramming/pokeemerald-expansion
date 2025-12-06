@@ -247,7 +247,7 @@ script Route1_EventScript_RoadIsBlocked
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	speakername("Fro")
 	msgbox(format(
-		"Hey, chill out, girl.\n
+		"Don't worry.\n
 		I know those guys."
 	))
 	speakername("Vee")
@@ -257,10 +257,10 @@ script Route1_EventScript_RoadIsBlocked
 	))
 	speakername("Fro")
 	msgbox(format(
-		"Eeyup.\n
+		"Yup.\n
 		From work.\p
 		Some real bad apples, those ones.\p
-		But I can talk with 'em.\n
+		But I can talk with them.\n
 		Figure something out.\p
 		You guys go hide, and I'll handle this."
 	))
@@ -343,12 +343,13 @@ script Route1_EventScript_GruntBlocking_Continues
 	speakername("Fro")
 	msgbox(format(
 		"Well.\p
-		I am…\n
-		Gathering ingredients."
+		There's been an incident.\n
+		But it's under control, now."
 	))
 	speakername("Grunt 2")
 	msgbox(format(
-		"The Boss didn't say you were gonna pass through here."
+		"And you're not helping out?\p
+		Besides, the Boss didn't tell us that you were gonna pass through."
 	))
 	speakername("Fro")
 	msgbox(format(

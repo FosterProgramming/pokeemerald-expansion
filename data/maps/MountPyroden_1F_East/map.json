@@ -2,7 +2,7 @@
   "id": "MAP_MOUNT_PYRODEN_1F_EAST",
   "name": "MountPyroden_1F_East",
   "layout": "LAYOUT_MOUNT_PYRODEN_1F_EAST",
-  "music": "MUS_DUMMY",
+  "music": "MUS_MT_CHIMNEY",
   "region_map_section": "MAPSEC_PYRODEN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -29,8 +29,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 14,
-      "y": 8,
+      "x": 18,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -42,8 +42,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 15,
-      "y": 8,
+      "x": 17,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -78,6 +78,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 22,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_C"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 23,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_D"
     }
   ],
   "warp_events": [
@@ -87,6 +113,13 @@
       "elevation": 0,
       "dest_map": "MAP_MOUNT_PYRODEN_1F",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 14,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_MOUNT_PYRODEN_1F_SIDE_ROOM",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

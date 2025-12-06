@@ -1,0 +1,326 @@
+raw `
+.set LOCALID_TANK, 1
+.set LOCALID_DOM, 2
+.set LOCALID_VEE, 3
+.set LOCALID_FRO, 4
+`
+
+mapscripts MountPyroden_4F_TankRoom_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(var(VAR_PYRODEN_LAST_ROOM_STATE) == 5)
+        {
+            clearflag(FLAG_SYS_HIDE_DOM_PARTY_MEMBER)
+            clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+            clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
+            addobject(LOCALID_DOM)
+            addobject(LOCALID_FRO)
+            addobject(LOCALID_VEE)
+        }
+        end
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE
+    [
+        VAR_PYRODEN_LAST_ROOM_STATE, 5
+        {
+            lock
+            delay(10)
+            speakername("Vee")
+            msgbox(format(
+                "Woahhhh!\n
+                What IS that?"
+            ))
+            closemessage
+            applymovement(LOCALID_VEE, moves(
+                walk_up*2
+            ))
+            waitmovement(0)
+            special(SpawnCameraObject)
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*5))
+            waitmovement(0)
+            speakername("Narrator")
+            msgbox(format(
+                "For the time being, please pretend that this object is a tank."
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "It looks like a…\n
+                A tank…?"
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "It's so…\n
+                It's so…\p
+                Beautiful…"
+            ))
+            closemessage
+            applymovement(LOCALID_DOM, moves(
+                walk_up*2
+            ))
+            waitmovement(0)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(
+                walk_up*4
+                walk_in_place_right
+            ))
+            waitmovement(0)
+            applymovement(LOCALID_FRO, moves(face_left))
+            waitmovement(0)
+            speakername("Fro")
+            msgbox(format(
+                "It appears that we've found a hidden tank.\p
+                I'm not entirely sure what this signifies."
+            ))
+            applymovement(LOCALID_DOM, moves(face_down))
+            waitmovement(0)
+            speakername("Dom")
+            msgbox(format(
+                "Oh, I know about this!\p
+                Ya see, before getting involved in genetic experiments, Team MAGA was in the military research industry."
+            ))
+            applymovement(LOCALID_FRO, moves(face_up))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_up))
+            waitmovement(0)
+            speakername("Fro")
+            msgbox(format(
+                "And they made this tank?"
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "Looks like it.\p
+                But I guess after pivoting field, they decided to store it here.\p
+                Good of a place as any other, I reckon!\n
+                Who would look for a tank in a volcano, am I right?"
+            ))
+            applymovement(LOCALID_VEE, moves(face_down))
+            speakername("Vee")
+            msgbox(format(
+                "Guuuuys!\n
+                Can we keep it?\l
+                It's so cool!"
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "I think we better-"
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "Hold on just a second, you feisty bear!\p
+                I have something I need to tell you.\p
+                I can…\n
+                I can pilot this."
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "You can pilot it."
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "Tank-piloting and money laundering are two surprisingly adjacent skills."
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "I imagine."
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "But listen!\n
+                This is how I can make myself useful!\p
+                I can get in the tank, and run over our enemies!\p
+                Please, let me join your team!"
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "Hmm…\n
+                You make a compelling point.\p
+                But…\n
+                Even if we were to agree…\p
+                How are we getting this tank out of here…?"
+            ))
+            closemessage
+            applymovement(LOCALID_VEE, moves(
+                face_up
+                delay_16
+            ))
+            waitmovement(0)
+            playse(SE_PIN)
+            applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+            waitmovement(0)
+            waitse
+            speakername("Vee")
+            msgbox(format(
+                "Hey!\n
+                There's a button here!\p
+                It says, “Press here to shrink.”"
+            ))
+            closemessage
+            delay(16)
+            playse(SE_INTRO_BLAST)
+            fadescreen(FADE_TO_WHITE)
+            removeobject(LOCALID_TANK)
+            waitse
+            fadescreen(FADE_FROM_WHITE)
+            delay(16)
+            playse(SE_PIN)
+            applymovement(LOCALID_VEE, moves(
+                emote_exclamation_mark
+                delay_16*2
+                face_right
+                delay_16*2
+                face_left
+                delay_16*2
+                face_down
+            ))
+            waitmovement(0)
+            speakername("Vee")
+            msgbox(format(
+                "Where did it go?\n
+                Did someone eat it?"
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "Don't look at me."
+            ))
+            closemessage
+            delay(64)
+            applymovement(LOCALID_DOM, moves(
+                face_left
+                delay_16*2
+                face_right
+                delay_16*2
+                face_down
+                delay_16*2
+            ))
+            waitmovement(0)
+            playse(SE_PIN)
+            applymovement(LOCALID_DOM, moves(
+                emote_exclamation_mark
+                delay_16*2
+            ))
+            waitmovement(0)
+            speakername("Dom")
+            msgbox(format(
+                "Wait, everyone!\n
+                I found it!\p
+                It's…\n
+                In my pocket!"
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "So…\n
+                It really could shrink.\p
+                And you said you could pilot it…\p
+                Hmm…\p
+                Alright, fine.\n
+                You can join our team."
+            ))
+            closemessage
+            applymovement(LOCALID_DOM, moves(
+                walk_down
+                walk_right*2
+                face_down
+            ))
+            waitmovement(0)
+            speakername("Dom")
+            msgbox(format(
+                "Oh, thank you so very much, Mr. Fro Bear!\p
+                You won't regret it, I promise that!\N
+                I'll make you rich!"
+            ))
+            speakername("Fro")
+            msgbox(format("That's not what we're after."))
+            speakername("Dom")
+            msgbox(format(
+                "Ah, of course, of course!\n
+                Silly me!\p
+                We're after revenge.\n
+                And revenge…"
+            ))
+            speakername("Fro & Dom")
+            msgbox(format(
+                "…Is a dish best served cold."
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "Heh.\n
+                Maybe you're not so bad, after all."
+            ))
+            speakername(NULL)
+            playfanfare(MUS_OBTAIN_BADGE)
+            msgbox(format("{COLOR RED}Dom{COLOR DARK_GRAY} has joined your team!"))
+            waitfanfare
+            speakername("Dom")
+            msgbox(format(
+                "Ok, ok, enough of the triumphant celebrations.\p
+                Let's figure out what's next."
+            ))
+            applymovement(LOCALID_VEE, moves(walk_down))
+            waitmovement(0)
+            speakername("Vee")
+            msgbox(format(
+                "So, this Guardian…\p
+                He was another one of the bad guys that transformed into a Pokémon, right?"
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "Oh, yes, yes!\n
+                He was definitely a human, before!"
+            ))
+            speakername("Vee")
+            msgbox(format(
+                "And the Electivire we defeated…\n
+                He said something about being human, too!\p
+                So, I think, that…\p
+                All Guardians might turn out to be transformed humans!"
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "That's definitely possible.\n
+                Good job, Vee."
+            ))
+            speakername("Vee")
+            msgbox(format(
+                "Tee hee.\p
+                Are you starting to believe in the story of the Guardians and the Artifacts, now?"
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "Hmm…\p
+                I'm still not entirely convinced that the Artifacts will turn me and Seel back into humans…\p
+                …But it does seem like there's something to the story.\p
+                So, we might as well check out the other locations."
+            ))
+            speakername("Dom")
+            msgbox(format(
+                "I heard rumors of something happening in Stratoscape."
+            ))
+            speakername("Fro")
+            msgbox(format(
+                "Stratoscape…\p
+                Yes, I think Vee and Seel mentioned that there's supposed to be a Guardian there.\p
+                And it's the closest to here as well.\p
+                …Ok.\n
+                Let's check out Stratoscape, everyone."
+            ))
+            closemessage
+            applymovement(LOCALID_FRO, moves(
+                walk_left
+            ))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+            applymovement(LOCALID_VEE, moves(
+                walk_down
+            ))
+            applymovement(LOCALID_DOM, moves(
+                walk_down
+                walk_left
+            ))
+            waitmovement(LOCALID_DOM)
+            removeobject(LOCALID_DOM)
+            removeobject(LOCALID_FRO)
+            removeobject(LOCALID_VEE)
+            special(RemoveCameraObject)
+            setvar(VAR_PYRODEN_LAST_ROOM_STATE, 6)
+            release
+            end
+        }
+    ]
+}

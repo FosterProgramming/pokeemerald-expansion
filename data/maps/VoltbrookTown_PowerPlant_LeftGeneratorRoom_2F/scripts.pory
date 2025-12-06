@@ -1,0 +1,65 @@
+raw `
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_SetHoleWarp
+	map_script MAP_SCRIPT_ON_LOAD, VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_OnLoad
+	.byte 0
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_OnTransition:
+	copyvar VAR_ICE_STEP_COUNT, 1
+	end
+
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_SetHoleWarp:
+	setstepcallback STEP_CB_CRACKED_FLOOR
+	setholewarp MAP_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM
+	end
+
+`
+
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F_OnLoad
+{
+	if(flag(FLAG_VOLTBROOK_PLANT_GENERATOR_2F_TRIGGERED))
+	{
+		call(VoltbrookTown_PowerPlant_Generator_2F_UnlockDoor)
+	}
+}
+
+
+script VoltbrookTown_PowerPlant_Generator_2F_Switch1
+{
+	lockall
+    if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+        setflag(FLAG_VOLTBROOK_PLANT_GENERATOR_2F_TRIGGERED)
+        call(VoltbrookTown_PowerPlant_Generator_2F_UnlockDoor)
+        playse(SE_UNLOCK)
+        
+    }
+    else{
+        clearflag(FLAG_VOLTBROOK_PLANT_GENERATOR_2F_TRIGGERED)
+        call(VoltbrookTown_PowerPlant_Generator_2F_LockDoor)
+        playse(SE_CLICK)
+        
+    }
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Generator_2F_UnlockDoor
+{
+	setobjectxyperm(1, 14, 17)
+	setmetatile(16, 11, METATILE_PowerPlant_NormalFloorNoShadow, 0)
+	setmetatile(16, 12, METATILE_PowerPlant_NormalFloorLeftShadow, 0)
+	special(DrawWholeMapView)
+}
+
+
+script VoltbrookTown_PowerPlant_Generator_2F_LockDoor
+{
+	setobjectxyperm(1, 14, 17)
+	setmetatile(16, 11, METATILE_PowerPlant_TopBarrierNormalFloorNoShadow, 0)
+	setmetatile(16, 12, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
+	special(DrawWholeMapView)
+}

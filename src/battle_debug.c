@@ -1552,7 +1552,7 @@ static void CreateSecondaryListMenu(struct BattleDebugMenu *data)
     switch (data->currentMainListItemId)
     {
     case LIST_ITEM_ABILITY:
-        itemsCount = 1;
+        itemsCount = 4;
         break;
     case LIST_ITEM_HELD_ITEM:
         itemsCount = 4;
@@ -1683,9 +1683,24 @@ static void PrintSecondaryEntries(struct BattleDebugMenu *data)
         }
         break;
     case LIST_ITEM_ABILITY:
-        PadString(gAbilitiesInfo[gBattleMons[data->battlerId].ability].name, text);
+        for (i = 0; i < 4; i++)
+        {
+            u16 ability;
+            u16 species = gBattleMons[data->battlerId].species;
+            if(i != 0)
+                ability = GetBattlerInnateAtSlot(data->battlerId, i - 1);
+            else
+                ability = gBattleMons[data->battlerId].ability;
+
+            PadString(gAbilitiesInfo[ability].name, text);
+            printer.currentY = printer.y = (i * yMultiplier) + sSecondaryListTemplate.upText_Y;
+            AddTextPrinter(&printer, 0, NULL);
+        }
+
+        /*PadString(gAbilitiesInfo[gBattleMons[data->battlerId].ability].name, text);
         printer.currentY = printer.y = sSecondaryListTemplate.upText_Y;
-        AddTextPrinter(&printer, 0, NULL);
+        AddTextPrinter(&printer, 0, NULL);*/
+
         break;
     case LIST_ITEM_HELD_ITEM:
         for (i = 0; i < 4; i++)

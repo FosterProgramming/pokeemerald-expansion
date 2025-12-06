@@ -277,12 +277,13 @@ u32 CanUseStrength(u8 collision)
     bool32 playerHasBadge = FlagGet(FLAG_BADGE04_GET);
     bool32 playerUsedStrength = FlagGet(FLAG_SYS_USE_STRENGTH);
     bool32 collisionEvent = (collision == COLLISION_OBJECT_EVENT);
-
+    
     if (
-        (CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) || CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT))
+(CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) || CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT))
         && !playerUsedStrength
         && collisionEvent
         && ((monHasMove && playerHasBadge) || bagHasItem)
+        && gSaveBlock1Ptr->location.mapNum != MAP_NUM(MOUNT_PYRODEN_4F_CLOCK_ROOM)
        )
     {
         return bagHasItem ? FIELD_MOVE_TOOL : FIELD_MOVE_POKEMON;

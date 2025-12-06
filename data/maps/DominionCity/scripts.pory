@@ -308,7 +308,7 @@ script DominionCity_EventScripts_GruntsSouthStillLooking
         {
             lockall
             special(SpawnCameraObject)
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 7))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             playse(SE_PIN)
             applymovement(6, moves(emote_exclamation_mark))
@@ -326,7 +326,7 @@ script DominionCity_EventScripts_GruntsSouthStillLooking
             waitmovement(6)
             speakername("Grunt 1")
             msgbox(format("This was not what they advertised in the job description…"))
-            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 7))
             waitmovement(OBJ_EVENT_ID_CAMERA)
             special(RemoveCameraObject)
             getplayerxy(PlayerXCoordinates, PlayerYCoordinates)

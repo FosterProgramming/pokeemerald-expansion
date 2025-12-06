@@ -1,0 +1,45 @@
+mapscripts MountPyroden_1F_SideRoom_MapScripts {
+    MAP_SCRIPT_ON_LOAD
+    {
+        if(flag(FLAG_PYRODEN_MT_1F_SIDE_FIRE_PIT))
+        {
+            call(MountPyroden_1F_SideRoom_SpawnStairs)
+        }
+        end
+    }
+}
+
+
+script MountPyroden_1F_SideRoom_EventScript_FirePit
+{
+	lock  
+	if(flag(FLAG_WILLOWISP_ACTIVE))
+	{
+		lock
+        playse(SE_UNLOCK)
+        call(MountPyroden_1F_SideRoom_SpawnStairs)
+        waitse
+        clearflag(FLAG_WILLOWISP_ACTIVE)
+		release
+		end  
+	}  
+	else
+	{   
+		checkitem(ITEM_STRENGTH_TOOL)   
+		if(var(VAR_RESULT) == TRUE)   
+		{   
+			goto(EventScript_StrengthBoulder)  
+		}  
+	}  
+	release  
+	end
+}
+
+script MountPyroden_1F_SideRoom_SpawnStairs
+{
+    setmetatile(6, 9, METATILE_MountPyroden_Stairs_Left, FALSE)
+    setmetatile(7, 9, METATILE_MountPyroden_Stairs_Middle, FALSE)
+    setmetatile(8, 9, METATILE_MountPyroden_Stairs_Right, FALSE)
+    special(DrawWholeMapView)
+    return
+}

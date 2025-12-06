@@ -1,0 +1,581 @@
+mapscripts VoltbrookTown_PowerPlant_Underground_Tunnel_MapScripts {}
+
+raw `
+.set LOCALID_VEE, 2
+.set LOCALID_ELECTIVIRE, 1
+.set LOCALID_BALL, 3
+.set LOCALID_MAGA_F, 4
+.set LOCALID_MAGA_M, 5
+`
+
+script VoltbrookTown_PowerPlant_Underground_Tunnel_Event
+{
+    lockall
+    clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+    addobject(LOCALID_VEE)
+    applymovement(LOCALID_VEE, moves(
+        walk_right
+        face_left
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_in_place_right
+    ))
+    waitmovement(LOCALID_VEE)
+    speakername("Vee")
+    msgbox(format(
+        "I think we're getting close to the Artifact.\p
+        I can feel it!\n
+        Just a bit more and…"
+    ))
+    closemessage
+    setvar(VAR_0x8004, 1)
+	setvar(VAR_0x8005, 1)  
+	setvar(VAR_0x8006, 8)  
+	setvar(VAR_0x8007, 5)
+	special(ShakeCamera)
+    waitstate
+    delay(16)
+    playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        emote_exclamation_mark
+        delay_16
+        walk_in_place_up
+    ))
+    applymovement(LOCALID_VEE, moves(
+        emote_exclamation_mark
+        delay_16
+        face_up
+    ))
+    waitmovement(0)
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(
+        walk_up*4
+    ))
+    waitmovement(0)
+    speakername("Electivire")
+    msgbox(format(
+        "MORE POWER!\n
+        MORE POWER!\p
+        GRAAAAAAH!"
+    ))
+    closemessage
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    applymovement(LOCALID_ELECTIVIRE, moves(
+        walk_left
+        delay_16*2
+        walk_left
+        delay_16*2
+    ))
+    waitmovement(0)
+    speakername("Electivire")
+    msgbox(format(
+        "MUST… GET… STRONGER!\n
+        MUST… ABSORB… MORE!\p
+        GRAAAAAAAAAAAAAAH!"
+    ))
+    closemessage
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down*4))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    applymovement(LOCALID_VEE, moves(
+        face_left
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_in_place_right
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "N-no…!\n
+        It's the Guardian!\p
+        There's no way we can beat him, Seel!\n
+        Let's run away!"
+    ))
+    closemessage
+    clearflag(FLAG_HIDE_VOLTBROOK_MAGA)
+    addobject(LOCALID_MAGA_F)
+    addobject(LOCALID_MAGA_M)
+    applymovement(LOCALID_VEE, moves(
+        walk_fast_down
+        walk_faster_left
+    ))
+    waitmovement(0)
+    applymovement(LOCALID_VEE, moves(
+        walk_fast_down*4
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_fast_down*4
+    ))
+    waitmovement(0)
+    playse(SE_PIN)
+    applymovement(LOCALID_VEE, moves(
+        emote_exclamation_mark
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        emote_exclamation_mark
+    ))
+    waitse
+    speakername("Vee")
+    msgbox(format(
+        "Team MAGA?\n
+        No…"
+    ))
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down*2))
+    waitmovement(0)
+    speakername("Grunt 1")
+    msgbox(format(
+        "Well, well, well.\n
+        Look who we have here.\p
+        We've been searching all over for you."
+    ))
+    speakername("Grunt 2")
+    msgbox(format(
+        "This area is off limits, don't you know?\p
+        But…\n
+        You've seen it now.\p
+        The crown jewel of Team MAGA's efforts.\p
+        A Guardian.\p
+        Strong like a Pokémon…\n
+        Intelligent like a human…"
+    ))
+    speakername("Grunt 1")
+    msgbox(format(
+        "Maybe this one isn't the best example of intelligence."
+    ))
+    speakername("Grunt 2")
+    msgbox(format(
+        "Perhaps not.\p
+        But even the dumbest human, fused with a Pokémon, can become a one-man army.\p
+        In fact…\n
+        Why don't you give it a try?"
+    ))
+    applymovement(LOCALID_MAGA_F, moves(
+        walk_up
+    ))
+    applymovement(LOCALID_MAGA_M, moves(
+        walk_up
+    ))
+    applymovement(LOCALID_VEE, moves(
+        lock_facing_direction
+        walk_up
+        unlock_facing_direction
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        lock_facing_direction
+        walk_up
+        unlock_facing_direction
+    ))
+    waitmovement(0)
+    speakername("Grunt 2")
+    msgbox(format(
+        "Come on…\n
+        It'll be fun.\p
+        They've been talking about getting rid of you, anywyay.\p
+        But I think this idea is more entertaining.\p
+        Let's see how you do against Electivire."
+    ))
+    speakername("Grunt 1")
+    msgbox(format(
+        "Oh, you have the BEST ideas.\n
+        Now I really wanna see this.\l
+        Gyahaha!"
+    ))
+    closemessage
+    applymovement(LOCALID_MAGA_F, moves(
+        walk_up
+    ))
+    applymovement(LOCALID_MAGA_M, moves(
+        walk_up
+    ))
+    applymovement(LOCALID_VEE, moves(
+        lock_facing_direction
+        walk_up
+        unlock_facing_direction
+        delay_16
+        face_up
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        lock_facing_direction
+        walk_up
+        unlock_facing_direction
+    ))
+    waitmovement(LOCALID_VEE)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(
+        walk_up*2
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "We're trapped…!\p
+        We…\n
+        We have no choice but do what they say.\p
+        But… We can't possibly…\n
+        We can't possibly defeat a Guardian!\p
+        But if we don't…\p
+        Seel, I…\n
+        I'm so sorry…\p
+        I really wanted to help you go back to being a human…\p
+        And I wanted to see the world, and…\p
+        Maybe I could even have made friends that aren't weird beeping ducks…\p
+        But now, I…\n
+        I can't do it…"
+    ))
+    closemessage
+    applymovement(LOCALID_MAGA_F, moves(
+        walk_up
+    ))
+    applymovement(LOCALID_MAGA_M, moves(
+        walk_up
+    ))
+    speakername("Grunt 2")
+    msgbox(format(
+        "This is getting old.\p
+        Quit dawdling, or you're going back in a ball."
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "We have no choice, don't we…?\p
+        Gulp…\n
+        O-ok, then…\p
+        Seel, I…\n
+        If the guardian beats us…\p
+        I'm really happy that I got to know you."
+    ))
+    closemessage
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up*2))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_up*6
+        walk_right
+        walk_in_place_up
+    ))
+    applymovement(LOCALID_VEE, moves(
+        walk_up*7
+    ))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    closemessage
+    speakername("Electivire")
+    msgbox(format(
+        "MORE POWER!\n
+        MORE POWER!"
+    ))
+    closemessage
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    playse(SE_PIN)
+    applymovement(LOCALID_ELECTIVIRE, moves(
+        emote_exclamation_mark
+        delay_16
+        walk_left
+        delay_16
+        face_down
+        delay_16
+    ))
+    waitmovement(0)
+    speakername("Electivire")
+    msgbox(format(
+        "WHO ARE YOU!?"
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "I-I-I'm…\n
+        M-m-my name is V-V-V-Vee…"
+    ))
+    speakername("Electivire")
+    msgbox(format(
+        "VVVVEE?\n
+        WHAT A STRANGE NAME!\p
+        WAIT.\n
+        I KNOW WHO YOU ARE.\p
+        TEAM MAGA IS LOOKING FOR YOU!\p
+        BUT IT DOESN'T MATTER TO ME.\n
+        I NEED MORE POWER!\l
+        I NEED TO GET STRONGER!\p
+        MORE AND MORE POWER.\n
+        STRONGER AND STRONGER!\p
+        ONLY THE STRONG RULE THE WORLD.\n
+        THIS IS WHY I TOOK THIS FORM.\p
+        AND YOU…\n
+        YOU'RE WEAK.\p
+        AND THE WEAK GET RULED.\p
+        SO…\n
+        PREPARE TO GET RULED!"
+    ))
+    speakername("Narrator")
+    msgbox(format(
+        "Pretend that a fierce but ultimately victorious fight against Electivire just happened."
+    ))
+    speakername("Vee")
+    msgbox(format(
+        "We…\n
+        We did it…?"
+    ))
+    speakername("Electivire")
+    msgbox(format(
+        "WHAT?\n
+        IMPOSSIBLE!\p
+        MUST… GET… MORE… POWER!"
+    ))
+    closemessage
+    applymovement(LOCALID_ELECTIVIRE, moves(
+        walk_right
+        delay_16
+    ))
+    waitmovement(0)
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    speakername("Vee")
+    msgbox(format(
+        "No!\n
+        He's charging up again!\p
+        …Wait.\n
+        I think I have an idea!\p
+        Hey, you dumb knucklehead!\p
+        I bet you're not strong enough to absorb all the electricity in this plant!"
+    ))
+    closemessage
+    playse(SE_PIN)
+    applymovement(LOCALID_ELECTIVIRE, moves(
+        emote_exclamation_mark
+    ))
+    waitse
+    speakername("Electivire")
+    msgbox(format(
+        "WHAT DID YOU JUST SAY?\n
+        RIDICULOUS!\p
+        I AM… STRONG!\n
+        MORE POWER!"
+    ))
+    closemessage
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    speakername("Electivire")
+    msgbox(format(
+        "GRAHHH…\n
+        MORE!\p
+        MORE… POWER!"
+    ))
+    closemessage
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    speakername("Electivire")
+    msgbox(format(
+        "MORE… POWER…\N
+        MORE…"
+    ))
+    closemessage
+    playse(SE_M_THUNDERBOLT)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    playse(SE_M_THUNDERBOLT)
+    waitse
+    playse(SE_M_THUNDERBOLT)
+    waitse
+    playse(SE_M_THUNDERBOLT)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    applymovement(LOCALID_ELECTIVIRE, moves(
+        walk_left
+        delay_16
+        face_down
+        delay_16
+    ))
+    waitmovement(0)
+    speakername("Electivire")
+    msgbox(format(
+        "UGH…\n
+        FEEL… FUNNY…\p
+        TOO MUCH… POWER…"
+    ))
+    closemessage
+    applymovement(LOCALID_MAGA_F, moves(
+        walk_up
+    ))
+    waitmovement(0)
+    applymovement(LOCALID_MAGA_F, moves(
+        walk_up*3
+        walk_right
+        walk_up*3
+    ))
+    applymovement(LOCALID_MAGA_M, moves(
+        walk_up*4
+        walk_left
+        walk_up*2
+    ))
+    waitmovement(0)
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+    waitmovement(0)
+    speakername("Grunt 2")
+    msgbox(format(
+        "Alright, what's the holdup?"
+    ))
+    speakername("Electivire")
+    msgbox(format(
+        "CANNOT…\n
+        CONTROL IT…\p
+        I'M GOING TO…\n
+        GRAAAAAAAH!"
+    ))
+    closemessage
+    applymovement(LOCALID_VEE, moves(
+        walk_fast_left
+        face_right
+    ))
+    applymovement(LOCALID_ELECTIVIRE, moves(
+        walk_fast_down*2
+    ))
+    waitmovement(LOCALID_ELECTIVIRE)
+    fadescreen(FADE_TO_WHITE)
+    playse(SE_M_EXPLOSION)
+    waitse
+    speakername("Grunt 2")
+    msgbox(format(
+        "Gyaaaaaaa!"
+    ))
+    closemessage
+    playse(SE_M_BRICK_BREAK)
+    waitse
+    speakername("Grunt 1")
+    msgbox(format(
+        "Stop! Stop!\n
+        We're on your side!"
+    ))
+    closemessage
+    playse(SE_M_HYPER_BEAM)
+    waitse
+    speakername("Grunt 2")
+    msgbox(format(
+        "He's gone insane!\n
+        He's gonna kill us!\p
+        Radio for help!"
+    ))
+    closemessage
+    playse(SE_M_EXPLOSION)
+    waitse
+    speakername("Grunt 1")
+    msgbox(format(
+        "Mayday, mayday, alert for all units!\p
+        The Guardian's gone rogue!\n
+        Send backup to…"
+    ))
+    speakername("Grunt 2")
+    msgbox(format(
+        "No, wait!\n
+        He's running away!\p
+        Forget the escapees, we need to get him back!\p
+        Everyone, after him!"
+    ))
+    closemessage
+    delay(16)
+    playse(SE_EXIT)
+    waitse
+    removeobject(LOCALID_MAGA_F)
+    removeobject(LOCALID_MAGA_M)
+    removeobject(LOCALID_ELECTIVIRE)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    fadescreen(FADE_FROM_WHITE)
+    applymovement(LOCALID_VEE, moves(
+        walk_right
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_in_place_left
+    ))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "We…\n
+        Did it?\p
+        We did it!\n
+        We beat the Guardian!\l
+        Kind of.\p
+        I can't believe I came up with that plan!\p
+        When I turn into Jolteon, I noticed that too much electricity can make me feel weird.\p
+        So I thought, maybe it's the same for all electric Pokémon!\N
+        And it was!\p
+        Hehe.\p
+        Maybe…\n
+        Maybe we can really do this!"
+    ))
+    closemessage
+    playse(SE_PIN)
+    applymovement(LOCALID_VEE, moves(
+        emote_exclamation_mark
+        delay_16
+        face_up
+    ))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "Seel, is that…"
+    ))
+    closemessage
+    applymovement(LOCALID_VEE, moves(
+        walk_up*3
+    ))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_up*3
+    ))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "This is it…\n
+        This is it!\p
+        The Artifact!\n
+        I think, at least.\p
+        I dunno what it's supposed to look like.\N
+        I've never seen an Artifact.\p
+        But… The Guardian was protecting it!\n
+        It must be it, Seel!\p
+        That means that you can go back to being a human again!\p
+        We just need to find the other seven!\p
+        Oh, and we need to tell Fro, too!\N
+        I'm sure he'll believe us, now!"
+    ))
+    speakername(NULL)
+    msgbox(format(
+        "You gaze upon the Artifact.\n
+        You're filled with a strange power.\p
+        You have no doubts.\n
+        If you collect all the Artifacts…\p
+        You will have the power to transform back into a human.")
+    )
+    removeobject(LOCALID_BALL)
+    setflag(FLAG_HIDE_VOLTBROOK_ARTIFACT)
+    playfanfare(MUS_OBTAIN_BADGE)
+    msgbox(format("You obtained the {COLOR RED}first Artifact{COLOR DARK_GRAY}!"))
+    waitfanfare
+    applymovement(LOCALID_VEE, moves(face_right))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_left))
+    waitmovement(0)
+    speakername("Vee")
+    msgbox(format(
+        "Ok!\n
+        Let's get out of here, and then let's figure out what to do next!\p
+        I still can't believe we beat a Guardian.\p
+        Maybe… Maybe I can really do it!"
+    ))
+    applymovement(LOCALID_VEE, moves(walk_right))
+    waitmovement(0)
+    removeobject(LOCALID_VEE)
+    setvar(VAR_VOLTBROOK_PLANT_STATE, 2)
+    releaseall
+    end
+}

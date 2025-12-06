@@ -651,6 +651,8 @@ static bool8 TryStartMiscWalkingScripts(u16 metatileBehavior)
 
 static bool8 TryStartStepCountScript(u16 metatileBehavior)
 {
+    struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+
     if (InUnionRoom() == TRUE)
     {
         return FALSE;
@@ -670,6 +672,9 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             return TRUE;
         }
     #endif
+        if(HandleBoulderActivateSwitch(objectEvent)){
+            return TRUE;
+        }
         if (ShouldEggHatch())
         {
             IncrementGameStat(GAME_STAT_HATCHED_EGGS);

@@ -454,4 +454,8 @@
 // '(C)ompressed (E)vent'
 #define COMP_OW_TILE_TAG_BASE 0xCE00
 
+//Boulder Stuff
+#define BOULDER_SWITCH_NOT_PRESSED 200
+#define BOULDER_SWITCH_NO_EVENT    200
+
 #endif  // GUARD_CONSTANTS_EVENT_OBJECTS_H

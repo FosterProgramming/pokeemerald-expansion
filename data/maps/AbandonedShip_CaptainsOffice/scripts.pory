@@ -41,3 +41,88 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus:
 	.string "It seems to be from an earlier era.$"
 
 `
+
+script VictoryRoad_1F_EventScript_FloorSwitch1{
+	lockall
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1) != BOULDER_SWITCH_NO_EVENT){
+		//Object Event got in the switch
+		setmetatile(18, 10, METATILE_General_TallGrass, 0)
+		special(DrawWholeMapView)
+	}
+	else{
+		//Object Event Stepped out of the switch
+		setmetatile(18, 10, METATILE_General_Grass, 0)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script VictoryRoad_1F_EventScript_FloorSwitch2{
+	lockall
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2) != BOULDER_SWITCH_NO_EVENT){
+		//Object Event got in the switch
+		setmetatile(20, 10, METATILE_General_TallGrass, 0)
+		special(DrawWholeMapView)
+	}
+	else{
+		//Object Event Stepped out of the switch
+		setmetatile(20, 10, METATILE_General_Grass, 0)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script VictoryRoad_1F_EventScript_FloorSwitch3{
+	lockall
+	if(var(VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3) != BOULDER_SWITCH_NO_EVENT){
+		//Object Event got in the switch
+		setmetatile(22, 10, METATILE_General_TallGrass, 0)
+		special(DrawWholeMapView)
+	}
+	else{
+		//Object Event Stepped out of the switch
+		setmetatile(22, 10, METATILE_General_Grass, 0)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Common_EventScript_StartBossDebugBattle{
+	lock
+	faceplayer
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_IRON_FIST)
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOTOR_DRIVE)
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_STATIC)
+	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 200)
+	playmoncry(SPECIES_ELECTIVIRE, 2)
+	setwildbattle(SPECIES_ELECTIVIRE, 2, ITEM_ELECTRIC_GEM)
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+    switch(var(VAR_RESULT)){
+        case B_OUTCOME_CAUGHT:
+            //setflag(FLAG_DAILY_WILD_LAPRAS)
+            setweather(WEATHER_NONE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            removeobject(VAR_LAST_TALKED)
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+        break
+        case B_OUTCOME_RAN:
+        case B_OUTCOME_WON:
+        case B_OUTCOME_PLAYER_TELEPORTED:
+            setvar(VAR_0x8004, SPECIES_LAPRAS)
+            setweather(WEATHER_NONE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            removeobject(VAR_LAST_TALKED)
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+            bufferspeciesname(0, VAR_0x8004)
+            msgbox(format("Lapras dove away"), MSGBOX_DEFAULT)
+        break
+    }
+	release
+	end
+}

@@ -1,6 +1,6 @@
 raw `
 .set LOCALID_VEE, 4
-.set LOCALID_ACE, 5
+.set LOCALID_FRO, 5
 .set PlayerXCoordinates, VAR_TEMP_3
 .set PlayerYCoordinates, VAR_TEMP_4
 `
@@ -9,10 +9,6 @@ mapscripts VoltbrookTown_MapScripts
 	MAP_SCRIPT_ON_LOAD
 	{
 		setrespawn(HEAL_LOCATION_VOLTBROOK_TOWN)
-        if(flag(FLAG_HINTED_AT_POWERPLANT))
-			{
-				setmetatile(17, 3, 0x3D2, FALSE)
-			}
 		// if(flag(FLAG_DEFEATED_MAGA_ELECTAVIRE))
 		// {
 		// 	setmetatile(7, 17, DOOR, TRUE)
@@ -48,18 +44,18 @@ script Voltbrook_EventScripts_GruntPatrolChat
 			waitmovement(OBJ_EVENT_ID_CAMERA)
 		}
     speakername("Grunt 1")
-    msgbox(format("I can't believe those lab experiments actually escaped; they were nothing but failures."))
+    msgbox(format("I can't believe those failures got away."))
 	waitmovement(2)
     speakername("Grunt 2")
-    msgbox(format("Yeah, they never stand a chance out in the real world."))
+    msgbox(format("They might be failures, but they still escaped."))
     speakername("Grunt 3")
-    msgbox(format("We need to split up and ask around town; they couldn't have made it far."))
+    msgbox(format("They couldn't have possibly made it far from the lab, right?"))
     speakername("Grunt 1")
-    msgbox(format("Exactly, check every alley and market; HQ expects us to find them."))
+    msgbox(format("That sorry bunch?\nHa! No shot."))
     speakername("Grunt 2")
-    msgbox(format("Let's cover the east and west sides and report back immediately."))
+    msgbox(format("Talk less and search more.\NHQ is expecting us to return soon."))
     speakername("Grunt 3")
-    msgbox(format("Alright, I'll take the north sector; you two handle the rest."))
+    msgbox(format("Let's split up and cover the whole town."))
 	closemessage
 	applymovement(1,moves(walk_left*2 walk_down*8))
 	applymovement(2,moves(walk_down*2 walk_right*2 walk_down*6))
@@ -95,7 +91,15 @@ script Voltbrook_EventScripts_GruntPatrolChat
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
     speakername("Vee")
-    msgbox(format("They’re everywhere… I can’t take two steps without spotting a MAGA grunt.\pThis place isn’t safe. Not even close.\pI thought maybe we could just… sneak around, figure things out, but…\pWe have to be careful. Really careful.\pLet’s stick close and keep our heads down, okay? We’ll find that artifact. I know we will."))
+    msgbox(format("Oh no, Seel, they’re everywhere!\p
+	Is there really no place to hide?\p
+	Maybe we should just…\n
+	Give up.\p
+	Maybe if we hand ourselves in, they'll be less mean to us…\p
+	… … …\n
+	No, I don't wanna go back in there!\p
+	Let’s stick close and keep our heads down, okay?\p
+	We’ll find that artifact. I know we will."))
     applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 	waitmovement(LOCALID_VEE)
 	removeobject(LOCALID_VEE)
@@ -116,14 +120,17 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						setobjectxyperm(1, 22, 21)
 						addobject(1)
 						speakername("???")
-						msgbox(format("Hey!\pWhere do you think you're off too?"))
+						msgbox(format("Where do you think you're going?"))
 						closemessage
 						applymovement(1, moves(walk_faster_down*5 walk_faster_right walk_faster_down*2 walk_faster_left face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
 						waitse
 						speakername("Grunt 1")
-						msgbox(format("You're the failed experiments who escaped our lab!\pYou sure have caused a lot of trouble. Better make this easy, I wouldn't want to hurt you any more that necessary…"))
+						msgbox(format("Hey, you're the lab escapees!\p
+						Easy, now.\n
+						Just come with us, and we won't hurt you, alright?\p
+						Not any more than necessary, at least."))
 						setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
 						addobject(LOCALID_VEE)
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerEast)
@@ -131,25 +138,40 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
 						playse(SE_PIN)
-						msgbox(format("N-no… he found us! He's blocking our path-we can’t run!\pI-I don’t wanna go back to the lab! I can’t! We have to fight.\pEven if we’re scared-we have to! Let’s show them we’re not just test subjects anymore!"))
+						msgbox(format(
+							"N-no… They found us!\n
+							T-there's no way to run!\p
+							S-seel, I…\n
+							I don't wanna go back in there, but…\p
+							I don't want to fight either!\n
+							I really don't!\p
+							But…\n
+							We need to.\p
+							If it's with you… I can do it!\p
+							Let's show them, Seel!\n
+							We're not just failed experiments!"))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
 						speakername("Grunt 1")
-						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format(
+							"Hard way it is, then. Fine by me!\pI get to stop pretending to be nice."),format("How… How could a couple of failed experiments beat me?"),"NULL",AfterBattle_Test)
 					case 23:
 						setobjectxyperm(1, 23, 21)
 						addobject(1)
 						speakername("???")
-						msgbox(format("Hey!\pWhere do you think you're off too?"))
+						msgbox(format("Where do you think you're going?"))
 						closemessage
 						applymovement(1, moves(walk_faster_down*5 walk_faster_right walk_faster_down*2 walk_faster_left face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
 						waitse
 						speakername("Grunt 1")
-						msgbox(format("You're the failed experiments who escaped our lab!\pYou sure have caused a lot of trouble. Better make this easy, I wouldn't want to hurt you any more that necessary…"))
+						msgbox(format("Hey, you're the lab escapees!\p
+						Easy, now.\n
+						Just come with us, and we won't hurt you, alright?\p
+						Not any more than necessary, at least."))
 						setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
 						addobject(LOCALID_VEE)
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerEast)
@@ -157,24 +179,40 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
 						playse(SE_PIN)
-						msgbox(format("N-no… he found us! He's blocking our path-we can’t run!\pI-I don’t wanna go back to the lab! I can’t! We have to fight.\pEven if we’re scared-we have to! Let’s show them we’re not just test subjects anymore!"))
+						msgbox(format(
+							"N-no… They found us!\n
+							T-there's no way to run!\p
+							S-seel, I…\n
+							I don't wanna go back in there, but…\p
+							I don't want to fight either!\n
+							I really don't!\p
+							But…\n
+							We need to.\p
+							If it's with you… I can do it!\p
+							Let's show them, Seel!\n
+							We're not just failed experiments!"))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
-						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
+						speakername("Grunt 1")
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format(
+							"Hard way it is, then. Fine by me!\pI get to stop pretending to be nice."),format("How… How could a couple of failed experiments beat me?"),"NULL",AfterBattle_Test)
 					case 24:
 						setobjectxyperm(1, 24, 21)
 						addobject(1)
 						speakername("???")
-						msgbox(format("Hey!\pWhere do you think you're off too?"))
+						msgbox(format("Where do you think you're going?"))
 						closemessage
 						applymovement(1, moves(walk_faster_down*5 walk_faster_right walk_faster_down*2 walk_faster_left face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
 						waitse
 						speakername("Grunt 1")
-						msgbox(format("You're the failed experiments who escaped our lab!\pYou sure have caused a lot of trouble. Better make this easy, I wouldn't want to hurt you any more that necessary…"))
+						msgbox(format("Hey, you're the lab escapees!\p
+						Easy, now.\n
+						Just come with us, and we won't hurt you, alright?\p
+						Not any more than necessary, at least."))
 						setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
 						addobject(LOCALID_VEE)
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
@@ -182,24 +220,40 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
 						playse(SE_PIN)
-						msgbox(format("N-no… he found us! He's blocking our path-we can’t run!\pI-I don’t wanna go back to the lab! I can’t! We have to fight.\pEven if we’re scared-we have to! Let’s show them we’re not just test subjects anymore!"))
+						msgbox(format(
+							"N-no… They found us!\n
+							T-there's no way to run!\p
+							S-seel, I…\n
+							I don't wanna go back in there, but…\p
+							I don't want to fight either!\n
+							I really don't!\p
+							But…\n
+							We need to.\p
+							If it's with you… I can do it!\p
+							Let's show them, Seel!\n
+							We're not just failed experiments!"))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
 						delay(40)
-						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
+						speakername("Grunt 1")
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format(
+							"Hard way it is, then. Fine by me!\pI get to stop pretending to be nice."),format("How… How could a couple of failed experiments beat me?"),"NULL",AfterBattle_Test)
 					case 25:
 						setobjectxyperm(1, 24, 21)
 						addobject(1)
 						speakername("???")
-						msgbox(format("Hey!\pWhere do you think you're off too?"))
+						msgbox(format("Where do you think you're going?"))
 						closemessage
 						applymovement(1, moves(walk_faster_down*7 walk_faster_right face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
 						waitse
 						speakername("Grunt 1")
-						msgbox(format("You're the failed experiments who escaped our lab!\pYou sure have caused a lot of trouble. Better make this easy, I wouldn't want to hurt you any more that necessary…"))
+						msgbox(format("Hey, you're the lab escapees!\p
+						Easy, now.\n
+						Just come with us, and we won't hurt you, alright?\p
+						Not any more than necessary, at least."))
 						setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
 						addobject(LOCALID_VEE)
 						applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerWest)
@@ -207,14 +261,29 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						waitmovement(LOCALID_VEE)
 						speakername("Vee")
 						playse(SE_PIN)
-						msgbox(format("N-no… he found us! He's blocking our path-we can’t run!\pI-I don’t wanna go back to the lab! I can’t! We have to fight.\pEven if we’re scared-we have to! Let’s show them we’re not just test subjects anymore!"))
+						msgbox(format(
+							"N-no… They found us!\n
+							T-there's no way to run!\p
+							S-seel, I…\n
+							I don't wanna go back in there, but…\p
+							I don't want to fight either!\n
+							I really don't!\p
+							But…\n
+							We need to.\p
+							If it's with you… I can do it!\p
+							Let's show them, Seel!\n
+							We're not just failed experiments!"))
 						applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 						applymovement(LOCALID_VEE,moves(walk_in_place_down))
 						waitmovement(OBJ_EVENT_ID_PLAYER)
+						speakername(NULL)
 						delay(40)
-						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format("So you wanna do this the hard when then, huh? That's fine, this way is more fun for me!"),format("How could a couple of failed experiments best me?"),"NULL",AfterBattle_Test)
+						speakername("Grunt 1")
+						trainerbattle_double(TRAINER_MAGA_GRUNT_VOLTBROOK_TOWN, format(
+							"Hard way it is, then. Fine by me!\pI get to stop pretending to be nice."),format("How… How could a couple of failed experiments beat me?"),"NULL",AfterBattle_Test)
 				}
 }
+
 
 script AfterBattle_Test
 
@@ -240,14 +309,16 @@ script AfterBattle_Test
 							playse(SE_PIN)
 							waitmovement(LOCALID_VEE)
 							speakername("Grunt 2")
-							msgbox(format("Guess we showed up just in time, huh?\pRelax. We’ll clean this mess up for you."))
+							msgbox(format("Get a load of this guy.\p
+							What's up with you?\n
+							Having trouble with these freaks?"))
 							speakername("Grunt 3")
-							msgbox(format("Orders are clear: capture them alive. No more mistakes."))
+							msgbox(format("Orders are clear: capture them alive.\pNo more mistakes."))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 							applymovement(LOCALID_VEE,moves(walk_in_place_down))
 							waitmovement(LOCALID_VEE)
 							speakername("Grunt 1")
-							msgbox(format("They’re not getting away again. Not this time!"))
+							msgbox(format("You're not getting away this time!"))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 							applymovement(LOCALID_VEE,moves(walk_in_place_left))
 							waitmovement(LOCALID_VEE)
@@ -255,14 +326,14 @@ script AfterBattle_Test
 							msgbox(format("There’s three of them now…!"))
 							msgbox(format("I-I don’t think we can win this…!"))
 							delay(40)
-							setobjectxyperm(LOCALID_ACE, 29, 22)
-							addobject(LOCALID_ACE)
-							applymovement(LOCALID_ACE,moves(walk_faster_down*5 walk_faster_left*5))
-							waitmovement(LOCALID_ACE)
+							setobjectxyperm(LOCALID_FRO, 29, 22)
+							addobject(LOCALID_FRO)
+							applymovement(LOCALID_FRO,moves(walk_faster_down*5 walk_faster_left*5))
+							waitmovement(LOCALID_FRO)
 							applymovement(LOCALID_VEE,moves(walk_in_place_right))
 							waitmovement(OBJ_EVENT_ID_PLAYER)
 							speakername("???")
-							msgbox(format("Cornered already? This is why I work alone. Stick close to me if you want to live."))
+							msgbox(format("Out of the pan, into the fire.\pStick close to me if you want to live."))
 							speakername("Vee")
 							msgbox(format("W-Wait what do you me-"))
 							playse(SE_M_SURF)
@@ -273,29 +344,220 @@ script AfterBattle_Test
 							msgbox(format("Okay okay, we're coming!"))
 							closemessage
 							delay(40)
-							applymovement(LOCALID_ACE, moves(walk_faster_down*7 walk_faster_left*2 face_down))
+							applymovement(LOCALID_FRO, moves(walk_faster_down*7 walk_faster_left*2 face_down))
 							applymovement(LOCALID_VEE, moves(walk_faster_down*8 face_up))
 							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_faster_down*8 walk_in_place_up))
 							delay(80)			
 							fadescreen(FADE_FROM_WHITE)
 							speakername("Vee")
-							msgbox(format("That was way too close. I thought we were done for.\pThanks for saving us back there! What's your name?"))
+							msgbox(format("Geez, that was close!\n 
+							I thought we were done for.\p
+							Thank you so much for saving us!\n
+							What's your name?"))
 							speakername("???")
-							msgbox(format("Don’t bother."))
+							msgbox(format("I'm Fro."))
 							speakername("Vee")
-							msgbox(format("O-Okay… still, that was really brave of you."))
-							speakername("???")
-							msgbox(format("Brave? No.\pI just hate seeing Team MAGA capturing those too weak to defend themselves.\pThis town isn’t safe for you. Team MAGA rounds up any wild Pokémon they see.\pYou’re lucky I was nearby. Now stay out of sight."))
+							msgbox(format(
+								"Nice to meet you, Fro!\p
+								I'm Vee!\n
+								And this is Seel!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Seel?\n
+								That's funny.\p
+								Wait, aren't you…"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format(
+								"Hold on for a moment.\n
+								I need to think."
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(
+								walk_up
+							))
+							waitmovement(0)
+							delay(120)
 							speakername("Vee")
-							msgbox(format("O-Okay… but where are we?"))
-							speakername("???")
-							msgbox(format("I just brought you to Route 10. It's just south of Voltbrook. Team MAGA doesn't really come down here, but since you two are SO special maybe they'll make an exception. Now stay out of my way and keep your head low, I won't save you again."))
-							applymovement(LOCALID_ACE,moves(walk_faster_up*10))
-							waitmovement(LOCALID_ACE)
-							removeobject(LOCALID_ACE)
+							msgbox(format(
+								"Can we…"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Shh!\n
+								I'm thinking."
+							))
+							closemessage
+							delay(120)
+							applymovement(LOCALID_FRO, moves(
+								walk_down
+							))
+							waitmovement(0)
+							speakername("Fro")
+							msgbox(format(
+								"Ok.\p
+								It's YOU, isn't it, Seel?\p
+								And that Dewgong I fought back then…\n
+								That was you as well."
+							))
 							speakername("Vee")
-							msgbox(format("He’s… not very friendly."))
-							msgbox(format("But I think he just saved our lives. Let's stay away from Voltbrook for now, Maybe we should see where this route leads. There has to be someplace safe for us around here."))
+							msgbox(format(
+								"You two KNOW each other?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, yes, we do.\p
+								I was looking for him, in fact.\n
+								He went missing for a while.\p
+								And now…\n
+								I guess I found him."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Yippee!\n
+								Mission complete!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"…And you said you were…?"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Vee the Eevee!\n
+								From the lab!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Hmm…\n
+								So, you aren't a human."
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Vee")
+							msgbox(format(
+								"Wait.\n
+								Ohmygosh.\p
+								Are you a human too?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Me?\n
+								Sure am.\l
+								Or rather, was.\p
+								You're speaking to the former Champion of the region, in fact."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Ohmygosh.\n
+								No way! That's so cool!\p
+								…What's a Champion?\n
+								Is it like a Guardian?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"I have no idea what you're talking about."
+							))
+							msgbox(format(
+								"Anyway, Seel.\n
+								They got us both, in the end.\p
+								I was investigating the rumors of trainers being kidnapped, but this…\p
+								This project Team MAGA is pursuing is beyond anything I imagined.\p
+								I could not protect you, Seel.\n
+								I could not even protect myself.\p
+								And now…\n
+								We are all going to be stuck like this.\p
+								At least, you managed to escape."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Don't be sad!\n
+								We know of a way to turn you back!"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_question_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format("Do you, now?"))
+							speakername("Vee")
+							msgbox(format(
+								"Yeah!\n
+								We gotta find the eight Artifacts!\p
+								There should be one in Voltbrook Town, actually!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Right.\n
+								The eight magical artifacts.\p
+								Then we're gonna hold hands and sing and turn back to humans.\p
+								Listen, Seel, I'm very happy to see you again.\p
+								But you need to stop playing fantasy games, and hide.\p
+								I, meanwhile, need to go back to work."
+							))
+							speakername("Vee")
+							msgbox(format("Work?"))
+							speakername("Fro")
+							msgbox(format(
+								"Yes.\p
+								They tried to get me to fight for them, but I refused their commands.\p
+								So, now…"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"They're forcing you to run in a big wheel to generate electricity?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"They…\n
+								Tried that.\p
+								But I don't run very far.\p
+								But, I have found a new calling.\p
+								Thanks to my transformation, my senses of taste and smell have magnified.\p
+								So now, I am a chef.\n
+								And I'm also late for work.\p
+								So let me give you a piece of cake.\n
+								A mean, of advice.\p
+								South of here, there is a town called Moonthistle.\p
+								It's a town where Pokémon fleeing from Team MAGA take refuge.\p
+								You will be safe there."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Thank you, Fro.\p
+								But… What about you?\p
+								Won't they be mad because you've helped us?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, they will.\n
+								But they won't be doing anything to me.\p
+								Because…"
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(walk_up))
+							waitmovement(0)
+							delay(30)
+							speakername("Fro")
+							msgbox(format("…They like my cooking too much."))
+							closemessage
+							applymovement(LOCALID_FRO,moves(walk_faster_up*10))
+							waitmovement(LOCALID_FRO)
+							removeobject(LOCALID_FRO)
+							applymovement(LOCALID_VEE, moves(face_left))
+							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+							waitmovement(0)
+							speakername("Vee")
+							msgbox(format("He seems nice!\n
+							I hope we meet him again.\p
+							For now, though, we should be away from Voltbrook.\p
+							Let's check out Moonthistle!"))
 							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerEast)
 							waitmovement(LOCALID_VEE)
 							removeobject(LOCALID_VEE)
@@ -320,14 +582,16 @@ script AfterBattle_Test
 							playse(SE_PIN)
 							waitmovement(LOCALID_VEE)
 							speakername("Grunt 2")
-							msgbox(format("Guess we showed up just in time, huh?\pRelax. We’ll clean this mess up for you."))
+							msgbox(format("Get a load of this guy.\p
+							What's up with you?\n
+							Having trouble with these freaks?"))
 							speakername("Grunt 3")
-							msgbox(format("Orders are clear: capture them alive. No more mistakes."))
+							msgbox(format("Orders are clear: capture them alive.\pNo more mistakes."))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 							applymovement(LOCALID_VEE,moves(walk_in_place_down))
 							waitmovement(LOCALID_VEE)
 							speakername("Grunt 1")
-							msgbox(format("They’re not getting away again. Not this time!"))
+							msgbox(format("You're not getting away this time!"))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 							applymovement(LOCALID_VEE,moves(walk_in_place_left))
 							waitmovement(LOCALID_VEE)
@@ -335,14 +599,14 @@ script AfterBattle_Test
 							msgbox(format("There’s three of them now…!"))
 							msgbox(format("I-I don’t think we can win this…!"))
 							delay(40)
-							setobjectxyperm(LOCALID_ACE, 29, 22)
-							addobject(LOCALID_ACE)
-							applymovement(LOCALID_ACE,moves(walk_faster_down*5 walk_faster_left*4))
-							waitmovement(LOCALID_ACE)
+							setobjectxyperm(LOCALID_FRO, 29, 22)
+							addobject(LOCALID_FRO)
+							applymovement(LOCALID_FRO,moves(walk_faster_down*5 walk_faster_left*4))
+							waitmovement(LOCALID_FRO)
 							applymovement(LOCALID_VEE,moves(walk_in_place_right))
 							waitmovement(OBJ_EVENT_ID_PLAYER)
 							speakername("???")
-							msgbox(format("Cornered already? This is why I work alone. Stick close to me if you want to live."))
+							msgbox(format("Out of the pan, into the fire.\pStick close to me if you want to live."))
 							speakername("Vee")
 							msgbox(format("W-Wait what do you me-"))
 							playse(SE_M_SURF)
@@ -353,29 +617,220 @@ script AfterBattle_Test
 							msgbox(format("Okay okay, we're coming!"))
 							closemessage
 							delay(40)
-							applymovement(LOCALID_ACE, moves(walk_faster_down*7 walk_faster_left*2 face_down))
+							applymovement(LOCALID_FRO, moves(walk_faster_down*7 walk_faster_left*2 face_down))
 							applymovement(LOCALID_VEE, moves(walk_faster_down*8 face_up))
 							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_faster_down*8 walk_in_place_up))
 							delay(80)			
 							fadescreen(FADE_FROM_WHITE)
 							speakername("Vee")
-							msgbox(format("That was way too close. I thought we were done for.\pThanks for saving us back there! What's your name?"))
+							msgbox(format("Geez, that was close!\n 
+							I thought we were done for.\p
+							Thank you so much for saving us!\n
+							What's your name?"))
 							speakername("???")
-							msgbox(format("Don’t bother."))
+							msgbox(format("I'm Fro."))
 							speakername("Vee")
-							msgbox(format("O-Okay… still, that was really brave of you."))
-							speakername("???")
-							msgbox(format("Brave? No.\pI just hate seeing Team MAGA capturing those too weak to defend themselves.\pThis town isn’t safe for you. Team MAGA rounds up any wild Pokémon they see.\pYou’re lucky I was nearby. Now stay out of sight."))
+							msgbox(format(
+								"Nice to meet you, Fro!\p
+								I'm Vee!\n
+								And this is Seel!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Seel?\n
+								That's funny.\p
+								Wait, aren't you…"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format(
+								"Hold on for a moment.\n
+								I need to think."
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(
+								walk_up
+							))
+							waitmovement(0)
+							delay(120)
 							speakername("Vee")
-							msgbox(format("O-Okay… but where are we?"))
-							speakername("???")
-							msgbox(format("I just brought you to Route 10. It's just south of Voltbrook. Team MAGA doesn't really come down here, but since you two are SO special maybe they'll make an exception. Now stay out of my way and keep your head low, I won't save you again."))
-							applymovement(LOCALID_ACE,moves(walk_faster_up*10))
-							waitmovement(LOCALID_ACE)
-							removeobject(LOCALID_ACE)
+							msgbox(format(
+								"Can we…"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Shh!\n
+								I'm thinking."
+							))
+							closemessage
+							delay(120)
+							applymovement(LOCALID_FRO, moves(
+								walk_down
+							))
+							waitmovement(0)
+							speakername("Fro")
+							msgbox(format(
+								"Ok.\p
+								It's YOU, isn't it, Seel?\p
+								And that Dewgong I fought back then…\n
+								That was you as well."
+							))
 							speakername("Vee")
-							msgbox(format("He’s… not very friendly."))
-							msgbox(format("But I think he just saved our lives. Let's stay away from Voltbrook for now, Maybe we should see where this route leads. There has to be someplace safe for us around here."))
+							msgbox(format(
+								"You two KNOW each other?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, yes, we do.\p
+								I was looking for him, in fact.\n
+								He went missing for a while.\p
+								And now…\n
+								I guess I found him."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Yippee!\n
+								Mission complete!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"…And you said you were…?"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Vee the Eevee!\n
+								From the lab!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Hmm…\n
+								So, you aren't a human."
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Vee")
+							msgbox(format(
+								"Wait.\n
+								Ohmygosh.\p
+								Are you a human too?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Me?\n
+								Sure am.\l
+								Or rather, was.\p
+								You're speaking to the former Champion of the region, in fact."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Ohmygosh.\n
+								No way! That's so cool!\p
+								…What's a Champion?\n
+								Is it like a Guardian?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"I have no idea what you're talking about."
+							))
+							msgbox(format(
+								"Anyway, Seel.\n
+								They got us both, in the end.\p
+								I was investigating the rumors of trainers being kidnapped, but this…\p
+								This project Team MAGA is pursuing is beyond anything I imagined.\p
+								I could not protect you, Seel.\n
+								I could not even protect myself.\p
+								And now…\n
+								We are all going to be stuck like this.\p
+								At least, you managed to escape."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Don't be sad!\n
+								We know of a way to turn you back!"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_question_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format("Do you, now?"))
+							speakername("Vee")
+							msgbox(format(
+								"Yeah!\n
+								We gotta find the eight artifacts!\p
+								There should be one in Voltbrook Town, actually!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Right.\n
+								The eight magical artifacts.\p
+								Then we're gonna hold hands and sing and turn back to humans.\p
+								Listen, Seel, I'm very happy to see you again.\p
+								But you need to stop playing fantasy games, and hide.\p
+								I, meanwhile, need to go back to work."
+							))
+							speakername("Vee")
+							msgbox(format("Work?"))
+							speakername("Fro")
+							msgbox(format(
+								"Yes.\p
+								They tried to get me to fight for them, but I refused their commands.\p
+								So, now…"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"They're forcing you to run in a big wheel to generate electricity?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"They…\n
+								Tried that.\p
+								But I don't run very far.\p
+								But, I have found a new calling.\p
+								Thanks to my transformation, my senses of taste and smell have magnified.\p
+								So now, I am a chef.\n
+								And I'm also late for work.\p
+								So let me give you a piece of cake.\n
+								A mean, of advice.\p
+								South of here, there is a town called Moonthistle.\p
+								It's a town where Pokémon fleeing from Team MAGA take refuge.\p
+								You will be safe there."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Thank you, Fro.\p
+								But… What about you?\p
+								Won't they be mad because you've helped us?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, they will.\n
+								But they won't be doing anything to me.\p
+								Because…"
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(walk_up))
+							waitmovement(0)
+							delay(30)
+							speakername("Fro")
+							msgbox(format("…They like my cooking too much."))
+							closemessage
+							applymovement(LOCALID_FRO,moves(walk_faster_up*10))
+							waitmovement(LOCALID_FRO)
+							removeobject(LOCALID_FRO)
+							applymovement(LOCALID_VEE, moves(face_left))
+							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+							waitmovement(0)
+							speakername("Vee")
+							msgbox(format("He seems nice!\n
+							I hope we meet him again.\p
+							For now, though, we should be away from Voltbrook.\p
+							Let's check out Moonthistle!"))
 							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerEast)
 							waitmovement(LOCALID_VEE)
 							removeobject(LOCALID_VEE)
@@ -398,16 +853,17 @@ script AfterBattle_Test
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up emote_exclamation_mark))
 							applymovement(LOCALID_VEE,moves(walk_in_place_up emote_exclamation_mark))
 							playse(SE_PIN)
-							waitmovement(LOCALID_VEE)
 							speakername("Grunt 2")
-							msgbox(format("Guess we showed up just in time, huh?\pRelax. We’ll clean this mess up for you."))
+							msgbox(format("Get a load of this guy.\p
+							What's up with you?\n
+							Having trouble with these freaks?"))
 							speakername("Grunt 3")
-							msgbox(format("Orders are clear: capture them alive. No more mistakes."))
+							msgbox(format("Orders are clear: capture them alive.\pNo more mistakes."))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 							applymovement(LOCALID_VEE,moves(walk_in_place_down))
 							waitmovement(LOCALID_VEE)
 							speakername("Grunt 1")
-							msgbox(format("They’re not getting away again. Not this time!"))
+							msgbox(format("You're not getting away this time!"))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 							applymovement(LOCALID_VEE,moves(walk_in_place_right))
 							waitmovement(LOCALID_VEE)
@@ -415,15 +871,15 @@ script AfterBattle_Test
 							msgbox(format("There’s three of them now…!"))
 							msgbox(format("I-I don’t think we can win this…!"))
 							delay(40)
-							setobjectxyperm(LOCALID_ACE, 29, 22)
-							addobject(LOCALID_ACE)
-							applymovement(LOCALID_ACE,moves(walk_faster_down*5 walk_faster_left*4))
-							waitmovement(LOCALID_ACE)
+							setobjectxyperm(LOCALID_FRO, 29, 22)
+							addobject(LOCALID_FRO)
+							applymovement(LOCALID_FRO,moves(walk_faster_down*5 walk_faster_left*4))
+							waitmovement(LOCALID_FRO)
 							applymovement(LOCALID_VEE,moves(walk_in_place_right))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 							waitmovement(OBJ_EVENT_ID_PLAYER)
 							speakername("???")
-							msgbox(format("Cornered already? This is why I work alone. Stick close to me if you want to live."))
+							msgbox(format("Out of the pan, into the fire.\pStick close to me if you want to live."))
 							speakername("Vee")
 							msgbox(format("W-Wait what do you me-"))
 							playse(SE_M_SURF)
@@ -434,29 +890,220 @@ script AfterBattle_Test
 							msgbox(format("Okay okay, we're coming!"))
 							closemessage
 							delay(40)
-							applymovement(LOCALID_ACE, moves(walk_faster_down*7 walk_faster_left face_down))
+							applymovement(LOCALID_FRO, moves(walk_faster_down*7 walk_faster_left face_down))
 							applymovement(LOCALID_VEE, moves(walk_faster_down*8 face_up))
 							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_faster_down*8 walk_in_place_up))
 							delay(80)			
 							fadescreen(FADE_FROM_WHITE)
 							speakername("Vee")
-							msgbox(format("That was way too close. I thought we were done for.\pThanks for saving us back there! What's your name?"))
+							msgbox(format("Geez, that was close!\n 
+							I thought we were done for.\p
+							Thank you so much for saving us!\n
+							What's your name?"))
 							speakername("???")
-							msgbox(format("Don’t bother."))
+							msgbox(format("I'm Fro."))
 							speakername("Vee")
-							msgbox(format("O-Okay… still, that was really brave of you."))
-							speakername("???")
-							msgbox(format("Brave? No.\pI just hate seeing Team MAGA capturing those too weak to defend themselves.\pThis town isn’t safe for you. Team MAGA rounds up any wild Pokémon they see.\pYou’re lucky I was nearby. Now stay out of sight."))
+							msgbox(format(
+								"Nice to meet you, Fro!\p
+								I'm Vee!\n
+								And this is Seel!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Seel?\n
+								That's funny.\p
+								Wait, aren't you…"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format(
+								"Hold on for a moment.\n
+								I need to think."
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(
+								walk_up
+							))
+							waitmovement(0)
+							delay(120)
 							speakername("Vee")
-							msgbox(format("O-Okay… but where are we?"))
-							speakername("???")
-							msgbox(format("I just brought you to Route 10. It's just south of Voltbrook. Team MAGA doesn't really come down here, but since you two are SO special maybe they'll make an exception. Now stay out of my way and keep your head low, I won't save you again."))
-							applymovement(LOCALID_ACE,moves(walk_faster_up*10))
-							waitmovement(LOCALID_ACE)
-							removeobject(LOCALID_ACE)
+							msgbox(format(
+								"Can we…"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Shh!\n
+								I'm thinking."
+							))
+							closemessage
+							delay(120)
+							applymovement(LOCALID_FRO, moves(
+								walk_down
+							))
+							waitmovement(0)
+							speakername("Fro")
+							msgbox(format(
+								"Ok.\p
+								It's YOU, isn't it, Seel?\p
+								And that Dewgong I fought back then…\n
+								That was you as well."
+							))
 							speakername("Vee")
-							msgbox(format("He’s… not very friendly."))
-							msgbox(format("But I think he just saved our lives. Let's stay away from Voltbrook for now, Maybe we should see where this route leads. There has to be someplace safe for us around here."))
+							msgbox(format(
+								"You two KNOW each other?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, yes, we do.\p
+								I was looking for him, in fact.\n
+								He went missing for a while.\p
+								And now…\n
+								I guess I found him."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Yippee!\n
+								Mission complete!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"…And you said you were…?"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Vee the Eevee!\n
+								From the lab!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Hmm…\n
+								So, you aren't a human."
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Vee")
+							msgbox(format(
+								"Wait.\n
+								Ohmygosh.\p
+								Are you a human too?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Me?\n
+								Sure am.\l
+								Or rather, was.\p
+								You're speaking to the former Champion of the region, in fact."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Ohmygosh.\n
+								No way! That's so cool!\p
+								…What's a Champion?\n
+								Is it like a Guardian?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"I have no idea what you're talking about."
+							))
+							msgbox(format(
+								"Anyway, Seel.\n
+								They got us both, in the end.\p
+								I was investigating the rumors of trainers being kidnapped, but this…\p
+								This project Team MAGA is pursuing is beyond anything I imagined.\p
+								I could not protect you, Seel.\n
+								I could not even protect myself.\p
+								And now…\n
+								We are all going to be stuck like this.\p
+								At least, you managed to escape."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Don't be sad!\n
+								We know of a way to turn you back!"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_question_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format("Do you, now?"))
+							speakername("Vee")
+							msgbox(format(
+								"Yeah!\n
+								We gotta find the eight artifacts!\p
+								There should be one in Voltbrook Town, actually!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Right.\n
+								The eight magical artifacts.\p
+								Then we're gonna hold hands and sing and turn back to humans.\p
+								Listen, Seel, I'm very happy to see you again.\p
+								But you need to stop playing fantasy games, and hide.\p
+								I, meanwhile, need to go back to work."
+							))
+							speakername("Vee")
+							msgbox(format("Work?"))
+							speakername("Fro")
+							msgbox(format(
+								"Yes.\p
+								They tried to get me to fight for them, but I refused their commands.\p
+								So, now…"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"They're forcing you to run in a big wheel to generate electricity?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"They…\n
+								Tried that.\p
+								But I don't run very far.\p
+								But, I have found a new calling.\p
+								Thanks to my transformation, my senses of taste and smell have magnified.\p
+								So now, I am a chef.\n
+								And I'm also late for work.\p
+								So let me give you a piece of cake.\n
+								A mean, of advice.\p
+								South of here, there is a town called Moonthistle.\p
+								It's a town where Pokémon fleeing from Team MAGA take refuge.\p
+								You will be safe there."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Thank you, Fro.\p
+								But… What about you?\p
+								Won't they be mad because you've helped us?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, they will.\n
+								But they won't be doing anything to me.\p
+								Because…"
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(walk_up))
+							waitmovement(0)
+							delay(30)
+							speakername("Fro")
+							msgbox(format("…They like my cooking too much."))
+							closemessage
+							applymovement(LOCALID_FRO,moves(walk_faster_up*10))
+							waitmovement(LOCALID_FRO)
+							removeobject(LOCALID_FRO)
+							applymovement(LOCALID_VEE, moves(face_left))
+							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+							waitmovement(0)
+							speakername("Vee")
+							msgbox(format("He seems nice!\n
+							I hope we meet him again.\p
+							For now, though, we should be away from Voltbrook.\p
+							Let's check out Moonthistle!"))
 							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
 							waitmovement(LOCALID_VEE)
 							removeobject(LOCALID_VEE)
@@ -479,16 +1126,17 @@ script AfterBattle_Test
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_up emote_exclamation_mark))
 							applymovement(LOCALID_VEE,moves(walk_in_place_up emote_exclamation_mark))
 							playse(SE_PIN)
-							waitmovement(LOCALID_VEE)
 							speakername("Grunt 2")
-							msgbox(format("Guess we showed up just in time, huh?\pRelax. We’ll clean this mess up for you."))
+							msgbox(format("Get a load of this guy.\p
+							What's up with you?\n
+							Having trouble with these freaks?"))
 							speakername("Grunt 3")
-							msgbox(format("Orders are clear: capture them alive. No more mistakes."))
+							msgbox(format("Orders are clear: capture them alive.\pNo more mistakes."))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_down))
 							applymovement(LOCALID_VEE,moves(walk_in_place_down))
 							waitmovement(LOCALID_VEE)
 							speakername("Grunt 1")
-							msgbox(format("They’re not getting away again. Not this time!"))
+							msgbox(format("You're not getting away this time!"))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_left))
 							applymovement(LOCALID_VEE,moves(walk_in_place_right))
 							waitmovement(LOCALID_VEE)
@@ -496,15 +1144,15 @@ script AfterBattle_Test
 							msgbox(format("There’s three of them now…!"))
 							msgbox(format("I-I don’t think we can win this…!"))
 							delay(40)
-							setobjectxyperm(LOCALID_ACE, 29, 22)
-							addobject(LOCALID_ACE)
-							applymovement(LOCALID_ACE,moves(walk_faster_down*5 walk_faster_left*3))
-							waitmovement(LOCALID_ACE)
+							setobjectxyperm(LOCALID_FRO, 29, 22)
+							addobject(LOCALID_FRO)
+							applymovement(LOCALID_FRO,moves(walk_faster_down*5 walk_faster_left*3))
+							waitmovement(LOCALID_FRO)
 							applymovement(LOCALID_VEE,moves(walk_in_place_right))
 							applymovement(OBJ_EVENT_ID_PLAYER,moves(walk_in_place_right))
 							waitmovement(OBJ_EVENT_ID_PLAYER)
 							speakername("???")
-							msgbox(format("Cornered already? This is why I work alone. Stick close to me if you want to live."))
+							msgbox(format("Out of the pan, into the fire.\pStick close to me if you want to live."))
 							speakername("Vee")
 							msgbox(format("W-Wait what do you me-"))
 							playse(SE_M_SURF)
@@ -515,29 +1163,220 @@ script AfterBattle_Test
 							msgbox(format("Okay okay, we're coming!"))
 							closemessage
 							delay(40)
-							applymovement(LOCALID_ACE, moves(walk_faster_down*7 walk_faster_left face_down))
+							applymovement(LOCALID_FRO, moves(walk_faster_down*7 walk_faster_left face_down))
 							applymovement(LOCALID_VEE, moves(walk_faster_down*8 face_up))
 							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_faster_down*8 walk_in_place_up))
 							delay(80)			
 							fadescreen(FADE_FROM_WHITE)
 							speakername("Vee")
-							msgbox(format("That was way too close. I thought we were done for.\pThanks for saving us back there! What's your name?"))
+							msgbox(format("Geez, that was close!\n 
+							I thought we were done for.\p
+							Thank you so much for saving us!\n
+							What's your name?"))
 							speakername("???")
-							msgbox(format("Don’t bother."))
+							msgbox(format("I'm Fro."))
 							speakername("Vee")
-							msgbox(format("O-Okay… still, that was really brave of you."))
-							speakername("???")
-							msgbox(format("Brave? No.\pI just hate seeing Team MAGA capturing those too weak to defend themselves.\pThis town isn’t safe for you. Team MAGA rounds up any wild Pokémon they see.\pYou’re lucky I was nearby. Now stay out of sight."))
+							msgbox(format(
+								"Nice to meet you, Fro!\p
+								I'm Vee!\n
+								And this is Seel!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Seel?\n
+								That's funny.\p
+								Wait, aren't you…"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format(
+								"Hold on for a moment.\n
+								I need to think."
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(
+								walk_up
+							))
+							waitmovement(0)
+							delay(120)
 							speakername("Vee")
-							msgbox(format("O-Okay… but where are we?"))
-							speakername("???")
-							msgbox(format("I just brought you to Route 10. It's just south of Voltbrook. Team MAGA doesn't really come down here, but since you two are SO special maybe they'll make an exception. Now stay out of my way and keep your head low, I won't save you again."))
-							applymovement(LOCALID_ACE,moves(walk_faster_up*10))
-							waitmovement(LOCALID_ACE)
-							removeobject(LOCALID_ACE)
+							msgbox(format(
+								"Can we…"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Shh!\n
+								I'm thinking."
+							))
+							closemessage
+							delay(120)
+							applymovement(LOCALID_FRO, moves(
+								walk_down
+							))
+							waitmovement(0)
+							speakername("Fro")
+							msgbox(format(
+								"Ok.\p
+								It's YOU, isn't it, Seel?\p
+								And that Dewgong I fought back then…\n
+								That was you as well."
+							))
 							speakername("Vee")
-							msgbox(format("He’s… not very friendly."))
-							msgbox(format("But I think he just saved our lives. Let's stay away from Voltbrook for now, Maybe we should see where this route leads. There has to be someplace safe for us around here."))
+							msgbox(format(
+								"You two KNOW each other?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, yes, we do.\p
+								I was looking for him, in fact.\n
+								He went missing for a while.\p
+								And now…\n
+								I guess I found him."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Yippee!\n
+								Mission complete!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"…And you said you were…?"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Vee the Eevee!\n
+								From the lab!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Hmm…\n
+								So, you aren't a human."
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_VEE, moves(emote_exclamation_mark))
+							waitmovement(0)
+							waitse
+							speakername("Vee")
+							msgbox(format(
+								"Wait.\n
+								Ohmygosh.\p
+								Are you a human too?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Me?\n
+								Sure am.\l
+								Or rather, was.\p
+								You're speaking to the former Champion of the region, in fact."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Ohmygosh.\n
+								No way! That's so cool!\p
+								…What's a Champion?\n
+								Is it like a Guardian?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"I have no idea what you're talking about."
+							))
+							msgbox(format(
+								"Anyway, Seel.\n
+								They got us both, in the end.\p
+								I was investigating the rumors of trainers being kidnapped, but this…\p
+								This project Team MAGA is pursuing is beyond anything I imagined.\p
+								I could not protect you, Seel.\n
+								I could not even protect myself.\p
+								And now…\n
+								We are all going to be stuck like this.\p
+								At least, you managed to escape."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Don't be sad!\n
+								We know of a way to turn you back!"
+							))
+							playse(SE_PIN)
+							applymovement(LOCALID_FRO, moves(emote_question_mark))
+							waitmovement(0)
+							waitse
+							speakername("Fro")
+							msgbox(format("Do you, now?"))
+							speakername("Vee")
+							msgbox(format(
+								"Yeah!\n
+								We gotta find the eight artifacts!\p
+								There should be one in Voltbrook Town, actually!"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Right.\n
+								The eight magical artifacts.\p
+								Then we're gonna hold hands and sing and turn back to humans.\p
+								Listen, Seel, I'm very happy to see you again.\p
+								But you need to stop playing fantasy games, and hide.\p
+								I, meanwhile, need to go back to work."
+							))
+							speakername("Vee")
+							msgbox(format("Work?"))
+							speakername("Fro")
+							msgbox(format(
+								"Yes.\p
+								They tried to get me to fight for them, but I refused their commands.\p
+								So, now…"
+							))
+							speakername("Vee")
+							msgbox(format(
+								"They're forcing you to run in a big wheel to generate electricity?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"They…\n
+								Tried that.\p
+								But I don't run very far.\p
+								But, I have found a new calling.\p
+								Thanks to my transformation, my senses of taste and smell have magnified.\p
+								So now, I am a chef.\n
+								And I'm also late for work.\p
+								So let me give you a piece of cake.\n
+								A mean, of advice.\p
+								South of here, there is a town called Moonthistle.\p
+								It's a town where Pokémon fleeing from Team MAGA take refuge.\p
+								You will be safe there."
+							))
+							speakername("Vee")
+							msgbox(format(
+								"Thank you, Fro.\p
+								But… What about you?\p
+								Won't they be mad because you've helped us?"
+							))
+							speakername("Fro")
+							msgbox(format(
+								"Oh, they will.\n
+								But they won't be doing anything to me.\p
+								Because…"
+							))
+							closemessage
+							applymovement(LOCALID_FRO, moves(walk_up))
+							waitmovement(0)
+							delay(30)
+							speakername("Fro")
+							msgbox(format("…They like my cooking too much."))
+							closemessage
+							applymovement(LOCALID_FRO,moves(walk_faster_up*10))
+							waitmovement(LOCALID_FRO)
+							removeobject(LOCALID_FRO)
+							applymovement(LOCALID_VEE, moves(face_left))
+							applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+							waitmovement(0)
+							speakername("Vee")
+							msgbox(format("He seems nice!\n
+							I hope we meet him again.\p
+							For now, though, we should be away from Voltbrook.\p
+							Let's check out Moonthistle!"))
 							applymovement(LOCALID_VEE,Common_Movement_PartyMemberReturnsToPlayerWest)
 							waitmovement(LOCALID_VEE)
 							removeobject(LOCALID_VEE)
@@ -555,7 +1394,8 @@ script Voltbrook_EventScripts_PreventPlayerFromReentering
 		addobject(LOCALID_VEE)
 		applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
 		waitmovement(LOCALID_VEE)
-		msgbox(format("You heard what that guy said… We need to move away from Voltbrook for now… let's head the other way. We can figure out how to get the artifact later."))
+		msgbox(format("We need to stay away from Voltbrook for now, Seel!\n
+		Let's worry about the artefact later."))
 		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerNorth)
 		waitmovement(LOCALID_VEE)
 		removeobject(LOCALID_VEE)
@@ -576,7 +1416,7 @@ script Voltbrook_EventScripts_GruntsBlockingNorthExit
 		addobject(LOCALID_VEE)
 		applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerEast)
 		waitmovement(LOCALID_VEE)
-		msgbox(format("Can't go this way… look at those MAGA Grunts up ahead. Let's look somewhere else."))
+		msgbox(format("We can't go this way…\nThere's MAGA grunts up ahead.\pLet's looks somewhere else."))
 		applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
 		waitmovement(LOCALID_VEE)
 		removeobject(LOCALID_VEE)
@@ -598,3 +1438,207 @@ script Voltbrook_EventScripts_DoorsLocked
 		release
 		//}
 	}
+
+
+script Voltbrook_EventScript_Locked
+{
+	msgbox(format("Locked."), MSGBOX_SIGN)
+	end
+}
+
+script Voltbrook_EventScript_FroJoins
+{
+	lockall
+	setvar(VAR_VOLTBROOK_PLANT_STATE, 3)
+	clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+	addobject(LOCALID_VEE)
+	clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
+	addobject(LOCALID_FRO)
+	setobjectxy(LOCALID_VEE, 24, 6)
+	applymovement(LOCALID_VEE, moves(walk_right face_down))
+	waitmovement(0)
+	setobjectxy(LOCALID_FRO, 24, 12)
+	applymovement(LOCALID_FRO, moves(walk_up*5))
+	waitmovement(0)
+	speakername("Fro")
+	msgbox(format(
+		"Are you two insane?\p
+		No, don't answer.\n
+		I got a headache.\p
+		I saw an Electivire wrecking house, and Team MAGA running after it.\p
+		And now I find you sneaking out of the power plant.\p
+		Did you have something to do with that?"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Yup!\n
+		We defeated the Guardian!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Peachy.\n
+		Very happy for you guys.\p
+		Except, with Team MAGA gone from the town…\l
+		I'm out of a job."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"You could join me and Seel!\n
+		We're going on a quest!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Ah, yes.\n
+		The quest for the magical artifacts.\p
+		How's that panning out?"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"We found one!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"You fo-\n
+		Let me take a look.\p
+		… … …\n
+		… … …\p
+		This…\n
+		It's certainly very artifact-shaped, I will give you that."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"I know, right?"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"But you don't actually know how this is supposed to work, do you?"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Not really…"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Yeah.\p
+		You don't know if it works, or how, just that you need eight of them.\p
+		It's not that I don't trust you, Seel, but…\p
+		I don't want to get my hopes up for nothing.\p
+		I've been doing some thinking.\p
+		I dunno about you, Seel, but I don't mind being stuck as a Pokémon."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"How can you say that!\n
+		Humans are so cool!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"There's some things I miss, that's true.\p
+		But…\p
+		I failed my responsibilites as a Champion.\l
+		I couldn't protect anyone.\p
+		This life as a chef…\n
+		Is really not so bad.\p
+		If things were like this forever, I would not mind.\p
+		… … …\n
+		But they won't, will they.\p
+		I had it good here, but it was never going to last.\p
+		And Team MAGA's still up to something.\p
+		And you two…\n
+		I can't just sit around and watch someone get themselves killed."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Hey!\n
+		We can handle our own!\l
+		We defeated a Guardian!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Sure. Once.\n
+		Can you do it again?\p
+		And again, and again, and again, seven more times?"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Yeah!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"… … …\p
+		Ok, guess you don't need my help, then."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"No!\n
+		I mean, yes!\l
+		It's not what I meant!\p
+		I really want you on our side, Fro!\n
+		You're really cool!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Heh.\n
+		Was just messing with you.\l
+		Don't worry, I'll join.\p
+		I'm still not sure about the artifact business, but if my friend Seel needs help, I can't just say no."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"And your friend Vee!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"…Yes, and my friend Vee."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Yayyy!"
+	))
+	speakername(NULL)
+    playfanfare(MUS_OBTAIN_BADGE)
+    msgbox(format("{COLOR RED}Fro{COLOR DARK_GRAY} has joined your team!"))
+	speakername("Fro")
+	msgbox(format(
+		"Ok.\n
+		Team MAGA's out of town for now, but there's no guarantee they won't be back.\p
+		Where are we headed?"
+	))
+	speakername("Vee")
+	msgbox(format(
+		"Well…\n
+		There were a bunch of places on the list we saw…\p
+		I think the next one was Pyro-something."
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Pyroden?\n
+		It's north of Dominion City.\p
+		I've heard there's some nice hot springs.\N
+		I vote to go there.\p
+		Since I'm larger than you two combined, my vote counts for three.\N
+		Ah, I can't wait to relax in the warm water."
+	))
+	speakername("Vee")
+	msgbox(format(
+		"We're not going there to relax!\n
+		We're going there to find the Artifact!"
+	))
+	speakername("Fro")
+	msgbox(format(
+		"Yes, yes.\n
+		We can do both.\p
+		In fact, the sooner we get there, the more spare time we'll have to relax.\p
+		Lead the way, Seel."
+	))
+	closemessage
+	applymovement(LOCALID_VEE, moves(walk_left))
+	applymovement(LOCALID_FRO, moves(walk_up))
+	waitmovement(0)
+	removeobject(LOCALID_VEE)
+	removeobject(LOCALID_FRO)
+	setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 10)
+	releaseall
+	end
+
+}

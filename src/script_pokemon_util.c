@@ -18,6 +18,7 @@
 #include "pokedex.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "ui_summary_screen.h"
 #include "random.h"
 #include "script.h"
 #include "sprite.h"
@@ -114,6 +115,7 @@ bool8 DoesPartyHaveEnigmaBerry(void)
 void CreateScriptedWildMon(u16 species, u8 level, u16 item)
 {
     u8 heldItem[2];
+    u16 customHP = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
 
     ZeroEnemyPartyMons();
     if (OW_SYNCHRONIZE_NATURE > GEN_3)
@@ -126,11 +128,18 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
         heldItem[1] = item >> 8;
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem);
     }
+
+    if(customHP != 0){
+        SetMonData(&gEnemyParty[0], MON_DATA_HP, &customHP);
+        SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, &customHP);
+    }
 }
 void CreateScriptedDoubleWildMon(u16 species1, u8 level1, u16 item1, u16 species2, u8 level2, u16 item2)
 {
     u8 heldItem1[2];
     u8 heldItem2[2];
+    u16 customHP = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
+    u16 customHP2 = VarGet(VAR_ENEMY_2_CUSTOM_MAX_HP);
 
     ZeroEnemyPartyMons();
 
@@ -145,6 +154,11 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, u16 item1, u16 species
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem1);
     }
 
+    if(customHP != 0){
+        SetMonData(&gEnemyParty[0], MON_DATA_HP, &customHP);
+        SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, &customHP);
+    }
+
     if (OW_SYNCHRONIZE_NATURE > GEN_3)
         CreateMonWithNature(&gEnemyParty[1], species2, level2, 32, PickWildMonNature());
     else
@@ -154,6 +168,11 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, u16 item1, u16 species
         heldItem2[0] = item2;
         heldItem2[1] = item2 >> 8;
         SetMonData(&gEnemyParty[1], MON_DATA_HELD_ITEM, heldItem2);
+    }
+
+    if(customHP2 != 0){
+        SetMonData(&gEnemyParty[1], MON_DATA_HP, &customHP2);
+        SetMonData(&gEnemyParty[1], MON_DATA_MAX_HP, &customHP2);
     }
 }
 
@@ -429,6 +448,8 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, u
     // assign OT name and gender
     SetMonData(&mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(&mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
+
+    tryToGivePartyMemberExp(&mon); //Sets Initial Party Member Skill Points
 
     if (slot < PARTY_SIZE)
     {

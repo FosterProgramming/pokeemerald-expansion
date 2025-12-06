@@ -181,7 +181,18 @@
     "MountPyroden_2F_West",
     "MountPyroden_3F",
     "MountPyroden_3F_East",
-    "MountPyroden_3F_West"
+    "MountPyroden_3F_West",
+    "MountPyroden_FinalRoom",
+    "MountPyroden_4F",
+    "MountPyroden_MarioRoom",
+    "MountPyroden_4F_TankRoom",
+    "MountPyroden_4F_SideRoom",
+    "MountPyroden_3F_SideRoom",
+    "MountPyroden_2F_SideRoom",
+    "MountPyroden_1F_SideRoom",
+    "MountPyroden_3F_South",
+    "MountPyroden_4F_SouthLadderRoom",
+    "MountPyroden_4F_ClockRoom"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",
@@ -189,7 +200,19 @@
     "DewfordTown_PokemonCenter_2F",
     "DewfordTown_Gym",
     "DewfordTown_Hall",
-    "DewfordTown_House2"
+    "DewfordTown_House2",
+    "VoltbrookTown_PowerPlant_Entrance",
+    "VoltbrookTown_PowerPlant_Office",
+    "VoltbrookTown_PowerPlant_Front",
+    "VoltbrookTown_PowerPlant_BarrelRoom",
+    "VoltrbookTown_PowerPlant_LeftGeneratorRoom",
+    "VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F",
+    "VoltbrookTown_PowerPlant_RockMaze_2F",
+    "VoltbrookTown_RockDrop_Bottom",
+    "VoltbrookTown_RockDrop_Top",
+    "VoltbrookTown_PowerPlant_Entrance_2F",
+    "VoltbrookTown_PowerPlant_Front_2F",
+    "VoltbrookTown_PowerPlant_Underground_Tunnel"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",

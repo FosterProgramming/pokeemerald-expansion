@@ -390,7 +390,7 @@ DominionCity_EventScripts_GruntsSouthStillLooking::
 # 310 "data/maps/DominionCity/scripts.pory"
 	special SpawnCameraObject
 # 311 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsSouthStillLooking_Movement_1
 # 312 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
 # 313 "data/maps/DominionCity/scripts.pory"
@@ -424,7 +424,7 @@ DominionCity_EventScripts_GruntsSouthStillLooking::
 # 328 "data/maps/DominionCity/scripts.pory"
 	msgbox DominionCity_EventScripts_GruntsSouthStillLooking_Text_2
 # 329 "data/maps/DominionCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsNorthStillLooking_Movement_1
+	applymovement OBJ_EVENT_ID_CAMERA, DominionCity_EventScripts_GruntsSouthStillLooking_Movement_2
 # 330 "data/maps/DominionCity/scripts.pory"
 	waitmovement OBJ_EVENT_ID_CAMERA
 # 331 "data/maps/DominionCity/scripts.pory"
@@ -698,6 +698,42 @@ DominionCity_EventScripts_GruntsNorthStillLooking_Movement_2:
 # 301 "data/maps/DominionCity/scripts.pory"
 DominionCity_EventScripts_GruntsSouthStillLooking_Movement_0:
 # 301 "data/maps/DominionCity/scripts.pory"
+	walk_up
+	step_end
+
+# 311 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_GruntsSouthStillLooking_Movement_1:
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+# 311 "data/maps/DominionCity/scripts.pory"
+	walk_down
+	step_end
+
+# 329 "data/maps/DominionCity/scripts.pory"
+DominionCity_EventScripts_GruntsSouthStillLooking_Movement_2:
+# 329 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 329 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 329 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 329 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 329 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 329 "data/maps/DominionCity/scripts.pory"
+	walk_up
+# 329 "data/maps/DominionCity/scripts.pory"
 	walk_up
 	step_end
 

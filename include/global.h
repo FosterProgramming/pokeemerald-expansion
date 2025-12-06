@@ -528,6 +528,19 @@ struct RankingHall2P
     //u8 padding;
 };
 
+//Configuration
+#define MAX_SKILLS_PER_TREE 20
+
+struct PartyMemberData
+{
+    u16 maxSkillPoints;                         //Total of Skill Points this Member has gained
+    u16 remainingSkillPoints;                   //Number of points left after unlocking skills
+    bool8 unlockedSkills[MAX_SKILLS_PER_TREE];  //Unlocked Skills
+    u16 abilities[MAX_MON_INNATES + 1];         //Current Assigned Abilities
+    u16 extraEVs;                               //Extra EVs available to assign at any point
+    u8 extraStats[NUM_STATS];                   //Extra raw stats for this Pokémon
+};
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -548,7 +561,7 @@ struct SaveBlock2
              //u16 padding1:4;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;
-    /*0x90*/ u8 filler_90[0x8];
+    //*0x90*/ u8 filler_90[0x8];
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
     /*0xA8*/ u32 gcnLinkFlags; // Read by Pokémon Colosseum/XD
@@ -566,6 +579,7 @@ struct SaveBlock2
 #endif //FREE_RECORD_MIXING_HALL_RECORDS
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
+    /*0x???*/ struct PartyMemberData gPartyMembers[NUM_PARTY_MEMBERS];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -1105,7 +1119,7 @@ struct SaveBlock1
 #if FREE_MYSTERY_GIFT == FALSE
     /*0x322C*/ struct MysteryGiftSave mysteryGift;
 #endif //FREE_MYSTERY_GIFT
-    /*0x3???*/ u8 dexSeen[NUM_DEX_FLAG_BYTES];
+    /*0x3???*/ u8 dexSeen[POKEMON_SLOTS_NUMBER];
     /*0x3???*/ u8 dexCaught[NUM_DEX_FLAG_BYTES];
 #if FREE_TRAINER_HILL == FALSE
     /*0x3???*/ u32 trainerHillTimes[NUM_TRAINER_HILL_MODES];

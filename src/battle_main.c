@@ -3459,11 +3459,18 @@ static void DoBattleIntro(void)
                 gBattleMons[battler].types[0] = gSpeciesInfo[gBattleMons[battler].species].types[0];
                 gBattleMons[battler].types[1] = gSpeciesInfo[gBattleMons[battler].species].types[1];
                 gBattleMons[battler].types[2] = TYPE_MYSTERY;
+
+                if(battler == 1)
+                    VarSet(VAR_ENEMY_1_SPECIES, gBattleMons[battler].species);
+                else if(battler == 3)
+                    VarSet(VAR_ENEMY_2_SPECIES, gBattleMons[battler].species);
+
                 gBattleMons[battler].ability = GetAbilityBySpecies(gBattleMons[battler].species, gBattleMons[battler].abilityNum);
                 gBattleStruct->hpOnSwitchout[GetBattlerSide(battler)] = gBattleMons[battler].hp;
                 gBattleMons[battler].status2 = 0;
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
                     gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+
                 #if TESTING
                 if (gTestRunnerEnabled)
                 {

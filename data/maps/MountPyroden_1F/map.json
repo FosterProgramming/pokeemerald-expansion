@@ -2,7 +2,7 @@
   "id": "MAP_MOUNT_PYRODEN_1F",
   "name": "MountPyroden_1F",
   "layout": "LAYOUT_MOUNT_PYRODEN_1F",
-  "music": "MUS_DUMMY",
+  "music": "MUS_MT_CHIMNEY",
   "region_map_section": "MAPSEC_PYRODEN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -26,7 +26,7 @@
     },
     {
       "x": 15,
-      "y": 3,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_MOUNT_PYRODEN_1F_NORTH",
       "dest_warp_id": "0"

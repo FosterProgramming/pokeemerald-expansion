@@ -80,3 +80,145 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus:
 	.string "This ship is called S.S. CACTUS.\n"
 # 41 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	.string "It seems to be from an earlier era.$"
+
+VictoryRoad_1F_EventScript_FloorSwitch1::
+# 46 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lockall
+# 47 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_1, BOULDER_SWITCH_NO_EVENT
+	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch1_2
+# 54 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 18, 10, METATILE_General_Grass, 0
+# 55 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+VictoryRoad_1F_EventScript_FloorSwitch1_1:
+# 57 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	releaseall
+	end
+
+VictoryRoad_1F_EventScript_FloorSwitch1_2:
+# 49 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 18, 10, METATILE_General_TallGrass, 0
+# 50 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+	goto VictoryRoad_1F_EventScript_FloorSwitch1_1
+
+
+VictoryRoad_1F_EventScript_FloorSwitch2::
+# 62 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lockall
+# 63 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_2, BOULDER_SWITCH_NO_EVENT
+	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch2_2
+# 70 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 20, 10, METATILE_General_Grass, 0
+# 71 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+VictoryRoad_1F_EventScript_FloorSwitch2_1:
+# 73 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	releaseall
+	end
+
+VictoryRoad_1F_EventScript_FloorSwitch2_2:
+# 65 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 20, 10, METATILE_General_TallGrass, 0
+# 66 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+	goto VictoryRoad_1F_EventScript_FloorSwitch2_1
+
+
+VictoryRoad_1F_EventScript_FloorSwitch3::
+# 78 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lockall
+# 79 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	compare VAR_TEMP_BOULDER_SWITCH_EVENT_ID_3, BOULDER_SWITCH_NO_EVENT
+	goto_if_ne VictoryRoad_1F_EventScript_FloorSwitch3_2
+# 86 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 22, 10, METATILE_General_Grass, 0
+# 87 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+VictoryRoad_1F_EventScript_FloorSwitch3_1:
+# 89 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	releaseall
+	end
+
+VictoryRoad_1F_EventScript_FloorSwitch3_2:
+# 81 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setmetatile 22, 10, METATILE_General_TallGrass, 0
+# 82 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	special DrawWholeMapView
+	goto VictoryRoad_1F_EventScript_FloorSwitch3_1
+
+
+Common_EventScript_StartBossDebugBattle::
+# 94 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lock
+# 95 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	faceplayer
+# 96 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_IRON_FIST
+# 97 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOTOR_DRIVE
+# 98 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_STATIC
+# 99 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 200
+# 100 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	playmoncry SPECIES_ELECTIVIRE, 2
+# 101 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setwildbattle SPECIES_ELECTIVIRE, 2, ITEM_ELECTRIC_GEM
+# 102 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 103 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	dowildbattle
+# 104 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+# 105 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 106 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	switch VAR_RESULT
+# 107 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_CAUGHT, Common_EventScript_StartBossDebugBattle_3
+# 114 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_RAN, Common_EventScript_StartBossDebugBattle_4
+# 115 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_WON, Common_EventScript_StartBossDebugBattle_4
+# 116 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_PLAYER_TELEPORTED, Common_EventScript_StartBossDebugBattle_4
+Common_EventScript_StartBossDebugBattle_1:
+# 126 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	release
+	end
+
+Common_EventScript_StartBossDebugBattle_3:
+# 109 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setweather WEATHER_NONE
+# 110 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 111 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 112 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto Common_EventScript_StartBossDebugBattle_1
+
+Common_EventScript_StartBossDebugBattle_4:
+# 117 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_0x8004, SPECIES_LAPRAS
+# 118 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setweather WEATHER_NONE
+# 119 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 120 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 121 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 122 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	bufferspeciesname 0, VAR_0x8004
+# 123 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	msgbox Common_EventScript_StartBossDebugBattle_Text_0, MSGBOX_DEFAULT
+	goto Common_EventScript_StartBossDebugBattle_1
+
+
+Common_EventScript_StartBossDebugBattle_Text_0:
+# 123 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	.string "Lapras dove away$"

@@ -51,6 +51,7 @@
 #include "constants/songs.h"
 #include "constants/sound.h"
 #include "constants/species.h"
+#include "constants/abilities.h"
 #include "constants/trade.h"
 #include "constants/trainer_hill.h"
 #include "constants/trainers.h"
@@ -1334,3 +1335,49 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/NewMap1/scripts.inc"
 
 	.include "data/maps/StratoscapeRoute1/scripts.inc"
+
+	.include "data/maps/MountPyroden_FinalRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F/scripts.inc"
+
+	.include "data/maps/MountPyroden_MarioRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_TankRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_2F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_1F_SideRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_3F_South/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_SouthLadderRoom/scripts.inc"
+
+	.include "data/maps/MountPyroden_4F_ClockRoom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Office/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Front/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.inc"
+
+	.include "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_RockMaze_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_RockDrop_Bottom/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_RockDrop_Top/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Entrance_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.inc"

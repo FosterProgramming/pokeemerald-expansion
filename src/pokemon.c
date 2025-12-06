@@ -33,6 +33,7 @@
 #include "pokemon_icon.h"
 #include "pokemon_summary_screen.h"
 #include "pokemon_storage_system.h"
+#include "ui_summary_screen.h"
 #include "random.h"
 #include "recorded_battle.h"
 #include "rtc.h"
@@ -43,6 +44,7 @@
 #include "test_runner.h"
 #include "text.h"
 #include "trainer_hill.h"
+#include "ui_summary_screen.h"
 #include "util.h"
 #include "constants/abilities.h"
 #include "constants/battle_frontier.h"
@@ -64,6 +66,7 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 #include "wild_encounter.h"
+#include "data/pokemon/party_members.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
 
@@ -1745,14 +1748,25 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     return checksum;
 }
 
-#define CALC_STAT(base, iv, ev, statIndex, field)               \
-{                                                               \
-    u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
-    n = ModifyStatByNature(nature, n, statIndex);               \
-    if (B_FRIENDSHIP_BOOST == TRUE)                             \
+#define CALC_STAT(base, iv, ev, statIndex, field)                \
+{                                                                \
+    u8 baseStat = gSpeciesInfo[species].base;                    \
+    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5;  \
+    n = ModifyStatByNature(nature, n, statIndex);                \
+    if (B_FRIENDSHIP_BOOST == TRUE)                              \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
-    SetMonData(mon, field, &n);                                 \
+    SetMonData(mon, field, &n);                                  \
+}
+
+#define CALC_STAT_MEMBER(base, iv, ev, statIndex, field, partyMember)      \
+{                                                                          \
+    u8 baseStat = gSpeciesInfo[species].base;                              \
+    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5;            \
+    n = ModifyStatByNature(nature, n, statIndex);                          \
+    if (B_FRIENDSHIP_BOOST == TRUE)                                        \
+        n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));          \
+    n += gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[statIndex]; \
+    SetMonData(mon, field, &n);                                            \
 }
 
 void CalculateMonStats(struct Pokemon *mon)
@@ -1774,6 +1788,7 @@ void CalculateMonStats(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     s32 level = GetLevelFromMonExp(mon);
+    u8 partyMember = getCurrentPartyMember(species);
     s32 newMaxHP;
 
     u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
@@ -1787,7 +1802,7 @@ void CalculateMonStats(struct Pokemon *mon)
     else
     {
         s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
+        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP];
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
@@ -1796,12 +1811,22 @@ void CalculateMonStats(struct Pokemon *mon)
 
     SetMonData(mon, MON_DATA_MAX_HP, &newMaxHP);
 
-    CALC_STAT(baseAttack, attackIV, attackEV, STAT_ATK, MON_DATA_ATK)
-    CALC_STAT(baseDefense, defenseIV, defenseEV, STAT_DEF, MON_DATA_DEF)
-    CALC_STAT(baseSpeed, speedIV, speedEV, STAT_SPEED, MON_DATA_SPEED)
-    CALC_STAT(baseSpAttack, spAttackIV, spAttackEV, STAT_SPATK, MON_DATA_SPATK)
-    CALC_STAT(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
-
+    if(partyMember != NUM_PARTY_MEMBERS){
+        CALC_STAT_MEMBER(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK,   partyMember)
+        CALC_STAT_MEMBER(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF,   partyMember)
+        CALC_STAT_MEMBER(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED, partyMember)
+        CALC_STAT_MEMBER(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK, partyMember)
+        CALC_STAT_MEMBER(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF, partyMember)
+    }
+    else
+    {
+        CALC_STAT(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK)
+        CALC_STAT(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF)
+        CALC_STAT(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED)
+        CALC_STAT(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK)
+        CALC_STAT(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
+    }
+    
     // Since a pokemon's maxHP data could either not have
     // been initialized at this point or this pokemon is
     // just fainted, the check for oldMaxHP is important.
@@ -3388,6 +3413,8 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
 
+    tryToGivePartyMemberExp(mon); //Sets Initial Party Member Skill Points
+
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)
@@ -3528,23 +3555,35 @@ u8 GetMonsStateToDoubles_2(void)
 u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
 {
     int i;
+    u8 member = isSpeciesAPartyMember(species);
 
-    if (abilityNum < NUM_ABILITY_SLOTS)
-        gLastUsedAbility = gSpeciesInfo[species].abilities[abilityNum];
-    else
-        gLastUsedAbility = ABILITY_NONE;
+    if(member != NUM_PARTY_MEMBERS){
+        return gSaveBlock2Ptr->gPartyMembers[member].abilities[0];
+    }
+    else if(VarGet(VAR_ENEMY_1_SPECIES) == species && VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1) != ABILITY_NONE){
+        return VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_1);
+    }
+    else if(VarGet(VAR_ENEMY_2_SPECIES) == species && VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1) != ABILITY_NONE){
+        return VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_1);
+    }
+    else{
+        if (abilityNum < NUM_ABILITY_SLOTS)
+            gLastUsedAbility = gSpeciesInfo[species].abilities[abilityNum];
+        else
+            gLastUsedAbility = ABILITY_NONE;
 
-    if (abilityNum >= NUM_NORMAL_ABILITY_SLOTS) // if abilityNum is empty hidden ability, look for other hidden abilities
-    {
-        for (i = NUM_NORMAL_ABILITY_SLOTS; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++)
+        if (abilityNum >= NUM_NORMAL_ABILITY_SLOTS) // if abilityNum is empty hidden ability, look for other hidden abilities
+        {
+            for (i = NUM_NORMAL_ABILITY_SLOTS; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++)
+            {
+                gLastUsedAbility = gSpeciesInfo[species].abilities[i];
+            }
+        }
+
+        for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
         {
             gLastUsedAbility = gSpeciesInfo[species].abilities[i];
         }
-    }
-
-    for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
-    {
-        gLastUsedAbility = gSpeciesInfo[species].abilities[i];
     }
 
     return gLastUsedAbility;
@@ -6192,6 +6231,29 @@ void DoMonFrontSpriteAnimation(struct Sprite *sprite, u16 species, bool8 noCry, 
     }
 }
 
+void PokemonNewSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame)
+{
+    if (!oneFrame && HasTwoFramesAnimation(species))
+        StartSpriteAnim(sprite, 1);
+    if (gSpeciesInfo[species].frontAnimDelay != 0)
+    {
+        // Animation has delay, start delay task
+        u8 taskId = CreateTask(Task_PokemonSummaryAnimateAfterDelay, 0);
+        STORE_PTR_IN_TASK(sprite, taskId, 0);
+        gTasks[taskId].sAnimId    = gSpeciesInfo[species].frontAnimId;
+        gTasks[taskId].sAnimDelay = gSpeciesInfo[species].frontAnimDelay;
+        SummaryScreen_SetAnimDelayTaskId(taskId);
+        SetSpriteCB_MonAnimDummy(sprite);
+        //StartSpriteAnim(sprite, 0);
+    }
+    else
+    {
+        // No delay, start animation
+        StartMonSummaryAnimation(sprite, gSpeciesInfo[species].frontAnimId);
+        //StartSpriteAnim(sprite, 0);
+    }
+}
+
 void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame)
 {
     if (!oneFrame && HasTwoFramesAnimation(species))
@@ -6297,14 +6359,24 @@ u16 PlayerGenderToFrontTrainerPicId(u8 playerGender)
 
 void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality)
 {
-    u8 getFlagCaseId = (caseId == FLAG_SET_SEEN) ? FLAG_GET_SEEN : FLAG_GET_CAUGHT;
-    if (!GetSetPokedexFlag(nationalNum, getFlagCaseId)) // don't set if it's already set
+    if (caseId == FLAG_SET_SEEN)
     {
         GetSetPokedexFlag(nationalNum, caseId);
         if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_UNOWN)
             gSaveBlock2Ptr->pokedex.unownPersonality = personality;
         if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_SPINDA)
             gSaveBlock2Ptr->pokedex.spindaPersonality = personality;
+    }
+    else
+    {
+        if (!GetSetPokedexFlag(nationalNum, FLAG_GET_CAUGHT)) // don't set if it's already set
+        {
+            GetSetPokedexFlag(nationalNum, caseId);
+            if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_UNOWN)
+                gSaveBlock2Ptr->pokedex.unownPersonality = personality;
+            if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_SPINDA)
+                gSaveBlock2Ptr->pokedex.spindaPersonality = personality;
+        }
     }
 }
 
@@ -7078,16 +7150,16 @@ u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerand
 
     for (i = 0; i < MAX_MON_INNATES; i++)
     {
-        if (gSpeciesInfo[species].innates[i] == ability)
+        if (GetSpeciesInnate(species, i) == ability || ability == ABILITY_INTIMIDATE)
             {innateNum = innateNum + 2 + i;
             //DebugPrintf("INNATE FOUND: %d", innateNum - 1);
             }
     }
     
     //if (!disablerandomizer) {
-    //    innate1 = RandomizeInnate(gBaseStats[species].innates[0], species, personality);
-    //    innate2 = RandomizeInnate(gBaseStats[species].innates[1], species, personality);
-    //    innate3 = RandomizeInnate(gBaseStats[species].innates[2], species, personality);
+    //    innate1 = RandomizeInnate(GetSpeciesInnate(species, 0), species, personality);
+    //    innate2 = RandomizeInnate(GetSpeciesInnate(species, 1), species, personality);
+    //    innate3 = RandomizeInnate(GetSpeciesInnate(species, 2), species, personality);
     //}
         return innateNum;
 }
@@ -7106,16 +7178,41 @@ bool8 MonHasTrait(struct Pokemon *mon, u16 ability, bool8 disableRandomizer)
     return (GetMonAbility(mon) == ability || SpeciesHasInnate(species, ability, personality, disableRandomizer));
 } 
 
-u16 GetSpeciesInnate(u16 species, u8 traitNum, u32 personality, bool8 disablerandomizer) {
-    //u8 i;
+u16 GetSpeciesInnate(u16 species, u8 traitNum){
+    u8 member = isSpeciesAPartyMember(species);
+    if(member != NUM_PARTY_MEMBERS){
+        return gSaveBlock2Ptr->gPartyMembers[member].abilities[traitNum + 1];
+    }
+    else if(VarGet(VAR_ENEMY_1_SPECIES) == species){
+        if(MAX_MON_INNATES > 0){
+            u16 ability = VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_2 + traitNum);
 
-    //if (!disablerandomizer) {
-    //    return RandomizeInnate(gBaseStats[species].innates[traitNum], species, personality);
-    //}
-    if (MAX_MON_INNATES > 0)
+            if (ability == ABILITY_NONE)
+                ability = gSpeciesInfo[species].innates[traitNum - 1];
+            
+            return ability;
+        }
+        else
+            return ABILITY_NONE;
+    }
+    else if(VarGet(VAR_ENEMY_2_SPECIES) == species){
+        if(MAX_MON_INNATES > 0){
+            u16 ability = VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_2 + traitNum);
+
+            if (ability == ABILITY_NONE)
+                ability = gSpeciesInfo[species].innates[traitNum - 1];
+            
+            return ability;
+        }
+        else
+            return ABILITY_NONE;
+    }
+    else{
+        if (MAX_MON_INNATES > 0)
             return gSpeciesInfo[species].innates[traitNum - 1];
-    else
-        return 0;
+        else
+            return ABILITY_NONE;
+    }
 }
 
 //Extra Held Item Stuff
@@ -7156,4 +7253,21 @@ u8 GetNumOfHeldItems(struct Pokemon *mon){
     }
 
     return MAX_HELD_ITEMS; //No Empty Slot
+}
+
+u16 GetSpeciesFromPartyMember(u8 member){
+    return sPartyMembersToSpecies[member];
+}
+
+u8 isSpeciesAPartyMember(u16 species){
+    u8 i;
+
+    for(i = 0; i < NUM_PARTY_MEMBERS; i++){
+        u16 partySpecies = GetSpeciesFromPartyMember(i);
+
+        if (species == partySpecies)
+            return i;
+    }
+
+    return NUM_PARTY_MEMBERS;
 }
