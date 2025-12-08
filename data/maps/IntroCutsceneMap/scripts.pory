@@ -89,6 +89,44 @@ Common_Movement_FaceUp_LockportTrail:
 	lock_facing_direction
 	step_end
 
+BraveTemplate1:
+	.string "Choose your actions then press\nstart to act.$"
+
+BraveTemplate2:
+	.string "Most actions cost one {COLOR GREEN}{SHADOW LIGHT_GREEN}{DOWN_ARROW}$"
+
+BraveTemplate3:
+	.string "You automatically gain one {COLOR GREEN}{SHADOW LIGHT_GREEN}Action Point$"
+	
+BraveTemplate4:
+	.string "at the end of each turn.$"
+
+BraveTemplate5:
+	.string "You can select up to four actions per\n turn.$"
+
+BraveTemplate6:
+	.string "You may use more actions than you have\n{COLOR GREEN}{SHADOW LIGHT_GREEN}Action Points$"
+
+BraveTemplate7:	
+	.string "stored. This\n"
+	.string "will result in an {COLOR RED}{SHADOW LIGHT_RED}Action Point Deficit$"
+
+BraveTemplate8:
+	.string "An {COLOR RED}{SHADOW LIGHT_RED}Action Point Defecit$"
+
+BraveTemplate9:
+	.string "is when you have negative action points\n to start a turn.$"
+
+BraveTemplate10:
+	.string "While you are in an\n {COLOR RED}{SHADOW LIGHT_RED}Action Point Defecit$"
+
+BraveTemplate11:
+	.string "you will not be able to act until your\n {COLOR GREEN}{SHADOW LIGHT_GREEN}Action Points$"
+
+BraveTemplate12:
+	.string "reach at least 1 at the start of the turn.$"
+
+
 SummitCaverns_Text_TestSubjectResultsLattka1:	
 	.string "Excellent…\p"
 	.string "The prototype is outperforming even\n"

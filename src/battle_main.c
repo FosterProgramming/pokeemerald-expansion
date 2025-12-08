@@ -3425,7 +3425,13 @@ static void DoBattleIntro(void)
         BtlController_EmitGetMonData(battler, BUFFER_A, REQUEST_ALL_BATTLE, 0);
         MarkBattlerForControllerExec(battler);
         gBattleStruct->introState++;
-        HelpSystem_AddTrigger(TRIGGER_HEAL);
+        HelpSystem_AddTrigger(TRIGGER_BRAVE_1);
+        HelpSystem_AddTrigger(TRIGGER_BRAVE_2);
+        HelpSystem_AddTrigger(TRIGGER_BRAVE_3);
+        HelpSystem_AddTrigger(TRIGGER_BRAVE_9);
+        HelpSystem_AddTrigger(TRIGGER_DEFAULT_1);
+        HelpSystem_AddTrigger(TRIGGER_DEFAULT_2);
+        HelpSystem_AddTrigger(TRIGGER_DEFAULT_3);
         break;
     case BATTLE_INTRO_STATE_LOOP_BATTLER_DATA:
         if (!gBattleControllerExecFlags)

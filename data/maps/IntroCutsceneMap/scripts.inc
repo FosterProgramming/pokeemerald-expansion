@@ -181,214 +181,290 @@ Common_Movement_FaceUp_LockportTrail:
 # 91 "data/maps/IntroCutsceneMap/scripts.pory"
 
 # 92 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsLattka1:	
+BraveTemplate1:
 # 93 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Excellent…\p"
+	.string "Choose your actions then press\nstart to act.$"
 # 94 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "The prototype is outperforming even\n"
+
 # 95 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "our most optimistic expectations.\p"
+BraveTemplate2:
 # 96 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Even with your failure to secure the\n"
+	.string "Most actions cost one {COLOR GREEN}{SHADOW LIGHT_GREEN}{DOWN_ARROW}$"
 # 97 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Meteorite…\p"
+
 # 98 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "We finally got the results that we were\n"
+BraveTemplate3:
 # 99 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "looking for.\p"
+	.string "You automatically gain one {COLOR GREEN}{SHADOW LIGHT_GREEN}Action Point$"
 # 100 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "The perfect fusion of human and Pokémon\n"
+	
 # 101 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "DNA…\p"
+BraveTemplate4:
 # 102 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Is now a reality.$"
+	.string "at the end of each turn.$"
 # 103 "data/maps/IntroCutsceneMap/scripts.pory"
 
 # 104 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsZendanoLooksLikeASeal:
+BraveTemplate5:
 # 105 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Hmm…\n"
+	.string "You can select up to four actions per\n turn.$"
 # 106 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Ya sure it worked properly?\p"
+
 # 107 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "It just looks like a regular ol' Seel\n"
+BraveTemplate6:
 # 108 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "to me.$"
+	.string "You may use more actions than you have\n{COLOR GREEN}{SHADOW LIGHT_GREEN}Action Points$"
 # 109 "data/maps/IntroCutsceneMap/scripts.pory"
 
 # 110 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsLattkaYouFool:
+BraveTemplate7:	
 # 111 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Hah!\p"
+	.string "stored. This\n"
 # 112 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Of course, a simpleton like you would\n"
+	.string "will result in an {COLOR RED}{SHADOW LIGHT_RED}Action Point Deficit$"
 # 113 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "not understand the magnitude of this.\p"
+
 # 114 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "What you are seeing is a new being.\p"
+BraveTemplate8:
 # 115 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Neither human nor Pokémon…\n"
+	.string "An {COLOR RED}{SHADOW LIGHT_RED}Action Point Defecit$"
 # 116 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "But something with much more potential.$"
+
 # 117 "data/maps/IntroCutsceneMap/scripts.pory"
-
+BraveTemplate9:
 # 118 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsZendano1:	
+	.string "is when you have negative action points\n to start a turn.$"
 # 119 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "If ya say so, man.\n"
+
 # 120 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "So, is it ready for field testing?\p"
+BraveTemplate10:
 # 121 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "You know the Boss has been on my tail\n"
+	.string "While you are in an\n {COLOR RED}{SHADOW LIGHT_RED}Action Point Defecit$"
 # 122 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "about that.$"
+
 # 123 "data/maps/IntroCutsceneMap/scripts.pory"
-
+BraveTemplate11:
 # 124 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsLattka2:
+	.string "you will not be able to act until your\n {COLOR GREEN}{SHADOW LIGHT_GREEN}Action Points$"
 # 125 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Not quite.\p"
+
 # 126 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "The specimen is still proving rather\n"
+BraveTemplate12:
 # 127 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "difficult to work with.\p"
+	.string "reach at least 1 at the start of the turn.$"
 # 128 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "His participation has not been…\n"
+
 # 129 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Strictly voluntary.\p"
+
 # 130 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "He used to be a proud member of the\n"
+SummitCaverns_Text_TestSubjectResultsLattka1:	
 # 131 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "airforce, you see.\p"
+	.string "Excellent…\p"
 # 132 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Oh, for the most part, he obeys commands\n"
+	.string "The prototype is outperforming even\n"
 # 133 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "just fine.\p"
+	.string "our most optimistic expectations.\p"
 # 134 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "But a part of his old self is still in\n"
+	.string "Even with your failure to secure the\n"
 # 135 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "there, fighting back.\p"
+	.string "Meteorite…\p"
 # 136 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "No matter.\p"
+	.string "We finally got the results that we were\n"
 # 137 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "With time, he will be conditioned out\n"
+	.string "looking for.\p"
 # 138 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "of it.$"
+	.string "The perfect fusion of human and Pokémon\n"
 # 139 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "DNA…\p"
 # 140 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsZendano2:	
+	.string "Is now a reality.$"
 # 141 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "I'll be telling the Boss that, then.\p"
+
 # 142 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "But if he complains, it's on you.$"
+SummitCaverns_Text_TestSubjectResultsZendanoLooksLikeASeal:
 # 143 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "Hmm…\n"
 # 144 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_WhatWasThat:
+	.string "Ya sure it worked properly?\p"
 # 145 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "What was that?$"
+	.string "It just looks like a regular ol' Seel\n"
 # 146 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "to me.$"
 # 147 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_YouAgain:
+
 # 148 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "You again?!$"
+SummitCaverns_Text_TestSubjectResultsLattkaYouFool:
 # 149 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "Hah!\p"
 # 150 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsLattka3:	
+	.string "Of course, a simpleton like you would\n"
 # 151 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Ah, you know each other?\p"
+	.string "not understand the magnitude of this.\p"
 # 152 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Why, could it be the very same thug\n"
+	.string "What you are seeing is a new being.\p"
 # 153 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "that stole the Meteorite from you, Z?$"
+	.string "Neither human nor Pokémon…\n"
 # 154 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "But something with much more potential.$"
 # 155 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsZendano3:
+
 # 156 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Darn right he is!\p"
+SummitCaverns_Text_TestSubjectResultsZendano1:	
 # 157 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Let me at him, Lattka!\n"
+	.string "If ya say so, man.\n"
 # 158 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "I'm itching for a rematch!$"
+	.string "So, is it ready for field testing?\p"
 # 159 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "You know the Boss has been on my tail\n"
 # 160 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "about that.$"
 # 161 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_TestSubjectResultsLattka4:
-# 162 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Now, now, Z.\n"
-# 163 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Don't be so hasty.\p"
-# 164 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "We don't want a repeat of your failure.\p"
-# 165 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "No, you go and report to the Boss…\p"
-# 166 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "That we have some kid snooping in the\n"
-# 167 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "affairs of Team MAGA.\p"
-# 168 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "… … …\p"
-# 169 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "…I said go, now.$"
-# 170 "data/maps/IntroCutsceneMap/scripts.pory"
 
+# 162 "data/maps/IntroCutsceneMap/scripts.pory"
+SummitCaverns_Text_TestSubjectResultsLattka2:
+# 163 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Not quite.\p"
+# 164 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "The specimen is still proving rather\n"
+# 165 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "difficult to work with.\p"
+# 166 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "His participation has not been…\n"
+# 167 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Strictly voluntary.\p"
+# 168 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "He used to be a proud member of the\n"
+# 169 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "airforce, you see.\p"
+# 170 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Oh, for the most part, he obeys commands\n"
 # 171 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_LattkaChallengesFro:
+	.string "just fine.\p"
 # 172 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Meanwhile…\n"
+	.string "But a part of his old self is still in\n"
 # 173 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Look at who we have here.\p"
+	.string "there, fighting back.\p"
 # 174 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "You wanted to play hero, eh?\n"
+	.string "No matter.\p"
 # 175 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Very well, then.\p"
+	.string "With time, he will be conditioned out\n"
 # 176 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "This might be a fine occasion to\n"
+	.string "of it.$"
 # 177 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "test the worth of my specimen.\p"
+
 # 178 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "He might not be fully ready yet, but…\p"
+SummitCaverns_Text_TestSubjectResultsZendano2:	
 # 179 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "…Oh, to hell with it.\p"
+	.string "I'll be telling the Boss that, then.\p"
 # 180 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Seel, show me what you can do!$"
+	.string "But if he complains, it's on you.$"
 # 181 "data/maps/IntroCutsceneMap/scripts.pory"
 
 # 182 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_LattkaDefeat1:
+SummitCaverns_Text_WhatWasThat:
 # 183 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Well, this is awkward."
+	.string "What was that?$"
 # 184 "data/maps/IntroCutsceneMap/scripts.pory"
 
 # 185 "data/maps/IntroCutsceneMap/scripts.pory"
-SummitCaverns_Text_LattkaBattle:
+SummitCaverns_Text_YouAgain:
 # 186 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "You really don't see it, do you?\p"
+	.string "You again?!$"
 # 187 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Everything we're doing is for the\n"
+
 # 188 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "greater good!\p"
+SummitCaverns_Text_TestSubjectResultsLattka3:	
 # 189 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "I guess I'll just have to show you,\n"
+	.string "Ah, you know each other?\p"
 # 190 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "then!$"
+	.string "Why, could it be the very same thug\n"
 # 191 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "that stole the Meteorite from you, Z?$"
 # 192 "data/maps/IntroCutsceneMap/scripts.pory"
-SpeakerName_Lattka:
+
 # 193 "data/maps/IntroCutsceneMap/scripts.pory"
-	.string "Lattka$"
+SummitCaverns_Text_TestSubjectResultsZendano3:
 # 194 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "Darn right he is!\p"
 # 195 "data/maps/IntroCutsceneMap/scripts.pory"
-
+	.string "Let me at him, Lattka!\n"
 # 196 "data/maps/IntroCutsceneMap/scripts.pory"
-SpeakerName_Zendano:
+	.string "I'm itching for a rematch!$"
 # 197 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 198 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 199 "data/maps/IntroCutsceneMap/scripts.pory"
+SummitCaverns_Text_TestSubjectResultsLattka4:
+# 200 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Now, now, Z.\n"
+# 201 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Don't be so hasty.\p"
+# 202 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "We don't want a repeat of your failure.\p"
+# 203 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "No, you go and report to the Boss…\p"
+# 204 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "That we have some kid snooping in the\n"
+# 205 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "affairs of Team MAGA.\p"
+# 206 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "… … …\p"
+# 207 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "…I said go, now.$"
+# 208 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 209 "data/maps/IntroCutsceneMap/scripts.pory"
+SummitCaverns_Text_LattkaChallengesFro:
+# 210 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Meanwhile…\n"
+# 211 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Look at who we have here.\p"
+# 212 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "You wanted to play hero, eh?\n"
+# 213 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Very well, then.\p"
+# 214 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "This might be a fine occasion to\n"
+# 215 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "test the worth of my specimen.\p"
+# 216 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "He might not be fully ready yet, but…\p"
+# 217 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "…Oh, to hell with it.\p"
+# 218 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Seel, show me what you can do!$"
+# 219 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 220 "data/maps/IntroCutsceneMap/scripts.pory"
+SummitCaverns_Text_LattkaDefeat1:
+# 221 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Well, this is awkward."
+# 222 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 223 "data/maps/IntroCutsceneMap/scripts.pory"
+SummitCaverns_Text_LattkaBattle:
+# 224 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "You really don't see it, do you?\p"
+# 225 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Everything we're doing is for the\n"
+# 226 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "greater good!\p"
+# 227 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "I guess I'll just have to show you,\n"
+# 228 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "then!$"
+# 229 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 230 "data/maps/IntroCutsceneMap/scripts.pory"
+SpeakerName_Lattka:
+# 231 "data/maps/IntroCutsceneMap/scripts.pory"
+	.string "Lattka$"
+# 232 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 233 "data/maps/IntroCutsceneMap/scripts.pory"
+
+# 234 "data/maps/IntroCutsceneMap/scripts.pory"
+SpeakerName_Zendano:
+# 235 "data/maps/IntroCutsceneMap/scripts.pory"
 	.string "Zendano$"

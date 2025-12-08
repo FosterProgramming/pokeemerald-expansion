@@ -435,6 +435,8 @@ void BraveFirstTurnSetAP(void)
 {
     for (u32 battler = 0; battler < 4; battler++)
     {
+        if (gBattleMons[battler].species == 0)
+            continue;
         gBattleStruct->monStoredAP[battler] = 1;
         //  Set up graphics
         struct Pokemon *party = GetBattlerParty(battler);
@@ -481,6 +483,8 @@ void BraveResetAP(u32 battler)
 
 static void ChangeAPGraphics(u32 battler)
 {
+    if (gBattleMons[battler].species == 0)
+        return;
     u32 *dst = (u32 *)(OBJ_VRAM0 + TILE_SIZE_4BPP * GetSpriteTileStartByTag(BATTLER_INDICATOR_TAG + battler));
     const u32 *src = GetIndicatorSpriteSrc(battler);
     for (u32 i = 0; i < 16; i++)

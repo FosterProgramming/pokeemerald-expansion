@@ -672,3 +672,44 @@ $(SPINDAGFXDIR)/spot_3.1bpp: %.1bpp: %.png
 
 graphics/help_messages/help_heal.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_brave_2.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8	
+
+graphics/help_messages/help_brave_3.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8	
+
+graphics/help_messages/help_brave_9.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_brave_4.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_brave_5.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8	
+
+graphics/help_messages/help_brave_6.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8	
+
+graphics/help_messages/help_brave_7.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_brave_8.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_brave_10.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_default_1.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_default_2.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_default_3.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+graphics/help_messages/help_default_4.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+	

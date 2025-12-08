@@ -341,6 +341,12 @@ static void HandleInputChooseAction(u32 battler)
             }
             else
             {
+                HelpSystem_AddTrigger(TRIGGER_BRAVE_4);
+                HelpSystem_AddTrigger(TRIGGER_BRAVE_5);
+                HelpSystem_AddTrigger(TRIGGER_BRAVE_6);
+                HelpSystem_AddTrigger(TRIGGER_BRAVE_7);
+                HelpSystem_AddTrigger(TRIGGER_BRAVE_8);
+                HelpSystem_AddTrigger(TRIGGER_BRAVE_10);
                 gBattleStruct->isBraveSelector = TRUE;
                 PlayerHandleChooseAction(battler);
                 return;

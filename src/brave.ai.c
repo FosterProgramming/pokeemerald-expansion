@@ -262,7 +262,7 @@ static void AddRandomActionForBattler(u32 battler){
     else
     {
         u32 target = Random32() & 0x2;
-        u32 move = Random32() & MAX_MON_MOVES;
+        u32 move = Random32() & (MAX_MON_MOVES - 1);
         BraveAddMoveToQueue(battler, move, target);
     }
 }

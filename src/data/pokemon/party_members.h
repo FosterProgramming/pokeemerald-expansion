@@ -82,7 +82,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill_type   = SKILL_TREE_TYPE_MOVE,
             .skill        = MOVE_ICY_WIND,
             .neededPoints = 5,
-            .unlockLevel  = 35,
+            .unlockLevel  = 25,
             .skillNeeded  = PARTY_MEMBER_SKILLS_1,
         },
         [PARTY_MEMBER_SKILLS_3] =
@@ -90,23 +90,31 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill_type   = SKILL_TREE_TYPE_MOVE,
             .skill        = MOVE_BLIZZARD,
             .neededPoints = 10,
-            .unlockLevel  = 35,
+            .unlockLevel  = 25,
             .skillNeeded  = PARTY_MEMBER_SKILLS_2,
         },
         [PARTY_MEMBER_SKILLS_4] =
         {
             .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_BUBBLE_BEAM,
+            .skill        = MOVE_CHILLING_WATER,
             .neededPoints = 5,
-            .unlockLevel  = 35,
+            .unlockLevel  = 25,
         },
         [PARTY_MEMBER_SKILLS_5] =
         {
             .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_SURF,
+            .neededPoints = 10,
+            .unlockLevel  = 25,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_4,
+        },
+        [PARTY_MEMBER_SKILLS_6] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
             .skill        = MOVE_HYDRO_PUMP,
             .neededPoints = 10,
-            .unlockLevel  = 35,
-            .skillNeeded  = PARTY_MEMBER_SKILLS_4,
+            .unlockLevel  = 25,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_5,
         },
         [PARTY_MEMBER_SKILLS_7] =
         {
@@ -121,14 +129,14 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = STAT_SPDEF,
             .argument     = 4,
             .neededPoints = 3,
-            .unlockLevel  = 35,
+            .unlockLevel  = 25,
         },
         [PARTY_MEMBER_SKILLS_9] =
         {
             .skill_type   = SKILL_TREE_TYPE_ABILITY,
             .skill        = ABILITY_SHEER_FORCE,
             .neededPoints = 4,
-            .unlockLevel  = 35,
+            .unlockLevel  = 25,
         },
         [PARTY_MEMBER_SKILLS_10] =
         {
@@ -143,7 +151,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill_type   = SKILL_TREE_TYPE_CAP,
             .skill        = 20, //+10 EVs
             .neededPoints = 10,
-            .unlockLevel  = 35,
+            .unlockLevel  = 25,
         },
         [PARTY_MEMBER_SKILLS_12] =
         {
