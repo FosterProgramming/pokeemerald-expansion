@@ -529,7 +529,7 @@ struct RankingHall2P
 };
 
 //Configuration
-#define MAX_SKILLS_PER_TREE 20
+#define MAX_SKILLS_PER_TREE 35
 
 struct PartyMemberData
 {

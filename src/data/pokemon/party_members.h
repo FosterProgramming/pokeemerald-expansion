@@ -69,7 +69,7 @@ enum{
 struct SkillTree
 {
     u8 skill_type;
-    u8 skill;
+    u16 skill;
     u8 argument;
     u8 neededPoints;
     u8 unlockLevel;
@@ -293,7 +293,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
         [PARTY_MEMBER_SKILLS_28] =
         {
             .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_WATER_VEIL
+            .skill        = ABILITY_WATER_VEIL,
             .neededPoints = 4,
             .unlockLevel  = 0,
         },
