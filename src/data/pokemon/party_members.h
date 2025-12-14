@@ -166,7 +166,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = ABILITY_ICE_BODY,
             .neededPoints = 3,
             .unlockLevel  = 0,
-            .skillNeeded  = PARTY_MEMBER_SKILLS_11,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_10,
         },
         [PARTY_MEMBER_SKILLS_12] =
         {
