@@ -347,7 +347,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
         {
             .skill_type   = SKILL_TREE_TYPE_CAP,
             .skill        = 200,
-            .neededPoints = 0,
+            .neededPoints = 10,
             .unlockLevel  = 0,
             .skillNeeded  = PARTY_MEMBER_SKILLS_34,
         },
@@ -425,35 +425,256 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
         [PARTY_MEMBER_SKILLS_1] =
         {
             .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_BATON_PASS,
-            .neededPoints = 5,
+            .skill        = MOVE_TACKLE,
+            .neededPoints = 0,
             .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_2] =
         {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_ATK,
-            .argument     = 4,
-            .neededPoints = 10,
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_RUN_AWAY,
+            .neededPoints = 0,
             .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_3] =
         {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_ADAPTABILITY,
-            .neededPoints = 5,
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_BUBBLE,
+            .neededPoints = 0,
             .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_4] =
         {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_BUBBLEBEAM,
+            .neededPoints = 6,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_3,
+        },
+        [PARTY_MEMBER_SKILLS_5] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_CALM_MIND,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_6] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_NASTY_PLOT,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_5,
+        },
+        [PARTY_MEMBER_SKILLS_7] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_STORM_DRAIN,
+            .neededPoints = 8,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_6,
+        },
+        [PARTY_MEMBER_SKILLS_8] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_AMNESIA,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_5,
+        },
+        [PARTY_MEMBER_SKILLS_9] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_WATER_ABSORB, //Placeholder for Rigid Body
+            .neededPoints = 4,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_8,
+        },
+        [PARTY_MEMBER_SKILLS_10] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_THUNDERSHOCK,
+            .neededPoints = 0,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_11] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_CHARGE_BEAM,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_10,
+        },
+        [PARTY_MEMBER_SKILLS_12] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_SHIFT_GEAR, //Placeholder for overclock
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_13] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_AGILITY,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_12,
+        },
+        [PARTY_MEMBER_SKILLS_14] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_SPEED_BOOST,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_13,
+        },
+        [PARTY_MEMBER_SKILLS_15] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_LOCK_ON,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_12,
+        },
+        [PARTY_MEMBER_SKILLS_16] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_LIGHTNING_ROD,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_15,
+        },
+        [PARTY_MEMBER_SKILLS_17] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_EMBER,
+            .neededPoints = 0,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_18] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_FLAME_CHARGE,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_17,
+        },
+        [PARTY_MEMBER_SKILLS_19] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_CURSE,
+            .neededPoints = 0,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_20] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_SWORDS_DANCE,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_19,
+        },
+        [PARTY_MEMBER_SKILLS_21] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_GUTS,
+            .neededPoints = 7,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_20,
+        },
+        [PARTY_MEMBER_SKILLS_22] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_ADAPTABILITY,
+            .neededPoints = 12,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_20,
+        },
+        [PARTY_MEMBER_SKILLS_23] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_ACID_ARMOR,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_19,
+        },
+        [PARTY_MEMBER_SKILLS_24] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_FLASH_FIRE,
+            .neededPoints = 6,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_23,
+        },
+        [PARTY_MEMBER_SKILLS_25] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_SUBSTITUTE,
+            .neededPoints = 4,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_26] =
+        {
+            
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_BATON_PASS,
+            .neededPoints = 4,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_25,
+        },
+        [PARTY_MEMBER_SKILLS_27] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_WISH,
+            .neededPoints = 3,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_25,
+        },
+        [PARTY_MEMBER_SKILLS_28] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_HEAL_BELL,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_29] =
+        {
             .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 10, //+10 EVs
+            .skill        = 40,
+            .neededPoints = 2,
+            .unlockLevel  = 0,
+        },
+        [PARTY_MEMBER_SKILLS_30] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 80,
+            .neededPoints = 4,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_31,
+        },
+        [PARTY_MEMBER_SKILLS_31] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 120,
+            .neededPoints = 6,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_32,
+        },
+        [PARTY_MEMBER_SKILLS_32] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 160,
+            .neededPoints = 8,
+            .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_33,
+        },
+        [PARTY_MEMBER_SKILLS_33] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 200,
             .neededPoints = 10,
             .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_34,
         },
     },
     [PARTY_MEMBER_SNORLAX] = 
