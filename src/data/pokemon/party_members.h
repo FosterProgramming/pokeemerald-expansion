@@ -64,6 +64,7 @@ enum{
     PARTY_MEMBER_SKILLS_33,
     PARTY_MEMBER_SKILLS_34,
     PARTY_MEMBER_SKILLS_35,
+    PARTY_MEMBER_SKILLS_36,
 };
 
 struct SkillTree
@@ -351,73 +352,12 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .unlockLevel  = 0,
             .skillNeeded  = PARTY_MEMBER_SKILLS_34,
         },
-    },
-    [PARTY_MEMBER_PERSIAN] = 
-    {
-        [PARTY_MEMBER_SKILLS_1] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_SCRATCH,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_2] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_MOVE,
-            .skill        = MOVE_HIGH_JUMP_KICK,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_3] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_CAP,
-            .skill        = 10, //+10 EVs
-            .neededPoints = 10,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_4] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_STAT,
-            .skill        = STAT_SPEED,
-            .argument     = 4,
-            .neededPoints = 10,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_5] =
+        [PARTY_MEMBER_SKILLS_36] =
         {
             .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_TECHNICIAN,
-            .neededPoints = 5,
+            .skill        = ABILITY_THICK_FAT,
+            .neededPoints = 0,
             .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_6] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_UNNERVE,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_7] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_PROTEAN,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
-        },
-        [PARTY_MEMBER_SKILLS_8] =
-        {
-            .skill_type   = SKILL_TREE_TYPE_ABILITY,
-            .skill        = ABILITY_BLAZE,
-            .neededPoints = 5,
-            .unlockLevel  = 0,
-            .skillNeeded  = SKILL_NONE,
         },
     },
     [PARTY_MEMBER_EEVEE] = 

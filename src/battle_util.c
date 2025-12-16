@@ -13210,6 +13210,18 @@ bool8 AddCustomScriptForBoss(u32 battler){
     if (bossNumber != 0 && battler == B_POSITION_OPPONENT_LEFT)
     {
         switch(bossNumber){
+            case BRAVE_BOSS_PORYGON:
+            {
+                u16 bossHP          = gBattleMons[battler].hp;
+                u16 bossHPMaxHP     = gBattleMons[battler].maxHP;
+                bool8 isBossAtLowHP = bossHP < (bossHPMaxHP / 2);
+                if(IsBattlerAlive(battler) && isBossAtLowHP && TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer)){
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_ElectivireBossHalfHealth;
+                    return TRUE;
+                }
+            }
+            break;
             case BRAVE_BOSS_ELECTIVIRE:
             {
                 u16 bossHP          = gBattleMons[battler].hp;

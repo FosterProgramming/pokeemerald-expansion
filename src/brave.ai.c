@@ -100,6 +100,7 @@ static u8 GetCurrentBravePhase(u32 battler){
     u8 currentTurnNumber       = VarGet(VAR_BRAVE_ACTION_NUM);
     bool8 useRandomPhase       = (Random() % 2) == 0; //Chances have to be changed as needed to spice up things
     bool8 actionNumber         = BraveGetBattlerActionCount(battler);
+    u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
 
     GenerateRandomTarget();
 
@@ -221,8 +222,9 @@ static u8 GetCurrentBravePhase(u32 battler){
 
         return BOSS_BRAVE_PHASE_2;
     }
-
-    if(currentTurnNumber < MAX_BRAVE_ACTIONS){
+    
+    if(bossNumber == BRAVE_BOSS_ELECTIVIRE
+        && currentTurnNumber < MAX_BRAVE_ACTIONS){
         //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
         MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
         return BOSS_BRAVE_PHASE_1;
@@ -280,6 +282,13 @@ static void AddOptimalActionForBattler(u32 battler){
 }
 
 static const u16 sBraveBossesActions[NUMBER_OF_BOSSES][BOSS_BRAVE_PHASE_4 + 1][MAX_BRAVE_ACTIONS] = {
+    [BRAVE_BOSS_PORYGON] = {
+        [BOSS_PHASE_DEFAULT]      = { MOVE_NONE,          MOVE_NONE,          MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_1]      = { MOVE_THUNDERSHOCK,  MOVE_THUNDERSHOCK,  MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_2]      = { MOVE_TACKLE,        MOVE_TACKLE,        MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_3]      = { MOVE_RECOVER,       MOVE_RECOVER,       MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_4]      = { MOVE_PSYBEAM,       MOVE_PSYBEAM,       MOVE_NONE,          MOVE_NONE},
+    },
     [BRAVE_BOSS_ELECTIVIRE] = {
         [BOSS_PHASE_DEFAULT]      = { MOVE_NONE,          MOVE_NONE,          MOVE_NONE,          MOVE_NONE},
         [BOSS_BRAVE_PHASE_1]      = { MOVE_CHARGE,        MOVE_THUNDER_PUNCH, MOVE_CHARGE,        MOVE_THUNDER_PUNCH},
@@ -301,6 +310,56 @@ void AddAiActionsForBattler(u32 battler)
             AddRandomActionForBattler(battler);
         }
         break;
+        case BRAVE_BOSS_PORYGON:
+        {
+            if(battler == B_POSITION_OPPONENT_LEFT){
+                u8 actionNum  = BraveGetBattlerActionCount(battler);
+                u8 phase      = GetCurrentBravePhase(battler);
+                u16 move      = MOVE_NONE;
+                bool8 useSlot = FALSE;
+
+                //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
+                if(gBattleResults.battleTurnCounter % 2 == 0)
+                    {
+                        BraveAddDefaultToQueue(battler);
+                    }
+                else if(phase != BOSS_PHASE_DEFAULT){
+                    switch(phase){
+                        default:
+                            move = sBraveBossesActions[bossNumber][phase][actionNum];
+                        break;
+                        //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
+                        case BOSS_BRAVE_PHASE_2:
+                            move   = sBraveBossesActions[bossNumber][phase][actionNum];
+                        //Chain 3: to be used to target Seel specifically, if Seel is within KO range
+                        case BOSS_BRAVE_PHASE_3:
+                            move   = sBraveBossesActions[bossNumber][phase][actionNum];
+                        break;
+                        case BOSS_BRAVE_PHASE_RANDOM:
+                        {
+                            move    = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            useSlot = TRUE;
+                        }
+                        break;
+                        case BOSS_BRAVE_PHASE_MISC:
+                            move = MOVE_THUNDER_WAVE;
+                        break;
+                        case BOSS_BRAVE_PHASE_HAZE:
+                            move = MOVE_HAZE;
+                        break;
+                    }
+
+                    if(sCurrentTarget == MAX_BATTLERS_COUNT)
+                        GenerateRandomTarget();
+                    
+                    if(useSlot)
+                        BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                    else
+                        BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
+                }
+
+            }
+        }
         case BRAVE_BOSS_ELECTIVIRE:
         {
             if(battler == B_POSITION_OPPONENT_LEFT){

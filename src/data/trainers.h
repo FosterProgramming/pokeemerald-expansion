@@ -470,9 +470,9 @@ F_TRAINER_FEMALE |
 #line 266
             .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 0, 0),
 #line 265
-            .iv = TRAINER_PARTY_IVS(31, 22, 23, 26, 24, 25),
+            .iv = TRAINER_PARTY_IVS(31, 0, 0, 0, 0, 0),
 #line 264
-            .lvl = 25,
+            .lvl = 1,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
