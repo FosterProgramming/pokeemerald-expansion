@@ -1,8 +1,8 @@
 static u16 sPartyMembersToSpecies[NUM_PARTY_MEMBERS] = 
 {
     [PARTY_MEMBER_DEWGONG]   = SPECIES_DEWGONG,
-    [PARTY_MEMBER_PERSIAN]   = SPECIES_PERSIAN,
     [PARTY_MEMBER_EEVEE]     = SPECIES_EEVEE,
+    [PARTY_MEMBER_PERSIAN]   = SPECIES_PERSIAN,
     [PARTY_MEMBER_SNORLAX]   = SPECIES_SNORLAX,
     [PARTY_MEMBER_HONCHKROW] = SPECIES_HONCHKROW,
     [PARTY_MEMBER_GENGAR]    = SPECIES_GENGAR,
@@ -91,6 +91,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_POWDER_SNOW,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_2] =
         {
@@ -98,6 +99,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_ICY_WIND,
             .neededPoints = 2,
             .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_1,
         },
         [PARTY_MEMBER_SKILLS_3] =
         {
@@ -129,6 +131,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_AURORA_BEAM,
             .neededPoints = 3,
             .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_1,
         },
         [PARTY_MEMBER_SKILLS_7] =
         {
@@ -160,6 +163,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_HAIL,
             .neededPoints = 3,
             .unlockLevel  = 0,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_1,
         },
         [PARTY_MEMBER_SKILLS_11] =
         {
@@ -175,6 +179,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_HEADBUTT,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_13] =
         {
@@ -190,6 +195,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_GROWL,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_15] =
         {
@@ -205,6 +211,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_WATER_GUN,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_17] =
         {
@@ -212,6 +219,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_RAIN_DANCE,
             .neededPoints = 4,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_18] =
         {
@@ -235,6 +243,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_AQUA_JET,
             .neededPoints = 2,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_21] =
         {
@@ -267,6 +276,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_CHILLING_WATER,
             .neededPoints = 2,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_25] =
         {
@@ -282,6 +292,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_HAZE,
             .neededPoints = 3,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_27] =
         {
@@ -297,6 +308,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = ABILITY_WATER_VEIL,
             .neededPoints = 4,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_29] =
         {
@@ -304,6 +316,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_REST,
             .neededPoints = 3,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_30] =
         {
@@ -319,6 +332,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = 40,
             .neededPoints = 2,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_32] =
         {
@@ -358,6 +372,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = ABILITY_THICK_FAT,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
     },
     [PARTY_MEMBER_EEVEE] = 
@@ -368,6 +383,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_TACKLE,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_2] =
         {
@@ -375,6 +391,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = ABILITY_RUN_AWAY,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_3] =
         {
@@ -382,6 +399,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_BUBBLE,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_4] =
         {
@@ -397,6 +415,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_CALM_MIND,
             .neededPoints = 3,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_6] =
         {
@@ -436,6 +455,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_THUNDERSHOCK,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_11] =
         {
@@ -451,6 +471,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_SHIFT_GEAR, //Placeholder for overclock
             .neededPoints = 3,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_13] =
         {
@@ -490,6 +511,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_EMBER,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_18] =
         {
@@ -505,6 +527,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_CURSE,
             .neededPoints = 0,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_20] =
         {
@@ -552,6 +575,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_SUBSTITUTE,
             .neededPoints = 4,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_26] =
         {
@@ -576,6 +600,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = MOVE_HEAL_BELL,
             .neededPoints = 5,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_29] =
         {
@@ -583,6 +608,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = 40,
             .neededPoints = 2,
             .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
         [PARTY_MEMBER_SKILLS_30] =
         {
@@ -590,7 +616,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = 80,
             .neededPoints = 4,
             .unlockLevel  = 0,
-            .skillNeeded  = PARTY_MEMBER_SKILLS_31,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_29,
         },
         [PARTY_MEMBER_SKILLS_31] =
         {
@@ -598,7 +624,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = 120,
             .neededPoints = 6,
             .unlockLevel  = 0,
-            .skillNeeded  = PARTY_MEMBER_SKILLS_32,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_30,
         },
         [PARTY_MEMBER_SKILLS_32] =
         {
@@ -606,7 +632,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = 160,
             .neededPoints = 8,
             .unlockLevel  = 0,
-            .skillNeeded  = PARTY_MEMBER_SKILLS_33,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_31,
         },
         [PARTY_MEMBER_SKILLS_33] =
         {
@@ -614,7 +640,43 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
             .skill        = 200,
             .neededPoints = 10,
             .unlockLevel  = 0,
-            .skillNeeded  = PARTY_MEMBER_SKILLS_34,
+            .skillNeeded  = PARTY_MEMBER_SKILLS_32,
+        },
+    },
+     [PARTY_MEMBER_PERSIAN] = 
+    {
+        [PARTY_MEMBER_SKILLS_1] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_ABILITY,
+            .skill        = ABILITY_IMMUNITY,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
+        },
+        [PARTY_MEMBER_SKILLS_2] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_STAT,
+            .skill        = STAT_HP,
+            .argument     = 4,
+            .neededPoints = 10,
+            .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
+        },
+        [PARTY_MEMBER_SKILLS_3] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_CAP,
+            .skill        = 10, //+10 EVs
+            .neededPoints = 10,
+            .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
+        },
+        [PARTY_MEMBER_SKILLS_4] =
+        {
+            .skill_type   = SKILL_TREE_TYPE_MOVE,
+            .skill        = MOVE_REST,
+            .neededPoints = 5,
+            .unlockLevel  = 0,
+            .skillNeeded  = SKILL_NONE,
         },
     },
     [PARTY_MEMBER_SNORLAX] = 
