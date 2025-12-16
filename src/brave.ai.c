@@ -360,6 +360,7 @@ void AddAiActionsForBattler(u32 battler)
 
             }
         }
+        break;
         case BRAVE_BOSS_ELECTIVIRE:
         {
             if(battler == B_POSITION_OPPONENT_LEFT){
