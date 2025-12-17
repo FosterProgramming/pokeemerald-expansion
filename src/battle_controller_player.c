@@ -856,6 +856,12 @@ void HandleInputChooseMove(u32 battler)
         PlaySE(SE_SELECT);
         MgbaPrintf(MGBA_LOG_WARN, "Cancel move select");
         gBattleStruct->gimmick.playerSelect = FALSE;
+        //  Clear out brave chain
+
+        for (u32 i = 0; i < 4; i++)
+            BraveClearBattlerAction(battler, i);
+        gBattleStruct->monBraveActions[battler] = 0;
+
         if (gBattleStruct->zmove.viewing)
         {
             ReloadMoveNames(battler);
