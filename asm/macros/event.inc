@@ -914,6 +914,11 @@
 	.byte \ignoreBPress
 	.endm
 
+	.macro comparepassword passwordId:req
+	callnative ScrCmd_comparepassword
+	.byte \passwordId
+	.endm
+
 	@ Nopped in Emerald.
 	.macro drawbox
 	.byte SCR_OP_DRAWBOX

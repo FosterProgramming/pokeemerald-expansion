@@ -19,6 +19,7 @@
 #include "item_icon.h"
 #include "constants/field_specials.h"
 #include "constants/items.h"
+#include "constants/passwords.h"
 #include "constants/script_menu.h"
 #include "constants/songs.h"
 
@@ -67,6 +68,11 @@ static void MultichoiceDynamicEventDebug_OnDestroy(struct DynamicListMenuEventAr
 static void MultichoiceDynamicEventShowItem_OnInit(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowItem_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowItem_OnDestroy(struct DynamicListMenuEventArgs *eventArgs);
+
+const u8 *const gPasswords[PASSWORD_COUNT] =
+{
+    [PASSWORD_ONE]                     = COMPOUND_STRING("ABC"),
+};
 
 static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollections[] =
 {
