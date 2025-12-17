@@ -375,6 +375,7 @@ static void HandleInputChooseAction(u32 battler)
             break;
         case 3: // Bottom right
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
+            BraveAddRunToQueue(battler);
             break;
         }
         PlayerBufferExecCompleted(battler);

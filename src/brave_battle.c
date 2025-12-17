@@ -160,6 +160,22 @@ void BraveSetCurrentAction(void)
     u32 speedThreshold = 0;
     u32 numBattlers = IsDoubleBattle() ? 4 : 2;
 
+    if (gBraveBattleAction[0][0].action == B_ACTION_RUN)
+    {
+        gBraveCurrentAction.action = B_ACTION_RUN;
+        gBraveCurrentAction.battler = 0;
+        BraveClearBattlerAction(0, 0);
+        return;
+    }
+
+    if (gBraveBattleAction[2][0].action == B_ACTION_RUN)
+    {
+        gBraveCurrentAction.action = B_ACTION_RUN;
+        gBraveCurrentAction.battler = 0;
+        BraveClearBattlerAction(0, 1);
+        return;
+    }
+
     //  Check for switching
     if (gBraveBattleAction[0][0].action == B_ACTION_SWITCH
      || gBraveBattleAction[1][0].action == B_ACTION_SWITCH
@@ -410,6 +426,11 @@ void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_ITEM;
+}
+
+void BraveAddRunToQueue(u32 battler)
+{
+    gBraveBattleAction[battler][0].action = B_ACTION_RUN;
 }
 
 void BravePrintActions(void)
