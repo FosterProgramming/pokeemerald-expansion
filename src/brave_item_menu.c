@@ -854,11 +854,6 @@ static void BraveItemMenu_HandleInput(u32 battler)
     {
         FreeAndExitBraveItemMenu(battler);
     }
-    else if (JOY_NEW(START_BUTTON))
-    {
-        gBattleStruct->isBraveSelector = FALSE;
-        PlayerBufferExecCompleted(battler);
-    }
 }
 
 static void BraveInitItemMenu(u32 battler)
