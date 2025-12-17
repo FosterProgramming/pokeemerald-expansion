@@ -828,8 +828,12 @@ void HandleInputChooseMove(u32 battler)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
             HideGimmickTriggerSprite();
             TryHideLastUsedBall();
-            PlayerBufferExecCompleted(battler);
-            MgbaPrintf(MGBA_LOG_WARN, "Otherthing");
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], battler);
+            if (BraveGetBattlerActionCount(battler) == 4)
+            {
+                gBattleStruct->isBraveSelector = FALSE;
+                PlayerBufferExecCompleted(battler);
+            }
             break;
         case 1:
             gBattlerControllerFuncs[battler] = HandleInputChooseTarget;
