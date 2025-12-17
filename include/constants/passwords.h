@@ -4,6 +4,9 @@
 enum
 {
     PASSWORD_ONE,
+    PASSWORD_TWO,
+    PASSWORD_THREE,
+    PASSWORD_FOUR,
     PASSWORD_COUNT,
 };
 

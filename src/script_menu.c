@@ -71,7 +71,10 @@ static void MultichoiceDynamicEventShowItem_OnDestroy(struct DynamicListMenuEven
 
 const u8 *const gPasswords[PASSWORD_COUNT] =
 {
-    [PASSWORD_ONE]                     = COMPOUND_STRING("ABC"),
+    [PASSWORD_ONE]                     = COMPOUND_STRING("Hero Of War"),
+    [PASSWORD_TWO]                     = COMPOUND_STRING("Cornbread"),
+    [PASSWORD_THREE]                     = COMPOUND_STRING("Darien Lake"),
+    [PASSWORD_FOUR]                     = COMPOUND_STRING("Halo 3"),
 };
 
 static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollections[] =

@@ -8,90 +8,138 @@ mapscripts DominionCity_MagaLab_ExitCode_MapScripts
         ]
     }
 
-script DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor 
-        {
-            hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_DOMINION_CITY_MAGA_LAB_EXIT_CODE)
-            msgbox(format("
-            This door requires another four digit code to unlock.\p
-            Enter the first digit."))
-            dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
-            if(var(VAR_RESULT) == MULTI_B_PRESSED)
-                {
-                    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
-                    delay(40)
-                    end
-                }
-            elif(var(VAR_RESULT) == 1) //first number of code
-                {
-                    if(var(VAR_RESULT) == MULTI_B_PRESSED)
-                        {
-                            releaseall
-                        }
-                    addvar(VAR_TEMP_0, 1)
-                }
-            msgbox(format("Enter the second digit."))
-            dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
-            if(var(VAR_RESULT) == MULTI_B_PRESSED)
-                {
-                    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
-                    delay(40)
-                    end
-                }
-            elif(var(VAR_RESULT) == 1) //second number of code
-                {
-                    addvar(VAR_TEMP_0, 1)
-                }
-            msgbox(format("Enter the third digit."))
-            dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
-            if(var(VAR_RESULT) == MULTI_B_PRESSED)
-                {
-                    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
-                    delay(40)
-                    end
-                }
-            elif(var(VAR_RESULT) == 1) //third number of code
-                {
-                    addvar(VAR_TEMP_0, 1)
-                }
-            msgbox(format("Enter the fourth digit."))
-            dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
-            if(var(VAR_RESULT) == MULTI_B_PRESSED)
-                {
-                    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
-                    delay(40)
-                    end
-                }
-            elif(var(VAR_RESULT) == 1) //fourth number of code
-                {
-                    addvar(VAR_TEMP_0, 1)
-                }
-            if(var(VAR_TEMP_0) < 4)
-                {
-                    speakername("Vee")
-                    msgbox(format(
-                    "We need to find the right code, or we'll get caught!\p
-                    Hurry, hurry!"))
-                    closemessage
-                    setvar(VAR_TEMP_0,0)
-                    goto(DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor)
-                }
-            else
-                {
-                    playse(SE_DOOR)
-                    waitse
-                    speakername("Vee")
-                    msgbox(format("Oooh, that's a good sound!\n 
-                    It looks like the door's unlocked!\p 
-                    …Sooo, I guess we're really doing this, huh?\p
-                    Eight whole artifacts to find…\p
-                    And eight terrifying guardians to defeat…\p
-                    Hey, I bet you're soo relieved that I'm coming with you!\p
-                    You know, for emotional support!\p
-                    In case you get too scared, or something!\p
-                    … … …\p
-                    Okletsjustgonow!"))
-                    setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 7)
-                    releaseall
-                    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
-                }
-            }
+// script DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor 
+//         {
+//             hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_DOMINION_CITY_MAGA_LAB_EXIT_CODE)
+//             msgbox(format("
+//             This door requires another four digit code to unlock.\p
+//             Enter the first digit."))
+//             dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
+//             if(var(VAR_RESULT) == MULTI_B_PRESSED)
+//                 {
+//                     warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+//                     delay(40)
+//                     end
+//                 }
+//             elif(var(VAR_RESULT) == 1) //first number of code
+//                 {
+//                     if(var(VAR_RESULT) == MULTI_B_PRESSED)
+//                         {
+//                             releaseall
+//                         }
+//                     addvar(VAR_TEMP_0, 1)
+//                 }
+//             msgbox(format("Enter the second digit."))
+//             dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
+//             if(var(VAR_RESULT) == MULTI_B_PRESSED)
+//                 {
+//                     warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+//                     delay(40)
+//                     end
+//                 }
+//             elif(var(VAR_RESULT) == 1) //second number of code
+//                 {
+//                     addvar(VAR_TEMP_0, 1)
+//                 }
+//             msgbox(format("Enter the third digit."))
+//             dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
+//             if(var(VAR_RESULT) == MULTI_B_PRESSED)
+//                 {
+//                     warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+//                     delay(40)
+//                     end
+//                 }
+//             elif(var(VAR_RESULT) == 1) //third number of code
+//                 {
+//                     addvar(VAR_TEMP_0, 1)
+//                 }
+//             msgbox(format("Enter the fourth digit."))
+//             dynmultichoice(0,0,FALSE,3,0,DYN_MULTICHOICE_CB_NONE,"0","1","2","3","4","5","6","7","8","9")
+//             if(var(VAR_RESULT) == MULTI_B_PRESSED)
+//                 {
+//                     warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+//                     delay(40)
+//                     end
+//                 }
+//             elif(var(VAR_RESULT) == 1) //fourth number of code
+//                 {
+//                     addvar(VAR_TEMP_0, 1)
+//                 }
+//             if(var(VAR_TEMP_0) < 4)
+//                 {
+//                     speakername("Vee")
+//                     msgbox(format(
+//                     "We need to find the right code, or we'll get caught!\p
+//                     Hurry, hurry!"))
+//                     closemessage
+//                     setvar(VAR_TEMP_0,0)
+//                     goto(DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor)
+//                 }
+//             else
+//                 {
+//                     playse(SE_DOOR)
+//                     waitse
+//                     speakername("Vee")
+//                     msgbox(format("Oooh, that's a good sound!\n 
+//                     It looks like the door's unlocked!\p 
+//                     …Sooo, I guess we're really doing this, huh?\p
+//                     Eight whole artifacts to find…\p
+//                     And eight terrifying guardians to defeat…\p
+//                     Hey, I bet you're soo relieved that I'm coming with you!\p
+//                     You know, for emotional support!\p
+//                     In case you get too scared, or something!\p
+//                     … … …\p
+//                     Okletsjustgonow!"))
+//                     setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 7)
+//                     releaseall
+//                     warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+//                 }
+//             }
+
+script DominionCity_MagaLab_ExitRoom_EventScripts_CodeToUnlockDoor
+    {
+        msgbox(format("The door is locked from the outside and requires a passcode to exit.\p
+        Would you like to enter the passcode now?"),MSGBOX_YESNO)
+        goto_if_eq(VAR_RESULT, YES, DominionCity_MagaLab_ExitRoom_EventScripts_EnterPassword)
+        warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+        delay(40)
+        end
+        }
+
+script DominionCity_MagaLab_ExitRoom_EventScripts_EnterPassword
+    {
+        special(EnterCode)
+        waitstate
+        comparepassword(0)
+        goto_if_eq(VAR_RESULT,0,DominionCity_MagaLab_ExitRoom_EventScripts_WrongPassword)
+        goto_if_eq(VAR_RESULT,1,DominionCity_MagaLab_ExitRoom_EventScripts_CorrectPassword)
+    }
+
+script DominionCity_MagaLab_ExitRoom_EventScripts_WrongPassword
+{
+    msgbox(format("Nothing happened. Would you like to try again?"),MSGBOX_YESNO)
+    goto_if_eq(VAR_RESULT, YES, DominionCity_MagaLab_ExitRoom_EventScripts_EnterPassword)
+    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+    delay(40)
+    end
+}
+
+script DominionCity_MagaLab_ExitRoom_EventScripts_CorrectPassword
+{
+    playse(SE_DOOR)
+    waitse
+    speakername("Vee")
+    msgbox(format("Oooh, that's a good sound!\n 
+    It looks like the door's unlocked!\p 
+    …Sooo, I guess we're really doing this, huh?\p
+    Eight whole artifacts to find…\p
+    And eight terrifying guardians to defeat…\p
+    Hey, I bet you're soo relieved that I'm coming with you!\p
+    You know, for emotional support!\p
+    In case you get too scared, or something!\p
+    … … …\p
+    Okletsjustgonow!"))
+    setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 7)
+    releaseall
+    warpsilent(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE_HALLWAY, 25, 8)
+}

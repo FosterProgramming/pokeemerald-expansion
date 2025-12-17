@@ -525,7 +525,7 @@ static const struct SkillTree sSkillTree[NUM_PARTY_MEMBERS][MAX_SKILLS_PER_TREE]
         {
             .skill_type   = SKILL_TREE_TYPE_MOVE,
             .skill        = MOVE_CURSE,
-            .neededPoints = 0,
+            .neededPoints = 3,
             .unlockLevel  = 0,
             .skillNeeded  = SKILL_NONE,
         },
