@@ -124,7 +124,7 @@ const struct HelpData sHelpDatas[] =
         .y = 105,
         .spritePtr = sHelpDefault1Gfx,
         .palettePtr = sHelpDefault1Pal,
-        .flag = TRIGGER_DEFAULT_1,
+        .flag = FLAG_DEFAULT_HELP_1,
         .numSprites = 2,
     },
 
@@ -133,7 +133,7 @@ const struct HelpData sHelpDatas[] =
         .y = 105,
         .spritePtr = sHelpDefault2Gfx,
         .palettePtr = sHelpDefault2Pal,
-        .flag = TRIGGER_DEFAULT_2,
+        .flag = FLAG_DEFAULT_HELP_2,
         .numSprites = 2,
     },
 
@@ -142,7 +142,7 @@ const struct HelpData sHelpDatas[] =
         .y = 105,
         .spritePtr = sHelpDefault3Gfx,
         .palettePtr = sHelpDefault3Pal,
-        .flag = TRIGGER_DEFAULT_3,
+        .flag = FLAG_DEFAULT_HELP_3,
         .numSprites = 2,
     },
 };

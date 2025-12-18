@@ -350,9 +350,9 @@
 #define FLAG_BRAVE_HELP_8            0x144
 #define FLAG_BRAVE_HELP_9            0x145
 #define FLAG_BRAVE_HELP_10           0x146
-#define FLAG_BRAVE_HELP_11           0x147
-#define FLAG_BRAVE_HELP_12           0x148
-#define FLAG_BRAVE_HELP_13           0x149
+#define FLAG_DEFAULT_HELP_1          0x147
+#define FLAG_DEFAULT_HELP_2          0x148
+#define FLAG_DEFAULT_HELP_3          0x149
 #define FLAG_BRAVE_HELP_14           0x14A
 #define FLAG_BRAVE_HELP_15           0x14B
 #define FLAG_BRAVE_HELP_16           0x14C

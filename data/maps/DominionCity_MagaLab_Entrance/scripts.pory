@@ -53,6 +53,7 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 			setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 			dowildbattle
 			clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+			setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE)  
 			specialvar(VAR_RESULT, GetBattleOutcome)
 			setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 6)
 			playmoncry(SPECIES_PORYGON, CRY_MODE_NORMAL)
