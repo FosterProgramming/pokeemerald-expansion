@@ -951,6 +951,40 @@ u8 FldEff_HeartIcon(void)
     return 0;
 }
 
+static void SpriteCB_IntroIcons(struct Sprite *sprite)
+{
+    sprite->data[2] += sprite->data[3];
+    sprite->x = sprite->data[0];
+    sprite->y = sprite->data[1] - 16;
+    sprite->x2 = 0;
+    sprite->y2 = sprite->data[2];
+    if (sprite->data[2])
+        sprite->data[3]++;
+    else
+        sprite->data[3] = 0;
+}
+
+u8 General_HeartIcon(s16 x, s16 y)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        sprite->callback = SpriteCB_IntroIcons;
+        sprite->oam.priority = 1;
+        sprite->coordOffsetEnabled = 1;
+        sprite->data[0] = x;
+        sprite->data[1] = y;
+        sprite->data[3] = -5;
+
+        StartSpriteAnim(sprite, 0);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_HeartIcon, sprite);
+    }
+
+    return 0;
+}
+
 
 u8 FldEff_DoubleExclMarkIcon(void)
 {

@@ -1,0 +1,6 @@
+#ifndef GUARD_JTD_TITLESCREEN_H
+#define GUARD_JTD_TITLESCREEN_H
+
+void SampleUi_Init(void);
+
+#endif // GUARD_JTD_TITLESCREEN_H
