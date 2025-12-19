@@ -8,6 +8,10 @@
 #include "script_pokemon_util.h"
 #include "tv.h"
 #include "constants/heal_locations.h"
+#include "constants/rgb.h"
+#include "end_screen.h"
+#include "decompress_error_handler.h"
+#include "palette.h"
 
 int GameClear(void)
 {
@@ -18,6 +22,8 @@ int GameClear(void)
         u8 count;
     } ribbonCounts[6];
 
+    DebugPrintf("GameClear");
+    BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
     HealPlayerParty();
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
@@ -81,7 +87,7 @@ int GameClear(void)
         }
     }
 
-    SetMainCallback2(CB2_DoHallOfFameScreen);
+    SetMainCallback2(EndScreen_InitCB2);
     return 0;
 }
 

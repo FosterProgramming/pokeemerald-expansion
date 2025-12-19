@@ -56,7 +56,7 @@ EWRAM_DATA struct HallofFameTeam *gHoFSaveBuffer = NULL;
 static void ClearVramOamPltt_LoadHofPal(void);
 static void LoadHofGfx(void);
 static void InitHofBgs(void);
-static bool8 CreateHofConfettiSprite(void);
+//static bool8 CreateHofConfettiSprite(void);
 static void StartCredits(void);
 static bool8 LoadHofBgs(void);
 static void Task_Hof_InitMonData(u8 taskId);
@@ -413,7 +413,7 @@ void CB2_DoHallOfFameScreen(void)
     if (!InitHallOfFameScreen())
     {
         u8 taskId = CreateTask(Task_Hof_InitMonData, 0);
-        gTasks[taskId].tDontSaveData = FALSE;
+        gTasks[taskId].tDontSaveData = TRUE;
         AllocateHoFTeams();
     }
 }
@@ -1376,7 +1376,7 @@ static void SpriteCB_GetOnScreenAndAnimate(struct Sprite *sprite)
 
 static void SpriteCB_HofConfetti(struct Sprite *sprite)
 {
-    if (sprite->y2 > 120)
+    if (sprite->y2 > 160)
     {
         DestroySprite(sprite);
     }
@@ -1396,7 +1396,7 @@ static void SpriteCB_HofConfetti(struct Sprite *sprite)
     }
 }
 
-static bool8 CreateHofConfettiSprite(void)
+bool8 CreateHofConfettiSprite(void)
 {
     u8 spriteID;
     struct Sprite *sprite;
