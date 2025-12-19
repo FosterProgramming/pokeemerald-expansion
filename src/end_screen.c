@@ -13,8 +13,9 @@
 #include "text_window.h"
 #include "string_util.h"
 #include "constants/rgb.h"
-
+#include "constants/songs.h"
 #include "hall_of_fame.h"
+#include "sound.h"
 
 static void Task_ManageCredits(u8 taskId);
 static void Task_DoConfetti(u8 taskId);
@@ -294,6 +295,7 @@ static void Task_ManageCredits(u8 taskId)
             sText_Color0, //color
             3, //speed
             sText_Text2);
+        PlayBGM(MUS_HALL_OF_FAME);
         u8 confettiTask = CreateTask(Task_DoConfetti, 1);
         gTasks[confettiTask].data[0] = 400;
         gTasks[taskId].tState++;
