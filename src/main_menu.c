@@ -593,7 +593,7 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
     DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
 
-    //ResetPaletteFade();
+    ResetPaletteFade();
     //LoadPalette(sMainMenuBgPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
     //LoadPalette(sMainMenuTextPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     ScanlineEffect_Stop();
@@ -630,6 +630,7 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     ShowBg(0);
     HideBg(1);
+    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     CreateTask(Task_NewGameBirchSpeech_Init, 0);
     //CreateTask(Task_MainMenuCheckSaveFile, 0);
 

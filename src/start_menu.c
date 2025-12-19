@@ -369,7 +369,7 @@ static void BuildDebugStartMenu(void)
 
 static void BuildSafariZoneStartMenu(void)
 {
-    AddStartMenuAction(MENU_ACTION_RETIRE_SAFARI);
+    //AddStartMenuAction(MENU_ACTION_RETIRE_SAFARI);
     AddStartMenuAction(MENU_ACTION_POKEDEX);
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_BAG);
@@ -628,6 +628,7 @@ void ShowStartMenu(void)
         PlayerFreeze();
         StopPlayerAvatar();
     }
+    ChangeBgX(0, 0, BG_COORD_SET);
     CreateStartMenuTask(Task_ShowStartMenu);
     LockPlayerFieldControls();
 }

@@ -11,6 +11,7 @@
 #include "event_data.h"
 #include "constants/flags.h"
 #include "phone_call.h"
+#include "gpu_regs.h"
 
 EWRAM_DATA u8 gFieldMessageBoxMode = 0;
 EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
@@ -45,11 +46,15 @@ static void Task_DrawFieldMessage(u8 taskId)
         case 1:
             if (FlagGet(PHONE_CALL_MSGBOX_FLAG))
             {
+                SetGpuReg(REG_OFFSET_BG0HOFS, 4);
                 ChangePrinterFont(0, FONT_NORMAL_FRLG);
                 DrawStdWindowFrame(0, TRUE);
             }
             else
+            {
+                SetGpuReg(REG_OFFSET_BG0HOFS, 0);
                 DrawDialogueFrame(0, TRUE);
+            }
             task->tState++;
             break;
         case 2:

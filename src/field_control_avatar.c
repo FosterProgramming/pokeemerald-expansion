@@ -45,6 +45,7 @@
 #include "followmon.h"
 #include "safari_contest.h"
 #include "phone_call.h"
+#include "gpu_regs.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPrevMetatileBehavior = 0;
@@ -749,6 +750,7 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
 
     if (SafariContestTakeStep() == TRUE)
     {
+        SetGpuReg(REG_OFFSET_BG0HOFS, 4);
         ScriptContext_SetupScript(ReceivePhoneCall);
         return TRUE;
     }
