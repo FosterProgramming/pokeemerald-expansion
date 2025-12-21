@@ -29,20 +29,10 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 			playmoncry(SPECIES_PORYGON, CRY_MODE_ENCOUNTER)
 			delay(40)
 			waitmoncry
-			msgbox(format(			
-			"WARNING.\n
-			WARNING.\p
-			SYSTEM DAMAGE EXCEEDS ACCEPTABLE THRESHOLD.\p
-			ERROR: INITIAL ANALYSIS WAS ERRONEOUS.\p
-			NO.\n
-			IMPOSSIBLE.\p
-			RECALIBRATE.\n
-			RECALIBRATE.\p
-			YOU… ARE INFERIOR…\n
-			YOU… WILL BE ERASED…\l
-			I… WILL BE… REBUILT…"))
-			setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_DOWNLOAD)    //Sets a custom ability to the enemy 1
-			setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOODY) 		 //Sets a custom innate to the enemy 1 in the slot 1
+			setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_MOODY)       //Sets a custom ability to the enemy 1
+			setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_DOWNLOAD)    //Sets a custom innate to the enemy 1 in the slot 1
+			setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY)    //Sets a custom ability to the enemy in the slot 2
+			setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_RUN_AWAY)    //Sets a custom innate to the enemy 1 in the slot 3
 			setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 40)                        //Sets custom HP to the enemy 1
 			setflag(FLAG_SYS_SMART_WILD_AI)                              //Forces the wild Pokémon to have an smart AI
 			//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
@@ -56,6 +46,18 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 			setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE)  
 			specialvar(VAR_RESULT, GetBattleOutcome)
 			setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 6)
+			msgbox(format(			
+			"WARNING.\n
+			WARNING.\p
+			SYSTEM DAMAGE EXCEEDS ACCEPTABLE THRESHOLD.\p
+			ERROR: INITIAL ANALYSIS WAS ERRONEOUS.\p
+			NO.\n
+			IMPOSSIBLE.\p
+			RECALIBRATE.\n
+			RECALIBRATE.\p
+			YOU… ARE INFERIOR…\n
+			YOU… WILL BE ERASED…\l
+			I… WILL BE… REBUILT…"))
 			playmoncry(SPECIES_PORYGON, CRY_MODE_NORMAL)
 			delay(40)
 			waitmoncry

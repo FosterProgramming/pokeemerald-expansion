@@ -15,7 +15,7 @@ DominionCity_MagaLab_Entrance_MapScripts::
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 9 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 4, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0
-# 88 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 90 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	map_script_2 VAR_DOMINION_CITY_LAB_INTRO_STATE, 5, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1
 	.2byte 0
 
@@ -47,159 +47,163 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 31 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	waitmoncry
 # 32 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1
-# 44 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_DOWNLOAD
-# 45 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOODY
-# 46 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_INTIMIDATE
+# 33 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_INTIMIDATE
+# 34 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_DOWNLOAD
+# 35 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_SPEED_BOOST
+# 36 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 40
-# 47 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 37 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setflag FLAG_SYS_SMART_WILD_AI
-# 49 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 39 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON
-# 51 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 41 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	playmoncry SPECIES_PORYGON, 2
-# 52 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 42 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setwildbossbattle SPECIES_PORYGON, 2, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 6, 252, 0, 0, 0, 252
-# 53 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 43 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 54 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 44 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	dowildbattle
-# 55 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 45 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-# 56 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 46 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE
-# 57 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 47 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
-# 58 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 48 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 6
-# 59 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	playmoncry SPECIES_PORYGON, CRY_MODE_NORMAL
-# 60 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	delay 40
+# 49 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1
 # 61 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_PORYGON, CRY_MODE_NORMAL
 # 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2
+	delay 40
 # 63 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmovement 1
+	waitmoncry
 # 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	removeobject 1
+	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2
 # 65 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setflag FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON
+	waitmovement 1
 # 66 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+	removeobject 1
 # 67 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
+	setflag FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON
 # 68 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	addobject LOCALID_VEE
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 69 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
 # 70 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	playse SE_PIN
+	addobject LOCALID_VEE
 # 71 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmovement LOCALID_VEE
+	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3
 # 72 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitse
+	playse SE_PIN
 # 73 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	speakername DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_2
-# 74 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_3
-# 77 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4
-# 78 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
-# 81 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5
-# 82 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	waitmovement LOCALID_VEE
+# 74 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	waitse
+# 75 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	speakername DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_2
+# 76 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_3
+# 79 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4
+# 80 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
 # 83 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	removeobject LOCALID_VEE
+	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5
 # 84 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	closemessage
+	waitmovement LOCALID_VEE
 # 85 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	removeobject LOCALID_VEE
+# 86 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	closemessage
+# 87 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	releaseall
 	end
 
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1:
-# 90 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	lockall
-# 91 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_0
 # 92 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmovement 1
+	lockall
 # 93 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	playse SE_PIN
+	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_0
 # 94 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitse
+	waitmovement 1
 # 95 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-# 96 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_1
-# 97 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmovement 1
-# 98 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0, MSGBOX_AUTOCLOSE
-# 107 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	playmoncry SPECIES_PORYGON, CRY_MODE_ENCOUNTER
-# 108 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	delay 40
-# 109 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmoncry
-# 110 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setwildbattle SPECIES_PORYGON, 25
-# 111 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	dowildbattle
-# 112 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1
-# 124 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 6
-# 125 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	playmoncry SPECIES_PORYGON, CRY_MODE_NORMAL
-# 126 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	delay 40
-# 127 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmoncry
-# 128 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2
-# 129 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmovement 1
-# 130 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	removeobject 1
-# 131 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setflag FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON
-# 132 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	getplayerxy PlayerXCoordinates, PlayerYCoordinates
-# 133 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
-# 134 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	addobject LOCALID_VEE
-# 135 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3
-# 136 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	playse SE_PIN
-# 137 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	waitmovement LOCALID_VEE
-# 138 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 96 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	waitse
+# 97 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	playbgm MUS_ENCOUNTER_AQUA, FALSE
+# 98 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_1
+# 99 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	waitmovement 1
+# 100 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0, MSGBOX_AUTOCLOSE
+# 109 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	playmoncry SPECIES_PORYGON, CRY_MODE_ENCOUNTER
+# 110 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	delay 40
+# 111 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	waitmoncry
+# 112 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setwildbattle SPECIES_PORYGON, 25
+# 113 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	dowildbattle
+# 114 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1
+# 126 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 6
+# 127 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	playmoncry SPECIES_PORYGON, CRY_MODE_NORMAL
+# 128 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	delay 40
+# 129 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	waitmoncry
+# 130 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	applymovement 1, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2
+# 131 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	waitmovement 1
+# 132 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	removeobject 1
+# 133 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setflag FLAG_HIDE_MAGA_LAB_ENTRANCE_PORYGON
+# 134 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	getplayerxy PlayerXCoordinates, PlayerYCoordinates
+# 135 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	setobjectxyperm LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates
+# 136 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	addobject LOCALID_VEE
+# 137 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3
+# 138 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	playse SE_PIN
 # 139 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	speakername DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_2
-# 140 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_3
-# 143 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4
-# 144 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
-# 147 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5
-# 148 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	waitmovement LOCALID_VEE
+# 140 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	waitse
+# 141 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	speakername DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_2
+# 142 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_3
+# 145 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4
+# 146 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	msgbox DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4
 # 149 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	removeobject LOCALID_VEE
+	applymovement LOCALID_VEE, DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5
 # 150 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	closemessage
+	waitmovement LOCALID_VEE
 # 151 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	removeobject LOCALID_VEE
+# 152 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+	closemessage
+# 153 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	releaseall
 	end
 
@@ -222,41 +226,41 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_1:
 	walk_up
 	step_end
 
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_2:
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 62 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 64 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
 	step_end
 
-# 69 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 71 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_3:
-# 69 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 71 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_down
-# 69 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 71 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	emote_exclamation_mark
 	step_end
 
-# 77 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 79 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_4:
-# 77 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 79 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	face_up
 	step_end
 
-# 81 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 83 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Movement_5:
-# 81 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 83 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	walk_up
 	step_end
 
@@ -273,7 +277,7 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_0:
 	.string "TERMINATION PROTOCOL.$"
 
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1:
-# 33 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 50 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	.string "WARNING.\n"
 	.string "WARNING.\p"
 	.string "SYSTEM DAMAGE EXCEEDS ACCEPTABLE\n"
@@ -289,15 +293,15 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_1:
 	.string "I… WILL BE… REBUILT…$"
 
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_2:
-# 73 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 75 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	.string "Vee$"
 
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_3:
-# 75 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 77 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	.string "Hah!\n"
 	.string "How's that for inferior lifeforms?$"
 
 DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0_Text_4:
-# 78 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
+# 80 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	.string "Come on, that Porygon went that way!\p"
 	.string "I bet that's the way out!$"

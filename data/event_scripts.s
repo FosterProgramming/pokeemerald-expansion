@@ -589,6 +589,7 @@ gStdScripts_End::
 	.include "data/scripts/debug.inc"
 
 EventScript_WhiteOut::
+	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	goto EventScript_ResetMrBriney
 	end
