@@ -223,6 +223,91 @@ Common_EventScript_StartBossDebugBattle_4:
 	goto Common_EventScript_StartBossDebugBattle_1
 
 
+Common_EventScript_StartBossDebugBattle_Porygon::
+# 135 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	lock
+# 136 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	faceplayer
+# 137 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	playmoncry SPECIES_PORYGON, CRY_MODE_ENCOUNTER
+# 138 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	delay 40
+# 139 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	waitmoncry
+# 140 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_MOODY
+# 141 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_INTIMIDATE
+# 142 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY
+# 144 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 40
+# 145 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setflag FLAG_SYS_SMART_WILD_AI
+# 147 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON
+# 149 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	playmoncry SPECIES_PORYGON, 2
+# 150 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setwildbossbattle SPECIES_PORYGON, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 6, 252, 0, 0, 0, 252
+# 151 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 152 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	dowildbattle
+# 153 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+# 154 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE
+# 155 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 156 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	switch VAR_RESULT
+# 157 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_CAUGHT, Common_EventScript_StartBossDebugBattle_Porygon_3
+# 164 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_RAN, Common_EventScript_StartBossDebugBattle_Porygon_4
+# 165 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_WON, Common_EventScript_StartBossDebugBattle_Porygon_4
+# 166 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	case B_OUTCOME_PLAYER_TELEPORTED, Common_EventScript_StartBossDebugBattle_Porygon_4
+Common_EventScript_StartBossDebugBattle_Porygon_1:
+# 176 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	release
+	end
+
+Common_EventScript_StartBossDebugBattle_Porygon_3:
+# 159 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setweather WEATHER_NONE
+# 160 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 161 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 162 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto Common_EventScript_StartBossDebugBattle_Porygon_1
+
+Common_EventScript_StartBossDebugBattle_Porygon_4:
+# 167 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setvar VAR_0x8004, SPECIES_LAPRAS
+# 168 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setweather WEATHER_NONE
+# 169 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_TO_BLACK
+# 170 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 171 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_BLACK
+# 172 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	bufferspeciesname 0, VAR_0x8004
+# 173 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	msgbox Common_EventScript_StartBossDebugBattle_Porygon_Text_0, MSGBOX_DEFAULT
+	goto Common_EventScript_StartBossDebugBattle_Porygon_1
+
+
 Common_EventScript_StartBossDebugBattle_Text_0:
 # 127 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	.string "Electivire dove away$"
+
+Common_EventScript_StartBossDebugBattle_Porygon_Text_0:
+# 173 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	.string "Porygon dove away$"

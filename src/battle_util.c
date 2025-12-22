@@ -7078,7 +7078,7 @@ u32 GetBattlerTrait(u8 battlerId, u8 traitNum){
     if (traitNum == 0)
         ability = GetBattlerAbility(battlerId);
     else
-        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum); 
+        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum);
 
     return ability;
 }
@@ -13207,10 +13207,10 @@ u8 GetHeldItemSlot(u32 battler, u32 itemId, bool32 checkNegating)
 
 bool8 AddCustomScriptForBoss(u32 battler){
     u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
-    if (bossNumber != 0 && battler == B_POSITION_OPPONENT_LEFT)
+    if (battler == B_POSITION_OPPONENT_LEFT)
     {
         switch(bossNumber){
-            case BRAVE_BOSS_PORYGON:
+            /*case BRAVE_BOSS_PORYGON:
             {
                 u16 bossHP          = gBattleMons[battler].hp;
                 u16 bossHPMaxHP     = gBattleMons[battler].maxHP;
@@ -13221,7 +13221,7 @@ bool8 AddCustomScriptForBoss(u32 battler){
                     return TRUE;
                 }
             }
-            break;
+            break;*/
             case BRAVE_BOSS_ELECTIVIRE:
             {
                 u16 bossHP          = gBattleMons[battler].hp;

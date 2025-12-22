@@ -7163,9 +7163,11 @@ u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerand
     for (i = 0; i < MAX_MON_INNATES; i++)
     {
         if (GetSpeciesInnate(species, i) == ability || ability == ABILITY_INTIMIDATE)
-            {innateNum = innateNum + 2 + i;
+        {
+            innateNum = innateNum + 2 + i;
             //DebugPrintf("INNATE FOUND: %d", innateNum - 1);
-            }
+            DebugPrintf("Ability: %s Found in slot: %d", gAbilitiesInfo[ability].name, i);
+        }
     }
     
     //if (!disablerandomizer) {
@@ -7173,7 +7175,7 @@ u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerand
     //    innate2 = RandomizeInnate(GetSpeciesInnate(species, 1), species, personality);
     //    innate3 = RandomizeInnate(GetSpeciesInnate(species, 2), species, personality);
     //}
-        return innateNum;
+    return innateNum;
 }
 
 bool8 BoxMonHasInnate(struct BoxPokemon *boxmon, u16 ability, bool8 disableRandomizer) {
@@ -7201,7 +7203,7 @@ u16 GetSpeciesInnate(u16 species, u8 traitNum){
 
             if (ability == ABILITY_NONE)
                 ability = gSpeciesInfo[species].innates[traitNum - 1];
-            
+
             return ability;
         }
         else

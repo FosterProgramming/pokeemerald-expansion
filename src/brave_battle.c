@@ -367,7 +367,6 @@ void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
 void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target)
 {
     u32 currAction = gBattleStruct->monBraveActions[battler]++;
-    u8 action = VarGet(VAR_BRAVE_ACTION_NUM);
 
     gBraveBattleAction[battler][currAction].battler = battler;
     gBraveBattleAction[battler][currAction].item = move;
@@ -376,9 +375,6 @@ void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
-
-    action++;
-    VarSet(VAR_BRAVE_ACTION_NUM, action);
 
     //MgbaPrintf(MGBA_LOG_WARN, "BraveAddAnyMoveToQueue battler %d move %d target %d currAction %d", battler, move, target, action);
 }
