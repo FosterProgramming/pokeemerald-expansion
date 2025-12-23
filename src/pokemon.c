@@ -1801,7 +1801,7 @@ void CalculateMonStats(struct Pokemon *mon)
     }
     else
     {
-        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        s32 n = 8 * gSpeciesInfo[species].baseHP + hpIV;
         newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP];
     }
 

@@ -164,21 +164,21 @@ DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_1:
 # 145 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	msgbox DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_Text_0
 # 146 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_CARD_KEY, 1
+	additem ITEM_CARD_KEY, 1
 # 147 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	msgbox DominionCity_MagaLab_HoldingCells_EventScript_FindCardKey_Text_1
 # 148 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_SITRUS_BERRY, 1
+	additem ITEM_SITRUS_BERRY, 1
 # 149 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_AGUAV_BERRY, 1
+	additem ITEM_AGUAV_BERRY, 1
 # 150 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_ENIGMA_BERRY, 1
+	additem ITEM_ENIGMA_BERRY, 1
 # 151 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_ASPEAR_BERRY, 1
+	additem ITEM_ASPEAR_BERRY, 1
 # 152 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_PECHA_BERRY, 1
+	additem ITEM_PECHA_BERRY, 1
 # 153 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
-	finditem ITEM_LUM_BERRY, 1
+	additem ITEM_LUM_BERRY, 1
 # 154 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
 	getplayerxy PlayerXCoordinates, PlayerYCoordinates
 # 155 "data/maps/DominionCity_MagaLab_HoldingCells/scripts.pory"
