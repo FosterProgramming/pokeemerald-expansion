@@ -192,6 +192,11 @@ static u8 GetCurrentBravePhase_Porygon(u32 battler){
     bool8 isBossAtLowHP        = bossHP < (bossHPMaxHP / 4);
     u8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
 
+    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battler].hp = %d", gBattleMons[battler].hp);
+    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battler].maxHP = %d", gBattleMons[battler].maxHP);
+    MgbaPrintf(MGBA_LOG_WARN, "bossHP < (bossHPMaxHP / 4) = %d", bossHP < (bossHPMaxHP / 4));
+    MgbaPrintf(MGBA_LOG_WARN, "gBattleStruct->monStoredAP[battler]; = %d", gBattleStruct->monStoredAP[battler]);
+
     if(isBossAtLowHP)
         return BOSS_BRAVE_PHASE_RECOVER;
 
@@ -296,7 +301,8 @@ void AddAiActionsForBattler(u32 battler)
                         }
                     break;
                     case BOSS_BRAVE_PHASE_RECOVER:
-                        BraveAddMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
+                        MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
+                        BraveAddAnyMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
                     break;
                     case BOSS_PHASE_DEFAULT:
                         BraveAddDefaultToQueue(battler);
