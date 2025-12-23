@@ -101,7 +101,7 @@ script Common_EventScript_StartBossDebugBattle{
 	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_ELECTIVIRE)          //Sets custom HP to the enemy 1
 
-	playmoncry(SPECIES_ELECTIVIRE, 2,)
+	playmoncry(SPECIES_ELECTIVIRE, 2)
 	setwildbossbattle(SPECIES_ELECTIVIRE, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 252, 0, 0, 0, 252)
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
@@ -130,3 +130,53 @@ script Common_EventScript_StartBossDebugBattle{
 	release
 	end
 }
+
+script Common_EventScript_StartBossDebugBattle_Porygon{
+	lock
+	faceplayer
+	playmoncry(SPECIES_PORYGON, CRY_MODE_ENCOUNTER)
+	delay(40)
+	waitmoncry
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_MOODY)       //Sets a custom ability to the enemy 1
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_INTIMIDATE)  //Sets a custom innate to the enemy 1 in the slot 1
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY)    //Sets a custom ability to the enemy in the slot 2
+	//setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_RUN_AWAY)  //Sets a custom innate to the enemy 1 in the slot 3
+	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 40)                        //Sets custom HP to the enemy 1
+	setflag(FLAG_SYS_SMART_WILD_AI)                              //Forces the wild Pokémon to have an smart AI
+	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
+	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON)             //Sets custom HP to the enemy 1
+
+	playmoncry(SPECIES_PORYGON, 2,)
+	setwildbossbattle(SPECIES_PORYGON, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 6, 252, 0, 0, 0, 252)
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+    switch(var(VAR_RESULT)){
+        case B_OUTCOME_CAUGHT:
+            //setflag(FLAG_DAILY_WILD_LAPRAS)
+            setweather(WEATHER_NONE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            removeobject(VAR_LAST_TALKED)
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+        break
+        case B_OUTCOME_RAN:
+        case B_OUTCOME_WON:
+        case B_OUTCOME_PLAYER_TELEPORTED:
+            setvar(VAR_0x8004, SPECIES_LAPRAS)
+            setweather(WEATHER_NONE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            removeobject(VAR_LAST_TALKED)
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+            bufferspeciesname(0, VAR_0x8004)
+            msgbox(format("Porygon dove away"), MSGBOX_DEFAULT)
+        break
+    }
+	release
+	end
+}
+
+
+			
+			

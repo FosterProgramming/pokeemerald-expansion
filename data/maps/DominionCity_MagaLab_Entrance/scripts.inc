@@ -51,7 +51,7 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 33 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_DOWNLOAD
 # 34 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_DOWNLOAD
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY
 # 35 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_RUN_AWAY
 # 36 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
