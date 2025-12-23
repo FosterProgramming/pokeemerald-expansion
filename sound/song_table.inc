@@ -623,6 +623,7 @@ gSongTable::
 	song mus_sv_ancient_library, 0, 0 @@ FFIV: Schalas Theme
 	song mus_sv_terras_theme, 0, 0 @@ FFIV: Terras Theme
 	song mus_sv_maga_hideout, 0, 0 @@ HGSS Rocket Hideout
+	song mus_sv_boss_porygon, 0, 0 @@ HGSS Entei Battle
 
 	.align 2
 dummy_song_header:

@@ -5862,6 +5862,16 @@ u16 GetBattleBGM(void)
             return MUS_VS_TRAINER;
         }
     }
+    else if (VarGet(VAR_BOSS_BRAVE_AI_ID) != VarGet(BRAVE_BOSS_NONE))
+    {
+        switch (VarGet(VAR_BOSS_BRAVE_AI_ID))
+        {
+            case BRAVE_BOSS_PORYGON:
+            return MUS_SV_BOSS_PORYGON;
+        default:
+            return MUS_VS_TRAINER;
+        }
+    }
     else
     {
         return MUS_VS_WILD;
