@@ -2,7 +2,7 @@
   "id": "MAP_DOMINION_CITY_MAGA_LAB_RESEARCH_WING",
   "name": "DominionCity_MagaLab_ResearchWing",
   "layout": "LAYOUT_DOMINION_CITY_MAGA_LAB_RESEARCH_WING",
-  "music": "MUS_AQUA_MAGMA_HIDEOUT",
+  "music": "MUS_SV_MAGA_HIDEOUT",
   "region_map_section": "MAPSEC_DOMINION_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -556,6 +556,7 @@
 #define MUS_SV_SCHALA               615 // FFIV: Schalas Theme
 #define MUS_SV_ANCIENT_LIBRARY      616 // FF5: Ancient Library
 #define MUS_SV_TERRAS_THEME         617 // FF6: Terras Theme
+#define MUS_SV_MAGA_HIDEOUT         618 // HGSS: Rocket Hideout
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF
