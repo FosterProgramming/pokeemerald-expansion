@@ -200,7 +200,7 @@ static u8 GetCurrentBravePhase_Porygon(u32 battler){
     if(isBossAtLowHP)
         return BOSS_BRAVE_PHASE_RECOVER;
 
-    if(bossCurrentAP == 2)
+    if(bossCurrentAP >= 2)
         return BOSS_BRAVE_PHASE_RANDOM;
 
     MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
@@ -303,6 +303,10 @@ void AddAiActionsForBattler(u32 battler)
                     case BOSS_BRAVE_PHASE_RECOVER:
                         MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
                         BraveAddAnyMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
+                        for(currAction = 1; currAction < currentAP; currAction++){
+                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                        }
                     break;
                     case BOSS_PHASE_DEFAULT:
                         BraveAddDefaultToQueue(battler);

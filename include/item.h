@@ -14,6 +14,8 @@ enum BraveItemType
     BRAVE_X_ITEM,
     BRAVE_PP_ITEM,
     BRAVE_STATUS_ITEM,
+    BRAVE_OFFENSIVE_ITEM,
+    BRAVE_DEFENSIVE_ITEM,
 };
 
 struct Item
