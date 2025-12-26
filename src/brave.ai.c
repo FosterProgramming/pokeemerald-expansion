@@ -171,22 +171,43 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     if(bossCurrentAP != MAX_BRAVE_ACTIONS){
         if(useRandomPhase && ENABLE_USE_RANDOM_PHASES_50_PERCENT_OF_THE_TIME){
             //Can randomly start attacking to spice up things - This can be disabled since the specs says "Preferably if the player is on the lower end of the health, to apply more pressure. Say if the player has <50% health he starts mixing in smaller chains 50% of the time."
-            MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
+            //MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
             return BOSS_BRAVE_PHASE_RANDOM;
         }
         else{
             //Use default if nothing is met
-            MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
+            //MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
             return BOSS_PHASE_DEFAULT; //Default restores AP
         }
     }
 
     //If nothing is met but it has enough for a chain, use a Random Chain
-    MgbaPrintf(MGBA_LOG_WARN, "If nothing else throw a Random Chain");
+    //MgbaPrintf(MGBA_LOG_WARN, "If nothing else throw a Random Chain");
     return BOSS_BRAVE_PHASE_RANDOM;
 }
 
 static u8 GetCurrentBravePhase_Porygon(u32 battler){
+    u16 bossHP                 = gBattleMons[battler].hp;
+    u16 bossHPMaxHP            = gBattleMons[battler].maxHP;
+    bool8 isBossAtLowHP        = bossHP < (bossHPMaxHP / 4);
+    u8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
+
+    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battler].hp = %d", gBattleMons[battler].hp);
+    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battler].maxHP = %d", gBattleMons[battler].maxHP);
+    MgbaPrintf(MGBA_LOG_WARN, "bossHP < (bossHPMaxHP / 4) = %d", bossHP < (bossHPMaxHP / 4));
+    MgbaPrintf(MGBA_LOG_WARN, "gBattleStruct->monStoredAP[battler]; = %d", gBattleStruct->monStoredAP[battler]);
+
+    if(isBossAtLowHP)
+        return BOSS_BRAVE_PHASE_RECOVER;
+
+    if(bossCurrentAP >= 2)
+        return BOSS_BRAVE_PHASE_RANDOM;
+
+    MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
+    return BOSS_PHASE_DEFAULT; //Default restores AP
+}
+
+static u8 GetCurrentBravePhase_Magmortar(u32 battler){
     u16 bossHP                 = gBattleMons[battler].hp;
     u16 bossHPMaxHP            = gBattleMons[battler].maxHP;
     bool8 isBossAtLowHP        = bossHP < (bossHPMaxHP / 4);
@@ -262,6 +283,13 @@ static const u16 sBraveBossesActions[NUMBER_OF_BOSSES][BOSS_BRAVE_PHASE_4 + 1][M
         [BOSS_BRAVE_PHASE_2]      = { MOVE_THUNDER_WAVE,  MOVE_BULLDOZE,      MOVE_BULLDOZE,      MOVE_BULLDOZE},
         [BOSS_BRAVE_PHASE_3]      = { MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH, MOVE_THUNDER_PUNCH},
         [BOSS_BRAVE_PHASE_4]      = { MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH,    MOVE_BULLDOZE,      MOVE_SELFDESTRUCT},
+    },
+    [BRAVE_BOSS_MAGMORTAR] = {
+        [BOSS_PHASE_DEFAULT]      = { MOVE_NONE,          MOVE_NONE,          MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_1]      = { MOVE_WILL_O_WISP,   MOVE_FIRE_SPIN,     MOVE_FIRE_PUNCH,    MOVE_FLAME_WHEEL},
+        [BOSS_BRAVE_PHASE_2]      = { MOVE_FIRE_PUNCH,    MOVE_FAINT_ATTACK,  MOVE_ROCK_TOMB,     MOVE_NONE},
+        [BOSS_BRAVE_PHASE_3]      = { MOVE_WILL_O_WISP,   MOVE_TAUNT,         MOVE_NONE,          MOVE_NONE},
+        [BOSS_BRAVE_PHASE_4]      = { MOVE_FIRE_PUNCH,    MOVE_ROCK_TOMB,     MOVE_SMOG,          MOVE_FAINT_ATTACK},
     }
 };
 
@@ -279,6 +307,45 @@ void AddAiActionsForBattler(u32 battler)
         default:
         {
             AddRandomActionForBattler(battler);
+        }
+        break;
+        case BRAVE_BOSS_MAGMORTAR:
+        {
+            if(battler == B_POSITION_OPPONENT_LEFT){
+                u8 phase      = GetCurrentBravePhase_Porygon(battler);
+                u16 move      = MOVE_NONE;
+                bool8 useSlot = FALSE;
+
+                //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
+                switch(phase){
+                    default:
+                        for(currAction = 0; currAction < currentAP; currAction++){
+                            move = sBraveBossesActions[bossNumber][phase][currAction];
+                            BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
+                        }
+                    break;
+                    case BOSS_BRAVE_PHASE_RANDOM:
+                        for(currAction = 0; currAction < currentAP; currAction++){
+                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                        }
+                    break;
+                    case BOSS_BRAVE_PHASE_RECOVER:
+                        // MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
+                        BraveAddAnyMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
+                        for(currAction = 1; currAction < currentAP; currAction++){
+                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                        }
+                    break;
+                    case BOSS_PHASE_DEFAULT:
+                        BraveAddDefaultToQueue(battler);
+                    break;
+                }
+            }
+            else{
+                AddRandomActionForBattler(battler);
+            }
         }
         break;
         case BRAVE_BOSS_PORYGON:

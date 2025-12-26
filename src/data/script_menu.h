@@ -796,6 +796,14 @@ static const struct MenuAction MultichoiceList_Exit[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_Bosses[] =
+{
+    {gText_Exit},
+    {COMPOUND_STRING("Porygon")},
+    {COMPOUND_STRING("Electivire")},
+    {COMPOUND_STRING("Magmortar")},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -920,6 +928,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_NUMBER_CODE]                = MULTICHOICE(MultichoiceList_NumberCode),
+    [MULTI_DEBUG_BOSSES]               = MULTICHOICE(MultichoiceList_Bosses),
 };
 
 const u8 *const gStdStrings[] =

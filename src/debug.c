@@ -136,6 +136,7 @@ enum PartyDebugMenu
 
 enum ScriptDebugMenu
 {
+    DEBUG_UTIL_MENU_ITEM_BOSSES,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_1,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_2,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_3,
@@ -320,6 +321,7 @@ static void Debug_InitDebugBattleData(void);
 static void Debug_RefreshListMenu(u8 taskId);
 static void Debug_RedrawListMenu(u8 taskId);
 
+static void DebugAction_Util_Boss_Script(u8 taskId);
 static void DebugAction_Util_Script_1(u8 taskId);
 static void DebugAction_Util_Script_2(u8 taskId);
 static void DebugAction_Util_Script_3(u8 taskId);
@@ -464,9 +466,11 @@ extern const u8 Debug_EventScript_Script_5[];
 extern const u8 Debug_EventScript_Script_6[];
 extern const u8 Debug_EventScript_Script_7[];
 extern const u8 Debug_EventScript_Script_8[];
+extern const u8 Common_EventScript_StartBossDebugBattle[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
+
 
 extern const u8 Debug_ShowFieldMessageStringVar4[];
 extern const u8 Debug_CheatStart[];
@@ -639,6 +643,7 @@ static const struct ListMenuItem sDebugMenu_Items_Party[] =
 
 static const struct ListMenuItem sDebugMenu_Items_Scripts[] =
 {
+    [DEBUG_UTIL_MENU_ITEM_BOSSES]   = {COMPOUND_STRING("Test Bosses"), DEBUG_UTIL_MENU_ITEM_BOSSES},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_1] = {COMPOUND_STRING("Script 1"), DEBUG_UTIL_MENU_ITEM_SCRIPT_1},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_2] = {COMPOUND_STRING("Script 2"), DEBUG_UTIL_MENU_ITEM_SCRIPT_2},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_3] = {COMPOUND_STRING("Script 3"), DEBUG_UTIL_MENU_ITEM_SCRIPT_3},
@@ -812,6 +817,7 @@ static void (*const sDebugMenu_Actions_Party[])(u8) =
 
 static void (*const sDebugMenu_Actions_Scripts[])(u8) =
 {
+    [DEBUG_UTIL_MENU_ITEM_BOSSES]   = DebugAction_Util_Boss_Script,
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_1] = DebugAction_Util_Script_1,
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_2] = DebugAction_Util_Script_2,
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_3] = DebugAction_Util_Script_3,
@@ -2188,6 +2194,11 @@ static void DebugAction_Util_Script_7(u8 taskId)
 static void DebugAction_Util_Script_8(u8 taskId)
 {
     Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_Script_8);
+}
+
+static void DebugAction_Util_Boss_Script(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Common_EventScript_StartBossDebugBattle);
 }
 
 // *******************************
