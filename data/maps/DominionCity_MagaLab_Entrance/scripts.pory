@@ -39,7 +39,7 @@ mapscripts DominionCity_MagaLab_Entrance_MapScripts
 			setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON)             //Sets custom HP to the enemy 1
 
 			playmoncry(SPECIES_PORYGON, 2,)
-			setwildbossbattle(SPECIES_PORYGON, 1, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 6, 252, 0, 0, 0, 252)
+			setwildbossbattle(SPECIES_PORYGON, 1, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 252, 252, 252, 252, 252, 252)
 			setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 			dowildbattle
 			clearflag(FLAG_SYS_CTRL_OBJ_DELETE)

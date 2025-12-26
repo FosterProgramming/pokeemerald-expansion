@@ -218,6 +218,8 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
     else if(CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, 0))
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
+    MgbaPrintf(MGBA_LOG_WARN, "sCurrentTarget = %d", sCurrentTarget);
+
     for(i = 0; i < MAX_MON_MOVES; i++){
         currentScore = gBattleStruct->aiFinalScore[battler][sCurrentTarget][i];
         if(currentScore > maxScore){
@@ -301,7 +303,7 @@ void AddAiActionsForBattler(u32 battler)
                         }
                     break;
                     case BOSS_BRAVE_PHASE_RECOVER:
-                        MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
+                        // MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
                         BraveAddAnyMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
                         for(currAction = 1; currAction < currentAP; currAction++){
                             move = ChooseBestMoveAgainstTargetWithLowestHP(battler);

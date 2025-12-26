@@ -1769,6 +1769,16 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     SetMonData(mon, field, &n);                                            \
 }
 
+#define CALC_STAT_BOSS(base, iv, ev, statIndex, field)                \
+{                                                                \
+    u8 baseStat = gSpeciesInfo[species].base;                    \
+    s32 n = (((2 * baseStat + iv) * level) / 100) + 5 + ev;  \
+    n = ModifyStatByNature(nature, n, statIndex);                \
+    if (B_FRIENDSHIP_BOOST == TRUE)                              \
+        n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
+    SetMonData(mon, field, &n);                                  \
+}
+
 void CalculateMonStats(struct Pokemon *mon)
 {
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
@@ -1790,6 +1800,7 @@ void CalculateMonStats(struct Pokemon *mon)
     s32 level = GetLevelFromMonExp(mon);
     u8 partyMember = getCurrentPartyMember(species);
     s32 newMaxHP;
+    u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
 
     u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
 
@@ -1817,6 +1828,14 @@ void CalculateMonStats(struct Pokemon *mon)
         CALC_STAT_MEMBER(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED, partyMember)
         CALC_STAT_MEMBER(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK, partyMember)
         CALC_STAT_MEMBER(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF, partyMember)
+    }
+    else if(bossNumber != BRAVE_BOSS_NONE && IsSpeciesOneOf(species, gBraveBoss))
+    {
+        CALC_STAT_BOSS(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK)
+        CALC_STAT_BOSS(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF)
+        CALC_STAT_BOSS(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED)
+        CALC_STAT_BOSS(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK)
+        CALC_STAT_BOSS(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
     }
     else
     {

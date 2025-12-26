@@ -6284,3 +6284,21 @@ static void SetOpponentMovesPorygonBoss(void)
         return; 
     }  
 }
+
+bool32 IsSpeciesOneOf(u16 specie, const u16 *species)
+{
+    for (; *species !=0xFFFF; species ++)
+        {
+        if (*species == specie)
+            return TRUE;
+        }
+        return FALSE;
+}
+
+const u16 gBraveBoss[] =
+    {
+        SPECIES_PORYGON,
+        SPECIES_ELECTIVIRE,
+        SPECIES_MAGMORTAR,
+        0xFFFF
+    };
