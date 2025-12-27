@@ -209,7 +209,7 @@ script Common_EventScript_StartBossDebugBattle_Magmortar{
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_MAGMORTAR)               //Sets custom HP to the enemy 1
 
 	playmoncry(SPECIES_MAGMORTAR, 2,)
-	setwildbossbattle(SPECIES_MAGMORTAR, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_FIRE_PUNCH, MOVE_FAINT_ATTACK, MOVE_SMOG, MOVE_ROCK_TOMB, 6, 252, 0, 0, 0, 252)
+	setwildbossbattle(SPECIES_MAGMORTAR, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_FIRE_PUNCH, MOVE_FAINT_ATTACK, MOVE_CLEAR_SMOG, MOVE_ROCK_TOMB, 6, 252, 0, 0, 0, 252)
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)

@@ -358,7 +358,7 @@ Common_EventScript_StartBossDebugBattle_Magmortar::
 # 211 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	playmoncry SPECIES_MAGMORTAR, 2
 # 212 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setwildbossbattle SPECIES_MAGMORTAR, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_FIRE_PUNCH, MOVE_FAINT_ATTACK, MOVE_SMOG, MOVE_ROCK_TOMB, 6, 252, 0, 0, 0, 252
+	setwildbossbattle SPECIES_MAGMORTAR, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_FIRE_PUNCH, MOVE_FAINT_ATTACK, MOVE_CLEAR_SMOG, MOVE_ROCK_TOMB, 6, 252, 0, 0, 0, 252
 # 213 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 214 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
