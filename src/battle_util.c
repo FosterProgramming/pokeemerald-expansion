@@ -663,6 +663,8 @@ bool32 TryRunFromBattle(u32 battler)
 
     if (effect != 0)
     {
+        gBattleStruct->braveTurnDone = TRUE;
+        gBattleStruct->braveTurnActuallyDone = TRUE;
         gCurrentTurnActionNumber = gBattlersCount;
         gBattleOutcome = B_OUTCOME_RAN;
     }
@@ -674,7 +676,9 @@ void HandleAction_Run(void)
 {
     s32 i;
 
-    gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+    //  Brave change
+    //gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+    gBattlerAttacker = gBraveCurrentAction.battler;
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
     {
         gCurrentTurnActionNumber = gBattlersCount;
@@ -7078,7 +7082,7 @@ u32 GetBattlerTrait(u8 battlerId, u8 traitNum){
     if (traitNum == 0)
         ability = GetBattlerAbility(battlerId);
     else
-        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum);
+        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum - 1);
 
     return ability;
 }

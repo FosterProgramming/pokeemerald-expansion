@@ -2408,4 +2408,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+    [ABILITY_SCORCHED_ENGINE] =
+    {
+        .name = _("Scorched Engine"),
+        .description = COMPOUND_STRING("Gain +1 AP when hit by a burned foe."),
+        .aiRating = 8,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+    },
 };

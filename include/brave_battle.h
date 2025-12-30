@@ -41,6 +41,7 @@ void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target);
 void BraveAddSwitchToQueue(u32 battler, u32 target);
 void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot);
 void BraveAddDefaultToQueue(u32 battler);
+void BraveAddRunToQueue(u32 battler);
 
 void BravePrintActions(void);
 u32 BraveGetBattlerActionCount(u32 battler);

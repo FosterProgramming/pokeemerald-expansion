@@ -1769,6 +1769,16 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     SetMonData(mon, field, &n);                                            \
 }
 
+#define CALC_STAT_BOSS(base, iv, ev, statIndex, field)                \
+{                                                                \
+    u8 baseStat = gSpeciesInfo[species].base;                    \
+    s32 n = (((2 * baseStat + iv) * level) / 100) + 5 + ev;  \
+    n = ModifyStatByNature(nature, n, statIndex);                \
+    if (B_FRIENDSHIP_BOOST == TRUE)                              \
+        n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
+    SetMonData(mon, field, &n);                                  \
+}
+
 void CalculateMonStats(struct Pokemon *mon)
 {
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
@@ -1790,6 +1800,7 @@ void CalculateMonStats(struct Pokemon *mon)
     s32 level = GetLevelFromMonExp(mon);
     u8 partyMember = getCurrentPartyMember(species);
     s32 newMaxHP;
+    u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
 
     u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
 
@@ -1817,6 +1828,14 @@ void CalculateMonStats(struct Pokemon *mon)
         CALC_STAT_MEMBER(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED, partyMember)
         CALC_STAT_MEMBER(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK, partyMember)
         CALC_STAT_MEMBER(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF, partyMember)
+    }
+    else if(bossNumber != BRAVE_BOSS_NONE && IsSpeciesOneOf(species, gBraveBoss))
+    {
+        CALC_STAT_BOSS(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK)
+        CALC_STAT_BOSS(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF)
+        CALC_STAT_BOSS(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED)
+        CALC_STAT_BOSS(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK)
+        CALC_STAT_BOSS(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
     }
     else
     {
@@ -7168,24 +7187,14 @@ bool32 IsSpeciesForeignRegionalForm(u32 species, u32 currentRegion)
 //Returns the slot the Innate is found in, assuming the Ability is already slot 1.  Returns 0 if not found.
 u8 SpeciesHasInnate(u16 species, u16 ability, u32 personality, bool8 disablerandomizer) {
     u8 i;
-    u8 innateNum = 0;
 
     for (i = 0; i < MAX_MON_INNATES; i++)
     {
-        if (GetSpeciesInnate(species, i) == ability || ability == ABILITY_INTIMIDATE)
-        {
-            innateNum = innateNum + 2 + i;
-            //DebugPrintf("INNATE FOUND: %d", innateNum - 1);
-            DebugPrintf("Ability: %s Found in slot: %d", gAbilitiesInfo[ability].name, i);
-        }
+        if (GetSpeciesInnate(species, i) == ability)
+            return (i + 2);
     }
-    
-    //if (!disablerandomizer) {
-    //    innate1 = RandomizeInnate(GetSpeciesInnate(species, 0), species, personality);
-    //    innate2 = RandomizeInnate(GetSpeciesInnate(species, 1), species, personality);
-    //    innate3 = RandomizeInnate(GetSpeciesInnate(species, 2), species, personality);
-    //}
-    return innateNum;
+
+    return FALSE;
 }
 
 bool8 BoxMonHasInnate(struct BoxPokemon *boxmon, u16 ability, bool8 disableRandomizer) {
@@ -7204,39 +7213,45 @@ bool8 MonHasTrait(struct Pokemon *mon, u16 ability, bool8 disableRandomizer)
 
 u16 GetSpeciesInnate(u16 species, u8 traitNum){
     u8 member = isSpeciesAPartyMember(species);
+    u16 ability = ABILITY_NONE;
+    
     if(member != NUM_PARTY_MEMBERS){
         return gSaveBlock2Ptr->gPartyMembers[member].abilities[traitNum + 1];
     }
     else if(VarGet(VAR_ENEMY_1_SPECIES) == species){
-        if(MAX_MON_INNATES > 0){
-            u16 ability = VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_2 + traitNum);
-
-            if (ability == ABILITY_NONE)
-                ability = gSpeciesInfo[species].innates[traitNum - 1];
-
-            return ability;
+        switch(traitNum){
+            case 0:
+                ability = VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_2);
+            break;
+            case 1:
+                ability = VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_3);
+            break;
+            case 2:
+                ability = VarGet(VAR_ENEMY_1_ABILITY_OVERWRITE_4);
+            break;
         }
-        else
-            return ABILITY_NONE;
+
+        if (ability != ABILITY_NONE)
+            return ability;
     }
     else if(VarGet(VAR_ENEMY_2_SPECIES) == species){
-        if(MAX_MON_INNATES > 0){
-            u16 ability = VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_2 + traitNum);
-
-            if (ability == ABILITY_NONE)
-                ability = gSpeciesInfo[species].innates[traitNum - 1];
-            
-            return ability;
+        switch(traitNum){
+            case 0:
+                ability = VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_2);
+            break;
+            case 1:
+                ability = VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_3);
+            break;
+            case 2:
+                ability = VarGet(VAR_ENEMY_2_ABILITY_OVERWRITE_4);
+            break;
         }
-        else
-            return ABILITY_NONE;
+        
+        if (ability != ABILITY_NONE)
+            return ability;
     }
-    else{
-        if (MAX_MON_INNATES > 0)
-            return gSpeciesInfo[species].innates[traitNum - 1];
-        else
-            return ABILITY_NONE;
-    }
+
+    return gSpeciesInfo[species].innates[traitNum];
 }
 
 //Extra Held Item Stuff
@@ -7285,6 +7300,14 @@ u16 GetSpeciesFromPartyMember(u8 member){
 
 u8 isSpeciesAPartyMember(u16 species){
     u8 i;
+
+    switch(species){
+        case SPECIES_JOLTEON:
+        case SPECIES_VAPOREON:
+        case SPECIES_FLAREON:
+            species = SPECIES_EEVEE;
+        break;
+    }
 
     for(i = 0; i < NUM_PARTY_MEMBERS; i++){
         u16 partySpecies = GetSpeciesFromPartyMember(i);

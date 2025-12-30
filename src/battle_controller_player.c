@@ -375,6 +375,7 @@ static void HandleInputChooseAction(u32 battler)
             break;
         case 3: // Bottom right
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
+            BraveAddRunToQueue(battler);
             break;
         }
         PlayerBufferExecCompleted(battler);
@@ -828,8 +829,12 @@ void HandleInputChooseMove(u32 battler)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
             HideGimmickTriggerSprite();
             TryHideLastUsedBall();
-            PlayerBufferExecCompleted(battler);
-            MgbaPrintf(MGBA_LOG_WARN, "Otherthing");
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], battler);
+            if (BraveGetBattlerActionCount(battler) == 4)
+            {
+                gBattleStruct->isBraveSelector = FALSE;
+                PlayerBufferExecCompleted(battler);
+            }
             break;
         case 1:
             gBattlerControllerFuncs[battler] = HandleInputChooseTarget;
@@ -856,6 +861,12 @@ void HandleInputChooseMove(u32 battler)
         PlaySE(SE_SELECT);
         MgbaPrintf(MGBA_LOG_WARN, "Cancel move select");
         gBattleStruct->gimmick.playerSelect = FALSE;
+        //  Clear out brave chain
+
+        for (u32 i = 0; i < 4; i++)
+            BraveClearBattlerAction(battler, i);
+        gBattleStruct->monBraveActions[battler] = 0;
+
         if (gBattleStruct->zmove.viewing)
         {
             ReloadMoveNames(battler);

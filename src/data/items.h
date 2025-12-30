@@ -1122,6 +1122,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_BerryJuice,
         .iconPalette = gItemIconPalette_BerryJuice,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_SACRED_ASH] =
@@ -9178,6 +9179,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_CheriBerry,
         .iconPalette = gItemIconPalette_CheriBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_CHESTO_BERRY] =
@@ -9198,6 +9200,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_ChestoBerry,
         .iconPalette = gItemIconPalette_ChestoBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_PECHA_BERRY] =
@@ -9218,6 +9221,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_PechaBerry,
         .iconPalette = gItemIconPalette_PechaBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_RAWST_BERRY] =
@@ -9238,6 +9242,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_RawstBerry,
         .iconPalette = gItemIconPalette_RawstBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_ASPEAR_BERRY] =
@@ -9258,6 +9263,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_AspearBerry,
         .iconPalette = gItemIconPalette_AspearBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_LEPPA_BERRY] =
@@ -9279,6 +9285,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_LeppaBerry,
         .iconPalette = gItemIconPalette_LeppaBerry,
+        .braveType = BRAVE_PP_ITEM,
     },
 
     [ITEM_ORAN_BERRY] =
@@ -9300,6 +9307,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_OranBerry,
         .iconPalette = gItemIconPalette_OranBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_PERSIM_BERRY] =
@@ -9320,6 +9328,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_PersimBerry,
         .iconPalette = gItemIconPalette_PersimBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_LUM_BERRY] =
@@ -9340,6 +9349,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_LumBerry,
         .iconPalette = gItemIconPalette_LumBerry,
+        .braveType = BRAVE_STATUS_ITEM,
     },
 
     [ITEM_SITRUS_BERRY] =
@@ -9370,6 +9380,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_SitrusBerry,
         .iconPalette = gItemIconPalette_SitrusBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_FIGY_BERRY] =
@@ -9386,6 +9397,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_FigyBerry,
         .iconPalette = gItemIconPalette_FigyBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_WIKI_BERRY] =
@@ -9402,6 +9414,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_WikiBerry,
         .iconPalette = gItemIconPalette_WikiBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_MAGO_BERRY] =
@@ -9418,6 +9431,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_MagoBerry,
         .iconPalette = gItemIconPalette_MagoBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_AGUAV_BERRY] =
@@ -9434,6 +9448,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_AguavBerry,
         .iconPalette = gItemIconPalette_AguavBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_IAPAPA_BERRY] =
@@ -9450,6 +9465,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 10,
         .iconPic = gItemIcon_IapapaBerry,
         .iconPalette = gItemIconPalette_IapapaBerry,
+        .braveType = BRAVE_HP_ITEM,
     },
 
     [ITEM_RAZZ_BERRY] =

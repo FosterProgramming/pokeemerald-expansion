@@ -148,6 +148,23 @@ u16 GetBravePrioMod(u32 move, u32 battler)
     return sPriorityMultipliers[movePrio + 5];
 }
 
+bool32 AreAllBattlersDone(void)
+{
+    //  Check if any other mons can move
+    u32 numBattlers = IsDoubleBattle() ? 4 : 2;
+    for (u32 battler = 0; battler < numBattlers; battler++)
+    {
+        for (u32 action = 0; action < MAX_BRAVE_ACTIONS; action++)
+        {
+            if (gBraveBattleAction[battler][action].isSlotUsed)
+                return FALSE;
+        }
+    }
+    //  If this point is reached, turn is done
+    gBattleStruct->braveTurnDone = TRUE;
+    return TRUE;
+}
+
 void BraveSetCurrentAction(void)
 {
     if (gBattleStruct->braveTurnDone)
@@ -159,6 +176,22 @@ void BraveSetCurrentAction(void)
     u32 battlerSpeeds[4];
     u32 speedThreshold = 0;
     u32 numBattlers = IsDoubleBattle() ? 4 : 2;
+
+    if (gBraveBattleAction[0][0].action == B_ACTION_RUN)
+    {
+        gBraveCurrentAction.action = B_ACTION_RUN;
+        gBraveCurrentAction.battler = 0;
+        BraveClearBattlerAction(0, 0);
+        return;
+    }
+
+    if (gBraveBattleAction[2][0].action == B_ACTION_RUN)
+    {
+        gBraveCurrentAction.action = B_ACTION_RUN;
+        gBraveCurrentAction.battler = 0;
+        BraveClearBattlerAction(0, 1);
+        return;
+    }
 
     //  Check for switching
     if (gBraveBattleAction[0][0].action == B_ACTION_SWITCH
@@ -204,6 +237,9 @@ void BraveSetCurrentAction(void)
         gBattleStruct->monToSwitchIntoId[battlerToUse] = gBraveCurrentAction.target;
         BraveClearBattlerAction(battlerToUse, 0);
         BraveResetAP(battlerToUse);
+
+        //  Check actions done
+        AreAllBattlersDone();
         return;
     }
 
@@ -314,17 +350,7 @@ void BraveSetCurrentAction(void)
         }
     }
 
-    //  Check if any other mons can move
-    for (u32 battler = 0; battler < numBattlers; battler++)
-    {
-        for (u32 action = 0; action < MAX_BRAVE_ACTIONS; action++)
-        {
-            if (gBraveBattleAction[battler][action].isSlotUsed)
-                return;
-        }
-    }
-    //  If this point is reached, turn is done
-    gBattleStruct->braveTurnDone = TRUE;
+    AreAllBattlersDone();
 }
 
 bool32 IsBattlerDefaulting(u32 battler)
@@ -402,6 +428,7 @@ void BraveAddSwitchToQueue(u32 battler, u32 target)
 {
     gBraveBattleAction[battler][0].action = B_ACTION_SWITCH;
     gBraveBattleAction[battler][0].target = target;
+    gBraveBattleAction[battler][0].isSlotUsed = TRUE;
 }
 
 void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot)
@@ -418,6 +445,11 @@ void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot)
     //  If on player side, remove item from bags
     if (battler == 0 || battler == 2)
         RemoveBagItem(item, 1);
+}
+
+void BraveAddRunToQueue(u32 battler)
+{
+    gBraveBattleAction[battler][0].action = B_ACTION_RUN;
 }
 
 void BravePrintActions(void)

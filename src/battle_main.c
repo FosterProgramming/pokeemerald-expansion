@@ -6198,11 +6198,12 @@ void ScriptSetTotemBoost(struct ScriptContext *ctx)
 
 bool32 IsWildMonSmart(void)
 {
-#if B_SMART_WILD_AI_FLAG != 0
+    return TRUE; //All Pokémon are wild meaning they all should have an AI
+/*#if B_SMART_WILD_AI_FLAG != 0
     return (FlagGet(B_SMART_WILD_AI_FLAG));
 #else
     return TRUE;
-#endif
+#endif*/
 }
 
 static s32 Factorial(s32 n)
@@ -6284,3 +6285,21 @@ static void SetOpponentMovesPorygonBoss(void)
         return; 
     }  
 }
+
+bool32 IsSpeciesOneOf(u16 specie, const u16 *species)
+{
+    for (; *species !=0xFFFF; species ++)
+        {
+        if (*species == specie)
+            return TRUE;
+        }
+        return FALSE;
+}
+
+const u16 gBraveBoss[] =
+    {
+        SPECIES_PORYGON,
+        SPECIES_ELECTIVIRE,
+        SPECIES_MAGMORTAR,
+        0xFFFF
+    };
