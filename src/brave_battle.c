@@ -336,6 +336,14 @@ bool32 IsBattlerDefaulting(u32 battler)
 
 void BraveClearBattlerAction(u32 battler, u32 action)
 {
+    if (battler == 0 || battler == 2)
+    {
+        if (gBraveBattleAction[battler][action].isSlotUsed
+         && gBraveBattleAction[battler][action].action == B_ACTION_USE_ITEM)
+        {
+            AddBagItem(gBraveBattleAction[battler][action].item, 1);
+        }
+    }
     u32 value = 0;
     memcpy(&gBraveBattleAction[battler][action], &value, sizeof(struct BraveBattleAction));
 }
@@ -406,6 +414,10 @@ void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_ITEM;
+
+    //  If on player side, remove item from bags
+    if (battler == 0 || battler == 2)
+        RemoveBagItem(item, 1);
 }
 
 void BravePrintActions(void)
