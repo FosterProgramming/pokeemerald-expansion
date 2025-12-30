@@ -47,7 +47,7 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 31 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	waitmoncry
 # 32 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_TRACE
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_SHED_SKIN
 # 33 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_DOWNLOAD
 # 34 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
@@ -55,7 +55,7 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 35 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_RUN_AWAY
 # 36 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 80
+	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 55
 # 37 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setflag FLAG_SYS_SMART_WILD_AI
 # 39 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
@@ -63,7 +63,7 @@ DominionCity_MagaLab_Entrance_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 # 41 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	playmoncry SPECIES_PORYGON, 2
 # 42 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
-	setwildbossbattle SPECIES_PORYGON, 1, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 252, 252, 252, 252, 252, 252
+	setwildbossbattle SPECIES_PORYGON, 1, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_PSYBEAM, MOVE_RECOVER, MOVE_TACKLE, 252, 252, 252, 252, 252, 252
 # 43 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 44 "data/maps/DominionCity_MagaLab_Entrance/scripts.pory"

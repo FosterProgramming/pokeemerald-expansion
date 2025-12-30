@@ -1806,7 +1806,7 @@ void CalculateMonStats(struct Pokemon *mon)
 
     SetMonData(mon, MON_DATA_LEVEL, &level);
 
-    if (species == SPECIES_SHEDINJA)
+    if (species == SPECIES_SHEDINJA || species == SPECIES_MAGIKARP)
     {
         newMaxHP = 1;
     }
@@ -1831,6 +1831,17 @@ void CalculateMonStats(struct Pokemon *mon)
     }
     else if(bossNumber != BRAVE_BOSS_NONE && IsSpeciesOneOf(species, gBraveBoss))
     {
+
+        switch (species)
+        {
+        case SPECIES_PORYGON:
+            attackEV = 4;
+            spAttackEV = 2;
+            break;
+        
+        default:
+            break;
+        }
         CALC_STAT_BOSS(baseAttack,    attackIV,    attackEV,    STAT_ATK,   MON_DATA_ATK)
         CALC_STAT_BOSS(baseDefense,   defenseIV,   defenseEV,   STAT_DEF,   MON_DATA_DEF)
         CALC_STAT_BOSS(baseSpeed,     speedIV,     speedEV,     STAT_SPEED, MON_DATA_SPEED)

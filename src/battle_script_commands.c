@@ -4857,6 +4857,10 @@ static void Cmd_dofaintanimation(void)
         return;
 
     u32 battler = GetBattlerForBattleScript(cmd->battler);
+    for (u32 i = 0; i < 4; i++)
+    {
+            BraveClearBattlerAction(battler, i);
+    }
 
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
     {
