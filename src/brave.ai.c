@@ -266,14 +266,14 @@ static u8 GetCurrentBravePhase_Porygon(u32 battler){
 static u8 GetCurrentBravePhase_Magmortar(u32 battler){
     bool8 Enemy1CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be burned, this includes a check to see if the target is Flareon
     bool8 Enemy2CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be burned, this includes a check to see if the target is Flareon
-    u16 bossHP                 = gBattleMons[battler].hp;
-    u16 bossHPMaxHP            = gBattleMons[battler].maxHP;
-    bool8 isBossAtLowHP        = bossHP < ((bossHPMaxHP * 100 / 40)); //Below 40%
-    s8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
-    bool8 Enemy1HasSEMove      = sBattlerHasMoveType(B_POSITION_PLAYER_LEFT, TYPE_WATER)  || sBattlerHasMoveType(B_POSITION_PLAYER_LEFT, TYPE_ICE);
-    bool8 Enemy2HasSEMove      = sBattlerHasMoveType(B_POSITION_PLAYER_RIGHT, TYPE_WATER) || sBattlerHasMoveType(B_POSITION_PLAYER_RIGHT, TYPE_ICE);
-    s8 Enemy1CurrentAP         = gBattleStruct->monStoredAP[B_POSITION_PLAYER_LEFT];
-    s8 Enemy2CurrentAP         = gBattleStruct->monStoredAP[B_POSITION_PLAYER_RIGHT];
+    u16 bossHP              = gBattleMons[battler].hp;
+    u16 bossHPMaxHP         = gBattleMons[battler].maxHP;
+    bool8 isBossAtLowHP     = bossHP < ((bossHPMaxHP * 100 / 40)); //Below 40%
+    s8 bossCurrentAP        = gBattleStruct->monStoredAP[battler];
+    bool8 Enemy1HasSEMove   = sBattlerHasMoveType(B_POSITION_PLAYER_LEFT, TYPE_WATER)  || sBattlerHasMoveType(B_POSITION_PLAYER_LEFT, TYPE_ICE);
+    bool8 Enemy2HasSEMove   = sBattlerHasMoveType(B_POSITION_PLAYER_RIGHT, TYPE_WATER) || sBattlerHasMoveType(B_POSITION_PLAYER_RIGHT, TYPE_ICE);
+    s8 Enemy1CurrentAP      = gBattleStruct->monStoredAP[B_POSITION_PLAYER_LEFT];
+    s8 Enemy2CurrentAP      = gBattleStruct->monStoredAP[B_POSITION_PLAYER_RIGHT];
 
     if(gDisableStructs[battler].isFirstTurn){
         //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
@@ -295,7 +295,7 @@ static u8 GetCurrentBravePhase_Magmortar(u32 battler){
 
     if(GetNumberOfBoostedStats(B_POSITION_PLAYER_LEFT) >= ANTI_STAT_BOOST_STAT_NUM || GetNumberOfBoostedStats(B_POSITION_PLAYER_RIGHT) >= ANTI_STAT_BOOST_STAT_NUM){
         MgbaPrintf(MGBA_LOG_WARN, "Clear Smog");
-        return BOSS_BRAVE_PHASE_MISC; //Default restores AP
+        return BOSS_BRAVE_PHASE_MISC;
     }
 
     if(isBossAtLowHP && ((Enemy1HasSEMove && Enemy1CurrentAP >= 2) || (Enemy2HasSEMove && Enemy2CurrentAP >= 2)) && bossCurrentAP < 0){
@@ -319,28 +319,58 @@ static u8 GetCurrentBravePhase_Magmortar(u32 battler){
     return BOSS_BRAVE_PHASE_RANDOM; //Fallback
 }
 
+#define USE_DAMAGE_FOR_OPTIMAL_CALCULATION TRUE //Use damage instead of score
+
 static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
-    u8 i;
-    u16 currentScore = 0;
-    u16 maxScore = 0;
-    u8  maxScoreMoveId = 0;
+    u8 i, k, target;
+    u16 globalMaxScore, globalBestMoveId, maxScore, maxScoreMoveId;
 
-    if(CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, 0))
-        sCurrentTarget = B_POSITION_PLAYER_LEFT;
-    else if(CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, 0))
-        sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+    maxScoreMoveId   = 0;
+    globalBestMoveId = 0;
+    globalMaxScore   = 0;
 
-    MgbaPrintf(MGBA_LOG_WARN, "sCurrentTarget = %d", sCurrentTarget);
+    for(k = 0; k < MAX_BATTLERS_COUNT; k++){
+        target = k;
+        maxScore = 0;
 
-    for(i = 0; i < MAX_MON_MOVES; i++){
-        currentScore = gBattleStruct->aiFinalScore[battler][sCurrentTarget][i];
-        if(currentScore > maxScore){
-            maxScore       = currentScore;
-            maxScoreMoveId = i;
+        if(IsBattlerAlive(target) && GetBattlerSide(target) != GetBattlerSide(battler)){
+            u16 currentHP = gBattleMons[target].hp;
+
+            for(i = 0; i < MAX_MON_MOVES; i++){
+                u16 score = gBattleStruct->aiFinalScore[battler][target][i];
+                u16 damage = AI_DATA->simulatedDmg[battler][target][i].expected;
+
+                //If can defeat target try to do it
+                if(damage > currentHP){
+                    sCurrentTarget = target;
+                    return i;
+                }
+
+                //Calculate Best Score or Best Damage
+                if(USE_DAMAGE_FOR_OPTIMAL_CALCULATION){
+                    if(damage > maxScore){
+                        maxScore       = damage;
+                        maxScoreMoveId = i;
+                    }
+                }
+                else{
+                    if(score > maxScore){
+                        maxScore       = score;
+                        maxScoreMoveId = i;
+                    }
+                }
+            }
+        }
+
+        if(globalMaxScore < maxScore){
+            globalMaxScore   = maxScore;
+            globalBestMoveId = maxScoreMoveId;
+            sCurrentTarget   = target;
         }
     }
 
-    return maxScoreMoveId;
+    //MgbaPrintf(MGBA_LOG_WARN, "Choose move = %d currentScore = %d, target = %d", globalMaxScore, globalBestMoveId, target);
+    return globalBestMoveId;
 }
 
 static void AddRandomActionForBattler(u32 battler){
@@ -611,6 +641,9 @@ void AddAiActionsForBattler(u32 battler)
                 u8 phase      = GetCurrentBravePhase_Porygon(battler);
                 u16 move      = MOVE_NONE;
                 bool8 useSlot = FALSE;
+
+                if(maxPossibleActions >= 2)
+                    maxPossibleActions = 2; //Porygon only attacks twice per turn
 
                 //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
                 switch(phase){
