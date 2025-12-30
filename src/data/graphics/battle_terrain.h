@@ -86,3 +86,13 @@ const u32 gBattleTerrainAnimTilemap_Building[] = INCBIN_U32("graphics/battle_ter
 
 const u32 gBattleTerrainAnimTiles_Rayquaza[] = INCBIN_U32("graphics/battle_terrain/sky/anim_tiles.4bpp.lz");
 const u32 gBattleTerrainAnimTilemap_Rayquaza[] = INCBIN_U32("graphics/battle_terrain/sky/anim_map.bin.lz");
+
+// Seel Version Battle Backgrounds
+
+const u32 gBattleTerrainTiles_Lab[] = INCBIN_U32("graphics/battle_terrain/lab/tiles.4bpp.lz");
+const u32 gBattleTerrainPalette_Lab[] = INCBIN_U32("graphics/battle_terrain/lab/palette.gbapal.lz");
+const u32 gBattleTerrainTilemap_Lab[] = INCBIN_U32("graphics/battle_terrain/lab/map.bin.lz");
+
+const u32 gBattleTerrainTiles_Volcano[] = INCBIN_U32("graphics/battle_terrain/volcano/tiles.4bpp.lz");
+const u32 gBattleTerrainPalette_Volcano[] = INCBIN_U32("graphics/battle_terrain/volcano/palette.gbapal.lz");
+const u32 gBattleTerrainTilemap_Volcano[] = INCBIN_U32("graphics/battle_terrain/volcano/map.bin.lz");

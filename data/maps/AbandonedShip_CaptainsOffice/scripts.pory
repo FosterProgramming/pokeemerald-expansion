@@ -93,11 +93,36 @@ script VictoryRoad_1F_EventScript_FloorSwitch3{
 script Common_EventScript_StartBossDebugBattle{
 	lock
 	faceplayer
+    msgbox(format("Would you like to test a boss battle?"), MSGBOX_DEFAULT)
+	multichoice(0, 0, MULTI_DEBUG_BOSSES, TRUE)
+	switch(var(VAR_RESULT)){
+        case BRAVE_BOSS_PORYGON:
+			goto(Common_EventScript_StartBossDebugBattle_Porygon)
+        break
+        case BRAVE_BOSS_ELECTIVIRE:
+			goto(Common_EventScript_StartBossDebugBattle_Elektivire)
+        break
+        case BRAVE_BOSS_MAGMORTAR:
+			goto(Common_EventScript_StartBossDebugBattle_Magmortar)
+        break
+		default:
+			goto(Common_EventScript_StartBossDebugBattle_Porygon2)
+		break
+	}
+	release
+	end
+}
+
+script Common_EventScript_StartBossDebugBattle_Porygon2{
+	setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 4)
+	warp(MAP_DOMINION_CITY_MAGA_LAB_ENTRANCE, 192, 192, 192)
+}
+
+script Common_EventScript_StartBossDebugBattle_Elektivire{
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_IRON_FIST)   //Sets a custom ability to the enemy 1
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOTOR_DRIVE) //Sets a custom innate to the enemy 1 in the slot 1
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_STATIC)      //Sets a custom innate to the enemy 1 in the slot 2
 	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 200)                       //Sets custom HP to the enemy 1
-	setflag(FLAG_SYS_SMART_WILD_AI)                              //Forces the wild Pokémon to have an smart AI
 	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_ELECTIVIRE)          //Sets custom HP to the enemy 1
 
@@ -132,17 +157,14 @@ script Common_EventScript_StartBossDebugBattle{
 }
 
 script Common_EventScript_StartBossDebugBattle_Porygon{
-	lock
-	faceplayer
 	playmoncry(SPECIES_PORYGON, CRY_MODE_ENCOUNTER)
 	delay(40)
 	waitmoncry
-	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_MOODY)       //Sets a custom ability to the enemy 1
-	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_INTIMIDATE)  //Sets a custom innate to the enemy 1 in the slot 1
-	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY)    //Sets a custom ability to the enemy in the slot 2
-	//setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_RUN_AWAY)  //Sets a custom innate to the enemy 1 in the slot 3
-	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 40)                        //Sets custom HP to the enemy 1
-	setflag(FLAG_SYS_SMART_WILD_AI)                              //Forces the wild Pokémon to have an smart AI
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_TRACE)       //Sets a custom ability to the enemy 1
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_DOWNLOAD)    //Sets a custom innate to the enemy 1 in the slot 1
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY)    //Sets a custom innate to the enemy 1 in the slot 2
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_NONE)  		 //Sets a custom innate to the enemy 1 in the slot 3
+	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 80)                        //Sets custom HP to the enemy 1
 	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON)             //Sets custom HP to the enemy 1
 
@@ -177,6 +199,46 @@ script Common_EventScript_StartBossDebugBattle_Porygon{
 	end
 }
 
+script Common_EventScript_StartBossDebugBattle_Magmortar{
+	playmoncry(SPECIES_MAGMORTAR, CRY_MODE_ENCOUNTER)
+	delay(40)
+	waitmoncry
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_SCORCHED_ENGINE) //Sets a custom ability to the enemy 1
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_FLAME_BODY)      //Sets a custom innate to the enemy 1 in the slot 1
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_WHITE_SMOKE)     //Sets a custom ability to the enemy in the slot 2
+	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_ANGER_POINT)     //Sets a custom innate to the enemy 1 in the slot 3
+	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 40)                            //Sets custom HP to the enemy 1
+	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                         //Forces a double battle vs 1 enemy
+	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_MAGMORTAR)               //Sets custom HP to the enemy 1
 
-			
+	playmoncry(SPECIES_MAGMORTAR, 2,)
+	setwildbossbattle(SPECIES_MAGMORTAR, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_FIRE_PUNCH, MOVE_FAINT_ATTACK, MOVE_CLEAR_SMOG, MOVE_ROCK_TOMB, 6, 252, 0, 0, 0, 252)
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+    switch(var(VAR_RESULT)){
+        case B_OUTCOME_CAUGHT:
+            //setflag(FLAG_DAILY_WILD_LAPRAS)
+            setweather(WEATHER_NONE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            removeobject(VAR_LAST_TALKED)
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+        break
+        case B_OUTCOME_RAN:
+        case B_OUTCOME_WON:
+        case B_OUTCOME_PLAYER_TELEPORTED:
+            setvar(VAR_0x8004, SPECIES_LAPRAS)
+            setweather(WEATHER_NONE)
+            fadescreenswapbuffers(FADE_TO_BLACK)
+            removeobject(VAR_LAST_TALKED)
+            fadescreenswapbuffers(FADE_FROM_BLACK)
+            bufferspeciesname(0, VAR_0x8004)
+            msgbox(format("Magmortar dove away"), MSGBOX_DEFAULT)
+        break
+    }
+	release
+	end
+}		
 			

@@ -701,6 +701,18 @@ const struct BattleBackground sBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainAnimTilemap_Building,
         .palette = gBattleTerrainPalette_Plain,
     },
+    [BATTLE_TERRAIN_LAB] =
+    {
+        .tileset = gBattleTerrainTiles_Lab,
+        .tilemap = gBattleTerrainTilemap_Lab,
+        .palette = gBattleTerrainPalette_Lab,
+    },
+    [BATTLE_TERRAIN_VOLCANO] =
+    {
+        .tileset = gBattleTerrainTiles_Volcano,
+        .tilemap = gBattleTerrainTilemap_Volcano,
+        .palette = gBattleTerrainPalette_Volcano,
+    },
 };
 
 void BattleInitBgsAndWindows(void)

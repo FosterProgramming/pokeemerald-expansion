@@ -7082,7 +7082,7 @@ u32 GetBattlerTrait(u8 battlerId, u8 traitNum){
     if (traitNum == 0)
         ability = GetBattlerAbility(battlerId);
     else
-        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum);
+        ability = GetSpeciesInnate(gBattleMons[battlerId].species, traitNum - 1);
 
     return ability;
 }

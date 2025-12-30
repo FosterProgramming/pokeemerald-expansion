@@ -184,7 +184,8 @@
 #define BRAVE_BOSS_NONE        0
 #define BRAVE_BOSS_PORYGON     1
 #define BRAVE_BOSS_ELECTIVIRE  2
-#define NUMBER_OF_BOSSES       3
+#define BRAVE_BOSS_MAGMORTAR   3
+#define NUMBER_OF_BOSSES       4
 
 #if TESTING
 #include "config/test.h"
