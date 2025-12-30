@@ -989,6 +989,7 @@ void HandleInputChooseMove(u32 battler)
 
         gBattleStruct->isBraveSelector = FALSE;
         PlayerBufferExecCompleted(battler);
+        TryToHideMoveInfoWindow();
         /*
         if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE && !HasTrainerUsedGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler]))
         {
