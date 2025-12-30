@@ -540,3 +540,12 @@ void BraveModAP(u32 battler, s32 change)
         gBattleStruct->monStoredAP[battler] = -4;
     ChangeAPGraphics(battler);
 }
+
+void BraveCancelChain(u32 battler)
+{
+    for (u32 i = 0; i < 4; i++)
+        BraveClearBattlerAction(battler, i);
+
+    //  Check if there are any remaining actions in any brave chain
+    AreAllBattlersDone();
+}
