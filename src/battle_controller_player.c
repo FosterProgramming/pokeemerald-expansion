@@ -981,6 +981,12 @@ void HandleInputChooseMove(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
+        if (gBattleStruct->monBraveActions[battler] == 0)
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
+
         gBattleStruct->isBraveSelector = FALSE;
         PlayerBufferExecCompleted(battler);
         /*
