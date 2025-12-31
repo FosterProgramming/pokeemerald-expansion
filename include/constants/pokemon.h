@@ -354,7 +354,7 @@ enum EvolutionMode {
 #define NUM_PARTY_MEMBERS      7
 
 #define STARTING_MEMBER_SKILL_POINTS        1 //Skill points your party member has at level 1
-#define NUM_SKILL_POINTS_PER_LEVEL          600  //Number of skill points you gain per level
+#define NUM_SKILL_POINTS_PER_LEVEL          1  //Number of skill points you gain per level
 #define LEVEL_TO_START_GAINING_SKILL_POINTS 1  //Level you need to reach to start gaining skill points, this was added since you don't start at level 1 or 5 but rather 25, this can be easily be adjusted as needed
 
 #endif // GUARD_CONSTANTS_POKEMON_H
