@@ -598,11 +598,11 @@ enum
 
 static const u16 sStatusIconColors[] =
 {
-    [PAL_STATUS_PSN] = RGB(24, 12, 24),
-    [PAL_STATUS_PAR] = RGB(23, 23, 3),
-    [PAL_STATUS_SLP] = RGB(20, 20, 17),
-    [PAL_STATUS_FRZ] = RGB(17, 22, 28),
-    [PAL_STATUS_BRN] = RGB(28, 14, 10),
+    [PAL_STATUS_PSN] = RGB(25, 4, 9),
+    [PAL_STATUS_PAR] = RGB(25, 4, 9),
+    [PAL_STATUS_SLP] = RGB(25, 4, 9),
+    [PAL_STATUS_FRZ] = RGB(25, 4, 9),
+    [PAL_STATUS_BRN] = RGB(25, 4, 9),
 };
 
 static const struct WindowTemplate sHealthboxWindowTemplate = {
