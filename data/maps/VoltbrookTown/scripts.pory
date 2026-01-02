@@ -122,6 +122,11 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						speakername("???")
 						msgbox(format("Where do you think you're going?"))
 						closemessage
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						waitse
+						playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
 						applymovement(1, moves(walk_faster_down*5 walk_faster_right walk_faster_down*2 walk_faster_left face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
@@ -163,6 +168,11 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						speakername("???")
 						msgbox(format("Where do you think you're going?"))
 						closemessage
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						waitse
+						playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
 						applymovement(1, moves(walk_faster_down*5 walk_faster_right walk_faster_down*2 walk_faster_left face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
@@ -204,6 +214,11 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						speakername("???")
 						msgbox(format("Where do you think you're going?"))
 						closemessage
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						waitse
+						playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
 						applymovement(1, moves(walk_faster_down*5 walk_faster_right walk_faster_down*2 walk_faster_left face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)
@@ -245,6 +260,11 @@ script Voltbrook_EventScripts_GruntCatchesPlayerLeaving
 						speakername("???")
 						msgbox(format("Where do you think you're going?"))
 						closemessage
+						applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+						waitmovement(OBJ_EVENT_ID_PLAYER)
+						playse(SE_PIN)
+						waitse
+						playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
 						applymovement(1, moves(walk_faster_down*7 walk_faster_right face_up emote_exclamation_mark))
 						waitmovement(1)
 						playse(SE_PIN)

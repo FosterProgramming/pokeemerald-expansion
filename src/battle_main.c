@@ -5848,6 +5848,12 @@ static void ReturnFromBattleToOverworld(void)
             SetRoamerInactive(gEncounteredRoamerIndex);
     }
 
+    
+    VarSet(VAR_ENEMY_1_ABILITY_OVERWRITE_1, 0);
+    VarSet(VAR_ENEMY_1_ABILITY_OVERWRITE_2, 0);
+    VarSet(VAR_ENEMY_1_ABILITY_OVERWRITE_3, 0);
+    VarSet(VAR_ENEMY_1_ABILITY_OVERWRITE_4, 0);
+
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);
 }
