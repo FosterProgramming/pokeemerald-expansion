@@ -3211,7 +3211,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RoundCushion = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KissCushion = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_4,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PUSHABLE_CRATE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 128,
     .width = 16,

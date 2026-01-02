@@ -418,7 +418,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SEEDOT_DOLL] =              &gObjectEventGraphicsInfo_SeedotDoll,
     [OBJ_EVENT_GFX_PIKA_CUSHION] =             &gObjectEventGraphicsInfo_PikaCushion,
     [OBJ_EVENT_GFX_FIRE_PIT] =                 &gObjectEventGraphicsInfo_RoundCushion,
-    [OBJ_EVENT_GFX_KISS_CUSHION] =             &gObjectEventGraphicsInfo_KissCushion,
+    [OBJ_EVENT_GFX_PUSHABLE_CRATE] =             &gObjectEventGraphicsInfo_KissCushion,
     [OBJ_EVENT_GFX_ZIGZAG_CUSHION] =           &gObjectEventGraphicsInfo_ZigzagCushion,
     [OBJ_EVENT_GFX_SPIN_CUSHION] =             &gObjectEventGraphicsInfo_SpinCushion,
     [OBJ_EVENT_GFX_DIAMOND_CUSHION] =          &gObjectEventGraphicsInfo_DiamondCushion,

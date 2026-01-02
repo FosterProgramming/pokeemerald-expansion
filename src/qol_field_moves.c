@@ -279,7 +279,7 @@ u32 CanUseStrength(u8 collision)
     bool32 collisionEvent = (collision == COLLISION_OBJECT_EVENT);
     
     if (
-(CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) || CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT))
+(CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) || CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT) || CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_CRATE))
         && !playerUsedStrength
         && collisionEvent
         && ((monHasMove && playerHasBadge) || bagHasItem)

@@ -17,7 +17,7 @@ static void StartStrengthFieldEffect(void);
 // text
 bool8 SetUpFieldMove_Strength(void)
 {
-    if ((CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) == TRUE) || (CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT) == TRUE))
+    if ((CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_BOULDER) == TRUE) || (CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_FIRE_PIT) == TRUE) || (CheckObjectGraphicsInFrontOfPlayer(OBJ_EVENT_GFX_PUSHABLE_CRATE) == TRUE))
     {
         gSpecialVar_Result = GetCursorSelectionMonId();
         gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;

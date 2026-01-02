@@ -832,7 +832,7 @@ bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
     {
         u8 objectEventId = GetObjectEventIdByXY(x, y);
 
-        if (objectEventId != OBJECT_EVENTS_COUNT && ((gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER) || (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_FIRE_PIT)))
+        if (objectEventId != OBJECT_EVENTS_COUNT && ((gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER) || (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_FIRE_PIT) || (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_CRATE)))
         {
             x = gObjectEvents[objectEventId].currentCoords.x;
             y = gObjectEvents[objectEventId].currentCoords.y;
@@ -1609,6 +1609,9 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
         gFieldEffectArguments[2] = boulder->previousElevation;
         gFieldEffectArguments[3] = gSprites[boulder->spriteId].oam.priority;
         FieldEffectStart(FLDEFF_DUST);
+        if(boulder->graphicsId == OBJ_EVENT_GFX_PUSHABLE_CRATE)
+        PlaySE(SE_M_STRENGTH);
+        else 
         PlaySE(SE_M_STRENGTH);
         task->tState++;
     }

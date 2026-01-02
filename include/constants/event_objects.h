@@ -169,8 +169,8 @@
 #define OBJ_EVENT_GFX_LOTAD_DOLL                 165
 #define OBJ_EVENT_GFX_SEEDOT_DOLL                166
 #define OBJ_EVENT_GFX_PIKA_CUSHION               167
-#define OBJ_EVENT_GFX_FIRE_PIT              168
-#define OBJ_EVENT_GFX_KISS_CUSHION               169
+#define OBJ_EVENT_GFX_FIRE_PIT                   168
+#define OBJ_EVENT_GFX_PUSHABLE_CRATE             169
 #define OBJ_EVENT_GFX_ZIGZAG_CUSHION             170
 #define OBJ_EVENT_GFX_SPIN_CUSHION               171
 #define OBJ_EVENT_GFX_DIAMOND_CUSHION            172
@@ -404,8 +404,9 @@
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
-#define OBJ_EVENT_PAL_TAG_FIRE_PIT                  0x1124
-#define OBJ_EVENT_PAL_TAG_DYNAMIC                 0x1125
+#define OBJ_EVENT_PAL_TAG_FIRE_PIT                0x1124
+#define OBJ_EVENT_PAL_TAG_PUSHABLE_CRATE          0x1125
+#define OBJ_EVENT_PAL_TAG_DYNAMIC                 0x1126
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

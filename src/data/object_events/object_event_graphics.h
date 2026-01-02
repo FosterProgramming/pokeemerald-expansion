@@ -202,8 +202,9 @@ const u32 gObjectEventPic_SeedotDoll[] = INCBIN_U32("graphics/object_events/pics
 const u32 gObjectEventPic_PikaCushion[] = INCBIN_U32("graphics/object_events/pics/cushions/pika_cushion.4bpp");
 const u32 gObjectEventPic_RoundCushion[] = INCBIN_U32("graphics/object_events/pics/misc/fire_pit.4bpp");
 const u16 gObjectEventPal_FirePit[] = INCBIN_U16("graphics/object_events/pics/misc/fire_pit.gbapal");
+const u16 gObjectEventPal_PushableCrate[] = INCBIN_U16("graphics/object_events/pics/misc/pushable_crate.gbapal");
 
-const u32 gObjectEventPic_KissCushion[] = INCBIN_U32("graphics/object_events/pics/cushions/kiss_cushion.4bpp");
+const u32 gObjectEventPic_KissCushion[] = INCBIN_U32("graphics/object_events/pics/misc/pushable_crate.4bpp");
 const u32 gObjectEventPic_ZigzagCushion[] = INCBIN_U32("graphics/object_events/pics/cushions/zigzag_cushion.4bpp");
 const u32 gObjectEventPic_SpinCushion[] = INCBIN_U32("graphics/object_events/pics/cushions/spin_cushion.4bpp");
 const u32 gObjectEventPic_DiamondCushion[] = INCBIN_U32("graphics/object_events/pics/cushions/diamond_cushion.4bpp");

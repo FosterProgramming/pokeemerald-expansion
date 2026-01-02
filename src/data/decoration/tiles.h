@@ -571,7 +571,7 @@ const u16 DecorGfx_ROUND_CUSHION[] = {
 };
 
 const u16 DecorGfx_KISS_CUSHION[] = {
-    OBJ_EVENT_GFX_KISS_CUSHION
+    OBJ_EVENT_GFX_PUSHABLE_CRATE
 };
 
 const u16 DecorGfx_ZIGZAG_CUSHION[] = {
