@@ -75,38 +75,51 @@ script Moonthistle_EventScripts_SlowbroInn
     if (!flag(FLAG_MOONTHISTLE_TRUSTED)) 
 	{
         speakername("Slowbro")
-        msgbox(format("…this place’s for locals only…"), MSGBOX_NPC)
+        msgbox(format("…this place’s for locals only…\n…but who am I to turn away a weary traveler…"), MSGBOX_NPC)
+		goto(Moonthistle_EventScripts_SlowbroAfterTrust)
         release
         end
     }
 	else
 	{
+	goto(Moonthistle_EventScripts_SlowbroAfterTrust)
+	}
+}
+script Moonthistle_EventScripts_SlowbroAfterTrust
+	{
 		speakername("Slowbro")
-		msgbox(format("…yawn… bed’s free upstairs if you need it…"), MSGBOX_NPC)
-		msgbox(format("…no loud stomping or weird energy moves…"), MSGBOX_NPC)
+		msgbox(format("…yawn… bed’s free upstairs if you need it…\p…no loud stomping or weird energy moves…"), MSGBOX_NPC)
 		closemessage
-		msgbox(format("Would you like to take a rest?"),MSGBOX_YESNO)
+		showmoneybox(0,0)
+		speakername("Slowbro")
+		msgbox(format("Would you like to take a rest? That will be 200¥"),MSGBOX_YESNO)
 		switch(var(VAR_RESULT))
 			{
 				case NO:
+					hidemoneybox
 					msgbox("…yawn… okay…")
 					releaseall
 					end
 				case YES:
-    				call(Common_EventScript_OutOfCenterPartyHeal)			
+					removemoney(200)
+					updatemoneybox
+    				call(Common_EventScript_OutOfCenterPartyHeal)
+					delay(120)
+					hidemoneybox
 					release
 					end
 				case MULTI_B_PRESSED:
+					hidemoneybox
 					msgbox("…yawn… okay…")
 					releaseall
 					end
 				default:
+					hidemoneybox
 					msgbox("…yawn… okay…")
 					releaseall
 					end
 			}
 	}
-}
 
 //OBJ_EVENT_GFX_SPECIES(KECLEON)
 script Moonthistle_EventScripts_KecleonShopkeeper

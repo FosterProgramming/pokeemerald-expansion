@@ -1812,8 +1812,10 @@ void CalculateMonStats(struct Pokemon *mon)
     }
     else
     {
+        MgbaPrintf(MGBA_LOG_WARN, "(calcmonstats) species = %d", species);
         s32 n = 8 * gSpeciesInfo[species].baseHP + hpIV;
         newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP];
+        MgbaPrintf(MGBA_LOG_WARN, "(calcmonstats) newmaxhp = %d", newMaxHP);
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
@@ -1905,9 +1907,11 @@ void CalculateBossMonStats(struct Pokemon *mon)
     }
     else
     {
+        MgbaPrintf(MGBA_LOG_WARN, "(calcbossmonstats) species = %d", species);
         s32 n = 4 * gSpeciesInfo[species].baseHP + hpIV;  // Moderate early-game scaling
         s32 scalingFactor = 2 + (level / 25);  // Faster growth at higher levels
         newMaxHP = ((((n + hpEV / 4) * level) / 50) + level + 50) * scalingFactor * (1 + level / 100);
+        MgbaPrintf(MGBA_LOG_WARN, "(calcbossmonstats) newmaxhp = %d", newMaxHP);
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;

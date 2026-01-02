@@ -584,7 +584,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_POOCHYENA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 314
-            .iv = TRAINER_PARTY_IVS(0, 30, 0, 30, 0, 0),
+            .iv = TRAINER_PARTY_IVS(0, 30, 30, 30, 0, 100),
 #line 313
             .lvl = 5,
             .nature = NATURE_HARDY,

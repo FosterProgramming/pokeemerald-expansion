@@ -140,29 +140,9 @@ Moonthistle_EventScripts_SlowbroInn::
 	lock
 # 75 "data/maps/Moonthistle_Shop/scripts.pory"
 	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_SlowbroInn_1
-# 84 "data/maps/Moonthistle_Shop/scripts.pory"
-	speakername Moonthistle_EventScripts_SlowbroInn_Text_0
 # 85 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_SlowbroInn_Text_2, MSGBOX_NPC
-# 86 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_SlowbroInn_Text_3, MSGBOX_NPC
-# 87 "data/maps/Moonthistle_Shop/scripts.pory"
-	closemessage
-# 88 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_SlowbroInn_Text_4, MSGBOX_YESNO
-# 89 "data/maps/Moonthistle_Shop/scripts.pory"
-	switch VAR_RESULT
-# 91 "data/maps/Moonthistle_Shop/scripts.pory"
-	case NO, Moonthistle_EventScripts_SlowbroInn_5
-# 95 "data/maps/Moonthistle_Shop/scripts.pory"
-	case YES, Moonthistle_EventScripts_SlowbroInn_6
-# 99 "data/maps/Moonthistle_Shop/scripts.pory"
-	case MULTI_B_PRESSED, Moonthistle_EventScripts_SlowbroInn_7
-# 104 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_SlowbroInn_Text_5
-# 105 "data/maps/Moonthistle_Shop/scripts.pory"
-	releaseall
-	end
+	goto Moonthistle_EventScripts_SlowbroAfterTrust
+	return
 
 Moonthistle_EventScripts_SlowbroInn_1:
 # 77 "data/maps/Moonthistle_Shop/scripts.pory"
@@ -170,119 +150,163 @@ Moonthistle_EventScripts_SlowbroInn_1:
 # 78 "data/maps/Moonthistle_Shop/scripts.pory"
 	msgbox Moonthistle_EventScripts_SlowbroInn_Text_1, MSGBOX_NPC
 # 79 "data/maps/Moonthistle_Shop/scripts.pory"
+	goto Moonthistle_EventScripts_SlowbroAfterTrust
+# 80 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
-Moonthistle_EventScripts_SlowbroInn_5:
+
+Moonthistle_EventScripts_SlowbroAfterTrust::
+# 90 "data/maps/Moonthistle_Shop/scripts.pory"
+	speakername Moonthistle_EventScripts_SlowbroInn_Text_0
+# 91 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_SlowbroAfterTrust_Text_0, MSGBOX_NPC
 # 92 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_SlowbroInn_Text_5
+	closemessage
 # 93 "data/maps/Moonthistle_Shop/scripts.pory"
+	showmoneybox 0, 0
+# 94 "data/maps/Moonthistle_Shop/scripts.pory"
+	speakername Moonthistle_EventScripts_SlowbroInn_Text_0
+# 95 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_SlowbroAfterTrust_Text_1, MSGBOX_YESNO
+# 96 "data/maps/Moonthistle_Shop/scripts.pory"
+	switch VAR_RESULT
+# 98 "data/maps/Moonthistle_Shop/scripts.pory"
+	case NO, Moonthistle_EventScripts_SlowbroAfterTrust_2
+# 103 "data/maps/Moonthistle_Shop/scripts.pory"
+	case YES, Moonthistle_EventScripts_SlowbroAfterTrust_3
+# 111 "data/maps/Moonthistle_Shop/scripts.pory"
+	case MULTI_B_PRESSED, Moonthistle_EventScripts_SlowbroAfterTrust_4
+# 117 "data/maps/Moonthistle_Shop/scripts.pory"
+	hidemoneybox
+# 118 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_SlowbroAfterTrust_Text_2
+# 119 "data/maps/Moonthistle_Shop/scripts.pory"
 	releaseall
 	end
 
-Moonthistle_EventScripts_SlowbroInn_6:
-# 96 "data/maps/Moonthistle_Shop/scripts.pory"
+Moonthistle_EventScripts_SlowbroAfterTrust_2:
+# 99 "data/maps/Moonthistle_Shop/scripts.pory"
+	hidemoneybox
+# 100 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_SlowbroAfterTrust_Text_2
+# 101 "data/maps/Moonthistle_Shop/scripts.pory"
+	releaseall
+	end
+
+Moonthistle_EventScripts_SlowbroAfterTrust_3:
+# 104 "data/maps/Moonthistle_Shop/scripts.pory"
+	removemoney 200
+# 105 "data/maps/Moonthistle_Shop/scripts.pory"
+	updatemoneybox
+# 106 "data/maps/Moonthistle_Shop/scripts.pory"
 	call Common_EventScript_OutOfCenterPartyHeal
-# 97 "data/maps/Moonthistle_Shop/scripts.pory"
+# 107 "data/maps/Moonthistle_Shop/scripts.pory"
+	delay 120
+# 108 "data/maps/Moonthistle_Shop/scripts.pory"
+	hidemoneybox
+# 109 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
-Moonthistle_EventScripts_SlowbroInn_7:
-# 100 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_SlowbroInn_Text_5
-# 101 "data/maps/Moonthistle_Shop/scripts.pory"
+Moonthistle_EventScripts_SlowbroAfterTrust_4:
+# 112 "data/maps/Moonthistle_Shop/scripts.pory"
+	hidemoneybox
+# 113 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_SlowbroAfterTrust_Text_2
+# 114 "data/maps/Moonthistle_Shop/scripts.pory"
 	releaseall
 	end
 
 
 Moonthistle_EventScripts_KecleonShopkeeper::
-# 114 "data/maps/Moonthistle_Shop/scripts.pory"
+# 127 "data/maps/Moonthistle_Shop/scripts.pory"
 	lock
-# 115 "data/maps/Moonthistle_Shop/scripts.pory"
+# 128 "data/maps/Moonthistle_Shop/scripts.pory"
 	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_KecleonShopkeeper_1
-# 123 "data/maps/Moonthistle_Shop/scripts.pory"
+# 136 "data/maps/Moonthistle_Shop/scripts.pory"
 	speakername Moonthistle_EventScripts_KecleonShopkeeper_Text_0
-# 124 "data/maps/Moonthistle_Shop/scripts.pory"
+# 137 "data/maps/Moonthistle_Shop/scripts.pory"
 	msgbox Moonthistle_EventScripts_KecleonShopkeeper_Text_2, MSGBOX_NPC
-# 125 "data/maps/Moonthistle_Shop/scripts.pory"
+# 138 "data/maps/Moonthistle_Shop/scripts.pory"
 	pokemart MoonthistleShopItems
-# 126 "data/maps/Moonthistle_Shop/scripts.pory"
+# 139 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
 Moonthistle_EventScripts_KecleonShopkeeper_1:
-# 116 "data/maps/Moonthistle_Shop/scripts.pory"
+# 129 "data/maps/Moonthistle_Shop/scripts.pory"
 	speakername Moonthistle_EventScripts_KecleonShopkeeper_Text_0
-# 117 "data/maps/Moonthistle_Shop/scripts.pory"
+# 130 "data/maps/Moonthistle_Shop/scripts.pory"
 	msgbox Moonthistle_EventScripts_KecleonShopkeeper_Text_1, MSGBOX_NPC
-# 118 "data/maps/Moonthistle_Shop/scripts.pory"
+# 131 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
 
 	.align 2
-# 131 "data/maps/Moonthistle_Shop/scripts.pory"
+# 144 "data/maps/Moonthistle_Shop/scripts.pory"
 MoonthistleShopItems:
-# 133 "data/maps/Moonthistle_Shop/scripts.pory"
+# 146 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_SITRUS_BERRY
-# 134 "data/maps/Moonthistle_Shop/scripts.pory"
+# 147 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_ESCAPE_ROPE
-# 135 "data/maps/Moonthistle_Shop/scripts.pory"
+# 148 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_CHERI_BERRY
-# 136 "data/maps/Moonthistle_Shop/scripts.pory"
+# 149 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_LEMONADE
-# 137 "data/maps/Moonthistle_Shop/scripts.pory"
+# 150 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_WISE_GLASSES
-# 138 "data/maps/Moonthistle_Shop/scripts.pory"
+# 151 "data/maps/Moonthistle_Shop/scripts.pory"
 	.2byte ITEM_CHARCOAL
 	.2byte ITEM_NONE
 
 Moonthistle_EventScripts_Pineco::
-# 144 "data/maps/Moonthistle_Shop/scripts.pory"
-	lock
-# 145 "data/maps/Moonthistle_Shop/scripts.pory"
-	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Pineco_1
-# 154 "data/maps/Moonthistle_Shop/scripts.pory"
-	lock
-# 155 "data/maps/Moonthistle_Shop/scripts.pory"
-	speakername Moonthistle_EventScripts_Pineco_Text_0
-# 156 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_Pineco_Text_2, MSGBOX_NPC
 # 157 "data/maps/Moonthistle_Shop/scripts.pory"
+	lock
+# 158 "data/maps/Moonthistle_Shop/scripts.pory"
+	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Pineco_1
+# 167 "data/maps/Moonthistle_Shop/scripts.pory"
+	lock
+# 168 "data/maps/Moonthistle_Shop/scripts.pory"
+	speakername Moonthistle_EventScripts_Pineco_Text_0
+# 169 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_Pineco_Text_2, MSGBOX_NPC
+# 170 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
 Moonthistle_EventScripts_Pineco_1:
-# 147 "data/maps/Moonthistle_Shop/scripts.pory"
+# 160 "data/maps/Moonthistle_Shop/scripts.pory"
 	speakername Moonthistle_EventScripts_Pineco_Text_0
-# 148 "data/maps/Moonthistle_Shop/scripts.pory"
+# 161 "data/maps/Moonthistle_Shop/scripts.pory"
 	msgbox Moonthistle_EventScripts_Pineco_Text_1, MSGBOX_NPC
-# 149 "data/maps/Moonthistle_Shop/scripts.pory"
+# 162 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
 
 Moonthistle_EventScripts_Gulpin::
-# 165 "data/maps/Moonthistle_Shop/scripts.pory"
-	lock
-# 166 "data/maps/Moonthistle_Shop/scripts.pory"
-	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Gulpin_1
-# 175 "data/maps/Moonthistle_Shop/scripts.pory"
-	lock
-# 176 "data/maps/Moonthistle_Shop/scripts.pory"
-	speakername Moonthistle_EventScripts_Gulpin_Text_0
-# 177 "data/maps/Moonthistle_Shop/scripts.pory"
-	msgbox Moonthistle_EventScripts_Gulpin_Text_2, MSGBOX_NPC
 # 178 "data/maps/Moonthistle_Shop/scripts.pory"
+	lock
+# 179 "data/maps/Moonthistle_Shop/scripts.pory"
+	goto_if_unset FLAG_MOONTHISTLE_TRUSTED, Moonthistle_EventScripts_Gulpin_1
+# 188 "data/maps/Moonthistle_Shop/scripts.pory"
+	lock
+# 189 "data/maps/Moonthistle_Shop/scripts.pory"
+	speakername Moonthistle_EventScripts_Gulpin_Text_0
+# 190 "data/maps/Moonthistle_Shop/scripts.pory"
+	msgbox Moonthistle_EventScripts_Gulpin_Text_2, MSGBOX_NPC
+# 191 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
 Moonthistle_EventScripts_Gulpin_1:
-# 168 "data/maps/Moonthistle_Shop/scripts.pory"
+# 181 "data/maps/Moonthistle_Shop/scripts.pory"
 	speakername Moonthistle_EventScripts_Gulpin_Text_0
-# 169 "data/maps/Moonthistle_Shop/scripts.pory"
+# 182 "data/maps/Moonthistle_Shop/scripts.pory"
 	msgbox Moonthistle_EventScripts_Gulpin_Text_1, MSGBOX_NPC
-# 170 "data/maps/Moonthistle_Shop/scripts.pory"
+# 183 "data/maps/Moonthistle_Shop/scripts.pory"
 	release
 	end
 
@@ -293,66 +317,66 @@ Moonthistle_EventScripts_SlowbroInn_Text_0:
 
 Moonthistle_EventScripts_SlowbroInn_Text_1:
 # 78 "data/maps/Moonthistle_Shop/scripts.pory"
-	.string "…this place’s for locals only…$"
+	.string "…this place’s for locals only…\n"
+	.string "…but who am I to turn away a weary\l"
+	.string "traveler…$"
 
-Moonthistle_EventScripts_SlowbroInn_Text_2:
-# 85 "data/maps/Moonthistle_Shop/scripts.pory"
+Moonthistle_EventScripts_SlowbroAfterTrust_Text_0:
+# 91 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "…yawn… bed’s free upstairs if you need\n"
-	.string "it…$"
-
-Moonthistle_EventScripts_SlowbroInn_Text_3:
-# 86 "data/maps/Moonthistle_Shop/scripts.pory"
+	.string "it…\p"
 	.string "…no loud stomping or weird energy\n"
 	.string "moves…$"
 
-Moonthistle_EventScripts_SlowbroInn_Text_4:
-# 88 "data/maps/Moonthistle_Shop/scripts.pory"
-	.string "Would you like to take a rest?$"
+Moonthistle_EventScripts_SlowbroAfterTrust_Text_1:
+# 95 "data/maps/Moonthistle_Shop/scripts.pory"
+	.string "Would you like to take a rest? That will\n"
+	.string "be 200¥$"
 
-Moonthistle_EventScripts_SlowbroInn_Text_5:
-# 92 "data/maps/Moonthistle_Shop/scripts.pory"
+Moonthistle_EventScripts_SlowbroAfterTrust_Text_2:
+# 100 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "…yawn… okay…$"
 
 Moonthistle_EventScripts_KecleonShopkeeper_Text_0:
-# 116 "data/maps/Moonthistle_Shop/scripts.pory"
+# 129 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Kecleon$"
 
 Moonthistle_EventScripts_KecleonShopkeeper_Text_1:
-# 117 "data/maps/Moonthistle_Shop/scripts.pory"
+# 130 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Shop’s closed to outsiders. No badge, no\n"
 	.string "bargain.$"
 
 Moonthistle_EventScripts_KecleonShopkeeper_Text_2:
-# 124 "data/maps/Moonthistle_Shop/scripts.pory"
+# 137 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Linoone says you’re alright. So, fine.\n"
 	.string "You can browse.$"
 
 Moonthistle_EventScripts_Pineco_Text_0:
-# 147 "data/maps/Moonthistle_Shop/scripts.pory"
+# 160 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Pineco$"
 
 Moonthistle_EventScripts_Pineco_Text_1:
-# 148 "data/maps/Moonthistle_Shop/scripts.pory"
+# 161 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "You're not from here… Please don't\n"
 	.string "cause trouble.\p"
 	.string "I-I just want to be left alone.$"
 
 Moonthistle_EventScripts_Pineco_Text_2:
-# 156 "data/maps/Moonthistle_Shop/scripts.pory"
+# 169 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Sorry I was so nervous earlier… You’re\n"
 	.string "not like the others.\p"
 	.string "If you ever need a place to breathe,\n"
 	.string "this corner’s quiet.$"
 
 Moonthistle_EventScripts_Gulpin_Text_0:
-# 168 "data/maps/Moonthistle_Shop/scripts.pory"
+# 181 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Gulpin$"
 
 Moonthistle_EventScripts_Gulpin_Text_1:
-# 169 "data/maps/Moonthistle_Shop/scripts.pory"
+# 182 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "Stay away from my berries, outsider.$"
 
 Moonthistle_EventScripts_Gulpin_Text_2:
-# 177 "data/maps/Moonthistle_Shop/scripts.pory"
+# 190 "data/maps/Moonthistle_Shop/scripts.pory"
 	.string "I came for healing herbs… But if you\n"
 	.string "find any sweet berries, let me know…$"

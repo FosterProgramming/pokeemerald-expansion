@@ -11496,52 +11496,37 @@
           "map": "MAP_ROUTE7",
           "base_label": "gRoute70",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 30,
             "mons": [
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_SPEAROW"
+                "species": "SPECIES_ZIGZAGOON"
               },
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_RATTATA"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_RATTATA"
+                "species": "SPECIES_SEEDOT"
               },
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_SPEAROW"
+                "species": "SPECIES_SEEDOT"
               },
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_MEOWTH"
+                "species": "SPECIES_ZIGZAGOON"
               },
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_RATTATA"
-              },
-              {
-                "min_level": 1,
-                "max_level": 2,
-                "species": "SPECIES_SPEAROW"
-              },
-              {
-                "min_level": 1,
-                "max_level": 2,
-                "species": "SPECIES_RATTATA"
-              },
-              {
-                "min_level": 1,
-                "max_level": 2,
-                "species": "SPECIES_SPEAROW"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 1,
@@ -11551,12 +11536,27 @@
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_FEAROW"
+                "species": "SPECIES_TAILLOW"
               },
               {
                 "min_level": 1,
                 "max_level": 2,
-                "species": "SPECIES_RATICATE"
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_KADABRA"
               }
             ]
           }
@@ -11565,67 +11565,67 @@
           "map": "MAP_ROUTE14",
           "base_label": "gRoute140",
           "land_mons": {
-            "encounter_rate": 20,
+            "encounter_rate": 30,
             "mons": [
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_WEEDLE"
+                "species": "SPECIES_WURMPLE"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_CATERPIE"
+                "species": "SPECIES_WURMPLE"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_SPEAROW"
+                "species": "SPECIES_TAILLOW"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_RATTATA"
+                "species": "SPECIES_ZIGZAGOON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_RATICATE"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_FEAROW"
+                "species": "SPECIES_SILCOON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_METAPOD"
+                "species": "SPECIES_CASCOON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_KAKUNA"
+                "species": "SPECIES_CASCOON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_BUTTERFREE"
+                "species": "SPECIES_CASCOON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_BEEDRILL"
+                "species": "SPECIES_SILCOON"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_BUTTERFREE"
+                "species": "SPECIES_DUSTOX"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_BEEDRILL"
+                "species": "SPECIES_BEAUTIFLY"
               }
             ]
           }
@@ -11833,6 +11833,204 @@
                 "min_level": 3,
                 "max_level": 4,
                 "species": "SPECIES_MIGHTYENA"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_ROUTE6",
+          "base_label": "gRoute60",
+          "land_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_SEEDOT"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_SEEDOT"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_GRIMER"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_TAILLOW"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 1,
+                "max_level": 2,
+                "species": "SPECIES_KADABRA"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 4,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_ROUTE15",
+          "base_label": "gRoute150",
+          "land_mons": {
+            "encounter_rate": 40,
+            "mons": [
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_WURMPLE"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_WURMPLE"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_TAILLOW"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_SILCOON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_CASCOON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_SILCOON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_CASCOON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_CASCOON"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_BEAUTIFLY"
+              },
+              {
+                "min_level": 2,
+                "max_level": 3,
+                "species": "SPECIES_DUSTOX"
               }
             ]
           }
