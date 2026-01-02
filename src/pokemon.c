@@ -1761,7 +1761,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT_MEMBER(base, iv, ev, statIndex, field, partyMember)      \
 {                                                                          \
     u8 baseStat = gSpeciesInfo[species].base;                              \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5;            \
+    s32 n = (((2 * baseStat + iv/ 4) * level) / 100) + 5 + ev;            \
     n = ModifyStatByNature(nature, n, statIndex);                          \
     if (B_FRIENDSHIP_BOOST == TRUE)                                        \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));          \
@@ -1810,6 +1810,14 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         newMaxHP = 1;
     }
+    else if (isSpeciesAPartyMember(species))
+    {
+        MgbaPrintf(MGBA_LOG_WARN, "(calcmonstatspartymember) species = %d", species);
+        s32 n = 8 * gSpeciesInfo[species].baseHP + hpIV;
+        newMaxHP = (((n) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP] + (hpEV * 4);
+        MgbaPrintf(MGBA_LOG_WARN, "(calcmonstatspartymember) newmaxhp = %d", newMaxHP);
+    }
+    
     else
     {
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstats) species = %d", species);
