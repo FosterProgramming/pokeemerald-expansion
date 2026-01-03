@@ -63,3 +63,25 @@ script VoltbrookTown_PowerPlant_Generator_2F_LockDoor
 	setmetatile(16, 12, METATILE_PowerPlant_BottomBarrierNormalFloorLeftShadow, 1)
 	special(DrawWholeMapView)
 }
+
+script VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC
+{
+    trainerbattle_double(TRAINER_GRUNT_WEATHER_INST_1, format("
+    This Power Plant Gives us control of all Electricity in the Region.\p
+	We are unstoppable."),format("I've been stopped."),format("INULL"),VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle)
+    speakername("Grunt")
+    msgbox(format("
+    Even though you beat me, you will never get past the security systems The Boss has set up.\p
+    Even if a Pokémon could figure out how to use a computer, you would need clearence to use our systems."))
+    releaseall
+    end
+} 
+
+script VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle
+{
+    speakername("Grunt")
+    msgbox(format("
+    Boss is going to be so mad."))
+    releaseall
+    end
+}

@@ -3,7 +3,7 @@
   "name": "VoltbrookTown_PowerPlant_Entrance_2F",
   "layout": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE_2F",
   "music": "MUS_SV_VOLTBROOK_POWER_PLANT",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_VOLTBROOK_TOWN_POWER_PLANT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

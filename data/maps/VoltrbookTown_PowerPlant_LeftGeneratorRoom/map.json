@@ -3,7 +3,7 @@
   "name": "VoltrbookTown_PowerPlant_LeftGeneratorRoom",
   "layout": "LAYOUT_VOLTRBOOK_TOWN_POWER_PLANT_LEFT_GENERATOR_ROOM",
   "music": "MUS_SV_VOLTBROOK_POWER_PLANT",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_VOLTBROOK_TOWN_POWER_PLANT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

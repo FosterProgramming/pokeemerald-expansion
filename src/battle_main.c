@@ -6222,12 +6222,17 @@ static s32 Factorial(s32 n)
 
 bool32 ShouldSkipTrainerClassMusic(u16 trainerId)
 {
+    if (gMapHeader.regionMapSectionId == MAPSEC_VOLTBROOK_TOWN_POWER_PLANT)
+    {
+        return GetTrainerClassFromId(trainerId) == TRAINER_CLASS_TEAM_AQUA; 
+    }
+    
     return GetTrainerClassFromId(trainerId) == TRAINER_CLASS_LASS; 
 }
 
 bool32 ShouldSkipBattleMusic(void)
 {
-    return gMapHeader.regionMapSectionId == MAPSEC_ROUTE_7SV
+    return gMapHeader.regionMapSectionId == MAPSEC_ROUTE_7SV || gMapHeader.regionMapSectionId == MAPSEC_VOLTBROOK_TOWN_POWER_PLANT
         || ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) 
         && ShouldSkipTrainerClassMusic(TRAINER_BATTLE_PARAM.opponentA));
 }

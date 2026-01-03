@@ -94,3 +94,56 @@ VoltbrookTown_PowerPlant_Generator_2F_LockDoor::
 	special DrawWholeMapView
 	return
 
+
+VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC::
+# 69 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	trainerbattle_double TRAINER_GRUNT_WEATHER_INST_1, VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_0, VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_1, VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_2, VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle
+# 72 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_3
+# 73 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_4
+# 76 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle::
+# 82 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_3
+# 83 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle_Text_0
+# 85 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_0:
+# 69 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	.string "This Power Plant Gives us control of all\n"
+	.string "Electricity in the Region.\p"
+	.string "We are unstoppable.$"
+
+VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_1:
+# 71 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	.string "I've been stopped.$"
+
+VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_2:
+# 71 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	.string "INULL$"
+
+VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_3:
+# 72 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	.string "Grunt$"
+
+VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC_Text_4:
+# 73 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	.string "Even though you beat me, you will never\n"
+	.string "get past the security systems The Boss\l"
+	.string "has set up.\p"
+	.string "Even if a Pokémon could figure out how\n"
+	.string "to use a computer, you would need\l"
+	.string "clearence to use our systems.$"
+
+VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle_Text_0:
+# 83 "data/maps/VoltbrookTown_PowerPlant_LeftGeneratorRoom_2F/scripts.pory"
+	.string "Boss is going to be so mad.$"

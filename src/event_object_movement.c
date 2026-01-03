@@ -2482,7 +2482,7 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
             multi = TYPE_FIGHTING;
             break;
         case MAPSEC_EMBERGLIDE:
-        case MAPSEC_VERMILION_CITY:
+        case MAPSEC_VOLTBROOK_TOWN_POWER_PLANT:
             multi = TYPE_ELECTRIC;
             break;
         case MAPSEC_VERDANT_HOLLOW:
