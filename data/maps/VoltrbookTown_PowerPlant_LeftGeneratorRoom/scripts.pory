@@ -182,3 +182,27 @@ script VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockRightDoor
     special(DrawWholeMapView)
     return
 }
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC
+{
+    trainerbattle_double(TRAINER_GRUNT_RUSTURF_TUNNEL, format("
+    Hey!\p
+    You're not supposed to be here.\p
+    What, you think you can stop Team MAGA? No one will take the Power Plant back from us!"),format("Good luck getting past our security."),format("Good luck getting past our security."),VoltbrookTown_PowerPlant_LeftGeneratorRoom_PostGruntBattle)
+    speakername("Grunt")
+    msgbox(format("
+    Even though you beat me, you will never get past the security systems The Boss has set up.\p
+    Even if a Pokémon could figure out how to use a computer, you would need clearence to use our systems."))
+    releaseall
+    end
+} 
+
+script VoltbrookTown_PowerPlant_LeftGeneratorRoom_PostGruntBattle
+{
+    speakername("Grunt")
+    msgbox(format("
+    Even though you beat me, you will never get past the security systems The Boss has set up.\p
+    Even if a Pokémon could figure out how to use a computer, you would need clearence to use our systems."))
+    releaseall
+    end
+}

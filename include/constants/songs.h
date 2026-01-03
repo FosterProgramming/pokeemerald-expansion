@@ -548,16 +548,17 @@
 
 // Seel Version Music
 
-#define MUS_SV_MAIN_MENU            610 // Expedition 33: Clair
-#define MUS_SV_MAIN_VEE             611 // Expedition 33: Gustave
-#define MUS_SV_GLACIERRA            612 // Octopath Traveller: Stillsnow
-#define MUS_SV_ULTIMA               613 // FFXIV: Ultima
-#define MUS_SV_ELEMENTAL_STARS      614 // Golden Sun: Elemental Stars
-#define MUS_SV_SCHALA               615 // FFIV: Schalas Theme
-#define MUS_SV_ANCIENT_LIBRARY      616 // FF5: Ancient Library
-#define MUS_SV_TERRAS_THEME         617 // FF6: Terras Theme
-#define MUS_SV_MAGA_HIDEOUT         618 // HGSS: Rocket Hideout
-#define MUS_SV_BOSS_PORYGON         619 // HGSS: Entei Battle
+#define MUS_SV_MAIN_MENU                610 // Expedition 33: Clair
+#define MUS_SV_MAIN_VEE                 611 // Expedition 33: Gustave
+#define MUS_SV_GLACIERRA                612 // Octopath Traveller: Stillsnow
+#define MUS_SV_ULTIMA                   613 // FFXIV: Ultima
+#define MUS_SV_ELEMENTAL_STARS          614 // Golden Sun: Elemental Stars
+#define MUS_SV_SCHALA                   615 // FFIV: Schalas Theme
+#define MUS_SV_ANCIENT_LIBRARY          616 // FF5: Ancient Library
+#define MUS_SV_TERRAS_THEME             617 // FF6: Terras Theme
+#define MUS_SV_MAGA_HIDEOUT             618 // HGSS: Rocket Hideout
+#define MUS_SV_BOSS_PORYGON             619 // HGSS: Entei Battle
+#define MUS_SV_VOLTBROOK_POWER_PLANT    620 // DKC3: Nuts and Bolts
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

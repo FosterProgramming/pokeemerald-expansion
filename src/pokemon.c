@@ -1810,14 +1810,13 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         newMaxHP = 1;
     }
-    else if (isSpeciesAPartyMember(species))
+    else if (species == SPECIES_DEWGONG || species == SPECIES_EEVEE || species == SPECIES_FLAREON || species == SPECIES_JOLTEON || species == SPECIES_VAPOREON)
     {
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstatspartymember) species = %d", species);
         s32 n = 8 * gSpeciesInfo[species].baseHP + hpIV;
         newMaxHP = (((n) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP] + (hpEV * 4);
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstatspartymember) newmaxhp = %d", newMaxHP);
     }
-    
     else
     {
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstats) species = %d", species);

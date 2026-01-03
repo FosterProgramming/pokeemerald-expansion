@@ -176,3 +176,11 @@ script VoltbrookTown_PowerPlant_Entrance_Vee
     setflag(FLAG_HIDE_VOLTBROOK_MAGA)
     releaseall
 }
+
+script VoltbrookTown_PowerPlant_Entrance_PlantWorkerNPC
+{
+        lockall
+        msgbox(format("I used to be important, but the new management seems to think I'm only good for reorganizing stock.\pI've found so much junk that half the boxes are empty now."), MSGBOX_NPC)
+        releaseall
+        end
+}

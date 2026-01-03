@@ -319,15 +319,25 @@ IVs: 0 HP / 30 Atk / 30 Def / 0 SpA / 100 SpD / 30 Spe
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
 Name: GRUNT
 Class: Team Aqua
-Pic: Aqua Grunt M
+Pic: Aqua Grunt F
 Gender: Male
 Music: Aqua
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move
 
+Makuhita
+Level: 6
+IVs: 0 HP / 50 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fake Out
+- Arm Thrust
+- Bulk Up
+
 Poochyena
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 6
+IVs: 0 HP / 30 Atk / 30 Def / 0 SpA / 100 SpD / 30 Spe
+- Bite
+- Leer
+- Sand Attack
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: GRUNT

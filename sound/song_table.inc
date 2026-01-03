@@ -614,16 +614,17 @@ gSongTable::
 
 	@@ Seel Version Songs @@
 
-	song mus_sv_main_menu, 0, 0 @@ Expedition 33: Clair
-	song mus_sv_vee, 0, 0 @@ Expedition 33: Gustave
-	song mus_sv_glacierra, 0, 0 @@ Octopath Traveller: Stillsnow
-	song mus_sv_ultima, 0, 0 @@ FFXIV: Ultima
-	song mus_sv_elemental_stars, 0, 0 @@ Golden Sun: Elemental Stars
-	song mus_sv_schala, 0, 0 @@ FFIV: Schalas Theme
-	song mus_sv_ancient_library, 0, 0 @@ FFIV: Schalas Theme
-	song mus_sv_terras_theme, 0, 0 @@ FFIV: Terras Theme
-	song mus_sv_maga_hideout, 0, 0 @@ HGSS Rocket Hideout
-	song mus_sv_boss_porygon, 0, 0 @@ HGSS Entei Battle
+	song mus_sv_main_menu, 0, 0 			    @@ Expedition 33: Clair
+	song mus_sv_vee, 0, 0 						@@ Expedition 33: Gustave
+	song mus_sv_glacierra, 0, 0 				@@ Octopath Traveller: Stillsnow
+	song mus_sv_ultima, 0, 0 					@@ FFXIV: Ultima
+	song mus_sv_elemental_stars, 0, 0 			@@ Golden Sun: Elemental Stars
+	song mus_sv_schala, 0, 0 					@@ FFIV: Schalas Theme
+	song mus_sv_ancient_library, 0, 0 			@@ FFIV: Schalas Theme
+	song mus_sv_terras_theme, 0, 0 				@@ FFIV: Terras Theme
+	song mus_sv_maga_hideout, 0, 0 				@@ HGSS Rocket Hideout
+	song mus_sv_boss_porygon, 0, 0 				@@ HGSS Entei Battle
+	song mus_sv_voltbrook_power_plant, 0, 0 	@@ DCK3: Nuts and Bolts
 
 	.align 2
 dummy_song_header:

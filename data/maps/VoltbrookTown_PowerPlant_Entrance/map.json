@@ -2,11 +2,11 @@
   "id": "MAP_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
   "name": "VoltbrookTown_PowerPlant_Entrance",
   "layout": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_SV_VOLTBROOK_POWER_PLANT",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
@@ -52,6 +52,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 4,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VoltbrookTown_PowerPlant_Entrance_PlantWorkerNPC",
+      "flag": "0"
     }
   ],
   "warp_events": [

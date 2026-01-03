@@ -152,3 +152,36 @@ VoltbrookTown_PowerPlant_BarrelRoom_BottomSet::
 	special DrawWholeMapView
 	return
 
+
+VoltbrookTown_PowerPlant_BarrelRoom_PlantWorkerNPC::
+# 110 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	lockall
+# 111 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_BarrelRoom_PlantWorkerNPC_Text_0, MSGBOX_NPC
+# 112 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_BarrelRoom_PlantWorker2NPC::
+# 118 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	lockall
+# 119 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_BarrelRoom_PlantWorker2NPC_Text_0, MSGBOX_NPC
+# 120 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_BarrelRoom_PlantWorkerNPC_Text_0:
+# 111 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	.string "How did a couple of Pokémon like you get\n"
+	.string "in here?\p"
+	.string "Scram, before Team MAGA finds you.$"
+
+VoltbrookTown_PowerPlant_BarrelRoom_PlantWorker2NPC_Text_0:
+# 119 "data/maps/VoltbrookTown_PowerPlant_BarrelRoom/scripts.pory"
+	.string "Ever since Team MAGA took over the\n"
+	.string "plant, I've had to work doubles AND\l"
+	.string "weekends.\p"
+	.string "$"

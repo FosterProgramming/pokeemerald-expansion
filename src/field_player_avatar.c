@@ -1610,7 +1610,7 @@ static bool8 PushBoulder_Move(struct Task *task, struct ObjectEvent *player, str
         gFieldEffectArguments[3] = gSprites[boulder->spriteId].oam.priority;
         FieldEffectStart(FLDEFF_DUST);
         if(boulder->graphicsId == OBJ_EVENT_GFX_PUSHABLE_CRATE)
-        PlaySE(SE_M_STRENGTH);
+        PlayCry_Normal(SPECIES_BISHARP, 0);
         else 
         PlaySE(SE_M_STRENGTH);
         task->tState++;

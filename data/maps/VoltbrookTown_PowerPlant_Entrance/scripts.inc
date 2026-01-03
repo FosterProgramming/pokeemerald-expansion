@@ -231,6 +231,16 @@ VoltbrookTown_PowerPlant_Entrance_Vee::
 	return
 
 
+VoltbrookTown_PowerPlant_Entrance_PlantWorkerNPC::
+# 182 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
+	lockall
+# 183 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Entrance_PlantWorkerNPC_Text_0, MSGBOX_NPC
+# 184 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
+	releaseall
+	end
+
+
 # 138 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
 VoltbrookTown_PowerPlant_Entrance_Vee_Movement_0:
 # 139 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
@@ -291,3 +301,11 @@ VoltbrookTown_PowerPlant_Entrance_Vee_Text_2:
 	.string "… … …\p"
 	.string "C'mon, Seel, let's find the artifact\n"
 	.string "before someone sees us.$"
+
+VoltbrookTown_PowerPlant_Entrance_PlantWorkerNPC_Text_0:
+# 183 "data/maps/VoltbrookTown_PowerPlant_Entrance/scripts.pory"
+	.string "I used to be important, but the new\n"
+	.string "management seems to think I'm only\l"
+	.string "good for reorganizing stock.\p"
+	.string "I've found so much junk that half the\n"
+	.string "boxes are empty now.$"

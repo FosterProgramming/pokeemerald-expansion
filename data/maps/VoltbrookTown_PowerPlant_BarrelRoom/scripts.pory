@@ -104,3 +104,19 @@ script VoltbrookTown_PowerPlant_BarrelRoom_BottomSet
         special(DrawWholeMapView)
         return
 }
+
+script VoltbrookTown_PowerPlant_BarrelRoom_PlantWorkerNPC
+{
+        lockall
+        msgbox(format("How did a couple of Pokémon like you get in here?\pScram, before Team MAGA finds you."), MSGBOX_NPC)
+        releaseall
+        end
+}
+
+script VoltbrookTown_PowerPlant_BarrelRoom_PlantWorker2NPC
+{
+        lockall
+        msgbox(format("Ever since Team MAGA took over the plant, I've had to work doubles AND weekends.\p"), MSGBOX_NPC)
+        releaseall
+        end
+}

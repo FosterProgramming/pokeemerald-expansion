@@ -270,3 +270,50 @@ VoltbrookTown_PowerPlant_LeftGeneratorRoom_LockRightDoor::
 	special DrawWholeMapView
 	return
 
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC::
+# 188 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	trainerbattle_double TRAINER_GRUNT_RUSTURF_TUNNEL, VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_0, VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_1, VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_1, VoltbrookTown_PowerPlant_LeftGeneratorRoom_PostGruntBattle
+# 192 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_2
+# 193 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_3
+# 196 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_PostGruntBattle::
+# 202 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_2
+# 203 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_3
+# 206 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_0:
+# 188 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	.string "Hey!\p"
+	.string "You're not supposed to be here.\p"
+	.string "What, you think you can stop Team MAGA?\n"
+	.string "No one will take the Power Plant back\l"
+	.string "from us!$"
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_1:
+# 191 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	.string "Good luck getting past our security.$"
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_2:
+# 192 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	.string "Grunt$"
+
+VoltbrookTown_PowerPlant_LeftGeneratorRoom_TeamMagaNPC_Text_3:
+# 193 "data/maps/VoltrbookTown_PowerPlant_LeftGeneratorRoom/scripts.pory"
+	.string "Even though you beat me, you will never\n"
+	.string "get past the security systems The Boss\l"
+	.string "has set up.\p"
+	.string "Even if a Pokémon could figure out how\n"
+	.string "to use a computer, you would need\l"
+	.string "clearence to use our systems.$"
