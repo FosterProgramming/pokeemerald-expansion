@@ -1729,6 +1729,8 @@ static void Cmd_ppreduce(void)
 {
     CMD_ARGS();
 
+    s32 ppToDeduct = 0;
+    /*
     s32 i, ppToDeduct = 1;
     u32 moveTarget = GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove);
 
@@ -1754,6 +1756,7 @@ static void Cmd_ppreduce(void)
         if (gBattlerAttacker != gBattlerTarget && BattlerHasTrait(gBattlerTarget, ABILITY_PRESSURE))
              ppToDeduct++;
     }
+    */
 
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
     {
