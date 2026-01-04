@@ -137,6 +137,7 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     bool8 useRandomPhase       = (Random() % 2) == 0; //Chances have to be changed as needed to spice up things
     u8 bossNumber              = VarGet(VAR_BOSS_BRAVE_AI_ID);
     u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler);
+    u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK];
 
     GenerateRandomTarget();
     
@@ -177,12 +178,12 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
         return BOSS_BRAVE_PHASE_RANDOM;
     }
 
-    //Try to paralyze both targets if the player has tried to lower the enemy stats
-    if(((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE)
-    || ((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && GetNumberOfDroppedStats(battler) >= ANTI_STAT_DROP_STAT_NUM)){
+    //Try to paralyze both targets if the player has tried to lower the enemy stats, also try to bulk up if attack is lower than 6
+    if(((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && GetNumberOfDroppedStats(battler) >= ANTI_STAT_DROP_STAT_NUM)
+    || statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE
+    || bossAtkStage < DEFAULT_STAT_STAGE){
         return BOSS_BRAVE_PHASE_MISC;
-    }   
-    
+    }
     //Chain 2: to be used if eevee is in flareon form and can KO Eevee with the current AP
     if(playerMonSpecies == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, bossCurrentAP - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
         //MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
@@ -410,6 +411,8 @@ void AddAiActionsForBattler(u32 battler)
                     {
                         bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
                         bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
+                        u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler); // checks difference in stat stages between party and boss
+                        u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK]; // checks electivires attack stage
                             
                         if(Enemy1CanBeParalyzed && currAction < currentAP){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_LEFT);
@@ -421,9 +424,15 @@ void AddAiActionsForBattler(u32 battler)
                             currAction++;
                         }
 
-                        if(currAction < currentAP)
+                        if(currAction < currentAP && statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE){
                             BraveAddAnyMoveToQueue(battler, MOVE_HAZE, B_POSITION_PLAYER_RIGHT);
                             currAction++;
+                        }
+                        else if(currAction < currentAP && bossAtkStage < DEFAULT_STAT_STAGE){
+                            GenerateRandomTarget();
+                            BraveAddAnyMoveToQueue(battler, sElectivireMiscSupportMoves[Random() % 4], sCurrentTarget);
+                            currAction++;
+                        }
                     }
                     break;
                     case BOSS_PHASE_DEFAULT:
@@ -440,3 +449,12 @@ void AddAiActionsForBattler(u32 battler)
         break;
     }
 }
+
+const u16 sElectivireMiscSupportMoves[] =
+    {
+        MOVE_BULK_UP,
+        MOVE_LEER,
+        MOVE_SCREECH,
+        MOVE_SWORDS_DANCE,
+        0xFFFF
+    };
