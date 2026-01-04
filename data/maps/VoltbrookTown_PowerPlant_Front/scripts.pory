@@ -59,3 +59,53 @@ script VoltbrookTown_PowerPlant_Front_LockDoor
     special(DrawWholeMapView)
     return
 }
+
+script VoltbrookTown_PowerPlant_Front_TeamMagaNPC
+{
+    trainerbattle_double(TRAINER_GRUNT_WEATHER_INST_3, format("
+    MAGA Dialogue Intro"),format("MAGA Dialogue Outro"),format("INULL"),VoltbrookTown_PowerPlant_Front_PostGruntBattle)
+    speakername("Grunt")
+    msgbox(format("
+    MAGA Dialogue Post Battle"))
+    releaseall
+    end
+} 
+
+script VoltbrookTown_PowerPlant_Front_PostGruntBattle
+{
+    speakername("Grunt")
+    msgbox(format("
+    MAGA Dialogue Post Battle"))
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Front_TeamMagaNPC2
+{
+    trainerbattle_double(TRAINER_GRUNT_MUSEUM_1, format("
+    MAGA Dialogue Intro"),format("MAGA Dialogue Outro"),format("INULL"),VoltbrookTown_PowerPlant_Front_PostGruntBattle2)
+    speakername("Grunt")
+    msgbox(format("
+    MAGA Dialogue Post Battle"))
+    releaseall
+    end
+} 
+
+script VoltbrookTown_PowerPlant_Front_PostGruntBattle2
+{
+    speakername("Grunt")
+    msgbox(format("
+    MAGA Dialogue Post Battle"))
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Front_PlantWorkerNPC
+{
+	lockall
+    msgbox(format("
+    Team MAGA acts like they're doing us a favor.\p
+    Ever since they took over our town the people and Pokémon have been living in fear."), MSGBOX_NPC)
+    releaseall
+    end
+}

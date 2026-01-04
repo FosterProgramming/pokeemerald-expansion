@@ -155,6 +155,13 @@
       "elevation": 0,
       "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_ENTRANCE",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_VOLTBROOK_TOWN_POWER_PLANT_FRONT",
+      "dest_warp_id": "5"
     }
   ],
   "coord_events": [

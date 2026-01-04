@@ -175,3 +175,19 @@ VoltbrookTown_PowerPlant_Office_GateSet::
 	special DrawWholeMapView
 	return
 
+
+VoltbrookTown_PowerPlant_Office_PlantWorkerNPC::
+# 118 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	lockall
+# 119 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Office_PlantWorkerNPC_Text_0, MSGBOX_NPC
+# 121 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Office_PlantWorkerNPC_Text_0:
+# 119 "data/maps/VoltbrookTown_PowerPlant_Office/scripts.pory"
+	.string "I'm can't leave this cubicle. The Boss is\n"
+	.string "so power hungry, if I don't monitor the\l"
+	.string "systems he could overload the circuts.$"

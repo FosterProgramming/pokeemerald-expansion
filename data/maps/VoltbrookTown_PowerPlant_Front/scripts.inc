@@ -92,3 +92,85 @@ VoltbrookTown_PowerPlant_Front_LockDoor::
 	special DrawWholeMapView
 	return
 
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC::
+# 65 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	trainerbattle_double TRAINER_GRUNT_WEATHER_INST_3, VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_0, VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_1, VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_2, VoltbrookTown_PowerPlant_Front_PostGruntBattle
+# 67 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_3
+# 68 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_4
+# 70 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Front_PostGruntBattle::
+# 76 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_3
+# 77 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_4
+# 79 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC2::
+# 85 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	trainerbattle_double TRAINER_GRUNT_MUSEUM_1, VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_0, VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_1, VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_2, VoltbrookTown_PowerPlant_Front_PostGruntBattle2
+# 87 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_3
+# 88 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_4
+# 90 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Front_PostGruntBattle2::
+# 96 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	speakername VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_3
+# 97 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_4
+# 99 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Front_PlantWorkerNPC::
+# 105 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	lockall
+# 106 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	msgbox VoltbrookTown_PowerPlant_Front_PlantWorkerNPC_Text_0, MSGBOX_NPC
+# 109 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	releaseall
+	end
+
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_0:
+# 65 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	.string "MAGA Dialogue Intro$"
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_1:
+# 66 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	.string "MAGA Dialogue Outro$"
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_2:
+# 66 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	.string "INULL$"
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_3:
+# 67 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	.string "Grunt$"
+
+VoltbrookTown_PowerPlant_Front_TeamMagaNPC_Text_4:
+# 68 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	.string "MAGA Dialogue Post Battle$"
+
+VoltbrookTown_PowerPlant_Front_PlantWorkerNPC_Text_0:
+# 106 "data/maps/VoltbrookTown_PowerPlant_Front/scripts.pory"
+	.string "Team MAGA acts like they're doing us a\n"
+	.string "favor.\p"
+	.string "Ever since they took over our town the\n"
+	.string "people and Pokémon have been living in\l"
+	.string "fear.$"

@@ -71,8 +71,7 @@ script VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC
 	We are unstoppable."),format("I've been stopped."),format("INULL"),VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle)
     speakername("Grunt")
     msgbox(format("
-    Even though you beat me, you will never get past the security systems The Boss has set up.\p
-    Even if a Pokémon could figure out how to use a computer, you would need clearence to use our systems."))
+    Boss is going to be so mad."))
     releaseall
     end
 } 
@@ -82,6 +81,40 @@ script VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle
     speakername("Grunt")
     msgbox(format("
     Boss is going to be so mad."))
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Generator_2F_TeamMagaNPC2
+{
+    trainerbattle_double(TRAINER_GRUNT_WEATHER_INST_2, format("
+    Can you feel it in the air?\p
+	Things are just smoother since Team MAGA showed up.
+	Some of the workers don't appreciate our mission.\p
+	That's why eventually all human workers will be replaced with Pokémon.
+	You would make a fine addition to our workforce!"),format("You put me to work instead!"),format("INULL"),VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle2)
+    speakername("Grunt")
+    msgbox(format("
+    You can knock me down, but greatness keeps moving forward."))
+    releaseall
+    end
+} 
+
+script VoltbrookTown_PowerPlant_Generator_2F_PostGruntBattle2
+{
+    speakername("Grunt")
+    msgbox(format("
+    You can knock me down, but greatness keeps moving forward."))
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Generator_2F_PlantWorkerNPC
+{
+	lockall
+    msgbox(format("
+    H-hey…\n
+	Don't mind me. Just… keeping the turbines logged…"),MSGBOX_NPC)
     releaseall
     end
 }

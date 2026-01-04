@@ -1051,9 +1051,9 @@
 
 // Item Ball Flags
 #define FLAG_ITEM_DOMINION_CITY_HOLDING_CELLS_CARD_KEY              0x3E8
-#define FLAG_ITEM_ROUTE_116_X_SPECIAL                               0x3E9
-#define FLAG_ITEM_ROUTE_104_PP_UP                                   0x3EA
-#define FLAG_ITEM_ROUTE_105_IRON                                    0x3EB
+#define FLAG_ITEM_VOLTBROOK_TOWN_POWER_PLANT_CHERI_BERRY            0x3E9
+#define FLAG_ITEM_VOLTBROOK_TOWN_POWER_PLANT_MUSCLE_BAND            0x3EA
+#define FLAG_ITEM_VOLTBROOK_TOWN_POWER_PLANT_SITRUS_BERRY                                    0x3EB
 #define FLAG_ITEM_ROUTE_106_PROTEIN                                 0x3EC
 #define FLAG_ITEM_ROUTE_109_PP_UP                                   0x3ED
 #define FLAG_ITEM_ROUTE_110_RARE_CANDY                              0x3EE

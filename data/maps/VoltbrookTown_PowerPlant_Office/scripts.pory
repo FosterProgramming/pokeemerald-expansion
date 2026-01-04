@@ -112,3 +112,12 @@ script VoltbrookTown_PowerPlant_Office_GateSet
     setmetatile(8, 4, METATILE_PowerPlant_ButtonUnpressed, 0)
     special(DrawWholeMapView)
 }
+
+script VoltbrookTown_PowerPlant_Office_PlantWorkerNPC
+{
+	lockall
+    msgbox(format("
+    I'm can't leave this cubicle. The Boss is so power hungry, if I don't monitor the systems he could overload the circuts."),MSGBOX_NPC)
+    releaseall
+    end
+}

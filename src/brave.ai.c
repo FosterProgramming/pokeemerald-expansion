@@ -39,7 +39,8 @@ EWRAM_DATA u8 sCurrentTarget;
 #define MAX_NUM_PHASES                          9
 #define BOSS_BRAVE_PHASE_NOTHING                10 //Use the best move against the target with less HP
 
-#define ANTI_STAT_DROP_STAT_NUM                 6
+#define ANTI_STAT_DROP_STAT_NUM                 1
+#define ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE    58
 
 static void GenerateRandomTarget(void){
     u8 newTarget = MAX_BATTLERS_COUNT;
@@ -73,6 +74,39 @@ static u8 GetNumberOfDroppedStats(u32 battler){
     return ret;
 }
 
+static u8 GetStatStageTotalBoss(u32 battler){
+    u32 j;
+    u32 statStageTotal = 0;
+    
+    if(IsBattlerAlive(battler)){
+        for (j = 0; j < NUM_BATTLE_STATS; j++)
+        {
+            statStageTotal += gBattleMons[battler].statStages[j];
+        }
+    }
+
+    return statStageTotal;
+}
+
+static u8 GetStatStageTotalParty(u32 battler){
+    u32 j;
+    u32 statStageTotal = 0;
+    
+    if(IsBattlerAlive(B_POSITION_PLAYER_LEFT)){
+        for (j = 0; j < NUM_BATTLE_STATS; j++)
+        {
+            statStageTotal += gBattleMons[B_POSITION_PLAYER_LEFT].statStages[j];
+        }
+    }
+    if(IsBattlerAlive(B_POSITION_PLAYER_RIGHT)){
+        for (j = 0; j < NUM_BATTLE_STATS; j++)
+        {
+            statStageTotal += gBattleMons[B_POSITION_PLAYER_RIGHT].statStages[j];
+        }
+    }
+    return statStageTotal;
+}
+
 static u8 GetNumberOfAliveMonsInParty(void){
     u8 i;
     u8 ret = 0;
@@ -102,20 +136,26 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     u8 currentTurnNumber       = VarGet(VAR_BRAVE_ACTION_NUM);
     bool8 useRandomPhase       = (Random() % 2) == 0; //Chances have to be changed as needed to spice up things
     u8 bossNumber              = VarGet(VAR_BOSS_BRAVE_AI_ID);
+    u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler);
 
     GenerateRandomTarget();
     
-    if(gDisableStructs[battler].isFirstTurn){
-        //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
-        MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
-        return BOSS_BRAVE_PHASE_1;
-    }
+    // if(gDisableStructs[battler].isFirstTurn){
+    //     //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
+    //     MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
+    //     return BOSS_BRAVE_PHASE_1;
+    // }
+
+    if(gBattleStruct->monStoredAP[battler] <= 0)
+        {
+            return BOSS_BRAVE_PHASE_NOTHING;
+        }
 
     //Chain 4: to be used only when the player is down to one Pokemon in KO range and elective is also low health. 
     //This one id like him to use regardless of if he has AP stored or not, it’s basically an all out suicide attack
     //to try to make the player draw. Also I’d like a message box to appear before using this chain that I can have
     //as a story point/character development. (Currently used at 1/8 of HP)
-    if(isBossAtLowHP && playerHasOnePokemon){
+    else if(isBossAtLowHP && playerHasOnePokemon){
         if(gBattleMons[B_POSITION_PLAYER_LEFT].hp != 0)
             sCurrentTarget = B_POSITION_PLAYER_LEFT;
         else
@@ -126,18 +166,22 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     }
     else if(canFaintTarget1){
         //If Electivire can KO an specific target with the current AP, tries to do it
+        MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
         return BOSS_BRAVE_PHASE_RANDOM;
     }
     else if(canFaintTarget2){
         //If Electivire can KO an specific target with the current AP, tries to do it
+        MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
         return BOSS_BRAVE_PHASE_RANDOM;
     }
 
     //Try to paralyze both targets if the player has tried to lower the enemy stats
-    if((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && GetNumberOfDroppedStats(battler) >= ANTI_STAT_DROP_STAT_NUM)
+    if(((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE)
+    || ((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && GetNumberOfDroppedStats(battler) >= ANTI_STAT_DROP_STAT_NUM)){
         return BOSS_BRAVE_PHASE_MISC;
+    }   
     
     //Chain 2: to be used if eevee is in flareon form and can KO Eevee with the current AP
     if(playerMonSpecies == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, bossCurrentAP - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
@@ -366,23 +410,26 @@ void AddAiActionsForBattler(u32 battler)
                     {
                         bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
                         bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
-
-                        if(Enemy1CanBeParalyzed){
+                            
+                        if(Enemy1CanBeParalyzed && currAction < currentAP){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_LEFT);
                             currAction++;
                         }
 
-                        if(Enemy2CanBeParalyzed){
+                        if(Enemy2CanBeParalyzed && currAction < currentAP){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_RIGHT);
                             currAction++;
                         }
 
                         if(currAction < currentAP)
                             BraveAddAnyMoveToQueue(battler, MOVE_HAZE, B_POSITION_PLAYER_RIGHT);
+                            currAction++;
                     }
                     break;
                     case BOSS_PHASE_DEFAULT:
                         BraveAddDefaultToQueue(battler);
+                    break;
+                    case BOSS_BRAVE_PHASE_NOTHING: // Does nothing when at negative AP
                     break;
                 }
             }
