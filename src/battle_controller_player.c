@@ -673,8 +673,13 @@ void HandleInputShowEntireFieldTargets(u32 battler)
         else
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
         HideGimmickTriggerSprite();
-        PlayerBufferExecCompleted(battler);
-        MgbaPrintf(MGBA_LOG_WARN, "Entire Field");
+        BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        gBattlerControllerFuncs[battler] = PlayerHandleChooseMove;
+        if (BraveGetBattlerActionCount(battler) == 4)
+        {
+            gBattleStruct->isBraveSelector = FALSE;
+            PlayerBufferExecCompleted(battler);
+        }
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
