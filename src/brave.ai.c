@@ -42,6 +42,15 @@ EWRAM_DATA u8 sCurrentTarget;
 #define ANTI_STAT_DROP_STAT_NUM                 1
 #define ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE    58
 
+const u16 sElectivireMiscSupportMoves[] =
+    {
+        MOVE_BULK_UP,
+        MOVE_LEER,
+        MOVE_SCREECH,
+        MOVE_SWORDS_DANCE,
+        0xFFFF
+    };
+
 static void GenerateRandomTarget(void){
     u8 newTarget = MAX_BATTLERS_COUNT;
 
@@ -143,7 +152,7 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     
     // if(gDisableStructs[battler].isFirstTurn){
     //     //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
-    //     MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
+    //     //MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
     //     return BOSS_BRAVE_PHASE_1;
     // }
 
@@ -167,13 +176,13 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     }
     else if(canFaintTarget1){
         //If Electivire can KO an specific target with the current AP, tries to do it
-        MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
+        //MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
         return BOSS_BRAVE_PHASE_RANDOM;
     }
     else if(canFaintTarget2){
         //If Electivire can KO an specific target with the current AP, tries to do it
-        MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
+        //MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
         return BOSS_BRAVE_PHASE_RANDOM;
     }
@@ -186,13 +195,13 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     }
     //Chain 2: to be used if eevee is in flareon form and can KO Eevee with the current AP
     if(playerMonSpecies == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, bossCurrentAP - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        //MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
+        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
 
         return BOSS_BRAVE_PHASE_2;
     }
     else if(playerMonSpecies2 == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, bossCurrentAP - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        //MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
+        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
         return BOSS_BRAVE_PHASE_2;
@@ -200,13 +209,13 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
 
     //Chain 3: to be used to target Seel specifically, if Boss can KO Seel with the current AP
     if(playerMonSpecies  == SPECIES_DEWGONG && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, bossCurrentAP) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        //MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
+        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
 
         return BOSS_BRAVE_PHASE_3;
     }
     else if(playerMonSpecies2 == SPECIES_DEWGONG && (CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, bossCurrentAP) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        //MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
+        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
         return BOSS_BRAVE_PHASE_3;
@@ -216,18 +225,18 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     if(bossCurrentAP != MAX_BRAVE_ACTIONS){
         if(useRandomPhase && ENABLE_USE_RANDOM_PHASES_50_PERCENT_OF_THE_TIME){
             //Can randomly start attacking to spice up things - This can be disabled since the specs says "Preferably if the player is on the lower end of the health, to apply more pressure. Say if the player has <50% health he starts mixing in smaller chains 50% of the time."
-            MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
+            //MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
             return BOSS_BRAVE_PHASE_RANDOM;
         }
         else{
             //Use default if nothing is met
-            MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
+            //MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
             return BOSS_PHASE_DEFAULT; //Default restores AP
         }
     }
 
     //If nothing is met but it has enough for a chain, use a Random Chain
-    MgbaPrintf(MGBA_LOG_WARN, "If nothing else throw a Random Chain");
+    //MgbaPrintf(MGBA_LOG_WARN, "If nothing else throw a Random Chain");
     return BOSS_BRAVE_PHASE_RANDOM;
 }
 
@@ -237,18 +246,13 @@ static u8 GetCurrentBravePhase_Porygon(u32 battler){
     bool8 isBossAtLowHP        = bossHP < (bossHPMaxHP / 4);
     u8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
 
-    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battler].hp = %d", gBattleMons[battler].hp);
-    MgbaPrintf(MGBA_LOG_WARN, "gBattleMons[battler].maxHP = %d", gBattleMons[battler].maxHP);
-    MgbaPrintf(MGBA_LOG_WARN, "bossHP < (bossHPMaxHP / 4) = %d", bossHP < (bossHPMaxHP / 4));
-    MgbaPrintf(MGBA_LOG_WARN, "gBattleStruct->monStoredAP[battler]; = %d", gBattleStruct->monStoredAP[battler]);
-
     if(isBossAtLowHP)
         return BOSS_BRAVE_PHASE_RECOVER;
 
     if(bossCurrentAP >= 2)
         return BOSS_BRAVE_PHASE_RANDOM;
 
-    MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
+    //MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
     return BOSS_PHASE_DEFAULT; //Default restores AP
 }
 
@@ -265,7 +269,7 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
     else if(CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, 0))
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
-    MgbaPrintf(MGBA_LOG_WARN, "sCurrentTarget = %d", sCurrentTarget);
+    //MgbaPrintf(MGBA_LOG_WARN, "sCurrentTarget = %d", sCurrentTarget);
 
     for(i = 0; i < MAX_MON_MOVES; i++){
         currentScore = gBattleStruct->aiFinalScore[battler][sCurrentTarget][i];
@@ -325,7 +329,7 @@ void AddAiActionsForBattler(u32 battler)
     u32 currAction = gBattleStruct->monBraveActions[battler];
     u8  currentAP  = gBattleStruct->monStoredAP[battler];
     GenerateRandomTarget();
-    //MgbaPrintf(MGBA_LOG_WARN, "Running AddAiActionsForBattler for battler %d, currAction %d currentAP %d", battler, currAction, currentAP);
+    ////MgbaPrintf(MGBA_LOG_WARN, "Running AddAiActionsForBattler for battler %d, currAction %d currentAP %d", battler, currAction, currentAP);
 
     switch(bossNumber){
         case BRAVE_BOSS_NONE:
@@ -341,7 +345,7 @@ void AddAiActionsForBattler(u32 battler)
                 u16 move      = MOVE_NONE;
                 bool8 useSlot = FALSE;
 
-                //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
+                ////MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
                 switch(phase){
                     default:
                         for(currAction = 0; currAction < currentAP; currAction++){
@@ -356,7 +360,7 @@ void AddAiActionsForBattler(u32 battler)
                         }
                     break;
                     case BOSS_BRAVE_PHASE_RECOVER:
-                        // MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
+                        // //MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
                         BraveAddAnyMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
                         for(currAction = 1; currAction < currentAP; currAction++){
                             move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
@@ -379,7 +383,7 @@ void AddAiActionsForBattler(u32 battler)
                 u8 phase = GetCurrentBravePhase_Electivire(battler);
                 u16 move = MOVE_NONE;
 
-                //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
+                ////MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
 
                 switch(phase){
                     default:
@@ -414,6 +418,8 @@ void AddAiActionsForBattler(u32 battler)
                         u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler); // checks difference in stat stages between party and boss
                         u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK]; // checks electivires attack stage
                             
+                        MgbaPrintf(MGBA_LOG_WARN, "statTotalDifference= %d", statTotalDifference);
+
                         if(Enemy1CanBeParalyzed && currAction < currentAP){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_LEFT);
                             currAction++;
@@ -429,8 +435,10 @@ void AddAiActionsForBattler(u32 battler)
                             currAction++;
                         }
                         else if(currAction < currentAP && bossAtkStage < DEFAULT_STAT_STAGE){
+                            u16 move = sElectivireMiscSupportMoves[Random() % 4];
+                            //MgbaPrintf(MGBA_LOG_WARN, "move = %d",move);
                             GenerateRandomTarget();
-                            BraveAddAnyMoveToQueue(battler, sElectivireMiscSupportMoves[Random() % 4], sCurrentTarget);
+                            BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
                             currAction++;
                         }
                     }
@@ -449,12 +457,3 @@ void AddAiActionsForBattler(u32 battler)
         break;
     }
 }
-
-const u16 sElectivireMiscSupportMoves[] =
-    {
-        MOVE_BULK_UP,
-        MOVE_LEER,
-        MOVE_SCREECH,
-        MOVE_SWORDS_DANCE,
-        0xFFFF
-    };
