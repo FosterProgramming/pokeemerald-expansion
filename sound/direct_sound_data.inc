@@ -386,9 +386,6 @@ DirectSoundWaveData_unknown_16::
 DirectSoundWaveData_unknown_17::
 	.incbin "sound/direct_sound_samples/unknown_17.bin"
 
-	.align 2
-DirectSoundWaveData_crate_push::
-	.incbin "sound/direct_sound_samples/crate_push.bin"
 .if P_CRIES_ENABLED == TRUE
 .if P_FAMILY_BULBASAUR == TRUE
 	.align 2
