@@ -247,13 +247,25 @@ static u8 GetCurrentBravePhase_Porygon(u32 battler){
     u16 bossHPMaxHP            = gBattleMons[battler].maxHP;
     bool8 isBossAtLowHP        = bossHP < (bossHPMaxHP / 4);
     u8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
+    u8 eeveeType               = TYPE_NORMAL;
+    u8 conversionTarget        = 0;
+
+    if(gBattleMons[B_POSITION_PLAYER_LEFT].species == SPECIES_DEWGONG)
+        conversionTarget = B_POSITION_PLAYER_RIGHT;
+    else
+        conversionTarget = B_POSITION_PLAYER_LEFT;
+
+    eeveeType = gBattleMons[conversionTarget].types[0];
 
     if(isBossAtLowHP)
         return BOSS_BRAVE_PHASE_RECOVER;
 
-    if(bossCurrentAP >= 2)
-        return BOSS_BRAVE_PHASE_RANDOM;
-
+    if(bossCurrentAP >= 2){
+        if(IS_BATTLER_OF_TYPE(battler, eeveeType)) 
+            return BOSS_BRAVE_PHASE_RANDOM; 
+        else
+            return BOSS_BRAVE_PHASE_MISC; //Use conversion if type doesn't match Eevee
+    }
     //MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
     return BOSS_PHASE_DEFAULT; //Default restores AP
 }
@@ -364,6 +376,18 @@ void AddAiActionsForBattler(u32 battler)
                     case BOSS_BRAVE_PHASE_RECOVER:
                         // //MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
                         BraveAddAnyMoveToQueue(battler, MOVE_RECOVER, sCurrentTarget);
+                        for(currAction = 1; currAction < currentAP; currAction++){
+                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                        }
+                    break;
+                    case BOSS_BRAVE_PHASE_MISC:
+                        // //MgbaPrintf(MGBA_LOG_WARN, "Adding Recover");
+                        if(gBattleMons[B_POSITION_PLAYER_LEFT].species == SPECIES_DEWGONG)
+                                sCurrentTarget = B_POSITION_PLAYER_RIGHT;
+                            else
+                                sCurrentTarget = B_POSITION_PLAYER_LEFT;
+                        BraveAddAnyMoveToQueue(battler, MOVE_CONVERSION_2, sCurrentTarget);
                         for(currAction = 1; currAction < currentAP; currAction++){
                             move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
                             BraveAddMoveToQueue(battler, move, sCurrentTarget);
