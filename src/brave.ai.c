@@ -40,8 +40,7 @@ EWRAM_DATA u8 sCurrentTarget;
 #define BOSS_BRAVE_PHASE_NOTHING                10 //Use the best move against the target with less HP
 
 #define ANTI_STAT_DROP_STAT_NUM                 1
-#define ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE    58
-#define MAX_ACTIONS_PER_TURN                    4
+#define TOTAL_DEFAULT_STAT_STAGES_NUM           48
 
 const u16 sElectivireMiscSupportMoves[] =
     {
@@ -146,7 +145,7 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     u8 currentTurnNumber       = VarGet(VAR_BRAVE_ACTION_NUM);
     bool8 useRandomPhase       = (Random() % 2) == 0; //Chances have to be changed as needed to spice up things
     u8 bossNumber              = VarGet(VAR_BOSS_BRAVE_AI_ID);
-    u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler);
+    u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler) - TOTAL_DEFAULT_STAT_STAGES_NUM;
     u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK];
 
     GenerateRandomTarget();
@@ -177,67 +176,69 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     }
     else if(canFaintTarget1){
         //If Electivire can KO an specific target with the current AP, tries to do it
-        //MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
+        MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
         return BOSS_BRAVE_PHASE_RANDOM;
     }
     else if(canFaintTarget2){
         //If Electivire can KO an specific target with the current AP, tries to do it
-        //MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
+        MgbaPrintf(MGBA_LOG_WARN, "canFaintTarget1");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
         return BOSS_BRAVE_PHASE_RANDOM;
     }
 
-    //Try to paralyze both targets if the player has tried to lower the enemy stats, also try to bulk up if attack is lower than 6
-    if(((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && GetNumberOfDroppedStats(battler) >= ANTI_STAT_DROP_STAT_NUM)
-    || statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE
-    || bossAtkStage < DEFAULT_STAT_STAGE){
-        return BOSS_BRAVE_PHASE_MISC;
-    }
     //Chain 2: to be used if eevee is in flareon form and can KO Eevee with the current AP
-    if(playerMonSpecies == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, bossCurrentAP - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
+    if(playerMonSpecies == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, MAX_BRAVE_ACTIONS - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
 
         return BOSS_BRAVE_PHASE_2;
     }
-    else if(playerMonSpecies2 == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, bossCurrentAP - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
+    else if(playerMonSpecies2 == SPECIES_FLAREON && (CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, MAX_BRAVE_ACTIONS - 1) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 2: to be used if eevee is in flareon form and target eevee specifically.");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
         return BOSS_BRAVE_PHASE_2;
     }
 
     //Chain 3: to be used to target Seel specifically, if Boss can KO Seel with the current AP
-    if(playerMonSpecies  == SPECIES_DEWGONG && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, bossCurrentAP) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
+    if(playerMonSpecies  == SPECIES_DEWGONG && (CanAIFaintTarget(battler, B_POSITION_PLAYER_LEFT, MAX_BRAVE_ACTIONS) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
         sCurrentTarget = B_POSITION_PLAYER_LEFT;
 
         return BOSS_BRAVE_PHASE_3;
     }
-    else if(playerMonSpecies2 == SPECIES_DEWGONG && (CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, bossCurrentAP) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
-        ////MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
+    else if(playerMonSpecies2 == SPECIES_DEWGONG && (CanAIFaintTarget(battler, B_POSITION_PLAYER_RIGHT, MAX_BRAVE_ACTIONS) || bossCurrentAP == MAX_BRAVE_ACTIONS)){
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 3: to be used to target Seel specifically, if Seel is within KO range");
         sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
         return BOSS_BRAVE_PHASE_3;
+    }
+
+    //Try to paralyze both targets if the player has tried to lower the enemy stats, also try to bulk up if attack is lower than 6
+    if(((Enemy1CanBeParalyzed || Enemy2CanBeParalyzed) && GetNumberOfDroppedStats(battler) >= ANTI_STAT_DROP_STAT_NUM)
+    || statTotalDifference >= TOTAL_DEFAULT_STAT_STAGES_NUM
+    || bossAtkStage < DEFAULT_STAT_STAGE){
+        MgbaPrintf(MGBA_LOG_WARN, "Misc: used to spread status and boost stats or eliminate stat changes");
+        return BOSS_BRAVE_PHASE_MISC;
     }
 
     //Try to build more AP if nothing is met
     if(bossCurrentAP != MAX_BRAVE_ACTIONS){
         if(useRandomPhase && ENABLE_USE_RANDOM_PHASES_50_PERCENT_OF_THE_TIME){
             //Can randomly start attacking to spice up things - This can be disabled since the specs says "Preferably if the player is on the lower end of the health, to apply more pressure. Say if the player has <50% health he starts mixing in smaller chains 50% of the time."
-            //MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
+            MgbaPrintf(MGBA_LOG_WARN, "Can randomly start attacking to spice up things");
             return BOSS_BRAVE_PHASE_RANDOM;
         }
         else{
             //Use default if nothing is met
-            //MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
+            MgbaPrintf(MGBA_LOG_WARN, "Use default if nothing is met");
             return BOSS_PHASE_DEFAULT; //Default restores AP
         }
     }
 
     //If nothing is met but it has enough for a chain, use a Random Chain
-    //MgbaPrintf(MGBA_LOG_WARN, "If nothing else throw a Random Chain");
+    MgbaPrintf(MGBA_LOG_WARN, "If nothing else throw a Random Chain");
     return BOSS_BRAVE_PHASE_RANDOM;
 }
 
@@ -396,6 +397,7 @@ void AddAiActionsForBattler(u32 battler)
                         }
                     break;
                     case BOSS_BRAVE_PHASE_1:
+                    case BOSS_BRAVE_PHASE_3:
                     case BOSS_BRAVE_PHASE_4:
                         //Chain 4: to be used only when the player is down to one Pokemon in KO range and elective is also low health. 
                         //This one id like him to use regardless of if he has AP stored or not, it’s basically an all out suicide attack
@@ -417,36 +419,40 @@ void AddAiActionsForBattler(u32 battler)
                     {
                         bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
                         bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
-                        u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler); // checks difference in stat stages between party and boss
-                        u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK]; // checks electivires attack stage
-                            
-                        if(Enemy1CanBeParalyzed && currAction < MAX_ACTIONS_PER_TURN){
+                        u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler) - TOTAL_DEFAULT_STAT_STAGES_NUM; // checks difference in stat stages between party and boss
+                        u16 hazeChance             = (statTotalDifference * TOTAL_DEFAULT_STAT_STAGES_NUM / 5);
+                        u16 rand                   = Random() % 100;
+                        u16 bossAtkDrops           = DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK]; // checks how many times electivires attack stage has been dropped
+                        u16 supportChance          = (bossAtkDrops * 17);
+                        u16 currentTurnActions     = 1 + (Random() % 3);
+                        
+                        MgbaPrintf(MGBA_LOG_WARN, "currentTurnActions =  %d", currentTurnActions);
+                        
+                        if(currAction < currentTurnActions && rand < hazeChance){
+                            BraveAddAnyMoveToQueue(battler, MOVE_HAZE, B_POSITION_PLAYER_RIGHT);
+                            currAction++;
+                        }
+                        else if(currAction < currentTurnActions && rand < supportChance){
+                            u16 move = sElectivireMiscSupportMoves[Random() % 4];
+                            GenerateRandomTarget();
+                            BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
+                            currAction++;
+                        }
+                        
+                        if(Enemy1CanBeParalyzed && currAction < currentTurnActions){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_LEFT);
                             currAction++;
                         }
 
-                        if(Enemy2CanBeParalyzed && currAction < MAX_ACTIONS_PER_TURN){
+                        if(Enemy2CanBeParalyzed && currAction < currentTurnActions){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_RIGHT);
                             currAction++;
                         }
+                        for(currAction; currAction < currentTurnActions; currAction++){
+                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                        }
 
-                        if(currAction < MAX_ACTIONS_PER_TURN && statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE){
-                            BraveAddAnyMoveToQueue(battler, MOVE_HAZE, B_POSITION_PLAYER_RIGHT);
-                            currAction++;
-                        }
-                        else if(currAction < MAX_ACTIONS_PER_TURN && bossAtkStage < DEFAULT_STAT_STAGE){
-                            u16 move = sElectivireMiscSupportMoves[Random() % 4];
-                            //MgbaPrintf(MGBA_LOG_WARN, "move = %d",move);
-                            GenerateRandomTarget();
-                            BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
-                            currAction++;
-                                if (currAction < MAX_ACTIONS_PER_TURN)
-                                {
-                                    move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
-                                    BraveAddMoveToQueue(battler, move, sCurrentTarget);
-                                    currAction++;
-                                }
-                        }
                     }
                     break;
                     case BOSS_PHASE_DEFAULT:
