@@ -3493,6 +3493,7 @@ static void CancellerAsleep(u32 *effect)
                     gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                     *effect = 2;
                 }
+                BraveCancelChain(gBattlerAttacker);
             }
             else
             {
@@ -3515,6 +3516,7 @@ static void CancellerFrozen(u32 *effect)
         {
             gBattlescriptCurrInstr = BattleScript_MoveUsedIsFrozen;
             gHitMarker |= (HITMARKER_NO_ATTACKSTRING | HITMARKER_UNABLE_TO_USE_MOVE);
+            BraveCancelChain(gBattlerAttacker);
         }
         else // unfreeze
         {
@@ -3608,6 +3610,7 @@ static void CancellerFlinch(u32 *effect)
         gBattlescriptCurrInstr = BattleScript_MoveUsedFlinched;
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         *effect = 1;
+        BraveCancelChain(gBattlerAttacker);
     }
 }
 
@@ -3626,6 +3629,7 @@ static void CancellerInLove(u32 *effect)
             gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
             gProtectStructs[gBattlerAttacker].loveImmobility = TRUE;
             CancelMultiTurnMoves(gBattlerAttacker);
+            BraveCancelChain(gBattlerAttacker);
         }
         gBattlescriptCurrInstr = BattleScript_MoveUsedIsInLove;
         *effect = 1;
@@ -3763,6 +3767,7 @@ static void CancellerParalysed(u32 *effect)
         gBattlescriptCurrInstr = BattleScript_MoveUsedIsParalyzed;
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         *effect = 1;
+        BraveCancelChain(gBattlerAttacker);
     }
 }
 

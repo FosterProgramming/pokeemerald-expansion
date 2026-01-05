@@ -427,6 +427,13 @@ static void HandleInputChooseAction(u32 battler)
             gBattleStruct->isBraveSelector = FALSE;
             PlayerHandleChooseAction(battler);
             MgbaPrintf(MGBA_LOG_WARN, "Exiting menu");
+
+            //  Clear out brave chain
+
+            for (u32 i = 0; i < 4; i++)
+                BraveClearBattlerAction(battler, i);
+            gBattleStruct->monBraveActions[battler] = 0;
+
             return;
         }
         if (IsDoubleBattle()
@@ -673,8 +680,13 @@ void HandleInputShowEntireFieldTargets(u32 battler)
         else
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
         HideGimmickTriggerSprite();
-        PlayerBufferExecCompleted(battler);
-        MgbaPrintf(MGBA_LOG_WARN, "Entire Field");
+        BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], gMultiUsePlayerCursor);
+        gBattlerControllerFuncs[battler] = PlayerHandleChooseMove;
+        if (BraveGetBattlerActionCount(battler) == 4)
+        {
+            gBattleStruct->isBraveSelector = FALSE;
+            PlayerBufferExecCompleted(battler);
+        }
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
@@ -861,11 +873,6 @@ void HandleInputChooseMove(u32 battler)
         PlaySE(SE_SELECT);
         MgbaPrintf(MGBA_LOG_WARN, "Cancel move select");
         gBattleStruct->gimmick.playerSelect = FALSE;
-        //  Clear out brave chain
-
-        for (u32 i = 0; i < 4; i++)
-            BraveClearBattlerAction(battler, i);
-        gBattleStruct->monBraveActions[battler] = 0;
 
         if (gBattleStruct->zmove.viewing)
         {
@@ -981,8 +988,15 @@ void HandleInputChooseMove(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
+        if (gBattleStruct->monBraveActions[battler] == 0)
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
+
         gBattleStruct->isBraveSelector = FALSE;
         PlayerBufferExecCompleted(battler);
+        TryToHideMoveInfoWindow();
         /*
         if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE && !HasTrainerUsedGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler]))
         {

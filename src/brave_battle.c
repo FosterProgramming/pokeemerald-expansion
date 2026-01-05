@@ -174,7 +174,6 @@ void BraveSetCurrentAction(void)
     }
     bool8 battlerWantsToMove[4] = {0, 0, 0, 0};
     u32 battlerSpeeds[4];
-    u32 speedThreshold = 0;
     u32 numBattlers = IsDoubleBattle() ? 4 : 2;
 
     if (gBraveBattleAction[0][0].action == B_ACTION_RUN)
@@ -252,9 +251,8 @@ void BraveSetCurrentAction(void)
              && gBraveBattleAction[battler][actionIndex].action == B_ACTION_USE_MOVE)
             {
                 u32 move = gBattleMons[battler].moves[gBraveBattleAction[battler][actionIndex].moveSlot];
-                
+
                 battlerSpeeds[battler] = uq4_12_multiply_by_int_half_down(GetBravePrioMod(move, battler), battlerSpeeds[battler]);
-                speedThreshold += battlerSpeeds[battler];
                 battlerWantsToMove[battler] = TRUE;
                 break;
             }
@@ -262,7 +260,6 @@ void BraveSetCurrentAction(void)
                   && gBraveBattleAction[battler][actionIndex].action == B_ACTION_USE_ITEM)
             {
                 battlerSpeeds[battler] = battlerSpeeds[battler] * BRAVE_ITEM_USE_SPEED_MULTIPLIER;
-                speedThreshold += battlerSpeeds[battler];
                 battlerWantsToMove[battler] = TRUE;
                 break;
             }
@@ -303,41 +300,31 @@ void BraveSetCurrentAction(void)
     }
     else
     {
-
-        speedThreshold *= 3;
-
-        bool32 thresholdMet = FALSE;
         u32 battlerToMove = 0;
         u32 highestStoredSpeed = 0;
 
-        while (!thresholdMet)
+        for (u32 battler = 0; battler < numBattlers; battler++)
         {
-            for (u32 battler = 0; battler < numBattlers; battler++)
+            if (!battlerWantsToMove[battler])
+                continue;
+
+            gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
+
+            if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
             {
-                if (!battlerWantsToMove[battler])
-                    continue;
-                if (gBraveStoredSpeeds[battler] >= speedThreshold)
-                {
-                    thresholdMet = TRUE;
-                    if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
-                    {
-                        battlerToMove = battler;
-                    }
-                    else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
-                    {
-                        //  Deal with the speed tiebreaks here
-                        s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
-                        s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
-                        if (order2 > order1)
-                            battlerToMove = battler;
-                    }
-                }
-                if (!thresholdMet)
-                    gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
+                battlerToMove = battler;
+            }
+            else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
+            {
+                //  Deal with the speed tiebreaks here
+                s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
+                s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
+                if (order2 > order1)
+                    battlerToMove = battler;
             }
         }
 
-        gBraveStoredSpeeds[battlerToMove] -= speedThreshold;
+        gBraveStoredSpeeds[battlerToMove] = 0;
 
         for (u32 i = 0; i < MAX_BRAVE_ACTIONS; i++)
         {
@@ -362,6 +349,14 @@ bool32 IsBattlerDefaulting(u32 battler)
 
 void BraveClearBattlerAction(u32 battler, u32 action)
 {
+    if (battler == 0 || battler == 2)
+    {
+        if (gBraveBattleAction[battler][action].isSlotUsed
+         && gBraveBattleAction[battler][action].action == B_ACTION_USE_ITEM)
+        {
+            AddBagItem(gBraveBattleAction[battler][action].item, 1);
+        }
+    }
     u32 value = 0;
     memcpy(&gBraveBattleAction[battler][action], &value, sizeof(struct BraveBattleAction));
 }
@@ -433,6 +428,10 @@ void BraveAddItemToQueue(u32 battler, u32 item, u32 target, u32 slot)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_ITEM;
+
+    //  If on player side, remove item from bags
+    if (battler == 0 || battler == 2)
+        RemoveBagItem(item, 1);
 }
 
 void BraveAddRunToQueue(u32 battler)
@@ -527,4 +526,13 @@ void BraveModAP(u32 battler, s32 change)
     else if (gBattleStruct->monStoredAP[battler] < -4)
         gBattleStruct->monStoredAP[battler] = -4;
     ChangeAPGraphics(battler);
+}
+
+void BraveCancelChain(u32 battler)
+{
+    for (u32 i = 0; i < 4; i++)
+        BraveClearBattlerAction(battler, i);
+
+    //  Check if there are any remaining actions in any brave chain
+    AreAllBattlersDone();
 }

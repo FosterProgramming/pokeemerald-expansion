@@ -52,5 +52,6 @@ void BraveIncrementAP(void);
 void BraveConsumeAP(u32 battler, u32 move);
 void BraveResetAP(u32 battler);
 void BraveModAP(u32 battler, s32 change);
+void BraveCancelChain(u32 battler);
 
 #endif
