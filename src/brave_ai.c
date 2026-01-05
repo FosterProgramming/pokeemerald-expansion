@@ -351,6 +351,37 @@ static u8 GetCurrentBravePhase_Magmortar(u32 battler){
 
 #define USE_DAMAGE_FOR_OPTIMAL_CALCULATION TRUE //Use damage instead of score
 
+bool8 IsMoveBeingRedirected(u8 battlerAtk, u16 move, u8 battlerDef){
+    u32 moveType = GetMoveType(move);
+
+    switch(moveType){
+        case TYPE_ELECTRIC:
+            if (IsAbilityOnSide(battlerDef, ABILITY_LIGHTNING_ROD))
+                return TRUE;
+        break;
+        case TYPE_WATER:
+            if (IsAbilityOnSide(battlerDef, ABILITY_STORM_DRAIN))
+                return TRUE;
+        break;
+    }
+
+    /* //Status Moves not yet implemented
+    if (AISearchTraits(AIBattlerTraits, ABILITY_SWEET_VEIL)  && (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_YAWN))
+        return TRUE;
+
+    if(AISearchTraits(AIBattlerTraits, ABILITY_MAGIC_BOUNCE) && (MoveCanBeBouncedBack(move) && moveTarget & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_OPPONENTS_FIELD)))
+        return TRUE;
+
+    if(AISearchTraits(AIBattlerTraits, ABILITY_FLOWER_VEIL) && ((IS_BATTLER_OF_TYPE(battlerDef, TYPE_GRASS)) && (IsNonVolatileStatusMoveEffect(moveEffect) || IsStatLoweringEffect(moveEffect))))
+        return TRUE;
+
+    if(AISearchTraits(AIBattlerTraits, ABILITY_AROMA_VEIL) && (IsAromaVeilProtectedEffect(moveEffect)))
+        return TRUE;*/
+
+
+    return FALSE;
+}
+
 static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
     u8 i, k, target;
     u16 globalMaxScore, globalBestMoveId, maxScore, maxScoreMoveId;
@@ -369,6 +400,7 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
             for(i = 0; i < MAX_MON_MOVES; i++){
                 u16 score = gBattleStruct->aiFinalScore[battler][target][i];
                 u16 damage = AI_DATA->simulatedDmg[battler][target][i].expected;
+                bool8 isRedirected = IsMoveBeingRedirected(battler, gBattleMons[battler].moves[i], target);
 
                 //If can defeat target try to do it
                 if(damage > currentHP){
@@ -378,13 +410,13 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
 
                 //Calculate Best Score or Best Damage
                 if(USE_DAMAGE_FOR_OPTIMAL_CALCULATION){
-                    if(damage > maxScore){
+                    if(damage > maxScore && !isRedirected){
                         maxScore       = damage;
                         maxScoreMoveId = i;
                     }
                 }
                 else{
-                    if(score > maxScore){
+                    if(score > maxScore && !isRedirected){
                         maxScore       = score;
                         maxScoreMoveId = i;
                     }
