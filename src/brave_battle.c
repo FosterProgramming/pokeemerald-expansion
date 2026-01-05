@@ -266,8 +266,6 @@ void BraveSetCurrentAction(void)
         }
     }
 
-    DebugPrintf("%u %u %u %u", battlerSpeeds[0], battlerSpeeds[1], battlerSpeeds[2], battlerSpeeds[3]);
-
     //  Check if any battler should Default before executing moves
     bool32 battlerIsDefaulting = FALSE;
     u32 battlerToDefault = 0;
