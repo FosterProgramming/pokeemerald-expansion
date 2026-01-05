@@ -41,6 +41,7 @@ EWRAM_DATA u8 sCurrentTarget;
 
 #define ANTI_STAT_DROP_STAT_NUM                 1
 #define ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE    58
+#define MAX_ACTIONS_PER_TURN                    4
 
 const u16 sElectivireMiscSupportMoves[] =
     {
@@ -150,11 +151,11 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
 
     GenerateRandomTarget();
     
-    // if(gDisableStructs[battler].isFirstTurn){
-    //     //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
-    //     //MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
-    //     return BOSS_BRAVE_PHASE_1;
-    // }
+    if(gDisableStructs[battler].isFirstTurn){
+        //Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening
+        MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
+        return BOSS_BRAVE_PHASE_1;
+    }
 
     if(gBattleStruct->monStoredAP[battler] <= 0)
         {
@@ -407,8 +408,9 @@ void AddAiActionsForBattler(u32 battler)
                     break;
                     case BOSS_BRAVE_PHASE_RANDOM:
                         for(currAction = 0; currAction < currentAP; currAction++){
-                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
-                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                            phase = Random() % 5;
+                            move = sBraveBossesActions[bossNumber][phase][currAction];
+                            BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
                         }
                     break;
                     case BOSS_BRAVE_PHASE_MISC:
@@ -418,28 +420,32 @@ void AddAiActionsForBattler(u32 battler)
                         u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler); // checks difference in stat stages between party and boss
                         u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK]; // checks electivires attack stage
                             
-                        MgbaPrintf(MGBA_LOG_WARN, "statTotalDifference= %d", statTotalDifference);
-
-                        if(Enemy1CanBeParalyzed && currAction < currentAP){
+                        if(Enemy1CanBeParalyzed && currAction < MAX_ACTIONS_PER_TURN){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_LEFT);
                             currAction++;
                         }
 
-                        if(Enemy2CanBeParalyzed && currAction < currentAP){
+                        if(Enemy2CanBeParalyzed && currAction < MAX_ACTIONS_PER_TURN){
                             BraveAddAnyMoveToQueue(battler, MOVE_THUNDER_WAVE, B_POSITION_PLAYER_RIGHT);
                             currAction++;
                         }
 
-                        if(currAction < currentAP && statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE){
+                        if(currAction < MAX_ACTIONS_PER_TURN && statTotalDifference >= ANTI_STAT_STAGE_TOTAL_NUM_ELECTIVIRE){
                             BraveAddAnyMoveToQueue(battler, MOVE_HAZE, B_POSITION_PLAYER_RIGHT);
                             currAction++;
                         }
-                        else if(currAction < currentAP && bossAtkStage < DEFAULT_STAT_STAGE){
+                        else if(currAction < MAX_ACTIONS_PER_TURN && bossAtkStage < DEFAULT_STAT_STAGE){
                             u16 move = sElectivireMiscSupportMoves[Random() % 4];
                             //MgbaPrintf(MGBA_LOG_WARN, "move = %d",move);
                             GenerateRandomTarget();
                             BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
                             currAction++;
+                                if (currAction < MAX_ACTIONS_PER_TURN)
+                                {
+                                    move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+                                    BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                                    currAction++;
+                                }
                         }
                     }
                     break;
