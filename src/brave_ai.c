@@ -276,7 +276,7 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     //Expect big attack. Default.
     if((playerMonCurrentAP == MAX_BRAVE_ACTIONS && playerMonCurrentAP2 == MAX_BRAVE_ACTIONS)
         || (isBossAtLowHP && playerMonCurrentAP + playerMonCurrentAP2 >= MAX_BRAVE_ACTIONS )){
-        return BOSS_BRAVE_PHASE_DEFAULT;
+        return BOSS_PHASE_DEFAULT;
     }
     
     //Try to build more AP if nothing is met
