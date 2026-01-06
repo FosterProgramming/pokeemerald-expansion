@@ -23,8 +23,6 @@
 
 #define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
 
-static void ChangeAPGraphics(u32 battler);
-
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
 EWRAM_DATA u16 gBraveStoredSpeeds[4];
@@ -508,9 +506,9 @@ void BraveResetAP(u32 battler)
     ChangeAPGraphics(battler);
 }
 
-static void ChangeAPGraphics(u32 battler)
+void ChangeAPGraphics(u32 battler)
 {
-    if (gBattleMons[battler].species == 0)
+    if (gBattleMons[battler].species == SPECIES_NONE)
         return;
     u32 *dst = (u32 *)(OBJ_VRAM0 + TILE_SIZE_4BPP * GetSpriteTileStartByTag(BATTLER_INDICATOR_TAG + battler));
     const u32 *src = GetIndicatorSpriteSrc(battler);

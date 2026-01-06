@@ -273,7 +273,7 @@ Common_EventScript_StartBossDebugBattle_Porygon::
 # 162 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	waitmoncry
 # 163 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_TRACE
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_INTIMIDATE
 # 164 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_DOWNLOAD
 # 165 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"

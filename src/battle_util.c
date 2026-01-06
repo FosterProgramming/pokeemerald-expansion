@@ -9,6 +9,7 @@
 #include "battle_setup.h"
 #include "battle_z_move.h"
 #include "battle_gimmick.h"
+#include "brave_battle.h"
 #include "generational_changes.h"
 #include "party_menu.h"
 #include "pokemon.h"
@@ -6334,6 +6335,23 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
             gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
+            effect++;
+        }
+        if (SearchTraits(battlerTraits, ABILITY_SCORCHED_ENGINE)
+         && !(gBattleStruct->moveResultFlags[gBattlerTarget] & MOVE_RESULT_NO_EFFECT)
+         && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+         && IsBattlerAlive(gBattlerTarget)
+         && IsBattlerTurnDamaged(gBattlerTarget)
+         && gBattleMons[gBattlerAttacker].status1 & STATUS1_BURN)
+        {
+            if (gBattleStruct->monStoredAP[gBattlerTarget] < 4)
+            {
+                gBattleStruct->monStoredAP[gBattlerTarget]++;
+                ChangeAPGraphics(gBattlerTarget);
+            }
+            PushTraitStack(battler, ABILITY_SCORCHED_ENGINE);
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_ScorchedEngineActivates;
             effect++;
         }
         if (SearchTraits(battlerTraits, ABILITY_CUTE_CHARM)

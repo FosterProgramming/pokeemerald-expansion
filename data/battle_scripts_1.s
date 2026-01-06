@@ -8760,6 +8760,12 @@ BattleScript_CuteCharmActivates::
 	call BattleScript_TryDestinyKnotTarget
 	return
 
+BattleScript_ScorchedEngineActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SCORCHEDENGINEACTIVATED
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_GooeyActivates::
 	waitstate
 	call BattleScript_AbilityPopUp

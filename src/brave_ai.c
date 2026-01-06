@@ -666,7 +666,7 @@ void AddAiActionsForBattler(u32 battler)
                         if(!IsBattlerTrapped(B_POSITION_PLAYER_LEFT, TRUE) && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_LEFT, currAction, maxPossibleActions))
                             currAction++;
 
-                        if(!IsBattlerTrapped(B_POSITION_PLAYER_RIGHT, TRUE) && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_LEFT, currAction, maxPossibleActions))
+                        if(!IsBattlerTrapped(B_POSITION_PLAYER_RIGHT, TRUE) && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_RIGHT, currAction, maxPossibleActions))
                             currAction++;
 
                         //Limit the number of max actions it can use this turn
