@@ -1779,6 +1779,8 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     SetMonData(mon, field, &n);                                  \
 }
 
+#define USE_OLD_BOSS_FORMULA FALSE //The game did not correctly calculate evs before and this formula was used as a patch but it is now fixed
+
 void CalculateMonStats(struct Pokemon *mon)
 {
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
@@ -1838,7 +1840,7 @@ void CalculateMonStats(struct Pokemon *mon)
         CALC_STAT_MEMBER(baseSpAttack,  spAttackIV,  spAttackEV,  STAT_SPATK, MON_DATA_SPATK, partyMember)
         CALC_STAT_MEMBER(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF, partyMember)
     }
-    else if(bossNumber != BRAVE_BOSS_NONE && IsSpeciesOneOf(species, gBraveBoss))
+    else if(bossNumber != BRAVE_BOSS_NONE && IsSpeciesOneOf(species, gBraveBoss) && USE_OLD_BOSS_FORMULA)
     {
 
         switch (species)

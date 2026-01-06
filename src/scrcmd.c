@@ -2529,6 +2529,8 @@ bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
     {
         CreateScriptedDoubleWildMon(species, level, item, species2, level2, item2);
 
+        //MgbaPrintf(MGBA_LOG_WARN, "(ScrCmd_setbosswildbattle) evsAtk = %d, evsDef = %d evsSpAtk = %d evsSpDef = %d evsSpeed = %d", evsAtk, evsDef, evsSpAtk, evsSpDef, evsSpeed);
+
         SetMonData(&gEnemyParty[0], MON_DATA_HIDDEN_NATURE, &nature);
         SetMonData(&gEnemyParty[0], MON_DATA_MOVE1,         &move1);
         SetMonData(&gEnemyParty[0], MON_DATA_MOVE2,         &move2);
@@ -2540,6 +2542,7 @@ bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
         SetMonData(&gEnemyParty[0], MON_DATA_SPATK_EV,      &evsSpAtk);
         SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_EV,      &evsSpDef);
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_EV,      &evsSpeed);
+        CalculateMonStats(&gEnemyParty[0]);
 
         sIsScriptedWildDouble = TRUE;
     }

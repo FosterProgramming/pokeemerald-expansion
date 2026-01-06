@@ -601,14 +601,16 @@ void AddAiActionsForBattler(u32 battler)
                         //Burn the targets that can be burned and attack normally for up to 3 actions
                         bool8 Enemy1CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);
                         bool8 Enemy2CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT);
+                        bool8 Enemy1HasFlashFire = BattlerHasTrait(B_POSITION_PLAYER_LEFT, ABILITY_FLASH_FIRE);
+                        bool8 Enemy2HasFlashFire = BattlerHasTrait(B_POSITION_PLAYER_RIGHT, ABILITY_FLASH_FIRE);
 
-                        if(Enemy1CanBeBurned){
+                        if(Enemy1CanBeBurned && !Enemy1HasFlashFire){
                             sCurrentTarget = B_POSITION_PLAYER_LEFT;
                             if(BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, sCurrentTarget, currAction, maxPossibleActions))
                                 currAction++;
                         }
 
-                        if(Enemy2CanBeBurned){
+                        if(Enemy2CanBeBurned && !Enemy2HasFlashFire){
                             sCurrentTarget = B_POSITION_PLAYER_RIGHT;
                             if(BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, sCurrentTarget, currAction, maxPossibleActions))
                                 currAction++;
@@ -657,8 +659,10 @@ void AddAiActionsForBattler(u32 battler)
                         //When the player cures itself tries to burn them again and negate the use of status moves, needs to add a way to track if the player was previously burned and who cured it
                         bool8 Enemy1CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);
                         bool8 Enemy2CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT);
+                        bool8 Enemy1HasFlashFire = BattlerHasTrait(B_POSITION_PLAYER_LEFT, ABILITY_FLASH_FIRE);
+                        bool8 Enemy2HasFlashFire = BattlerHasTrait(B_POSITION_PLAYER_RIGHT, ABILITY_FLASH_FIRE);
 
-                        if(Enemy1CanBeBurned){
+                        if(Enemy1CanBeBurned && !Enemy1HasFlashFire){
                             sCurrentTarget = B_POSITION_PLAYER_LEFT;
 
                             if(BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, sCurrentTarget, currAction, maxPossibleActions))
@@ -670,7 +674,7 @@ void AddAiActionsForBattler(u32 battler)
                             }
                         }
 
-                        if(Enemy2CanBeBurned){
+                        if(Enemy2CanBeBurned && !Enemy2HasFlashFire){
                             sCurrentTarget = B_POSITION_PLAYER_RIGHT;
 
                             if(BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, sCurrentTarget, currAction, maxPossibleActions))
@@ -695,19 +699,21 @@ void AddAiActionsForBattler(u32 battler)
                     case BOSS_BRAVE_PHASE_4:
                     {
                         //First turn chain - Tries to always start the battle with the player burned and trapped
-                        bool8 Enemy1CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
-                        bool8 Enemy2CanBeBurned = AI_CanBurn(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
+                        bool8 Enemy1CanBeBurned  = AI_CanBurn(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
+                        bool8 Enemy2CanBeBurned  = AI_CanBurn(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, BATTLE_PARTNER(battler), MOVE_WILL_O_WISP, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
+                        bool8 Enemy1HasFlashFire = BattlerHasTrait(B_POSITION_PLAYER_LEFT, ABILITY_FLASH_FIRE);
+                        bool8 Enemy2HasFlashFire = BattlerHasTrait(B_POSITION_PLAYER_RIGHT, ABILITY_FLASH_FIRE);
 
-                        if(Enemy1CanBeBurned && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, B_POSITION_PLAYER_LEFT, currAction, maxPossibleActions))
+                        if(Enemy1CanBeBurned && !Enemy1HasFlashFire && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, B_POSITION_PLAYER_LEFT, currAction, maxPossibleActions))
                             currAction++;
 
-                        if(Enemy2CanBeBurned && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, B_POSITION_PLAYER_RIGHT, currAction, maxPossibleActions))
+                        if(Enemy2CanBeBurned && !Enemy2HasFlashFire && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_WILL_O_WISP, B_POSITION_PLAYER_RIGHT, currAction, maxPossibleActions))
                             currAction++;
 
-                        if(!IsBattlerTrapped(B_POSITION_PLAYER_LEFT, TRUE) && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_LEFT, currAction, maxPossibleActions))
+                        if(!IsBattlerTrapped(B_POSITION_PLAYER_LEFT, TRUE) && !Enemy1HasFlashFire && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_LEFT, currAction, maxPossibleActions))
                             currAction++;
 
-                        if(!IsBattlerTrapped(B_POSITION_PLAYER_RIGHT, TRUE) && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_RIGHT, currAction, maxPossibleActions))
+                        if(!IsBattlerTrapped(B_POSITION_PLAYER_RIGHT, TRUE) && !Enemy2HasFlashFire && BraveAddAnyMoveToQueueIfPossible(battler, MOVE_FIRE_SPIN, B_POSITION_PLAYER_RIGHT, currAction, maxPossibleActions))
                             currAction++;
 
                         //Limit the number of max actions it can use this turn
