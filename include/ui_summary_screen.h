@@ -8,5 +8,6 @@ void SummaryScreen_Init(MainCallback callback);
 u16 tryToGivePartyMemberExp(struct Pokemon *mon);
 u8 getCurrentPartyMember(u16 species);
 void Start_New_Summary_Screen(u8 monNumber, bool8 locked, MainCallback callback);
+void ResetPartyMemberData(void);
 
 #endif // GUARD_UI_SUMMARY_SCREEN_H

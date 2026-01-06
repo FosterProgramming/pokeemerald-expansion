@@ -47,6 +47,7 @@
 #include "constants/map_groups.h"
 #include "constants/items.h"
 #include "difficulty.h"
+#include "ui_summary_screen.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -55,7 +56,6 @@ static void WarpToTruck(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
-static void ResetPartyMemberData(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -240,28 +240,4 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
-}
-
-static void ResetPartyMemberData(void)
-{
-    u8 i, j;
-    
-    //Reset Abilities and Innates
-    for(i = 0; i < NUM_PARTY_MEMBERS; i++){
-        u16 species = GetSpeciesFromPartyMember(i);
-        u8 abilityNum = 0;
-
-        for(j = 0; j < MAX_MON_INNATES + 1; j++){
-            if (j == 0) //For abilities
-                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetAbilityBySpeciesIgnore(species, abilityNum, TRUE);
-            else if (j <= MAX_MON_INNATES)
-                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetSpeciesInnate(species, j - 1);
-        }
-    }
-
-    //Reset Skill Points
-    for(i  = 0; i < NUM_PARTY_MEMBERS; i++){
-        gSaveBlock2Ptr->gPartyMembers[i].maxSkillPoints       = STARTING_MEMBER_SKILL_POINTS;
-        gSaveBlock2Ptr->gPartyMembers[i].remainingSkillPoints = STARTING_MEMBER_SKILL_POINTS;
-    }
 }

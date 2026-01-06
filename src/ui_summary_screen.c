@@ -2946,3 +2946,40 @@ static void Task_MenuMain(u8 taskId)
         break;
     }
 }
+
+//
+void ResetPartyMemberData(void)
+{
+    u8 i, j;
+    
+    //Reset Abilities and Innates
+    for(i = 0; i < NUM_PARTY_MEMBERS; i++){
+        u16 species = GetSpeciesFromPartyMember(i);
+        u8 abilityNum = 0;
+
+        for(j = 0; j < MAX_MON_INNATES + 1; j++){
+            if (j == 0) //For abilities
+                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetAbilityBySpeciesIgnore(species, abilityNum, TRUE);
+            else if (j <= MAX_MON_INNATES)
+                gSaveBlock2Ptr->gPartyMembers[i].abilities[j] = GetSpeciesInnate(species, j - 1);
+        }
+    }
+
+    //Reset Skill Points
+    for(i  = 0; i < NUM_PARTY_MEMBERS; i++){
+        gSaveBlock2Ptr->gPartyMembers[i].maxSkillPoints       = STARTING_MEMBER_SKILL_POINTS;
+        gSaveBlock2Ptr->gPartyMembers[i].remainingSkillPoints = STARTING_MEMBER_SKILL_POINTS;
+        gSaveBlock2Ptr->gPartyMembers[i].extraEVs = 0;
+
+        for(j = 0; j < MAX_SKILLS_PER_TREE; j++){
+            if(sSkillTree[i][j].neededPoints == 0 && sSkillTree[i][j].skillNeeded == SKILL_NONE)
+                gSaveBlock2Ptr->gPartyMembers[i].unlockedSkills[j] = TRUE;
+            else
+                gSaveBlock2Ptr->gPartyMembers[i].unlockedSkills[j] = FALSE;
+        }
+
+        for(j = 0; j < NUM_STATS; j++){
+            gSaveBlock2Ptr->gPartyMembers[i].extraStats[j] = 0;
+        }
+    }
+}
