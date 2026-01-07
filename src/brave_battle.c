@@ -476,12 +476,10 @@ void BraveIncrementAP(void)
 {
     for (u32 battler = 0; battler < 4; battler++)
     {
-        if (gBattleStruct->monStoredAP[battler] < 4)
-        {
-            gBattleStruct->monStoredAP[battler]++;
-            ChangeAPGraphics(battler);
-        }
+        BraveModAP(battler, 1, TRUE);
     }
+
+    gFieldTimers.turnAPTimer ^= 1;
 }
 
 void BraveConsumeAP(u32 battler, u32 move)
@@ -516,13 +514,21 @@ void ChangeAPGraphics(u32 battler)
         dst[i] = src[i];
 }
 
-void BraveModAP(u32 battler, s32 change)
+void BraveModAP(u32 battler, s32 change, bool8 turnBased)
 {
+    if(turnBased && IsBattlerTerrainAffected(battler, STATUS_FIELD_SLOW_AP_TERRAIN) && gFieldTimers.turnAPTimer == 1)
+        return;
+
+    if(IsBattlerTerrainAffected(battler, STATUS_FIELD_EXTRA_AP_TERRAIN))
+        change *= 2;
+
     gBattleStruct->monStoredAP[battler] += change;
+
     if (gBattleStruct->monStoredAP[battler] > 4)
         gBattleStruct->monStoredAP[battler] = 4;
     else if (gBattleStruct->monStoredAP[battler] < -4)
         gBattleStruct->monStoredAP[battler] = -4;
+    
     ChangeAPGraphics(battler);
 }
 

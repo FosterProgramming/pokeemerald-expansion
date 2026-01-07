@@ -2252,4 +2252,16 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleScript = BattleScript_EffectDefault,
         .battleTvScore = 0, // TODO: Assign points
     },
+
+    [EFFECT_EXTRA_AP_TERRAIN] =
+    {
+        .battleScript = BattleScript_EffectExtraAPTerrain,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
+    [EFFECT_SLOW_AP_TERRAIN] =
+    {
+        .battleScript = BattleScript_EffectSlowAPTerrain,
+        .battleTvScore = 0, // TODO: Assign points
+    },
 };

@@ -1863,6 +1863,8 @@ enum
     ENDTURN_MISTY_TERRAIN,
     ENDTURN_GRASSY_TERRAIN,
     ENDTURN_PSYCHIC_TERRAIN,
+    ENDTURN_EXTRA_AP_TERRAIN,
+    ENDTURN_SLOW_AP_TERRAIN,
     ENDTURN_ION_DELUGE,
     ENDTURN_FAIRY_LOCK,
     ENDTURN_STATUS_HEAL,
@@ -2221,6 +2223,14 @@ u8 DoFieldEndTurnEffects(void)
             break;
         case ENDTURN_PSYCHIC_TERRAIN:
             effect = EndTurnTerrain(STATUS_FIELD_PSYCHIC_TERRAIN, B_MSG_TERRAIN_END_PSYCHIC);
+            gBattleStruct->turnCountersTracker++;
+            break;
+        case ENDTURN_EXTRA_AP_TERRAIN:
+            effect = EndTurnTerrain(STATUS_FIELD_EXTRA_AP_TERRAIN, B_MSG_TERRAIN_END_PSYCHIC);
+            gBattleStruct->turnCountersTracker++;
+            break;
+        case ENDTURN_SLOW_AP_TERRAIN:
+            effect = EndTurnTerrain(STATUS_FIELD_SLOW_AP_TERRAIN, B_MSG_TERRAIN_END_PSYCHIC);
             gBattleStruct->turnCountersTracker++;
             break;
         case ENDTURN_WATER_SPORT:
@@ -4423,6 +4433,10 @@ bool32 ChangeTypeBasedOnTerrain(u32 battler)
         battlerType = TYPE_FAIRY;
     else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
         battlerType = TYPE_PSYCHIC;
+    else if (gFieldStatuses & STATUS_FIELD_EXTRA_AP_TERRAIN)
+        battlerType = TYPE_FIRE;
+    else if (gFieldStatuses & STATUS_FIELD_SLOW_AP_TERRAIN)
+        battlerType = TYPE_ICE;
     else // failsafe
         return FALSE;
 
@@ -4873,6 +4887,20 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                                                 &gFieldTimers.terrainTimer);
                 effect = (effect == 1) ? 2 : 0;
                 break;
+            case STARTING_STATUS_EXTRA_AP_TERRAIN:
+                effect = SetStartingFieldStatus(STATUS_FIELD_EXTRA_AP_TERRAIN,
+                                                B_MSG_TERRAIN_SET_FIERY,
+                                                0,
+                                                &gFieldTimers.terrainTimer);
+                effect = (effect == 1) ? 2 : 0;
+                break;
+            case STARTING_STATUS_SLOW_AP_TERRAIN:
+                effect = SetStartingFieldStatus(STATUS_FIELD_SLOW_AP_TERRAIN,
+                                                B_MSG_TERRAIN_SET_ICY,
+                                                0,
+                                                &gFieldTimers.terrainTimer);
+                effect = (effect == 1) ? 2 : 0;
+                break;
             case STARTING_STATUS_TRICK_ROOM:
                 effect = SetStartingFieldStatus(STATUS_FIELD_TRICK_ROOM,
                                                 B_MSG_SET_TRICK_ROOM,
@@ -5319,6 +5347,23 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             gBattlerAttacker = battler;
                 
             if(TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN, &gFieldTimers.terrainTimer))
+                effect += CommonSwitchInAbilities(battler, 0, ABILITY_PSYCHIC_SURGE, traitCheck, BattleScript_PsychicSurgeActivates);
+        }
+        //tODO
+        if ((traitCheck = SearchTraits(battlerTraits, ABILITY_FIERY_SURGE)) && !gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1])
+        {
+            gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1] = TRUE;
+            gBattlerAttacker = battler;
+                
+            if(TryChangeBattleTerrain(battler, STATUS_FIELD_EXTRA_AP_TERRAIN, &gFieldTimers.terrainTimer))
+                effect += CommonSwitchInAbilities(battler, 0, ABILITY_PSYCHIC_SURGE, traitCheck, BattleScript_PsychicSurgeActivates);
+        }
+        if ((traitCheck = SearchTraits(battlerTraits, ABILITY_ICY_SURGE)) && !gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1])
+        {
+            gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1] = TRUE;
+            gBattlerAttacker = battler;
+                
+            if(TryChangeBattleTerrain(battler, STATUS_FIELD_SLOW_AP_TERRAIN, &gFieldTimers.terrainTimer))
                 effect += CommonSwitchInAbilities(battler, 0, ABILITY_PSYCHIC_SURGE, traitCheck, BattleScript_PsychicSurgeActivates);
         }
         if ((traitCheck = SearchTraits(battlerTraits, ABILITY_INTIMIDATE)) && !gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1])
@@ -6344,11 +6389,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
          && IsBattlerTurnDamaged(gBattlerTarget)
          && gBattleMons[gBattlerAttacker].status1 & STATUS1_BURN)
         {
-            if (gBattleStruct->monStoredAP[gBattlerTarget] < 4)
-            {
-                gBattleStruct->monStoredAP[gBattlerTarget]++;
-                ChangeAPGraphics(gBattlerTarget);
-            }
+            BraveModAP(gBattlerTarget, 1, FALSE);
             PushTraitStack(battler, ABILITY_SCORCHED_ENGINE);
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_ScorchedEngineActivates;

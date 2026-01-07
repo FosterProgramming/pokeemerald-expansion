@@ -51,7 +51,7 @@ void BraveFirstTurnSetAP(void);
 void BraveIncrementAP(void);
 void BraveConsumeAP(u32 battler, u32 move);
 void BraveResetAP(u32 battler);
-void BraveModAP(u32 battler, s32 change);
+void BraveModAP(u32 battler, s32 change, bool8 turnBased);
 void BraveCancelChain(u32 battler);
 
 void ChangeAPGraphics(u32 battler);

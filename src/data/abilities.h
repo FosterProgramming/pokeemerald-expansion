@@ -2417,4 +2417,16 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+    [ABILITY_ICY_SURGE] =
+    {
+        .name = _("Icy Surge"),
+        .description = COMPOUND_STRING("Field becomes Icy."),
+        .aiRating = 8,
+    },
+    [ABILITY_FIERY_SURGE] =
+    {
+        .name = _("Fiery Surge"),
+        .description = COMPOUND_STRING("Field becomes Fiery."),
+        .aiRating = 8,
+    },
 };

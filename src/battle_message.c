@@ -615,6 +615,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_MISTYTERRAINENDS]                     = COMPOUND_STRING("The mist disappeared from the battlefield."),
     [STRINGID_PSYCHICTERRAINENDS]                   = COMPOUND_STRING("The weirdness disappeared from the battlefield!"),
     [STRINGID_GRASSYTERRAINENDS]                    = COMPOUND_STRING("The grass disappeared from the battlefield."),
+    [STRINGID_FIERYTERRAINENDS]                     = COMPOUND_STRING("The fire disappeared from the battlefield."),
+    [STRINGID_ICYTERRAINENDS]                       = COMPOUND_STRING("The ice disappeared from the battlefield."),
     [STRINGID_TARGETABILITYSTATRAISE]               = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} raised its {B_BUFF1}!"),
     [STRINGID_TARGETSSTATWASMAXEDOUT]               = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} maxed its {B_BUFF1}!"),
     [STRINGID_ATTACKERABILITYSTATRAISE]             = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} raised its {B_BUFF1}!"),
@@ -666,6 +668,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TERRAINBECOMESGRASSY]                 = COMPOUND_STRING("Grass grew to cover the battlefield!"),
     [STRINGID_TERRAINBECOMESELECTRIC]               = COMPOUND_STRING("An electric current ran across the battlefield!"),
     [STRINGID_TERRAINBECOMESPSYCHIC]                = COMPOUND_STRING("The battlefield got weird!"),
+    [STRINGID_TERRAINBECOMESFIERY]                  = COMPOUND_STRING("The battlefield became really hot!"),
+    [STRINGID_TERRAINBECOMESICY]                    = COMPOUND_STRING("The battlefield became cold!"),
     [STRINGID_TARGETELECTRIFIED]                    = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s moves have been electrified!"),
     [STRINGID_MEGAEVOREACTING]                      = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_LAST_ITEM} is reacting to {B_ATK_TRAINER_NAME}'s Mega Ring!"), //actually displays the type of mega ring in inventory, but we didnt implement them :(
     [STRINGID_MEGAEVOEVOLVED]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} has Mega Evolved into Mega {B_BUFF1}!"),
@@ -886,6 +890,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ITISHAILING]                          = COMPOUND_STRING("It's hailing!"),
     [STRINGID_ITISSNOWING]                          = COMPOUND_STRING("It's snowing!"),
     [STRINGID_ISCOVEREDWITHGRASS]                   = COMPOUND_STRING("The battlefield is covered with grass!"),
+    [STRINGID_ISCOVEREDWITHFIRE]                    = COMPOUND_STRING("The battlefield is covered with fire!"),
+    [STRINGID_ISCOVEREDWITHICE]                     = COMPOUND_STRING("The battlefield is covered with ice!"),
     [STRINGID_MISTSWIRLSAROUND]                     = COMPOUND_STRING("Mist swirls around the battlefield!"),
     [STRINGID_ELECTRICCURRENTISRUNNING]             = COMPOUND_STRING("An electric current is running across the battlefield!"),
     [STRINGID_SEEMSWEIRD]                           = COMPOUND_STRING("The battlefield seems weird!"),
@@ -934,6 +940,9 @@ const u16 gStartingStatusStringIds[B_MSG_STARTING_STATUS_COUNT] =
     [B_MSG_TERRAIN_SET_ELECTRIC] = STRINGID_TERRAINBECOMESELECTRIC,
     [B_MSG_TERRAIN_SET_PSYCHIC]  = STRINGID_TERRAINBECOMESPSYCHIC,
     [B_MSG_TERRAIN_SET_GRASSY]   = STRINGID_TERRAINBECOMESGRASSY,
+    [B_MSG_TERRAIN_SET_FIERY]    = STRINGID_TERRAINBECOMESFIERY,
+    [B_MSG_TERRAIN_SET_ICY]      = STRINGID_TERRAINBECOMESICY,
+    
     [B_MSG_SET_TRICK_ROOM]       = STRINGID_DIMENSIONSWERETWISTED,
     [B_MSG_SET_MAGIC_ROOM]       = STRINGID_BIZARREARENACREATED,
     [B_MSG_SET_WONDER_ROOM]      = STRINGID_BIZARREAREACREATED,
@@ -945,14 +954,18 @@ const u16 gStartingStatusStringIds[B_MSG_STARTING_STATUS_COUNT] =
 
 const u16 gTerrainStringIds[B_MSG_TERRAIN_COUNT] =
 {
-    [B_MSG_TERRAIN_SET_MISTY] = STRINGID_TERRAINBECOMESMISTY,
+    [B_MSG_TERRAIN_SET_MISTY]    = STRINGID_TERRAINBECOMESMISTY,
     [B_MSG_TERRAIN_SET_ELECTRIC] = STRINGID_TERRAINBECOMESELECTRIC,
-    [B_MSG_TERRAIN_SET_PSYCHIC] = STRINGID_TERRAINBECOMESPSYCHIC,
-    [B_MSG_TERRAIN_SET_GRASSY] = STRINGID_TERRAINBECOMESGRASSY,
-    [B_MSG_TERRAIN_END_MISTY] = STRINGID_MISTYTERRAINENDS,
+    [B_MSG_TERRAIN_SET_PSYCHIC]  = STRINGID_TERRAINBECOMESPSYCHIC,
+    [B_MSG_TERRAIN_SET_GRASSY]   = STRINGID_TERRAINBECOMESGRASSY,
+    [B_MSG_TERRAIN_SET_FIERY]    = STRINGID_TERRAINBECOMESFIERY,
+    [B_MSG_TERRAIN_SET_ICY]      = STRINGID_TERRAINBECOMESICY,
+    [B_MSG_TERRAIN_END_MISTY]    = STRINGID_MISTYTERRAINENDS,
     [B_MSG_TERRAIN_END_ELECTRIC] = STRINGID_ELECTRICTERRAINENDS,
-    [B_MSG_TERRAIN_END_PSYCHIC] = STRINGID_PSYCHICTERRAINENDS,
-    [B_MSG_TERRAIN_END_GRASSY] = STRINGID_GRASSYTERRAINENDS,
+    [B_MSG_TERRAIN_END_PSYCHIC]  = STRINGID_PSYCHICTERRAINENDS,
+    [B_MSG_TERRAIN_END_GRASSY]   = STRINGID_GRASSYTERRAINENDS,
+    [B_MSG_TERRAIN_END_FIERY]    = STRINGID_FIERYTERRAINENDS,
+    [B_MSG_TERRAIN_END_ICY]      = STRINGID_ICYTERRAINENDS,
 };
 
 const u16 gTerrainPreventsStringIds[] =
@@ -1298,6 +1311,8 @@ const u16 gTerrainStartsStringIds[] =
     [B_MSG_TERRAIN_SET_ELECTRIC] = STRINGID_ELECTRICCURRENTISRUNNING,
     [B_MSG_TERRAIN_SET_PSYCHIC]  = STRINGID_SEEMSWEIRD,
     [B_MSG_TERRAIN_SET_GRASSY]   = STRINGID_ISCOVEREDWITHGRASS,
+    [B_MSG_TERRAIN_SET_FIERY]    = STRINGID_ISCOVEREDWITHFIRE,
+    [B_MSG_TERRAIN_SET_ICY]      = STRINGID_ISCOVEREDWITHICE,
 };
 
 const u16 gPrimalWeatherBlocksStringIds[] =

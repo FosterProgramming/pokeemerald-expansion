@@ -736,8 +736,14 @@
 #define STRINGID_DEFAULTING                           734
 #define STRINGID_AP_MOD                               735
 #define STRINGID_SCORCHEDENGINEACTIVATED              736
+#define STRINGID_FIERYTERRAINENDS                     737
+#define STRINGID_ICYTERRAINENDS                       738
+#define STRINGID_TERRAINBECOMESFIERY                  739
+#define STRINGID_TERRAINBECOMESICY                    740
+#define STRINGID_ISCOVEREDWITHFIRE                    741
+#define STRINGID_ISCOVEREDWITHICE                     742
 
-#define BATTLESTRINGS_COUNT                           737
+#define BATTLESTRINGS_COUNT                           743
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1018,26 +1024,31 @@
 #define B_MSG_TERRAIN_SET_ELECTRIC  1
 #define B_MSG_TERRAIN_SET_PSYCHIC   2
 #define B_MSG_TERRAIN_SET_GRASSY    3
-#define B_MSG_TERRAIN_END_MISTY     4
-#define B_MSG_TERRAIN_END_ELECTRIC  5
-#define B_MSG_TERRAIN_END_PSYCHIC   6
-#define B_MSG_TERRAIN_END_GRASSY    7
-#define B_MSG_TERRAIN_COUNT         8
+#define B_MSG_TERRAIN_SET_FIERY     4
+#define B_MSG_TERRAIN_SET_ICY       5
+#define B_MSG_TERRAIN_END_MISTY     6
+#define B_MSG_TERRAIN_END_ELECTRIC  7
+#define B_MSG_TERRAIN_END_PSYCHIC   8
+#define B_MSG_TERRAIN_END_GRASSY    9
+#define B_MSG_TERRAIN_END_FIERY     10
+#define B_MSG_TERRAIN_END_ICY       11
+#define B_MSG_TERRAIN_COUNT         12
 
 // gStartingStatusStringIds
 #define B_MSG_TERRAIN_SET_MISTY     0
 #define B_MSG_TERRAIN_SET_ELECTRIC  1
 #define B_MSG_TERRAIN_SET_PSYCHIC   2
 #define B_MSG_TERRAIN_SET_GRASSY    3
-#define B_MSG_SET_TRICK_ROOM        4
-#define B_MSG_SET_MAGIC_ROOM        5
-#define B_MSG_SET_WONDER_ROOM       6
-#define B_MSG_SET_TAILWIND          7
-#define B_MSG_SET_RAINBOW           8
-#define B_MSG_SET_SEA_OF_FIRE       9
-#define B_MSG_SET_SWAMP             10
-#define B_MSG_STARTING_STATUS_COUNT 11
-
+#define B_MSG_TERRAIN_SET_FIERY     4
+#define B_MSG_TERRAIN_SET_ICY       5
+#define B_MSG_SET_TRICK_ROOM        6
+#define B_MSG_SET_MAGIC_ROOM        7
+#define B_MSG_SET_WONDER_ROOM       8
+#define B_MSG_SET_TAILWIND          9
+#define B_MSG_SET_RAINBOW           10
+#define B_MSG_SET_SEA_OF_FIRE       11
+#define B_MSG_SET_SWAMP             12
+#define B_MSG_STARTING_STATUS_COUNT 13
 
 // gWrappedStringIds
 #define B_MSG_WRAPPED_BIND         0

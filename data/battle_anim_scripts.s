@@ -27507,6 +27507,8 @@ gBattleAnimMove_SecretPower::
 	jumpargeq 0, STATUS_FIELD_GRASSY_TERRAIN,   gBattleAnimMove_NeedleArm
 	jumpargeq 0, STATUS_FIELD_ELECTRIC_TERRAIN, gBattleAnimMove_ThunderShock
 	jumpargeq 0, STATUS_FIELD_PSYCHIC_TERRAIN,  gBattleAnimMove_Confusion
+	jumpargeq 0, STATUS_FIELD_EXTRA_AP_TERRAIN, gBattleAnimMove_FlameBurst
+	jumpargeq 0, STATUS_FIELD_SLOW_AP_TERRAIN,  gBattleAnimMove_IcyWind
 	createvisualtask AnimTask_GetBattleTerrain, 5
 	jumpargeq 0, BATTLE_TERRAIN_GRASS,          gBattleAnimMove_NeedleArm
 	jumpargeq 0, BATTLE_TERRAIN_LONG_GRASS,     gBattleAnimMove_MagicalLeaf
