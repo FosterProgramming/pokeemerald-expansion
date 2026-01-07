@@ -142,21 +142,17 @@ static u8 GetStatStageDifferenceBetweenPartyAndEnemyBoss(){
     u8 ret = 0;
     
     if(GetStatStageTotalBoss() >= GetStatStageTotalParty()){
-        MgbaPrintf(MGBA_LOG_WARN, "1");
         ret = 0;
     }
     else if(GetNumberOfAliveMonsInParty() == 1){
-        MgbaPrintf(MGBA_LOG_WARN, "2");
         ret = GetStatStageTotalParty() - GetStatStageTotalBoss();
     }
     else if(GetStatStageTotalBoss() + TOTAL_DEFAULT_STAT_STAGES_NUM > GetStatStageTotalParty()){
-        MgbaPrintf(MGBA_LOG_WARN, "3");
         ret = 0;
     }
     else{
         ret = GetStatStageTotalParty() - GetStatStageTotalBoss() - TOTAL_DEFAULT_STAT_STAGES_NUM;
     }
-    MgbaPrintf(MGBA_LOG_WARN, "ret () %d", ret);
     
     return ret;
 }
