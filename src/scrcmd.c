@@ -2493,20 +2493,22 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 #define BOSS_BATTLE_USE_GENERIC_ALLY TRUE //2 Vs 1 are currently buggy this is so I can test
 bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
 {
-    u16 species  = ScriptReadHalfword(ctx);
-    u8  level    = ScriptReadByte(ctx);
-    u16 item     = ScriptReadHalfword(ctx);
-    u8  nature   = ScriptReadByte(ctx);
-    u16 move1    = ScriptReadHalfword(ctx);
-    u16 move2    = ScriptReadHalfword(ctx);
-    u16 move3    = ScriptReadHalfword(ctx);
-    u16 move4    = ScriptReadHalfword(ctx);
-    u8  evsHP    = ScriptReadByte(ctx);
-    u8  evsAtk   = ScriptReadByte(ctx);
-    u8  evsDef   = ScriptReadByte(ctx);
-    u8  evsSpAtk = ScriptReadByte(ctx);
-    u8  evsSpDef = ScriptReadByte(ctx);
-    u8  evsSpeed = ScriptReadByte(ctx);
+    u16 species   = ScriptReadHalfword(ctx);
+    u8  level     = ScriptReadByte(ctx);
+    u16 item      = ScriptReadHalfword(ctx);
+    u8  nature    = ScriptReadByte(ctx);
+    u16 move1     = ScriptReadHalfword(ctx);
+    u16 move2     = ScriptReadHalfword(ctx);
+    u16 move3     = ScriptReadHalfword(ctx);
+    u16 move4     = ScriptReadHalfword(ctx);
+    u8  evsHP     = ScriptReadByte(ctx);
+    u8  evsAtk    = ScriptReadByte(ctx);
+    u8  evsDef    = ScriptReadByte(ctx);
+    u8  evsSpAtk  = ScriptReadByte(ctx);
+    u8  evsSpDef  = ScriptReadByte(ctx);
+    u8  evsSpeed  = ScriptReadByte(ctx);
+    u16 customHP  = VarGet(VAR_ENEMY_1_CUSTOM_MAX_HP);
+    u16 customHP2 = VarGet(VAR_ENEMY_2_CUSTOM_MAX_HP);
 
     u16 species2 = SPECIES_MAGIKARP;
     u8 level2    = 1;
@@ -2543,6 +2545,16 @@ bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
         SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_EV,      &evsSpDef);
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_EV,      &evsSpeed);
         CalculateMonStats(&gEnemyParty[0]);
+
+        if(customHP != 0){
+            SetMonData(&gEnemyParty[0], MON_DATA_HP,     &customHP);
+            SetMonData(&gEnemyParty[0], MON_DATA_MAX_HP, &customHP);
+        }
+
+        if(customHP2 != 0){
+            SetMonData(&gEnemyParty[1], MON_DATA_HP,     &customHP2);
+            SetMonData(&gEnemyParty[1], MON_DATA_MAX_HP, &customHP2);
+        }
 
         sIsScriptedWildDouble = TRUE;
     }
