@@ -906,6 +906,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC]        = COMPOUND_STRING("Gotcha! {B_DEF_NAME} was caught!{WAIT_SE}\p"),
     [STRINGID_DEFAULTING]                           = COMPOUND_STRING("{B_DEF_NAME} braced itself!"),
     [STRINGID_AP_MOD]                               = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} changed the AP of {B_DEF_NAME_WITH_PREFIX}!"),
+    [STRINGID_LASTABILITYRAISEDAP]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_LAST_ABILITY} raised its AP!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

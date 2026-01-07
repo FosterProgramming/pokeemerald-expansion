@@ -5472,6 +5472,7 @@ BattleScript_FaintTarget::
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER        @ and chilling neigh, as one ice rider
+	tryactivatevalor BS_ATTACKER        @ and chilling neigh, as one ice rider
 	tryactivatebeastboost BS_ATTACKER
 	tryactivategrimneigh BS_ATTACKER    @ and as one shadow rider
 	tryactivatebattlebond BS_ATTACKER
@@ -8625,6 +8626,15 @@ BattleScript_RaiseStatOnFaintingTarget::
 	printstring STRINGID_LASTABILITYRAISEDSTAT
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_RaiseStatOnFaintingTarget_End:
+	return
+
+BattleScript_RaiseAPOnFaintingTarget::
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, 1
+	waitanimation
+	printstring STRINGID_LASTABILITYRAISEDAP
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_RaiseAPOnFaintingTarget_End:
 	return
 
 BattleScript_AttackerAbilityStatRaise::

@@ -2609,3 +2609,7 @@
 	callnative BS_DefaultProtect
 	.byte \battler
 	.endm
+
+	.macro tryactivatevalor battler:req
+	various \battler, VARIOUS_TRY_ACTIVATE_VALOR
+	.endm

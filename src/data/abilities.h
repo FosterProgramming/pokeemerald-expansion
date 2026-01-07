@@ -2429,4 +2429,10 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Field becomes Fiery."),
         .aiRating = 8,
     },
+    [ABILITY_VALOR] =
+    {
+        .name = _("Valor"),
+        .description = COMPOUND_STRING("KOs raise AP."),
+        .aiRating = 7,
+    },
 };

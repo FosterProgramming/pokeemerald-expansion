@@ -9755,8 +9755,8 @@ static bool32 HasAttackerFaintedTarget(void)
         && (gLastHitBy[gBattlerTarget] == 0xFF || gLastHitBy[gBattlerTarget] == gBattlerAttacker)
         && gBattleStruct->moveTarget[gBattlerAttacker] == gBattlerTarget
         && gBattlerTarget != gBattlerAttacker
-        && gCurrentTurnActionNumber == GetBattlerTurnOrderNum(gBattlerAttacker)
-        && (gChosenMove == gChosenMoveByBattler[gBattlerAttacker] || gChosenMove == gBattleMons[gBattlerAttacker].moves[gChosenMovePos] || gChosenMove == GetMaxMove(gBattlerAttacker, gChosenMoveByBattler[gBattlerAttacker])))
+        && gBattlerAttacker == gBraveCurrentAction.battler)
+       // && (gChosenMove == gChosenMoveByBattler[gBattlerAttacker] || gChosenMove == gBattleMons[gBattlerAttacker].moves[gChosenMovePos] || gChosenMove == GetMaxMove(gBattlerAttacker, gChosenMoveByBattler[gBattlerAttacker])))
         return TRUE;
     else
         return FALSE;
@@ -10853,6 +10853,7 @@ static void Cmd_various(void)
           && !NoAliveMonsForEitherParty()
           && CompareStat(gBattlerAttacker, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
         {
+            DebugPrintfLevel(MGBA_LOG_WARN, "Moxie Check");
             SET_STATCHANGER(STAT_ATK, 1, FALSE);
             PREPARE_STAT_BUFFER(gBattleTextBuff1, STAT_ATK);
             BattleScriptPush(cmd->nextInstr);
@@ -10861,6 +10862,38 @@ static void Cmd_various(void)
                 gLastUsedAbility = battlerAbility = ABILITY_CHILLING_NEIGH;
             PushTraitStack(battler, battlerAbility);
             gBattlescriptCurrInstr = BattleScript_RaiseStatOnFaintingTarget;
+            return;
+        }
+        break;
+    }case VARIOUS_TRY_ACTIVATE_VALOR:    // and chilling neigh + as one ice rider
+    {
+        VARIOUS_ARGS();
+
+        u16 battlerAbility = GetBattlerAbility(battler);
+        u16 battlerTraits[MAX_MON_TRAITS];
+        STORE_BATTLER_TRAITS(battler);
+
+        if (SearchTraits(battlerTraits, ABILITY_AS_ONE_ICE_RIDER))
+            battlerAbility = ABILITY_CHILLING_NEIGH;
+        if (SearchTraits(battlerTraits, ABILITY_CHILLING_NEIGH))
+            battlerAbility = ABILITY_CHILLING_NEIGH;
+        if (SearchTraits(battlerTraits, ABILITY_VALOR))
+            battlerAbility = ABILITY_VALOR;
+
+        if ((battlerAbility == ABILITY_VALOR
+         || battlerAbility == ABILITY_CHILLING_NEIGH
+         || battlerAbility == ABILITY_AS_ONE_ICE_RIDER)
+          && HasAttackerFaintedTarget()
+          && !NoAliveMonsForEitherParty()
+          && gBattleStruct->monStoredAP[gBattlerAttacker] < MAX_BRAVE_ACTIONS)
+        {
+            BraveModAP(gBattlerAttacker, 1, FALSE);
+            BattleScriptPush(cmd->nextInstr);
+            gLastUsedAbility = battlerAbility;
+            if (battlerAbility == ABILITY_AS_ONE_ICE_RIDER)
+                gLastUsedAbility = battlerAbility = ABILITY_CHILLING_NEIGH;
+            PushTraitStack(battler, battlerAbility);
+            gBattlescriptCurrInstr = BattleScript_RaiseAPOnFaintingTarget;
             return;
         }
         break;
