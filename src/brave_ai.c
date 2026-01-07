@@ -809,6 +809,15 @@ void AddAiActionsForBattler(u32 battler)
             if(battler == B_POSITION_OPPONENT_LEFT){
                 u8 phase = GetCurrentBravePhase_Electivire(battler);
                 u16 move = MOVE_NONE;
+                bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
+                bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
+                u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler) - TOTAL_DEFAULT_STAT_STAGES_NUM; // checks difference in stat stages between party and boss
+                u16 hazeChance             = (statTotalDifference * TOTAL_DEFAULT_STAT_STAGES_NUM / 5);
+                u16 rand                   = Random() % 100;
+                u16 bossAtkDrops           = DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK]; // checks how many times electivires attack stage has been dropped
+                u16 supportChance          = (bossAtkDrops * 17);
+                u16 currentTurnActions     = 1 + (Random() % 3);
+                s8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
 
                 //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
 
@@ -816,7 +825,7 @@ void AddAiActionsForBattler(u32 battler)
                     default:
                         //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
                         //Chain 3: to be used to target Seel specifically, if Seel is within KO range
-                        for(currAction = 0; currAction < maxPossibleActions; currAction++){
+                        for(currAction = 0; currAction < MAX_BRAVE_ACTIONS; currAction++){
                             move = sBraveBossesActions[bossNumber][phase][currAction];
                             BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
                         }
@@ -834,7 +843,7 @@ void AddAiActionsForBattler(u32 battler)
                         }
                     break;
                     case BOSS_BRAVE_PHASE_RANDOM:
-                        for(currAction = 0; currAction < maxPossibleActions; currAction++){
+                        for(currAction = 0; currAction < currentTurnActions; currAction++){
                             phase = (Random() % 4) + 1;
                             move = sBraveBossesActions[bossNumber][phase][currAction];
                             BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
@@ -842,16 +851,6 @@ void AddAiActionsForBattler(u32 battler)
                     break;
                     case BOSS_BRAVE_PHASE_MISC:
                     {
-                        bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
-                        bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
-                        u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler) - TOTAL_DEFAULT_STAT_STAGES_NUM; // checks difference in stat stages between party and boss
-                        u16 hazeChance             = (statTotalDifference * TOTAL_DEFAULT_STAT_STAGES_NUM / 5);
-                        u16 rand                   = Random() % 100;
-                        u16 bossAtkDrops           = DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK]; // checks how many times electivires attack stage has been dropped
-                        u16 supportChance          = (bossAtkDrops * 17);
-                        u16 currentTurnActions     = 1 + (Random() % 3);
-                        s8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
-
                         if(bossCurrentAP > currentTurnActions)
                             currentTurnActions = bossCurrentAP;
 

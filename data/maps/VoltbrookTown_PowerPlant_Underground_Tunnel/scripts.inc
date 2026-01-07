@@ -33,7 +33,7 @@ VoltbrookTown_PowerPlant_Underground_Tunnel_Event::
 # 22 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	playmoncry SPECIES_ELECTIVIRE, 2
 # 23 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
-	setwildbossbattle SPECIES_ELECTIVIRE, 7, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 252, 0, 0, 0, 252
+	setwildbossbattle SPECIES_ELECTIVIRE, 7, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 0, 0, 0, 0, 0
 # 24 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 25 "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.pory"
