@@ -62,21 +62,21 @@ static void GenerateRandomTarget(void){
     sCurrentTarget = newTarget;
 }
 
-static u8 GetStatStageTotalBoss(u32 battler){
+static u8 GetStatStageTotalBoss(void){
     u32 j;
     u32 statStageTotal = 0;
-    
-    if(IsBattlerAlive(battler)){
+
+    if(IsBattlerAlive(B_POSITION_OPPONENT_LEFT)){
         for (j = 0; j < NUM_BATTLE_STATS; j++)
         {
-            statStageTotal += gBattleMons[battler].statStages[j];
+            statStageTotal += gBattleMons[B_POSITION_OPPONENT_LEFT].statStages[j];
         }
     }
 
     return statStageTotal;
 }
 
-static u8 GetStatStageTotalParty(u32 battler){
+static u8 GetStatStageTotalParty(void){
     u32 j;
     u32 statStageTotal = 0;
     
@@ -94,8 +94,6 @@ static u8 GetStatStageTotalParty(u32 battler){
     }
     return statStageTotal;
 }
-
-
 
 static u8 GetNumberOfDroppedStats(u32 battler){
     u32 j;
@@ -135,6 +133,30 @@ static u8 GetNumberOfAliveMonsInParty(void){
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && GetMonData(&gPlayerParty[i], MON_DATA_HP) != 0)
             ret++;
     }
+    
+    return ret;
+}
+
+
+static u8 GetStatStageDifferenceBetweenPartyAndEnemyBoss(){
+    u8 ret = 0;
+    
+    if(GetStatStageTotalBoss() >= GetStatStageTotalParty()){
+        MgbaPrintf(MGBA_LOG_WARN, "1");
+        ret = 0;
+    }
+    else if(GetNumberOfAliveMonsInParty() == 1){
+        MgbaPrintf(MGBA_LOG_WARN, "2");
+        ret = GetStatStageTotalParty() - GetStatStageTotalBoss();
+    }
+    else if(GetStatStageTotalBoss() + TOTAL_DEFAULT_STAT_STAGES_NUM > GetStatStageTotalParty()){
+        MgbaPrintf(MGBA_LOG_WARN, "3");
+        ret = 0;
+    }
+    else{
+        ret = GetStatStageTotalParty() - GetStatStageTotalBoss() - TOTAL_DEFAULT_STAT_STAGES_NUM;
+    }
+    MgbaPrintf(MGBA_LOG_WARN, "ret () %d", ret);
     
     return ret;
 }
@@ -205,7 +227,7 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
     bool8 useRandomPhase       = (Random() % 2) == 0; //Chances have to be changed as needed to spice up things
     u8 bossNumber              = VarGet(VAR_BOSS_BRAVE_AI_ID);
-    u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler) - TOTAL_DEFAULT_STAT_STAGES_NUM;
+    u16 statTotalDifference    = GetStatStageDifferenceBetweenPartyAndEnemyBoss();
     u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK];
 
     GenerateRandomTarget();
@@ -224,6 +246,9 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     //This one id like him to use regardless of if he has AP stored or not, it’s basically an all out suicide attack
     //to try to make the player draw. Also I’d like a message box to appear before using this chain that I can have
     //as a story point/character development. (Currently used at 1/8 of HP)
+    MgbaPrintf(MGBA_LOG_WARN, "Chain 1: used at the start of the battle to set the tone. Pre determined actions with no chance of anything else happening");
+        
+
     if(isBossAtLowHP && playerHasOnePokemon){
         if(gBattleMons[B_POSITION_PLAYER_LEFT].hp != 0)
             sCurrentTarget = B_POSITION_PLAYER_LEFT;
@@ -811,7 +836,7 @@ void AddAiActionsForBattler(u32 battler)
                 u16 move = MOVE_NONE;
                 bool8 Enemy1CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_LEFT,  gBattleMons[B_POSITION_PLAYER_LEFT].ability,  MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_LEFT);  //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
                 bool8 Enemy2CanBeParalyzed = AI_CanParalyze(battler, B_POSITION_PLAYER_RIGHT, gBattleMons[B_POSITION_PLAYER_RIGHT].ability, MOVE_THUNDER_WAVE, MOVE_NONE) && IsBattlerAlive(B_POSITION_PLAYER_RIGHT); //Checks if it can be paralyzed, this includes a check to see if the target is Jolteon
-                u16 statTotalDifference    = GetStatStageTotalParty(battler) - GetStatStageTotalBoss(battler) - TOTAL_DEFAULT_STAT_STAGES_NUM; // checks difference in stat stages between party and boss
+                u16 statTotalDifference    = GetStatStageDifferenceBetweenPartyAndEnemyBoss(); // checks difference in stat stages between party and boss
                 u16 hazeChance             = (statTotalDifference * TOTAL_DEFAULT_STAT_STAGES_NUM / 5);
                 u16 rand                   = Random() % 100;
                 u16 bossAtkDrops           = DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK]; // checks how many times electivires attack stage has been dropped
@@ -819,8 +844,11 @@ void AddAiActionsForBattler(u32 battler)
                 u16 currentTurnActions     = 1 + (Random() % 3);
                 s8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
 
+                
                 //MgbaPrintf(MGBA_LOG_WARN, "GetCurrentBravePhase phase %d, newTarget %d", BOSS_BRAVE_PHASE_RANDOM, sCurrentTarget);
-
+                // MgbaPrintf(MGBA_LOG_WARN, "GetStatStageTotalParty(battler) %d", GetStatStageTotalParty());
+                // MgbaPrintf(MGBA_LOG_WARN, "GetStatStageTotalBoss %d", GetStatStageTotalBoss());
+                // MgbaPrintf(MGBA_LOG_WARN, "statTotalDifference %d", statTotalDifference);
                 switch(phase){
                     default:
                         //Chain 2: to be used if eevee is in flareon form and target eevee specifically.
