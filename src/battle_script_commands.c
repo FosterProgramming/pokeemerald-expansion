@@ -3079,11 +3079,90 @@ static void CheckSetUnburden(u8 battler)
     }
 }
 
+u16 GetBattlerItemAtSlot(u8 battler, u8 slot){
+    u16 ret = ITEM_NONE;
+    switch(slot){
+        case 0:
+            ret = gBattleMons[battler].item;
+        break;
+        case 1:
+            ret = gBattleMons[battler].item2;
+        break;
+        case 2:
+            ret = gBattleMons[battler].item3;
+        break;
+        case 3:
+            ret = gBattleMons[battler].item4;
+        break;
+    }
+
+    return ret;
+}
+
+void SetBattlerItemAtSlot(u8 battler, u8 slot, u16 itemId){
+    switch(slot){
+        case 0:
+            gBattleMons[battler].item = itemId;
+        break;
+        case 1:
+            gBattleMons[battler].item2 = itemId;
+        break;
+        case 2:
+            gBattleMons[battler].item3 = itemId;
+        break;
+        case 3:
+            gBattleMons[battler].item4 = itemId;
+        break;
+    }
+}
+
+u8 BattlerHasEmptyItemSlot(u8 battler){
+    u8 i;
+
+    for(i = 0; i < 4; i++){
+        if(GetBattlerItemAtSlot(battler, i) == ITEM_NONE)
+            return i + 1;
+    }
+
+    return FALSE;
+}
+
+u8 BattlerHasHeldItem(u8 battler){
+    u8 i;
+    u8 ret = 0;
+
+    for(i = 0; i < 4; i++){
+        if(GetBattlerItemAtSlot(battler, i) != ITEM_NONE)
+            ret++;
+    }
+
+    return ret;
+}
+
+#define USE_RANDOM_VAR_FOR_ITEM_MANIPULATION TRUE
+
 // battlerStealer steals the item of battlerItem
 void StealTargetItem(u8 battlerStealer, u8 battlerItem)
 {
-    gLastUsedItem = gBattleMons[battlerItem].item;
-    gBattleMons[battlerItem].item = ITEM_NONE;
+    u16 stolenItem = ITEM_NONE;
+    u8 itemId;
+
+    if(USE_RANDOM_VAR_FOR_ITEM_MANIPULATION){
+        do{
+            itemId = Random() % 4;
+            stolenItem = GetBattlerItemAtSlot(battlerItem, itemId);
+            SetBattlerItemAtSlot(battlerItem, itemId, ITEM_NONE);
+        }
+        while(stolenItem == ITEM_NONE);
+        VarSet(VAR_ITEM_MANIPULATION_ID, itemId);
+    }
+    else{
+        itemId = VarGet(VAR_ITEM_MANIPULATION_ID);
+        stolenItem = GetBattlerItemAtSlot(battlerItem, itemId);
+        SetBattlerItemAtSlot(battlerItem, itemId, ITEM_NONE);
+    }
+
+    gLastUsedItem = stolenItem;
 
     if (B_STEAL_WILD_ITEMS >= GEN_9
      && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_PALACE))
@@ -3095,7 +3174,7 @@ void StealTargetItem(u8 battlerStealer, u8 battlerItem)
     else
     {
         RecordItemEffectBattle(battlerStealer, ItemId_GetHoldEffect(gLastUsedItem));
-        gBattleMons[battlerStealer].item = gLastUsedItem;
+        SetBattlerItemAtSlot(battlerItem, BattlerHasEmptyItemSlot(battlerStealer), gLastUsedItem);
 
         gDisableStructs[battlerStealer].unburdenActive = FALSE;
         BtlController_EmitSetMonData(battlerStealer, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gLastUsedItem), &gLastUsedItem); // set attacker item
@@ -3105,7 +3184,20 @@ void StealTargetItem(u8 battlerStealer, u8 battlerItem)
     RecordItemEffectBattle(battlerItem, ITEM_NONE);
     CheckSetUnburden(battlerItem);
 
-    BtlController_EmitSetMonData(battlerItem, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item), &gBattleMons[battlerItem].item);  // remove target item
+    switch(itemId){
+        case 0:
+            BtlController_EmitSetMonData(battlerItem, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item), &gBattleMons[battlerItem].item);  // remove target item
+        break;
+        case 1:
+            BtlController_EmitSetMonData(battlerItem, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item2), &gBattleMons[battlerItem].item2);  // remove target item
+        break;
+        case 2:
+            BtlController_EmitSetMonData(battlerItem, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item3), &gBattleMons[battlerItem].item3);  // remove target item
+        break;
+        case 3:
+            BtlController_EmitSetMonData(battlerItem, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item4), &gBattleMons[battlerItem].item4);  // remove target item
+        break;
+    }
     MarkBattlerForControllerExec(battlerItem);
 
     gBattleStruct->choicedMove[battlerItem] = 0;
@@ -3833,9 +3925,9 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 break;
             case MOVE_EFFECT_STEAL_ITEM:
                 {
-                    if (!CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item)
-                        || gBattleMons[gBattlerAttacker].item != ITEM_NONE
-                        || gBattleMons[gBattlerTarget].item == ITEM_NONE)
+                    if (!CanStealItem(gBattlerAttacker, gBattlerTarget)
+                        || !BattlerHasEmptyItemSlot(gBattlerAttacker)
+                        || BattlerHasHeldItem(gBattlerTarget) == 0)
                     {
                         gBattlescriptCurrInstr++;
                     }
@@ -7114,11 +7206,11 @@ static void Cmd_moveend(void)
         case MOVEEND_MAGICIAN:
             if (BattlerHasTrait(gBattlerAttacker, ABILITY_MAGICIAN)
               && gCurrentMove != MOVE_FLING && gCurrentMove != MOVE_NATURAL_GIFT
-              && gBattleMons[gBattlerAttacker].item == ITEM_NONE
-              && gBattleMons[gBattlerTarget].item != ITEM_NONE
+              && BattlerHasEmptyItemSlot(gBattlerAttacker)
+              && BattlerHasHeldItem(gBattlerTarget) != 0
               && IsBattlerAlive(gBattlerAttacker)
               && IsBattlerTurnDamaged(gBattlerTarget)
-              && CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item)
+              && CanStealItem(gBattlerAttacker, gBattlerTarget)
               && !gSpecialStatuses[gBattlerAttacker].gemBoost   // In base game, gems are consumed after magician would activate.
               && !(gWishFutureKnock.knockedOffMons[GetBattlerSide(gBattlerTarget)] & (1u << gBattlerPartyIndexes[gBattlerTarget]))
               && !DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove)
@@ -7336,8 +7428,8 @@ static void Cmd_moveend(void)
                       && IsBattlerTurnDamaged(battler)                                                  // Target needs to have been damaged
                       && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)              // Subsitute unaffected
                       && IsBattlerAlive(battler)                                                        // Battler must be alive to pickpocket
-                      && gBattleMons[battler].item == ITEM_NONE                                         // Pickpocketer can't have an item already
-                      && CanStealItem(battler, gBattlerAttacker, gBattleMons[gBattlerAttacker].item))   // Cannot steal plates, mega stones, etc
+                      && BattlerHasEmptyItemSlot(gBattlerAttacker)                                      // Pickpocketer can't have an item already
+                      && CanStealItem(battler, gBattlerAttacker))     // Cannot steal plates, mega stones, etc
                     {
                         gBattlerTarget = gBattlerAbility = battler;
                         // Battle scripting is super brittle so we shall do the item exchange now (if possible)

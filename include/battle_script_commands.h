@@ -58,6 +58,10 @@ bool32 IsMoveAffectedByParentalBond(u32 move, u32 battler);
 void SaveBattlerTarget(u32 battler);
 void SaveBattlerAttacker(u32 battler);
 bool32 IsSpeciesOneOf(u16 specie, const u16 *species);
+u16 GetBattlerItemAtSlot(u8 battler, u8 slot);
+void SetBattlerItemAtSlot(u8 battler, u8 slot, u16 itemId);
+u8 BattlerHasEmptyItemSlot(u8 battler);
+u8 BattlerHasHeldItem(u8 battler);
 
 extern const u16 gBraveBoss[];
 

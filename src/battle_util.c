@@ -9111,7 +9111,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                    && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
                    && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                    && IsBattlerAlive(gBattlerAttacker)
-                   && CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item)
+                   && CanStealItem(gBattlerAttacker, gBattlerTarget)
                    && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
                 {
                     // No sticky hold checks.
@@ -12392,9 +12392,11 @@ void TryRestoreHeldItems(void)
     }
 }
 
-bool32 CanStealItem(u32 battlerStealing, u32 battlerItem, u16 item)
+bool32 CanStealItem(u32 battlerAttacker, u32 battlerTarget)
 {
-    u8 stealerSide = GetBattlerSide(battlerStealing);
+    u8 i, j;
+    u8 stealerSide = GetBattlerSide(battlerAttacker);
+    u16 item;
 
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
         return FALSE;
@@ -12418,17 +12420,28 @@ bool32 CanStealItem(u32 battlerStealing, u32 battlerItem, u16 item)
            | BATTLE_TYPE_LINK
            | BATTLE_TYPE_RECORDED_LINK
            | BATTLE_TYPE_SECRET_BASE))
-        && (gWishFutureKnock.knockedOffMons[stealerSide] & (1u << gBattlerPartyIndexes[battlerStealing])))
+        && (gWishFutureKnock.knockedOffMons[stealerSide] & (1u << gBattlerPartyIndexes[battlerAttacker])))
     {
         return FALSE;
     }
 
-    // It's supposed to pop before trying to steal but this also works
-    if (ItemId_GetHoldEffect(item) == HOLD_EFFECT_AIR_BALLOON)
-        return FALSE;
+    j = 0;
 
-    if (!CanBattlerGetOrLoseItem(battlerItem, item)      // Battler with item cannot have it stolen
-     || !CanBattlerGetOrLoseItem(battlerStealing, item)) // Stealer cannot take the item
+    for(i = 0; i < 4; i++){
+        item = GetBattlerItemAtSlot(battlerTarget, i);
+
+        if (item == ITEM_NONE || ItemId_GetHoldEffect(item) == HOLD_EFFECT_AIR_BALLOON || CanBattlerGetOrLoseItem(battlerTarget, item)) // It's supposed to pop before trying to steal but this also works
+            j++; //Number of items the attacker can't steal
+
+        /*
+        //No idea what is this for
+        if (!CanBattlerGetOrLoseItem(battlerTarget,   item)  // Battler with item cannot have it stolen
+         || !CanBattlerGetOrLoseItem(battlerAttacker, item)) // Stealer cannot take the item
+            canSteal = FALSE;
+        */
+    }
+
+    if(j == 4) //If it can't steal any items return false
         return FALSE;
 
     return TRUE;
