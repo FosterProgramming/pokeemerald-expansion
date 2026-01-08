@@ -23,6 +23,8 @@
 
 #define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
 
+#define GO_BATTLER_BY_BATTLER FALSE
+
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
 EWRAM_DATA u16 gBraveStoredSpeeds[4];
@@ -306,11 +308,18 @@ void BraveSetCurrentAction(void)
             if (!battlerWantsToMove[battler])
                 continue;
 
+            if (GO_BATTLER_BY_BATTLER)
+            {
+                battlerToMove = battler;
+                break;
+            }
+
             gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
 
             if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
             {
                 battlerToMove = battler;
+                highestStoredSpeed = gBraveStoredSpeeds[battler];
             }
             else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
             {
