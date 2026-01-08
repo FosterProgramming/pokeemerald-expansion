@@ -248,9 +248,8 @@ static u32 GetNextBall(u32 ballId)
 
 static void HandleInputChooseAction(u32 battler)
 {
-    if (gBattleStruct->monStoredAP[battler] < 1 || BraveGetBattlerActionCount(battler) == 4)
+    if (BraveGetBattlerActionCount(battler) == 4)
     {
-        MgbaPrintf(MGBA_LOG_WARN, "Stopping move selection");
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
         gBattleStruct->skipMoveInput = TRUE;
         PlayerBufferExecCompleted(battler);
