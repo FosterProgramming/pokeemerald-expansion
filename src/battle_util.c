@@ -8490,7 +8490,6 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     BattleScriptExecute(BattleScript_ItemHealHP_End2);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
-                    MgbaPrintf(MGBA_LOG_WARN, "BattlerHeldItemHasEffect gBattlerAttacker %d", gBattlerAttacker);
                 }
             }
 
