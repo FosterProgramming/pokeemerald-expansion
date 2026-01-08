@@ -106,7 +106,6 @@ script Common_EventScript_StartBossDebugBattle{
 			goto(Common_EventScript_StartBossDebugBattle_Magmortar)
         break
 		default:
-			goto(Common_EventScript_StartBossDebugBattle_Porygon2)
 		break
 	}
 	release

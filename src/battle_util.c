@@ -7736,7 +7736,7 @@ static u32 ItemHealHp(u32 battler, u32 itemId, enum ItemCaseId caseID, bool32 pe
 
         return ITEM_HP_CHANGE;
     }
-    return 0;
+    return FALSE;
 }
 
 static bool32 UnnerveOn(u32 battler, u32 itemId)
@@ -8474,7 +8474,9 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
     case ITEMEFFECT_NORMAL:
         if (gBattleMons[battler].hp)
         {
-            if(BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LEFTOVERS, TRUE)){
+            effect = FALSE;
+
+            if(!effect && BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_LEFTOVERS, TRUE)){
                 if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !moveTurn
                   && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                 {
@@ -8488,10 +8490,11 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                     BattleScriptExecute(BattleScript_ItemHealHP_End2);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
+                    MgbaPrintf(MGBA_LOG_WARN, "BattlerHeldItemHasEffect gBattlerAttacker %d", gBattlerAttacker);
                 }
             }
 
-            if(BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_BLACK_SLUDGE, TRUE)){
+            if(!effect && BattlerHeldItemHasEffect(gBattlerAttacker, HOLD_EFFECT_BLACK_SLUDGE, TRUE)){
                 gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_BLACK_SLUDGE, TRUE);
                 if (IS_BATTLER_OF_TYPE(battler, TYPE_POISON))
                 {
@@ -8521,55 +8524,99 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MIRROR_HERB, TRUE)){
-                effect = TryConsumeMirrorHerb(battler, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MIRROR_HERB, TRUE)){
+                u8 newEffect = TryConsumeMirrorHerb(battler, caseID);
+
+                if(newEffect != FALSE){
+                    effect = newEffect;
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
-                if (!moveTurn)
-                    effect = ItemHealHp(battler, gLastUsedItem, caseID, TRUE);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE)){
+                if (!moveTurn){
+                    u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
+                    u8 newEffect = ItemHealHp(battler, newItem, caseID, TRUE);
+
+                    if(newEffect != FALSE){
+                        gLastUsedItem = newItem;
+                        effect = newEffect;
+                    }
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
-                effect = TryCureStatus(battler, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE)){
+                u8 newEffect = TryCureStatus(battler, caseID);
+
+                if(newEffect != FALSE){
+                    gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_STATUS, TRUE);
+                    effect = newEffect;
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE);
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SPICY, TRUE)){
+                if (!moveTurn){
+                    u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_RESTORE_PCT_HP, TRUE);
+                    u8 newEffect = HealConfuseBerry(battler, newItem, FLAVOR_SPICY, caseID);
+
+                    if(newEffect != FALSE){
+                        gLastUsedItem = newItem;
+                        effect = newEffect;
+                    }
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE);
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_DRY, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE)){
+                if (!moveTurn){
+                    u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_DRY, TRUE);
+                    u8 newEffect = HealConfuseBerry(battler, newItem, FLAVOR_DRY, caseID);
+
+                    if(newEffect != FALSE){
+                        gLastUsedItem = newItem;
+                        effect = newEffect;
+                    }
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE);
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SWEET, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE)){
+                if (!moveTurn){
+                    u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SWEET, TRUE);
+                    u8 newEffect = HealConfuseBerry(battler, newItem, FLAVOR_SWEET, caseID);
+
+                    if(newEffect != FALSE){
+                        gLastUsedItem = newItem;
+                        effect = newEffect;
+                    }
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE);
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_BITTER, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE)){
+                if (!moveTurn){
+                    u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_BITTER, TRUE);
+                    u8 newEffect = HealConfuseBerry(battler, newItem, FLAVOR_BITTER, caseID);
+
+                    if(newEffect != FALSE){
+                        gLastUsedItem = newItem;
+                        effect = newEffect;
+                    }
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE);
-                if (!moveTurn)
-                    effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SOUR, caseID);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE)){
+                u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CONFUSE_SOUR, TRUE);
+                u8 newEffect = HealConfuseBerry(battler, newItem, FLAVOR_SOUR, caseID);
+
+                if(newEffect != FALSE){
+                    gLastUsedItem = newItem;
+                    effect = newEffect;
+                }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE);
-                if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, gLastUsedItem))
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE)){
+                u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_SLP, TRUE);
+
+                if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
@@ -8577,66 +8624,80 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE);
-                if (gBattleMons[battler].status1 & STATUS1_PSN_ANY && !UnnerveOn(battler, gLastUsedItem))
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE)){
+                u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PSN, TRUE);
+
+                if (gBattleMons[battler].status1 & STATUS1_PSN_ANY && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     gBattleMons[battler].status1 &= ~(STATUS1_PSN_ANY | STATUS1_TOXIC_COUNTER);
                     BattleScriptExecute(BattleScript_BerryCurePsnEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_BRN, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_BRN, TRUE);
-                if (gBattleMons[battler].status1 & STATUS1_BURN && !UnnerveOn(battler, gLastUsedItem))
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_BRN, TRUE)){
+                u16 newItem  = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_BRN, TRUE);
+
+                if (gBattleMons[battler].status1 & STATUS1_BURN && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     gBattleMons[battler].status1 &= ~STATUS1_BURN;
                     BattleScriptExecute(BattleScript_BerryCureBrnEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_FRZ, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_FRZ, TRUE);
-                if (gBattleMons[battler].status1 & STATUS1_FREEZE && !UnnerveOn(battler, gLastUsedItem))
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_FRZ, TRUE)){
+                u16 newItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_FRZ, TRUE);
+
+                if (gBattleMons[battler].status1 & STATUS1_FREEZE && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     gBattleMons[battler].status1 &= ~STATUS1_FREEZE;
                     BattleScriptExecute(BattleScript_BerryCureFrzEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
-                if (gBattleMons[battler].status1 & STATUS1_FROSTBITE && !UnnerveOn(battler, gLastUsedItem))
+
+                if (gBattleMons[battler].status1 & STATUS1_FROSTBITE && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     gBattleMons[battler].status1 &= ~STATUS1_FROSTBITE;
                     BattleScriptExecute(BattleScript_BerryCureFrbEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE);
-                if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && !UnnerveOn(battler, gLastUsedItem))
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE)){
+                u16 newItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_PAR, TRUE);
+
+                if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     gBattleMons[battler].status1 &= ~STATUS1_PARALYSIS;
                     BattleScriptExecute(BattleScript_BerryCurePrlzEnd2);
                     effect = ITEM_STATUS_CHANGE;
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE);
-                if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, gLastUsedItem))
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE)){
+                u16 newItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_CURE_CONFUSION, TRUE);
+
+                if (gBattleMons[battler].status2 & STATUS2_CONFUSION && !UnnerveOn(battler, newItem))
                 {
+                    gLastUsedItem = newItem;
                     RemoveConfusionStatus(battler);
                     BattleScriptExecute(BattleScript_BerryCureConfusionEnd2);
                     effect = ITEM_EFFECT_OTHER;
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MENTAL_HERB, TRUE)){
-                gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_MENTAL_HERB, TRUE);
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_MENTAL_HERB, TRUE)){
+                u16 newItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_MENTAL_HERB, TRUE);
+
                 if (GetMentalHerbEffect(battler))
                 {
+                    gLastUsedItem = newItem;
                     gBattleScripting.savedBattler = gBattlerAttacker;
                     gBattlerAttacker = battler;
                     BattleScriptExecute(BattleScript_MentalHerbCureEnd2);
@@ -8644,84 +8705,86 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler, bool32 moveTurn)
                 }
             }
 
-            if(BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_STATS, TRUE)){
-                effect = RestoreWhiteHerbStats(battler);
-                if (effect != 0)
+            if(!effect && BattlerHeldItemHasEffect(battler, HOLD_EFFECT_RESTORE_STATS, TRUE)){
+                u8 newEffect = RestoreWhiteHerbStats(battler);
+
+                if (newEffect != 0)
                 {
+                    effect = newEffect;
                     gBattlerAttacker = battler;
                     BattleScriptExecute(BattleScript_WhiteHerbEnd2);
                 }
             }
 
-            switch (battlerHoldEffect)
+            /*switch (battlerHoldEffect)
             {
-            case HOLD_EFFECT_RESTORE_HP:
-                if (!moveTurn)
-                    effect = ItemHealHp(battler, gLastUsedItem, caseID, FALSE);
-                break;
-            case HOLD_EFFECT_RESTORE_PP:
-                if (!moveTurn)
-                    effect = ItemRestorePp(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_ATTACK_UP:
-                if (!moveTurn)
-                    effect = StatRaiseBerry(battler, gLastUsedItem, STAT_ATK, caseID);
-                break;
-            case HOLD_EFFECT_DEFENSE_UP:
-                if (!moveTurn)
-                    effect = StatRaiseBerry(battler, gLastUsedItem, STAT_DEF, caseID);
-                break;
-            case HOLD_EFFECT_SPEED_UP:
-                if (!moveTurn)
-                    effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPEED, caseID);
-                break;
-            case HOLD_EFFECT_SP_ATTACK_UP:
-                if (!moveTurn)
-                    effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPATK, caseID);
-                break;
-            case HOLD_EFFECT_SP_DEFENSE_UP:
-                if (!moveTurn)
-                    effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPDEF, caseID);
-                break;
-            case HOLD_EFFECT_CRITICAL_UP:
-                if (!moveTurn && !(gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY_ANY)
-                    && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, gLastUsedItem), gLastUsedItem))
-                {
-                    gBattleMons[battler].status2 |= STATUS2_FOCUS_ENERGY;
-                    gBattleScripting.battler = battler;
-                    BattleScriptExecute(BattleScript_BerryFocusEnergyEnd2);
-                    effect = ITEM_EFFECT_OTHER;
-                }
-                break;
-            case HOLD_EFFECT_RANDOM_STAT_UP:
-                if (!moveTurn)
-                    effect = RandomStatRaiseBerry(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_MICLE_BERRY:
-                if (!moveTurn)
-                    effect = TrySetMicleBerry(battler, gLastUsedItem, caseID);
-                break;
-            case HOLD_EFFECT_BERSERK_GENE:
-                BufferStatChange(battler, STAT_ATK, STRINGID_STATROSE);
-                gEffectBattler = battler;
-                if (CanBeInfinitelyConfused(gEffectBattler))
-                {
-                    gStatuses4[gEffectBattler] |= STATUS4_INFINITE_CONFUSION;
-                }
-                SET_STATCHANGER(STAT_ATK, 2, FALSE);
+                case HOLD_EFFECT_RESTORE_HP:
+                    if (!moveTurn)
+                        effect = ItemHealHp(battler, gLastUsedItem, caseID, FALSE);
+                    break;
+                case HOLD_EFFECT_RESTORE_PP:
+                    if (!moveTurn)
+                        effect = ItemRestorePp(battler, gLastUsedItem, caseID);
+                    break;
+                case HOLD_EFFECT_ATTACK_UP:
+                    if (!moveTurn)
+                        effect = StatRaiseBerry(battler, gLastUsedItem, STAT_ATK, caseID);
+                    break;
+                case HOLD_EFFECT_DEFENSE_UP:
+                    if (!moveTurn)
+                        effect = StatRaiseBerry(battler, gLastUsedItem, STAT_DEF, caseID);
+                    break;
+                case HOLD_EFFECT_SPEED_UP:
+                    if (!moveTurn)
+                        effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPEED, caseID);
+                    break;
+                case HOLD_EFFECT_SP_ATTACK_UP:
+                    if (!moveTurn)
+                        effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPATK, caseID);
+                    break;
+                case HOLD_EFFECT_SP_DEFENSE_UP:
+                    if (!moveTurn)
+                        effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPDEF, caseID);
+                    break;
+                case HOLD_EFFECT_CRITICAL_UP:
+                    if (!moveTurn && !(gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY_ANY)
+                        && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, gLastUsedItem), gLastUsedItem))
+                    {
+                        gBattleMons[battler].status2 |= STATUS2_FOCUS_ENERGY;
+                        gBattleScripting.battler = battler;
+                        BattleScriptExecute(BattleScript_BerryFocusEnergyEnd2);
+                        effect = ITEM_EFFECT_OTHER;
+                    }
+                    break;
+                case HOLD_EFFECT_RANDOM_STAT_UP:
+                    if (!moveTurn)
+                        effect = RandomStatRaiseBerry(battler, gLastUsedItem, caseID);
+                    break;
+                case HOLD_EFFECT_MICLE_BERRY:
+                    if (!moveTurn)
+                        effect = TrySetMicleBerry(battler, gLastUsedItem, caseID);
+                    break;
+                case HOLD_EFFECT_BERSERK_GENE:
+                    BufferStatChange(battler, STAT_ATK, STRINGID_STATROSE);
+                    gEffectBattler = battler;
+                    if (CanBeInfinitelyConfused(gEffectBattler))
+                    {
+                        gStatuses4[gEffectBattler] |= STATUS4_INFINITE_CONFUSION;
+                    }
+                    SET_STATCHANGER(STAT_ATK, 2, FALSE);
 
-                gBattleScripting.animArg1 = STAT_ANIM_PLUS1 + STAT_ATK;
-                gBattleScripting.animArg2 = 0;
+                    gBattleScripting.animArg1 = STAT_ANIM_PLUS1 + STAT_ATK;
+                    gBattleScripting.animArg2 = 0;
 
-                BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
-                effect = ITEM_STATS_CHANGE;
-                break;
-            case HOLD_EFFECT_BOOSTER_ENERGY:
-                effect = TryBoosterEnergy(battler, caseID);
-                break;
-            }
+                    BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
+                    effect = ITEM_STATS_CHANGE;
+                    break;
+                case HOLD_EFFECT_BOOSTER_ENERGY:
+                    effect = TryBoosterEnergy(battler, caseID);
+                    break;
+            }*/
 
-            if (effect != 0)
+            if (effect != FALSE)
             {
                 gBattlerAttacker = gPotentialItemEffectBattler = gBattleScripting.battler = battler;
                 if (effect == ITEM_STATUS_CHANGE)
