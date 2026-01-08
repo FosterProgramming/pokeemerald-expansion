@@ -253,6 +253,7 @@ static void HandleInputChooseAction(u32 battler)
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
         gBattleStruct->skipMoveInput = TRUE;
         PlayerBufferExecCompleted(battler);
+        return;
     }
 
     if (HelpSystem_Process())
@@ -462,7 +463,18 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
-        SwapHpBarsWithHpText();
+        if (gBattleStruct->monBraveActions[battler] > 0 && gBattleStruct->isBraveSelector)
+        {
+            gBattleStruct->isBraveSelector = FALSE;
+            gBattleStruct->skipMoveInput = TRUE;
+            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
+            PlayerBufferExecCompleted(battler);
+            return;
+        }
+        else
+        {
+            SwapHpBarsWithHpText();
+        }
     }
     else if (DEBUG_BATTLE_MENU == TRUE && JOY_NEW(SELECT_BUTTON))
     {
