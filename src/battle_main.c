@@ -2759,14 +2759,29 @@ void SpriteCB_BattleSpriteStartSlideLeft(struct Sprite *sprite)
     sprite->callback = SpriteCB_BattleSpriteSlideLeft;
 }
 
+static void SpriteCB_ShowHealthbox(struct Sprite *sprite)
+{
+    if (sprite->animEnded)
+    {
+        StartHealthboxSlideIn(sprite->sBattler);
+        SetHealthboxSpriteVisible(gHealthboxSpriteIds[sprite->sBattler]);
+        sprite->callback = SpriteCB_PlayerMonFromBall;
+        StartSpriteAnim(sprite, 0);
+    }
+}
+
 static void SpriteCB_BattleSpriteSlideLeft(struct Sprite *sprite)
 {
     if (!(gIntroSlideFlags & 1))
     {
-        sprite->x2 -= 2;
+        if (B_FAST_INTRO_NO_SLIDE == FALSE && !gTestRunnerHeadless)
+            sprite->x2 -= 2;
+        else
+            sprite->x2 = 0;
+
         if (sprite->x2 == 0)
         {
-            sprite->callback = SpriteCB_Idle;
+            sprite->callback = SpriteCB_ShowHealthbox;
             sprite->data[1] = 0;
         }
     }
@@ -2893,19 +2908,36 @@ void SpriteCB_PlayerMonFromBall(struct Sprite *sprite)
         BattleAnimateBackSprite(sprite, sprite->sSpeciesId);
 }
 
+void SpriteCB_PlayerMonSlideOut(struct Sprite *sprite)
+{
+    if (sprite->data[3] == 0)
+    {
+        //sprite->data[4] = sprite->x;
+        //sprite->x = -33;
+        //sprite->invisible = FALSE;
+        sprite->data[3]++;
+    }
+    else if (sprite->data[3] < 27)
+    {
+        sprite->x -= 4;
+        sprite->data[3]++;
+    }
+    else
+    {
+        sprite->data[3] = 0;
+        //sprite->x = sprite->data[4];
+        sprite->data[4] = 0;
+         sprite->invisible = TRUE;
+        sprite->callback = SpriteCallbackDummy;
+    }
+}
+
 void SpriteCB_PlayerMonSlideIn(struct Sprite *sprite)
 {
     if (sprite->data[3] == 0)
     {
-        PlaySE(SE_BALL_TRAY_ENTER);
-        sprite->data[3]++;
-    }
-    else if (sprite->data[3] == 1)
-    {
-        if (sprite->animEnded)
-            return;
         sprite->data[4] = sprite->x;
-        sprite->x = -33;
+        //sprite->x = -33;
         sprite->invisible = FALSE;
         sprite->data[3]++;
     }
@@ -2917,9 +2949,8 @@ void SpriteCB_PlayerMonSlideIn(struct Sprite *sprite)
     else
     {
         sprite->data[3] = 0;
-        sprite->x = sprite->data[4];
         sprite->data[4] = 0;
-        sprite->callback = SpriteCB_PlayerMonFromBall;
+        sprite->callback = SpriteCallbackDummy;
         PlayCry_ByMode(sprite->sSpeciesId, -25, CRY_MODE_NORMAL);
     }
 }
@@ -3497,7 +3528,7 @@ static void DoBattleIntro(void)
             switch (GetBattlerPosition(battler))
             {
             case B_POSITION_PLAYER_LEFT: // player sprite
-                BtlController_EmitDrawTrainerPic(battler, BUFFER_A);
+                BtlController_EmitLoadMonSprite(battler, BUFFER_A);
                 MarkBattlerForControllerExec(battler);
                 break;
             case B_POSITION_OPPONENT_LEFT:
@@ -3517,6 +3548,11 @@ static void DoBattleIntro(void)
                 if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER)) // partner sprite
                 {
                     BtlController_EmitDrawTrainerPic(battler, BUFFER_A);
+                    MarkBattlerForControllerExec(battler);
+                }
+                else if (IsBattlerAlive(battler))
+                {
+                    BtlController_EmitLoadMonSprite(battler, BUFFER_A);
                     MarkBattlerForControllerExec(battler);
                 }
                 break;
@@ -3664,7 +3700,7 @@ static void DoBattleIntro(void)
         break;
     case BATTLE_INTRO_STATE_WAIT_FOR_WILD_BATTLE_TEXT:
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
-            gBattleStruct->introState++;
+            gBattleStruct->introState = BATTLE_INTRO_STATE_SET_DEX_AND_BATTLE_VARS;
         break;
     case BATTLE_INTRO_STATE_PRINT_PLAYER_SEND_OUT_TEXT:
         if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
