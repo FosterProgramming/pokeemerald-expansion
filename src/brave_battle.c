@@ -497,8 +497,19 @@ void BraveConsumeAP(u32 battler, u32 move)
         return;
     if (gBraveCurrentAction.action == B_ACTION_USE_MOVE)
     {
-        gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
-        ChangeAPGraphics(battler);
+        switch (gMovesInfo[move].effect)
+        {
+        case EFFECT_STOCKPILE: //add 0 for stockpile. Need to figure out a way to make it end brave chain so you can only add one stockpile per turn. Also should probably make it only work if its the first move input in the brave chain
+            break;
+        case EFFECT_SWALLOW:
+        case EFFECT_SPIT_UP:
+            gBattleStruct->monStoredAP[battler] -= 1 + gDisableStructs[gBattlerAttacker].stockpileCounter;
+            break;
+        default:
+            gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
+            ChangeAPGraphics(battler);
+            break;
+        }
     }
     else if (gBraveCurrentAction.action == B_ACTION_USE_ITEM)
     {
