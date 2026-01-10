@@ -1491,13 +1491,11 @@ static void SwitchIn_HandleSoundAndEnd(u32 battler)
 static void SwitchIn_TryShinyAnimShowHealthbox(u32 battler)
 {
     // Start shiny animation if applicable
-    if (!gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim
-        && !gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive)
+    if (!gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim)
         TryShinyAnimation(battler, &gPlayerParty[gBattlerPartyIndexes[battler]]);
 
     // Wait for ball anim, then show healthbox
-    if (gSprites[gBattleControllerData[battler]].callback == SpriteCallbackDummy
-     && !gBattleSpritesDataPtr->healthBoxesData[battler].ballAnimActive)
+    if (gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy)
     {
         DestroySprite(&gSprites[gBattleControllerData[battler]]);
         UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], &gPlayerParty[gBattlerPartyIndexes[battler]], HEALTHBOX_ALL);
@@ -1978,11 +1976,36 @@ static void PrintLinkStandbyMsg(void)
     }
 }
 
+static void TryShinyAnimAfterMonAnim(u32 battler)
+{
+    if (gSprites[gBattlerSpriteIds[battler]].x2 == 0
+        && !gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim
+        && !gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim)
+        TryShinyAnimation(battler, &gPlayerParty[gBattlerPartyIndexes[battler]]);
+
+    if (gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy
+     && gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim)
+    {
+        gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = FALSE;
+        gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
+        FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
+        FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+        PlayerBufferExecCompleted(battler);
+    }
+}
+
 static void PlayerHandleLoadMonSprite(u32 battler)
 {
-    BattleLoadMonSpriteGfx(&gPlayerParty[gBattlerPartyIndexes[battler]], battler);
-    gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
-    gBattlerControllerFuncs[battler] = CompleteOnBattlerSpritePosX_0;
+    if (gBattleStruct->introState <= 7)
+    {
+        BtlController_HandleLoadMonSprite(battler, TryShinyAnimAfterMonAnim);
+    }
+    else
+    {
+        BattleLoadMonSpriteGfx(&gPlayerParty[gBattlerPartyIndexes[battler]], battler);
+        gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+        gBattlerControllerFuncs[battler] = CompleteOnBattlerSpritePosX_0;
+    }
 }
 
 static void PlayerHandleSwitchInAnim(u32 battler)

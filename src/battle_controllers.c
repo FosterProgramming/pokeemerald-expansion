@@ -2143,9 +2143,17 @@ void StartSendOutAnim(u32 battler, bool32 dontClearTransform, bool32 dontClearSu
     gSprites[gBattlerSpriteIds[battler]].invisible = TRUE;
     gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
 
-    gSprites[gBattleControllerData[battler]].data[1] = gBattlerSpriteIds[battler];
-    gSprites[gBattleControllerData[battler]].data[2] = battler;
-    gSprites[gBattleControllerData[battler]].data[0] = DoPokeballSendOutAnimation(battler, 0, (side == B_SIDE_OPPONENT) ? POKEBALL_OPPONENT_SENDOUT : (doSlideIn ? POKEBALL_PLAYER_SLIDEIN : POKEBALL_PLAYER_SENDOUT));
+    if (doSlideIn)
+    {
+        gSprites[gBattlerSpriteIds[battler]].x -= (4 * 26);
+        gSprites[gBattlerSpriteIds[battler]].callback = SpriteCB_PlayerMonSlideIn;
+    }
+    else
+    {
+        gSprites[gBattleControllerData[battler]].data[1] = gBattlerSpriteIds[battler];
+        gSprites[gBattleControllerData[battler]].data[2] = battler;
+        gSprites[gBattleControllerData[battler]].data[0] = DoPokeballSendOutAnimation(battler, 0, (side == B_SIDE_OPPONENT) ? POKEBALL_OPPONENT_SENDOUT : POKEBALL_PLAYER_SENDOUT);
+    }
 }
 
 static void FreeMonSprite(u32 battler)
@@ -2159,7 +2167,8 @@ static void FreeMonSprite(u32 battler)
 
 static void Controller_ReturnMonToBall2(u32 battler)
 {
-    if (!gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive)
+    if ((GetBattlerSide(battler) == B_SIDE_OPPONENT && !gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive)
+     || (GetBattlerSide(battler) == B_SIDE_PLAYER && gSprites[gBattlerSpriteIds[battler]].callback == SpriteCallbackDummy))
     {
         FreeMonSprite(battler);
         BattleControllerComplete(battler);
@@ -2180,7 +2189,10 @@ static void Controller_ReturnMonToBall(u32 battler)
         if (!gBattleSpritesDataPtr->healthBoxesData[battler].specialAnimActive)
         {
             gBattleSpritesDataPtr->healthBoxesData[battler].animationState = 0;
-            InitAndLaunchSpecialAnimation(battler, battler, battler, (GetBattlerSide(battler) == B_SIDE_OPPONENT) ? B_ANIM_SWITCH_OUT_OPPONENT_MON : B_ANIM_SWITCH_OUT_PLAYER_MON);
+            if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
+                InitAndLaunchSpecialAnimation(battler, battler, battler, (GetBattlerSide(battler) == B_SIDE_OPPONENT) ? B_ANIM_SWITCH_OUT_OPPONENT_MON : B_ANIM_SWITCH_OUT_PLAYER_MON);
+            else
+                gSprites[gBattlerSpriteIds[battler]].callback = SpriteCB_PlayerMonSlideOut;
             gBattlerControllerFuncs[battler] = Controller_ReturnMonToBall2;
         }
         break;
@@ -2451,7 +2463,10 @@ void BtlController_HandleLoadMonSprite(u32 battler, void (*controllerCallback)(u
                                                GetBattlerSpriteDefault_Y(battler),
                                                GetBattlerSpriteSubpriority(battler));
 
-    gSprites[gBattlerSpriteIds[battler]].x2 = -DISPLAY_WIDTH;
+    if (gBattleStruct->introState <= 7 && GetBattlerSide(battler) == B_SIDE_PLAYER)
+        gSprites[gBattlerSpriteIds[battler]].x2 = DISPLAY_WIDTH;
+    else
+        gSprites[gBattlerSpriteIds[battler]].x2 = -DISPLAY_WIDTH;
     gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
     gSprites[gBattlerSpriteIds[battler]].data[2] = species;
     gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
@@ -2468,8 +2483,14 @@ void BtlController_HandleSwitchInAnim(u32 battler, bool32 isPlayerSide, void (*c
         ClearTemporarySpeciesSpriteData(battler, gBattleResources->bufferA[battler][2], gBattleResources->bufferA[battler][3]);
     gBattlerPartyIndexes[battler] = gBattleResources->bufferA[battler][1];
     if (isPlayerSide)
+    {
         BattleLoadMonSpriteGfx(&gPlayerParty[gBattlerPartyIndexes[battler]], battler);
-    StartSendOutAnim(battler, gBattleResources->bufferA[battler][2], gBattleResources->bufferA[battler][3], FALSE);
+        StartSendOutAnim(battler, gBattleResources->bufferA[battler][2], gBattleResources->bufferA[battler][3], TRUE);
+    }
+    else
+    {
+        StartSendOutAnim(battler, gBattleResources->bufferA[battler][2], gBattleResources->bufferA[battler][3], FALSE);
+    }
     gBattlerControllerFuncs[battler] = controllerCallback;
 }
 
