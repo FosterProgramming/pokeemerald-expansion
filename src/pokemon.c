@@ -1751,7 +1751,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)                \
 {                                                                \
     u8 baseStat = gSpeciesInfo[species].base;                    \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5;  \
+    s32 n = (((2 * baseStat + iv + ev / 4) * (level + 10)) / 100) + 5;  \
     n = ModifyStatByNature(nature, n, statIndex);                \
     if (B_FRIENDSHIP_BOOST == TRUE)                              \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
@@ -1761,7 +1761,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT_MEMBER(base, iv, ev, statIndex, field, partyMember)      \
 {                                                                          \
     u8 baseStat = gSpeciesInfo[species].base;                              \
-    s32 n = (((2 * baseStat + iv/ 4) * level) / 100) + 5 + ev;            \
+    s32 n = (((2 * baseStat + iv/ 4) * (level + 10)) / 100) + 5 + ev;            \
     n = ModifyStatByNature(nature, n, statIndex);                          \
     if (B_FRIENDSHIP_BOOST == TRUE)                                        \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));          \
@@ -1772,7 +1772,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT_BOSS(base, iv, ev, statIndex, field)                \
 {                                                                \
     u8 baseStat = gSpeciesInfo[species].base;                    \
-    s32 n = (((2 * baseStat + iv) * level) / 100) + 5 + ev;  \
+    s32 n = (((2 * baseStat + iv) * (level + 10)) / 100) + 5 + ev;  \
     n = ModifyStatByNature(nature, n, statIndex);                \
     if (B_FRIENDSHIP_BOOST == TRUE)                              \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
@@ -1816,14 +1816,14 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstatspartymember) species = %d", species);
         s32 n = 8 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n) * level) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP] + (hpEV * 4);
+        newMaxHP = (((n) * (level + 10)) / 100) + level + 10 + gSaveBlock2Ptr->gPartyMembers[partyMember].extraStats[STAT_HP] + (hpEV * 4);
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstatspartymember) newmaxhp = %d", newMaxHP);
     }
     else
     {
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstats) species = %d", species);
         s32 n = 8 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
+        newMaxHP = (((n + hpEV / 4) * (level + 10)) / 100) + level + 10;
         MgbaPrintf(MGBA_LOG_WARN, "(calcmonstats) newmaxhp = %d", newMaxHP);
     }
 
@@ -1919,7 +1919,7 @@ void CalculateBossMonStats(struct Pokemon *mon)
         MgbaPrintf(MGBA_LOG_WARN, "(calcbossmonstats) species = %d", species);
         s32 n = 4 * gSpeciesInfo[species].baseHP + hpIV;  // Moderate early-game scaling
         s32 scalingFactor = 2 + (level / 25);  // Faster growth at higher levels
-        newMaxHP = ((((n + hpEV / 4) * level) / 50) + level + 50) * scalingFactor * (1 + level / 100);
+        newMaxHP = ((((n + hpEV / 4) * (level + 10)) / 50) + level + 50) * scalingFactor * (1 + level / 100);
         MgbaPrintf(MGBA_LOG_WARN, "(calcbossmonstats) newmaxhp = %d", newMaxHP);
     }
 

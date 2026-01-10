@@ -122,7 +122,7 @@ script Common_EventScript_StartBossDebugBattle_Elektivire{
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_MOTOR_DRIVE) //Sets a custom innate to the enemy 1 in the slot 1
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_STATIC)      //Sets a custom innate to the enemy 1 in the slot 2
 	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 200)                       //Sets custom HP to the enemy 1
-	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
+	setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_ELECTIVIRE)          //Sets custom HP to the enemy 1
 
 	playmoncry(SPECIES_ELECTIVIRE, 2)
@@ -164,7 +164,7 @@ script Common_EventScript_StartBossDebugBattle_Porygon{
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY)    //Sets a custom innate to the enemy 1 in the slot 2
 	setvar(VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_NONE)  		 //Sets a custom innate to the enemy 1 in the slot 3
 	setvar(VAR_ENEMY_1_CUSTOM_MAX_HP, 80)                        //Sets custom HP to the enemy 1
-	//setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
+	setflag(FLAG_FORCE_DOUBLE_WILD_BATTLE)                     //Forces a double battle vs 1 enemy
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON)             //Sets custom HP to the enemy 1
 
 	playmoncry(SPECIES_PORYGON, 2,)

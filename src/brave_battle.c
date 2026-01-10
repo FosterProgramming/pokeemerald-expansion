@@ -23,7 +23,7 @@
 
 #define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
 
-#define GO_BATTLER_BY_BATTLER FALSE
+#define GO_BATTLER_BY_BATTLER TRUE
 
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;

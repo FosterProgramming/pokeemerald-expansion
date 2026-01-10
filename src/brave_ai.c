@@ -500,6 +500,7 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
 static void AddRandomActionForBattler(u32 battler)
 {
     u32 rnd = Random32() & 1;
+
     if (rnd && gBattleStruct->monStoredAP[battler] != MAX_BRAVE_ACTIONS)
     {
         BraveAddDefaultToQueue(battler);
@@ -530,6 +531,29 @@ static void AddOptimalActionForBattler(u32 battler){
         u32 target = MAX_BATTLERS_COUNT;
         u8 moveId = ChooseBestMoveAgainstTargetWithLowestHP(battler);
         BraveAddMoveToQueue(battler, moveId, target);
+    }
+}
+
+static void AddTrainerActionForBattler(u32 battler){
+    s8 PlayerMon1StoredAP       = gBattleStruct->monStoredAP[B_POSITION_PLAYER_LEFT];
+    s8 PlayerMon2StoredAP       = gBattleStruct->monStoredAP[B_POSITION_PLAYER_RIGHT];
+    s8 PlayerHasMonAtMaxAP      = (PlayerMon1StoredAP >= MAX_BRAVE_ACTIONS) || (PlayerMon2StoredAP >= MAX_BRAVE_ACTIONS);
+    u32 rnd1 = Random32() & 1;
+    u32 rnd2 = Random32() & 1;
+    u32 rnd3 = Random32() & 1;
+    
+    if ((PlayerHasMonAtMaxAP && (rnd1 && gBattleStruct->monStoredAP[battler] != MAX_BRAVE_ACTIONS))
+        || ((PlayerMon1StoredAP > gBattleStruct->monStoredAP[battler]) && rnd2)
+        || ((PlayerMon2StoredAP > gBattleStruct->monStoredAP[battler]) && rnd3))
+        BraveAddDefaultToQueue(battler);
+    else
+    {
+        for (u32 i = 0; i < gBattleStruct->monStoredAP[battler]; i++)
+        {
+            u32 target = MAX_BATTLERS_COUNT;
+            u8 moveId = ChooseBestMoveAgainstTargetWithLowestHP(battler);
+            BraveAddMoveToQueue(battler, moveId, target);
+        }
     }
 }
 
@@ -593,7 +617,10 @@ void AddAiActionsForBattler(u32 battler)
         case BRAVE_BOSS_NONE:
         default:
         {
-            AddOptimalActionForBattler(battler);
+            if(gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+                AddTrainerActionForBattler(battler);
+            else
+                AddRandomActionForBattler(battler);
         }
         break;
         case BRAVE_BOSS_MAGMORTAR:

@@ -12675,7 +12675,8 @@ static void SetRandomMultiHitCounter()
 
 void CopyMonLevelAndBaseStatsToBattleMon(u32 battler, struct Pokemon *mon)
 {
-    gBattleMons[battler].level = GetMonData(mon, MON_DATA_LEVEL);
+    
+    gBattleMons[battler].level = GetMonData(mon, MON_DATA_LEVEL) + 10;
     gBattleMons[battler].hp = GetMonData(mon, MON_DATA_HP);
     gBattleMons[battler].maxHP = GetMonData(mon, MON_DATA_MAX_HP);
     gBattleMons[battler].attack = GetMonData(mon, MON_DATA_ATK);

@@ -205,6 +205,8 @@ Common_EventScript_StartBossDebugBattle_Elektivire::
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_STATIC
 # 124 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 200
+# 125 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setflag FLAG_FORCE_DOUBLE_WILD_BATTLE
 # 126 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_ELECTIVIRE
 # 128 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
@@ -280,6 +282,8 @@ Common_EventScript_StartBossDebugBattle_Porygon::
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_NONE
 # 166 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 80
+# 167 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
+	setflag FLAG_FORCE_DOUBLE_WILD_BATTLE
 # 168 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON
 # 170 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
