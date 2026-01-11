@@ -1,0 +1,28 @@
+{
+  "id": "MAP_VOLTBROOK_TOWN_POWER_PLANT_EXIT_CODE",
+  "name": "VoltbrookTown_PowerPlant_ExitCode",
+  "layout": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_EXIT_CODE",
+  "music": "MUS_SV_VOLTBROOK_POWER_PLANT",
+  "region_map_section": "MAPSEC_POWER_PLANT",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

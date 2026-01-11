@@ -5510,6 +5510,16 @@
       "secondary_tileset": "gTileset_PowerPlant",
       "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_Underground_Tunnel/border.bin",
       "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_Underground_Tunnel/map.bin"
+    },
+    {
+      "id": "LAYOUT_VOLTBROOK_TOWN_POWER_PLANT_EXIT_CODE",
+      "name": "VoltbrookTown_PowerPlant_ExitCode_Layout",
+      "width": 15,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_gTileset_PowerPlantExitRoom",
+      "border_filepath": "data/layouts/VoltbrookTown_PowerPlant_ExitCode/border.bin",
+      "blockdata_filepath": "data/layouts/VoltbrookTown_PowerPlant_ExitCode/map.bin"
     }
   ]
 }

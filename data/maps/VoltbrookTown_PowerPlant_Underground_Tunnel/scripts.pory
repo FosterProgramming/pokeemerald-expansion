@@ -1,4 +1,12 @@
-mapscripts VoltbrookTown_PowerPlant_Underground_Tunnel_MapScripts {}
+mapscripts VoltbrookTown_PowerPlant_Underground_Tunnel_MapScripts
+{
+	MAP_SCRIPT_ON_LOAD
+	{
+		setrespawn(HEAL_LOCATION_VOLTBROOK_TOWN_POWER_PLANT)
+		release
+		end
+    }
+}
 
 raw `
 .set LOCALID_VEE, 2
@@ -6,6 +14,8 @@ raw `
 .set LOCALID_BALL, 3
 .set LOCALID_MAGA_F, 4
 .set LOCALID_MAGA_M, 5
+.set PlayerXCoordinates, VAR_TEMP_3
+.set PlayerYCoordinates, VAR_TEMP_4
 `
 
 script VoltbrookTown_PowerPlant_Underground_Tunnel_Event
@@ -584,6 +594,50 @@ script VoltbrookTown_PowerPlant_Underground_Tunnel_Event
     waitmovement(0)
     removeobject(LOCALID_VEE)
     setvar(VAR_VOLTBROOK_PLANT_STATE, 2)
+    if(!flag(FLAG_SYS_SKIP_MARIO_STAGE))
+        {
+            setmetatile(10,24,0x3AA,TRUE)
+            setmetatile(10,23,0x3A2,FALSE)
+        }
     releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Underground_Tunnel_Trapped
+{
+    lockall
+    getplayerxy(PlayerXCoordinates, PlayerYCoordinates)
+    setobjectxyperm(LOCALID_VEE, PlayerXCoordinates, PlayerYCoordinates)
+    clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+    addobject(LOCALID_VEE)
+    applymovement(LOCALID_VEE, Common_Movement_PartyMemberTalksToPlayerNorth)
+    speakername("Vee")
+    msgbox(format(
+        "Oh no!\n
+        We're Trapped!\p
+        Hurry! let's see if we can find another way out before they come back!"
+    ))
+    applymovement(LOCALID_VEE, Common_Movement_PartyMemberReturnsToPlayerEast)
+	waitmovement(LOCALID_VEE)
+	removeobject(LOCALID_VEE)
+    setvar(VAR_VOLTBROOK_PLANT_STATE, 3)
+    releaseall
+    end
+}
+
+script VoltbrookTown_PowerPlant_Underground_Tunnel_PC
+{
+    lock
+    if(!flag(FLAG_SYS_SKIP_MARIO_STAGE) && var(VAR_VOLTBROOK_PLANT_STATE) != 3)
+        {
+            msgbox(format("A status monitor is displayed on the PC."), MSGBOX_AUTOCLOSE)
+        }
+    else
+        {
+            warpsilent(MAP_VOLTBROOK_TOWN_POWER_PLANT_EXIT_CODE, 7, 4)
+            delay(40)
+            lockall
+        }
+    release
     end
 }

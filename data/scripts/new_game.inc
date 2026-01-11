@@ -113,7 +113,6 @@ EventScript_ResetAllBerries::
 	return
 
 EventScript_ResetAllMapFlags::
-	setflag FLAG_UNUSED_0x2B5
 	setflag FLAG_HIDE_BALL_PYRODEN
 	setflag FLAG_HIDE_HOT_SPRINGS_GANG
 	setflag FLAG_VOLTBROOK_TOWN_PLANT_LEFT_GENERATOR_ROOM_LEFT_1_TRIGGERED

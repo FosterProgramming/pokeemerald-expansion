@@ -1,0 +1,48 @@
+mapscripts VoltbrookTown_PowerPlant_ExitCode_MapScripts
+    {
+        MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_VOLTBROOK_PLANT_STATE, 3 
+        {
+            goto(VoltbrookTown_PowerPlant_ExitCode_EventScripts_CodeToUnlockDoor)
+        }
+        ]
+    }
+
+script VoltbrookTown_PowerPlant_ExitCode_EventScripts_CodeToUnlockDoor
+    {
+        msgbox(format("Emergency lockdown initiated and requires a passcode to override.\p
+        Would you like to enter the passcode now?"),MSGBOX_YESNO)
+        goto_if_eq(VAR_RESULT, YES, VoltbrookTown_PowerPlant_ExitCode_EventScripts_EnterPassword)
+        warpsilent(MAP_VOLTBROOK_TOWN_POWER_PLANT_UNDERGROUND_TUNNEL, 9, 4)
+        delay(40)
+        end
+        }
+
+script VoltbrookTown_PowerPlant_ExitCode_EventScripts_EnterPassword
+    {
+        special(EnterCode)
+        waitstate
+        comparepassword(1)
+        goto_if_eq(VAR_RESULT,0,VoltbrookTown_PowerPlant_ExitCode_EventScripts_WrongPassword)
+        goto_if_eq(VAR_RESULT,1,VoltbrookTown_PowerPlant_ExitCode_EventScripts_CorrectPassword)
+    }
+
+script VoltbrookTown_PowerPlant_ExitCode_EventScripts_WrongPassword
+{
+    msgbox(format("Nothing happened. Would you like to try again?"),MSGBOX_YESNO)
+    goto_if_eq(VAR_RESULT, YES, VoltbrookTown_PowerPlant_ExitCode_EventScripts_EnterPassword)
+    warpsilent(MAP_VOLTBROOK_TOWN_POWER_PLANT_UNDERGROUND_TUNNEL, 9, 4)
+    delay(40)
+    end
+}
+
+script VoltbrookTown_PowerPlant_ExitCode_EventScripts_CorrectPassword
+{
+    playse(SE_DOOR)
+    waitse
+    speakername("Vee")
+    msgbox(format("Yay! We did it Seel! Let's get out of here!"))
+    setvar(VAR_VOLTBROOK_PLANT_STATE, 4)
+    releaseall
+    warpsilent(MAP_VOLTBROOK_TOWN_POWER_PLANT_UNDERGROUND_TUNNEL, 9, 4)
+}

@@ -737,12 +737,12 @@
 #define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
 #define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
 #define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
+#define FLAG_SYS_SKIP_MARIO_STAGE           0x2B5 // Unused Flag
 #define FLAG_SYS_DOUBLE_WILD_BATTLES        0x2B6 // Unused Flag
 #define FLAG_SYS_HIDE_NYX_PARTY_MEMBER      0x2B7 // Unused Flag
 #define FLAG_SYS_HIDE_TALON_PARTY_MEMBER    0x2B8 // Unused Flag
 #define FLAG_SYS_HIDE_ACE_PARTY_MEMBER      0x2B9 // Unused Flag
-#define FLAG_SYS_HIDE_FRO_PARTY_MEMBER    0x2BA // Unused Flag
+#define FLAG_SYS_HIDE_FRO_PARTY_MEMBER      0x2BA // Unused Flag
 #define FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER    0x2BB // Unused Flag
 
 // Event Flags

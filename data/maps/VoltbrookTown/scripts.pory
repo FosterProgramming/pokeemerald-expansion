@@ -9,7 +9,7 @@ mapscripts VoltbrookTown_MapScripts
 	MAP_SCRIPT_ON_LOAD
 	{
 		setrespawn(HEAL_LOCATION_VOLTBROOK_TOWN)
-		// if(flag(FLAG_DEFEATED_MAGA_ELECTAVIRE))
+		// if(flag(FLAG_HIDE_VOLTBROOK_ARTIFACT))
 		// {
 		// 	setmetatile(7, 17, DOOR, TRUE)
 		// 	setmetatile(5, 23, CENTER_DOOR, TRUE)
@@ -1469,196 +1469,200 @@ script Voltbrook_EventScript_Locked
 script Voltbrook_EventScript_FroJoins
 {
 	lockall
-	setvar(VAR_VOLTBROOK_PLANT_STATE, 3)
-	clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
-	addobject(LOCALID_VEE)
-	clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
-	addobject(LOCALID_FRO)
-	setobjectxy(LOCALID_VEE, 24, 6)
-	applymovement(LOCALID_VEE, moves(walk_right face_down))
-	waitmovement(0)
-	setobjectxy(LOCALID_FRO, 24, 12)
-	applymovement(LOCALID_FRO, moves(walk_up*5))
-	waitmovement(0)
-	speakername("Fro")
-	msgbox(format(
-		"Are you two insane?\p
-		No, don't answer.\n
-		I got a headache.\p
-		I saw an Electivire wrecking house, and Team MAGA running after it.\p
-		And now I find you sneaking out of the power plant.\p
-		Did you have something to do with that?"
-	))
-	speakername("Vee")
-	msgbox(format(
-		"Yup!\n
-		We defeated the Guardian!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Peachy.\n
-		Very happy for you guys.\p
-		Except, with Team MAGA gone from the town…\l
-		I'm out of a job."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"You could join me and Seel!\n
-		We're going on a quest!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Ah, yes.\n
-		The quest for the magical artifacts.\p
-		How's that panning out?"
-	))
-	speakername("Vee")
-	msgbox(format(
-		"We found one!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"You fo-\n
-		Let me take a look.\p
-		… … …\n
-		… … …\p
-		This…\n
-		It's certainly very artifact-shaped, I will give you that."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"I know, right?"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"But you don't actually know how this is supposed to work, do you?"
-	))
-	speakername("Vee")
-	msgbox(format(
-		"Not really…"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Yeah.\p
-		You don't know if it works, or how, just that you need eight of them.\p
-		It's not that I don't trust you, Seel, but…\p
-		I don't want to get my hopes up for nothing.\p
-		I've been doing some thinking.\p
-		I dunno about you, Seel, but I don't mind being stuck as a Pokémon."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"How can you say that!\n
-		Humans are so cool!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"There's some things I miss, that's true.\p
-		But…\p
-		I failed my responsibilites as a Champion.\l
-		I couldn't protect anyone.\p
-		This life as a chef…\n
-		Is really not so bad.\p
-		If things were like this forever, I would not mind.\p
-		… … …\n
-		But they won't, will they.\p
-		I had it good here, but it was never going to last.\p
-		And Team MAGA's still up to something.\p
-		And you two…\n
-		I can't just sit around and watch someone get themselves killed."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"Hey!\n
-		We can handle our own!\l
-		We defeated a Guardian!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Sure. Once.\n
-		Can you do it again?\p
-		And again, and again, and again, seven more times?"
-	))
-	speakername("Vee")
-	msgbox(format(
-		"Yeah!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"… … …\p
-		Ok, guess you don't need my help, then."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"No!\n
-		I mean, yes!\l
-		It's not what I meant!\p
-		I really want you on our side, Fro!\n
-		You're really cool!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Heh.\n
-		Was just messing with you.\l
-		Don't worry, I'll join.\p
-		I'm still not sure about the artifact business, but if my friend Seel needs help, I can't just say no."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"And your friend Vee!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"…Yes, and my friend Vee."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"Yayyy!"
-	))
-	speakername(NULL)
-    playfanfare(MUS_OBTAIN_BADGE)
-    msgbox(format("{COLOR RED}Fro{COLOR DARK_GRAY} has joined your team!"))
-	speakername("Fro")
-	msgbox(format(
-		"Ok.\n
-		Team MAGA's out of town for now, but there's no guarantee they won't be back.\p
-		Where are we headed?"
-	))
-	speakername("Vee")
-	msgbox(format(
-		"Well…\n
-		There were a bunch of places on the list we saw…\p
-		I think the next one was Pyro-something."
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Pyroden?\n
-		It's north of Dominion City.\p
-		I've heard there's some nice hot springs.\N
-		I vote to go there.\p
-		Since I'm larger than you two combined, my vote counts for three.\N
-		Ah, I can't wait to relax in the warm water."
-	))
-	speakername("Vee")
-	msgbox(format(
-		"We're not going there to relax!\n
-		We're going there to find the Artifact!"
-	))
-	speakername("Fro")
-	msgbox(format(
-		"Yes, yes.\n
-		We can do both.\p
-		In fact, the sooner we get there, the more spare time we'll have to relax.\p
-		Lead the way, Seel."
-	))
-	closemessage
-	applymovement(LOCALID_VEE, moves(walk_left))
-	applymovement(LOCALID_FRO, moves(walk_up))
-	waitmovement(0)
-	removeobject(LOCALID_VEE)
-	removeobject(LOCALID_FRO)
-	setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 10)
-	releaseall
-	end
-
+	if(flag(FLAG_HIDE_VOLTBROOK_ARTIFACT) && var(VAR_VOLTBROOK_PLANT_STATE) < 5)
+	{
+		setvar(VAR_VOLTBROOK_PLANT_STATE, 5)
+		clearflag(FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER)
+		addobject(LOCALID_VEE)
+		clearflag(FLAG_SYS_HIDE_FRO_PARTY_MEMBER)
+		addobject(LOCALID_FRO)
+		setobjectxy(LOCALID_VEE, 24, 6)
+		applymovement(LOCALID_VEE, moves(walk_right face_down))
+		waitmovement(0)
+		setobjectxy(LOCALID_FRO, 24, 12)
+		applymovement(LOCALID_FRO, moves(walk_up*5))
+		waitmovement(0)
+		speakername("Fro")
+		msgbox(format(
+			"Are you two insane?\p
+			No, don't answer.\n
+			I got a headache.\p
+			I saw an Electivire wrecking houses, and Team MAGA running after it.\p
+			And now I find you sneaking out of the power plant.\p
+			Did you have something to do with that?"
+		))
+		speakername("Vee")
+		msgbox(format(
+			"Yup!\n
+			We defeated the Guardian!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Peachy.\n
+			Very happy for you guys.\p
+			Except, with Team MAGA gone from the town…\l
+			I'm out of a job."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"You could join me and Seel!\n
+			We're going on a quest!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Ah, yes.\n
+			The quest for the magical artifacts.\p
+			How's that panning out?"
+		))
+		speakername("Vee")
+		msgbox(format(
+			"We found one!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"You fo-\n
+			Let me take a look.\p
+			… … …\n
+			… … …\p
+			This…\n
+			It's certainly very artifact-shaped, I will give you that."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"I know, right?"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"But you don't actually know how this is supposed to work, do you?"
+		))
+		speakername("Vee")
+		msgbox(format(
+			"Not really…"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Yeah.\p
+			You don't know if it works, or how, just that you need eight of them.\p
+			It's not that I don't trust you, Seel, but…\p
+			I don't want to get my hopes up for nothing.\p
+			I've been doing some thinking.\p
+			I dunno about you, Seel, but I don't mind being stuck as a Pokémon."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"How can you say that!\n
+			Humans are so cool!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"There's some things I miss, that's true.\p
+			But…\p
+			I failed my responsibilites as a Champion.\l
+			I couldn't protect anyone.\p
+			This life as a chef…\n
+			Is really not so bad.\p
+			If things were like this forever, I would not mind.\p
+			… … …\n
+			But they won't, will they.\p
+			I had it good here, but it was never going to last.\p
+			And Team MAGA's still up to something.\p
+			And you two…\n
+			I can't just sit around and watch someone get themselves killed."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"Hey!\n
+			We can handle our own!\l
+			We defeated a Guardian!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Sure. Once.\n
+			Can you do it again?\p
+			And again, and again, and again, seven more times?"
+		))
+		speakername("Vee")
+		msgbox(format(
+			"Yeah!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"… … …\p
+			Ok, guess you don't need my help, then."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"No!\n
+			I mean, yes!\l
+			It's not what I meant!\p
+			I really want you on our side, Fro!\n
+			You're really cool!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Heh.\n
+			Was just messing with you.\l
+			Don't worry, I'll join.\p
+			I'm still not sure about the artifact business, but if my friend Seel needs help, I can't just say no."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"And your friend Vee!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"…Yes, and my friend Vee."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"Yayyy!"
+		))
+		speakername(NULL)
+		playfanfare(MUS_OBTAIN_BADGE)
+		msgbox(format("{COLOR RED}Fro{COLOR DARK_GRAY} has joined your team!"))
+		speakername("Fro")
+		msgbox(format(
+			"Ok.\n
+			Team MAGA's out of town for now, but there's no guarantee they won't be back.\p
+			Where are we headed?"
+		))
+		speakername("Vee")
+		msgbox(format(
+			"Well…\n
+			There were a bunch of places on the list we saw…\p
+			I think the next one was Pyro-something."
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Pyroden?\n
+			It's north of Dominion City.\p
+			I've heard there's some nice hot springs.\N
+			I vote to go there.\p
+			Since I'm larger than you two combined, my vote counts for three.\N
+			Ah, I can't wait to relax in the warm water."
+		))
+		speakername("Vee")
+		msgbox(format(
+			"We're not going there to relax!\n
+			We're going there to find the Artifact!"
+		))
+		speakername("Fro")
+		msgbox(format(
+			"Yes, yes.\n
+			We can do both.\p
+			In fact, the sooner we get there, the more spare time we'll have to relax.\p
+			Lead the way, Seel."
+		))
+		closemessage
+		applymovement(LOCALID_VEE, moves(walk_left))
+		applymovement(LOCALID_FRO, moves(walk_up))
+		waitmovement(0)
+		removeobject(LOCALID_VEE)
+		removeobject(LOCALID_FRO)
+		setvar(VAR_DOMINION_CITY_LAB_INTRO_STATE, 10)
+		callnative(ScrCmd_setpartyaveragelevel)
+		givemon(SPECIES_SNORLAX, VAR_TEMP_0, ITEM_LEFTOVERS, ITEM_DUSK_BALL,NATURE_HARDY,0,MON_MALE,0,0,0,0,0,0,0,0,0,0,0,0,MOVE_THIEF,MOVE_STOCKPILE,MOVE_ROCK_TOMB,MOVE_BODY_SLAM)
+		releaseall
+		end
+	}
 }

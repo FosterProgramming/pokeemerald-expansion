@@ -98,9 +98,25 @@
       "var": "VAR_VOLTBROOK_PLANT_STATE",
       "var_value": "1",
       "script": "VoltbrookTown_PowerPlant_Underground_Tunnel_Event"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_VOLTBROOK_PLANT_STATE",
+      "var_value": "2",
+      "script": "VoltbrookTown_PowerPlant_Underground_Tunnel_Trapped"
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "VoltbrookTown_PowerPlant_Underground_Tunnel_PC"
+    }
   ]
 }

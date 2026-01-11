@@ -1056,3 +1056,14 @@ const struct Tileset gTileset_PowerPlant =
     .metatileAttributes = gMetatileAttributes_PowerPlant,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_gTileset_PowerPlantExitRoom =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_gTileset_PowerPlantExitRoom,
+    .palettes = gTilesetPalettes_gTileset_PowerPlantExitRoom,
+    .metatiles = gMetatiles_gTileset_PowerPlantExitRoom,
+    .metatileAttributes = gMetatileAttributes_gTileset_PowerPlantExitRoom,
+    .callback = NULL,
+};

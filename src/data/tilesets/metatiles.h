@@ -270,3 +270,6 @@ const u16 gMetatileAttributes_MountPyroden[] = INCBIN_U16("data/tilesets/primary
 
 const u16 gMetatiles_PowerPlant[] = INCBIN_U16("data/tilesets/secondary/power_plant/metatiles.bin");
 const u16 gMetatileAttributes_PowerPlant[] = INCBIN_U16("data/tilesets/secondary/power_plant/metatile_attributes.bin");
+
+const u16 gMetatiles_gTileset_PowerPlantExitRoom[] = INCBIN_U16("data/tilesets/secondary/power_plant_exit_room/metatiles.bin");
+const u16 gMetatileAttributes_gTileset_PowerPlantExitRoom[] = INCBIN_U16("data/tilesets/secondary/power_plant_exit_room/metatile_attributes.bin");

@@ -3253,3 +3253,19 @@ bool8 ScrCmd_comparepassword(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
+bool8 ScrCmd_setpartyaveragelevel(void)
+{
+    u8 partyCount       = CalculatePlayerPartyCount();
+    u16 levelTotal      = 0;
+    u16 levelAverage    = 0;
+    
+    for(u8 i = 0; i < PARTY_SIZE; i++)
+    {
+        levelTotal += GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+    }
+    levelAverage = levelTotal / partyCount;
+    VarSet(VAR_TEMP_0, levelAverage);
+    
+    return FALSE;
+}

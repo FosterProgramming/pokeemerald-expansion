@@ -1786,158 +1786,173 @@ Voltbrook_EventScript_FroJoins::
 # 1471 "data/maps/VoltbrookTown/scripts.pory"
 	lockall
 # 1472 "data/maps/VoltbrookTown/scripts.pory"
-	setvar VAR_VOLTBROOK_PLANT_STATE, 3
-# 1473 "data/maps/VoltbrookTown/scripts.pory"
-	clearflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
+	goto_if_set FLAG_HIDE_VOLTBROOK_ARTIFACT, Voltbrook_EventScript_FroJoins_2
+	return
+
+Voltbrook_EventScript_FroJoins_1:
 # 1474 "data/maps/VoltbrookTown/scripts.pory"
-	addobject LOCALID_VEE
+	setvar VAR_VOLTBROOK_PLANT_STATE, 5
 # 1475 "data/maps/VoltbrookTown/scripts.pory"
-	clearflag FLAG_SYS_HIDE_FRO_PARTY_MEMBER
+	clearflag FLAG_SYS_HIDE_EEVEE_PARTY_MEMBER
 # 1476 "data/maps/VoltbrookTown/scripts.pory"
-	addobject LOCALID_FRO
+	addobject LOCALID_VEE
 # 1477 "data/maps/VoltbrookTown/scripts.pory"
-	setobjectxy LOCALID_VEE, 24, 6
+	clearflag FLAG_SYS_HIDE_FRO_PARTY_MEMBER
 # 1478 "data/maps/VoltbrookTown/scripts.pory"
-	applymovement LOCALID_VEE, Voltbrook_EventScript_FroJoins_Movement_0
+	addobject LOCALID_FRO
 # 1479 "data/maps/VoltbrookTown/scripts.pory"
-	waitmovement 0
+	setobjectxy LOCALID_VEE, 24, 6
 # 1480 "data/maps/VoltbrookTown/scripts.pory"
-	setobjectxy LOCALID_FRO, 24, 12
+	applymovement LOCALID_VEE, Voltbrook_EventScript_FroJoins_Movement_0
 # 1481 "data/maps/VoltbrookTown/scripts.pory"
-	applymovement LOCALID_FRO, Voltbrook_EventScript_FroJoins_Movement_1
+	waitmovement 0
 # 1482 "data/maps/VoltbrookTown/scripts.pory"
-	waitmovement 0
+	setobjectxy LOCALID_FRO, 24, 12
 # 1483 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
+	applymovement LOCALID_FRO, Voltbrook_EventScript_FroJoins_Movement_1
 # 1484 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_0
-# 1492 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1493 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_1
-# 1497 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1498 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_2
-# 1504 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1505 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_3
-# 1509 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1510 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_4
-# 1515 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1516 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_5
-# 1519 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1520 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_6
-# 1528 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1529 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_7
-# 1532 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1533 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_8
-# 1536 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1537 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_9
-# 1540 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1541 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_10
-# 1549 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1550 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_11
-# 1554 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1555 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_12
-# 1570 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1571 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_13
-# 1576 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1577 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_14
-# 1582 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1583 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_15
-# 1586 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1587 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_16
-# 1591 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1592 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_17
-# 1599 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1600 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_18
-# 1606 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1607 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_19
-# 1610 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1611 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_20
-# 1614 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1615 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_21
-# 1618 "data/maps/VoltbrookTown/scripts.pory"
-	speakername NULL
-# 1619 "data/maps/VoltbrookTown/scripts.pory"
-	playfanfare MUS_OBTAIN_BADGE
-# 1620 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_22
-# 1621 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1622 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_23
-# 1627 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1628 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_24
-# 1633 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1634 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_25
-# 1642 "data/maps/VoltbrookTown/scripts.pory"
-	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
-# 1643 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_26
-# 1647 "data/maps/VoltbrookTown/scripts.pory"
-	speakername AfterBattle_Test_Text_12
-# 1648 "data/maps/VoltbrookTown/scripts.pory"
-	msgbox Voltbrook_EventScript_FroJoins_Text_27
-# 1654 "data/maps/VoltbrookTown/scripts.pory"
-	closemessage
-# 1655 "data/maps/VoltbrookTown/scripts.pory"
-	applymovement LOCALID_VEE, AfterBattle_Test_Movement_13
-# 1656 "data/maps/VoltbrookTown/scripts.pory"
-	applymovement LOCALID_FRO, AfterBattle_Test_Movement_7
-# 1657 "data/maps/VoltbrookTown/scripts.pory"
 	waitmovement 0
+# 1485 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1486 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_0
+# 1494 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1495 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_1
+# 1499 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1500 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_2
+# 1506 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1507 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_3
+# 1511 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1512 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_4
+# 1517 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1518 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_5
+# 1521 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1522 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_6
+# 1530 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1531 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_7
+# 1534 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1535 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_8
+# 1538 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1539 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_9
+# 1542 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1543 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_10
+# 1551 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1552 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_11
+# 1556 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1557 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_12
+# 1572 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1573 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_13
+# 1578 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1579 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_14
+# 1584 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1585 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_15
+# 1588 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1589 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_16
+# 1593 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1594 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_17
+# 1601 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1602 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_18
+# 1608 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1609 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_19
+# 1612 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1613 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_20
+# 1616 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1617 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_21
+# 1620 "data/maps/VoltbrookTown/scripts.pory"
+	speakername NULL
+# 1621 "data/maps/VoltbrookTown/scripts.pory"
+	playfanfare MUS_OBTAIN_BADGE
+# 1622 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_22
+# 1623 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1624 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_23
+# 1629 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1630 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_24
+# 1635 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1636 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_25
+# 1644 "data/maps/VoltbrookTown/scripts.pory"
+	speakername Voltbrook_EventScripts_GruntPatrolChat_Text_9
+# 1645 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_26
+# 1649 "data/maps/VoltbrookTown/scripts.pory"
+	speakername AfterBattle_Test_Text_12
+# 1650 "data/maps/VoltbrookTown/scripts.pory"
+	msgbox Voltbrook_EventScript_FroJoins_Text_27
+# 1656 "data/maps/VoltbrookTown/scripts.pory"
+	closemessage
+# 1657 "data/maps/VoltbrookTown/scripts.pory"
+	applymovement LOCALID_VEE, AfterBattle_Test_Movement_13
 # 1658 "data/maps/VoltbrookTown/scripts.pory"
-	removeobject LOCALID_VEE
+	applymovement LOCALID_FRO, AfterBattle_Test_Movement_7
 # 1659 "data/maps/VoltbrookTown/scripts.pory"
-	removeobject LOCALID_FRO
+	waitmovement 0
 # 1660 "data/maps/VoltbrookTown/scripts.pory"
-	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+	removeobject LOCALID_VEE
 # 1661 "data/maps/VoltbrookTown/scripts.pory"
+	removeobject LOCALID_FRO
+# 1662 "data/maps/VoltbrookTown/scripts.pory"
+	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
+# 1663 "data/maps/VoltbrookTown/scripts.pory"
+	callnative ScrCmd_setpartyaveragelevel
+# 1664 "data/maps/VoltbrookTown/scripts.pory"
+	givemon SPECIES_SNORLAX, VAR_TEMP_0, ITEM_LEFTOVERS, ITEM_DUSK_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_THIEF, MOVE_STOCKPILE, MOVE_ROCK_TOMB, MOVE_BODY_SLAM
+# 1665 "data/maps/VoltbrookTown/scripts.pory"
 	releaseall
 	end
+
+Voltbrook_EventScript_FroJoins_2:
+# 1472 "data/maps/VoltbrookTown/scripts.pory"
+	compare VAR_VOLTBROOK_PLANT_STATE, 5
+	goto_if_lt Voltbrook_EventScript_FroJoins_1
+	return
 
 
 # 33 "data/maps/VoltbrookTown/scripts.pory"
@@ -2490,25 +2505,25 @@ Voltbrook_EventScripts_GruntsBlockingNorthExit_Movement_1:
 	walk_left
 	step_end
 
-# 1478 "data/maps/VoltbrookTown/scripts.pory"
+# 1480 "data/maps/VoltbrookTown/scripts.pory"
 Voltbrook_EventScript_FroJoins_Movement_0:
-# 1478 "data/maps/VoltbrookTown/scripts.pory"
+# 1480 "data/maps/VoltbrookTown/scripts.pory"
 	walk_right
-# 1478 "data/maps/VoltbrookTown/scripts.pory"
+# 1480 "data/maps/VoltbrookTown/scripts.pory"
 	face_down
 	step_end
 
-# 1481 "data/maps/VoltbrookTown/scripts.pory"
+# 1483 "data/maps/VoltbrookTown/scripts.pory"
 Voltbrook_EventScript_FroJoins_Movement_1:
-# 1481 "data/maps/VoltbrookTown/scripts.pory"
+# 1483 "data/maps/VoltbrookTown/scripts.pory"
 	walk_up
-# 1481 "data/maps/VoltbrookTown/scripts.pory"
+# 1483 "data/maps/VoltbrookTown/scripts.pory"
 	walk_up
-# 1481 "data/maps/VoltbrookTown/scripts.pory"
+# 1483 "data/maps/VoltbrookTown/scripts.pory"
 	walk_up
-# 1481 "data/maps/VoltbrookTown/scripts.pory"
+# 1483 "data/maps/VoltbrookTown/scripts.pory"
 	walk_up
-# 1481 "data/maps/VoltbrookTown/scripts.pory"
+# 1483 "data/maps/VoltbrookTown/scripts.pory"
 	walk_up
 	step_end
 
@@ -2888,23 +2903,23 @@ Voltbrook_EventScript_Locked_Text_0:
 	.string "Locked.$"
 
 Voltbrook_EventScript_FroJoins_Text_0:
-# 1485 "data/maps/VoltbrookTown/scripts.pory"
+# 1487 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Are you two insane?\p"
 	.string "No, don't answer.\n"
 	.string "I got a headache.\p"
-	.string "I saw an Electivire wrecking house, and\n"
-	.string "Team MAGA running after it.\p"
+	.string "I saw an Electivire wrecking houses,\n"
+	.string "and Team MAGA running after it.\p"
 	.string "And now I find you sneaking out of the\n"
 	.string "power plant.\p"
 	.string "Did you have something to do with that?$"
 
 Voltbrook_EventScript_FroJoins_Text_1:
-# 1494 "data/maps/VoltbrookTown/scripts.pory"
+# 1496 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Yup!\n"
 	.string "We defeated the Guardian!$"
 
 Voltbrook_EventScript_FroJoins_Text_2:
-# 1499 "data/maps/VoltbrookTown/scripts.pory"
+# 1501 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Peachy.\n"
 	.string "Very happy for you guys.\p"
 	.string "Except, with Team MAGA gone from the\n"
@@ -2912,22 +2927,22 @@ Voltbrook_EventScript_FroJoins_Text_2:
 	.string "I'm out of a job.$"
 
 Voltbrook_EventScript_FroJoins_Text_3:
-# 1506 "data/maps/VoltbrookTown/scripts.pory"
+# 1508 "data/maps/VoltbrookTown/scripts.pory"
 	.string "You could join me and Seel!\n"
 	.string "We're going on a quest!$"
 
 Voltbrook_EventScript_FroJoins_Text_4:
-# 1511 "data/maps/VoltbrookTown/scripts.pory"
+# 1513 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Ah, yes.\n"
 	.string "The quest for the magical artifacts.\p"
 	.string "How's that panning out?$"
 
 Voltbrook_EventScript_FroJoins_Text_5:
-# 1517 "data/maps/VoltbrookTown/scripts.pory"
+# 1519 "data/maps/VoltbrookTown/scripts.pory"
 	.string "We found one!$"
 
 Voltbrook_EventScript_FroJoins_Text_6:
-# 1521 "data/maps/VoltbrookTown/scripts.pory"
+# 1523 "data/maps/VoltbrookTown/scripts.pory"
 	.string "You fo-\n"
 	.string "Let me take a look.\p"
 	.string "… … …\n"
@@ -2937,20 +2952,20 @@ Voltbrook_EventScript_FroJoins_Text_6:
 	.string "will give you that.$"
 
 Voltbrook_EventScript_FroJoins_Text_7:
-# 1530 "data/maps/VoltbrookTown/scripts.pory"
+# 1532 "data/maps/VoltbrookTown/scripts.pory"
 	.string "I know, right?$"
 
 Voltbrook_EventScript_FroJoins_Text_8:
-# 1534 "data/maps/VoltbrookTown/scripts.pory"
+# 1536 "data/maps/VoltbrookTown/scripts.pory"
 	.string "But you don't actually know how this is\n"
 	.string "supposed to work, do you?$"
 
 Voltbrook_EventScript_FroJoins_Text_9:
-# 1538 "data/maps/VoltbrookTown/scripts.pory"
+# 1540 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Not really…$"
 
 Voltbrook_EventScript_FroJoins_Text_10:
-# 1542 "data/maps/VoltbrookTown/scripts.pory"
+# 1544 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Yeah.\p"
 	.string "You don't know if it works, or how, just\n"
 	.string "that you need eight of them.\p"
@@ -2963,12 +2978,12 @@ Voltbrook_EventScript_FroJoins_Text_10:
 	.string "mind being stuck as a Pokémon.$"
 
 Voltbrook_EventScript_FroJoins_Text_11:
-# 1551 "data/maps/VoltbrookTown/scripts.pory"
+# 1553 "data/maps/VoltbrookTown/scripts.pory"
 	.string "How can you say that!\n"
 	.string "Humans are so cool!$"
 
 Voltbrook_EventScript_FroJoins_Text_12:
-# 1556 "data/maps/VoltbrookTown/scripts.pory"
+# 1558 "data/maps/VoltbrookTown/scripts.pory"
 	.string "There's some things I miss, that's true.\p"
 	.string "But…\p"
 	.string "I failed my responsibilites as a\n"
@@ -2988,29 +3003,29 @@ Voltbrook_EventScript_FroJoins_Text_12:
 	.string "someone get themselves killed.$"
 
 Voltbrook_EventScript_FroJoins_Text_13:
-# 1572 "data/maps/VoltbrookTown/scripts.pory"
+# 1574 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Hey!\n"
 	.string "We can handle our own!\l"
 	.string "We defeated a Guardian!$"
 
 Voltbrook_EventScript_FroJoins_Text_14:
-# 1578 "data/maps/VoltbrookTown/scripts.pory"
+# 1580 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Sure. Once.\n"
 	.string "Can you do it again?\p"
 	.string "And again, and again, and again, seven\n"
 	.string "more times?$"
 
 Voltbrook_EventScript_FroJoins_Text_15:
-# 1584 "data/maps/VoltbrookTown/scripts.pory"
+# 1586 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Yeah!$"
 
 Voltbrook_EventScript_FroJoins_Text_16:
-# 1588 "data/maps/VoltbrookTown/scripts.pory"
+# 1590 "data/maps/VoltbrookTown/scripts.pory"
 	.string "… … …\p"
 	.string "Ok, guess you don't need my help, then.$"
 
 Voltbrook_EventScript_FroJoins_Text_17:
-# 1593 "data/maps/VoltbrookTown/scripts.pory"
+# 1595 "data/maps/VoltbrookTown/scripts.pory"
 	.string "No!\n"
 	.string "I mean, yes!\l"
 	.string "It's not what I meant!\p"
@@ -3018,7 +3033,7 @@ Voltbrook_EventScript_FroJoins_Text_17:
 	.string "You're really cool!$"
 
 Voltbrook_EventScript_FroJoins_Text_18:
-# 1601 "data/maps/VoltbrookTown/scripts.pory"
+# 1603 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Heh.\n"
 	.string "Was just messing with you.\l"
 	.string "Don't worry, I'll join.\p"
@@ -3027,23 +3042,23 @@ Voltbrook_EventScript_FroJoins_Text_18:
 	.string "help, I can't just say no.$"
 
 Voltbrook_EventScript_FroJoins_Text_19:
-# 1608 "data/maps/VoltbrookTown/scripts.pory"
+# 1610 "data/maps/VoltbrookTown/scripts.pory"
 	.string "And your friend Vee!$"
 
 Voltbrook_EventScript_FroJoins_Text_20:
-# 1612 "data/maps/VoltbrookTown/scripts.pory"
+# 1614 "data/maps/VoltbrookTown/scripts.pory"
 	.string "…Yes, and my friend Vee.$"
 
 Voltbrook_EventScript_FroJoins_Text_21:
-# 1616 "data/maps/VoltbrookTown/scripts.pory"
+# 1618 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Yayyy!$"
 
 Voltbrook_EventScript_FroJoins_Text_22:
-# 1620 "data/maps/VoltbrookTown/scripts.pory"
+# 1622 "data/maps/VoltbrookTown/scripts.pory"
 	.string "{COLOR RED}Fro{COLOR DARK_GRAY} has joined your team!$"
 
 Voltbrook_EventScript_FroJoins_Text_23:
-# 1623 "data/maps/VoltbrookTown/scripts.pory"
+# 1625 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Ok.\n"
 	.string "Team MAGA's out of town for now, but\l"
 	.string "there's no guarantee they won't be\l"
@@ -3051,7 +3066,7 @@ Voltbrook_EventScript_FroJoins_Text_23:
 	.string "Where are we headed?$"
 
 Voltbrook_EventScript_FroJoins_Text_24:
-# 1629 "data/maps/VoltbrookTown/scripts.pory"
+# 1631 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Well…\n"
 	.string "There were a bunch of places on the list\l"
 	.string "we saw…\p"
@@ -3059,7 +3074,7 @@ Voltbrook_EventScript_FroJoins_Text_24:
 	.string "Pyro-something.$"
 
 Voltbrook_EventScript_FroJoins_Text_25:
-# 1635 "data/maps/VoltbrookTown/scripts.pory"
+# 1637 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Pyroden?\n"
 	.string "It's north of Dominion City.\p"
 	.string "I've heard there's some nice hot\n"
@@ -3071,12 +3086,12 @@ Voltbrook_EventScript_FroJoins_Text_25:
 	.string "water.$"
 
 Voltbrook_EventScript_FroJoins_Text_26:
-# 1644 "data/maps/VoltbrookTown/scripts.pory"
+# 1646 "data/maps/VoltbrookTown/scripts.pory"
 	.string "We're not going there to relax!\n"
 	.string "We're going there to find the Artifact!$"
 
 Voltbrook_EventScript_FroJoins_Text_27:
-# 1649 "data/maps/VoltbrookTown/scripts.pory"
+# 1651 "data/maps/VoltbrookTown/scripts.pory"
 	.string "Yes, yes.\n"
 	.string "We can do both.\p"
 	.string "In fact, the sooner we get there, the\n"

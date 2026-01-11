@@ -1383,3 +1383,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/VoltbrookTown_PowerPlant_Front_2F/scripts.inc"
 
 	.include "data/maps/VoltbrookTown_PowerPlant_Underground_Tunnel/scripts.inc"
+
+	.include "data/maps/VoltbrookTown_PowerPlant_ExitCode/scripts.inc"
