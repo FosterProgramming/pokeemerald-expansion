@@ -332,6 +332,7 @@ script VoltbrookTown_PowerPlant_Underground_Tunnel_Event
 	setwildbossbattle(SPECIES_ELECTIVIRE, 7, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 252, 0, 0, 0, 252)
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
+    setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_NONE)
     speakername("Vee")
     msgbox(format(
         "We…\n
