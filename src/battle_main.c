@@ -5400,6 +5400,7 @@ static void CheckChangingTurnOrderEffects(void)
     //  Action is initially set here
     MgbaPrintf(MGBA_LOG_WARN, "Action 0 Set");
     BraveSetCurrentAction();
+    BraveHideIndicators();
     //gCurrentActionFuncId = gActionsByTurnOrder[0];
     gCurrentActionFuncId = gBraveCurrentAction.action;
     gBattleStruct->dynamicMoveType = 0;

@@ -56,4 +56,8 @@ void BraveCancelChain(u32 battler);
 
 void ChangeAPGraphics(u32 battler);
 
+void BraveTryShowIndicators(void);
+void BraveHideIndicators(void);
+
+
 #endif

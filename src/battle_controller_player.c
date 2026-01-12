@@ -256,6 +256,8 @@ static void HandleInputChooseAction(u32 battler)
         return;
     }
 
+    BraveTryShowIndicators();
+
     if (HelpSystem_Process())
         return;
 
@@ -371,7 +373,25 @@ static void HandleInputChooseAction(u32 battler)
             }
             break;
         case 2: // Bottom left
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+            if (gBattleStruct->isBraveSelector)
+            {
+                gBattleStruct->isBraveSelector = FALSE;
+                PlayerHandleChooseAction(battler);
+                MgbaPrintf(MGBA_LOG_WARN, "Exiting menu");
+
+                //  Clear out brave chain
+
+                for (u32 i = 0; i < 4; i++)
+                    BraveClearBattlerAction(battler, i);
+                gBattleStruct->monBraveActions[battler] = 0;
+
+                return;
+            }
+            else
+            {
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+            }
+            BraveHideIndicators();
             break;
         case 3: // Bottom right
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);

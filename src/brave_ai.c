@@ -581,6 +581,10 @@ bool8 BraveAddAnyMoveToQueueIfPossible(u32 battler, u16 move, u8 target, u32 cur
 
 void AddAiActionsForBattler(u32 battler)
 {
+    if (!IsBattlerAlive(battler))
+        return;
+    BraveAddMoveToQueue(battler, 0, battler - 1);
+    return;
     u8 i;
     u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
     u32 currAction = gBattleStruct->monBraveActions[battler];
