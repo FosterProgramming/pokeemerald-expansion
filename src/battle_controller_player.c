@@ -872,7 +872,18 @@ void HandleInputChooseMove(u32 battler)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
             HideGimmickTriggerSprite();
             TryHideLastUsedBall();
-            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], battler);
+
+            u32 targetToUse = 1;
+            if (moveTarget & MOVE_TARGET_USER)
+                targetToUse = 0;
+            if (move == MOVE_CURSE)
+            {
+                if (gBattleMons[battler].types[0] == TYPE_GHOST || gBattleMons[battler].types[1] == TYPE_GHOST || gBattleMons[battler].types[2] == TYPE_GHOST )
+                    targetToUse = 1;
+                else
+                    targetToUse = 0;
+            }
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], targetToUse);
             if (BraveGetBattlerActionCount(battler) == 4)
             {
                 gBattleStruct->isBraveSelector = FALSE;
