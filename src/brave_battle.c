@@ -670,6 +670,7 @@ void BraveTryShowIndicators(void)
                   && sBraveActionIndicatorSpriteIds[player][actionNum] != SPRITE_NONE)
             {
                 DestroySprite(&gSprites[sBraveActionIndicatorSpriteIds[player][actionNum]]);
+                sBraveActionIndicatorSpriteIds[player][actionNum] = SPRITE_NONE;
             }
         }
     }
@@ -689,6 +690,7 @@ void BraveHideIndicators(void)
             if (sBraveActionIndicatorSpriteIds[player][actionNum] != SPRITE_NONE)
             {
                 DestroySprite(&gSprites[sBraveActionIndicatorSpriteIds[player][actionNum]]);
+                sBraveActionIndicatorSpriteIds[player][actionNum] = SPRITE_NONE;
             }
         }
     }
