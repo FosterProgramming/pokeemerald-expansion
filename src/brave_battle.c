@@ -681,8 +681,6 @@ void BraveHideIndicators(void)
     if (!sIsShowingIndicators)
         return;
 
-    DebugPrintf("Hiding indicators");
-
     for (u32 player = 0; player < 2; player++)
     {
         for (u32 actionNum = 0; actionNum < 4; actionNum++)
