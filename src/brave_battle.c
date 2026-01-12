@@ -20,7 +20,11 @@
 #include "constants/characters.h"
 
 #define BATTLER_INDICATOR_TAG 0xDEDE
+
 #define BATTLER_ACTION_TAG_START BATTLER_INDICATOR_TAG + 4
+#define ACTION_INDICATOR_Y       70
+#define ACTION_INDICATOR_START_X 16
+#define ACTION_INDICATOR_GAP     64
 
 #define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
 
@@ -631,8 +635,8 @@ void BraveTryShowIndicators(void)
                 cs.palTag = BATTLER_ACTION_TAG_START;
                 cs.spriteSize = SPRITE_SIZE(8x8);
                 cs.spriteShape = SPRITE_SHAPE(8x8);
-                cs.posY = 70;
-                cs.posX = 16 + 64 * player + actionNum * 8;
+                cs.posY = ACTION_INDICATOR_Y;
+                cs.posX = ACTION_INDICATOR_START_X + ACTION_INDICATOR_GAP * player + actionNum * 8;
                 switch (gBraveBattleAction[2 * player][actionNum].action)
                 {
                 case B_ACTION_USE_MOVE:
