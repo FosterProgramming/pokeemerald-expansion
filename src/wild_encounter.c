@@ -311,6 +311,7 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
     u8 max;
     u8 range;
     u8 rand;
+    u8 partyAverageLevel = ScrCmd_getpartyaveragelevel();
 
     if (LURE_STEP_COUNT == 0)
     {
@@ -341,13 +342,18 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
                     rand--;
             }
         }
-        return min + rand;
+        if(partyAverageLevel > (min + rand))
+            return partyAverageLevel - Random() % 3;
+        else
+            return min + rand;
     }
     else
     {
         // Looks for the max level of all slots that share the same species as the selected slot.
         max = GetMaxLevelOfSpeciesInWildTable(wildPokemon, wildPokemon[wildMonIndex].species, area);
-        if (max > 0)
+        if(partyAverageLevel > max)
+            return partyAverageLevel;
+        else if (max > 0)
             return max + 1;
         else // Failsafe
             return wildPokemon[wildMonIndex].maxLevel + 1;

@@ -1941,10 +1941,12 @@ Voltbrook_EventScript_FroJoins_1:
 # 1662 "data/maps/VoltbrookTown/scripts.pory"
 	setvar VAR_DOMINION_CITY_LAB_INTRO_STATE, 10
 # 1663 "data/maps/VoltbrookTown/scripts.pory"
-	callnative ScrCmd_setpartyaveragelevel
+	callnative ScrCmd_getpartyaveragelevel
 # 1664 "data/maps/VoltbrookTown/scripts.pory"
 	givemon SPECIES_SNORLAX, VAR_TEMP_0, ITEM_LEFTOVERS, ITEM_DUSK_BALL, NATURE_HARDY, 0, MON_MALE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, MOVE_THIEF, MOVE_STOCKPILE, MOVE_ROCK_TOMB, MOVE_BODY_SLAM
 # 1665 "data/maps/VoltbrookTown/scripts.pory"
+	setflag FLAG_SYS_EXP_SHARE
+# 1666 "data/maps/VoltbrookTown/scripts.pory"
 	releaseall
 	end
 

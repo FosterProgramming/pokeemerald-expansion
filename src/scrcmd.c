@@ -2490,6 +2490,21 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     return FALSE;
 }
 
+
+
+bool8 ScrCmd_getpartymaxlevel(void)
+{
+    u8 maxLevel     = 0;
+    
+    for(u8 i = 0; i < PARTY_SIZE; i++)
+    {
+        if(maxLevel < GetMonData(&gPlayerParty[i], MON_DATA_LEVEL))
+            maxLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+    }
+
+    return maxLevel;
+}
+
 #define BOSS_BATTLE_USE_GENERIC_ALLY TRUE //2 Vs 1 are currently buggy this is so I can test
 bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
 {
@@ -2513,6 +2528,9 @@ bool8 ScrCmd_setbosswildbattle(struct ScriptContext *ctx)
     u16 species2 = SPECIES_MAGIKARP;
     u8 level2    = 1;
     u16 item2    = ITEM_NONE;
+
+    if(ScrCmd_getpartymaxlevel() > level)
+        level = ScrCmd_getpartymaxlevel();
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -3254,11 +3272,11 @@ bool8 ScrCmd_comparepassword(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_setpartyaveragelevel(void)
+bool8 ScrCmd_getpartyaveragelevel(void)
 {
     u8 partyCount       = CalculatePlayerPartyCount();
     u16 levelTotal      = 0;
-    u16 levelAverage    = 0;
+    u8 levelAverage     = 0;
     
     for(u8 i = 0; i < PARTY_SIZE; i++)
     {
@@ -3267,5 +3285,5 @@ bool8 ScrCmd_setpartyaveragelevel(void)
     levelAverage = levelTotal / partyCount;
     VarSet(VAR_TEMP_0, levelAverage);
     
-    return FALSE;
+    return levelAverage;
 }

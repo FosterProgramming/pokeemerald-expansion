@@ -126,7 +126,8 @@ script Common_EventScript_StartBossDebugBattle_Elektivire{
 	setvar(VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_ELECTIVIRE)          //Sets custom HP to the enemy 1
 
 	playmoncry(SPECIES_ELECTIVIRE, 2)
-	setwildbossbattle(SPECIES_ELECTIVIRE, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 252, 0, 0, 0, 252)
+	callnative(ScrCmd_getpartyaveragelevel)
+	setwildbossbattle(SPECIES_ELECTIVIRE, 1, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_BULLDOZE, MOVE_LOW_KICK, 6, 252, 0, 0, 0, 252)
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
