@@ -537,6 +537,11 @@ void HandleInputChooseTarget(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         if (gBattleStruct->gimmick.playerSelect)
@@ -704,6 +709,11 @@ void HandleInputShowEntireFieldTargets(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         PlaySE(SE_SELECT);
         HideAllTargets();
         if (gBattleStruct->gimmick.playerSelect)
@@ -738,6 +748,11 @@ void HandleInputShowTargets(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         PlaySE(SE_SELECT);
         HideShownTargets(battler);
         if (gBattleStruct->gimmick.playerSelect)
@@ -866,6 +881,11 @@ void HandleInputChooseMove(u32 battler)
         {
         case 0:
         default:
+            if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+            {
+                PlaySE(SE_PC_OFF);
+                return;
+            }
             if (gBattleStruct->gimmick.playerSelect)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | RET_GIMMICK | (gMultiUsePlayerCursor << 8));
             else

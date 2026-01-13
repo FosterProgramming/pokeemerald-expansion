@@ -700,3 +700,31 @@ void BraveHideIndicators(void)
     }
     sIsShowingIndicators = FALSE;
 }
+
+bool32 BraveCanAddMoveToChain(u32 battler, u32 move)
+{
+    u32 maxUsableAP = gBattleStruct->monStoredAP[battler] + 4;
+    u32 currentlyUsedAP = 0;
+    for (u32 i = 0; i < 4; i++)
+    {
+        if (!gBraveBattleAction[battler][i].isSlotUsed)
+            break;
+        switch (gBraveBattleAction[battler][i].action)
+        {
+        case B_ACTION_USE_ITEM:
+            currentlyUsedAP++;
+            break;
+        case B_ACTION_USE_MOVE:
+            currentlyUsedAP++;
+            u32 extraAP = gMovesInfo[gBattleMons[battler].moves[gBraveBattleAction[battler][i].moveSlot]].extraApCost;
+            if (extraAP > 0)
+                currentlyUsedAP++;
+            break;
+        }
+    }
+
+
+    if (maxUsableAP < currentlyUsedAP + 1 + gMovesInfo[move].extraApCost)
+        return FALSE;
+    return TRUE;
+}
