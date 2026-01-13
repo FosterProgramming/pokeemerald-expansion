@@ -256,6 +256,7 @@ void BraveSetCurrentAction(void)
     for (u32 battler = 0; battler < numBattlers; battler++)
     {
         battlerSpeeds[battler] = GetBattlerTotalSpeedStat(battler);
+
         for (u32 actionIndex = 0; actionIndex < MAX_BRAVE_ACTIONS; actionIndex++)
         {
             if (gBraveBattleAction[battler][actionIndex].isSlotUsed
@@ -263,14 +264,16 @@ void BraveSetCurrentAction(void)
             {
                 u32 move = gBattleMons[battler].moves[gBraveBattleAction[battler][actionIndex].moveSlot];
 
-                battlerSpeeds[battler] = uq4_12_multiply_by_int_half_down(GetBravePrioMod(move, battler), battlerSpeeds[battler]);
+                if (!GO_BATTLER_BY_BATTLER)
+                    battlerSpeeds[battler] = uq4_12_multiply_by_int_half_down(GetBravePrioMod(move, battler), battlerSpeeds[battler]);
                 battlerWantsToMove[battler] = TRUE;
                 break;
             }
             else if (gBraveBattleAction[battler][actionIndex].isSlotUsed
                   && gBraveBattleAction[battler][actionIndex].action == B_ACTION_USE_ITEM)
             {
-                battlerSpeeds[battler] = battlerSpeeds[battler] * BRAVE_ITEM_USE_SPEED_MULTIPLIER;
+                if (!GO_BATTLER_BY_BATTLER)
+                    battlerSpeeds[battler] = battlerSpeeds[battler] * BRAVE_ITEM_USE_SPEED_MULTIPLIER;
                 battlerWantsToMove[battler] = TRUE;
                 break;
             }
@@ -312,37 +315,57 @@ void BraveSetCurrentAction(void)
     else
     {
         u32 battlerToMove = 0;
-        u32 highestStoredSpeed = 0;
 
-        for (u32 battler = 0; battler < numBattlers; battler++)
+        if (GO_BATTLER_BY_BATTLER)
         {
-            if (!battlerWantsToMove[battler])
-                continue;
-
-            if (GO_BATTLER_BY_BATTLER)
+            u32 highestSpeed = 0;
+            for (u32 battler = 0; battler < numBattlers; battler++)
             {
-                battlerToMove = battler;
-                break;
-            }
+                if (!battlerWantsToMove[battler])
+                    continue;
 
-            gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
-
-            if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
-            {
-                battlerToMove = battler;
-                highestStoredSpeed = gBraveStoredSpeeds[battler];
-            }
-            else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
-            {
-                //  Deal with the speed tiebreaks here
-                s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
-                s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
-                if (order2 > order1)
+                if (battlerSpeeds[battler] > highestSpeed)
+                {
                     battlerToMove = battler;
+                    highestSpeed = battlerSpeeds[battler];
+                }
+                else if (battlerSpeeds[battler] == highestSpeed)
+                {
+                    //  Deal with the speed tiebreaks here
+                    s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
+                    s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
+                    if (order2 > order1)
+                        battlerToMove = battler;
+                }
             }
         }
+        else
+        {
+            u32 highestStoredSpeed = 0;
+            for (u32 battler = 0; battler < numBattlers; battler++)
+            {
+                if (!battlerWantsToMove[battler])
+                    continue;
 
-        gBraveStoredSpeeds[battlerToMove] = 0;
+                gBraveStoredSpeeds[battler] += battlerSpeeds[battler];
+
+                if (gBraveStoredSpeeds[battler] > highestStoredSpeed)
+                {
+                    battlerToMove = battler;
+                    highestStoredSpeed = gBraveStoredSpeeds[battler];
+                }
+                else if (gBraveStoredSpeeds[battler] == highestStoredSpeed)
+                {
+                    //  Deal with the speed tiebreaks here
+                    s32 order1 = sBattlerOrders[gBattleStruct->speedTieBreaks][battlerToMove];
+                    s32 order2 = sBattlerOrders[gBattleStruct->speedTieBreaks][battler];
+                    if (order2 > order1)
+                        battlerToMove = battler;
+                }
+            }
+            gBraveStoredSpeeds[battlerToMove] = 0;
+        }
+
 
         for (u32 i = 0; i < MAX_BRAVE_ACTIONS; i++)
         {
@@ -353,6 +376,8 @@ void BraveSetCurrentAction(void)
                 break;
             }
         }
+
+        DebugPrintf("Battler to move: %u", battlerToMove);
     }
 
     AreAllBattlersDone();
