@@ -13377,6 +13377,16 @@ static void Cmd_tryconversiontypechange(void)
     u8 moveChecked = 0;
     u8 moveType = 0;
 
+    if(VarGet(VAR_BOSS_BRAVE_AI_ID) == BRAVE_BOSS_PORYGON)
+        {
+            moveType = gBattleMons[gBattlerTarget].types[0];
+            SET_BATTLER_TYPE(gBattlerAttacker, moveType);
+            PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+            gBattlescriptCurrInstr = cmd->nextInstr;
+            MgbaPrintf(MGBA_LOG_WARN,"movetype %d", moveType);
+            return;
+        }
+
     if (GetActiveGimmick(gBattlerAttacker) == GIMMICK_TERA)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
