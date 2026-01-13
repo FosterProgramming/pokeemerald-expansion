@@ -29,6 +29,8 @@ EWRAM_DATA u8 sCurrentTarget;
 #define B_POSITION_OPPONENT_RIGHT     3
 */
 
+#define HEDARA_TESTING FALSE
+
 #define BOSS_PHASE_DEFAULT                      0
 #define BOSS_BRAVE_PHASE_1                      1
 #define BOSS_BRAVE_PHASE_2                      2
@@ -608,8 +610,11 @@ void AddAiActionsForBattler(u32 battler)
 {
     if (!IsBattlerAlive(battler))
         return;
-    BraveAddMoveToQueue(battler, 0, battler - 1);
-    return;
+    if (HEDARA_TESTING)
+    {
+        BraveAddMoveToQueue(battler, 0, battler - 1);
+        return;
+    }
     u8 i;
     u8 bossNumber = VarGet(VAR_BOSS_BRAVE_AI_ID);
     u32 currAction = gBattleStruct->monBraveActions[battler];
