@@ -5220,7 +5220,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
             }
 
-            if (opposingDef < opposingSpDef)
+            if(gBattleMons[battler].species == SPECIES_PORYGON && VarGet(VAR_BOSS_BRAVE_AI_ID) == BRAVE_BOSS_PORYGON)
+                statId = STAT_SPATK;
+            else if (opposingDef < opposingSpDef)
                 statId = STAT_ATK;
             else
                 statId = STAT_SPATK;
