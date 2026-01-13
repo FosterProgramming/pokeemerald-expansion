@@ -462,10 +462,20 @@ static void HandleInputChooseAction(u32 battler)
          && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
         {
             // Return item to bag if partner had selected one (if consumable).
+            /*
             if (gBattleResources->bufferA[battler][1] == B_ACTION_USE_ITEM && ItemId_GetConsumability(itemId))
             {
                 AddBagItem(itemId, 1);
             }
+            */
+
+            // Clear out the selection for the first mon
+            for (u32 i = 0; i < 4; i++)
+            {
+                BraveClearBattlerAction(0, i);
+            }
+            gBattleStruct->monBraveActions[0] = 0;
+
             PlaySE(SE_SELECT);
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_CANCEL_PARTNER, 0);
             PlayerBufferExecCompleted(battler);
