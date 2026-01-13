@@ -22,6 +22,7 @@
 #include "constants/hold_effects.h"
 #include "constants/moves.h"
 #include "constants/items.h"
+#include "brave_battle.h"
 
 // Functions
 u32 GetDmgRollType(u32 battlerAtk)
@@ -1255,6 +1256,26 @@ bool32 CanAIFaintTarget(u32 battlerAtk, u32 battlerDef, u32 numHits)
     }
 
     return FALSE;
+}
+
+bool32 NumberOfHitsRequiredToFaintTarget(u32 battlerAtk, u32 battlerDef)
+{
+    s32 i, dmg;
+    u32 moveLimitations = AI_DATA->moveLimitations[battlerAtk];
+    u16 *moves = gBattleMons[battlerAtk].moves;
+    u32 numHits = MAX_BRAVE_ACTIONS;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(moveLimitations & (1u << i)))
+        {
+            // Use the pre-calculated value in simulatedDmg instead of re-calculating it
+            dmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
+            if((gBattleMons[battlerDef].hp / dmg) < numHits)
+                numHits = gBattleMons[battlerDef].hp / dmg;
+        }
+    }
+    return numHits;
 }
 
 bool32 CanTargetMoveFaintAi(u32 move, u32 battlerDef, u32 battlerAtk, u32 nHits)

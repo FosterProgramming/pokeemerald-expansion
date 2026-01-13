@@ -227,6 +227,7 @@ static u8 GetCurrentBravePhase_Electivire(u32 battler){
     u16 bossAtkStage           = gBattleMons[battler].statStages[STAT_ATK];
 
     GenerateRandomTarget();
+    MgbaPrintf(MGBA_LOG_WARN, "hits %d", NumberOfHitsRequiredToFaintTarget(battler, sCurrentTarget));
 
     //If the boss does not have any AP return nothing
     if(gBattleStruct->monStoredAP[battler] <= 0)
@@ -865,6 +866,7 @@ void AddAiActionsForBattler(u32 battler)
                 u16 bossAtkDrops           = DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK]; // checks how many times electivires attack stage has been dropped
                 u16 supportChance          = (bossAtkDrops * 17);
                 u16 currentTurnActions     = 1 + (Random() % 3);
+                u16 requiredHits           = NumberOfHitsRequiredToFaintTarget(battler, sCurrentTarget);
                 s8 bossCurrentAP           = gBattleStruct->monStoredAP[battler];
 
                 
@@ -894,7 +896,7 @@ void AddAiActionsForBattler(u32 battler)
                         }
                     break;
                     case BOSS_BRAVE_PHASE_RANDOM:
-                        for(currAction = 0; currAction < currentTurnActions; currAction++){
+                        for(currAction = 0; currAction < requiredHits; currAction++){
                             phase = (Random() % 4) + 1;
                             move = sBraveBossesActions[bossNumber][phase][currAction];
                             BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
