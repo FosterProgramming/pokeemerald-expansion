@@ -4298,7 +4298,7 @@ static void HandleTurnActionSelectionState(void)
                 || gBattleStruct->battlerState[GetBattlerAtPosition(BATTLE_PARTNER(position))].absentBattlerFlags
                 || gBattleCommunication[GetBattlerAtPosition(BATTLE_PARTNER(position))] == STATE_WAIT_ACTION_CONFIRMED)
             {
-                if (gBattleStruct->battlerState[battler].absentBattlerFlags || gBattleStruct->battlerState[battler].commandingDondozo)
+                if (gBattleStruct->battlerState[battler].absentBattlerFlags || gBattleStruct->battlerState[battler].commandingDondozo || gBattleStruct->monStoredAP[battler] < 1)
                 {
                     gChosenActionByBattler[battler] = B_ACTION_NOTHING_FAINTED;
                     if (!(gBattleTypeFlags & BATTLE_TYPE_MULTI))
@@ -5436,6 +5436,7 @@ static void CheckChangingTurnOrderEffects(void)
     //  Action is initially set here
     MgbaPrintf(MGBA_LOG_WARN, "Action 0 Set");
     BraveSetCurrentAction();
+    BraveHideIndicators();
     //gCurrentActionFuncId = gActionsByTurnOrder[0];
     gCurrentActionFuncId = gBraveCurrentAction.action;
     gBattleStruct->dynamicMoveType = 0;

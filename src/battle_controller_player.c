@@ -248,13 +248,15 @@ static u32 GetNextBall(u32 ballId)
 
 static void HandleInputChooseAction(u32 battler)
 {
-    if (gBattleStruct->monStoredAP[battler] < 1 || BraveGetBattlerActionCount(battler) == 4)
+    if (BraveGetBattlerActionCount(battler) == 4)
     {
-        MgbaPrintf(MGBA_LOG_WARN, "Stopping move selection");
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
         gBattleStruct->skipMoveInput = TRUE;
         PlayerBufferExecCompleted(battler);
+        return;
     }
+
+    BraveTryShowIndicators();
 
     if (HelpSystem_Process())
         return;
@@ -371,7 +373,25 @@ static void HandleInputChooseAction(u32 battler)
             }
             break;
         case 2: // Bottom left
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+            if (gBattleStruct->isBraveSelector)
+            {
+                gBattleStruct->isBraveSelector = FALSE;
+                PlayerHandleChooseAction(battler);
+                MgbaPrintf(MGBA_LOG_WARN, "Exiting menu");
+
+                //  Clear out brave chain
+
+                for (u32 i = 0; i < 4; i++)
+                    BraveClearBattlerAction(battler, i);
+                gBattleStruct->monBraveActions[battler] = 0;
+
+                return;
+            }
+            else
+            {
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+            }
+            BraveHideIndicators();
             break;
         case 3: // Bottom right
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
@@ -463,7 +483,18 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
-        SwapHpBarsWithHpText();
+        if (gBattleStruct->monBraveActions[battler] > 0 && gBattleStruct->isBraveSelector)
+        {
+            gBattleStruct->isBraveSelector = FALSE;
+            gBattleStruct->skipMoveInput = TRUE;
+            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_USE_MOVE, 0);
+            PlayerBufferExecCompleted(battler);
+            return;
+        }
+        else
+        {
+            SwapHpBarsWithHpText();
+        }
     }
     else if (DEBUG_BATTLE_MENU == TRUE && JOY_NEW(SELECT_BUTTON))
     {
@@ -506,6 +537,11 @@ void HandleInputChooseTarget(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         if (gBattleStruct->gimmick.playerSelect)
@@ -673,6 +709,11 @@ void HandleInputShowEntireFieldTargets(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         PlaySE(SE_SELECT);
         HideAllTargets();
         if (gBattleStruct->gimmick.playerSelect)
@@ -707,6 +748,11 @@ void HandleInputShowTargets(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+        {
+            PlaySE(SE_PC_OFF);
+            return;
+        }
         PlaySE(SE_SELECT);
         HideShownTargets(battler);
         if (gBattleStruct->gimmick.playerSelect)
@@ -835,13 +881,29 @@ void HandleInputChooseMove(u32 battler)
         {
         case 0:
         default:
+            if (!BraveCanAddMoveToChain(battler, gBattleMons[battler].moves[gMoveSelectionCursor[battler]]))
+            {
+                PlaySE(SE_PC_OFF);
+                return;
+            }
             if (gBattleStruct->gimmick.playerSelect)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | RET_GIMMICK | (gMultiUsePlayerCursor << 8));
             else
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | (gMultiUsePlayerCursor << 8));
             HideGimmickTriggerSprite();
             TryHideLastUsedBall();
-            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], battler);
+
+            u32 targetToUse = 1;
+            if (moveTarget & MOVE_TARGET_USER)
+                targetToUse = 0;
+            if (move == MOVE_CURSE)
+            {
+                if (gBattleMons[battler].types[0] == TYPE_GHOST || gBattleMons[battler].types[1] == TYPE_GHOST || gBattleMons[battler].types[2] == TYPE_GHOST )
+                    targetToUse = 1;
+                else
+                    targetToUse = 0;
+            }
+            BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], targetToUse);
             if (BraveGetBattlerActionCount(battler) == 4)
             {
                 gBattleStruct->isBraveSelector = FALSE;

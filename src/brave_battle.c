@@ -21,9 +21,20 @@
 
 #define BATTLER_INDICATOR_TAG 0xDEDE
 
+#define BATTLER_ACTION_TAG_START BATTLER_INDICATOR_TAG + 4
+#define ACTION_INDICATOR_Y       70
+#define ACTION_INDICATOR_START_X 16
+#define ACTION_INDICATOR_GAP     64
+
 #define BRAVE_ITEM_USE_SPEED_MULTIPLIER 2
 
 #define GO_BATTLER_BY_BATTLER TRUE
+
+const u32 sBraveActionIndicatorGfx[] = INCBIN_U32("graphics/battle_interface/action_indicators.4bpp");
+const u16 sBraveActionIndicatorPal[] = INCBIN_U16("graphics/battle_interface/action_indicators.gbapal");
+
+EWRAM_DATA u8 sBraveActionIndicatorSpriteIds[2][4];
+EWRAM_DATA bool8 sIsShowingIndicators = FALSE;
 
 EWRAM_DATA struct BraveBattleAction gBraveBattleAction[MAX_BRAVE_BATTLERS][MAX_BRAVE_ACTIONS];
 EWRAM_DATA struct BraveBattleAction gBraveCurrentAction;
@@ -390,6 +401,8 @@ void BraveAddMoveToQueue(u32 battler, u32 movePos, u32 target)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
+
+    BraveTryShowIndicators();
 }
 
 void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target)
@@ -404,7 +417,7 @@ void BraveAddAnyMoveToQueue(u32 battler, u32 move, u32 target)
     gBraveBattleAction[battler][currAction].isDefaulting = FALSE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
 
-    //MgbaPrintf(MGBA_LOG_WARN, "BraveAddAnyMoveToQueue battler %d move %d target %d currAction %d", battler, move, target, action);
+    BraveTryShowIndicators();
 }
 
 void BraveAddDefaultToQueue(u32 battler)
@@ -416,6 +429,8 @@ void BraveAddDefaultToQueue(u32 battler)
     gBraveBattleAction[battler][currAction].isSlotUsed = TRUE;
     gBraveBattleAction[battler][currAction].isDefaulting = TRUE;
     gBraveBattleAction[battler][currAction].action = B_ACTION_USE_MOVE;
+
+    BraveTryShowIndicators();
 }
 
 void BraveAddSwitchToQueue(u32 battler, u32 target)
@@ -559,4 +574,168 @@ void BraveCancelChain(u32 battler)
 
     //  Check if there are any remaining actions in any brave chain
     AreAllBattlersDone();
+}
+
+const struct SpritePalette sIndicatorPalette =
+{
+    .data = sBraveActionIndicatorPal,
+    .tag = BATTLER_ACTION_TAG_START,
+};
+
+const struct SpriteSheet sIndicatorSheets[5] =
+{
+    {
+        .size = 32,
+        .tag = BATTLER_ACTION_TAG_START + 0,
+        .data = &sBraveActionIndicatorGfx[0]
+    },
+    {
+        .size = 32,
+        .tag = BATTLER_ACTION_TAG_START + 1,
+        .data = &sBraveActionIndicatorGfx[8]
+    },
+    {
+        .size = 32,
+        .tag = BATTLER_ACTION_TAG_START + 2,
+        .data = &sBraveActionIndicatorGfx[16]
+    },
+    {
+        .size = 32,
+        .tag = BATTLER_ACTION_TAG_START + 3,
+        .data = &sBraveActionIndicatorGfx[24]
+    },
+    {
+        .size = 32,
+        .tag = BATTLER_ACTION_TAG_START + 4,
+        .data = &sBraveActionIndicatorGfx[32]
+    },
+};
+
+void BraveTryShowIndicators(void)
+{
+    if (!sIsShowingIndicators)
+    {
+        //  Load the indicators into VRAM
+        LoadSpritePalette(&sIndicatorPalette);
+
+        LoadSpriteSheet(&sIndicatorSheets[0]);
+        LoadSpriteSheet(&sIndicatorSheets[1]);
+        LoadSpriteSheet(&sIndicatorSheets[2]);
+        LoadSpriteSheet(&sIndicatorSheets[3]);
+        LoadSpriteSheet(&sIndicatorSheets[4]);
+
+        for (u32 player = 0; player < 2; player++)
+        {
+            for (u32 actionNum = 0; actionNum < 4; actionNum++)
+            {
+                sBraveActionIndicatorSpriteIds[player][actionNum] = SPRITE_NONE;
+            }
+        }
+    }
+
+    sIsShowingIndicators = TRUE;
+
+    for (u32 player = 0; player < 2; player++)
+    {
+        for (u32 actionNum = 0; actionNum < 4; actionNum++)
+        {
+            if (gBraveBattleAction[2 * player][actionNum].isSlotUsed
+             && sBraveActionIndicatorSpriteIds[player][actionNum] == SPRITE_NONE)
+            {
+                struct Even_CreateSpriteStruct cs = {0};
+                cs.palTag = BATTLER_ACTION_TAG_START;
+                cs.spriteSize = SPRITE_SIZE(8x8);
+                cs.spriteShape = SPRITE_SHAPE(8x8);
+                cs.posY = ACTION_INDICATOR_Y;
+                cs.posX = ACTION_INDICATOR_START_X + ACTION_INDICATOR_GAP * player + actionNum * 8;
+                switch (gBraveBattleAction[2 * player][actionNum].action)
+                {
+                case B_ACTION_USE_MOVE:
+                    if (gBraveBattleAction[2 * player][actionNum].isDefaulting)
+                    {
+                        cs.tileTag = BATTLER_ACTION_TAG_START + 1;
+                    }
+                    else
+                    {
+                        u32 move = gBattleMons[2 * player].moves[gBraveBattleAction[2 * player][actionNum].moveSlot];
+                        if (gMovesInfo[move].category == DAMAGE_CATEGORY_STATUS)
+                        {
+                            cs.tileTag = BATTLER_ACTION_TAG_START + 2;
+                        }
+                        else
+                        {
+                            cs.tileTag = BATTLER_ACTION_TAG_START + 0;
+                        }
+                    }
+                    break;
+                case B_ACTION_USE_ITEM:
+                    cs.tileTag = BATTLER_ACTION_TAG_START + 3;
+                    break;
+                case B_ACTION_SWITCH:
+                    cs.tileTag = BATTLER_ACTION_TAG_START + 4;
+                    break;
+                }
+                sBraveActionIndicatorSpriteIds[player][actionNum] = Even_CreateSprite(&cs);
+            }
+            else if (!gBraveBattleAction[2 * player][actionNum].isSlotUsed
+                  && sBraveActionIndicatorSpriteIds[player][actionNum] != SPRITE_NONE)
+            {
+                DestroySprite(&gSprites[sBraveActionIndicatorSpriteIds[player][actionNum]]);
+                sBraveActionIndicatorSpriteIds[player][actionNum] = SPRITE_NONE;
+            }
+        }
+    }
+}
+
+void BraveHideIndicators(void)
+{
+    if (!sIsShowingIndicators)
+        return;
+
+    for (u32 player = 0; player < 2; player++)
+    {
+        for (u32 actionNum = 0; actionNum < 4; actionNum++)
+        {
+            if (sBraveActionIndicatorSpriteIds[player][actionNum] != SPRITE_NONE)
+            {
+                DestroySprite(&gSprites[sBraveActionIndicatorSpriteIds[player][actionNum]]);
+                sBraveActionIndicatorSpriteIds[player][actionNum] = SPRITE_NONE;
+            }
+        }
+    }
+
+    FreeSpritePaletteByTag(BATTLER_ACTION_TAG_START);
+    for (u32 i = 0; i < 5; i++)
+    {
+        FreeSpriteTilesByTag(BATTLER_ACTION_TAG_START + i);
+    }
+    sIsShowingIndicators = FALSE;
+}
+
+bool32 BraveCanAddMoveToChain(u32 battler, u32 move)
+{
+    u32 maxUsableAP = gBattleStruct->monStoredAP[battler] + 4;
+    u32 currentlyUsedAP = 0;
+    for (u32 i = 0; i < 4; i++)
+    {
+        if (!gBraveBattleAction[battler][i].isSlotUsed)
+            break;
+        switch (gBraveBattleAction[battler][i].action)
+        {
+        case B_ACTION_USE_ITEM:
+            currentlyUsedAP++;
+            break;
+        case B_ACTION_USE_MOVE:
+            currentlyUsedAP++;
+            u32 extraAP = gMovesInfo[gBattleMons[battler].moves[gBraveBattleAction[battler][i].moveSlot]].extraApCost;
+            if (extraAP > 0)
+                currentlyUsedAP++;
+            break;
+        }
+    }
+
+
+    if (maxUsableAP < currentlyUsedAP + 1 + gMovesInfo[move].extraApCost)
+        return FALSE;
+    return TRUE;
 }
