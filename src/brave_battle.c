@@ -755,8 +755,12 @@ u32 GetMoveAPCost(u32 move, u32 battler)
     u32 cost = 1;
     switch (gMovesInfo[move].effect)
     {
-    case EFFECT_SWALLOW:
+    case EFFECT_STOCKPILE:
         cost = 0;
+        break;
+    case EFFECT_SWALLOW:
+    case EFFECT_SPIT_UP:
+        cost += gDisableStructs[battler].stockpileCounter;
         break;
     default:
         cost += gMovesInfo[move].extraApCost;
