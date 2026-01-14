@@ -1883,7 +1883,7 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
         return;
 
     SetPpNumbersPaletteInMoveSelection(battler);
-    ConvertIntToDecimalStringN(gDisplayedStringBattle, GetMoveAPCost(moveInfo->moves[gMoveSelectionCursor[battler]]), STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gDisplayedStringBattle, GetMoveAPCost(moveInfo->moves[gMoveSelectionCursor[battler]], battler), STR_CONV_MODE_RIGHT_ALIGN, 2);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }

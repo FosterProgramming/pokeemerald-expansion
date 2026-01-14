@@ -537,7 +537,7 @@ void BraveConsumeAP(u32 battler, u32 move)
         return;
     if (gBraveCurrentAction.action == B_ACTION_USE_MOVE)
     {
-        gBattleStruct->monStoredAP[battler] -= GetMoveAPCost(move);
+        gBattleStruct->monStoredAP[battler] -= GetMoveAPCost(move, battler);
         ChangeAPGraphics(battler);
     }
     else if (gBraveCurrentAction.action == B_ACTION_USE_ITEM)
@@ -740,17 +740,17 @@ bool32 BraveCanAddMoveToChain(u32 battler, u32 move)
             currentlyUsedAP++;
             break;
         case B_ACTION_USE_MOVE:
-            currentlyUsedAP += GetMoveAPCost(gBattleMons[battler].moves[gBraveBattleAction[battler][i].moveSlot]);
+            currentlyUsedAP += GetMoveAPCost(gBattleMons[battler].moves[gBraveBattleAction[battler][i].moveSlot], battler);
             break;
         }
     }
 
-    if (maxUsableAP < currentlyUsedAP + GetMoveAPCost(move))
+    if (maxUsableAP < currentlyUsedAP + GetMoveAPCost(move, battler))
         return FALSE;
     return TRUE;
 }
 
-u32 GetMoveAPCost(u32 move)
+u32 GetMoveAPCost(u32 move, u32 battler)
 {
     u32 cost = 1;
     switch (gMovesInfo[move].effect)
