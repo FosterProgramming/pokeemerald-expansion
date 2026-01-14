@@ -465,7 +465,10 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
             for(i = 0; i < MAX_MON_MOVES; i++){
                 u16 score = gBattleStruct->aiFinalScore[battler][target][i];
                 u16 damage = AI_DATA->simulatedDmg[battler][target][i].expected;
+                MgbaPrintf(MGBA_LOG_WARN,"score %d, damage %d, target %d, curHP %d", score, damage, gBattleMons[target].species, currentHP);
                 bool8 isRedirected = IsMoveBeingRedirected(battler, gBattleMons[battler].moves[i], target);
+
+                
 
                 //If can defeat target try to do it
                 if(damage > currentHP){
@@ -475,6 +478,7 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
 
                 //Calculate Best Score or Best Damage
                 if(USE_DAMAGE_FOR_OPTIMAL_CALCULATION){
+                    MgbaPrintf(MGBA_LOG_WARN, "dmg %d, maxscore %d, isRedirected %d",damage,maxScore,isRedirected);
                     if(damage > maxScore && !isRedirected){
                         maxScore       = damage;
                         maxScoreMoveId = i;
@@ -496,7 +500,7 @@ static u8 ChooseBestMoveAgainstTargetWithLowestHP(u8 battler){
         }
     }
 
-    //MgbaPrintf(MGBA_LOG_WARN, "Choose move = %d currentScore = %d, target = %d", globalMaxScore, globalBestMoveId, target);
+    MgbaPrintf(MGBA_LOG_WARN, "Choose move = %d currentScore = %d, target = %d", globalMaxScore, globalBestMoveId, target);
     return globalBestMoveId;
 }
 
@@ -834,8 +838,9 @@ void AddAiActionsForBattler(u32 battler)
                     break;
                     case BOSS_BRAVE_PHASE_RANDOM:
                         for(currAction = 0; currAction < maxPossibleActions; currAction++){
-                            move = ChooseBestMoveAgainstTargetWithLowestHP(battler);
-                            BraveAddMoveToQueue(battler, move, sCurrentTarget);
+                            u16 move = gBattleMons[battler].moves[Random() % 4];
+                            GenerateRandomTarget();
+                            BraveAddAnyMoveToQueue(battler, move, sCurrentTarget);
                         }
                     break;
                     case BOSS_BRAVE_PHASE_MISC:

@@ -275,23 +275,21 @@ Common_EventScript_StartBossDebugBattle_Porygon::
 # 162 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	waitmoncry
 # 163 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_INTIMIDATE
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_1, ABILITY_SHED_SKIN
 # 164 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_2, ABILITY_DOWNLOAD
 # 165 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_RUN_AWAY
+	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_3, ABILITY_INNER_FOCUS
 # 166 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_ENEMY_1_ABILITY_OVERWRITE_4, ABILITY_NONE
 # 167 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 80
-# 168 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setflag FLAG_FORCE_DOUBLE_WILD_BATTLE
+	setvar VAR_ENEMY_1_CUSTOM_MAX_HP, 150
 # 169 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setvar VAR_BOSS_BRAVE_AI_ID, BRAVE_BOSS_PORYGON
 # 171 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	playmoncry SPECIES_PORYGON, 2
 # 172 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
-	setwildbossbattle SPECIES_PORYGON, 20, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_TACKLE, MOVE_RECOVER, MOVE_PSYBEAM, 6, 252, 0, 0, 0, 252
+	setwildbossbattle SPECIES_PORYGON, 1, ITEM_NONE, NATURE_ADAMANT, MOVE_THUNDERSHOCK, MOVE_PSYBEAM, MOVE_DISCHARGE, MOVE_SWIFT, 0, 0, 0, 40, 0, 0
 # 173 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 174 "data/maps/AbandonedShip_CaptainsOffice/scripts.pory"

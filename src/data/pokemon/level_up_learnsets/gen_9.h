@@ -4139,8 +4139,8 @@ static const struct LevelUpMove sSylveonLevelUpLearnset[] = {
 static const struct LevelUpMove sPorygonLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_CONVERSION),
-    LEVEL_UP_MOVE( 5, MOVE_RECYCLE),
-    LEVEL_UP_MOVE(10, MOVE_MAGNET_RISE),
+    LEVEL_UP_MOVE( 1, MOVE_RECYCLE),
+    LEVEL_UP_MOVE( 1, MOVE_MAGNET_RISE),
     LEVEL_UP_MOVE(15, MOVE_THUNDER_SHOCK),
     LEVEL_UP_MOVE(20, MOVE_PSYBEAM),
     LEVEL_UP_MOVE(25, MOVE_CONVERSION_2),
