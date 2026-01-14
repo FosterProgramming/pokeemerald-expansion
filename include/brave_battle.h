@@ -54,6 +54,7 @@ void BraveResetAP(u32 battler);
 void BraveModAP(u32 battler, s32 change, bool8 turnBased);
 void BraveCancelChain(u32 battler);
 bool32 BraveCanAddMoveToChain(u32 battler, u32 move);
+u32 GetMoveAPCost(u32 move);
 
 void ChangeAPGraphics(u32 battler);
 

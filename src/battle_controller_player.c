@@ -508,6 +508,7 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (DEBUG_BATTLE_MENU == TRUE && JOY_NEW(SELECT_BUTTON))
     {
+        BraveHideIndicators();
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_DEBUG, 0);
         PlayerBufferExecCompleted(battler);
     }
@@ -914,7 +915,7 @@ void HandleInputChooseMove(u32 battler)
                     targetToUse = 0;
             }
             BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], targetToUse);
-            if (BraveGetBattlerActionCount(battler) == 4)
+            if (BraveGetBattlerActionCount(battler) == 4 || gBattleMons[battler].moves[gMoveSelectionCursor[battler]] == MOVE_STOCKPILE)
             {
                 gBattleStruct->isBraveSelector = FALSE;
                 PlayerBufferExecCompleted(battler);
@@ -1876,28 +1877,13 @@ static void MoveSelectionDisplayPpString(u32 battler)
 static void MoveSelectionDisplayPpNumber(u32 battler)
 {
     struct ChooseMoveStruct *moveInfo;
-    s8 initialAPCost = 1;
-    
     moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-
-    switch (gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].effect)
-    {
-        case EFFECT_STOCKPILE:
-            initialAPCost = 0;
-            break;
-        case EFFECT_SWALLOW:
-        case EFFECT_SPIT_UP:
-            initialAPCost = 1 + gDisableStructs[battler].stockpileCounter;
-            break;    
-    default:
-        break;
-    }
 
     if (gBattleResources->bufferA[battler][2] == TRUE) // check if we didn't want to display pp number
         return;
 
     SetPpNumbersPaletteInMoveSelection(battler);
-    ConvertIntToDecimalStringN(gDisplayedStringBattle, initialAPCost + gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].extraApCost, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gDisplayedStringBattle, GetMoveAPCost(moveInfo->moves[gMoveSelectionCursor[battler]]), STR_CONV_MODE_RIGHT_ALIGN, 2);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }

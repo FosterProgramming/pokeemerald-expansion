@@ -537,19 +537,8 @@ void BraveConsumeAP(u32 battler, u32 move)
         return;
     if (gBraveCurrentAction.action == B_ACTION_USE_MOVE)
     {
-        switch (gMovesInfo[move].effect)
-        {
-        case EFFECT_STOCKPILE: //add 0 for stockpile. Need to figure out a way to make it end brave chain so you can only add one stockpile per turn. Also should probably make it only work if its the first move input in the brave chain
-            break;
-        case EFFECT_SWALLOW:
-        case EFFECT_SPIT_UP:
-            gBattleStruct->monStoredAP[battler] -= 1 + gDisableStructs[gBattlerAttacker].stockpileCounter;
-            break;
-        default:
-            gBattleStruct->monStoredAP[battler] -= 1 + gMovesInfo[move].extraApCost;
-            ChangeAPGraphics(battler);
-            break;
-        }
+        gBattleStruct->monStoredAP[battler] -= GetMoveAPCost(move);
+        ChangeAPGraphics(battler);
     }
     else if (gBraveCurrentAction.action == B_ACTION_USE_ITEM)
     {
@@ -751,16 +740,26 @@ bool32 BraveCanAddMoveToChain(u32 battler, u32 move)
             currentlyUsedAP++;
             break;
         case B_ACTION_USE_MOVE:
-            currentlyUsedAP++;
-            u32 extraAP = gMovesInfo[gBattleMons[battler].moves[gBraveBattleAction[battler][i].moveSlot]].extraApCost;
-            if (extraAP > 0)
-                currentlyUsedAP++;
+            currentlyUsedAP += GetMoveAPCost(gBattleMons[battler].moves[gBraveBattleAction[battler][i].moveSlot]);
             break;
         }
     }
 
-
-    if (maxUsableAP < currentlyUsedAP + 1 + gMovesInfo[move].extraApCost)
+    if (maxUsableAP < currentlyUsedAP + GetMoveAPCost(move))
         return FALSE;
     return TRUE;
+}
+
+u32 GetMoveAPCost(u32 move)
+{
+    u32 cost = 1;
+    switch (gMovesInfo[move].effect)
+    {
+    case EFFECT_SWALLOW:
+        cost = 0;
+        break;
+    default:
+        cost += gMovesInfo[move].extraApCost;
+    }
+    return cost;
 }
