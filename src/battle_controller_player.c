@@ -1875,17 +1875,29 @@ static void MoveSelectionDisplayPpString(u32 battler)
 
 static void MoveSelectionDisplayPpNumber(u32 battler)
 {
-    u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo;
+    s8 initialAPCost = 1;
+    
+    moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+
+    switch (gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].effect)
+    {
+        case EFFECT_STOCKPILE:
+            initialAPCost = 0;
+            break;
+        case EFFECT_SWALLOW:
+        case EFFECT_SPIT_UP:
+            initialAPCost = 1 + gDisableStructs[battler].stockpileCounter;
+            break;    
+    default:
+        break;
+    }
 
     if (gBattleResources->bufferA[battler][2] == TRUE) // check if we didn't want to display pp number
         return;
 
     SetPpNumbersPaletteInMoveSelection(battler);
-    moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
-    *(txtPtr)++ = CHAR_SLASH;
-    ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPp[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gDisplayedStringBattle, initialAPCost + gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].extraApCost, STR_CONV_MODE_RIGHT_ALIGN, 2);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
