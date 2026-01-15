@@ -728,6 +728,9 @@ void BraveHideIndicators(void)
 
 bool32 BraveCanAddMoveToChain(u32 battler, u32 move)
 {
+    if (move == MOVE_STOCKPILE && gBattleStruct->monBraveActions[battler] != 0)
+        return FALSE;
+
     u32 maxUsableAP = gBattleStruct->monStoredAP[battler] + 4;
     u32 currentlyUsedAP = 0;
     for (u32 i = 0; i < 4; i++)
