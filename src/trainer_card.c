@@ -1506,6 +1506,9 @@ static void DrawCardFrontOrBack(u16 *ptr)
     CopyBgTilemapBufferToVram(0);
 }
 
+//Put the item id you want the icon of here:
+static const u16 sBadgesIconArray[NUM_BADGES] = {1, 2, 3, 4, 5, 6, 7, 8};
+
 static void DrawStarsAndBadgesOnCard(void)
 {
     static const u8 yOffsets[] = {7, 7};
@@ -1520,7 +1523,7 @@ static void DrawStarsAndBadgesOnCard(void)
         {
             if (sData->badgeCount[i])
             {
-                spriteId = AddItemIconSprite(TAG_NONE - (i + 1), TAG_NONE - (i + 1), i + 1);
+                spriteId = AddItemIconSprite(TAG_NONE - (i + 1), TAG_NONE - (i + 1), sBadgesIconArray[i]);
                 gSprites[spriteId].x = 44 + 24 * i;
                 gSprites[spriteId].y = 132;
                 sData->badgeSprites[i] = spriteId;
