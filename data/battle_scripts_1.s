@@ -5541,6 +5541,7 @@ BattleScript_FaintedMonTryChoose:
 	hidepartystatussummary BS_ATTACKER
 	switchinanim BS_ATTACKER, FALSE, FALSE
 	waitstate
+	handlebrave
 	setbyte sSHIFT_SWITCHED, 1
 BattleScript_FaintedMonSendOutNew:
 	drawpartystatussummary BS_FAINTED
@@ -5553,6 +5554,7 @@ BattleScript_FaintedMonSendOutNew:
 	hidepartystatussummary BS_FAINTED
 	switchinanim BS_FAINTED, FALSE, FALSE
 	waitstate
+	handlebrave
 	resetplayerfainted
 	trytrainerslidelastonmsg BS_FAINTED
 	jumpifbytenotequal sSHIFT_SWITCHED, sZero, BattleScript_FaintedMonShiftSwitched
@@ -5587,6 +5589,7 @@ BattleScript_HandleFaintedMonLoop::
 	hidepartystatussummary BS_FAINTED
 	switchinanim BS_FAINTED, FALSE, FALSE
 	waitstate
+	handlebrave
 	switchineffects BS_FAINTED_MULTIPLE_1
 	jumpifbytenotequal gBattlerFainted, gBattlersCount, BattleScript_HandleFaintedMonLoop
 BattleScript_HandleFaintedMonMultipleEnd::

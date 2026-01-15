@@ -19390,17 +19390,27 @@ EWRAM_DATA s8 sSavedAPForBatonPass = 0;
 void BS_HandleBrave(void)
 {
     NATIVE_ARGS();
-    u32 battler = gBattlerAttacker;
-    struct Pokemon *party = GetBattlerParty(battler);
-    struct Pokemon *mon = &party[gBattlerPartyIndexes[battler]];
-    if (sSavedAPForBatonPass != 0)
+    u32 numBattlers = IsDoubleBattle() ? 4 : 2;
+    for (u32 battler = 0; battler < numBattlers; battler++)
     {
-        gBattleStruct->monStoredAP[battler] = sSavedAPForBatonPass;
-        sSavedAPForBatonPass = 0;
+        if (GetActiveGimmick(battler) || !IsBattlerAlive(battler))
+            continue;
+
+        struct Pokemon *party = GetBattlerParty(battler);
+        struct Pokemon *mon = &party[gBattlerPartyIndexes[battler]];
+        if (sSavedAPForBatonPass != 0)
+        {
+            gBattleStruct->monStoredAP[battler] = sSavedAPForBatonPass;
+            sSavedAPForBatonPass = 0;
+        }
+        else
+        {
+            gBattleStruct->monStoredAP[battler] = 0;
+        }
+        SetActiveGimmick(battler, GIMMICK_MEGA);
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_ALL);
+        ChangeAPGraphics(battler);
     }
-    SetActiveGimmick(battler, GIMMICK_MEGA);
-    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_ALL);
-    ChangeAPGraphics(battler);
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
