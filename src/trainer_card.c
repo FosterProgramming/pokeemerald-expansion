@@ -366,8 +366,8 @@ static void CloseTrainerCard(u8 taskId)
     {
         FreeSpriteTilesByTag(TAG_NONE - i - 1);
         FreeSpritePaletteByTag(TAG_NONE - i - 1);
-        FreeSpriteOamMatrix(&gSprites[sData->spriteBadges[i]]);
-        DestroySprite(&gSprites[sData->spriteBadges[i]]);
+        FreeSpriteOamMatrix(&gSprites[sData->badgeSprites[i]]);
+        DestroySprite(&gSprites[sData->badgeSprites[i]]);
     }
     FREE_AND_SET_NULL(sData);
     DestroyTask(taskId);
@@ -1516,14 +1516,14 @@ static void DrawStarsAndBadgesOnCard(void)
     FillBgTilemapBufferRect(3, 143, 15, yOffsets[sData->isHoenn], sData->trainerCard.stars, 1, 4);
     if (!sData->isLink)
     {
-        x = 4;
         for (i = 0; i < NUM_BADGES; i++)
         {
             if (sData->badgeCount[i])
             {
-                sData->badgeSprites[i] = AddItemIconSprite(TAG_NONE - (i + 1), TAG_NONE - (i + 1), i + 1);
+                spriteId = AddItemIconSprite(TAG_NONE - (i + 1), TAG_NONE - (i + 1), i + 1);
                 gSprites[spriteId].x = 44 + 24 * i;
                 gSprites[spriteId].y = 132;
+                sData->badgeSprites[i] = spriteId;
                 //FillBgTilemapBufferRect(3, tileNum, x, 15, 1, 1, palNum);
                 //FillBgTilemapBufferRect(3, tileNum + 1, x + 1, 15, 1, 1, palNum);
                 //FillBgTilemapBufferRect(3, tileNum + 16, x, 16, 1, 1, palNum);
