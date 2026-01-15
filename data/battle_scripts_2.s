@@ -177,6 +177,11 @@ BattleScript_SafariBallThrow::
 	updatestatusicon BS_ATTACKER
 	handleballthrow
 
+BattleScript_DataAddedToDex::
+	printstring STRINGID_PKMNDATAADDEDTODEX2
+	waitstate
+	return
+
 BattleScript_SuccessBallThrow::
 	setbyte sMON_CAUGHT, TRUE
 	incrementgamestat GAME_STAT_POKEMON_CAPTURES

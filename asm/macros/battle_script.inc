@@ -2621,3 +2621,8 @@
 	.macro saveapforbatonpass
 	callnative BS_SaveAPForBatonPass
 	.endm
+
+	.macro handlecaughtdata battler:req
+	callnative Seel_HandleCaughtFlag
+	.byte \battler
+	.endm
