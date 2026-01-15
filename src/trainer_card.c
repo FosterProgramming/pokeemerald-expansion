@@ -83,7 +83,7 @@ struct TrainerCardData
     u16 frontTilemap[600];
     u16 backTilemap[600];
     u16 bgTilemap[600];
-    u8 badgeTiles[0x80 * NUM_BADGES];
+    u8 badgeSprites[NUM_BADGES];
     u8 stickerTiles[0x200];
     u8 cardTiles[0x2300];
     u16 cardTilemapBuffer[0x1000];
@@ -362,6 +362,13 @@ static void CloseTrainerCard(u8 taskId)
 {
     SetMainCallback2(sData->callback2);
     FreeAllWindowBuffers();
+    for (u32 i = 0; i < NUM_BADGES; i++)
+    {
+        FreeSpriteTilesByTag(TAG_NONE - i - 1);
+        FreeSpritePaletteByTag(TAG_NONE - i - 1);
+        FreeSpriteOamMatrix(&gSprites[sData->spriteBadges[i]]);
+        DestroySprite(&gSprites[sData->spriteBadges[i]]);
+    }
     FREE_AND_SET_NULL(sData);
     DestroyTask(taskId);
 }
@@ -1503,20 +1510,18 @@ static void DrawStarsAndBadgesOnCard(void)
 {
     static const u8 yOffsets[] = {7, 7};
 
-    s16 i, x;
-    u16 tileNum = 192;
-    u8 palNum = 3;
+    s16 i;
     u32 spriteId;
 
     FillBgTilemapBufferRect(3, 143, 15, yOffsets[sData->isHoenn], sData->trainerCard.stars, 1, 4);
     if (!sData->isLink)
     {
         x = 4;
-        for (i = 0; i < NUM_BADGES; i++, tileNum += 2, x += 3)
+        for (i = 0; i < NUM_BADGES; i++)
         {
             if (sData->badgeCount[i])
             {
-                spriteId = AddItemIconSprite(TAG_NONE - i, TAG_NONE - i, i + 1);
+                sData->badgeSprites[i] = AddItemIconSprite(TAG_NONE - (i + 1), TAG_NONE - (i + 1), i + 1);
                 gSprites[spriteId].x = 44 + 24 * i;
                 gSprites[spriteId].y = 132;
                 //FillBgTilemapBufferRect(3, tileNum, x, 15, 1, 1, palNum);
