@@ -2617,3 +2617,7 @@
 	.macro handlebrave
 	callnative BS_HandleBrave
 	.endm
+
+	.macro saveapforbatonpass
+	callnative BS_SaveAPForBatonPass
+	.endm

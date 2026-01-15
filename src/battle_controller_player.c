@@ -915,7 +915,7 @@ void HandleInputChooseMove(u32 battler)
                     targetToUse = 0;
             }
             BraveAddMoveToQueue(battler, gMoveSelectionCursor[battler], targetToUse);
-            if (BraveGetBattlerActionCount(battler) == 4 || gBattleMons[battler].moves[gMoveSelectionCursor[battler]] == MOVE_STOCKPILE)
+            if (BraveGetBattlerActionCount(battler) == 4 || gBattleMons[battler].moves[gMoveSelectionCursor[battler]] == MOVE_STOCKPILE || gBattleMons[battler].moves[gMoveSelectionCursor[battler]] == MOVE_BATON_PASS)
             {
                 gBattleStruct->isBraveSelector = FALSE;
                 PlayerBufferExecCompleted(battler);

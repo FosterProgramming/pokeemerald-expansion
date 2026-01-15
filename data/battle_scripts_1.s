@@ -4415,6 +4415,7 @@ BattleScript_EffectBatonPass::
 	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_ButItFailed
 	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_ButItFailed
 	attackanimation
+	saveapforbatonpass
 	waitanimation
 	openpartyscreen BS_ATTACKER, BattleScript_ButItFailed
 	switchoutabilities BS_ATTACKER
@@ -4429,6 +4430,7 @@ BattleScript_EffectBatonPass::
 	printstring STRINGID_SWITCHINMON
 	switchinanim BS_ATTACKER, FALSE, TRUE
 	waitstate
+	handlebrave
 	switchineffects BS_ATTACKER
 	goto BattleScript_MoveEnd
 
