@@ -2613,3 +2613,7 @@
 	.macro tryactivatevalor battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_VALOR
 	.endm
+
+	.macro handlebrave
+	callnative BS_HandleBrave
+	.endm

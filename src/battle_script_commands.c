@@ -19363,3 +19363,15 @@ void BS_DefaultProtect(void)
     MgbaPrintf(MGBA_LOG_WARN, "Executing Default: %u", battler);
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
+void BS_HandleBrave(void)
+{
+    NATIVE_ARGS();
+    u32 battler = gBattlerAttacker;
+    struct Pokemon *party = GetBattlerParty(battler);
+    struct Pokemon *mon = &party[gBattlerPartyIndexes[battler]];
+    SetActiveGimmick(battler, GIMMICK_MEGA);
+    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_ALL);
+    ChangeAPGraphics(battler);
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
