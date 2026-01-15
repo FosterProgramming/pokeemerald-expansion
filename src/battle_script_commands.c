@@ -4975,6 +4975,27 @@ static void Cmd_dofaintanimation(void)
             BraveClearBattlerAction(battler, i);
     }
 
+    //  Check if item actions now has illegal targets
+    for (u32 i = 0; i < 4; i++)
+    {
+        for (u32 j = 0; j < 4; j++)
+        {
+            if (gBraveBattleAction[i][j].isSlotUsed && gBraveBattleAction[i][j].action == B_ACTION_USE_ITEM)
+            {
+                u32 target = gBraveBattleAction[i][j].target;
+                u32 hp;
+                if (i == 0 || i == 2)
+                    hp = GetMonData(&gPlayerParty[target], MON_DATA_HP);
+                else
+                    hp = GetMonData(&gEnemyParty[target], MON_DATA_HP);
+
+                if (hp == 0)
+                    BraveClearBattlerAction(i, j);
+            }
+        }
+    }
+    AreAllBattlersDone();
+
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
     {
         BattleScriptPushCursor();

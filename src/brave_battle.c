@@ -376,8 +376,6 @@ void BraveSetCurrentAction(void)
                 break;
             }
         }
-
-        DebugPrintf("Battler to move: %u", battlerToMove);
     }
 
     AreAllBattlersDone();
