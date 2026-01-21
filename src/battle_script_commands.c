@@ -16849,17 +16849,14 @@ void Seel_HandleCaughtFlag(void)
 
     GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_SEEN_COUNT);
 
+    gBattlescriptCurrInstr = cmd->nextInstr;
     if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
-    {
-        gBattlescriptCurrInstr = cmd->nextInstr;
         return;
-    }
 
     if (11 <= (u8) GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_CHECK_SEEN_COUNT))   //Its 11 Not 10 Because of the Initial Seen +1, The other 10 Are KOs
     {
         HandleSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT, personality);
         gBattleScripting.battler = battlerId;
-        gBattlescriptCurrInstr = cmd->nextInstr;
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_DataAddedToDex;
     }
