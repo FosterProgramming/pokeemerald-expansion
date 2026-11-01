@@ -20,8 +20,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_EnterRoom::
 	goto_if_eq VAR_0x8006, 1, BattleFrontier_BattleDomePreBattleRoom_EventScript_ReturnFromBattle
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, TRUE
 	setvar VAR_TEMP_0, 1
-	applymovement LOCALID_PLAYER, BattleFrontier_BattleDomePreBattleRoom_Movement_PlayerEnter
-	waitmovement 0
+	applywaitmovement LOCALID_PLAYER, BattleFrontier_BattleDomePreBattleRoom_Movement_PlayerEnter
 	lockall
 BattleFrontier_BattleDomePreBattleRoom_EventScript_AskReadyForNextRound::
 	call BattleFrontier_BattleDomePreBattleRoom_EventScript_ReadyForNextRoundMessage
@@ -140,7 +139,6 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_ContinueChallenge::
 	copyvar VAR_0x8004, VAR_RESULT
 	setvar VAR_0x8005, DOME_BATTLE_PARTY_SIZE  @ 2 of the 3 party mons are selected for battle
 	special ChoosePartyForBattleFrontier
-	waitstate
 	frontier_resetsketch
 	goto_if_eq VAR_RESULT, 0, BattleFrontier_BattleDomePreBattleRoom_EventScript_AskReadyForNextRound
 	dome_set DOME_DATA_SELECTED_MONS
@@ -148,14 +146,11 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_ContinueChallenge::
 	dome_setopponent
 	msgbox BattleFrontier_BattleDomePreBattleRoom_Text_RightThisWay, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_DOME_PRE_BATTLE_ATTENDANT, BattleFrontier_BattleDomePreBattleRoom_Movement_AttendantMoveAside
-	waitmovement 0
-	applymovement LOCALID_PLAYER, BattleFrontier_BattleDomePreBattleRoom_Movement_PlayerWalkToDoor
-	waitmovement 0
+	applywaitmovement LOCALID_DOME_PRE_BATTLE_ATTENDANT, BattleFrontier_BattleDomePreBattleRoom_Movement_AttendantMoveAside
+	applywaitmovement LOCALID_PLAYER, BattleFrontier_BattleDomePreBattleRoom_Movement_PlayerWalkToDoor
 	opendoor 5, 1
 	waitdooranim
-	applymovement LOCALID_PLAYER, BattleFrontier_BattleDomePreBattleRoom_Movement_PlayerEnterDoor
-	waitmovement 0
+	applywaitmovement LOCALID_PLAYER, BattleFrontier_BattleDomePreBattleRoom_Movement_PlayerEnterDoor
 	closedoor 5, 1
 	waitdooranim
 	warp MAP_BATTLE_FRONTIER_BATTLE_DOME_BATTLE_ROOM, 9, 5

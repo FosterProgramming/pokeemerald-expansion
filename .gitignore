@@ -13,6 +13,9 @@
 *.8bpp
 *.gbapal
 *.lz
+*.smol
+*.fastSmol
+*.smolTM
 *.rl
 *.latfont
 *.hwjpnfont
@@ -20,6 +23,7 @@
 sound/**/*.bin
 sound/songs/midi/*.s
 tools/agbcc
+tools/compresSmol/
 *.map
 *.bat
 *.dump
@@ -40,6 +44,7 @@ prefabs.json
 *.js
 /pokeemerald-*.png
 /pokeemerald_modern-*.png
+.porydaw/
 data/layouts/**/*.bin
 data/tilesets/primary/**/*.bin
 data/tilesets/secondary/**/*.bin

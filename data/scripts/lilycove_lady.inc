@@ -67,7 +67,6 @@ LilycoveCity_PokemonCenter_1F_EventScript_ChooseFavorItem::
 	fadescreen FADE_TO_BLACK
 	setvar VAR_RESULT, 0
 	special Script_FavorLadyOpenBagMenu
-	waitstate
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_PokemonCenter_1F_EventScript_AskQuitChooseFavorItem
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_PokemonCenter_1F_EventScript_GiveFavorItem
 	end
@@ -189,13 +188,11 @@ LilycoveCity_PokemonCenter_1F_EventScript_CheckQuizTakingState::
 
 LilycoveCity_PokemonCenter_1F_EventScript_ShowQuestion::
 	special QuizLadyShowQuizQuestion
-	waitstate
 	goto LilycoveCity_PokemonCenter_1F_EventScript_CheckQuizTakingState
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_GetAnswer::
 	special QuizLadyGetPlayerAnswer
-	waitstate
 	goto LilycoveCity_PokemonCenter_1F_EventScript_CheckQuizTakingState
 	end
 
@@ -287,7 +284,6 @@ LilycoveCity_PokemonCenter_1F_EventScript_PickPrize::
 	fadescreen FADE_TO_BLACK
 	setvar VAR_RESULT, 0
 	special Script_QuizLadyOpenBagMenu
-	waitstate
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_PokemonCenter_1F_EventScript_AskQuitChoosingPrize
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_PokemonCenter_1F_EventScript_WriteQuiz
 	end
@@ -306,7 +302,6 @@ LilycoveCity_PokemonCenter_1F_EventScript_WriteQuiz::
 LilycoveCity_PokemonCenter_1F_EventScript_WriteQuizQuestion::
 	fadescreen FADE_TO_BLACK
 	special QuizLadySetCustomQuestion
-	waitstate
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_PokemonCenter_1F_EventScript_AskQuitWritingQuizQuestion
 	goto LilycoveCity_PokemonCenter_1F_EventScript_FinishMakingQuiz
 	end
@@ -364,7 +359,6 @@ LilycoveCity_PokemonCenter_1F_EventScript_DeclineGivePokeblock::
 LilycoveCity_PokemonCenter_1F_EventScript_ChoosePokeblock::
 	fadescreen FADE_TO_BLACK
 	special OpenPokeblockCaseForContestLady
-	waitstate
 	goto_if_eq VAR_RESULT, 0xFFFF, LilycoveCity_PokemonCenter_1F_EventScript_AskQuitGivingPokeblock
 	goto_if_ne VAR_RESULT, 0xFFFF, LilycoveCity_PokemonCenter_1F_EventScript_GivePokeblock
 	end
@@ -384,11 +378,9 @@ LilycoveCity_PokemonCenter_1F_EventScript_GivePokeblock::
 
 @ VAR_0x8004 here is the return value from GivePokeblockToContestLady
 LilycoveCity_PokemonCenter_1F_EventScript_FeedPokeblock::
-	applymovement LOCALID_LILYCOVE_LADY, LilycoveCity_PokemonCenter_1F_Movement_LadyFaceMon
-	waitmovement 0
+	applywaitmovement LOCALID_LILYCOVE_LADY, LilycoveCity_PokemonCenter_1F_Movement_LadyFaceMon
 	delay 60
-	applymovement LOCALID_LILYCOVE_LADYS_MON, LilycoveCity_PokemonCenter_1F_Movement_MonFaceLady
-	waitmovement 0
+	applywaitmovement LOCALID_LILYCOVE_LADYS_MON, LilycoveCity_PokemonCenter_1F_Movement_MonFaceLady
 	delay 60
 	waitse
 	playmoncry VAR_0x8005, CRY_MODE_NORMAL
@@ -400,12 +392,10 @@ LilycoveCity_PokemonCenter_1F_EventScript_FeedPokeblock::
 
 @ VAR_0x8004 here is the return value from GivePokeblockToContestLady
 LilycoveCity_PokemonCenter_1F_EventScript_MonEnjoyPokeblock::
-	applymovement LOCALID_LILYCOVE_LADYS_MON, LilycoveCity_PokemonCenter_1F_Movement_MonJump
-	waitmovement 0
+	applywaitmovement LOCALID_LILYCOVE_LADYS_MON, LilycoveCity_PokemonCenter_1F_Movement_MonJump
 	delay 60
 LilycoveCity_PokemonCenter_1F_EventScript_FinishFeedPokeblock::
-	applymovement LOCALID_LILYCOVE_LADY, LilycoveCity_PokemonCenter_1F_Movement_LadyFacePlayer
-	waitmovement 0
+	applywaitmovement LOCALID_LILYCOVE_LADY, LilycoveCity_PokemonCenter_1F_Movement_LadyFacePlayer
 	delay 60
 	goto_if_eq VAR_0x8004, 0, LilycoveCity_PokemonCenter_1F_EventScript_MonDislikedPokeblock
 	goto_if_eq VAR_0x8004, 1, LilycoveCity_PokemonCenter_1F_EventScript_MonLikedPokeblock

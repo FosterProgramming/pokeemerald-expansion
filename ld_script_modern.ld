@@ -3,12 +3,7 @@ ENTRY(Start)
 gNumMusicPlayers = 4;
 gMaxLines = 0;
 
-MEMORY
-{
-    EWRAM (rwx) : ORIGIN = 0x2000000, LENGTH = 256K
-    IWRAM (rwx) : ORIGIN = 0x3000000, LENGTH = 32K
-    ROM    (rx) : ORIGIN = 0x8000000, LENGTH = 32M
-}
+INCLUDE "memory.ld"
 
 SECTIONS {
 
@@ -149,6 +144,9 @@ SECTIONS {
     .debug_str      0 : { *(.debug_str) }
     .debug_loc      0 : { *(.debug_loc) }
     .debug_macinfo  0 : { *(.debug_macinfo) }
+
+    /* DWARF 5*/
+    .debug_line_str     0 : { *(.debug_line_str) }
 
     /* Discard everything not specifically mentioned above. */
     /DISCARD/ :

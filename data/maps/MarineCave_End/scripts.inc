@@ -24,10 +24,8 @@ MarineCave_End_EventScript_ShowKyogre::
 
 MarineCave_End_EventScript_Kyogre::
 	lockall
-	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	applymovement LOCALID_MARINE_CAVE_KYOGRE, MarineCave_End_Movement_KyogreApproach
-	waitmovement 0
+	applywaitmovement LOCALID_PLAYER, Common_Movement_FaceUp
+	applywaitmovement LOCALID_MARINE_CAVE_KYOGRE, MarineCave_End_Movement_KyogreApproach
 	waitse
 	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
 	delay 40
@@ -36,7 +34,6 @@ MarineCave_End_EventScript_Kyogre::
 	setwildbattle SPECIES_KYOGRE, 70
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
-	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	setvar VAR_TEMP_1, 0
 	specialvar VAR_RESULT, GetBattleOutcome

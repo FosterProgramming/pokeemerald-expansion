@@ -42,7 +42,6 @@ BirthIsland_Exterior_EventScript_Triangle::
 	lock
 	faceplayer
 	special DoDeoxysRockInteraction
-	waitstate
 	switch VAR_RESULT
 	case DEOXYS_ROCK_FAILED,     BirthIsland_Exterior_EventScript_Failed
 	case DEOXYS_ROCK_PROGRESSED, BirthIsland_Exterior_EventScript_Progressed
@@ -74,8 +73,7 @@ BirthIsland_Exterior_EventScript_Deoxys::
 	playbgm MUS_RG_ENCOUNTER_DEOXYS, FALSE
 	waitfieldeffect FLDEFF_DESTROY_DEOXYS_ROCK
 	addobject LOCALID_BIRTH_ISLAND_DEOXYS
-	applymovement LOCALID_BIRTH_ISLAND_DEOXYS, BirthIsland_Exterior_Movement_DeoxysApproach
-	waitmovement 0
+	applywaitmovement LOCALID_BIRTH_ISLAND_DEOXYS, BirthIsland_Exterior_Movement_DeoxysApproach
 	waitse
 	playmoncry SPECIES_DEOXYS, CRY_MODE_ENCOUNTER
 	delay 40
@@ -84,7 +82,6 @@ BirthIsland_Exterior_EventScript_Deoxys::
 	seteventmon SPECIES_DEOXYS, 30
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
-	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, BirthIsland_Exterior_EventScript_DefeatedDeoxys

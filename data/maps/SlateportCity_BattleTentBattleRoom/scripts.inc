@@ -42,14 +42,12 @@ SlateportCity_BattleTentBattleRoom_OnFrame:
 	.2byte 0
 
 SlateportCity_BattleTentBattleRoom_EventScript_EnterRoom::
-	applymovement LOCALID_SLATEPORT_TENT_BATTLE_PLAYER, SlateportCity_BattleTentBattleRoom_Movement_PlayerEnter
-	waitmovement 0
+	applywaitmovement LOCALID_SLATEPORT_TENT_BATTLE_PLAYER, SlateportCity_BattleTentBattleRoom_Movement_PlayerEnter
 	factory_setopponentgfx
 	setobjectxyperm LOCALID_SLATEPORT_TENT_BATTLE_OPPONENT, 5, 1
 	removeobject LOCALID_SLATEPORT_TENT_BATTLE_OPPONENT
 	addobject LOCALID_SLATEPORT_TENT_BATTLE_OPPONENT
-	applymovement LOCALID_SLATEPORT_TENT_BATTLE_OPPONENT, SlateportCity_BattleTentBattleRoom_Movement_OpponentEnter
-	waitmovement 0
+	applywaitmovement LOCALID_SLATEPORT_TENT_BATTLE_OPPONENT, SlateportCity_BattleTentBattleRoom_Movement_OpponentEnter
 	battletent_getopponentintro
 	lockall
 	msgbox gStringVar4, MSGBOX_DEFAULT
@@ -59,7 +57,6 @@ SlateportCity_BattleTentBattleRoom_EventScript_EnterRoom::
 	setvar VAR_0x8004, SPECIAL_BATTLE_FACTORY
 	setvar VAR_0x8005, 0
 	special DoSpecialTrainerBattle
-	waitstate
 	switch VAR_RESULT
 	case 1, SlateportCity_BattleTentBattleRoom_EventScript_DefeatedOpponent
 SlateportCity_BattleTent_EventScript_WarpToLobbyLost::
