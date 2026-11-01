@@ -45,6 +45,7 @@ prefabs.json
 /pokeemerald-*.png
 /pokeemerald_modern-*.png
 .porydaw/
+# After we swap to generated binaries from json files we no longer track the binary files here since they can be regenerated
 data/layouts/**/*.bin
 data/tilesets/primary/**/*.bin
 data/tilesets/secondary/**/*.bin
