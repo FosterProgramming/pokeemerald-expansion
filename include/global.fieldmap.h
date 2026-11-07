@@ -1,15 +1,7 @@
 #ifndef GUARD_GLOBAL_FIELDMAP_H
 #define GUARD_GLOBAL_FIELDMAP_H
 
-// Masks/shifts for blocks in the map grid
-// Map grid blocks consist of a 10 bit metatile id, a 2 bit collision value, and a 4 bit elevation value
-// This is the data stored in each data/layouts/*/map.bin file
-#define MAPGRID_METATILE_ID_MASK 0x03FF // Bits 0-9
-#define MAPGRID_COLLISION_MASK   0x0C00 // Bits 10-11
-#define MAPGRID_ELEVATION_MASK   0xF000 // Bits 12-15
-#define MAPGRID_METATILE_ID_SHIFT 0
-#define MAPGRID_COLLISION_SHIFT  10
-#define MAPGRID_ELEVATION_SHIFT  12
+#include "fieldmap_constants.h"
 
 enum
 {
@@ -33,24 +25,12 @@ enum
 // When setting impassability manually GF sets all the collision bits
 #define MAPGRID_IMPASSABLE  MAPGRID_COLLISION_MASK
 
-// Masks/shifts for metatile attributes
-// Metatile attributes consist of an 8 bit behavior value, 4 unused bits, and a 4 bit layer type value
-// This is the data stored in each data/tilesets/*/*/metatile_attributes.bin file
-#define METATILE_ATTR_BEHAVIOR_MASK 0x00FF // Bits 0-7
-#define METATILE_ATTR_LAYER_MASK    0xF000 // Bits 12-15
-#define METATILE_ATTR_BEHAVIOR_SHIFT 0
-#define METATILE_ATTR_LAYER_SHIFT   12
+#define MB_INVALID   UCHAR_MAX
 
 #define PACK_BEHAVIOR(behavior) PACK(behavior, METATILE_ATTR_BEHAVIOR_SHIFT, METATILE_ATTR_BEHAVIOR_MASK)
 #define PACK_LAYER_TYPE(layerType) PACK(layerType, METATILE_ATTR_LAYER_SHIFT, METATILE_ATTR_LAYER_MASK)
 #define UNPACK_BEHAVIOR(data) UNPACK(data, METATILE_ATTR_BEHAVIOR_SHIFT, METATILE_ATTR_BEHAVIOR_MASK)
 #define UNPACK_LAYER_TYPE(data) UNPACK(data, METATILE_ATTR_LAYER_SHIFT, METATILE_ATTR_LAYER_MASK)
-
-enum {
-    METATILE_LAYER_TYPE_NORMAL,  // Metatile uses middle and top bg layers
-    METATILE_LAYER_TYPE_COVERED, // Metatile uses bottom and middle bg layers
-    METATILE_LAYER_TYPE_SPLIT,   // Metatile uses bottom and top bg layers
-};
 
 #define METATILE_ID(tileset, name) (METATILE_##tileset##_##name)
 

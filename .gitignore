@@ -45,6 +45,8 @@ prefabs.json
 /pokeemerald-*.png
 /pokeemerald_modern-*.png
 .porydaw/
+include/fieldmap_constants.h
+include/constants/metatile_behaviors.h
 # After we swap to generated binaries from json files we no longer track the binary files here since they can be regenerated
 data/layouts/**/*.bin
 data/tilesets/primary/**/*.bin

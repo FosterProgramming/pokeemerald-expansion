@@ -1,6 +1,23 @@
 {
-    "size": 16,
-    "attributes": {"behavior": "0x00ff", "layer": "0xf000"},
+    "constants": {
+        "NUM_TILES_IN_PRIMARY": 512,
+        "NUM_TILES_TOTAL": 1024,
+        "NUM_METATILES_IN_PRIMARY": 512,
+        "NUM_PALS_IN_PRIMARY": 6,
+        "NUM_PALS_TOTAL": 13,
+        "NUM_TILES_PER_METATILE": 8,
+        "MAX_METATILE_BEHAVIORS": 240
+    },
+    "mapgrid_properties":{
+        "metatile_id": "0x03ff",
+        "collision": "0x0c00",
+        "elevation": "0xf000"
+    },
+    "attributes_size": 16,
+    "attributes": {
+        "behavior": "0x00ff",
+        "layer": "0xf000"
+    },
     "layer": [
         "METATILE_LAYER_TYPE_NORMAL",
         "METATILE_LAYER_TYPE_COVERED",
@@ -146,7 +163,7 @@
         "MB_BRIDGE_OVER_POND_MED_EDGE_2",
         "MB_BRIDGE_OVER_POND_HIGH_EDGE_1",
         "MB_BRIDGE_OVER_POND_HIGH_EDGE_2",
-        null,
+        "MB_UNUSED_BRIDGE",
         "MB_BIKE_BRIDGE_OVER_BARRIER",
         "MB_COUNTER",
         null,
