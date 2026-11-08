@@ -38,7 +38,7 @@ nlohmann::ordered_json createMetatileJson(nlohmann::ordered_json schema, std::st
 
     json["metatiles"] = nlohmann::ordered_json::array();
     uint32_t temp_var = 0;
-    std::cout << "ratio: " << attribute_byte_size << "\n";
+    //std::cout << "ratio: " << attribute_byte_size << "\n";
     for (int i = 0; i < metatiles_count; i++)
     {
         temp_var = 0;
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
         folder_paths.emplace_back(std::filesystem::path(argv[i]));
     }
 
-    std::filesystem::path path{"metatile_attributes_schema.json"};
+    std::filesystem::path path{"fieldmap_schema.json"};
     std::ifstream json_stream(path);
     nlohmann::ordered_json schema_json = nlohmann::json::parse(json_stream);
 

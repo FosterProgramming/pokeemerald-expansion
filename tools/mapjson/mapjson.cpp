@@ -24,6 +24,8 @@ using std::ostringstream;
 #include <limits>
 using std::numeric_limits;
 
+#include <filesystem>
+
 #include "json11.h"
 using json11::Json;
 
@@ -595,29 +597,8 @@ string generate_layout_headers_text(Json layouts_data) {
 
     text << get_generated_warning("data/layouts/layouts.json", true);
 
-    for (auto &layout : layouts_data["layouts"].array_items()) {
-        if (layout == Json::object()) continue;
-        string layoutName = json_to_string(layout, "name");
-        string border_label = layoutName + "_Border";
-        string blockdata_label = layoutName + "_Blockdata";
-        text << border_label << "::\n"
-             << "\t.incbin \"" << json_to_string(layout, "border_filepath") << "\"\n\n"
-             << blockdata_label << "::\n"
-             << "\t.incbin \"" << json_to_string(layout, "blockdata_filepath") << "\"\n\n"
-             << "\t.align 2\n"
-             << layoutName << "::\n"
-             << "\t.4byte " << json_to_string(layout, "width") << "\n"
-             << "\t.4byte " << json_to_string(layout, "height") << "\n"
-             << "\t.4byte " << border_label << "\n"
-             << "\t.4byte " << blockdata_label << "\n"
-             << "\t.4byte " << json_to_string(layout, "primary_tileset") << "\n"
-             << "\t.4byte " << json_to_string(layout, "secondary_tileset") << "\n";
-        if (version == "firered") {
-            text << "\t.byte " << json_to_string(layout, "border_width") << "\n"
-                 << "\t.byte " << json_to_string(layout, "border_height") << "\n"
-                 << "\t.2byte 0\n";
-        }
-        text << "\n";
+     for (auto &layout : layouts_data.array_items()) {
+        text << ".include \"" << layout.string_value() << "/layout.inc\"\n";
     }
 
     return text.str();
@@ -629,11 +610,20 @@ string generate_layouts_table_text(Json layouts_data) {
     text << get_generated_warning("data/layouts/layouts.json", true);
 
     text << "\t.align 2\n"
-         << json_to_string(layouts_data, "layouts_table_label") << "::\n";
+         << "gMapLayouts::\n";
 
-    for (auto &layout : layouts_data["layouts"].array_items()) {
-        string layout_name = json_to_string(layout, "name", true);
-        if (layout_name.empty()) layout_name = "NULL";
+    for (auto &layout : layouts_data.array_items()) {
+        std::filesystem::path layout_path = layout.string_value();
+        string layout_name = "";
+        int i = 0;
+        for (auto it = layout_path.begin(); it != layout_path.end(); ++it)
+        {
+            string tmp = it->string();
+            if (i >= 2)
+                layout_name = layout_name + tmp + "_";
+            i++;
+        }
+        layout_name += "Layout";
         text << "\t.4byte " << layout_name << "\n";
     }
 
@@ -642,13 +632,15 @@ string generate_layouts_table_text(Json layouts_data) {
 
 string generate_layouts_constants_text(Json layouts_data) {
     string guard_name = "CONSTANTS_LAYOUTS";
+    string err;
     ostringstream text;
     text << get_include_guard_start(guard_name) << get_generated_warning("data/layouts/layouts.json", false);
 
     int i = 1;
-    for (auto &layout : layouts_data["layouts"].array_items()) {
-        if (layout != Json::object())
-            text << "#define " << json_to_string(layout, "id") << " " << i << "\n";
+    for (auto &layout : layouts_data.array_items()) {
+        std::filesystem::path layout_path = layout.string_value();
+        Json layout_data = Json::parse(read_text_file(layout_path / "layout.json"), err);
+        text << "#define " << json_to_string(layout_data, "id") << " " << i << "\n";
         i++;
     }
 
@@ -669,11 +661,11 @@ void process_layouts(string layouts_filepath, string output_asm, string output_c
 
     string layout_headers_text = generate_layout_headers_text(layouts_data);
     string layouts_table_text = generate_layouts_table_text(layouts_data);
-    string layouts_constants_text = generate_layouts_constants_text(layouts_data);
+    //string layouts_constants_text = generate_layouts_constants_text(layouts_data);
 
     write_text_file(output_asm + "layouts.inc", layout_headers_text);
     write_text_file(output_asm + "layouts_table.inc", layouts_table_text);
-    write_text_file(output_c + "layouts.h", layouts_constants_text);
+    //write_text_file(output_c + "layouts.h", layouts_constants_text);
 }
 
 int main(int argc, char *argv[]) {

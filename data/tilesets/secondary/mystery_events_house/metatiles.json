@@ -1,3496 +1,3687 @@
 {
-  "numMetatiles": 512,
-  "numTiles": 512,
-  "numPals": 7,
-  "numTilesInMetatile": 8,
-  "tilesMasks": {
-    "palette": "0xf000",
-    "tileId": "0x03ff",
-    "xflip": "0x0400",
-    "yflip": "0x0800"
-  },
   "metatiles": [
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 5,
           "tileId": 16,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 5,
           "tileId": 16,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 5,
           "tileId": 16,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 5,
           "tileId": 16,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 698,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 563,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 563,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 515,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 515,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 700,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 633,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 634,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 599,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 600,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_SOUTH_ARROW_WARP",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 8,
           "tileId": 517,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 518,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 517,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 8,
           "tileId": 518,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_SOUTH_ARROW_WARP",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 8,
           "tileId": 518,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 517,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 518,
-          "xflip": 1,
-          "yflip": 1
+          "xflip": true,
+          "yflip": true
         },
         {
           "palette": 8,
           "tileId": 517,
-          "xflip": 1,
-          "yflip": 1
+          "xflip": true,
+          "yflip": true
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_COUNTER",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 714,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 730,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NON_ANIMATED_DOOR",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 530,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 531,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 546,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 547,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_COUNTER",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 716,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 732,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 649,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 650,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 615,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 616,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 774,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 773,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 790,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 789,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 773,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 774,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 789,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 8,
           "tileId": 790,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 824,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 825,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 825,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 824,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 771,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 772,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 806,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 805,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 772,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 771,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 805,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 806,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NON_ANIMATED_DOOR",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 563,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 563,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 578,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 579,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 749,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 750,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 765,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 766,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 749,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 750,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 765,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 766,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 840,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 841,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 856,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 857,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 842,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 843,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 858,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 859,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 803,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 804,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 819,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 820,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 804,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 803,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 820,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 819,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 742,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 742,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 872,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 873,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 874,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 875,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 3,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 4,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 6,
           "tileId": 649,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 650,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 51,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 52,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 620,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 882,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 882,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 898,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 899,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 6,
           "tileId": 742,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 0,
-          "yflip": 1
+          "xflip": false,
+          "yflip": true
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 759,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 758,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 743,
-          "xflip": 1,
-          "yflip": 1
+          "xflip": true,
+          "yflip": true
         },
         {
           "palette": 6,
           "tileId": 742,
-          "xflip": 1,
-          "yflip": 1
+          "xflip": true,
+          "yflip": true
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 1,
-          "yflip": 0
+          "xflip": true,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 637,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 621,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 622,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 638,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 914,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 9,
           "tileId": 915,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 698,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 563,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 563,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 515,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 515,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 513,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 700,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NORMAL",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 0,
           "tileId": 0,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_COUNTER",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 714,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 730,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_NON_ANIMATED_DOOR",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 530,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 531,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 546,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 547,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     },
     {
+      "label": "",
+      "behavior": "MB_COUNTER",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
         {
           "palette": 6,
           "tileId": 716,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 528,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 6,
           "tileId": 732,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 7,
           "tileId": 636,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 717,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 718,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 733,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         },
         {
           "palette": 10,
           "tileId": 734,
-          "xflip": 0,
-          "yflip": 0
+          "xflip": false,
+          "yflip": false
         }
       ]
     }

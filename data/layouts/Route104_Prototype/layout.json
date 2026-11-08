@@ -1,0 +1,39 @@
+{
+  "id": "LAYOUT_ROUTE104_PROTOTYPE",
+  "name": "Route104_Prototype_Layout",
+  "primary_tileset": "gTileset_General",
+  "secondary_tileset": "gTileset_Rustboro",
+  "width": 1,
+  "height": 1,
+  "map": [
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 513
+    }
+  ],
+  "border_width": null,
+  "border_height": null,
+  "border": [
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 468
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 469
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 476
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 477
+    }
+  ]
+}

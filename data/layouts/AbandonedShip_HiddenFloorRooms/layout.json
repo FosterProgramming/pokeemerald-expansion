@@ -1,0 +1,3334 @@
+{
+  "id": "LAYOUT_ABANDONED_SHIP_HIDDEN_FLOOR_ROOMS",
+  "name": "AbandonedShip_HiddenFloorRooms_Layout",
+  "primary_tileset": "gTileset_General",
+  "secondary_tileset": "gTileset_InsideShip",
+  "width": 44,
+  "height": 15,
+  "map": [
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 566
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 661
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 611
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 662
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 567
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 566
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 661
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 687
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 662
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 567
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 566
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 661
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 611
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 662
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 567
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 669
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 663
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 670
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 669
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 695
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 670
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 583
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 582
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 669
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 663
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 670
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 616
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 570
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 527
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 535
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 565
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 665
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 666
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 591
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 590
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 570
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 615
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 665
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 666
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 682
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 683
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 606
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 607
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 610
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 672
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 674
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 572
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 610
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 672
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 674
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 598
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 599
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 683
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 606
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 607
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 683
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 598
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 599
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 610
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 606
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 607
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 682
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 566
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 567
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 566
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 567
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 566
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 551
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 567
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 559
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 570
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 615
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 565
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 570
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 570
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 615
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 665
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 666
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 571
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 598
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 599
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 610
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 682
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 683
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 598
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 599
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 672
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 674
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 606
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 607
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 606
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 607
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 683
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 598
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 599
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 682
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 612
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 613
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 682
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 606
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 607
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 612
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 613
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 574
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 573
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 608
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 1,
+      "elevation": 3,
+      "metatile_id": 610
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 612
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 613
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 568
+    },
+    {
+      "collision": 0,
+      "elevation": 3,
+      "metatile_id": 609
+    },
+    {
+      "collision": 1,
+      "elevation": 0,
+      "metatile_id": 575
+    }
+  ],
+  "border_width": null,
+  "border_height": null,
+  "border": [
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 513
+    },
+    {
+      "collision": 0,
+      "elevation": 0,
+      "metatile_id": 513
+    }
+  ]
+}

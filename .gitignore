@@ -49,5 +49,6 @@ include/fieldmap_constants.h
 include/constants/metatile_behaviors.h
 # After we swap to generated binaries from json files we no longer track the binary files here since they can be regenerated
 data/layouts/**/*.bin
+data/layouts/**/layout.inc
 data/tilesets/primary/**/*.bin
 data/tilesets/secondary/**/*.bin
