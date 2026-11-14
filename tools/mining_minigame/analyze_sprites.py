@@ -97,7 +97,7 @@ static const u32 sSpriteTileTable[][16] = {
         data = read_4bpp_file(image_binary)
         for tile in range(0, 16):
             analysed_sprite_data.append(IsTileTransparent(tile, data))
-        contents = contents + turn_analysed_data_into_string(analysed_sprite_data, "MININGID_" + item["id"])
+        contents = contents + turn_analysed_data_into_string(analysed_sprite_data, "MINING_ENTITY_" + item["id"])
         analysed_sprite_data = []
 
     contents = contents + "};\n"

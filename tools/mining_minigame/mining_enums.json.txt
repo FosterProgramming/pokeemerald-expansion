@@ -1,14 +1,14 @@
 {{ doNotModifyHeader }}
 enum MiningEntity
 {
-    MININGID_NONE,
+    MINING_ENTITY_NONE,
 ## for stone in stones
-    MININGID_{{ stone.id }},
+    MINING_ENTITY_{{ stone.id }},
 ## endfor
-    MININGID_STONE_START = MININGID_{{ first(stones).id }},
-    MINING_COUNT_ID_STONE = MININGID_{{ last(stones).id }},
+    MINING_ENTITY_STONE_START = MINING_ENTITY_{{ first(stones).id }},
+    MINING_ENTITY_STONE_LAST = MINING_ENTITY_{{ last(stones).id }},
 ## for item in items
-    MININGID_{{ item.id }},
+    MINING_ENTITY_{{ item.id }},
 ## endfor
 };
 

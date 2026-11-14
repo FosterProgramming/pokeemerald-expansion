@@ -99,10 +99,10 @@ static void Mining_FreeResources(void);
 static void Mining_UpdateStressLevel(void);
 static void Mining_UpdateTerrain(void);
 static void Mining_DrawRandomTerrain(void);
-static void DoDrawRandomItem(u32 itemStateId, enum MiningEntity miningId);
-static void DoDrawRandomStone(enum MiningEntity miningId);
-static bool32 DoesStoneFitInItemMap(enum MiningEntity miningId);
-static bool32 CanStoneBePlacedAtXY(u32 x, u32 y, enum MiningEntity miningId);
+static void DoDrawRandomItem(u32 itemStateId, enum MiningEntity miningEntity);
+static void DoDrawRandomStone(enum MiningEntity miningEntity);
+static bool32 DoesStoneFitInItemMap(enum MiningEntity miningEntity);
+static bool32 CanStoneBePlacedAtXY(u32 x, u32 y, enum MiningEntity miningEntity);
 static void Mining_CheckItemFound(void);
 static void PrintMessage(const u8 *string);
 static void InitMiningWindows(void);
@@ -112,14 +112,14 @@ static bool32 AreAllItemsFound(void);
 static u32 GetNumberOfFoundItems(void);
 static void WallCollapseAnimation();
 static u32 ConvertLoadGameStateToItemIndex(void);
-static void GetItemOrPrintError(u8 taskId, u32 itemIndex, enum Item miningId);
-static void CheckItemAndPrint(u8 taskId, u32 itemIndex, enum Item miningId);
+static void GetItemOrPrintError(u8 taskId, u32 itemIndex, enum Item miningEntity);
+static void CheckItemAndPrint(u8 taskId, u32 itemIndex, enum Item miningEntity);
 static void MakeCursorInvisible(void);
 static void HandleGameFinish(u8 taskId);
 static void PrintItemSuccess(enum Item itemId);
 static u32 GetTotalNumberOfBuriedItems(void);
 static void InitBuriedItems(void);
-static void SetBuriedItemsId(u32 index, enum MiningEntity miningId);
+static void SetBuriedItemsId(u32 index, enum MiningEntity miningEntity);
 static void SetBuriedItemStatus(u32 index, bool32 status);
 static enum Item GetBuriedBagItemId(u32 index);
 static bool32 GetBuriedItemStatus(u32 index);
@@ -137,7 +137,7 @@ struct MiningObject
 struct BuriedItem
 {
     enum Item itemId;
-    enum MiningEntity miningId;
+    enum MiningEntity miningEntity;
     bool32 isDugUp;
     bool32 isSelected;
     u32 buriedItemTileCount;
@@ -665,49 +665,49 @@ static const struct SpriteTemplate sSpriteHitPickaxe =
 
 static const enum MiningEntity sItemRarityTable_Common[] =
 {
-    MININGID_HEART_SCALE,
-    MININGID_RED_SHARD,
-    MININGID_BLUE_SHARD,
-    MININGID_YELLOW_SHARD,
-    MININGID_GREEN_SHARD,
+    MINING_ENTITY_HEART_SCALE,
+    MINING_ENTITY_RED_SHARD,
+    MINING_ENTITY_BLUE_SHARD,
+    MINING_ENTITY_YELLOW_SHARD,
+    MINING_ENTITY_GREEN_SHARD,
 };
 
 static const enum MiningEntity sItemRarityTable_Uncommon[] =
 {
-    MININGID_IRON_BALL,
-    MININGID_HARD_STONE,
-    MININGID_REVIVE,
-    MININGID_EVER_STONE,
+    MINING_ENTITY_IRON_BALL,
+    MINING_ENTITY_HARD_STONE,
+    MINING_ENTITY_REVIVE,
+    MINING_ENTITY_EVER_STONE,
 };
 
 static const enum MiningEntity sItemRarityTable_Rare[] =
 {
-    MININGID_STAR_PIECE,
-    MININGID_DAMP_ROCK,
-    MININGID_HEAT_ROCK,
-    MININGID_REVIVE_MAX,
-    MININGID_OVAL_STONE,
-    MININGID_LIGHT_CLAY,
-    MININGID_ICY_ROCK,
-    MININGID_SMOOTH_ROCK,
-    MININGID_LEAF_STONE,
-    MININGID_FIRE_STONE,
-    MININGID_WATER_STONE,
-    MININGID_THUNDER_STONE,
-    MININGID_MOON_STONE,
-    MININGID_SUN_STONE,
-    MININGID_ODD_KEY_STONE,
-    MININGID_SKULL_FOSSIL,
-    MININGID_ARMOR_FOSSIL,
+    MINING_ENTITY_STAR_PIECE,
+    MINING_ENTITY_DAMP_ROCK,
+    MINING_ENTITY_HEAT_ROCK,
+    MINING_ENTITY_REVIVE_MAX,
+    MINING_ENTITY_OVAL_STONE,
+    MINING_ENTITY_LIGHT_CLAY,
+    MINING_ENTITY_ICY_ROCK,
+    MINING_ENTITY_SMOOTH_ROCK,
+    MINING_ENTITY_LEAF_STONE,
+    MINING_ENTITY_FIRE_STONE,
+    MINING_ENTITY_WATER_STONE,
+    MINING_ENTITY_THUNDER_STONE,
+    MINING_ENTITY_MOON_STONE,
+    MINING_ENTITY_SUN_STONE,
+    MINING_ENTITY_ODD_KEY_STONE,
+    MINING_ENTITY_SKULL_FOSSIL,
+    MINING_ENTITY_ARMOR_FOSSIL,
 };
 
-static u32 MiningUtil_GetTotalTileAmount(enum MiningEntity miningId)
+static u32 MiningUtil_GetTotalTileAmount(enum MiningEntity miningEntity)
 {
     u32 result = 0;
 
     for (u32 i = 0; i < 16; i++)
     {
-        if (sSpriteTileTable[miningId][i] == TRUE)
+        if (sSpriteTileTable[miningEntity][i] == TRUE)
             result++;
     }
     if (result == 0)
@@ -716,7 +716,7 @@ static u32 MiningUtil_GetTotalTileAmount(enum MiningEntity miningId)
     return result;
 }
 
-static u32 MiningUtil_GetLeftValue(enum MiningEntity miningId)
+static u32 MiningUtil_GetLeftValue(enum MiningEntity miningEntity)
 {
     u32 left = 0;
 
@@ -724,7 +724,7 @@ static u32 MiningUtil_GetLeftValue(enum MiningEntity miningId)
     {
         for (u32 y = 0; y < 4; y++)
         {
-            if (sSpriteTileTable[miningId][x + y * 4] == TRUE)
+            if (sSpriteTileTable[miningEntity][x + y * 4] == TRUE)
             {
                 left++;
                 break;
@@ -735,7 +735,7 @@ static u32 MiningUtil_GetLeftValue(enum MiningEntity miningId)
     return left - 1;
 }
 
-static u32 MiningUtil_GetTopValue(enum MiningEntity miningId)
+static u32 MiningUtil_GetTopValue(enum MiningEntity miningEntity)
 {
     u32 top = 0;
 
@@ -743,7 +743,7 @@ static u32 MiningUtil_GetTopValue(enum MiningEntity miningId)
     {
         for (u32 x = 0; x < 4; x++)
         {
-            if (sSpriteTileTable[miningId][x + y * 4] == TRUE)
+            if (sSpriteTileTable[miningEntity][x + y * 4] == TRUE)
             {
                 top++;
                 break;
@@ -1149,7 +1149,7 @@ static enum MiningEntity GetRandomMiningItem(void)
     u32 index;
     u32 rnd = Random() % 7;
     enum ItemRarity rarity;
-    enum MiningEntity itemId = MININGID_NONE;
+    enum MiningEntity itemId = MINING_ENTITY_NONE;
 
     if (rnd < 4)
         rarity = RARITY_COMMON;
@@ -1179,7 +1179,7 @@ static enum MiningEntity GetRandomMiningItem(void)
 
 static void InitItemsIfSelected(u32 buriedItemIndex)
 {
-    enum MiningEntity miningId = MININGID_NONE;
+    enum MiningEntity miningEntity = MINING_ENTITY_NONE;
     if (sMiningUiState->buriedItems[buriedItemIndex].isSelected)
     {
         if (MINING_DEBUG_ENABLE && MINING_DEBUG_ENABLE_ITEM_GENERATION_OPTIONS)
@@ -1187,25 +1187,25 @@ static void InitItemsIfSelected(u32 buriedItemIndex)
             switch (buriedItemIndex)
             {
             case 0:
-                miningId = MINING_DEBUG_MININGID_ITEM1;
+                miningEntity = MINING_DEBUG_MININGID_ITEM1;
                 break;
             case 1:
-                miningId = MINING_DEBUG_MININGID_ITEM2;
+                miningEntity = MINING_DEBUG_MININGID_ITEM2;
                 break;
             case 2:
-                miningId = MINING_DEBUG_MININGID_ITEM3;
+                miningEntity = MINING_DEBUG_MININGID_ITEM3;
                 break;
             case 3:
-                miningId = MINING_DEBUG_MININGID_ITEM4;
+                miningEntity = MINING_DEBUG_MININGID_ITEM4;
                 break;
             }
         }
         else
         {
-            miningId = GetRandomMiningItem();
+            miningEntity = GetRandomMiningItem();
         }
-        SetBuriedItemsId(buriedItemIndex, miningId);
-        DoDrawRandomItem(buriedItemIndex + 1, miningId);
+        SetBuriedItemsId(buriedItemIndex, miningEntity);
+        DoDrawRandomItem(buriedItemIndex + 1, miningEntity);
     }
 }
 
@@ -1237,7 +1237,7 @@ static void Mining_LoadSpriteGraphics(void)
         for (u32 i = 0; i < MINING_NUM_BURIED_STONES; i++)
         {
             do {
-                stone = RandomUniform(RNG_NONE, MININGID_STONE_START, MINING_COUNT_ID_STONE);
+                stone = RandomUniform(RNG_NONE, MINING_ENTITY_STONE_START, MINING_ENTITY_STONE_LAST);
             } while (!DoesStoneFitInItemMap(stone));
             DoDrawRandomStone(stone);
         }
@@ -1590,15 +1590,15 @@ static void Terrain_DrawLayerTileToScreen(u32 x, u32 y, u32 layer, u16 *ptr)
     }
 }
 
-static void DrawItemSprite(u32 x, u32 y, enum MiningEntity miningId, u32 itemNumPalTag, u32 itemStateId)
+static void DrawItemSprite(u32 x, u32 y, enum MiningEntity miningEntity, u32 itemNumPalTag, u32 itemStateId)
 {
     u32 posX = 16 * x;
     u32 posY = 16 * (y + STRESS_LEVEL_OFFSET);
 
-    LoadSpritePalette(sMiningObjectList[miningId].palette);
-    LoadCompressedSpriteSheet(sMiningObjectList[miningId].sheet);
-    u32 spriteId = CreateSprite(sMiningObjectList[miningId].template, posX + MINING_POS_OFFS_64X64, posY + MINING_POS_OFFS_64X64, 3);
-    if (miningId > MINING_COUNT_ID_STONE)
+    LoadSpritePalette(sMiningObjectList[miningEntity].palette);
+    LoadCompressedSpriteSheet(sMiningObjectList[miningEntity].sheet);
+    u32 spriteId = CreateSprite(sMiningObjectList[miningEntity].template, posX + MINING_POS_OFFS_64X64, posY + MINING_POS_OFFS_64X64, 3);
+    if (miningEntity > MINING_ENTITY_STONE_LAST)
         sMiningUiState->buriedItems[itemStateId].spriteId = spriteId;
 }
 
@@ -1608,35 +1608,35 @@ static void SetItemState(u32 posX, u32 posY, u32 x, u32 y, u32 itemStateId)
     sMiningUiState->itemMap[posX + x + (posY + y) * 12] = itemStateId;
 }
 
-static void OverwriteItemMapData(u32 posX, u32 posY, u32 itemStateId, enum MiningEntity miningId)
+static void OverwriteItemMapData(u32 posX, u32 posY, u32 itemStateId, enum MiningEntity miningEntity)
 {
     for (u32 x = 0; x < 4; x++)
     {
         for (u32 y = 0; y < 4; y++)
         {
-            if (sSpriteTileTable[miningId][x + y * 4] == 1)
+            if (sSpriteTileTable[miningEntity][x + y * 4] == 1)
                 SetItemState(posX, posY, x, y, itemStateId);
         }
     }
 }
 
 // Defines && Macros
-#define BORDERCHECK_COND(miningId) posX + MiningUtil_GetLeftValue(miningId) > xBorder \
-                              || posY + MiningUtil_GetTopValue(miningId) > yBorder
+#define BORDERCHECK_COND(miningEntity) posX + MiningUtil_GetLeftValue(miningEntity) > xBorder \
+                              || posY + MiningUtil_GetTopValue(miningEntity) > yBorder
 #define IGNORE_COORDS 255
 
-static bool32 CheckIfItemCanBePlaced(enum MiningEntity miningId, u32 posX, u32 posY, u32 xBorder, u32 yBorder)
+static bool32 CheckIfItemCanBePlaced(enum MiningEntity miningEntity, u32 posX, u32 posY, u32 xBorder, u32 yBorder)
 {
     for (u32 i = 1; i <= 4; i++)
     {
-        if (BORDERCHECK_COND(miningId))
+        if (BORDERCHECK_COND(miningEntity))
             return FALSE; // If it cannot be placed, return false, that means that item placement should regenerate
     }
 
     return TRUE; // If it can be placed, return true
 }
 
-static void DoDrawRandomItem(u32 itemStateId, enum MiningEntity miningId)
+static void DoDrawRandomItem(u32 itemStateId, enum MiningEntity miningEntity)
 {
     u32 x, y, xMax, yMax, xMin, yMin;
     enum SpriteAndPaletteTag paletteTag;
@@ -1681,7 +1681,7 @@ static void DoDrawRandomItem(u32 itemStateId, enum MiningEntity miningId)
     {
         for (x = xMin; x <= xMax; x++)
         {
-            if (CheckIfItemCanBePlaced(miningId, x, y, xMax, yMax))
+            if (CheckIfItemCanBePlaced(miningEntity, x, y, xMax, yMax))
             {
                 validX[numValid] = x;
                 validY[numValid] = y;
@@ -1693,17 +1693,17 @@ static void DoDrawRandomItem(u32 itemStateId, enum MiningEntity miningId)
 
             u32 pick = RandomUniform(RNG_NONE, 0, numValid - 1);
 
-            DrawItemSprite(validX[pick], validY[pick], miningId, paletteTag, itemStateId - 1);
-            OverwriteItemMapData(validX[pick], validY[pick], itemStateId, miningId); // For the collection logic, overwrite the item map data
+            DrawItemSprite(validX[pick], validY[pick], miningEntity, paletteTag, itemStateId - 1);
+            OverwriteItemMapData(validX[pick], validY[pick], itemStateId, miningEntity); // For the collection logic, overwrite the item map data
             return;
         }
     }
 }
 
-static bool32 CanStoneBePlacedAtXY(u32 x, u32 y, enum MiningEntity miningId) // PSF magic
+static bool32 CanStoneBePlacedAtXY(u32 x, u32 y, enum MiningEntity miningEntity) // PSF magic
 {
-    u32 height = MiningUtil_GetTopValue(miningId) + 1;
-    u32 width =  MiningUtil_GetLeftValue(miningId) + 1;
+    u32 height = MiningUtil_GetTopValue(miningEntity) + 1;
+    u32 width =  MiningUtil_GetLeftValue(miningEntity) + 1;
 
     if (x + width > MINING_WALL_WIDTH)
         return FALSE;
@@ -1723,16 +1723,16 @@ static bool32 CanStoneBePlacedAtXY(u32 x, u32 y, enum MiningEntity miningId) // 
     return TRUE;
 }
 
-static bool32 DoesStoneFitInItemMap(enum MiningEntity miningId)
+static bool32 DoesStoneFitInItemMap(enum MiningEntity miningEntity)
 {
-    if (miningId == MININGID_NONE)
+    if (miningEntity == MINING_ENTITY_NONE)
         return FALSE;
 
     for (u32 coordX = 0; coordX < MINING_WALL_WIDTH; coordX++)
     {
         for (u32 coordY = 0; coordY < MINING_WALL_HEIGHT; coordY++)
         {
-            if (CanStoneBePlacedAtXY(coordX, coordY, miningId))
+            if (CanStoneBePlacedAtXY(coordX, coordY, miningEntity))
                 return TRUE;
         }
     }
@@ -1747,22 +1747,22 @@ static void GetRandomTile(u32 *x, u32 *y)
     *y = rand % MINING_WALL_HEIGHT;
 }
 
-static void DoDrawRandomStone(enum MiningEntity miningId)
+static void DoDrawRandomStone(enum MiningEntity miningEntity)
 {
     u32 x, y;
 
     do {
         GetRandomTile(&x, &y);
-    } while(!CanStoneBePlacedAtXY(x, y, miningId));
+    } while(!CanStoneBePlacedAtXY(x, y, miningEntity));
 
-    DrawItemSprite(x, y, miningId, TAG_DUMMY, ITEM_STATE_ID_NONE); // We use ITEM_STATE_ID_NONE because here, a stone is guaranteed
-    OverwriteItemMapData(x, y, ITEM_STATE_ID_STONE, miningId);
+    DrawItemSprite(x, y, miningEntity, TAG_DUMMY, ITEM_STATE_ID_NONE); // We use ITEM_STATE_ID_NONE because here, a stone is guaranteed
+    OverwriteItemMapData(x, y, ITEM_STATE_ID_STONE, miningEntity);
 }
 
 static void HandleItemState(u32 buriedItemIndex)
 {
     struct BuriedItem *item = &sMiningUiState->buriedItems[buriedItemIndex];
-    u32 tileCount = MiningUtil_GetTotalTileAmount(item->miningId);
+    u32 tileCount = MiningUtil_GetTotalTileAmount(item->miningEntity);
 
     if (item->isSelected && item->buriedItemTileCount < tileCount)
     {
@@ -2330,15 +2330,15 @@ static void InitBuriedItems(void)
 {
     for (u32 index = 0; index < MINING_MAX_NUM_BURIED_ITEMS; index++)
     {
-        SetBuriedItemsId(index, MININGID_NONE);
+        SetBuriedItemsId(index, MINING_ENTITY_NONE);
         SetBuriedItemStatus(index, FALSE);
     }
 }
 
-static void SetBuriedItemsId(u32 index, enum MiningEntity miningId)
+static void SetBuriedItemsId(u32 index, enum MiningEntity miningEntity)
 {
-    sMiningUiState->buriedItems[index].itemId = sMiningObjectList[miningId].itemId;
-    sMiningUiState->buriedItems[index].miningId = miningId;
+    sMiningUiState->buriedItems[index].itemId = sMiningObjectList[miningEntity].itemId;
+    sMiningUiState->buriedItems[index].miningEntity = miningEntity;
 }
 
 static void SetBuriedItemStatus(u32 index, bool32 status)

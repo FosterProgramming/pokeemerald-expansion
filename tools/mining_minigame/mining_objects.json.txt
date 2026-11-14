@@ -75,7 +75,7 @@ static const struct SpriteTemplate sSprite{{ item.label }} =
 
 static const struct MiningObject sMiningObjectList[] =
 {
-    [MININGID_NONE] =
+    [MINING_ENTITY_NONE] =
     {
         .itemId = ITEM_NONE,
         .tag = 0,
@@ -83,7 +83,7 @@ static const struct MiningObject sMiningObjectList[] =
         .palette = NULL,
     },
 ## for stone in stones
-    [MININGID_{{ stone.id }}] =
+    [MINING_ENTITY_{{ stone.id }}] =
     {
         .itemId = ITEM_NONE,
         .tag = MINING_TAG_{{ stone.id }},
@@ -93,7 +93,7 @@ static const struct MiningObject sMiningObjectList[] =
     },
 ## endfor
 ## for item in items
-    [MININGID_{{ item.id }}] =
+    [MINING_ENTITY_{{ item.id }}] =
     {
         .itemId = {{ item.item }},
         .tag = MINING_TAG_{{ item.id }},
