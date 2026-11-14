@@ -75,7 +75,7 @@ bool32 CanDynamax(enum BattlerId battler)
     enum Species species = GetBattlerVisualSpecies(battler);
     enum HoldEffect holdEffect = GetBattlerHoldEffectIgnoreNegation(battler);
 
-    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) && GetBattlerSide(battler) == B_SIDE_OPPONENT)
+    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) && !IsOnPlayerSide(battler))
         return FALSE;
 
     // Check if Player has a Dynamax Band.
