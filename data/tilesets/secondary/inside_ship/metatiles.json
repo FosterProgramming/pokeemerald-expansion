@@ -1431,7 +1431,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideShip_DoorIndent_Unlocked",
       "behavior": "MB_SOUTH_ARROW_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2366,7 +2366,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideShip_IntactDoor_Bottom_Unlocked",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2806,7 +2806,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideShip_IntactDoor_Bottom_Locked",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2861,7 +2861,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideShip_DoorIndent_Locked",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8306,7 +8306,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideShip_IntactDoor_Bottom_Interior",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

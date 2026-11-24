@@ -5446,7 +5446,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontierOutsideWest_Door_BattleFactory",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7591,7 +7591,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontierOutsideWest_Door_BattleDome",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -22331,7 +22331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontierOutsideWest_Door_Sliding",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -27941,7 +27941,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontierOutsideWest_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

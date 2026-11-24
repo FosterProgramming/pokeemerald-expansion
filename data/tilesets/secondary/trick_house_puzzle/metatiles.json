@@ -606,7 +606,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Stairs_Down",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3081,7 +3081,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Closed_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3136,7 +3136,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Closed_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3191,7 +3191,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorV_Open0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3246,7 +3246,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Closed_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3301,7 +3301,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Closed_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3356,7 +3356,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorV_Open0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3411,7 +3411,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Lever_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3466,7 +3466,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Lever_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3521,7 +3521,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Closed_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3576,7 +3576,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Closed_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3631,7 +3631,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorV_Open1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3686,7 +3686,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Closed_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3741,7 +3741,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Closed_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3796,7 +3796,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorV_Open1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3961,7 +3961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Open_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4016,7 +4016,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Open_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4071,7 +4071,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorV_Retracted",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4126,7 +4126,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Open_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4181,7 +4181,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Open_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4236,7 +4236,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorV_Retracted",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4401,7 +4401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Open_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4456,7 +4456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_RedDoorH_Open_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4511,7 +4511,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Floor_ShadowTop_Alt",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4566,7 +4566,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Open_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4621,7 +4621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_BlueDoorH_Open_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4676,7 +4676,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Floor_ShadowTop",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4841,7 +4841,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Button_Up",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Button_Pressed",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5281,7 +5281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_RedOnBlack_Right",
       "behavior": "MB_WALK_EAST",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5336,7 +5336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_RedOnBlack_Left",
       "behavior": "MB_WALK_WEST",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5391,7 +5391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_RedOnBlack_Up",
       "behavior": "MB_WALK_NORTH",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5446,7 +5446,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_RedOnBlack_Down",
       "behavior": "MB_WALK_SOUTH",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5831,7 +5831,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Door_Shuttered",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6766,7 +6766,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_RedOnBlack_Left_Alt",
       "behavior": "MB_WALK_WEST",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6821,7 +6821,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_RedOnBlack_Right_Alt",
       "behavior": "MB_WALK_EAST",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8361,7 +8361,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrickHousePuzzle_Arrow_YellowOnWhite_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

@@ -1651,7 +1651,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Floor_ShadowTop",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5116,7 +5116,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_CounterBarrier",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5501,7 +5501,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Door_CableClub",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7041,7 +7041,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile0_Frame0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7096,7 +7096,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile1_Frame0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7151,7 +7151,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile0_Frame1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7206,7 +7206,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile1_Frame1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7261,7 +7261,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile0_Frame2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7316,7 +7316,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile1_Frame2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7481,7 +7481,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile2_Frame0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7536,7 +7536,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile3_Frame0",
       "behavior": "MB_UP_ESCALATOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7591,7 +7591,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile2_Frame1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7646,7 +7646,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile3_Frame1",
       "behavior": "MB_UP_ESCALATOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7701,7 +7701,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile2_Frame2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7756,7 +7756,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator1F_Tile3_Frame2",
       "behavior": "MB_UP_ESCALATOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8801,7 +8801,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile0_Frame0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8856,7 +8856,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile1_Frame0",
       "behavior": "MB_DOWN_ESCALATOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8911,7 +8911,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile0_Frame1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8966,7 +8966,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile1_Frame1",
       "behavior": "MB_DOWN_ESCALATOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -9021,7 +9021,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile0_Frame2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9076,7 +9076,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile1_Frame2",
       "behavior": "MB_DOWN_ESCALATOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -9241,7 +9241,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile2_Frame0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9351,7 +9351,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile2_Frame1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9461,7 +9461,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Escalator2F_Tile2_Frame2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12101,7 +12101,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Floor_ShadowTop_Alt",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12541,7 +12541,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PokemonCenter_Floor_Plain_Alt",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

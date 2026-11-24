@@ -881,7 +881,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_RoomEntrance_Left",
       "behavior": "MB_SOUTH_ARROW_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -936,7 +936,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_RoomEntrance_Right",
       "behavior": "MB_SOUTH_ARROW_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1321,7 +1321,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_SlidingDoor_Frame0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1376,7 +1376,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_SlidingDoor_Frame1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1431,7 +1431,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_SlidingDoor_Frame2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1486,7 +1486,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_SlidingDoor_Frame3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1541,7 +1541,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_SlidingDoor_Frame4",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1981,7 +1981,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "PetalburgGym_Door",
       "behavior": "MB_PETALBURG_GYM_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

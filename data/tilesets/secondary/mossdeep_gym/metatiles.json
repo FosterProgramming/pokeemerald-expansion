@@ -4401,7 +4401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MossdeepGym_YellowArrow_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

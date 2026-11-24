@@ -1376,7 +1376,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "GenericBuilding_TrickHouse_Stairs_Down",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1486,7 +1486,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "GenericBuilding_TrickHouse_Door_Closed",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -13256,7 +13256,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "GenericBuilding_TableEdge",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

@@ -56,7 +56,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Grass",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -716,7 +716,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_TallGrass",
       "behavior": "MB_TALL_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -771,7 +771,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Grass_TreeUp",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1156,7 +1156,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_LongGrass",
       "behavior": "MB_LONG_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1816,7 +1816,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2036,7 +2036,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_TallGrass_TreeUp",
       "behavior": "MB_TALL_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2091,7 +2091,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_SecretBase_TreeLeft",
       "behavior": "MB_SECRET_BASE_SPOT_TREE_LEFT",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2146,7 +2146,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_SecretBase_TreeRight",
       "behavior": "MB_SECRET_BASE_SPOT_TREE_RIGHT",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2971,7 +2971,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_SecretBase_VineLeft",
       "behavior": "MB_SECRET_BASE_SPOT_TREE_LEFT_OPEN",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3026,7 +3026,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_SecretBase_VineRight",
       "behavior": "MB_SECRET_BASE_SPOT_TREE_RIGHT_OPEN",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3576,7 +3576,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Door_PokeMart",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5336,7 +5336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Door_PokeCenter",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6656,7 +6656,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RockWall_GrassBase",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6821,7 +6821,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RockWall_RockBase",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7976,7 +7976,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RockWall_SandBase",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8746,7 +8746,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_CaveEntrance_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8856,7 +8856,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_ReflectiveWater",
       "behavior": "MB_POND_WATER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9186,7 +9186,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_CaveEntrance_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12761,7 +12761,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_MuddySlope_Frame0",
       "behavior": "MB_MUDDY_SLOPE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12816,7 +12816,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_MuddySlope_Frame1",
       "behavior": "MB_MUDDY_SLOPE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12871,7 +12871,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_MuddySlope_Frame2",
       "behavior": "MB_MUDDY_SLOPE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12926,7 +12926,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_MuddySlope_Frame3",
       "behavior": "MB_MUDDY_SLOPE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -15896,7 +15896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_SandPit_Center",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -18371,7 +18371,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RoughWater",
       "behavior": "MB_DEEP_WATER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -18426,7 +18426,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RoughDeepWater",
       "behavior": "MB_DEEP_WATER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -20241,7 +20241,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_CalmWater",
       "behavior": "MB_OCEAN_WATER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -22881,7 +22881,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RedCaveIndent",
       "behavior": "MB_SECRET_BASE_SPOT_RED_CAVE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -22936,7 +22936,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_RedCaveOpen",
       "behavior": "MB_SECRET_BASE_SPOT_RED_CAVE_OPEN",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -23321,7 +23321,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_YellowCaveIndent",
       "behavior": "MB_SECRET_BASE_SPOT_YELLOW_CAVE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -23376,7 +23376,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_YellowCaveOpen",
       "behavior": "MB_SECRET_BASE_SPOT_YELLOW_CAVE_OPEN",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -23761,7 +23761,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_BlueCaveIndent",
       "behavior": "MB_SECRET_BASE_SPOT_BLUE_CAVE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -23816,7 +23816,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_BlueCaveOpen",
       "behavior": "MB_SECRET_BASE_SPOT_BLUE_CAVE_OPEN",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -24971,7 +24971,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_TallGrass_TreeLeft",
       "behavior": "MB_TALL_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -25026,7 +25026,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_TallGrass_TreeRight",
       "behavior": "MB_TALL_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -25356,7 +25356,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Door_Gym",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -25411,7 +25411,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Grass_TreeLeft",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -25466,7 +25466,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Grass_TreeRight",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26126,7 +26126,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "General_Door_Contest",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

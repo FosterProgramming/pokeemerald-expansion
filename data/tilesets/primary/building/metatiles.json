@@ -111,7 +111,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Building_TV_Off",
       "behavior": "MB_TELEVISION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Building_TV_On",
       "behavior": "MB_TELEVISION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -221,7 +221,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Building_PC_Off",
       "behavior": "MB_PC",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -276,7 +276,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Building_PC_On",
       "behavior": "MB_PC",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

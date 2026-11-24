@@ -1486,7 +1486,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleArena_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

@@ -441,7 +441,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_LongGrass_Root",
       "behavior": "MB_LONG_GRASS_SOUTH_EDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4291,7 +4291,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_BridgeOverGrass_Raised",
       "behavior": "MB_FORTREE_BRIDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4346,7 +4346,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_BridgeOverGrass_Lowered",
       "behavior": "MB_FORTREE_BRIDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4731,7 +4731,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_BridgeOverTrees_Raised",
       "behavior": "MB_FORTREE_BRIDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4786,7 +4786,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_BridgeOverTrees_Lowered",
       "behavior": "MB_FORTREE_BRIDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6216,7 +6216,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_Shrub",
       "behavior": "MB_SECRET_BASE_SPOT_SHRUB",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6601,7 +6601,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_ShrubOpen",
       "behavior": "MB_SECRET_BASE_SPOT_SHRUB_OPEN",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6656,7 +6656,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_LongGrass_TopLeft",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6711,7 +6711,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_LongGrass_TopMid",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6766,7 +6766,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_LongGrass_TopRight",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7096,7 +7096,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_LongGrass_BottomLeft",
       "behavior": "MB_LONG_GRASS_SOUTH_EDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7151,7 +7151,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_LongGrass_BottomMid",
       "behavior": "MB_LONG_GRASS_SOUTH_EDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7206,7 +7206,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_SecretBase_LongGrass_BottomRight",
       "behavior": "MB_LONG_GRASS_SOUTH_EDGE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8306,7 +8306,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_WoodBridge1_Top",
       "behavior": "MB_BRIDGE_OVER_POND_HIGH",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -8746,7 +8746,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fortree_WoodBridge1_Bottom",
       "behavior": "MB_BRIDGE_OVER_POND_HIGH",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

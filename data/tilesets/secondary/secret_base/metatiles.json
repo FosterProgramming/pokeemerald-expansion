@@ -111,7 +111,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Wall_TopMid",
       "behavior": "MB_SECRET_BASE_NORTH_WALL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -551,7 +551,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Ground",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1761,7 +1761,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PC",
       "behavior": "MB_SECRET_BASE_PC",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1816,7 +1816,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RegisterPC",
       "behavior": "MB_SECRET_BASE_REGISTER_PC",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1981,7 +1981,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PC_On",
       "behavior": "MB_SECRET_BASE_PC",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2036,7 +2036,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedBrick_Top",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2091,7 +2091,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_YellowBrick_Top",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2146,7 +2146,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueBrick_Top",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2201,7 +2201,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_MudBall",
       "behavior": "MB_SECRET_BASE_BALLOON",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2421,7 +2421,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Fence_Horizontal",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2476,7 +2476,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedBrick_Bottom",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2531,62 +2531,7 @@
       ]
     },
     {
-      "label": "",
-      "behavior": "MB_SECRET_BASE_DECORATION_BASE",
-      "layer": "METATILE_LAYER_TYPE_COVERED",
-      "tiles": [
-        {
-          "palette": 6,
-          "tileId": 548,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 549,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 564,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 565,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 3,
-          "tileId": 239,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 3,
-          "tileId": 239,
-          "xflip": true,
-          "yflip": false
-        },
-        {
-          "palette": 3,
-          "tileId": 255,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 3,
-          "tileId": 255,
-          "xflip": true,
-          "yflip": false
-        }
-      ]
-    },
-    {
-      "label": "",
+      "label": "SecretBase_YellowBrick_Bottom",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2615,6 +2560,61 @@
           "yflip": false
         },
         {
+          "palette": 3,
+          "tileId": 239,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 3,
+          "tileId": 239,
+          "xflip": true,
+          "yflip": false
+        },
+        {
+          "palette": 3,
+          "tileId": 255,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 3,
+          "tileId": 255,
+          "xflip": true,
+          "yflip": false
+        }
+      ]
+    },
+    {
+      "label": "SecretBase_BlueBrick_Bottom",
+      "behavior": "MB_SECRET_BASE_DECORATION_BASE",
+      "layer": "METATILE_LAYER_TYPE_COVERED",
+      "tiles": [
+        {
+          "palette": 6,
+          "tileId": 548,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 549,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 564,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 565,
+          "xflip": false,
+          "yflip": false
+        },
+        {
           "palette": 4,
           "tileId": 239,
           "xflip": false,
@@ -2641,7 +2641,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2696,7 +2696,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_TopMid",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2751,7 +2751,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2806,7 +2806,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Fence_Vertical",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2861,7 +2861,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SolidBoard_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2916,7 +2916,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_TopLeft",
       "behavior": "MB_IMPASSABLE_NORTHWEST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2971,7 +2971,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_TopRight",
       "behavior": "MB_IMPASSABLE_NORTHEAST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3026,7 +3026,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BreakableDoor_TopClosed",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3081,7 +3081,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_MidLeft",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3136,7 +3136,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_DoorTop",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3191,7 +3191,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_MidRight",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3246,7 +3246,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_BottomRight",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3301,7 +3301,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SolidBoard_Bottom",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3356,7 +3356,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_StairLanding",
       "behavior": "MB_IMPASSABLE_WEST_AND_EAST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3411,7 +3411,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_SlideTop",
       "behavior": "MB_SLIDE_SOUTH",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3466,7 +3466,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BreakableDoor_BottomClosed",
       "behavior": "MB_SECRET_BASE_BREAKABLE_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3521,7 +3521,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_BottomLeft",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3576,7 +3576,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedTent_Door",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3631,7 +3631,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3686,7 +3686,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3741,7 +3741,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3796,7 +3796,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3851,7 +3851,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3906,7 +3906,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3961,7 +3961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4016,7 +4016,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_TopMid",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4071,7 +4071,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4126,7 +4126,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4181,7 +4181,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4236,7 +4236,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4291,7 +4291,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4346,7 +4346,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4401,7 +4401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_MidLeft",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4456,7 +4456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_DoorTop",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4511,7 +4511,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4566,7 +4566,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4621,7 +4621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SurfMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4676,7 +4676,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4731,7 +4731,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4786,7 +4786,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ThunderMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4841,7 +4841,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_BottomLeft",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_Door",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4951,7 +4951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5006,7 +5006,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5061,7 +5061,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5116,7 +5116,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5171,7 +5171,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5226,7 +5226,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5281,7 +5281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GlitterMat",
       "behavior": "MB_SECRET_BASE_GLITTER_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5336,7 +5336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_JumpMat",
       "behavior": "MB_SECRET_BASE_JUMP_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5391,7 +5391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpinMat",
       "behavior": "MB_SECRET_BASE_SPIN_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5446,7 +5446,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_Stairs",
       "behavior": "MB_IMPASSABLE_WEST_AND_EAST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5501,7 +5501,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_SlideBottom",
       "behavior": "MB_SLIDE_SOUTH",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5556,7 +5556,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5611,7 +5611,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5666,7 +5666,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FireBlastMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5721,7 +5721,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5776,7 +5776,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_BottomRight",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5831,7 +5831,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_CornerLeft",
       "behavior": "MB_IMPASSABLE_NORTHWEST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5886,7 +5886,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_MidLeft",
       "behavior": "MB_IMPASSABLE_NORTH",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5941,7 +5941,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_MidRight",
       "behavior": "MB_IMPASSABLE_NORTH",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5996,7 +5996,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_CornerRight",
       "behavior": "MB_IMPASSABLE_NORTHEAST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6051,7 +6051,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BreakableDoor_TopOpen",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6106,7 +6106,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_MatLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6161,7 +6161,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueTent_MidRight",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6271,7 +6271,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_StairsLeft",
       "behavior": "MB_IMPASSABLE_WEST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6326,7 +6326,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_BaseLeft",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6381,7 +6381,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_BaseRight",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6436,7 +6436,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Stand_StairsRight",
       "behavior": "MB_IMPASSABLE_EAST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6491,7 +6491,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BreakableDoor_BottomOpen",
       "behavior": "MB_IMPASSABLE_WEST_AND_EAST",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6546,7 +6546,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Slide_MatRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6601,7 +6601,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_C_Low",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6656,7 +6656,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_D",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6711,7 +6711,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_E",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6766,7 +6766,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_F",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6821,7 +6821,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_G",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6876,7 +6876,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_A",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6931,7 +6931,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_B",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7041,7 +7041,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Tire_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7096,7 +7096,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Tire_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7151,7 +7151,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GlassOrnament_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7206,7 +7206,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GlassOrnament_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7261,7 +7261,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SandOrnament_BrokenTop",
       "behavior": "MB_SECRET_BASE_SCENERY",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7316,7 +7316,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SandOrnament_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7371,7 +7371,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SandOrnament_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7426,7 +7426,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SmallDesk",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7481,7 +7481,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Tire_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7536,7 +7536,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_Tire_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7591,7 +7591,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GlassOrnament_Base1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7646,7 +7646,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GlassOrnament_Base2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7701,7 +7701,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SandOrnament_BrokenBase",
       "behavior": "MB_SECRET_BASE_IMPASSABLE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7756,7 +7756,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SandOrnament_Base1",
       "behavior": "MB_SECRET_BASE_SAND_ORNAMENT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7811,7 +7811,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SandOrnament_Base2",
       "behavior": "MB_SECRET_BASE_SAND_ORNAMENT",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7866,7 +7866,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PokemonDesk",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7921,7 +7921,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7976,7 +7976,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8031,7 +8031,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8086,7 +8086,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8141,7 +8141,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8196,7 +8196,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8251,7 +8251,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8306,7 +8306,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8361,7 +8361,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8416,7 +8416,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8471,7 +8471,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8526,7 +8526,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8581,7 +8581,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8636,7 +8636,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8691,7 +8691,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8746,7 +8746,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8801,7 +8801,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8856,7 +8856,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8911,7 +8911,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8966,7 +8966,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9021,7 +9021,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9076,7 +9076,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9131,7 +9131,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9186,7 +9186,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9241,7 +9241,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9296,7 +9296,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9351,7 +9351,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9406,7 +9406,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9461,7 +9461,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9516,7 +9516,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9571,7 +9571,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9626,7 +9626,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9681,7 +9681,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9736,7 +9736,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9791,7 +9791,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9846,7 +9846,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_NoteMat_C_High",
       "behavior": "MB_SECRET_BASE_SOUND_MAT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9901,7 +9901,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9956,7 +9956,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10011,7 +10011,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10066,7 +10066,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10121,7 +10121,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SmallChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10176,7 +10176,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PokemonChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10231,7 +10231,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HeavyChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10286,7 +10286,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10341,7 +10341,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10396,7 +10396,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_TopLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10451,7 +10451,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_TopMid",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10506,7 +10506,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_TopRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10561,7 +10561,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10616,7 +10616,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ComfortChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10671,7 +10671,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RaggedChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10726,7 +10726,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10781,7 +10781,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10836,7 +10836,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10891,7 +10891,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10946,7 +10946,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11001,7 +11001,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BrickChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11056,7 +11056,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CampChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11111,7 +11111,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardChair",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11166,7 +11166,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11221,7 +11221,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_HardDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11276,7 +11276,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11331,7 +11331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_BottomMid",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11386,7 +11386,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyDesk_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11441,7 +11441,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedPlant_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11496,7 +11496,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedPlant_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11551,7 +11551,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_TropicalPlant_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11606,7 +11606,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_TropicalPlant_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11661,7 +11661,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyFlowers_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11716,7 +11716,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyFlowers_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11771,7 +11771,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SilverShield_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11826,7 +11826,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SilverShield_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11881,7 +11881,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedPlant_Base1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11936,7 +11936,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedPlant_Base2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -11991,7 +11991,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_TropicalPlant_Base1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12046,7 +12046,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_TropicalPlant_Base2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12101,7 +12101,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyFlowers_Base1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12156,7 +12156,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PrettyFlowers_Base2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12211,7 +12211,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SilverShield_Base1",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12266,7 +12266,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SilverShield_Base2",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12321,7 +12321,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12376,7 +12376,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_TopLeftWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12431,7 +12431,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12486,7 +12486,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_TopRightWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12541,7 +12541,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BigPlant_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12651,7 +12651,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BigPlant_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12761,7 +12761,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_BaseLeft1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12816,7 +12816,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_BaseRight1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12871,7 +12871,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_BaseLeft2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12926,7 +12926,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_ColorfulPlant_BaseRight2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12981,7 +12981,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BigPlant_BaseLeft1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13036,7 +13036,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BigPlant_BaseRight1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13091,7 +13091,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BigPlant_BaseLeft2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13146,7 +13146,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BigPlant_BaseRight2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13201,7 +13201,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -13256,117 +13256,7 @@
       ]
     },
     {
-      "label": "",
-      "behavior": "MB_SECRET_BASE_DECORATION",
-      "layer": "METATILE_LAYER_TYPE_NORMAL",
-      "tiles": [
-        {
-          "palette": 6,
-          "tileId": 516,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 517,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 532,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 533,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 139,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 140,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 155,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 156,
-          "xflip": false,
-          "yflip": false
-        }
-      ]
-    },
-    {
-      "label": "",
-      "behavior": "MB_SECRET_BASE_DECORATION",
-      "layer": "METATILE_LAYER_TYPE_NORMAL",
-      "tiles": [
-        {
-          "palette": 6,
-          "tileId": 548,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 549,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 564,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 6,
-          "tileId": 565,
-          "xflip": false,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 140,
-          "xflip": true,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 139,
-          "xflip": true,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 156,
-          "xflip": true,
-          "yflip": false
-        },
-        {
-          "palette": 5,
-          "tileId": 155,
-          "xflip": true,
-          "yflip": false
-        }
-      ]
-    },
-    {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_TopLeftWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -13396,6 +13286,61 @@
         },
         {
           "palette": 5,
+          "tileId": 139,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 140,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 155,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 156,
+          "xflip": false,
+          "yflip": false
+        }
+      ]
+    },
+    {
+      "label": "SecretBase_GorgeousPlant_TopRight",
+      "behavior": "MB_SECRET_BASE_DECORATION",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
+      "tiles": [
+        {
+          "palette": 6,
+          "tileId": 548,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 549,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 564,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 565,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 5,
           "tileId": 140,
           "xflip": true,
           "yflip": false
@@ -13421,7 +13366,62 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_TopRightWall",
+      "behavior": "MB_SECRET_BASE_DECORATION",
+      "layer": "METATILE_LAYER_TYPE_NORMAL",
+      "tiles": [
+        {
+          "palette": 6,
+          "tileId": 516,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 517,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 532,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 6,
+          "tileId": 533,
+          "xflip": false,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 140,
+          "xflip": true,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 139,
+          "xflip": true,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 156,
+          "xflip": true,
+          "yflip": false
+        },
+        {
+          "palette": 5,
+          "tileId": 155,
+          "xflip": true,
+          "yflip": false
+        }
+      ]
+    },
+    {
+      "label": "SecretBase_TV",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13476,7 +13476,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RoundTV",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13531,7 +13531,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CuteTV",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13641,7 +13641,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_BaseLeft1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13696,7 +13696,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_BaseRight1",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13751,7 +13751,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_BaseLeft2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13806,7 +13806,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GorgeousPlant_BaseRight2",
       "behavior": "MB_SECRET_BASE_DECORATION_BASE",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14081,7 +14081,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14136,7 +14136,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14191,7 +14191,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14246,7 +14246,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14301,7 +14301,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14356,7 +14356,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14411,7 +14411,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14466,7 +14466,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14521,7 +14521,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14576,7 +14576,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14631,7 +14631,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14686,7 +14686,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14741,7 +14741,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14796,7 +14796,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14851,7 +14851,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14906,7 +14906,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14961,7 +14961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15016,7 +15016,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15071,7 +15071,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PowderSnowMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15126,7 +15126,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15181,7 +15181,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15236,7 +15236,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_AttractMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15291,7 +15291,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15346,7 +15346,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15401,7 +15401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15456,7 +15456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_TopLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15511,7 +15511,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_TopMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15566,7 +15566,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_TopRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15621,7 +15621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PikaPoster_Left",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15676,7 +15676,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_PikaPoster_Right",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15731,7 +15731,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_LongPoster_Left",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15786,7 +15786,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_LongPoster_Right",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15841,7 +15841,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15896,7 +15896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_MidLeft",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15951,7 +15951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_Center",
       "behavior": "MB_HOLDS_LARGE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16006,7 +16006,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_MidRight",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16061,7 +16061,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SeaPoster_Left",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16116,7 +16116,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SeaPoster_Right",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16171,7 +16171,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SkyPoster_Left",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16226,7 +16226,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SkyPoster_Right",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16281,7 +16281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_FissureMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16336,7 +16336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_BottomLeft",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16391,7 +16391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_BottomMid",
       "behavior": "MB_HOLDS_SMALL_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16446,7 +16446,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_SpikesMat_BottomRight",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16501,7 +16501,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_KissPoster_Left",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16556,7 +16556,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_KissPoster_Right",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16611,7 +16611,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GoldShield_Top",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -16666,7 +16666,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GoldShield_TopWall",
       "behavior": "MB_SECRET_BASE_DECORATION",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -16721,7 +16721,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BallPoster",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16776,7 +16776,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GreenPoster",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16831,7 +16831,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedPoster",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16886,7 +16886,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BluePoster",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16941,7 +16941,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_CutePoster",
       "behavior": "MB_SECRET_BASE_POSTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17051,7 +17051,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GoldShield_Base1",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17106,7 +17106,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_GoldShield_Base2",
       "behavior": "MB_SECRET_BASE_TV_SHIELD",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17161,7 +17161,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_RedBalloon",
       "behavior": "MB_SECRET_BASE_BALLOON",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17381,7 +17381,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_BlueBalloon",
       "behavior": "MB_SECRET_BASE_BALLOON",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17601,7 +17601,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SecretBase_YellowBalloon",
       "behavior": "MB_SECRET_BASE_BALLOON",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

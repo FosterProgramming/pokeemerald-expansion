@@ -4951,7 +4951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting0_Left",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5006,7 +5006,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting0_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5061,7 +5061,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting1_Left",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5116,7 +5116,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting1_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5171,7 +5171,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting2_Left",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5226,7 +5226,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting2_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5281,7 +5281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting3_Left",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5336,7 +5336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting3_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5391,7 +5391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting4_Left",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5446,7 +5446,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "LilycoveMuseum_Painting4_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

@@ -3851,7 +3851,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MeteorFalls_CaveEntrance_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4236,7 +4236,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MeteorFalls_CaveEntrance_Left",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4291,7 +4291,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MeteorFalls_CaveEntrance_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4346,7 +4346,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MeteorFalls_CaveEntrance_Right",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

@@ -56,7 +56,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_CurtainFrames_Start",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -551,7 +551,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -936,7 +936,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -991,7 +991,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1046,7 +1046,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1376,7 +1376,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile4",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1431,7 +1431,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile5",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1486,7 +1486,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage2_Tile6",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2311,7 +2311,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2696,7 +2696,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2751,7 +2751,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2806,7 +2806,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3136,7 +3136,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile4",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3191,7 +3191,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile5",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3246,7 +3246,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage1_Tile6",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4071,7 +4071,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4456,7 +4456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4511,7 +4511,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4566,7 +4566,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile4",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4951,7 +4951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile5",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5006,7 +5006,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage0_Tile6",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9406,7 +9406,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -9791,7 +9791,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9846,7 +9846,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9901,7 +9901,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10231,7 +10231,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile4",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10286,7 +10286,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile5",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -10341,7 +10341,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePike_Curtain_Stage3_Tile6",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

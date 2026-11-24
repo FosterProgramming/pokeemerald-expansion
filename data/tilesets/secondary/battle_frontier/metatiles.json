@@ -386,7 +386,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_CorridorOpenDoor_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -771,7 +771,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Door_Elevator",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -826,7 +826,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_CorridorOpenDoor_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -9516,7 +9516,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Door_MultiCorridor",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -16336,7 +16336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Top0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16391,7 +16391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Top1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16446,7 +16446,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Top2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16776,7 +16776,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Mid0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16831,7 +16831,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Mid1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16886,7 +16886,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Mid2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17216,7 +17216,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Bottom0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17271,7 +17271,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Bottom1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17326,7 +17326,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleFrontier_Elevator_Bottom2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

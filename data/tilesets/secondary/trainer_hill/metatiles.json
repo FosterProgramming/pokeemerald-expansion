@@ -14466,7 +14466,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrainerHill_GreenFloorTile",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -16501,7 +16501,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrainerHill_Door_Elevator_Lobby",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16941,7 +16941,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrainerHill_CounterDoor",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -21286,7 +21286,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "TrainerHill_Door_Elevator_Roof",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

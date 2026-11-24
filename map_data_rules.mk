@@ -13,6 +13,7 @@ INCLUDECONSTS_OUTDIR := include/constants
 AUTO_GEN_TARGETS += $(INCLUDECONSTS_OUTDIR)/map_groups.h
 AUTO_GEN_TARGETS += $(INCLUDECONSTS_OUTDIR)/layouts.h
 AUTO_GEN_TARGETS += $(INCLUDECONSTS_OUTDIR)/map_event_ids.h
+AUTO_GEN_TARGETS += $(INCLUDECONSTS_OUTDIR)/metatile_labels.h
 
 MAP_DIRS := $(dir $(wildcard $(MAPS_DIR)/*/map.json))
 MAP_CONNECTIONS := $(patsubst $(MAPS_DIR)/%/,$(MAPS_DIR)/%/connections.inc,$(MAP_DIRS))
@@ -29,12 +30,12 @@ LAYOUTS_MAP_JSONS := $(patsubst $(LAYOUTS_DIR)/%/,$(LAYOUTS_DIR)/%/map.json,$(LA
 LAYOUTS_BORDER_JSONS := $(patsubst $(LAYOUTS_DIR)/%/,$(LAYOUTS_DIR)/%/border.json,$(LAYOUTS_DIR))
 LAYOUTS_JSONS := $(patsubst $(LAYOUTS_DIR)/%/,$(LAYOUTS_DIR)/%/layout.json,$(LAYOUTS_DIR))
 
-$(LAYOUTS_DIR)/%/border.bin: $(LAYOUTS_DIR)/%/border.json
-	@echo "$(JSON2BIN) mapgrid $<"
-	$(JSON2BIN) mapgrid $<
-$(LAYOUTS_DIR)/%/map.bin: $(LAYOUTS_DIR)/%/map.json
-	@echo "$(JSON2BIN) mapgrid $<"
-	$(JSON2BIN) mapgrid $<
+#$(LAYOUTS_DIR)/%/border.bin: $(LAYOUTS_DIR)/%/border.json
+#	@echo "$(JSON2BIN) mapgrid $<"
+#	$(JSON2BIN) mapgrid $<
+#$(LAYOUTS_DIR)/%/map.bin: $(LAYOUTS_DIR)/%/map.json
+#	@echo "$(JSON2BIN) mapgrid $<"
+#	$(JSON2BIN) mapgrid $<
 
 #mapgrid-bins-generated: $(LAYOUTS_MAP_BINS) $(LAYOUTS_BORDER_BINS)
 #	@echo "mapgrid-bins-generated $(LAYOUTS_BORDER_BINS) $(LAYOUTS_MAP_BINS)"
@@ -47,7 +48,7 @@ TILESETS_METATILES_BINS := $(patsubst $(TILESETS_DIR)/primary/%/,$(TILESETS_DIR)
 TILESETS_METATILE_ATTRIBUTES_BINS := $(patsubst $(TILESETS_DIR)/primary/%/,$(TILESETS_DIR)/primary/%/metatile_attributes.bin,$(PRIMARY_TILESETS_DIRS)) $(patsubst $(TILESETS_DIR)/secondary/%/,$(TILESETS_DIR)/secondary/%/metatile_attributes.bin,$(SECONDARY_TILESETS_DIRS))
 
 TILESETS_METATILES_JSONS := $(patsubst $(TILESETS_DIR)/primary/%/,$(TILESETS_DIR)/primary/%/metatiles.json,$(PRIMARY_TILESETS_DIRS)) $(patsubst $(TILESETS_DIR)/secondary/%/,$(TILESETS_DIR)/secondary/%/metatiles.json,$(SECONDARY_TILESETS_DIRS))
-TILESETS_METATILE_ATTRIBUTES_JSONS := $(patsubst $(TILESETS_DIR)/primary/%/,$(TILESETS_DIR)/primary/%/metatile_attributes.json,$(PRIMARY_TILESETS_DIRS)) $(patsubst $(TILESETS_DIR)/secondary/%/,$(TILESETS_DIR)/secondary/%/metatile_attributes.json,$(SECONDARY_TILESETS_DIRS))
+#TILESETS_METATILE_ATTRIBUTES_JSONS := $(patsubst $(TILESETS_DIR)/primary/%/,$(TILESETS_DIR)/primary/%/metatile_attributes.json,$(PRIMARY_TILESETS_DIRS)) $(patsubst $(TILESETS_DIR)/secondary/%/,$(TILESETS_DIR)/secondary/%/metatile_attributes.json,$(SECONDARY_TILESETS_DIRS))
 
 #%/metatiles.bin: %/metatiles.json
 #	@echo "$(JSON2BIN) metatiles $<"
@@ -90,6 +91,10 @@ $(INCLUDECONSTS_OUTDIR)/layouts.h: $(LAYOUTS_DIR)/layouts2.json $(LAYOUTS_JSONS)
 $(INCLUDECONSTS_OUTDIR)/map_event_ids.h: $(MAP_JSONS)
 	@$(MAPJSON) event_constants emerald $^ $(INCLUDECONSTS_OUTDIR)/map_event_ids.h
 	@echo "$(MAPJSON) event_constants emerald <MAP_JSONS> $(INCLUDECONSTS_OUTDIR)/map_event_ids.h"
+
+$(INCLUDECONSTS_OUTDIR)/metatile_labels.h: $(TILESETS_METATILES_JSONS)
+	@python3 tools/json-bin-converter/make_metatile_labels.py $^
+	@echo "python3 tools/json-bin-converter/make_metatile_labels.py <TILESETS_METATILES_JSONS>"
 
 # This is a migration script you can run to convert data/layouts/*/border.bin and data/layouts/*/map.bin bin files to json
 .PHONY: run-layout-mapgrids-bin-to-json

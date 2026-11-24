@@ -3851,7 +3851,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7811,7 +7811,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Door_Wooden",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7921,7 +7921,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Wailmer0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7976,7 +7976,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Wailmer1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8361,7 +8361,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Wailmer0_Alt",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8416,7 +8416,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Wailmer1_Alt",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8801,7 +8801,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Wailmer2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8856,7 +8856,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Wailmer3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -14741,7 +14741,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Door_DeptStore",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -16556,7 +16556,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lilycove_Door_SafariZone",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

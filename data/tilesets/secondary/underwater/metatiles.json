@@ -1651,7 +1651,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Underwater_RockWall",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2201,7 +2201,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Underwater_FloorShadow",
       "behavior": "MB_DEEP_WATER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

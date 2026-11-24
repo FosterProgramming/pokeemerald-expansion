@@ -331,7 +331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lavaridge_NormalGrass",
       "behavior": "MB_TALL_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -386,7 +386,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lavaridge_AshGrass",
       "behavior": "MB_ASHGRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4731,7 +4731,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lavaridge_CaveEntrance_Top",
       "behavior": "MB_MOUNTAIN_TOP",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5171,7 +5171,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lavaridge_CaveEntrance_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6216,7 +6216,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lavaridge_LavaField",
       "behavior": "MB_MOUNTAIN_TOP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6381,7 +6381,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Lavaridge_RockWall",
       "behavior": "MB_MOUNTAIN_TOP",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

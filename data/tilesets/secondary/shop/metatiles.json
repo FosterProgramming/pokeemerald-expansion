@@ -4841,7 +4841,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Shop_Laptop1_Flash",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5281,7 +5281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Shop_Laptop2_Flash",
       "behavior": "MB_COUNTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7316,7 +7316,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Shop_Door_Elevator",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8636,7 +8636,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Shop_Laptop1_Normal",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9076,7 +9076,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Shop_Laptop2_Normal",
       "behavior": "MB_COUNTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

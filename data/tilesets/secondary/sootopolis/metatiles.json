@@ -1541,7 +1541,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Sootopolis_Door_PeakedRoof",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1651,7 +1651,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Sootopolis_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3961,7 +3961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Sootopolis_Door_Closed",
       "behavior": "MB_CLOSED_SOOTOPOLIS_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4401,7 +4401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Sootopolis_GymDoor_Closed",
       "behavior": "MB_CLOSED_SOOTOPOLIS_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7921,7 +7921,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Sootopolis_RoughWater",
       "behavior": "MB_OCEAN_WATER",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

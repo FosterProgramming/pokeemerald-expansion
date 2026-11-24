@@ -496,7 +496,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleDome_Door_Lobby",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -551,7 +551,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleDome_Door_PreBattleRoom",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5171,7 +5171,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattleDome_Door_Corridor",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

@@ -10726,7 +10726,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Open_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10781,7 +10781,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Open_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10836,7 +10836,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Open_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11166,7 +11166,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Open_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11221,7 +11221,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Open_Tile4",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11276,7 +11276,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Open_Tile5",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -15181,7 +15181,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Closed_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15236,7 +15236,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Closed_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15291,7 +15291,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Closed_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15621,7 +15621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Closed_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15676,7 +15676,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Closed_Tile4",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -15731,7 +15731,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_NewMauvilleDoor_Closed_Tile5",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -26621,7 +26621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Facility_DataPad",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

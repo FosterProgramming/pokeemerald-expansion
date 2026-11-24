@@ -4456,7 +4456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_DeepSand_Center",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_DeepSand_BottomMid",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7536,7 +7536,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_Door_CyclingRoad",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9461,7 +9461,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -22936,7 +22936,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_Door_Verdanturf",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -25741,7 +25741,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_Door_BattleTent",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -25961,7 +25961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile0",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26016,7 +26016,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile1",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26071,7 +26071,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile2",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26126,7 +26126,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_TileC",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_SPLIT",
       "tiles": [
@@ -26181,7 +26181,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_TileD",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_SPLIT",
       "tiles": [
@@ -26236,7 +26236,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_TileE",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_SPLIT",
       "tiles": [
@@ -26401,7 +26401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile3",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26456,7 +26456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile4",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26511,7 +26511,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile5",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26566,7 +26566,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_TileF",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -26621,7 +26621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile10",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -26676,7 +26676,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile11",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -26841,7 +26841,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile6",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26896,7 +26896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile7",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -26951,7 +26951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile8",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -27281,7 +27281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_Tile9",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -27336,7 +27336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_TileA",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -27391,7 +27391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mauville_MirageTower_TileB",
       "behavior": "MB_DEEP_SAND",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

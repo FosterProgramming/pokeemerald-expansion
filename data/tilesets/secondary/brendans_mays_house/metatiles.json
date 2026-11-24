@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_MayPC_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4951,7 +4951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_BrendanPC_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5721,7 +5721,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_MovingBox_Closed",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6161,7 +6161,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_MovingBox_Open",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6931,7 +6931,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_MayPC_On",
       "behavior": "MB_PLAYER_ROOM_PC_ON",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -6986,7 +6986,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_BrendanPC_On",
       "behavior": "MB_PLAYER_ROOM_PC_ON",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -8086,7 +8086,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BrendansMaysHouse_BookOnTable",
       "behavior": "MB_RUNNING_SHOES_INSTRUCTION",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

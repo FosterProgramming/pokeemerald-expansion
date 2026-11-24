@@ -2531,7 +2531,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Button_Green",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2971,7 +2971,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Button_Blue",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4346,7 +4346,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Button_Pressed",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5776,7 +5776,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Hidden_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5996,7 +5996,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Floor_Shadow_Top",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -6216,7 +6216,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Hidden_Bottom",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -7096,7 +7096,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Wall_Edge_Top",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10011,7 +10011,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Green_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10066,7 +10066,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Blue_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10451,7 +10451,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Green_TopMid",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10506,7 +10506,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Blue_TopMid",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10891,7 +10891,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Green_BottomMid",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -10946,7 +10946,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Blue_BottomMid",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11331,7 +11331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Green_Bottom",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -11386,7 +11386,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Barrier_Blue_Bottom",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -13201,7 +13201,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile0",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13256,7 +13256,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile1",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13311,7 +13311,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile2",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13366,7 +13366,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile3",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13421,7 +13421,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile4",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13476,7 +13476,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile5",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13531,7 +13531,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile6",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13586,7 +13586,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BikeShop_Generator_Off_Tile7",
       "behavior": "MB_INDOOR_ENCOUNTER",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

@@ -2036,7 +2036,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Dewford_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5116,7 +5116,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Dewford_Door_BattleTower",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

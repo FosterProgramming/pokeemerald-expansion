@@ -441,7 +441,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_BrownCaveIndent",
       "behavior": "MB_SECRET_BASE_SPOT_BROWN_CAVE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -551,7 +551,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_AshGrass",
       "behavior": "MB_ASHGRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -881,7 +881,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_BrownCaveOpen",
       "behavior": "MB_SECRET_BASE_SPOT_BROWN_CAVE_OPEN",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -991,7 +991,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_NormalGrass",
       "behavior": "MB_TALL_GRASS",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1321,7 +1321,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_AshField",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_BrownCaveEntrance_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5336,7 +5336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_BrownCaveEntrance_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5556,7 +5556,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_BrownRockWall",
       "behavior": "MB_MOUNTAIN_TOP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -5776,7 +5776,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_RedRockWall",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -9076,7 +9076,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_Door_LightRoof",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -13586,7 +13586,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_Door_DarkRoof",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17986,7 +17986,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_RedCaveEntrance_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -18426,7 +18426,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_RedCaveEntrance_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -20021,7 +20021,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Fallarbor_Door_BattleTent",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

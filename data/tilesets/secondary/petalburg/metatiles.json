@@ -3961,7 +3961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Petalburg_Door_Littleroot",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4016,7 +4016,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Petalburg_Door_BirchsLab",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7426,7 +7426,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Petalburg_Door_Oldale",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

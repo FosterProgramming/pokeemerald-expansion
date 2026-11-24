@@ -331,7 +331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_EntryDoor_ClosedTop",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -771,7 +771,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_EntryDoor_ClosedBottom",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -12156,7 +12156,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_LeftSpotlightOff",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -12211,7 +12211,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_RightSpotlightOff",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -17821,7 +17821,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_OpenDoor_Frame",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17876,7 +17876,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_OpenDoor_Opening",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17931,7 +17931,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_OpenDoorChampion_Frame",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -17986,7 +17986,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EliteFour_OpenDoorChampion_Opening",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

@@ -1596,7 +1596,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "EverGrande_Door_PokemonLeague",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

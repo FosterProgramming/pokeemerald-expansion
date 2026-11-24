@@ -1431,7 +1431,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3026,7 +3026,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SkyPillar_CrackedFloor_Hole",
       "behavior": "MB_CRACKED_FLOOR_HOLE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4401,7 +4401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_FloatingLogs_HorizontalLeft",
       "behavior": "MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4456,7 +4456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_FloatingLogs_HorizontalRight",
       "behavior": "MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4511,7 +4511,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_HalfSubmergedLogs_HorizontalLeft",
       "behavior": "MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4566,7 +4566,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_HalfSubmergedLogs_HorizontalRight",
       "behavior": "MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4621,7 +4621,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SubmergedLogs_HorizontalLeft",
       "behavior": "MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4676,7 +4676,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SubmergedLogs_HorizontalRight",
       "behavior": "MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4841,7 +4841,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_FloatingLogs_VerticalTop",
       "behavior": "MB_PACIFIDLOG_VERTICAL_LOG_TOP",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4896,7 +4896,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_HalfSubmergedLogs_VerticalTop",
       "behavior": "MB_PACIFIDLOG_VERTICAL_LOG_TOP",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -4951,7 +4951,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SubmergedLogs_VerticalTop",
       "behavior": "MB_PACIFIDLOG_VERTICAL_LOG_TOP",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5281,7 +5281,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_FloatingLogs_VerticalBottom",
       "behavior": "MB_PACIFIDLOG_VERTICAL_LOG_BOTTOM",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5336,7 +5336,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_HalfSubmergedLogs_VerticalBottom",
       "behavior": "MB_PACIFIDLOG_VERTICAL_LOG_BOTTOM",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -5391,7 +5391,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SubmergedLogs_VerticalBottom",
       "behavior": "MB_PACIFIDLOG_VERTICAL_LOG_BOTTOM",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9351,7 +9351,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SkyPillar_DoorOpen_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -9791,7 +9791,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Pacifidlog_SkyPillar_DoorOpen_Bottom",
       "behavior": "MB_NON_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

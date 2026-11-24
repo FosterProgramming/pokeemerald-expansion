@@ -331,7 +331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SootopolisGym_Ice_Broken",
       "behavior": "MB_CRACKED_FLOOR_HOLE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -386,7 +386,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SootopolisGym_Stairs",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -771,7 +771,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "SootopolisGym_Ice_Cracked",
       "behavior": "MB_CRACKED_ICE",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

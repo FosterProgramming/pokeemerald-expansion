@@ -441,7 +441,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideOfTruck_ExitLight_Top",
       "behavior": "MB_EAST_ARROW_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -716,7 +716,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideOfTruck_DoorClosedFloor_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -881,7 +881,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideOfTruck_ExitLight_Mid",
       "behavior": "MB_EAST_ARROW_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1156,7 +1156,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideOfTruck_DoorClosedFloor_Mid",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1321,7 +1321,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideOfTruck_ExitLight_Bottom",
       "behavior": "MB_EAST_ARROW_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1596,7 +1596,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "InsideOfTruck_DoorClosedFloor_Bottom",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

@@ -12101,7 +12101,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Slateport_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -22166,7 +22166,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Slateport_Door_BattleTent",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

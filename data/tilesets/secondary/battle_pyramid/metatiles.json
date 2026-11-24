@@ -7756,7 +7756,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePyramid_Floor",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -7811,7 +7811,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "BattlePyramid_Exit",
       "behavior": "MB_BATTLE_PYRAMID_WARP",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

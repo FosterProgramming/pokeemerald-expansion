@@ -8856,7 +8856,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mossdeep_Door",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -13036,7 +13036,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "Mossdeep_Door_SpaceCenter",
       "behavior": "MB_ANIMATED_DOOR",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [

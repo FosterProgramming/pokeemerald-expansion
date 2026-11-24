@@ -276,7 +276,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RaisedSwitch",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -331,7 +331,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_PressedSwitch",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -1431,7 +1431,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_FloorTile",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1761,7 +1761,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH1_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1816,7 +1816,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH2_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1871,7 +1871,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH1_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -1926,7 +1926,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH2_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2201,7 +2201,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH3_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2256,7 +2256,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH4_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2311,7 +2311,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH3_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2366,7 +2366,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH4_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2641,7 +2641,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH1_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2696,7 +2696,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH2_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2751,7 +2751,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH1_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -2806,7 +2806,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH2_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3081,7 +3081,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH3_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3136,7 +3136,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamH4_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3191,7 +3191,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH3_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3246,7 +3246,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamH4_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3521,7 +3521,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamV1_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3576,7 +3576,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamV1_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -3631,7 +3631,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_PoleBottom_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3686,7 +3686,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_PoleBottom_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -3961,7 +3961,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_GreenBeamV2_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4016,7 +4016,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_RedBeamV2_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4401,7 +4401,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_PoleTop_On",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [
@@ -4456,7 +4456,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MauvilleGym_PoleTop_Off",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_NORMAL",
       "tiles": [

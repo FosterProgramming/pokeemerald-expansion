@@ -2311,7 +2311,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MossdeepGameCorner_CounterClosed_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2421,7 +2421,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MossdeepGameCorner_CounterOpen_Top",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2751,7 +2751,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MossdeepGameCorner_CounterClosed_Bottom",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
@@ -2861,7 +2861,7 @@
       ]
     },
     {
-      "label": "",
+      "label": "MossdeepGameCorner_CounterOpen_Bottom",
       "behavior": "MB_NORMAL",
       "layer": "METATILE_LAYER_TYPE_COVERED",
       "tiles": [
