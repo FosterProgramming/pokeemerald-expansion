@@ -18,7 +18,7 @@ std::map<std::string, uint16_t> tiles_masks{
 };
 
 
-nlohmann::ordered_json createMetatileJson(nlohmann::ordered_json schema, std::string name, const std::vector<std::byte>& metatiles_buffer, const std::vector<std::byte>& metatile_attributes_buffer) {
+nlohmann::ordered_json createMetatileJson(nlohmann::ordered_json schema, std::string name, const std::vector<std::byte>& metatiles_buffer, const std::vector<std::byte>& metatile_attributes_buffer, nlohmann::ordered_json labels) {
     nlohmann::ordered_json json;
     int ratio = metatiles_buffer.size() / metatile_attributes_buffer.size();
     int metatiles_count, tiles_per_metatiles, attribute_byte_size;
@@ -38,12 +38,15 @@ nlohmann::ordered_json createMetatileJson(nlohmann::ordered_json schema, std::st
 
     json["metatiles"] = nlohmann::ordered_json::array();
     uint32_t temp_var = 0;
-    //std::cout << "ratio: " << attribute_byte_size << "\n";
     for (int i = 0; i < metatiles_count; i++)
     {
         temp_var = 0;
         nlohmann::ordered_json metatile = nlohmann::ordered_json::object();
         metatile["label"] = std::string("");
+        for (const auto& [key, value]: labels.items()) {
+            if (value == i)
+                metatile["label"] = key;
+        }
         for (int byte_index = 0; byte_index < attribute_byte_size; byte_index++)
         {
             std::byte byte = metatile_attributes_buffer[i * attribute_byte_size + byte_index];
@@ -99,7 +102,14 @@ int main(int argc, char *argv[])
     std::ifstream json_stream(path);
     nlohmann::ordered_json schema_json = nlohmann::json::parse(json_stream);
 
+    std::filesystem::path path2{"tools/json-bin-converter/tileset_labels.json"};
+    std::ifstream json_stream2(path2);
+    nlohmann::ordered_json labels_json = nlohmann::json::parse(json_stream2);
+
     for(auto folder_path: folder_paths) {
+        auto path_string = folder_path.string();
+        path_string.replace(0, 14, ""); // remove "data/tilesets" from the path
+        auto labels = labels_json[path_string];
         std::filesystem::path metatiles_path = folder_path / "metatiles.bin";
         std::filesystem::path metatile_attributes_path = folder_path / "metatile_attributes.bin";
         std::string tileset_name = folder_path.filename();
@@ -115,7 +125,7 @@ int main(int argc, char *argv[])
             break;
         }
 
-        nlohmann::ordered_json json = createMetatileJson(schema_json, tileset_name, metatiles_buffer, metatile_attributes_buffer);
+        nlohmann::ordered_json json = createMetatileJson(schema_json, tileset_name, metatiles_buffer, metatile_attributes_buffer, labels);
 
         // Serialize as json
         std::filesystem::path json_path = folder_path / "metatiles.json";
